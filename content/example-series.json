@@ -1,0 +1,88 @@
+{
+  "series_title": "梯度下降系列",
+  "theme": "purple",
+  "output_dir": "content/gradient-series",
+  "cards": [
+    {
+      "type": "knowledge",
+      "title": "梯度下降的直觉 🎯",
+      "subtitle": "3分钟搞懂AI最核心的优化算法",
+      "items": [
+        "梯度∇f = 脚下坡度的方向",
+        "学习率α = 步子的大小",
+        "极值点 = 山底，梯度≈0",
+        "太大→跳过山底来回震荡",
+        "太小→走太慢浪费时间"
+      ],
+      "filename": "01-cover.jpg"
+    },
+    {
+      "type": "comparison",
+      "title": "学习率：大小很关键 ⚖️",
+      "subtitle": "三种情况对比",
+      "concept_a": "学习率太大",
+      "concept_b": "学习率太小",
+      "points_a": [
+        "跳过最低点",
+        "来回震荡不收敛",
+        "损失忽高忽低"
+      ],
+      "points_b": [
+        "每步走太短",
+        "收敛极慢",
+        "浪费计算资源"
+      ],
+      "filename": "02-comparison.jpg"
+    },
+    {
+      "type": "data",
+      "title": "梯度下降有多重要？",
+      "big_number": "99%",
+      "data_source": "几乎所有AI模型都用梯度下降训练",
+      "sub_data": [
+        "GPT-4 训练用了约 1 万亿个梯度步",
+        "一次梯度计算 = 算一遍所有数据",
+        "GPU 就是专门算梯度的硬件"
+      ],
+      "filename": "03-data.jpg"
+    },
+    {
+      "type": "steps",
+      "title": "梯度下降 3步走 🚶",
+      "items": [
+        "计算梯度：当前参数下的坡度方向",
+        "决定步长：乘以学习率得到移动量",
+        "更新参数：新位置 = 旧位置 - 步长"
+      ],
+      "filename": "04-steps.jpg"
+    },
+    {
+      "type": "knowledge",
+      "title": "公式只是直觉的翻译 💡",
+      "subtitle": "每个符号都有直觉含义",
+      "items": [
+        "θ = 你在山上的位置",
+        "∇f(θ) = 这个位置的坡度",
+        "α = 步子大小（0.001~0.1）",
+        "- = 往下坡方向走（减号=下山）",
+        "θ_new = 走完一步的新位置"
+      ],
+      "footer": "5/6 下期：反向传播 ❤️",
+      "filename": "05-formula.jpg"
+    },
+    {
+      "type": "knowledge",
+      "title": "收藏完整系列 📌",
+      "subtitle": "数学×AI科普，每周更新",
+      "items": [
+        "已更新：梯度下降的直觉",
+        "下期预告：反向传播——功劳怎么分",
+        "后续：损失函数 / Softmax / 注意力机制",
+        "关注公众号获取深度版",
+        "B站有动画视频版"
+      ],
+      "footer": "点赞收藏不迷路 ❤️",
+      "filename": "06-follow.jpg"
+    }
+  ]
+}

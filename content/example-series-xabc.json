@@ -1,0 +1,46 @@
+{
+  "series_title": "梯度下降系列",
+  "model": "gpt-image-2",
+  "size": "1024x1536",
+  "quality": "high",
+  "output_format": "png",
+  "output_dir": "content/gradient-series-ai",
+  "cards": [
+    {
+      "title": "封面：梯度下降直觉",
+      "n": 1,
+      "filename": "01-cover.png",
+      "prompt": "小红书风格知识科普封面图，3:4竖版，深紫到蓝紫渐变背景。\n主标题「梯度下降的直觉」白色加粗56pt居中偏上，\n副标题「蒙着眼下山，每一步往最陡的方向走」浅紫色24pt，\n中央区域展示一个3D曲面动画截图风格图：深紫色网格曲面形成碗状谷底，一条发光的橙色小球轨迹从高处沿曲面滚向最低点，\n底部粉红色圆角按钮「3分钟搞懂 →」，\nhigh-fidelity Chinese typography, crisp text, no watermark, 3Blue1Brown style dark background"
+    },
+    {
+      "title": "核心三步",
+      "n": 1,
+      "filename": "02-three-steps.png",
+      "prompt": "小红书风格知识科普卡片，3:4竖版，深紫色渐变背景。\n顶部标题「梯度下降 3步走」白色加粗48pt，\n中部三个编号区块垂直排列：\n01 蓝色圆形徽章 - 「计算梯度」- 找到脚下最陡的方向\n02 橙色圆形徽章 - 「决定步长」- 学习率乘以梯度\n03 绿色圆形徽章 - 「更新参数」- 新位置=旧位置-步长\n每个区块左侧大号数字，右侧标题+一行解释，\n区块之间用向下箭头连接，\n底部小字「公式只是直觉的翻译」，\nhigh-fidelity Chinese typography, crisp text, no watermark, neon accent colors on dark background"
+    },
+    {
+      "title": "学习率对比",
+      "n": 1,
+      "filename": "03-learning-rate.png",
+      "prompt": "小红书风格概念对比信息图，3:4竖版，深蓝色渐变背景。\n顶部标题「学习率：大小很关键」白色加粗48pt，\n中部左右对比布局：\n左列标题「太大」红色，下方3条：跳过最低点、来回震荡不收敛、损失忽高忽低，配一个锯齿形下降曲线示意图\n右列标题「太小」蓝色，下方3条：每步走太短、收敛极慢、浪费计算资源，配一个极其缓慢下降的曲线示意图\n中间分隔线「VS」橙色，\n底部绿色框「合适的α：稳步收敛到最低点」配一条平滑下降曲线，\nhigh-fidelity Chinese typography, crisp text, no watermark"
+    },
+    {
+      "title": "数据冲击",
+      "n": 1,
+      "filename": "04-data-impact.png",
+      "prompt": "小红书风格数据冲击卡片，3:4竖版，深蓝#0F172A到蓝#1E40AF渐变背景。\n顶部标题「梯度下降有多重要？」白色52pt，\n中部超大数字「99%」青色(#58c4dd)占画面40%高度，\n数字下方小字「几乎所有AI模型都用梯度下降训练」浅蓝色，\n中下部3行补充数据：\n📊 GPT-4训练用了约1万亿个梯度步\n📊 一次梯度计算=算一遍所有数据\n📊 GPU就是专门算梯度的硬件\n底部粉红CTA「转发给学AI的朋友」，\nhigh-fidelity typography, crisp text, no watermark"
+    },
+    {
+      "title": "公式解读",
+      "n": 1,
+      "filename": "05-formula.png",
+      "prompt": "小红书风格数学直觉科普卡，3:4竖版，黑色#1a1a2e背景。\n顶部白色标题「公式只是直觉的翻译」加粗48pt，\n副标题「每个符号都有生活含义」浅灰色24pt，\n中部展示公式 θ←θ−η∇L(θ) 每个符号用不同颜色：\nθ 白色 = 你在山上的位置\n− 黄色 = 往下坡方向走（减号=下山）\nη 橙色 = 步子大小（0.001~0.1）\n∇L 青色 = 这个位置的坡度方向\n公式下方5行对应关系，每行=数学符号→生活含义，用箭头连接，\n底部粉红框「数学不是天书，是直觉的翻译」，\n3Blue1Brown dark style, neon math symbols, high-fidelity Chinese typography, no watermark"
+    },
+    {
+      "title": "关注引导",
+      "n": 1,
+      "filename": "06-follow.png",
+      "prompt": "小红书风格关注引导页，3:4竖版，深紫到蓝紫渐变背景。\n顶部标题「收藏完整系列📌」白色加粗48pt，\n副标题「数学×AI科普，每周更新」浅紫色24pt，\n中部5条清单：\n✅ 已更新：梯度下降的直觉\n🔜 下期：反向传播——功劳怎么分\n🔜 后续：损失函数 / Softmax / 注意力机制\n📱 公众号获取深度版（1500字+代码）\n🎬 B站有动画视频版\n底部大号粉红圆角按钮「点赞收藏不迷路 ❤️」，\nhigh-fidelity Chinese typography, crisp text, no watermark, clean layout"
+    }
+  ]
+}
