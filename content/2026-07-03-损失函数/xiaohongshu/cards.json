@@ -1,0 +1,64 @@
+{
+  "series_title": "损失函数：打分标准决定学习方向",
+  "model": "gpt-image-2",
+  "size": "1024x1536",
+  "quality": "high",
+  "output_format": "png",
+  "output_dir": "content/2026-07-03-损失函数/xiaohongshu",
+  "cards": [
+    {
+      "title": "封面：悬念引入",
+      "n": 1,
+      "filename": "01-cover.png",
+      "prompt": "小红书风格AI科普封面图，3:4竖版，深蓝#0F172A到蓝#1E40AF渐变背景。中央展示两把不同形状的测量工具概念图：左边一把弯曲变形的尺子标注MSE，右边一把笔直锋利的箭头标注交叉熵，两把工具对准同一个靶心。顶部白色加粗大标题「同一个AI任务，只换一个函数，收敛慢了一倍」居中偏上，副标题「损失函数：打分标准决定学习方向」浅蓝色较小字体，底部粉红色#FF6B9D圆角按钮「3分钟搞懂 →」。high-fidelity Chinese typography, crisp sharp text, no watermark, 3Blue1Brown dark style, cinematic lighting"
+    },
+    {
+      "title": "悬念：只换损失函数，差一倍",
+      "n": 1,
+      "filename": "02-hook.png",
+      "prompt": "小红书风格数据冲击卡片，3:4竖版，深蓝#0F172A渐变背景。顶部白色加粗标题「同一任务同一模型同一学习率」44pt，中部超大对比数字：左侧绿色大号「97步」标注交叉熵，右侧红色大号「193步」标注MSE，中间橙色×2倍符号，数字下方小字「到80%准确率所需的步数」，底部黄色高亮框白色文字「只换了一个函数，凭什么差一倍？」，下方三行小字白色：网络一样 / 数据一样 / 学习率一样。high-fidelity Chinese typography, crisp text, no watermark, data impact style"
+    },
+    {
+      "title": "直觉：射击教练打分",
+      "n": 1,
+      "filename": "03-insight.png",
+      "prompt": "小红书风格直觉解释卡片，3:4竖版，深紫#2D1B69渐变背景。顶部白色加粗标题「两种打分方式，两种学习节奏」48pt，中部左右对比布局：左列标题「MSE 射击教练」青色，打分方式「看离靶心多远，偏1环扣1分偏5环扣25分」，适用场景「回归：目标连续，偏差有远近」，配一个靶心环数示意；右列标题「交叉熵 射击教练」粉红色，打分方式「看正确答案被忽视多少，忽视越多惩罚越狠」，适用场景「分类：非对即错，没有半猫半狗」，配一个概率分配示意。中间橙色VS分隔线，底部黄色框「分类不是偏了多少，是猜对了没有」。high-fidelity Chinese typography, crisp text, no watermark"
+    },
+    {
+      "title": "对比：梯度信号谁更强",
+      "n": 1,
+      "filename": "04-comparison.png",
+      "prompt": "小红书风格梯度对比卡片，3:4竖版，黑色#1a1a2e背景。顶部白色加粗标题「模型最需要纠错时，谁给的信号更强？」44pt，中部两行关键数据对比：当正确答案概率=0.01时：MSE梯度=1.98（红色小字），交叉熵梯度=100（绿色大号加粗），标注「50倍差距！」橙色；当正确答案概率=0.49时：MSE梯度=1.02（红色），交叉熵梯度=2.04（绿色），标注「约2倍差距」。数据下方一条对比曲线示意：蓝色上升曲线=交叉熵梯度（p越小梯度越大），红色抛物线=MSE梯度（p小时梯度反而小），底部粉红框「MSE：模型越错，信号越弱 😱」。3Blue1Brown dark style, high-fidelity Chinese typography, crisp text, no watermark"
+    },
+    {
+      "title": "公式翻译：两个核心公式",
+      "n": 1,
+      "filename": "05-formula.png",
+      "prompt": "小红书风格数学直觉科普卡，3:4竖版，黑色#1a1a2e背景。顶部白色加粗标题「公式只是打分规则」48pt，中部上下两个公式区块：上方青色区块标题「MSE」公式L=(1/n)Σ(yᵢ−ŷᵢ)²，解释「偏差平方取平均，偏得越远惩罚越重」，梯度∂L/∂ŷ=−(2/n)(yᵢ−ŷᵢ)解释「梯度和偏差成正比」；下方粉红色区块标题「交叉熵」公式L=−[y·log(ŷ)+(1−y)·log(1−ŷ)]，解释「正确答案概率取对数加负号，概率越低损失爆炸」，梯度∂L/∂ŷ=−1/ŷ解释「梯度和预测概率成反比，越错推力越大」。底部黄色框「关键差异：交叉熵的梯度随错误程度爆炸式增长」。3Blue1Brown dark style, neon math symbols, high-fidelity Chinese typography, no watermark"
+    },
+    {
+      "title": "实操：3行代码两种损失",
+      "n": 1,
+      "filename": "06-code.png",
+      "prompt": "小红书风格代码实操卡片，3:4竖版，深蓝#0F172A渐变背景。顶部白色加粗标题「3行代码实现两种损失函数」44pt，中部深色代码框区域，展示两段代码：上段青色标注MSE：def mse_loss(y, p): return np.mean((y - p) ** 2)，注释「偏差平方取平均」；下段粉红色标注交叉熵：def bce_loss(y, p): return -np.mean(y * np.log(p + eps) + (1 - y) * np.log(1 - p + eps))，注释「正确答案概率取对数加负号」。代码用语法高亮，注释灰色，底部运行结果框「同一个错误p=0.1：MSE=0.81 / 交叉熵=2.30 → 交叉熵惩罚近3倍 ✅」。high-fidelity Chinese typography, monospace code font, no watermark, dark IDE style"
+    },
+    {
+      "title": "实测：训练曲线对比",
+      "n": 1,
+      "filename": "07-experiment.png",
+      "prompt": "小红书风格实验数据卡片，3:4竖版，深蓝#0F172A渐变背景。顶部白色加粗标题「实测：同一任务，两种损失函数」44pt，中部训练曲线示意区域：左侧准确率曲线图，蓝色线（交叉熵）快速上升97步到80%虚线，红色线（MSE）缓慢上升193步到80%虚线，标注差距；右侧损失曲线图，蓝色线从0.64快速下降，红色线从0.23缓慢下降。底部三行关键发现：✅ 交叉熵97步到80%准确率，最终99%；⚠️ MSE 193步到80%准确率，最终96%；💡 原因：sigmoid饱和区压扁了MSE的梯度。high-fidelity Chinese typography, crisp text, no watermark, data visualization"
+    },
+    {
+      "title": "总结：一张图浓缩精华",
+      "n": 1,
+      "filename": "08-summary.png",
+      "prompt": "小红书风格总结卡片，3:4竖版，深蓝#0F172A渐变背景。顶部白色加粗标题「损失函数 一张图总结」48pt，中部5行要点：🟣 本质：打分标准决定梯度信号强度；🟡 MSE：偏差平方，管回归，梯度和偏差成正比；🔵 交叉熵：正确答案概率取log，管分类，梯度和错误程度成反比；🟢 关键：分类用MSE梯度被稀释，模型越错信号越弱；🔴 口诀：回归用MSE分类用交叉熵，选错慢一倍。底部粉红框「❤️ 收藏起来，下次训练前先选对损失函数」。high-fidelity Chinese typography, crisp text, no watermark, clean layout"
+    },
+    {
+      "title": "关注引导",
+      "n": 1,
+      "filename": "09-follow.png",
+      "prompt": "小红书风格关注引导页，3:4竖版，深紫#2D1B69到蓝紫#4A2FBD渐变背景。顶部白色加粗标题「深度学习基础系列 📌」48pt，副标题「数学×AI科普，每周更新」浅紫色24pt，中部5条清单：✅ 已更新：梯度下降——蒙着眼下山；✅ 已更新：损失函数——打分标准决定学习方向；🔜 下期：反向传播——功劳怎么分；🔜 后续：Softmax / 注意力机制 / 优化器；🔍 搜索「数解AI」获取深度版（1500字+代码）。底部大号粉红色#FF6B9D圆角按钮「点赞收藏不迷路 ❤️」。high-fidelity Chinese typography, crisp text, no watermark, clean modern layout"
+    }
+  ]
+}
