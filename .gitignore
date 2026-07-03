@@ -1,0 +1,16 @@
+.env
+.baoyu-skills/.env
+node_modules/
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.mp4
+*.gif
+content/gradient-series-ai/
+content/test/
+tmp-wechat-test.html
+tmp_*.js
+tmp_*.json
+tmp_*.html
+.grill/

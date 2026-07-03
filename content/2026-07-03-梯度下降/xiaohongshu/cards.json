@@ -1,0 +1,64 @@
+{
+  "series_title": "梯度下降：蒙着眼下山",
+  "model": "gpt-image-2",
+  "size": "1024x1536",
+  "quality": "high",
+  "output_format": "png",
+  "output_dir": "content/2026-07-03-梯度下降/xiaohongshu",
+  "cards": [
+    {
+      "title": "封面：悬念引入",
+      "n": 1,
+      "filename": "01-cover.png",
+      "prompt": "小红书风格AI科普封面图，3:4竖版，深紫#2D1B69到蓝紫#4A2FBD渐变背景。\n中央大面积区域展示一个3D风格深紫色网格曲面，形成碗状谷底，一颗发光的橙色小球从高处沿曲面滚向最低点，轨迹留下发光尾迹。\n顶部白色加粗大标题「AI怎么学会东西的？」居中偏上，\n副标题「蒙着眼下山」浅紫色较小字体在标题下方，\n底部粉红色#FF6B9D圆角按钮「3分钟搞懂 →」，\nhigh-fidelity Chinese typography, crisp sharp text, no watermark, 3Blue1Brown dark style, cinematic lighting"
+    },
+    {
+      "title": "悬念：上亿参数怎么学会的",
+      "n": 1,
+      "filename": "02-hook.png",
+      "prompt": "小红书风格痛点引入卡片，3:4竖版，深蓝#0F172A到蓝#1E40AF渐变背景。\n顶部白色加粗标题「上亿个参数，怎么从随机数变聪明？」48pt，\n中部3个问号图标垂直排列，每个旁边一行白色文字：\n❓ GPT有1.8万亿参数——全是随机数起步\n❓ 它们怎么知道自己该往哪调？\n❓ 没有人逐个告诉它们答案\n底部一行青色#58c4dd醒目文字「答案：蒙着眼下山」，\n底部小字粉红色「👇 翻下一页看真相」，\nhigh-fidelity Chinese typography, crisp text, no watermark, dark cinematic background"
+    },
+    {
+      "title": "直觉揭秘：蒙着眼下山",
+      "n": 1,
+      "filename": "03-insight.png",
+      "prompt": "小红书风格直觉解释卡片，3:4竖版，深紫#2D1B69渐变背景。\n顶部白色加粗标题「蒙着眼下山的3个感觉」48pt，\n中部3个区块垂直排列，每个左侧大号彩色圆形徽章编号，右侧标题+一行解释：\n① 粉红色徽章 - 「脚下哪里更陡」= 梯度方向\n② 青色徽章 - 「往哪走是下坡」= 负梯度方向\n③ 橙色徽章 - 「走了多大一步」= 学习率（步长）\n3个区块之间用向下箭头连接，\n底部黄色高亮框内白色文字「核心insight：你不需要知道整座山，只需知道脚下坡度」，\n3Blue1Brown dark style, high-fidelity Chinese typography, crisp text, no watermark"
+    },
+    {
+      "title": "对比：学习率大小差10倍",
+      "n": 1,
+      "filename": "04-comparison.png",
+      "prompt": "小红书风格概念对比卡片，3:4竖版，深蓝#0F172A渐变背景。\n顶部白色加粗标题「学习率差10倍，结果天差地别」48pt，\n中部三行横向对比条：\n左列红色「太大 0.1」→ 右侧描述「一步跨过谷底，来回震荡」+ 红色锯齿形小曲线\n中间列绿色「刚好 0.01」→ 右侧描述「稳步下降，200步收敛」+ 绿色平滑下降小曲线\n右列蓝色「太小 0.001」→ 右侧描述「像蚂蚁搬家，500步还没到」+ 蓝色极缓下降小曲线\n底部粉红色框「同一个问题，学习率决定成败」，\nhigh-fidelity Chinese typography, crisp text, no watermark, data visualization style"
+    },
+    {
+      "title": "公式翻译：每个符号都有生活含义",
+      "n": 1,
+      "filename": "05-formula.png",
+      "prompt": "小红书风格数学直觉科普卡，3:4竖版，黑色#1a1a2e背景。\n顶部白色加粗标题「公式只是直觉的翻译」48pt，\n副标题「每个符号都有生活含义」浅灰色24pt，\n中部展示公式 θ←θ−η∇L(θ) ，每个符号用不同颜色：\nθ 白色 = 你在山上的位置\n− 黄色 = 往下坡方向走\nη 橙色 = 步子大小（0.001~0.1）\n∇L 青色 = 这个位置的坡度方向\n公式下方4行对应关系，每行=彩色数学符号→白色生活含义，用箭头连接，\n底部粉红框「数学不是天书，是直觉的翻译」，\n3Blue1Brown dark style, neon math symbols, high-fidelity Chinese typography, no watermark"
+    },
+    {
+      "title": "实操：4行代码写完梯度下降",
+      "n": 1,
+      "filename": "06-code.png",
+      "prompt": "小红书风格代码实操卡片，3:4竖版，深紫#2D1B69到蓝紫渐变背景。\n顶部白色加粗标题「4行代码写完梯度下降」44pt，\n中部深色代码框风格区域，展示4行Python代码，每行前有行号和对应注释：\n① x = init_x    # 站在初始位置\n② grad = grad_fn(x)  # 感受脚下坡度\n③ x = x - lr * grad  # 往下坡走一步\n④ 重复①②③直到谷底\n代码用绿色/青色语法高亮，注释用灰色，行号用粉红色，\n代码框右侧有箭头指向「公式→代码一一对应」，\n底部运行结果框「从零开始，500步后 w=1.987 b=1.024 ✅」，\nhigh-fidelity Chinese typography, monospace code font, no watermark, dark IDE style"
+    },
+    {
+      "title": "实测数据：三个AI模型PK",
+      "n": 1,
+      "filename": "07-experiment.png",
+      "prompt": "小红书风格实验数据卡片，3:4竖版，深蓝#0F172A渐变背景。\n顶部白色加粗标题「3个AI模型写梯度下降，谁最强？」44pt，\n中部3行横向对比：\n绿色✅ GPT-4o → 7步收敛，加了momentum\n绿色✅ Claude 3.5 → 5步收敛，自适应学习率最快\n黄色⚠️ DeepSeek-V3 → 12步收敛，学习率太大前两步震荡\n每行左模型名，右结果+一句关键差异，\n底部青色高亮框「同一个算法，学习率策略决定收敛速度」，\nhigh-fidelity Chinese typography, crisp text, no watermark, data visualization"
+    },
+    {
+      "title": "总结：一张图浓缩精华",
+      "n": 1,
+      "filename": "08-summary.png",
+      "prompt": "小红书风格总结卡片，3:4竖版，深紫#2D1B69渐变背景。\n顶部白色加粗标题「梯度下降 一张图总结」48pt，\n中部5行要点，每行左侧彩色圆点，右侧白色文字：\n🟣 本质：蒙着眼下山，用局部信息做全局优化\n🟡 核心：新位置=当前位置−学习率×梯度\n🔵 关键：学习率太大震荡，太小太慢，自适应最优\n🟢 实操：4行代码就能实现\n🔴 延伸：所有AI训练都基于这个算法\n底部粉红框「❤️ 收藏起来，训练模型前翻出来看」，\nhigh-fidelity Chinese typography, crisp text, no watermark, clean layout"
+    },
+    {
+      "title": "关注引导",
+      "n": 1,
+      "filename": "09-follow.png",
+      "prompt": "小红书风格关注引导页，3:4竖版，深紫#2D1B69到蓝紫#4A2FBD渐变背景。\n顶部白色加粗标题「深度学习基础系列 📌」48pt，\n副标题「数学×AI科普，每周更新」浅紫色24pt，\n中部5条清单：\n✅ 已更新：梯度下降——蒙着眼下山\n🔜 下期：损失函数——打分标准决定学习方向\n🔜 后续：反向传播 / Softmax / 注意力机制\n🔍 搜索「数解AI」获取深度版（1500字+代码）\n🎬 B站有Manim动画视频版\n底部大号粉红色#FF6B9D圆角按钮「点赞收藏不迷路 ❤️」，\nhigh-fidelity Chinese typography, crisp text, no watermark, clean modern layout"
+    }
+  ]
+}
