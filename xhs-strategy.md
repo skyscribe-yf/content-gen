@@ -195,3 +195,56 @@
 ---
 
 *最后更新：2026-07-03*
+
+---
+
+## 八、自动发布流程（浏览器自动化 + CDP）
+
+### 原理
+
+小红书没有公开的「发布笔记」API。通过 Chrome DevTools Protocol (CDP) 操作浏览器，实现自动上传图片+填文案+发布。
+
+关键步骤：
+1. `agent_browser` 启动 Chrome 并连接
+2. 手动登录 `creator.xiaohongshu.com`（一次性）
+3. 导航到发布页面
+4. 通过 CDP `DOM.setFileInputFiles` 注入本地图片文件到 `<input type="file">`
+5. 通过 CDP `Runtime.evaluate` 填入标题和正文
+6. 点击发布按钮
+
+### 发布脚本
+
+```bash
+# 从 xiaohongshu 目录自动读取 cards.json + copy.md 发布
+python3 scripts/xhs_publish.py --dir content/2026-07-03-梯度下降/xiaohongshu
+
+# 指定标题、文案、图片
+python3 scripts/xhs_publish.py --title "标题" --copy "正文" --images 01.png 02.png
+
+# 检查登录状态
+python3 scripts/xhs_publish.py --check
+```
+
+### 手动发布流程（备用）
+
+1. 打开 `creator.xiaohongshu.com` 并登录
+2. 点击「发布图文笔记」
+3. 上传图片（9张）
+4. 填标题（≤20字）
+5. 填正文（≤1000字）
+6. 添加话题标签
+7. 点击「发布」
+
+### 注意事项
+
+- 小红书要求 AI 生成图片必须标注「包含 AI 生成内容」
+- 正文最多 1000 字（中英文均按 1 个字符计算）
+- 标题最多 20 字符（中文占 1 个，英文/数字占 0.5 个）
+- 图片最多 18 张，支持 PNG/JPG/JPEG/WEBP
+- 发布后可在 `creator.xiaohongshu.com/note` 管理笔记
+
+### 依赖
+
+```bash
+pip install requests websockets
+```
