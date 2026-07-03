@@ -43,10 +43,10 @@
       "prompt": "小红书风格代码实操卡片，3:4竖版，深紫#2D1B69到蓝紫渐变背景。\n顶部白色加粗标题「4行代码写完梯度下降」44pt，\n中部深色代码框风格区域，展示4行Python代码，每行前有行号和对应注释：\n① x = init_x    # 站在初始位置\n② grad = grad_fn(x)  # 感受脚下坡度\n③ x = x - lr * grad  # 往下坡走一步\n④ 重复①②③直到谷底\n代码用绿色/青色语法高亮，注释用灰色，行号用粉红色，\n代码框右侧有箭头指向「公式→代码一一对应」，\n底部运行结果框「从零开始，500步后 w=1.987 b=1.024 ✅」，\nhigh-fidelity Chinese typography, monospace code font, no watermark, dark IDE style"
     },
     {
-      "title": "实测数据：三个AI模型PK",
+      "title": "实测数据：学习率差10倍，结果天差地别",
       "n": 1,
       "filename": "07-experiment.png",
-      "prompt": "小红书风格实验数据卡片，3:4竖版，深蓝#0F172A渐变背景。\n顶部白色加粗标题「3个AI模型写梯度下降，谁最强？」44pt，\n中部3行横向对比：\n绿色✅ GPT-4o → 7步收敛，加了momentum\n绿色✅ Claude 3.5 → 5步收敛，自适应学习率最快\n黄色⚠️ DeepSeek-V3 → 12步收敛，学习率太大前两步震荡\n每行左模型名，右结果+一句关键差异，\n底部青色高亮框「同一个算法，学习率策略决定收敛速度」，\nhigh-fidelity Chinese typography, crisp text, no watermark, data visualization"
+      "prompt": "小红书风格实验数据卡片，3:4竖版，深蓝#0F172A渐变背景。\n顶部白色加粗标题「学习率差10倍，结果天差地别」44pt，\n中部3行横向对比：\n蓝色「lr=0.001 太慢」→ 右侧描述「500步loss还在0.072，像蚂蚁搬家」+ 蓝色极缓下降小曲线\n绿色「lr=0.01 刚好」→ 右侧描述「200步loss降到0.05以下，稳步收敛」+ 绿色平滑下降小曲线\n红色「lr=0.1 爆炸」→ 右侧描述「参数飞到天文数字，彻底发散」+ 红色发散飙升小曲线\n每行左学习率值，右结果+一句关键差异，\n底部青色高亮框「同一个问题，学习率决定成败」，\nhigh-fidelity Chinese typography, crisp text, no watermark, data visualization"
     },
     {
       "title": "总结：一张图浓缩精华",
