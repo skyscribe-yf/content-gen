@@ -1,0 +1,48 @@
+{
+  "series_title": "Softmax文章配图",
+  "output_dir": "content/2026-07-07-softmax",
+  "size": "4:3",
+  "resolution": "1k",
+  "cards": [
+    {
+      "title": "01-argmax-vs-softmax",
+      "filename": "01-voting-analogy.png",
+      "prompt": "Minimalist hand-drawn line art style on warm cream background. Intentional wobble on all lines. Generous white space. Chinese text labels, large and prominent. LEFT SIDE: Argmax独裁 - one stick figure with crown, scores A=0 B=0 C=1, red cross on zeros meaning gradient has no entry point. RIGHT SIDE: Softmax比例代表 - three stick figures with proportional bars, scores A=2.7% B=0.2% C=97.1%, green check on small percentages meaning residual is gradient entry. Bottom tagline: argmax原地不动 softmax留了缝隙. Cream background #FFFAF0, Warm Orange #ED8936 for softmax side, Terracotta #C05621 for argmax side, Near Black #1A1A1A for lines and text. 4:3 aspect ratio. Clean composition with generous white space. No gradients, no shadows."
+    },
+    {
+      "title": "02-softmax-vs-norm",
+      "filename": "02-softmax-vs-norm.png",
+      "prompt": "Minimalist hand-drawn line art style on warm cream #FFFAF0 background. Intentional wobble on all lines. TOP: Direct normalization with z=[2.1,-0.3,5.7] divided by sum=7.5 gives [0.28, -0.04, 0.76]. The -0.04 is highlighted in red with a cross mark and label 负概率不可能. A confused stick figure. BOTTOM: Exponential normalization with e^z divided by sum gives [2.7%, 0.2%, 97.1%] all positive with green check. Annotation showing e^5.7/e^2.1=36x gap amplification. A happy stick figure. Bottom tagline: 指数让负数变正 让差距放大. Warm Orange #ED8936 for positive, Soft Red #E53E3E for negative, Near Black #1A1A1A for lines. 4:3 aspect ratio. No gradients no shadows."
+    },
+    {
+      "title": "03-chain-magic",
+      "filename": "03-chain-magic.png",
+      "prompt": "Minimalist hand-drawn line art style on warm cream #FFFAF0 background. Intentional wobble on all lines. TOP: A complex formula box with hand-drawn scribbled math showing chain rule derivatives crossing out and canceling terms. MIDDLE: Large downward arrow with label 约掉了 and sparkle doodle decorations. BOTTOM: Highlighted result box in Golden Yellow #F6AD55 showing p-y = prediction minus truth. Two side annotations connected by equals sign: left says sigmoid+交叉熵 yields ŷ-y, right says softmax+交叉熵 yields p-y, with label 同一套魔法. Bottom tagline: 复杂的导数约掉后 只剩预测减真实. Warm Orange #ED8936 for sparkles, Near Black #1A1A1A for lines and text. 4:3 aspect ratio. No gradients no shadows."
+    },
+    {
+      "title": "04-temperature-shape",
+      "filename": "04-temperature-shape.png",
+      "prompt": "Minimalist hand-drawn line art style on warm cream #FFFAF0 background. Three-panel horizontal comparison with hand-drawn wobble. PANEL 1 T=0.1 晶体: Single sharp almost-vertical peak distribution curve, almost all probability on one class, crystal/diamond icon, label 梯度集中在1-2个类. PANEL 2 T=1.0 液体 highlighted: Moderate bell-curve distribution with clear peak but some spread, water drop icon, label 梯度均衡最佳平衡, subtle border highlight as default choice. PANEL 3 T=5.0 气体: Nearly flat uniform distribution, scattered dots/steam icon, label 梯度均匀但被稀释. Bottom tagline: 低温冻住梯度 高温稀释梯度 T=1刚刚好. Warm Orange #ED8936 for T=1.0 highlight, Terracotta #C05621 for T=0.1, Golden Yellow #F6AD55 for T=5.0, Near Black #1A1A1A for lines. 4:3 aspect ratio. No gradients no shadows."
+    },
+    {
+      "title": "05-llm-output",
+      "filename": "05-llm-output.png",
+      "prompt": "Minimalist hand-drawn line art style on warm cream #FFFAF0 background. Left-to-right flowchart with 5 stages connected by curved hand-drawn arrows. STAGE 1 输入序列: stack of word cards. STAGE 2 Transformer层: stacked rectangles with attention arrows. STAGE 3 Logits向量: tall vertical bar chart with big label 129,280维 and annotation DeepSeek-V4词表. STAGE 4 Softmax: probability distribution curve, label 分数变概率, highlighted in Warm Orange. STAGE 5 采样输出: pointing hand selecting one bar, sub-annotations top-k只看前k个 and top-p只看累计p百分比. Bottom tagline: 每一步都对12万+个候选词做softmax. Warm Orange #ED8936 for softmax stage, Golden Yellow #F6AD55 for logits, Near Black #1A1A1A for lines. 4:3 aspect ratio. No gradients no shadows."
+    },
+    {
+      "title": "06-temperature-comparison",
+      "filename": "06-temperature-comparison.png",
+      "prompt": "Minimalist hand-drawn line art style on warm cream #FFFAF0 background. 3x3 grid infographic. Header: 同一任务只改温度和网络深度. Row 1 2层网络: T=0.1 shows 3步 with green check fastest, T=1.0 shows 13步, T=5.0 shows 61步. Row 2 6层网络: T=0.1 shows 学不了 with red cross, T=1.0 shows 4步 with green check fastest, T=5.0 shows 19步. Row 3 10层网络: T=0.1 shows 学不了 with red cross, T=1.0 shows 学不了 with red cross, T=5.0 shows 36步 with green check only option. Each cell is a rounded-rectangle card. Color intensity shows speed: warm filled for fast, light for slow, red crossed for failed. Bottom tagline: 网络越深温度影响越大 T=1是最稳的默认值. Warm Orange #ED8936 for fastest, Soft Red #E53E3E for failed, Near Black #1A1A1A for lines. 4:3 aspect ratio. No gradients no shadows."
+    },
+    {
+      "title": "07-depth-temperature",
+      "filename": "07-depth-temperature.png",
+      "prompt": "Minimalist hand-drawn line art style on warm cream #FFFAF0 background. Three parallel vertical columns showing gradient flow through 6 network layers. COLUMN 1 T=0.1: top thick arrow, middle arrows progressively thinner, bottom dashed almost-invisible arrow with annotation 梯度逐层消失, red cross mark. COLUMN 2 T=1.0: top moderate arrow, middle arrows stay visible slightly thinner, bottom still visible arrow with annotation 梯度稳定传递, green check mark. COLUMN 3 T=5.0: top thin arrow, middle consistently thin but present, bottom thin but visible with annotation 梯度均匀但弱, yellow warning mark. Each layer is a rectangle with arrows between them. Arrow thickness represents gradient magnitude. Bottom bracket connecting all three: 网络越深温度选择越关键. Warm Orange #ED8936 for T=1.0 arrows, Soft Red #E53E3E for T=0.1 vanished, Golden Yellow #F6AD55 for T=5.0 thin, Near Black #1A1A1A for lines. 4:3 aspect ratio. No gradients no shadows."
+    },
+    {
+      "title": "08-gradient-flow",
+      "filename": "08-gradient-flow.png",
+      "prompt": "Minimalist hand-drawn line art style on warm cream #FFFAF0 background. Three horizontal bar charts stacked vertically. Header: logits=[2.1,-0.3,5.7] 真实类=第1个 预测错了. CHART 1 T=0.1: 类别1真实类 large negative bar -10.0, 类别2 nearly zero ≈0, 类别3预测最大 large positive bar +10.0, annotation 梯度巨大只看2个类. CHART 2 T=1.0: 类别1 large negative -0.973, 类别2 tiny positive 0.002, 类别3 large positive 0.971, annotation 所有类都有信号. CHART 3 T=5.0: 类别1 moderate negative -0.146, 类别2 small positive 0.034, 类别3 moderate positive 0.112, annotation 信号均匀但推力弱. Bottom tagline: 低温梯度集中 高温梯度均匀 T=1兼顾两者. Warm Orange #ED8936 for positive bars, Terracotta #C05621 for negative bars, Near Black #1A1A1A for lines. 4:3 aspect ratio. No gradients no shadows."
+    }
+  ]
+}

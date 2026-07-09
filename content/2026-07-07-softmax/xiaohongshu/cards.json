@@ -1,0 +1,46 @@
+{
+  "series_title": "Softmax为什么不直接取最大值",
+  "model": "gpt-image-2",
+  "size": "3:4",
+  "resolution": "1k",
+  "output_format": "png",
+  "output_dir": "content/2026-07-07-softmax/xiaohongshu",
+  "cards": [
+    {
+      "title": "封面：痛点钩子",
+      "n": 1,
+      "filename": "01-cover.png",
+      "prompt": "小红书风格痛点钩子封面，3:4竖版，深蓝黑#0a0a1a到深紫#1a0a2e渐变背景，大面积留白。\n中央超大白色加粗文字「分类总猜错？」6个字，字号占画面1/3高度，极简有力，文字有微弱发光效果。\n文字下方一个小型红色❌标记和一个青色✅标记并排，中间用箭头连接，暗示错误→正确的转变。\n底部粉红色#FF6B9D小字「Softmax · 3分钟搞懂」，字号很小不抢视觉。\n整体极简：只有6个大字+2个小图标+底部小字，大面积深色留白，情绪感强，0.3秒可读，\nhigh-fidelity Chinese typography, crisp sharp text, no watermark, 3Blue1Brown dark style, cinematic lighting, minimal clean layout, large negative space"
+    },
+    {
+      "title": "核心问题：argmax不可导",
+      "n": 1,
+      "filename": "02-argmax-dead.png",
+      "prompt": "小红书风格痛点解释卡片，3:4竖版，深蓝#0F172A渐变背景。\n顶部白色加粗标题「取最大值？梯度就死了」44pt，\n中部2个对比场景：\n上方红色区域「argmax 铁管」：一根拔河绳子中间有一段灰色铁管，铁管左侧有力箭头（红色），右侧完全无力（虚线箭头消失），标签「梯度传到这里就断了」，铁管上有红色X标记\n下方青色区域「softmax 软绳」：一根发光的青蓝色绳子从左到右完整传导，力的箭头从大到小但从未消失，标签「梯度永远能传过去」，绳子上流动着微光粒子\n中间分隔文字「模型知道错了，但不知道往哪调」红色警示文字\n底部黄色高亮框「softmax的核心：让梯度活下去」\nhigh-fidelity Chinese typography, crisp text, no watermark, 3Blue1Brown dark style, visual metaphor"
+    },
+    {
+      "title": "直觉：投票比喻",
+      "n": 1,
+      "filename": "03-voting.png",
+      "prompt": "小红书风格直觉解释卡片，3:4竖版，深紫#1a0a2e渐变背景。\n顶部白色加粗标题「投票的两种玩法」44pt，\n中部一个对比表格，左右分栏：\n左列标题「独裁投票 argmax」红色，下方：3个候选人柱状图，C柱100%满格（红色），A和B柱0%（灰色虚线框），标签「赢者通吃，差距无意义」\n右列标题「温和投票 softmax」青色，下方：同样的3个候选人，C柱97%（青色），A柱2.7%（淡青），B柱0.2%（更淡青），标签「领先但给对手留缝隙」，A和B柱虽然矮但清晰可见\n中间大号箭头从左指向右，箭头上标注「eˣ 放大 + 归一化」\n底部粉红框白色文字「2.7%的缝隙 = 梯度的入口」\nhigh-fidelity Chinese typography, crisp text, no watermark, data visualization style"
+    },
+    {
+      "title": "魔法：p−y梯度",
+      "n": 1,
+      "filename": "04-magic-gradient.png",
+      "prompt": "小红书风格数学揭秘卡片，3:4竖版，黑色#0a0a1a背景。\n顶部白色加粗标题「链式法则的又一次魔法」44pt，\n中部展示梯度简化过程，3行用箭头连接：\n第1行「交叉熵导数」橙色：−yₖ/pₖ\n向下箭头「× 乘以」\n第2行「Softmax Jacobian」青色：pₖ(δₖᵢ − pᵢ)\n向下箭头「= 约掉」\n第3行「结果」粉红色大字：**pᵢ − yᵢ** 带发光效果\n下方2行对比：\n「sigmoid+交叉熵 → ŷ−y」\n「softmax+交叉熵 → p−y」\n标签「同一个魔法，更大的舞台」\n底部粉红框「交叉熵天生约掉概率导数，留下最纯的误差信号」\nhigh-fidelity Chinese typography, neon math symbols, crisp text, no watermark, 3Blue1Brown dark style"
+    },
+    {
+      "title": "温度×深度实验",
+      "n": 1,
+      "filename": "05-temperature-depth.png",
+      "prompt": "小红书风格实验结果卡片，3:4竖版，深蓝#0F172A渐变背景。\n顶部白色加粗标题「温度选错，网络直接废」44pt，\n中部一个3×3热力图表格：\n列标题「2层」「6层」「10层」，行标题「T=0.1」「T=1.0」「T=5.0」\n格子内容：\n(2层,T=0.1)绿色「3步✅」(2层,T=1.0)浅绿「13步」(2层,T=5.0)黄色「61步」\n(6层,T=0.1)红色「学不了❌」(6层,T=1.0)绿色「4步✅」(6层,T=5.0)浅绿「19步」\n(10层,T=0.1)红色「学不了❌」(10层,T=1.0)红色「学不了❌」(10层,T=5.0)绿色「36步✅」\n表格下方关键结论用箭头指向：\n「网络越深，需要越高温度保持梯度流通」\n底部粉红框「T=1是默认值，因为现代网络有残差连接和RMSNorm当保温层」\nhigh-fidelity Chinese typography, crisp text, no watermark, data visualization"
+    },
+    {
+      "title": "总结+关注引导",
+      "n": 1,
+      "filename": "06-summary.png",
+      "prompt": "小红书风格总结卡片，3:4竖版，深紫#1a0a2e渐变背景。\n顶部白色加粗标题「Softmax 一张图总结」44pt，\n中部5行要点，每行左侧彩色圆点：\n🔴 本质：让梯度活下去的投票，不是性格温和是生存策略\n🟡 核心：指数归一化 → 负数变正、放大差距、概率和为1\n🔵 魔法：配交叉熵梯度简化为 p−y（和sigmoid同一套）\n🟢 温度：训练时控制梯度流通，推理时控制多样性\n🟣 实操：先减最大值再算指数，防溢出\n底部2行：\n「深度学习基础系列 ①→②→③→④本篇→⑤残差连接」\n大号粉红圆角按钮「关注数解AI，下一篇第一时间推给你 ❤️」\nhigh-fidelity Chinese typography, crisp text, no watermark, clean layout"
+    }
+  ]
+}

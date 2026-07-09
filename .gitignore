@@ -7,6 +7,9 @@ node_modules/
 *.webp
 *.mp4
 *.gif
+*.bak
+*.bak-*
+__pycache__/
 content/gradient-series-ai/
 content/test/
 tmp-wechat-test.html
@@ -14,3 +17,4 @@ tmp_*.js
 tmp_*.json
 tmp_*.html
 .grill/
+.pi-subagents/
