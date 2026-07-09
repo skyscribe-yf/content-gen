@@ -1,161 +1,77 @@
 # AGENTS.md — 项目级 Agent 配置
 
-## 数学公式：必须用 Unicode，禁用 LaTeX
+本文件是规则索引，详细内容拆分到 `docs/` 下各专题文档。
 
-**规则**：公众号文章的 Markdown 源文件中，所有数学公式必须用 Unicode 字符书写，**禁止使用 LaTeX 语法**（`$...$` 和 `$$...$$`）。
+## 文章写作流程（硬性门禁）
 
-**原因**：微信公众号不原生支持 LaTeX 渲染。baoyu-markdown-to-html 的 MathJax/KaTeX 渲染在部分微信客户端上不生效，公式会显示为原始 LaTeX 代码。
+**规则**：每次开始起草文章大纲之前，**必须先调用 grill-me skill 与作者进行深入讨论**，讨论收敛后才能起笔撰写。禁止跳过 grill-me 直接起草大纲或正文。
 
-**Unicode 替换对照表**：
+Skill 位置：[`.agents/skills/grill-me/SKILL.md`](.agents/skills/grill-me/SKILL.md)
 
-| LaTeX | Unicode | 示例 |
-|-------|---------|------|
-| `\frac{a}{b}` | a/b | ∂L/∂ŷ |
-| `\sum` | Σ | Σ(yᵢ − ŷᵢ)² |
-| `\partial` | ∂ | ∂L/∂x |
-| `\nabla` | ∇ | ∇f(θ) |
-| `\theta` | θ | θₜ₊₁ |
-| `\alpha` | α | α·∇f |
-| `\hat{y}` | ŷ | y − ŷ |
-| `\log` | log | log(p) |
-| `\times` | × | 2 × 0.99 |
-| `\approx` | ≈ | 1/0.49 ≈ 2.04 |
-| `\in` | ∈ | y ∈ {0,1} |
-| `_{i}` | ᵢ | yᵢ, ŷᵢ |
-| `_{t+1}` | ₜ₊₁ | θₜ₊₁ |
-| `^{2}` | ² | (y−ŷ)² |
-| `-` (减/负) | − (U+2212) | −1/ŷ |
-| `\cdot` | · | y·log(ŷ) |
+执行流程：
+1. 作者提出选题方向 → AI 加载 grill-me skill
+2. grill-me 逐轮追问：意图、约束、核心冲突、类比选择、受众假设等
+3. 讨论收敛后，AI 将结论写入 `.grill/<slug>.md` 日志
+4. 确认 grill 日志无误 → 方可进入大纲起草
 
-**独立公式写法**：不用 `$$...$$`，直接用普通文本段落，居中效果由 HTML/CSS 处理。
+**禁止行为**：
+- 禁止在 grill-me 讨论完成前输出大纲或草稿
+- 禁止 AI 单方面生成 grill 日志（必须经过逐轮追问）
+- 禁止以"我已经了解了"跳过 grill-me 流程
 
-```
-❌ $$ L_{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 $$
-✅ L_MSE = (1/n) Σ(yᵢ − ŷᵢ)²
-```
+## 数学公式
 
-**内联公式写法**：不用 `$...$`，直接写 Unicode。
+详见 [`docs/math-unicode.md`](docs/math-unicode.md)。
 
-```
-❌ 梯度被 $p(1-p)$ 因子压扁
-✅ 梯度被 p(1−p) 因子压扁
-```
-
-**自检**：写完后 `grep '$' draft.md` 应该没有结果（美元符号只出现在金额上下文中）。
-
-### 公式样式
-
-独立公式（独占一行的）用**引用块**包裹，让渲染后带背景色和蓝色左边框，与正文区分：
-
-```
-> **L_MSE = (1/n) Σ(yᵢ − ŷᵢ)²**
-```
-
-渲染效果：浅灰背景 + 蓝色左边框 + 加粗蓝色字体，视觉上明显突出。
-
-内联公式（嵌在句子中的）用**加粗**标记：
-
-```
-MSE的梯度被 **p(1−p)** 因子压扁了
-```
-
-渲染效果：蓝色加粗字体（grace 主题的 strong 标签样式为 `color: #0F4C81; font-weight: bold`）。
-
-**公式样式三原则**：
-1. 独立公式 → 引用块 + 加粗（背景 + 蓝字）
-2. 内联公式 → 加粗（蓝字）
-3. 公式绝不能和正文用相同样式——读者一眼就要能区分
-
----
+规则：禁用 LaTeX（`$...$` / `$$...$$`），全部用 Unicode 字符。独立公式用引用块+加粗，内联公式用加粗。
 
 ## 图片生成
 
-### 后端：yairouter API (gpt-image-1)
+详见 [`docs/image-generation.md`](docs/image-generation.md)。
 
-项目使用 yairouter.com 的 OpenAI 兼容 API 生成高质量图片。
+优先级：**apimart.ai**（唯一后端）。默认 `size=1:1, resolution=1k`，升级前须确认费用。
 
-**端点**: `https://api.yairouter.com/v1/images/generations`
-**模型**: `gpt-image-1`
-**认证**: `Authorization: Bearer $XAI_API_KEY`
-**质量**: `quality: "high"`
+**规则**：
+1. 生成直接走 apimart.ai，用 `scripts/apimart_client.py --config` 批量 JSON 提交所有图片。
+2. **生成前核查**：每个 prompt 中的文字、数字、年份必须和正文一致。逐项检查：标题文本、数据数字、年份标注、技术术语——任一项不匹配则先修正 prompt。
+3. 批量提交后若脚本中途退出，用 `scripts/poll_tasks.py OUTPUT_DIR TASK_ID:filename...` 轮询已提交的 task，**禁止重新提交同内容 task**。
+4. prompt 文件（`prompts/NN-*.md`）是生成源，`scripts/apimart_client.py --config` 的 JSON 中 prompt 内容必须和 prompt 文件一致。禁止跳过 prompt 文件直接用临时内联 prompt。
+5. 生成完成后用 `wc -c` 比对文件和 `duplicates/` 中重复 task 的输出，保留更高质量的版本。
 
-**请求示例**:
-```json
-{
-  "model": "gpt-image-1",
-  "prompt": "A cinematic cover image...",
-  "n": 1,
-  "size": "1792x1024",
-  "quality": "high"
-}
-```
+## 多平台内容一致性
 
-**支持的尺寸** (宽x高):
-- `1792x768` — 2.35:1 电影宽幅（封面题图）
-- `1792x1024` — 16:9 宽屏（横版插图）
-- `1024x1024` — 1:1 正方形
-- `1024x1792` — 竖版（手机/小红书封面）
+**规则**：生成小红书卡片、文案等衍生内容时，**必须以 `weixin.md` 为准**，禁止参照 `draft.md`。
 
-**返回格式**: `data[0].b64_json` (base64 编码 PNG)
+检查清单：
+1. 生成前确认 `weixin.md` 存在
+2. 逐节对比 draft → weixin.md 差异，以 weixin.md 为准
+3. weixin.md 不存在则暂停衍生内容生成
+4. 生成后自检卡片内容是否与 weixin.md 一致
 
-**集成到 baoyu skills**:
-- `baoyu-cover-image`: 设置 `preferred_image_backend` 时，可通过自定义脚本调用此 API
-- `baoyu-article-illustrator`: 同上
+## 小红书文案格式
 
-**ENV**: 需要 `XAI_API_KEY` 环境变量（已在 `.env` 中配置）
+详见 [`docs/xiaohongshu-copy.md`](docs/xiaohongshu-copy.md)。
 
-**调用方式** (Node.js):
-```javascript
-const https = require('https');
-const postData = JSON.stringify({
-  model: 'gpt-image-1',
-  prompt: 'your prompt here',
-  n: 1,
-  size: '1792x1024',
-  quality: 'high'
-});
-const options = {
-  hostname: 'api.yairouter.com',
-  path: '/v1/images/generations',
-  method: 'POST',
-  headers: {
-    'Authorization': `Bearer ${process.env.XAI_API_KEY}`,
-    'Content-Type': 'application/json',
-    'Content-Length': Buffer.byteLength(postData)
-  }
-};
-```
+规则：文案写入独立 `copy.txt`，禁止嵌入 `cards.json` 或内联输出。纯文本、≤1000字、末尾带话题标签。
 
-**费用**: gpt-image-1, high quality, 按图片尺寸计费
+## 小红书内容策略
 
----
+详见 [`docs/xiaohongshu-strategy.md`](docs/xiaohongshu-strategy.md)。
 
-## 多平台内容一致性规则
+核心原则：**入口必须是痛点，不是概念**。标题从痛点改写，封面图只放一句话钩子（≤8字），标签用长尾词不打大词。
 
-**规则**：生成小红书卡片（cards.json）、文案（copy.md）或其他平台衍生内容时，**必须以 `weixin.md`（微信最终发布版）为准**，禁止参照 `draft.md`。
-
-**原因**：`draft.md` 是初稿，经过审校和修正后的最终版本保存在 `weixin.md` 中。从 draft 衍生的内容会携带已被修正的错误（如：draft 中的「3个AI模型PK」已被 weixin.md 改为「学习率对比实验」，但 XHS 卡片仍沿用旧版生成）。
-
-**执行检查清单**：
-1. 生成 cards.json / copy.md 前，先确认 `weixin.md` 存在
-2. 逐节对比 draft.md → weixin.md 的差异，以 weixin.md 为准
-3. 如果 weixin.md 不存在（文章尚未定稿），则暂停衍生内容生成
-4. 生成后自检：卡片内容是否与 weixin.md 对应章节一致
-
----
+检查清单：
+1. 标题是否从"概念是什么"改写为"症状怎么办"
+2. 封面图核心文字是否 ≤8 字
+3. 标签是否包含长尾关键词（非大词）
+4. 选题是否面向从业者痛点（非学生）
 
 ## 微信文章链接规则
 
-**系列导航中的链接必须是微信文章URL**（`https://mp.weixin.qq.com/s/...`），不能用相对路径。
+- 系列导航链接**必须**是微信 URL（`https://mp.weixin.qq.com/s/...`），禁止相对路径
+- 未发布用 `（待发布）` 标注，发布后补 URL
+- 发布后**必须**把微信 URL 记入 frontmatter `wechatUrl` 字段，供后续文章引用
 
-**原因**：微信公众号不支持相对路径链接，`../2026-07-03-梯度下降/draft.md` 这种链接在微信里完全无效。
-
-**规则**：
-1. 系列导航中的「上一篇」「下一篇」链接必须是 `https://mp.weixin.qq.com/s/xxxxx` 格式
-2. 如果前一篇尚未发布，用 `（待发布）` 标注，发布后立即补上URL
-3. 发布成功后，**必须把微信URL记录到文章的 frontmatter 中**（`wechatUrl` 字段），方便后续文章引用
-
-**frontmatter 示例**：
 ```yaml
 ---
 title: "梯度下降：蒙着眼下山"
@@ -163,4 +79,110 @@ wechatUrl: "https://mp.weixin.qq.com/s/abc123"
 ---
 ```
 
-**引用方式**：下一篇写系列导航时，读取前一篇的 `wechatUrl` 字段填入链接。
+## 文章标题
+
+详见 [`docs/article-title-seo.md`](docs/article-title-seo.md)。
+
+核心原则：**关键词前置** + **痛点驱动点击** + **搜一搜 SEO**。标题 ≤22 字，含 1 个专业关键词，套标题公式生成，过 6 条自检清单。
+
+## 理论与实践结合
+
+**规则**：讲理论知识点时，必须关联最新国产模型实际情况（HuggingFace config.json 参数）。
+
+- 模型优先级：DeepSeek-V4 > GLM-5.2 > Kimi K2.6 > Qwen3
+- 引用须标注来源（如 `config.json: hidden_act: "silu"`）
+- 关联内容放延伸说明位置，不替代理论讲解
+
+**自检**：每个核心理论知识点是否至少关联了一个真实模型？模型版本是否最新？
+
+## 数据时效性
+
+**规则**：文章中引用的所有价格、版本号、参数规模、发布时间必须基于当前最新数据，禁止用过时信息。
+
+执行：
+1. 引用 API 价格时，查官方定价页（DeepSeek API docs、OpenAI pricing 等）
+2. 引用模型参数时，以最新 release 的 config.json / technical report 为准
+3. 标题/开头的数字（"便宜10倍"/"便宜30倍"）必须和正文数据一致
+
+**自检**：文中每个数字是否都经实时搜索验证？标题数字和正文数字是否一致？
+
+**已知陷阱**：AI 模型（图像生成和文本生成）倾向将 DeepSeek V4 Pro 的发布时间记忆为"2025 年"，实际为 **2026 年 4 月**。所有涉及 V4 Pro 的 prompt 和正文必须显式标注"2026"，不可依赖模型默认输出。
+
+## 人物故事嵌入规则
+
+**规则**：**禁止**开设独立的人物故事系列或纯人物传记文章。人物故事只能嵌入技术文章内部作为钩子，服务于讲清技术概念。
+
+**原因**：品牌「数解AI」= 用数学解释 AI。纯人物文章导致品牌分裂、标题搜索力归零、读者困惑。
+
+### 三种嵌入模式
+
+| 模式 | 位置 | 示例 |
+|------|------|------|
+| ① 技术起源钩子 | 文章开头 | "2015 年，何恺明在微软研究院发现一个反直觉现象：层数越深，模型越差。这个 bug 后来催生了残差连接。" |
+| ② 命名典故钩子 | 过渡段落 | "Attention Is All You Need 这篇论文，8 位作者在 Google 咖啡厅写了 3 个月。标题不是学术委员会定的——是他们在白板上随手写的。" |
+| ③ 竞争叙事钩子 | 文章结尾 | "DeepSeek 的 MLA 方案，本质是在和 Hinton 35 年前提出的思路对话。技术演进从来不是一个人的事。" |
+
+### 约束
+
+- 人物内容 ≤ 全文篇幅的 10%
+- 人物出现的目的必须是帮助读者理解技术，不能反过来
+- 标题**禁止**以人物名开头（如"何恺明：从实习生到 AI 大神"）
+- 人物封面图**禁止**——封面图必须传达技术核心概念
+
+**自检**：删掉文中所有人物内容，技术主线是否仍然成立？如果成立，通过；如果不成立（人物成为主线），重写。
+
+## 公众号运营
+
+详见 [`docs/wechat-ops.md`](docs/wechat-ops.md)。
+
+## 公众号运营数据验证
+
+详见 [`docs/wechat-data-insights.md`](docs/wechat-data-insights.md)。
+
+基于 2026-07-09 最新数据，记录了推广效果、标题表现、系列回读、留言互动的真实数据，以及从中提炼的执行规则。后续 AI 在决策内容策略时应首先参考此文的数据结论。
+
+## 公众号数据审计 Skill
+
+项目级 skill：[`.agents/skills/wechat-data-audit/SKILL.md`](.agents/skills/wechat-data-audit/SKILL.md)
+
+封装了「Cookie 注入 → 采集内容/用户数据 → 分析 → 写入项目文档」的完整工作流。AI 在接到数据复盘或运营分析类请求时应优先加载此 skill。
+
+关键规则：
+- 每天最多 1 篇，间隔 ≥2 天
+- 末尾含关注引导（价值承诺 + 系列结构）
+- 结尾含 1 个开放式问题引导留言
+- 摘要须含 2-3 个搜索关键词
+
+## 文章质量核查
+
+详见 [`docs/article-quality-check.md`](docs/article-quality-check.md)。
+
+草稿写完后**必须执行核查**，全部通过才能进入发布流程：
+1. 代码先行 — 示例代码必须先跑通再写入文章，不在文内 debug
+2. 数据准确性 — 所有数值实时搜索验证（价格、版本、参数）
+3. 逻辑一致性 — 反直觉值必须解释、矛盾必须化解、参数双视角（训练+推理）
+4. 本土化 — 产品举例用中国用户可访问的（DeepSeek/豆包/Kimi，不用 ChatGPT）
+5. 配图不少于 4 张，穿插各段落；图片中文字必须和正文一致（年份、数字）
+6. 结尾钩子 — 结合内容 + 真开放 + 引发讨论
+7. 系列回引 — 主动嵌入前文微信链接，勾引读者回读
+8. 原创声明 — 发布时勾选声明原创
+
+## 发布前检查
+
+**规则**：调用 `baoyu-post-to-wechat` 发布前，必须确认以下三项就绪：
+
+1. **封面图已生成** — `00-cover.png` 存在于文章目录，缺失则先生成
+2. **wechatUrl 已补** — 发布后第一时间把微信 URL 写入 frontmatter `wechatUrl` 字段
+3. **目录名 = 发布日期** — 发布日期变更时同步重命名目录
+
+## 小红书卡片结构
+
+**规则**：小红书卡片数量控制在 **6 张以内**（精简掉冗余的代码实操和独立关注引导页）。
+
+推荐序列：封面钩子 → 核心问题 → 直觉解释 → 关键洞察 → 实验数据 → 总结+关注
+
+封面必须遵循策略（≤8 字痛点钩子 + 大面积留白），生成前先清理旧文件。
+
+## 目录命名
+
+**规则**：文章目录名用**发布日期**（如 `2026-07-07-softmax`），不用创建日期。发布日期变更时须同步重命名目录。

@@ -1,0 +1,1 @@
+/home/skyscribe/.agents/skills/grill-me/SKILL.md

@@ -1,0 +1,21 @@
+{
+  "series_title": "反向传播配图",
+  "output_dir": ".",
+  "model": "gpt-image-2",
+  "size": "1024x1024",
+  "quality": "medium",
+  "cards": [
+    {
+      "prompt": "A clean educational infographic showing a 3-layer neural network with forward propagation (left to right, blue arrows) and backpropagation (right to left, red arrows). Three vertical columns of circles connected by lines: Input layer (4 nodes labeled x) → Hidden layer (6 nodes labeled h) → Output layer (1 node labeled y-hat). Red arrows show error signal delta flowing backward with labels delta3, delta2, delta1. Style: minimal vector illustration on white background, soft blue and red color scheme, no 3D effects, flat design with thin black outlines.",
+      "output": "04-network-forward-backward"
+    },
+    {
+      "prompt": "A split comparison infographic: left side shows sigmoid activation function curve (S-shape) with a magnifying glass highlighting the gradient vanishing problem (gradient max 0.25), right side shows ReLU activation function (hockey-stick shape) with a green checkmark highlighting gradient = 1 for positive inputs. Each side has a small tug-of-war metaphor: sigmoid side shows a person with slippery hands (force reduced to 25%), ReLU side shows a person gripping tightly (100% force transmitted). Style: clean vector infographic on white background, warm color palette with soft orange for sigmoid and green for ReLU, flat design, educational diagram style.",
+      "output": "05-sigmoid-vs-relu"
+    },
+    {
+      "prompt": "An educational bar chart infographic comparing gradient signal transmission ratio across layers. Two groups of bars: blue bars for sigmoid (9%, 10%, 12%, 14%, 16%, 17%) showing severe decay, green bars for ReLU (23%, 29%, 42%, 54%, 61%, 67%) showing much better transmission. A red dashed line at 25% marks the sigmoid theoretical maximum. Bottom caption area shows a simple 2-layer network diagram with arrows showing delta2 to delta1 flow. Style: clean infographic on light cream background, soft pastel colors, minimal flat design, no 3D effects, educational data visualization style.",
+      "output": "06-delta-ratio-comparison"
+    }
+  ]
+}

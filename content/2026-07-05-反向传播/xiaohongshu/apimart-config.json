@@ -1,0 +1,38 @@
+{
+  "series_title": "反向传播小红书卡片",
+  "output_dir": "content/2026-07-05-反向传播/xiaohongshu",
+  "size": "3:4",
+  "resolution": "1k",
+  "cards": [
+    {
+      "title": "01-封面钩子",
+      "filename": "01-cover.png",
+      "prompt": "Minimalist hand-drawn line art style on warm cream #FFFAF0 background. Intentional wobble on all lines. Massive white space. CENTER: A single thick rope being pulled from the right side, but the rope becomes thinner and thinner toward the left, almost disappearing into a faint dotted line. At the right end a large bold hand-drawn arrow pointing left with label 误差信号. At the left end the rope is nearly invisible with a red cross mark. Large prominent Chinese text in Near Black #1A1A1A at top: 梯度被吃掉了 (only these 5 characters, very large, bold). Small subtitle below: 5层网络第1层只收到0.4%信号. No other text. No gradients no shadows. 3:4 aspect ratio. Extreme simplicity, poster-like composition."
+    },
+    {
+      "title": "02-核心问题",
+      "filename": "02-core-problem.png",
+      "prompt": "Minimalist hand-drawn line art style on warm cream #FFFAF0 background. Intentional wobble on all lines. TOP: A 5-layer neural network diagram drawn as 5 rectangles stacked vertically, connected by arrows going downward (forward pass). Each rectangle labeled 层5 层4 层3 层2 层1. BOTTOM: Same 5 rectangles but with upward arrows (backward pass) that get progressively thinner and more faded from bottom to top. Arrow between 层5→层4 is thick, 层4→层3 medium, 层3→层2 thin, 层2→层1 very thin dashed, 层1 has almost no arrow. Red annotation on the thin arrows: 每层吃掉80%力. Bottom stat in large text: 0.25⁴ = 0.4% 传到第1层. Warm Orange #ED8936 for thick arrows, Soft Red #E53E3E for thin/vanished arrows, Near Black #1A1A1A for lines and text. 3:4 aspect ratio. No gradients no shadows."
+    },
+    {
+      "title": "03-直觉解释",
+      "filename": "03-intuition.png",
+      "prompt": "Minimalist hand-drawn line art style on warm cream #FFFAF0 background. Intentional wobble on all lines. A horizontal tug-of-war scene with 4 stick figures holding a rope. RIGHT SIDE: A big hand with label 误差 pulling the rope hard (thick arrow). The rope passes through each stick figure. Figure 1 (rightmost) has firm grip, label 传递系数0.5, arrow still thick after. Figure 2 has slightly looser grip, label 传递系数0.25, arrow thinner. Figure 3 has very loose grip, label 传递系数0.25, arrow very thin. Figure 4 (leftmost) has slippery hands, label 传递系数0.25, arrow nearly invisible. Below each figure: a small multiplication showing force being reduced. Bottom equation: 1.0 × 0.5 × 0.25 × 0.25 × 0.25 = 0.008. Bottom tagline: 每个人只关心传到自己手上的力 × 自己的传递系数. Warm Orange #ED8936 for firm grip, Terracotta #C05621 for loose grip, Near Black #1A1A1A for lines. 3:4 aspect ratio. No gradients no shadows."
+    },
+    {
+      "title": "04-关键洞察",
+      "filename": "04-key-insight.png",
+      "prompt": "Minimalist hand-drawn line art style on warm cream #FFFAF0 background. Intentional wobble on all lines. TOP: Two crossed-out complex math expressions in scribbled hand-drawn style, one labeled 1/ŷ and another labeled ŷ(1-ŷ), with a big X mark over each and a cancel/cross-out gesture. MIDDLE: Large downward hand-drawn arrow with label 约掉了! and sparkle doodle decorations around it. BOTTOM: A highlighted result box in Golden Yellow #F6AD55 with large text ŷ − y = 预测减真实. Two side callout boxes: LEFT box 交叉熵补力 (with up-arrow icon), RIGHT box sigmoid吃力 (with down-arrow icon), connected by equals sign showing they cancel. Bottom tagline: 交叉熵帮你把最关键的阻力抵消了 但只在输出层. Warm Orange #ED8936 for sparkles, Golden Yellow #F6AD55 for result box, Near Black #1A1A1A for lines. 3:4 aspect ratio. No gradients no shadows."
+    },
+    {
+      "title": "05-实验数据",
+      "filename": "05-experiment.png",
+      "prompt": "Minimalist hand-drawn line art style on warm cream #FFFAF0 background. Intentional wobble on all lines. Two side-by-side vertical bar chart comparisons. LEFT CHART titled sigmoid: 5 bars representing layers, bar heights decreasing rapidly from right to left. Bar labels: δ2=0.51, δ1=0.05, ratio=9%. A red dashed line showing 0.25 ceiling. Annotation: 每层至少吃掉75%. RIGHT CHART titled ReLU: 5 bars with much gentler decrease. Bar labels: δ2=0.52, δ1=0.12, ratio=23%. A green line showing 导数=1 ceiling. Annotation: 激活部分力无损通过. Between the two charts: a large VS in a circle. Bottom comparison box: 5层网络 sigmoid 0.4% vs ReLU 9% 差20倍. Warm Orange #ED8936 for ReLU bars, Terracotta #C05621 for sigmoid bars, Near Black #1A1A1A for lines. 3:4 aspect ratio. No gradients no shadows."
+    },
+    {
+      "title": "06-总结关注",
+      "filename": "06-summary.png",
+      "prompt": "Minimalist hand-drawn line art style on warm cream #FFFAF0 background. Intentional wobble on all lines. TOP: 5 key takeaway lines each with a small hand-drawn icon: 1. 反向传播=链式法则 误差一层层往回乘 (chain icon) 2. 每层只需局部信息 不需要全局 (magnifying glass icon) 3. sigmoid导数最大0.25 是梯度消失根源 (down-arrow icon) 4. 交叉熵+sigmoid梯度约化为ŷ-y (sparkle icon) 5. ReLU导数=1 传力远优于sigmoid (up-arrow icon). MIDDLE: A small model comparison table: DeepSeek-V4 SwiGLU, GLM-5.2 SwiGLU, Kimi K2.6 SwiGLU, annotation 全用导数接近1的变体. BOTTOM: Series navigation bar: ①梯度下降 ②损失函数 ③反向传播(本篇) ④Softmax ⑤残差连接 ⑥优化器. CTA: 关注数解AI 每周一篇AI原理. Warm Orange #ED8936 for highlights, Near Black #1A1A1A for lines. 3:4 aspect ratio. No gradients no shadows."
+    }
+  ]
+}

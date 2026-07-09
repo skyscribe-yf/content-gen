@@ -1,0 +1,64 @@
+{
+  "series_title": "为什么AI上下文越长越慢？两道数学硬墙一次讲透",
+  "model": "gpt-image-2",
+  "size": "1024x1536",
+  "quality": "medium",
+  "output_format": "png",
+  "output_dir": "content/2026-07-04-ai-memory-crash/xiaohongshu",
+  "cards": [
+    {
+      "title": "封面：悬念引入",
+      "n": 1,
+      "filename": "01-cover.png",
+      "prompt": "小红书风格AI科普封面图，3:4竖版，深蓝#0F172A到蓝#1E40AF渐变背景。中央展示一面巨大的红色砖墙，墙上裂缝中透出刺眼白光，墙前面一个小型AI机器人正试图翻越。墙上刻着两行大字「O(T²)」和「KV cache」。顶部白色加粗大标题「AI干活干到一半为什么会失忆」居中偏上，副标题「两道数学硬墙一次讲透」浅蓝色较小字体，底部粉红色#FF6B9D圆角按钮「3分钟搞懂 →」。high-fidelity Chinese typography, crisp sharp text, no watermark, 3Blue1Brown dark style, cinematic lighting"
+    },
+    {
+      "title": "悬念：GLM-5.1 得1分，5.2 得13分",
+      "n": 1,
+      "filename": "02-hook.png",
+      "prompt": "小红书风格数据冲击卡片，3:4竖版，深蓝#0F172A渐变背景。顶部白色加粗标题「同一个AI同一个任务」44pt，中部超大对比数字：左侧红色大号「1.0」标注GLM-5.1，右侧绿色大号「13.0」标注GLM-5.2，中间橙色「+1200%」巨大增幅标记，数字下方小字「SWE-Marathon 超长任务基准得分（满分100）」，底部黄色高亮框白色文字「记忆从20万字扩到100万字，凭什么翻了12倍？」，下方两行小字白色：不是更聪明 / 是记忆够用了。high-fidelity Chinese typography, crisp text, no watermark, data impact style"
+    },
+    {
+      "title": "直觉：两道墙——握手爆炸和笔记写满",
+      "n": 1,
+      "filename": "03-insight.png",
+      "prompt": "小红书风格直觉解释卡片，3:4竖版，深紫#2D1B69渐变背景。顶部白色加粗标题「AI记忆的两道墙」48pt，中部左右对比布局：左列标题「墙一：握手爆炸」青色，示意一个会议室10人互相握手的图，下方文字「10人开会45次握手，100人开会4950次」，关键数字「人数×10 握手×100」，底部红色标签「O(T²)」；右列标题「墙二：笔记写满」粉红色，示意一个笔记本写满的图，下方文字「每握一次手记一条笔记，100万字需要5TB显存」，关键数字「5TB vs H100的80GB」，底部红色标签「KV cache爆炸」。中间橙色VS分隔线，底部黄色框「计算炸了，存储也炸了」。high-fidelity Chinese typography, crisp text, no watermark"
+    },
+    {
+      "title": "数学：O(T²) 和 KV cache 公式",
+      "n": 1,
+      "filename": "04-math.png",
+      "prompt": "小红书风格数学直觉科普卡，3:4竖版，黑色#1a1a2e背景。顶部白色加粗标题「两道墙的数学本质」48pt，中部上下两个公式区块：上方青色区块标题「墙一：计算爆炸」公式FLOPs = c × T²，解释「序列翻N倍，计算翻N²倍」，关键数据「1K→1M：计算量×1,000,000」；下方粉红色区块标题「墙二：存储爆炸」公式KV cache = T × d × L × 2 bytes，解释「每个token都要缓存Key和Value」，关键数据「1M上下文：标准5TB / MLA压缩后78GB」。中间红色大字「两墙叠加=长记忆数学上极其昂贵」，底部黄色框「不是不想扩记忆，是数学上跑不动」。3Blue1Brown dark style, neon math symbols, high-fidelity Chinese typography, no watermark"
+    },
+    {
+      "title": "翻墙：GLM-5.2 三招",
+      "n": 1,
+      "filename": "05-solution.png",
+      "prompt": "小红书风格方案展示卡片，3:4竖版，深蓝#0F172A渐变背景。顶部白色加粗标题「翻墙三招，缺一不可」48pt，中部三个招式纵向排列用向下箭头连接：第一招青色框「DSA 稀疏注意力」，内容「O(T²) → O(T×2048)」，小字「从跟所有人握手变成只跟最相关的2048人握手」；第二招绿色框「递归稀疏化 IndexShare」，内容「78层全跑Indexer → 只跑21层」，小字「相邻层注意力模式相似度>0.8，复用索引即可」；第三招粉红色框「MLA 压缩KV cache」，内容「5TB → 78GB（压缩>10倍）」，小字「用512维潜表示替代6144维完整向量」。底部黄色框「三招协同：DSA翻计算墙 + IndexShare翻Indexer墙 + MLA翻存储墙」。high-fidelity Chinese typography, crisp text, no watermark"
+    },
+    {
+      "title": "实测：我的电脑跑崩了",
+      "n": 1,
+      "filename": "06-experiment.png",
+      "prompt": "小红书风格实验数据卡片，3:4竖版，深蓝#0F172A渐变背景。顶部白色加粗标题「实测：我的电脑替我证明了O(T²)」44pt，中部延迟增长表格：1K=0.10s / 4K=1.53s / 16K≈25s / 64K≈400s / 1M≈17000s（近5小时），右侧一条陡峭上升的红色抛物线曲线，曲线在32K处有一个爆炸标记💥和文字「32K实测时电脑直接崩了黑屏重启」，底部三行关键发现：✅ 1K到4K长度翻4倍延迟翻15倍（理论16倍）；⚠️ 32K注意力矩阵吃光所有内存；💡 O(T²)不是理论是物理定律。high-fidelity Chinese typography, crisp text, no watermark, data visualization"
+    },
+    {
+      "title": "实测：Agent崩溃步数",
+      "n": 1,
+      "filename": "07-agent-crash.png",
+      "prompt": "小红书风格实验对比卡片，3:4竖版，深蓝#0F172A渐变背景。顶部白色加粗标题「AI程序员什么时候崩溃？」44pt，中部横向对比条形图：4K=3步红色极短（读一个文件就满），8K=5步橙色短，32K=17步黄色中，200K=103步青色长（标注GLM-5.1），1M=500步完成绿色满格（标注GLM-5.2）。每条柱右侧标注能干什么：3步=读一个文件就满了 / 103步=简单任务撑不住 / 500步=从开发到上线。底部粉红框「GLM-5.1得1分不是笨，是记忆不够撑完任务」。high-fidelity Chinese typography, crisp text, no watermark, data visualization"
+    },
+    {
+      "title": "总结：一张图浓缩精华",
+      "n": 1,
+      "filename": "08-summary.png",
+      "prompt": "小红书风格总结卡片，3:4竖版，深蓝#0F172A渐变背景。顶部白色加粗标题「AI记忆硬墙 一张图总结」48pt，中部5行要点：🟣 问题：注意力O(T²)计算爆炸 + KV cache存储爆炸；🟡 墙一：序列翻N倍计算翻N²倍，1M上下文出1个token要5小时；🔵 墙二：1M上下文KV cache需5TB，H100只有80GB；🟢 翻墙：DSA稀疏注意力 + 递归稀疏化 + MLA压缩；🔴 启示：稀疏化可以递归，selector自身成为新瓶颈就再稀疏化。底部粉红框「❤️ 收藏起来，下次聊长上下文翻出来看」。high-fidelity Chinese typography, crisp text, no watermark, clean layout"
+    },
+    {
+      "title": "关注引导",
+      "n": 1,
+      "filename": "09-follow.png",
+      "prompt": "小红书风格关注引导页，3:4竖版，深紫#2D1B69到蓝紫#4A2FBD渐变背景。顶部白色加粗标题「热点背后的数学 📌」48pt，副标题「AI新闻 × 数学原理，不定期更新」浅紫色24pt，中部5条清单：✅ 已更新：AI上下文越长越慢——两道数学硬墙；🔜 下期：AI为什么说话这么慢——推测解码的数学；🔜 后续：RoPE位置编码分辨率衰减 / 注意力机制深度拆解；🔗 并行系列：深度学习基础（梯度下降/Softmax/损失函数）；🔍 搜索「数解AI」获取深度版（1500字+推导）。底部大号粉红色#FF6B9D圆角按钮「点赞收藏不迷路 ❤️」。high-fidelity Chinese typography, crisp text, no watermark, clean modern layout"
+    }
+  ]
+}

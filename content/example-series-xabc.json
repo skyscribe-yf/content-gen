@@ -2,7 +2,7 @@
   "series_title": "梯度下降系列",
   "model": "gpt-image-2",
   "size": "1024x1536",
-  "quality": "high",
+  "quality": "medium",
   "output_format": "png",
   "output_dir": "content/gradient-series-ai",
   "cards": [

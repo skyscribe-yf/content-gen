@@ -1,0 +1,22 @@
+{
+  "series_title": "示例：优化器文章配图",
+  "output_dir": "content/2026-07-12-优化器",
+  "size": "1:1",
+  "resolution": "1k",
+  "cards": [
+    {
+      "title": "封面",
+      "prompt": "一张封面图的 prompt 示例...",
+      "filename": "00-cover.png",
+      "size": "1:1",
+      "resolution": "1k"
+    }
+  ],
+  "_notes": {
+    "format": "cards 数组，每项包含 title, prompt, filename, size(可选), resolution(可选)",
+    "output_dir": "图片输出目录（相对于 cwd 或绝对路径）",
+    "series_title": "系列名称（仅显示用）",
+    "size": "全局默认 1:1",
+    "resolution": "全局默认 1k，升级前须确认费用"
+  }
+}

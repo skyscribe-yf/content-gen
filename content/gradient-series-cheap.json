@@ -1,0 +1,37 @@
+{
+  "series_title": "梯度下降系列-AI配图",
+  "output_dir": "content/gradient-series-ai",
+  "size": "3:4",
+  "cards": [
+    {
+      "title": "封面-蒙眼下山",
+      "prompt": "A person blindfolded walking down a misty mountain slope, each step carefully feeling the steepest downward direction, cinematic lighting, purple and blue tones, abstract geometric overlay showing gradient arrows, minimal style illustration, no text, 3:4 vertical",
+      "filename": "01-blindfold-descent.png"
+    },
+    {
+      "title": "学习率对比",
+      "prompt": "Split comparison illustration: left side shows a tiny figure taking huge leaps overshooting a valley bottom and bouncing between hills, right side shows a figure taking tiny ant-sized steps slowly crawling down the same mountain, minimalist vector style, purple and blue gradient background, no text, 3:4 vertical",
+      "filename": "02-learning-rate.png"
+    },
+    {
+      "title": "梯度即坡度",
+      "prompt": "A 3D mathematical landscape surface with glowing gradient arrows pointing downhill, the surface is smooth and colorful like a topographic map with purple blue and cyan tones, a small glowing dot at the top representing current position, futuristic data visualization style, no text, 3:4 vertical",
+      "filename": "03-gradient-landscape.png"
+    },
+    {
+      "title": "三步走",
+      "prompt": "Three-step visual flow: step 1 shows a compass pointing downhill, step 2 shows a ruler measuring step length, step 3 shows a footprint at a new lower position, connected by flowing arrows, minimalist infographic style, dark purple background with cyan accents, no text, 3:4 vertical",
+      "filename": "04-three-steps.png"
+    },
+    {
+      "title": "公式直觉",
+      "prompt": "Abstract visualization of the gradient descent formula theta_new = theta_old - alpha * gradient, where mathematical symbols dissolve into intuitive objects: theta becomes a person on a hill, alpha becomes a shoe, gradient becomes a slope arrow, minus sign becomes a downward direction, dark blue background with glowing white and cyan elements, no text, artistic mathematical illustration, 3:4 vertical",
+      "filename": "05-formula-intuition.png"
+    },
+    {
+      "title": "系列预告",
+      "prompt": "A winding path through a mathematical landscape leading toward a bright glowing horizon, the path passes through stations labeled with glowing icons: a downward arrow, a chain link, a target, a spotlight, and a brain, purple to cyan gradient sky, dreamy illustration style, no text, 3:4 vertical",
+      "filename": "06-series-roadmap.png"
+    }
+  ]
+}

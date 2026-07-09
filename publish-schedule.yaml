@@ -1,0 +1,92 @@
+# 📅 错位发布调度配置
+
+# ── 平台发布窗口 ──
+# 每个平台的可发布时段，scheduler 只在这些时段安排发布
+
+windows:
+  weixin:
+    - {day: tue, hour: 8}
+    - {day: fri, hour: 8}
+    - {day: sun, hour: 8}
+  xiaohongshu:
+    - {day: tue, hour: 19}
+    - {day: thu, hour: 19}
+    - {day: sat, hour: 19}
+  bilibili:
+    - {day: sat, hour: 15}
+  zhihu:
+    - {day: any, hour: any}  # 发布后24h内找问题回答即可
+
+# ── 错位策略 ──
+# 同一期内容，公众号先发（基准），其他平台按偏移量错开
+# 原因：公众号是深度版，其他平台是拆解版，先发深度版再拆解更自然
+
+stagger:
+  weixin: 0h        # 基准，第一个发
+  xiaohongshu: +12h # 公众号发后12小时
+  bilibili: +48h    # 公众号发后2天（留时间做动画/剪辑）
+  zhihu: +24h       # 公众号发后1天
+
+# ── 评测快报特殊策略 ──
+# 评测篇不走错位，所有平台尽快发
+
+eval_hot:
+  weixin: immediate
+  xiaohongshu: +1h
+  bilibili: +24h    # 2分钟短视频，1天内出
+  zhihu: +2h
+
+# ── 内容状态流转 ──
+# draft → review → ready → scheduled → published
+# 每个状态转换的条件
+
+states:
+  draft:
+    next: review
+    condition: "深度稿写完，填完所有TODO"
+  review:
+    next: ready
+    condition: "通读一遍，改掉AI味表达，检查逻辑链闭环"
+  ready:
+    next: scheduled
+    condition: "所有平台版本就绪（公众号文/小红书图/B站脚本）"
+  scheduled:
+    next: published
+    condition: "按排期时间发布完成"
+  published:
+    done: true
+
+# ── 发布前检查清单 ──
+# 每个平台发布前必须确认的项目
+
+checklist:
+  weixin:
+    - "驱动问题是否同时涉及数学和模型表现"
+    - "有没有AI味表达（对照style-guide.md禁用词表扫一遍）"
+    - "代码是否对应公式"
+    - "回扣段是否回答了开头问题"
+    - "总字数是否在1500-2000"
+    - "系列导航链接是否填好"
+  xiaohongshu:
+    - "6-9张图逻辑是否递进（不是并列）"
+    - "封面标题是否15字以内"
+    - "文案是否300字以内"
+    - "有没有引导收藏的话术"
+    - "标签是否包含#AI科普 + 具体概念"
+  bilibili:
+    - "脚本时长是否3-5分钟"
+    - "每30秒是否有视觉变化"
+    - "Manim动画是否渲染完成"
+    - "配音是否完成"
+    - "字幕是否校对"
+  zhihu:
+    - "是否找到了关注>1000的问题"
+    - "开头是否直接给结论（不废话）"
+    - "引流话术是否合规（不说'关注公众号'）"
+
+# ── 每月内容比例检查 ──
+
+monthly_ratio:
+  principle: 50%   # 约2-3篇/月
+  fusion: 30%      # 约1-2篇/月
+  eval: 20%        # 约1篇/月，热点额外加
