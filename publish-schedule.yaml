@@ -5,9 +5,13 @@
 
 windows:
   weixin:
+    - {day: mon, hour: 8}  # 热点系列穿插窗口
     - {day: tue, hour: 8}
+    - {day: wed, hour: 8}  # 热点系列穿插窗口
     - {day: fri, hour: 8}
+    - {day: sat, hour: 8}  # 热点系列穿插窗口
     - {day: sun, hour: 8}
+    - {day: thu, hour: 8}  # 热点系列穿插窗口
   xiaohongshu:
     - {day: tue, hour: 19}
     - {day: thu, hour: 19}
@@ -37,22 +41,23 @@ eval_hot:
   zhihu: +2h
 
 # ── 内容状态流转 ──
-# draft → review → ready → scheduled → published
-# 每个状态转换的条件
+# planned → drafting → ready → scheduled → published
+# 详细状态定义和当前文章列表见 draft-status.yaml（唯一真实来源）
+# 运行 python3 scripts/scan-status.py 快速检视
 
 states:
-  draft:
-    next: review
-    condition: "深度稿写完，填完所有TODO"
-  review:
+  planned:
+    next: drafting
+    condition: "选题已定，创建 content/目录"
+  drafting:
     next: ready
-    condition: "通读一遍，改掉AI味表达，检查逻辑链闭环"
+    condition: "草稿写完，填完所有TODO，weixin.md 定稿"
   ready:
     next: scheduled
     condition: "所有平台版本就绪（公众号文/小红书图/B站脚本）"
   scheduled:
     next: published
-    condition: "按排期时间发布完成"
+    condition: "发布日已定，等排期窗口"
   published:
     done: true
 

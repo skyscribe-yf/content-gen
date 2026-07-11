@@ -1,0 +1,314 @@
+# Draft Status — single source of truth for all article states
+#
+# States (5-stage pipeline):
+#   planned   →  drafting  →  ready  →  scheduled  →  published
+#   选题已定       草稿中        可发布     已排期         已发表
+#
+# Transitions:
+#   planned → drafting: draft.md created, writing started
+#   drafting → ready:    draft polished, weixin.md finalized, all TODOs resolved
+#   ready → scheduled:   publish date assigned, all platform versions ready
+#   scheduled → published: article posted, wechatUrl recorded
+#
+# Key fields:
+#   - slug: matches content/ directory name (date-topic format)
+#   - status: one of planned | drafting | ready | scheduled | published
+#   - files: auto-detected — update after each milestone
+#   - wechat_url: fill immediately after publishing
+#   - published_date: actual publish date (may differ from slug date)
+
+articles:
+  # ═══════════════════════════════════════════
+  # 深度学习基础系列 (已完结)
+  # ═══════════════════════════════════════════
+  - slug: "2026-07-03-梯度下降"
+    title: "梯度下降：蒙着眼下山"
+    series: "深度学习基础"
+    status: published
+    published_date: "2026-07-03"
+    wechat_url: "https://mp.weixin.qq.com/s/V6mGvCVFpTvmC51pNtxiTw"
+    files:
+      weixin: true
+      draft: true
+      outline: false
+      cover: false
+
+  - slug: "2026-07-03-损失函数"
+    title: "损失函数：打分标准决定学习方向"
+    series: "深度学习基础"
+    status: published
+    published_date: "2026-07-03"
+    wechat_url: "https://mp.weixin.qq.com/s/zIWqYqYVzEaF1e8P6fcTfw"
+    files:
+      weixin: true
+      draft: false
+      outline: false
+      cover: false
+
+  - slug: "2026-07-05-反向传播"
+    title: "反向传播是什么？AI怎么知道自己错在哪"
+    series: "深度学习基础"
+    status: published
+    published_date: "2026-07-06"
+    wechat_url: "https://mp.weixin.qq.com/s/oYj_qpwF4tZG84ImOn977g"
+    files:
+      weixin: true
+      draft: true
+      outline: false
+      cover: true
+
+  - slug: "2026-07-07-softmax"
+    title: "Softmax为什么不直接取最大值？"
+    series: "深度学习基础"
+    status: published
+    published_date: "2026-07-07"
+    wechat_url: "https://mp.weixin.qq.com/s/5wMquh_v3oon2-NEDeQLEw"
+    files:
+      weixin: true
+      draft: true
+      outline: true
+      cover: true
+
+  - slug: "2026-07-09-残差连接"
+    title: "残差连接：为什么56层比20层还差"
+    series: "深度学习基础"
+    status: published
+    published_date: "2026-07-09"
+    wechat_url: "https://mp.weixin.qq.com/s/xefNN9Gjaw3TKl60KeHzAg"
+    files:
+      weixin: true
+      draft: true
+      outline: false
+      cover: true
+
+  - slug: "2026-07-10-优化器"
+    title: "学习率怎么自动调？Adam 优化器拆给你看"
+    series: "深度学习基础"
+    status: published
+    published_date: "2026-07-10"
+    wechat_url: "https://mp.weixin.qq.com/s/aSLVO-otvr2rxIU1kr2eAA"
+    files:
+      weixin: true
+      draft: false
+      outline: false
+      cover: true
+
+  # ═══════════════════════════════════════════
+  # 热点背后的数学 · DeepSeek 系列
+  # ═══════════════════════════════════════════
+  - slug: "2026-07-11-deepseek-moe"
+    title: "DeepSeek便宜30倍的秘密：MoE混合专家入门"
+    series: "热点背后的数学"
+    status: published
+    published_date: "2026-07-11"
+    wechat_url: "https://mp.weixin.qq.com/s/QdkD0CR2fD-HfY77-gX3Ug"
+    files:
+      weixin: true
+      draft: false
+      outline: true
+      cover: true
+
+  # D2-D5 planned
+  - slug: "2026-07-15-deepseek-mla"
+    title: "DeepSeek 的注意力为什么能省 90% 显存？"
+    series: "热点背后的数学"
+    status: planned
+    published_date: null
+    wechat_url: null
+    files:
+      weixin: false
+      draft: false
+      outline: false
+      cover: false
+
+  - slug: "2026-07-18-deepseek-grpo"
+    title: "DeepSeek-R1 怎么学会"想清楚再说"？"
+    series: "热点背后的数学"
+    status: planned
+    published_date: null
+    wechat_url: null
+    files:
+      weixin: false
+      draft: false
+      outline: false
+      cover: false
+
+  - slug: "2026-07-20-deepseek-csa"
+    title: "DeepSeek-V4 为什么抛弃了 MLA？"
+    series: "热点背后的数学"
+    status: planned
+    published_date: null
+    wechat_url: null
+    files:
+      weixin: false
+      draft: false
+      outline: false
+      cover: false
+
+  - slug: "2026-07-23-deepseek-fp8"
+    title: "FP8 训练：用"残缺数字"练出顶级模型"
+    series: "热点背后的数学"
+    status: planned
+    published_date: null
+    wechat_url: null
+    files:
+      weixin: false
+      draft: false
+      outline: false
+      cover: false
+
+  # ═══════════════════════════════════════════
+  # 大模型原理系列 (进行中)
+  # ═══════════════════════════════════════════
+  - slug: "2026-07-14-BPE"
+    title: "BPE分词：AI为什么把一句话切成奇怪的碎片？"
+    series: "大模型原理"
+    status: drafting
+    published_date: null
+    wechat_url: null
+    files:
+      weixin: false
+      draft: true
+      outline: true
+      cover: true
+
+  - slug: "2026-07-17-词嵌入"
+    title: "词嵌入入门：5万个0，怎么浓缩成一串坐标？"
+    series: "大模型原理"
+    status: drafting
+    published_date: null
+    wechat_url: null
+    files:
+      weixin: false
+      draft: true
+      outline: true
+      cover: true
+
+  - slug: "2026-07-19-位置编码"
+    title: "词序搞错意思全变！位置编码是怎么工作的"
+    series: "大模型原理"
+    status: drafting
+    published_date: null
+    wechat_url: null
+    files:
+      weixin: false
+      draft: true
+      outline: true
+      cover: true
+
+  - slug: "2026-07-21-注意力机制"
+    title: "注意力机制是什么？AI为什么会选择性倾听"
+    series: "大模型原理"
+    status: planned
+    published_date: null
+    wechat_url: null
+    files:
+      weixin: false
+      draft: false
+      outline: false
+      cover: false
+
+  - slug: "2026-07-24-ffn"
+    title: "AI的知识到底存在哪里？FFN层拆解"
+    series: "大模型原理"
+    status: planned
+    published_date: null
+    wechat_url: null
+    files:
+      weixin: false
+      draft: false
+      outline: false
+      cover: false
+
+  - slug: "2026-07-26-归一化残差"
+    title: "61层网络为什么不崩？归一化与残差连接"
+    series: "大模型原理"
+    status: planned
+    published_date: null
+    wechat_url: null
+    files:
+      weixin: false
+      draft: false
+      outline: false
+      cover: false
+
+  - slug: "2026-07-28-transformer全景"
+    title: "Transformer是什么？把注意力叠出AI大脑"
+    series: "大模型原理"
+    status: planned
+    published_date: null
+    wechat_url: null
+    files:
+      weixin: false
+      draft: false
+      outline: false
+      cover: false
+
+  - slug: "2026-07-31-预训练"
+    title: "猜下一个字，AI怎么学会写文章？预训练全过程"
+    series: "大模型原理"
+    status: planned
+    published_date: null
+    wechat_url: null
+    files:
+      weixin: false
+      draft: false
+      outline: false
+      cover: false
+
+  - slug: "2026-08-02-rlhf"
+    title: "AI怎么从工具变成助手？RLHF微调揭秘"
+    series: "大模型原理"
+    status: planned
+    published_date: null
+    wechat_url: null
+    files:
+      weixin: false
+      draft: false
+      outline: false
+      cover: false
+
+  - slug: "2026-08-04-推理加速"
+    title: "AI回答为什么这么慢？推理与采样加速"
+    series: "大模型原理"
+    status: planned
+    published_date: null
+    wechat_url: null
+    files:
+      weixin: false
+      draft: false
+      outline: false
+      cover: false
+
+  # ═══════════════════════════════════════════
+  # 单篇 / 其他
+  # ═══════════════════════════════════════════
+  - slug: "2026-07-04-ai-memory-crash"
+    title: "为什么AI上下文越长越慢？两道数学硬墙一次讲透"
+    series: "单篇"
+    status: published
+    published_date: "2026-07-04"
+    wechat_url: "https://mp.weixin.qq.com/s/PLVRS0TTHXHDve1Z3r6M7Q"
+    files:
+      weixin: true
+      draft: false
+      outline: false
+      cover: false
+
+# ═══════════════════════════════════════════
+# Summary — auto-generated; update manually or via script
+# ═══════════════════════════════════════════
+summary:
+  total: 21
+  by_status:
+    published: 9
+    scheduled: 0
+    ready: 0
+    drafting: 3
+    planned: 9
+  drafting_queue:
+    - "2026-07-14-BPE"
+    - "2026-07-17-词嵌入"
+    - "2026-07-19-位置编码"
+  ready_queue: []
+  next_publish_date: "2026-07-14"
