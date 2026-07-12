@@ -78,12 +78,22 @@ Skill 位置：[`.agents/skills/grill-me/SKILL.md`](.agents/skills/grill-me/SKIL
 - 系列导航链接**必须**是微信 URL（`https://mp.weixin.qq.com/s/...`），禁止相对路径
 - 未发布用 `（待发布）` 标注，发布后补 URL
 - 发布后**必须**把微信 URL 记入 frontmatter `wechatUrl` 字段，供后续文章引用
+- **尾部链接限制**：微信公众号 API 对 `mp.weixin.qq.com/s/` 文章链接数量有限制
+  - 正文+尾部累计 ≤5 个文章链接（合集链接 `mp.weixin.qq.com/mp/appmsgalbum` 不算）
+  - 超出会返回 `45166: invalid content hint` 错误
+  - **解决方案**：尾部只用合集链接，不用逐篇链接
 
 ```yaml
 ---
 title: "梯度下降：蒙着眼下山"
 wechatUrl: "https://mp.weixin.qq.com/s/abc123"
 ---
+```
+
+### 尾部链接示例
+
+```markdown
+📖 **[训练回路合集](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=XXX&action=getalbum&album_id=YYY)**：梯度下降 → 损失函数 → 反向传播 → Softmax → 残差连接 → Adam
 ```
 
 ## 公众号菜单维护
@@ -207,6 +217,7 @@ wechatUrl: "https://mp.weixin.qq.com/s/abc123"
 6. 结尾钩子 — 结合内容 + 真开放 + 引发讨论
 7. 系列回引 — 主动嵌入前文微信链接，勾引读者回读
 8. 原创声明 — 发布时勾选声明原创
+9. **微信链接检查** — `mp.weixin.qq.com/s/` 链接累计 ≤5 个，尾部用合集链接收纳多余链接
 
 ## 发布前检查
 
@@ -215,6 +226,7 @@ wechatUrl: "https://mp.weixin.qq.com/s/abc123"
 1. **封面图已生成** — `00-cover.png` 存在于文章目录，缺失则先生成
 2. **wechatUrl 已补** — 发布后第一时间把微信 URL 写入 frontmatter `wechatUrl` 字段
 3. **目录名 = 发布日期** — 发布日期变更时同步重命名目录
+4. **尾部链接 ≤5** — `mp.weixin.qq.com/s/` 文章链接在正文+尾部累计不超过 5 个，超出改用合集链接
 
 ## 小红书卡片结构
 

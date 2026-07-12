@@ -162,4 +162,4 @@ MoE 没有把 FFN 换成完全不同的东西。它多加了一个路由器：�
 
 📖 **大模型原理系列**：① 词嵌入（待发布）→ ② 位置编码（待发布）→ ③ 注意力机制（待发布）→ ④ 前馈网络 FFN（本篇）→ ⑤ 归一化（待发布）→ ⑥ Transformer 全景（待发布）
 
-📖 **深度学习基础回读**：① [梯度下降：蒙着眼下山](https://mp.weixin.qq.com/s/V6mGvCVFpTvmC51pNtxiTw) → ② [损失函数：打分标准决定学习方向](https://mp.weixin.qq.com/s/zIWqYqYVzEaF1e8P6fcTfw) → ③ [反向传播：AI 怎么知道自己错在哪](https://mp.weixin.qq.com/s/oYj_qpwF4tZG84ImOn977g) → ④ [Softmax 为什么不直接取最大值？](https://mp.weixin.qq.com/s/5wMquh_v3oon2-NEDeQLEw) → ⑤ [残差连接：为什么 56 层比 20 层还差](https://mp.weixin.qq.com/s/xefNN9Gjaw3TKl60KeHzAg) → ⑥ [优化器：为什么 Adam 比 SGD 更会走路](https://mp.weixin.qq.com/s/8TlJTXs0rZRYK2N3FUgqOA)
+📖 **[训练回路合集](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzkyMzQyODExNQ==&action=getalbum&album_id=4594958081087864833#wechat_redirect)**：梯度下降 → 损失函数 → 反向传播 → Softmax → 残差连接 → Adam
