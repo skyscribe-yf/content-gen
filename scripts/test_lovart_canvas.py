@@ -138,5 +138,35 @@ class PageSessionTest(unittest.IsolatedAsyncioTestCase):
         )
 
 
+class FakePage:
+    def __init__(self, values):
+        self.values = values
+        self.calls = []
+
+    async def evaluate(self, expression, argument=None):
+        self.calls.append((expression, argument))
+        return self.values.pop(0)
+
+
+class LovartUiTest(unittest.IsolatedAsyncioTestCase):
+    async def test_clicks_first_visible_candidate_and_raises_when_missing(self):
+        page = FakePage([False, True])
+        ui = lovart_canvas.LovartCanvasUi(page, Path("/tmp/article/images"))
+
+        await ui.click_first(
+            ["[data-testid='nav-generate-menu-button']", "button[aria-label='Generate']"],
+            "open generator",
+        )
+
+        missing = FakePage([False, False, '<input value="secret"><div>verification required</div>'])
+        with self.assertRaisesRegex(lovart_canvas.LovartUiBlocked, "open generator") as caught:
+            await lovart_canvas.LovartCanvasUi(missing, Path("/tmp/article/images")).click_first(
+                ["one", "two"], "open generator"
+            )
+
+        self.assertNotIn("secret", str(caught.exception))
+        self.assertIn("verification", str(caught.exception))
+
+
 if __name__ == "__main__":
     unittest.main()

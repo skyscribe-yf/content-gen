@@ -368,7 +368,7 @@ Expected: existing parsing/state tests and Chrome/CDP tests pass.
     git add scripts/lovart_canvas.py scripts/test_lovart_canvas.py
     git commit -m "feat: launch isolated Lovart browser profile"
 
-### Task 4: Implement the visible Lovart Canvas UI adapter
+### Task 4: Implement the visible Lovart Canvas UI adapter (completed)
 
 **Files:**
 

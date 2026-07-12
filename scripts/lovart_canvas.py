@@ -18,6 +18,7 @@ import shutil
 import socket
 import subprocess
 import time
+from urllib.parse import urlencode
 
 import requests
 import websockets
@@ -354,6 +355,303 @@ async def configure_page_session(cdp: CdpClient, target_id: str, image_dir: Path
         session_id=session_id,
     )
     return session_id
+
+
+class LovartUiBlocked(RuntimeError):
+    """The visible site cannot safely continue without author intervention."""
+
+    def __init__(self, action: str, snapshot: str):
+        super().__init__(f"Lovart UI blocked while trying to {action}: {snapshot}")
+        self.action = action
+        self.snapshot = snapshot
+
+
+def _sanitize_snapshot(raw: object) -> str:
+    """Report page state without retaining form values, prompts, or other content."""
+
+    text = str(raw).lower()
+    signals = [
+        signal
+        for signal in ("login", "sign in", "verification", "verify", "验证码", "quota", "credit", "insufficient")
+        if signal in text
+    ]
+    return "page state: " + (", ".join(signals) if signals else "required controls not visible")
+
+
+class CdpPage:
+    """A single CDP target session with safe JavaScript argument transport."""
+
+    def __init__(self, cdp: CdpClient, session_id: str):
+        self._cdp = cdp
+        self._session_id = session_id
+
+    async def evaluate(self, function: str, argument: object | None = None):
+        encoded = json.dumps(argument, ensure_ascii=False)
+        expression = f"({function})({encoded})"
+        result = await self._cdp.send(
+            "Runtime.evaluate",
+            {"expression": expression, "returnByValue": True, "awaitPromise": True},
+            session_id=self._session_id,
+        )
+        if result.get("exceptionDetails"):
+            raise RuntimeError("Canvas DOM evaluation failed")
+        return result.get("result", {}).get("value")
+
+    async def navigate(self, url: str) -> None:
+        await self._cdp.send("Page.navigate", {"url": url}, session_id=self._session_id)
+
+
+async def open_canvas_page(cdp: CdpClient, url: str, image_dir: Path) -> CdpPage:
+    """Open or reuse a Lovart Canvas tab and attach a CDP page session."""
+
+    target_info = await cdp.send("Target.getTargets")
+    targets = target_info.get("targetInfos", [])
+    target = next(
+        (
+            item
+            for item in targets
+            if item.get("type") == "page" and "lovart.ai/canvas" in item.get("url", "")
+        ),
+        None,
+    )
+    if target is None:
+        created = await cdp.send("Target.createTarget", {"url": url})
+        target_id = created["targetId"]
+    else:
+        target_id = target["targetId"]
+    session_id = await configure_page_session(cdp, target_id, image_dir)
+    page = CdpPage(cdp, session_id)
+    await page.navigate(url)
+    return page
+
+
+_CLICK_ELEMENT = """
+({ selector, text }) => {
+  const visible = (el) => !!el && !!(el.offsetWidth || el.offsetHeight || el.getClientRects().length);
+  const candidates = selector
+    ? [...document.querySelectorAll(selector)]
+    : [...document.querySelectorAll('button,[role="button"],label,span')];
+  const element = candidates.find((el) => visible(el) && (!text || el.textContent.trim().toLowerCase() === text.toLowerCase()));
+  if (!element) return false;
+  element.click();
+  return true;
+}
+"""
+
+_FILL_ELEMENT = """
+({ selectors, text }) => {
+  const visible = (el) => !!el && !!(el.offsetWidth || el.offsetHeight || el.getClientRects().length);
+  const element = selectors.flatMap((selector) => [...document.querySelectorAll(selector)]).find(visible);
+  if (!element) return false;
+  if (element instanceof HTMLInputElement || element instanceof HTMLTextAreaElement) {
+    const prototype = element instanceof HTMLInputElement ? HTMLInputElement.prototype : HTMLTextAreaElement.prototype;
+    Object.getOwnPropertyDescriptor(prototype, 'value').set.call(element, text);
+    element.dispatchEvent(new Event('input', { bubbles: true }));
+    element.dispatchEvent(new Event('change', { bubbles: true }));
+  } else {
+    element.textContent = text;
+    element.dispatchEvent(new InputEvent('input', { bubbles: true, inputType: 'insertText', data: text }));
+  }
+  element.focus();
+  return true;
+}
+"""
+
+_PAGE_SNAPSHOT = "() => document.body ? document.body.innerHTML : ''"
+_PAGE_URL = "() => location.href"
+_IMAGE_STATE = """
+() => {
+  const pageText = (document.body?.innerText || '').toLowerCase();
+  const warning = ['insufficient', 'quota', 'credit', 'login', 'verification', 'verify', '验证码']
+    .find((word) => pageText.includes(word)) || '';
+  const urls = [...document.querySelectorAll('img[src]')]
+    .map((image) => image.currentSrc || image.src)
+    .filter((url) => url && !url.startsWith('data:'));
+  return { warning, urls };
+}
+"""
+
+_CLICK_DOWNLOAD = """
+({ imageUrl }) => {
+  const visible = (el) => !!el && !!(el.offsetWidth || el.offsetHeight || el.getClientRects().length);
+  const image = [...document.querySelectorAll('img[src]')]
+    .find((item) => (item.currentSrc || item.src) === imageUrl);
+  if (!image) return false;
+  const container = image.closest('[data-testid], [role="dialog"], figure, li, div') || image.parentElement;
+  const button = [...container.querySelectorAll('button,[role="button"],a')]
+    .find((item) => visible(item) && ['download', '下载'].includes(item.textContent.trim().toLowerCase()));
+  if (!button) return false;
+  button.click();
+  return true;
+}
+"""
+
+
+class LovartCanvasUi:
+    """Drive only normal, visible Lovart Canvas controls through a CDP page."""
+
+    def __init__(self, page, image_dir: Path):
+        self.page = page
+        self.image_dir = image_dir
+        self.project_url: str | None = None
+
+    async def _snapshot(self) -> str:
+        try:
+            return _sanitize_snapshot(await self.page.evaluate(_PAGE_SNAPSHOT))
+        except Exception:
+            return "page state: unavailable"
+
+    async def _try_click(self, selector: str | None = None, text: str | None = None) -> bool:
+        return bool(await self.page.evaluate(_CLICK_ELEMENT, {"selector": selector, "text": text}))
+
+    async def click_first(self, selectors: list[str], action: str, text: str | None = None) -> None:
+        for selector in selectors:
+            if await self._try_click(selector=selector):
+                return
+        if text and await self._try_click(text=text):
+            return
+        raise LovartUiBlocked(action, await self._snapshot())
+
+    async def _click_labels(self, selectors: list[str], labels: list[str], action: str) -> None:
+        for selector in selectors:
+            if await self._try_click(selector=selector):
+                return
+        for label in labels:
+            if await self._try_click(text=label):
+                return
+        raise LovartUiBlocked(action, await self._snapshot())
+
+    async def _fill(self, selectors: list[str], text: str, action: str) -> None:
+        if not await self.page.evaluate(_FILL_ELEMENT, {"selectors": selectors, "text": text}):
+            raise LovartUiBlocked(action, await self._snapshot())
+
+    async def _current_url(self) -> str:
+        url = await self.page.evaluate(_PAGE_URL)
+        return url if isinstance(url, str) else ""
+
+    async def ensure_project(self, project_name: str) -> str:
+        """Return a current project ID, creating a named project through the UI if needed."""
+
+        url = await self._current_url()
+        match = re.search(r"[?&]projectId=([^&]+)", url)
+        if match:
+            self.project_url = url
+            return match.group(1)
+
+        await self._click_labels(
+            ["[data-testid='new-project']", "[data-testid='canvas-new-project']"],
+            ["New project", "新建项目"],
+            "create project",
+        )
+        await self._fill(
+            ["input[name='projectName']", "input[placeholder*='project' i]", "input[placeholder*='项目']"],
+            project_name,
+            "enter project name",
+        )
+        await self._click_labels(
+            ["button[type='submit']", "[data-testid='create-project']"],
+            ["Create", "创建"],
+            "confirm project creation",
+        )
+        deadline = time.monotonic() + 30
+        while time.monotonic() < deadline:
+            url = await self._current_url()
+            match = re.search(r"[?&]projectId=([^&]+)", url)
+            if match:
+                self.project_url = url
+                return match.group(1)
+            await asyncio.sleep(0.5)
+        raise LovartUiBlocked("wait for created project", await self._snapshot())
+
+    async def _open_image_generator(self) -> None:
+        await self._click_labels(
+            ["[data-testid='nav-generate-menu-button']", "[data-testid='generate-menu-trigger']"],
+            ["Generate", "生成"],
+            "open generator",
+        )
+        await self._click_labels(
+            ["[data-testid='generate-menu-image']"],
+            ["Image", "图片"],
+            "select image generation",
+        )
+
+    async def _select_model(self) -> None:
+        for selector in ("[data-testid*='model-trigger']", "[aria-label*='Model']"):
+            if await self._try_click(selector=selector):
+                break
+        await self._click_labels(
+            ["[data-testid*='model-option']"],
+            ["GPT Image 2", "GPT Image"],
+            "select GPT Image 2",
+        )
+
+    async def _select_aspect_ratio(self, aspect_ratio: str) -> None:
+        await self._click_labels(
+            [f"[data-value='{aspect_ratio}']", f"[data-testid*='aspect'][data-value='{aspect_ratio}']"],
+            [aspect_ratio],
+            f"select {aspect_ratio} aspect ratio",
+        )
+
+    async def _image_urls(self) -> set[str]:
+        state = await self.page.evaluate(_IMAGE_STATE)
+        if not isinstance(state, dict):
+            raise LovartUiBlocked("inspect generated images", await self._snapshot())
+        warning = state.get("warning", "")
+        if warning:
+            raise LovartUiBlocked("inspect generated images", f"page state: {warning}")
+        return {url for url in state.get("urls", []) if isinstance(url, str)}
+
+    async def wait_for_generated_image(self, before_urls: set[str]) -> str:
+        deadline = time.monotonic() + 180
+        while time.monotonic() < deadline:
+            image_urls = await self._image_urls()
+            created = image_urls - before_urls
+            if created:
+                return sorted(created)[0]
+            await asyncio.sleep(2)
+        raise LovartUiBlocked("wait for image generation", await self._snapshot())
+
+    async def download_image(self, job: PromptJob, image_url: str) -> Path:
+        self.image_dir.mkdir(parents=True, exist_ok=True)
+        started = time.time()
+        if not await self.page.evaluate(_CLICK_DOWNLOAD, {"imageUrl": image_url}):
+            raise LovartUiBlocked("download generated image", await self._snapshot())
+        deadline = time.monotonic() + 60
+        suffixes = {".png", ".jpg", ".jpeg", ".webp"}
+        while time.monotonic() < deadline:
+            candidates = [
+                path
+                for path in self.image_dir.iterdir()
+                if path.suffix.lower() in suffixes and path.stat().st_mtime >= started
+            ]
+            if candidates:
+                if job.output.exists():
+                    raise RuntimeError(f"refusing to overwrite existing output: {job.output}")
+                newest = max(candidates, key=lambda path: path.stat().st_mtime)
+                newest.replace(job.output)
+                return job.output
+            await asyncio.sleep(1)
+        raise LovartUiBlocked("wait for image download", await self._snapshot())
+
+    async def generate_and_download(self, job: PromptJob) -> Path:
+        """Submit one visible image request and download its completed result."""
+
+        before_urls = await self._image_urls()
+        await self._open_image_generator()
+        await self._select_model()
+        await self._select_aspect_ratio(job.aspect_ratio)
+        await self._fill(
+            ["textarea", "[contenteditable='true']", "input[placeholder*='prompt' i]"],
+            job.prompt,
+            "enter image prompt",
+        )
+        await self._click_labels(
+            ["button[type='submit']", "[data-testid*='generate-button']"],
+            ["Generate", "生成"],
+            "submit image generation",
+        )
+        image_url = await self.wait_for_generated_image(before_urls)
+        return await self.download_image(job, image_url)
 
 
 def strip_front_matter(raw: str) -> str:
