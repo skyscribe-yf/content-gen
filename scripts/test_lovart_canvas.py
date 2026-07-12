@@ -92,5 +92,51 @@ class ManifestTest(unittest.TestCase):
                 lovart_canvas.load_manifest(article, "Article")
 
 
+class ChromeLaunchTest(unittest.TestCase):
+    def test_chrome_command_uses_external_profile_and_remote_debugging(self):
+        command = lovart_canvas.chrome_command(
+            chrome="/usr/bin/google-chrome",
+            profile=Path("/tmp/lovart-profile"),
+            port=9229,
+            initial_url="https://www.lovart.ai/canvas",
+        )
+
+        self.assertEqual(
+            command,
+            [
+                "/usr/bin/google-chrome",
+                "--remote-debugging-port=9229",
+                "--user-data-dir=/tmp/lovart-profile",
+                "--no-first-run",
+                "--no-default-browser-check",
+                "https://www.lovart.ai/canvas",
+            ],
+        )
+
+
+class FakeCdp:
+    def __init__(self):
+        self.calls = []
+
+    async def send(self, method, params=None, session_id=None, timeout=15):
+        self.calls.append((method, params, session_id))
+        return {"sessionId": "session-1"} if method == "Target.attachToTarget" else {}
+
+
+class PageSessionTest(unittest.IsolatedAsyncioTestCase):
+    async def test_configure_downloads_uses_article_image_directory(self):
+        cdp = FakeCdp()
+        await lovart_canvas.configure_page_session(cdp, "target-1", Path("/tmp/article/images"))
+
+        self.assertIn(
+            (
+                "Page.setDownloadBehavior",
+                {"behavior": "allow", "downloadPath": "/tmp/article/images"},
+                "session-1",
+            ),
+            cdp.calls,
+        )
+
+
 if __name__ == "__main__":
     unittest.main()

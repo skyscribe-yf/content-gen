@@ -7,12 +7,20 @@ browser rather than accepting exported cookies or private API credentials.
 
 from __future__ import annotations
 
+import asyncio
 from dataclasses import dataclass, field
 import hashlib
 import json
 import os
 from pathlib import Path
 import re
+import shutil
+import socket
+import subprocess
+import time
+
+import requests
+import websockets
 
 
 @dataclass(frozen=True)
@@ -179,6 +187,173 @@ def new_jobs_for_run(
             break
         selected.append(job)
     return selected
+
+
+DEFAULT_PROFILE = Path.home() / ".local" / "share" / "content-gen" / "lovart-chrome-profile"
+LOVART_CANVAS_URL = "https://www.lovart.ai/canvas"
+
+
+def chrome_command(chrome: str, profile: Path, port: int, initial_url: str) -> list[str]:
+    """Build Chrome's visible, isolated CDP launch command."""
+
+    return [
+        chrome,
+        f"--remote-debugging-port={port}",
+        f"--user-data-dir={profile}",
+        "--no-first-run",
+        "--no-default-browser-check",
+        initial_url,
+    ]
+
+
+def find_chrome() -> str:
+    """Find a locally installed Chrome binary without reading user credentials."""
+
+    candidates = [os.environ.get("GOOGLE_CHROME_BIN", ""), "google-chrome", "google-chrome-stable", "chromium"]
+    for candidate in candidates:
+        if not candidate:
+            continue
+        resolved = candidate if os.path.isabs(candidate) and os.path.exists(candidate) else shutil.which(candidate)
+        if resolved:
+            return resolved
+    raise RuntimeError("Google Chrome was not found; set GOOGLE_CHROME_BIN")
+
+
+def allocate_port() -> int:
+    """Reserve a currently free loopback port for Chrome remote debugging."""
+
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as listener:
+        listener.bind(("127.0.0.1", 0))
+        return int(listener.getsockname()[1])
+
+
+def _debug_websocket_url(port: int) -> str | None:
+    try:
+        response = requests.get(f"http://127.0.0.1:{port}/json/version", timeout=1)
+        response.raise_for_status()
+        websocket_url = response.json().get("webSocketDebuggerUrl")
+        return websocket_url if isinstance(websocket_url, str) else None
+    except (requests.RequestException, ValueError):
+        return None
+
+
+def _existing_debug_port(profile: Path) -> int | None:
+    port_file = profile / "DevToolsActivePort"
+    try:
+        port = int(port_file.read_text(encoding="utf-8").splitlines()[0])
+    except (OSError, ValueError, IndexError):
+        return None
+    return port if port > 0 else None
+
+
+@dataclass
+class ChromeConnection:
+    port: int
+    browser_ws_url: str
+    process: subprocess.Popen | None
+
+
+def launch_or_reuse_chrome(profile: Path, initial_url: str) -> ChromeConnection:
+    """Reuse the dedicated profile's Chrome or start it visibly and await CDP."""
+
+    profile.mkdir(parents=True, exist_ok=True, mode=0o700)
+    try:
+        profile.chmod(0o700)
+    except OSError:
+        pass
+
+    existing_port = _existing_debug_port(profile)
+    if existing_port:
+        existing_ws_url = _debug_websocket_url(existing_port)
+        if existing_ws_url:
+            return ChromeConnection(existing_port, existing_ws_url, process=None)
+
+    port = allocate_port()
+    process = subprocess.Popen(
+        chrome_command(find_chrome(), profile, port, initial_url),
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
+    deadline = time.monotonic() + 30
+    while time.monotonic() < deadline:
+        websocket_url = _debug_websocket_url(port)
+        if websocket_url:
+            return ChromeConnection(port, websocket_url, process=process)
+        time.sleep(0.2)
+    raise RuntimeError("Chrome did not expose a DevTools endpoint within 30 seconds")
+
+
+class CdpClient:
+    """Small async Chrome DevTools Protocol client used by the Canvas adapter."""
+
+    def __init__(self, websocket):
+        self._websocket = websocket
+        self._next_id = 0
+        self._pending: dict[int, asyncio.Future] = {}
+        self._reader_task = asyncio.create_task(self._read_messages())
+
+    @classmethod
+    async def connect(cls, websocket_url: str) -> "CdpClient":
+        return cls(await websockets.connect(websocket_url, max_size=50 * 1024 * 1024))
+
+    async def _read_messages(self) -> None:
+        try:
+            async for raw in self._websocket:
+                message = json.loads(raw)
+                request_id = message.get("id")
+                if not isinstance(request_id, int):
+                    continue
+                pending = self._pending.pop(request_id, None)
+                if pending is None or pending.done():
+                    continue
+                if "error" in message:
+                    pending.set_exception(RuntimeError(message["error"].get("message", "CDP request failed")))
+                else:
+                    pending.set_result(message.get("result", {}))
+        except Exception as exc:
+            for pending in self._pending.values():
+                if not pending.done():
+                    pending.set_exception(RuntimeError(f"CDP connection closed: {exc}"))
+            self._pending.clear()
+
+    async def send(self, method: str, params: dict | None = None, session_id: str | None = None, timeout: float = 15):
+        self._next_id += 1
+        request_id = self._next_id
+        request = {"id": request_id, "method": method}
+        if params is not None:
+            request["params"] = params
+        if session_id is not None:
+            request["sessionId"] = session_id
+        future = asyncio.get_running_loop().create_future()
+        self._pending[request_id] = future
+        await self._websocket.send(json.dumps(request))
+        try:
+            return await asyncio.wait_for(future, timeout)
+        finally:
+            self._pending.pop(request_id, None)
+
+    async def close(self) -> None:
+        self._reader_task.cancel()
+        try:
+            await self._reader_task
+        except asyncio.CancelledError:
+            pass
+        await self._websocket.close()
+
+
+async def configure_page_session(cdp: CdpClient, target_id: str, image_dir: Path) -> str:
+    """Attach to a Chrome page and allow its normal UI downloads into images/."""
+
+    attached = await cdp.send("Target.attachToTarget", {"targetId": target_id, "flatten": True})
+    session_id = attached["sessionId"]
+    for domain in ("Page", "Runtime", "DOM"):
+        await cdp.send(f"{domain}.enable", session_id=session_id)
+    await cdp.send(
+        "Page.setDownloadBehavior",
+        {"behavior": "allow", "downloadPath": str(image_dir.resolve())},
+        session_id=session_id,
+    )
+    return session_id
 
 
 def strip_front_matter(raw: str) -> str:

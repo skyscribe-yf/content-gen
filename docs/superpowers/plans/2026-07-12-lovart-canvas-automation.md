@@ -285,7 +285,7 @@ Expected: all tests pass; no network or browser process starts.
     git add scripts/lovart_canvas.py scripts/test_lovart_canvas.py
     git commit -m "feat: persist Lovart generation state"
 
-### Task 3: Add persistent Chrome and CDP primitives without credentials
+### Task 3: Add persistent Chrome and CDP primitives without credentials (completed)
 
 **Files:**
 
