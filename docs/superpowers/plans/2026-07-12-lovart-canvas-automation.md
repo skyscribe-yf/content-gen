@@ -20,7 +20,7 @@
 
 The implementation does not modify scripts/apimart_client.py, its tests, or the existing image-generation policy. This is a separately invoked, user-authorised browser helper.
 
-### Task 1: Add deterministic article and prompt discovery
+### Task 1: Add deterministic article and prompt discovery (completed)
 
 **Files:**
 
