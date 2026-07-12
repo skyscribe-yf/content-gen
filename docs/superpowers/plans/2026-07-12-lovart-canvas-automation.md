@@ -150,7 +150,7 @@ Expected: both PromptDiscoveryTest tests pass.
     git add scripts/lovart_canvas.py scripts/test_lovart_canvas.py
     git commit -m "feat: discover Lovart article prompts"
 
-### Task 2: Add an atomic, idempotent article-local manifest
+### Task 2: Add an atomic, idempotent article-local manifest (completed)
 
 **Files:**
 
