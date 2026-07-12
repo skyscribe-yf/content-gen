@@ -551,7 +551,7 @@ class LovartCanvasUi:
             "enter project name",
         )
         await self._click_labels(
-            ["button[type='submit']", "[data-testid='create-project']"],
+            ["[data-testid='create-project']"],
             ["Create", "创建"],
             "confirm project creation",
         )
@@ -582,8 +582,8 @@ class LovartCanvasUi:
             if await self._try_click(selector=selector):
                 break
         await self._click_labels(
-            ["[data-testid*='model-option']"],
-            ["GPT Image 2", "GPT Image"],
+            ["[data-value='generate_image_gpt_image_2']", "[data-model='gpt-image-2']"],
+            ["GPT Image 2"],
             "select GPT Image 2",
         )
 
@@ -648,7 +648,7 @@ class LovartCanvasUi:
             "enter image prompt",
         )
         await self._click_labels(
-            ["button[type='submit']", "[data-testid*='generate-button']"],
+            ["[data-testid='image-generator-submit']", "[data-testid*='generate-button']"],
             ["Generate", "生成"],
             "submit image generation",
         )
@@ -670,6 +670,16 @@ class RunSummary:
 
 def _remaining_daily_allowance(manifest: Manifest, today: str) -> int:
     return max(DAILY_LIMIT - sum(entry.get("date") == today for entry in manifest.submissions), 0)
+
+
+def _eligible_job_count(jobs: tuple[PromptJob, ...], manifest: Manifest, retry_failed: bool) -> int:
+    return sum(
+        manifest.jobs.get(job.fingerprint, {}).get("status") not in REUSABLE_STATUSES
+        and not (
+            manifest.jobs.get(job.fingerprint, {}).get("status") == "failed" and not retry_failed
+        )
+        for job in jobs
+    )
 
 
 def _sanitized_error(error: Exception) -> str:
@@ -702,7 +712,7 @@ async def run_article(
     candidates = new_jobs_for_run(plan.jobs, manifest, today=today, retry_failed=retry_failed)
     eligible = tuple(candidates[:max_new])
     skipped = len(plan.jobs) - len(eligible)
-    cap_reached = daily_allowance == 0 or len(candidates) > len(eligible)
+    cap_reached = _eligible_job_count(plan.jobs, manifest, retry_failed) > daily_allowance
     summary = RunSummary(
         project_name=plan.project_name,
         eligible=eligible,
@@ -820,10 +830,6 @@ def main(argv: list[str] | None = None) -> int:
     return 0
 
 
-if __name__ == "__main__":
-    raise SystemExit(main())
-
-
 def strip_front_matter(raw: str) -> str:
     """Return Markdown body after an optional leading YAML front-matter block."""
 
@@ -875,3 +881,7 @@ def discover_article(article: Path) -> ArticlePlan:
     if not jobs:
         raise ValueError(f"no prompt Markdown files found in {prompt_dir}")
     return ArticlePlan(article=article, project_name=article_title(article), jobs=tuple(jobs))
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

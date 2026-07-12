@@ -1,4 +1,5 @@
 import sys
+import subprocess
 import tempfile
 import unittest
 from pathlib import Path
@@ -167,6 +168,23 @@ class LovartUiTest(unittest.IsolatedAsyncioTestCase):
         self.assertNotIn("secret", str(caught.exception))
         self.assertIn("verification", str(caught.exception))
 
+    async def test_model_selection_never_clicks_an_unspecified_model_option(self):
+        class RecordingPage:
+            def __init__(self):
+                self.calls = []
+
+            async def evaluate(self, expression, argument=None):
+                self.calls.append((expression, argument))
+                return argument.get("text") == "GPT Image 2" if isinstance(argument, dict) else False
+
+        page = RecordingPage()
+        await lovart_canvas.LovartCanvasUi(page, Path("/tmp/article/images"))._select_model()
+
+        selectors = [argument.get("selector") for _, argument in page.calls if isinstance(argument, dict)]
+        texts = [argument.get("text") for _, argument in page.calls if isinstance(argument, dict)]
+        self.assertNotIn("[data-testid*='model-option']", selectors)
+        self.assertIn("GPT Image 2", texts)
+
 
 class FakeLovartUi:
     def __init__(self):
@@ -220,6 +238,46 @@ class OrchestrationTest(unittest.IsolatedAsyncioTestCase):
             await lovart_canvas.run_article(
                 Path("/tmp/article"), ui=FakeLovartUi(), today="2026-07-12", max_new=9
             )
+
+    async def test_dry_run_reports_when_ninth_job_exceeds_daily_cap(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            article = Path(tmp) / "article"
+            prompts = article / "prompts"
+            prompts.mkdir(parents=True)
+            for index in range(9):
+                (prompts / f"{index:02d}.md").write_text(f"prompt {index}", encoding="utf-8")
+
+            summary = await lovart_canvas.run_article(
+                article, ui=FakeLovartUi(), today="2026-07-12", max_new=8, dry_run=True
+            )
+
+            self.assertEqual(len(summary.eligible), 8)
+            self.assertTrue(summary.cap_reached)
+
+
+class CliTest(unittest.TestCase):
+    def test_dry_run_works_when_executed_as_a_script(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            article = Path(tmp) / "article"
+            (article / "prompts").mkdir(parents=True)
+            (article / "prompts" / "00-cover.md").write_text("cover", encoding="utf-8")
+
+            result = subprocess.run(
+                [
+                    sys.executable,
+                    str(Path(lovart_canvas.__file__)),
+                    "--article",
+                    str(article),
+                    "--dry-run",
+                ],
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertIn("Dry run: article", result.stdout)
+            self.assertIn("00-cover.md (21:9)", result.stdout)
 
 
 if __name__ == "__main__":
