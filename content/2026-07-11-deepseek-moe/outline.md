@@ -44,6 +44,6 @@ image_count: 6
 ## Illustration 6
 **Position**: 🌍 实战：DeepSeek 的 MoE 全景
 **Purpose**: 展示 V3 到 V4 的参数演进，突出激活比的变化
-**Visual Content**: 双栏对比。左栏 DeepSeek-V3（2024.12）：671B 总参数，37B 激活参数，激活比 5.5%，图标较小。右栏 DeepSeek-V4 Pro（2025）：1.6T 总参数，~160B 激活参数，激活比 10%，图标更大。共享专家 1 个（两栏共用）。底部标注"路由专家数不变（256），激活专家数不变（8），专家容量大幅提升"
+**Visual Content**: 双栏对比。左栏 DeepSeek-V3（2024.12）：671B 总参数，37B 激活参数，激活比 5.5%，图标较小。右栏 DeepSeek-V4 Pro（2026）：1.6T 总参数，~160B 激活参数，激活比 10%，图标更大。共享专家 1 个（两栏共用）。底部标注"路由专家数不变（256），激活专家数不变（8），专家容量大幅提升"
 **Type**: comparison
 **Filename**: 05-v3-v4-comparison.png

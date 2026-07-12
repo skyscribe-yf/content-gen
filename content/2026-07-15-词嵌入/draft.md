@@ -1,21 +1,21 @@
 ---
-title: "词嵌入入门：5万个0，怎么浓缩成一串坐标？"
+title: "词嵌入是什么？5万个0怎么变成一串坐标"
 author: "数解AI"
-digest: "AI不读字，读的是高维空间里的坐标。从one-hot的5万个0到嵌入矩阵的一串小数，用中药柜直觉讲清查表、训练、余弦相似度，附2026年DeepSeek-V4-Pro config真实数字和NumPy拆解代码。"
+digest: "词嵌入是什么？token ID如何变成坐标：one-hot、嵌入矩阵、余弦相似度一次讲清。"
 type: "原理篇"
 series: "大模型原理"
-keywords: ["词嵌入", "embedding", "one-hot", "余弦相似度", "Word2Vec", "DeepSeek-V4-Pro"]
+keywords: ["词嵌入", "embedding", "one-hot", "余弦相似度", "嵌入矩阵"]
 cover: 00-cover.png
-scheduledPublish: "2026-07-13T08:00:00+08:00"
+scheduledPublish: "2026-07-15T08:00:00+08:00"
 ---
 
 ## 🎯 驱动问题
 
-前面六篇我们打通了深度学习的训练回路——[梯度怎么下山](https://mp.weixin.qq.com/s/V6mGvCVFpTvmC51pNtxiTw)、[损失函数怎么打分](https://mp.weixin.qq.com/s/zIWqYqYVzEaF1e8P6fcTfw)、[反向传播怎么回传](https://mp.weixin.qq.com/s/oYj_qpwF4tZG84ImOn977g)、[Softmax 怎么变概率](https://mp.weixin.qq.com/s/5wMquh_v3oon2-NEDeQLEw)、残差连接怎么让信号跑得更远、优化器怎么自适应迈步。六篇下来，我们一直在回答一个问题：**模型怎么学**。
+**词嵌入（embedding）** 解决一件事：token 的整数编号没有远近，模型却需要「意思近的挨在一起」。做法是把每个 ID 查成一串坐标——这就是嵌入矩阵在干的活。
 
-但从这篇开始，我们进入一个新问题：**模型学的是什么？**
+上一篇《BPE分词：AI为什么把文字切成碎片？》（发布后补微信 URL）把文字切成了 token，每个 token 拿到一个整数编号。但编号只是编号——5237 和 16652 之间没有远近关系，"猫"的 ID 和"猫咪"的 ID 也挨不到一起。
 
-答案的第一块积木，叫词嵌入（embedding）。它的工作很简单：把文字变成数字。但怎么变、变了之后有什么用，藏着整个大模型理解语言的秘密。
+怎么办？把编号变成一串坐标。意思近的坐标挨得近，意思远的各站一角。
 
 先从一个小实验开始。
 
@@ -106,7 +106,7 @@ AI 不是这样。它把每个词（严格说是每个 token）装进一个高�
 
 ——**猫和狗的距离 = 猫和汽车的距离。** 没有任何语义信息。
 
-标题里说的「5 万个 0」是入门量级：只要词表有 5 万个 token，one-hot 就接近 5 万维。放到 2026 年 DeepSeek-V4-Pro 上，词表是 129,280 个 token，one-hot 会膨胀到约 13 万维，几乎全是 0，只有一个位置是 1。
+题目里的「5 万个 0」只是入门量级：词表有 5 万个 token，one-hot 就接近 5 万维。放到 2026 年 DeepSeek-V4-Pro 上，词表是 129,280 个 token，one-hot 会膨胀到约 13 万维，几乎全是 0，只有一个位置是 1。
 
 ![](02-infographic-onehot-orthogonal.png)
 
@@ -196,7 +196,7 @@ print(f"演示输出形状: {vectors.shape}")  # torch.Size([3, 4])
 print(f"DeepSeek-V4-Pro 嵌入矩阵总参数: {deepseek_vocab * deepseek_dim / 1e6:.0f}M")  # 927M
 ```
 
-看清楚了吗？`nn.Embedding` 做的事，就是 one-hot 和矩阵乘法的包装。`token_ids[2]` 进去，拿出第 2 行的 4 个小数；换成 DeepSeek-V4-Pro 的真表，就是拿出对应行的 7168 个小数。本质就是一张超级大的查表。
+`nn.Embedding` 把 one-hot 与矩阵乘法这件事封装成了查表。`token_ids[2]` 进去，拿出第 2 行的 4 个小数；换成 DeepSeek-V4-Pro 的真表，就是拿出对应行的 7168 个小数。
 
 ---
 
@@ -289,22 +289,19 @@ Word2Vec 是**一词一向量。** "苹果"不管在"吃苹果"还是"苹果发�
 
 ---
 
-📖 **大模型原理系列**
+---
 
-① 词嵌入（本篇）→ ② 位置编码 → ③ 注意力机制 → ④ 归一化 → ⑤ Transformer 全景 → ⑥ 预训练 → ⑦ Chinchilla 定律 → ⑧ RLHF 微调 → ⑨ 推理加速
+📖 **大模型原理**（本系列 · 第 2/10 篇）
+① BPE分词：AI为什么把文字切成碎片？（待补微信URL）→ ② 词嵌入是什么？5万个0怎么变成一串坐标（本篇）→ ③ 位置编码怎么工作？词序一错意思全变（07/17）→ ④ 注意力机制是什么？别再当数据库查询（07/19）→ ⑤ FFN → ⑥ 归一化与残差 → ⑦ Transformer → ⑧ 预训练 → ⑨ RLHF → ⑩ 推理加速
 
-每周更新一篇，把大模型的底层原理讲到不用回头查。关注「数解AI」，下一篇第一时间推给你。
+🔥 **DeepSeek 技术解密**
+① [AI上下文为什么越长越慢](https://mp.weixin.qq.com/s/PLVRS0TTHXHDve1Z3r6M7Q) → ② [MoE混合专家入门](https://mp.weixin.qq.com/s/QdkD0CR2fD-HfY77-gX3Ug) → ③ MLA（待发布）
+
+📖 **深度学习基础**（已完结）
+① [梯度下降](https://mp.weixin.qq.com/s/V6mGvCVFpTvmC51pNtxiTw) → ② [损失函数](https://mp.weixin.qq.com/s/zIWqYqYVzEaF1e8P6fcTfw) → ③ [反向传播](https://mp.weixin.qq.com/s/oYj_qpwF4tZG84ImOn977g) → ④ [Softmax](https://mp.weixin.qq.com/s/5wMquh_v3oon2-NEDeQLEw) → ⑤ [残差连接](https://mp.weixin.qq.com/s/xefNN9Gjaw3TKl60KeHzAg) → ⑥ [Adam优化器](https://mp.weixin.qq.com/s/aSLVO-otvr2rxIU1kr2eAA) · [训练回路合集](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzkyMzQyODExNQ==&action=getalbum&album_id=4594958081087864833#wechat_redirect)
+
+每 2 天更新一篇，把大模型从输入到生成的链路讲到不用回头查。关注「数解AI」，下一篇第一时间推给你。
 
 ---
 
-📖 **深度学习基础系列**（已完结）
-
-① [梯度下降：蒙着眼下山](https://mp.weixin.qq.com/s/V6mGvCVFpTvmC51pNtxiTw) → ② [损失函数：打分标准决定学习方向](https://mp.weixin.qq.com/s/zIWqYqYVzEaF1e8P6fcTfw) → ③ [反向传播：AI 怎么知道自己错在哪](https://mp.weixin.qq.com/s/oYj_qpwF4tZG84ImOn977g) → ④ [Softmax 为什么不直接取最大值？](https://mp.weixin.qq.com/s/5wMquh_v3oon2-NEDeQLEw) → ⑤ 残差连接（待发布）→ ⑥ 优化器（待发布）
-
-🔥 **DeepSeek 技术解密系列**（与本系列穿插发布）
-
-① DeepSeek 便宜 10 倍的秘密：MoE 混合专家入门（7/11 发布）
-
----
-
-*如果这篇帮你理解了词嵌入，点个「在看」让更多朋友看到。你更想先看 BPE 分词器怎么切词，还是继续看位置编码怎么给 token 排队？评论区说说你的选择。*
+*如果这篇帮到了你，点个「在看」让更多朋友看到。*你觉得 one-hot 最大的浪费是什么：空间太大，还是完全不懂语义？——若只能二选一，你更信固定词向量（Word2Vec），还是上下文动态嵌入？评论区聊聊。

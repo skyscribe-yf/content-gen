@@ -2,9 +2,9 @@
 title: "为什么AI上下文越长越慢？两道数学硬墙一次讲透"
 subtitle: "从 GLM-5.2 百万上下文看注意力的两道墙"
 author: "数解AI"
-digest: "一个 AI 程序员接到任务，干到第 200 步突然失忆——上下文满了。GLM-5.2 把记忆从 20 万字扩到 100 万字，怎么做到的？两道墙，两个数学原理，一次讲透。"
+digest: "为什么AI上下文越长越慢？注意力两道硬墙：算力O(N²)与KV Cache显存，一次讲透"
 type: "融合篇"
-series: "热点背后的数学"
+series: "DeepSeek 技术解密"
 wechatUrl: "https://mp.weixin.qq.com/s/PLVRS0TTHXHDve1Z3r6M7Q"
 hotspot: "GLM-5.2"
 ---
@@ -184,7 +184,7 @@ AI 的记忆有上限，因为注意力 O(T²) 和 KV cache O(T) 在长序列下
 
 ## 🔗 系列导航
 
-这是**热点背后的数学**系列的第一篇。
+这是 **DeepSeek 技术解密** 系列的第一篇。
 
 - 上一篇：（这是第一篇）
 - 下一篇：**AI 为什么说话这么慢？——推测解码的数学**（待发布）

@@ -1,0 +1,103 @@
+{
+  "version": 1,
+  "tasks": [
+    {
+      "fingerprint": "ed03506733ee9d43f5681a8135526f28c46dc95573d1852faf1924753027bb3c",
+      "task_id": "task_01KX8M2YCW4M43EEJM65SA4E38",
+      "status": "completed",
+      "filename": "01-token-pipeline.png",
+      "size": "1:1",
+      "resolution": "1k",
+      "n": 1,
+      "submitted_at": "2026-07-11T12:57:53Z",
+      "updated_at": "2026-07-11T12:59:07Z",
+      "saved_paths": [
+        "content/2026-07-19-注意力机制/01-token-pipeline.png"
+      ]
+    },
+    {
+      "fingerprint": "9a44b2df2e3745d05352260c9b4154f91a2cd324ec6572b4c0de671e65c054fb",
+      "task_id": "task_01KX8M58G42VK1G37JXNPH775W",
+      "status": "completed",
+      "filename": "02-roundtable-vs-database.png",
+      "size": "1:1",
+      "resolution": "1k",
+      "n": 1,
+      "submitted_at": "2026-07-11T12:59:09Z",
+      "updated_at": "2026-07-11T13:00:20Z",
+      "saved_paths": [
+        "content/2026-07-19-注意力机制/02-roundtable-vs-database.png"
+      ]
+    },
+    {
+      "fingerprint": "3952d98cc27b6d0c3afcaa3c34e6319a6e797777c97ccd33378121d804610efc",
+      "task_id": "task_01KX8M7FJQEWQWSYZMXQWHF3J0",
+      "status": "completed",
+      "filename": "03-look-vs-distribute.png",
+      "size": "1:1",
+      "resolution": "1k",
+      "n": 1,
+      "submitted_at": "2026-07-11T13:00:22Z",
+      "updated_at": "2026-07-11T13:01:30Z",
+      "saved_paths": [
+        "content/2026-07-19-注意力机制/03-look-vs-distribute.png"
+      ]
+    },
+    {
+      "fingerprint": "2edd6239333f81bec389f7676d67bf8b60a9c5bc52215746889bbe187a7c0a5d",
+      "task_id": "task_01KX8M9KA1W93NWKFTZ7H2B88W",
+      "status": "completed",
+      "filename": "04-dot-product-geometry.png",
+      "size": "1:1",
+      "resolution": "1k",
+      "n": 1,
+      "submitted_at": "2026-07-11T13:01:31Z",
+      "updated_at": "2026-07-11T13:02:39Z",
+      "saved_paths": [
+        "content/2026-07-19-注意力机制/04-dot-product-geometry.png"
+      ]
+    },
+    {
+      "fingerprint": "c114d74fdfc5e2efab4def272609c363401905a14fd6ed31d6c91a31234f8672",
+      "task_id": "task_01KX8MBPXNCE6DNW77TDBKX2FG",
+      "status": "completed",
+      "filename": "06-attention-heatmap.png",
+      "size": "1:1",
+      "resolution": "1k",
+      "n": 1,
+      "submitted_at": "2026-07-11T13:02:41Z",
+      "updated_at": "2026-07-11T13:03:51Z",
+      "saved_paths": [
+        "content/2026-07-19-注意力机制/06-attention-heatmap.png"
+      ]
+    },
+    {
+      "fingerprint": "401b8d932ff35aa64ab03b87d55442299d452bc4e39d7f14c0329dce80c824bc",
+      "task_id": "task_01KX8MDX2XFJGGBBM7TKK3SE99",
+      "status": "completed",
+      "filename": "05-gqa.png",
+      "size": "1:1",
+      "resolution": "1k",
+      "n": 1,
+      "submitted_at": "2026-07-11T13:03:53Z",
+      "updated_at": "2026-07-11T13:05:11Z",
+      "saved_paths": [
+        "content/2026-07-19-注意力机制/05-gqa.png"
+      ]
+    },
+    {
+      "fingerprint": "744b2e98ccd0c235bc3e84830e2af84ec4ce5ed7d3da76bdd6115d178317658b",
+      "task_id": "task_01KXANDJV8V8WCJG6H398WP5HQ",
+      "status": "completed",
+      "filename": "00-cover.png",
+      "size": "21:9",
+      "resolution": "1k",
+      "n": 1,
+      "submitted_at": "2026-07-12T07:59:39Z",
+      "updated_at": "2026-07-12T08:00:46Z",
+      "saved_paths": [
+        "content/2026-07-19-注意力机制/00-cover.png"
+      ]
+    }
+  ]
+}

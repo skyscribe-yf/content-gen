@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>中文没有空格，BPE 会不会把词切错？</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      font-size: 16px;
+      line-height: 1.8;
+      color: #1a1a1a;
+      max-width: 720px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    h1 { font-size: 24px; font-weight: 700; margin: 32px 0 16px; }
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin: 28px 0 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #eee;
+    }
+    p { margin: 16px 0; }
+    blockquote {
+      margin: 16px 0;
+      padding: 12px 16px;
+      background: #f6f8fa;
+      border-left: 4px solid #1a6dd4;
+      border-radius: 0 4px 4px 0;
+    }
+    ul { padding-left: 1.5em; }
+    li { margin: 8px 0; }
+    code {
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      background: #f3f5f7;
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-size: 0.94em;
+    }
+    .example {
+      margin: 14px 0;
+      padding: 10px 14px;
+      background: #faf7f2;
+      border: 1px solid #eee2d4;
+      border-radius: 6px;
+    }
+    .hook {
+      color: #385c83;
+      font-size: 15px;
+    }
+    .cta {
+      background: #f0f7ff;
+      border: 1px solid #b8d8ff;
+      padding: 16px 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+    hr {
+      border: 0;
+      border-top: 1px solid #eee;
+      margin: 28px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>中文没有空格，BPE 会不会把词切错？</h1>
+
+  <p>很多人第一次听到 BPE，都会有一个很自然的疑问：</p>
+
+  <blockquote>
+    <p>英文单词之间有空格，中文却是一整串连续字符。中文连“词”都不好切，怎么做 BPE？会不会因为分词歧义，把模型带偏？</p>
+  </blockquote>
+
+  <p>先给结论：<strong>中文没有空格，不妨碍 BPE；BPE 也不需要先知道“词”在哪里。</strong></p>
+
+  <p>BPE 不是中文分词器。它不先判断“南京市”是不是一个词，也不先给句子画词语边界。它做的事情更朴素：从字符或字节开始，统计哪些相邻片段经常一起出现，然后按固定的合并规则把它们粘起来。</p>
+
+  <p class="hook">这篇回答先把逻辑讲清楚。明天中午的公众号完整版会补上原创图解和真实 Tokenizer 输出。</p>
+
+  <h2>把中文想成一串没有空格的磁贴</h2>
+
+  <p>英文像是已经分好组的磁贴：<code>Today is sunny</code>。空格提供了一个很明显的边界。但 BPE 并不依赖这个边界。中文可以直接从更小的磁贴开始：</p>
+
+  <p class="example"><code>今｜天｜天｜气</code></p>
+
+  <p>如果训练语料里“今天”和“天气”经常出现，那么 <code>今｜天</code>、<code>天｜气</code> 就可能成为高频相邻片段，被合并成：</p>
+
+  <p class="example"><code>今天｜天气</code></p>
+
+  <p>如果“今天天气”整体也非常常见，它还有可能继续合并成更大的 token；如果某个生僻人名很少出现，就可能继续保持为更小的片段。</p>
+
+  <p>所以 BPE 的核心不是“有没有空格”，而是：<strong>常见片段越合越大，罕见片段保留小块。</strong></p>
+
+  <p>这也解释了为什么 token 不等于词：它可能是一个汉字、几个汉字、半个英文单词、一个数字，甚至是 byte-level BPE 里的字节片段。</p>
+
+  <h2>“切分歧义”和“语义歧义”不是一回事</h2>
+
+  <p>中文确实存在语义歧义。比如“南京市长江大桥”，人类可以讨论它的词语边界和句法结构。但 Tokenizer 并不会在这里做一次中文阅读理解。</p>
+
+  <p>Tokenizer 更像一个固定规则的条形码打印机：输入完全相同的字符串，就按词表和 merge rules 打出完全相同的 token ID。它不需要根据上下文临时猜：“这次的‘长’到底是不是‘长度’的‘长’？”</p>
+
+  <p>真正的语义理解发生在后面的 Transformer 里。可以把两者分开看：</p>
+
+  <ul>
+    <li><strong>Tokenizer</strong> 负责把文字切成模型能查表的片段，并分配 token ID；</li>
+    <li><strong>词嵌入和 Transformer</strong> 负责让这些片段进入上下文，逐步形成含义。</li>
+  </ul>
+
+  <p>就像切菜刀不会决定一盘菜是甜是咸。刀负责把食材切成可处理的大小，味道还要看后面的烹饪过程。</p>
+
+  <p>因此，BPE 的切法可能不符合人类的词感，但这不等于它把句子“理解错了”。它只是在执行一套确定的编码规则。</p>
+
+  <h2>中文为什么有时会显示成“乱码”？</h2>
+
+  <p>现代模型常见的 byte-level BPE，会先把文字落到 UTF-8 字节，再对这些字节片段做合并。于是打印 tokenizer 内部 token 时，中文可能出现类似 <code>è¯·</code>、<code>çĶ¨</code> 的显示形式。</p>
+
+  <p>这不是中文被破坏了，而是内部字节被映射成了可打印字符。模型真正使用的是对应的 token ID，编码过程仍然可以还原原文。</p>
+
+  <p>以文章里实际跑过的 DeepSeek-V4-Pro Tokenizer 为例：</p>
+
+  <p class="example"><code>请用 Python 写一个 Transformer，参数量 7B。</code> → <strong>14 个 token</strong></p>
+
+  <p>其中，<code>Python</code> 和 <code>Transformer</code> 可能以带前导空格的片段出现，<code>7B</code> 则被拆成 <code>7</code> 和 <code>B</code>。同一句话里，中文、英文、数字和标点可以采用完全不同的切法。</p>
+
+  <p>这才是 BPE 有意思的地方：<strong>它不按人类的“字数”计量，而按训练语料里形成的片段来计量。</strong></p>
+
+  <p>顺便看一个真实配置里的数字：公开 <code>config.json</code> 中，DeepSeek-V4-Pro 的 <code>vocab_size</code> 是 <strong>129280</strong>；<code>tokenizer.json</code> 中基础 BPE 词表是 <strong>128000</strong> 条，另外还有 added tokens 和特殊 token。两个字段表达的不是同一个统计口径，不能简单相加。</p>
+
+  <h2>为什么这件事和 API 账单有关？</h2>
+
+  <p>因为模型真正接收的不是“几个汉字”，而是一串 token。</p>
+
+  <p>同样长度的三段输入：</p>
+
+  <ul>
+    <li>中文说明</li>
+    <li>Python 函数</li>
+    <li><code>7B + UTF-8</code></li>
+  </ul>
+
+  <p>token 数可能完全不同。token 越多，同一个上下文窗口能容纳的原文越少；按 token 计费的 API，用量也可能更高。</p>
+
+  <p>所以“中文是不是一个字一个 token”不是一个可靠的估算方法。常见短语可能被合并成大块，代码、数字、罕见符号也可能被切得更细。真正要估算上下文和成本，应该先跑一遍对应模型的 Tokenizer。</p>
+
+  <hr>
+
+  <h2>一句话总结</h2>
+
+  <p><strong>中文没有空格，照样可以做 BPE。BPE 不需要先分出“词”，它从字符或字节开始，按频率合并相邻片段；切分规则是确定的，真正的语义消歧交给后面的上下文建模。</strong></p>
+
+  <div class="cta">
+    <p><strong>明天中午，公众号「数解AI」会发布完整文章《BPE分词：AI为什么把文字切成碎片？》</strong>，把“字符/字节 → token → token ID”的过程画出来，并展示真实 Tokenizer 为什么会把中文、英文和数字切成不同形状。</p>
+    <p><strong>关注「数解AI」</strong>，明天中午回复 <strong>“BPE”</strong>，可收到完整版图解。后续还会继续讲：token ID 拿到之后，怎么变成模型能计算的高维向量。</p>
+  </div>
+
+  <p>如果你曾经遇到过“明明没写多少字，token 却涨得很快”，欢迎留言：当时输入的是中文、代码，还是中英混合？</p>
+</body>
+</html>

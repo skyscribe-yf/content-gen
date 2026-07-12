@@ -1,9 +1,10 @@
 ---
 title: "梯度下降：蒙着眼下山"
 author: "数解AI"
-digest: "3分钟搞懂梯度下降——从生活直觉到数学公式，从四行代码到实测验证，一个闭环讲透AI最核心的优化算法。"
+digest: "梯度下降是什么？沿负梯度下山的优化算法：学习率、步长、四行代码到实测，讲清AI怎么学会参数。"
 type: "原理篇"
 series: "深度学习基础"
+wechatUrl: "https://mp.weixin.qq.com/s/V6mGvCVFpTvmC51pNtxiTw"
 ---
 
 ## 🎯 驱动问题

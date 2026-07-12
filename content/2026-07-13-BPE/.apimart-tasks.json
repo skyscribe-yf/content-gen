@@ -1,0 +1,139 @@
+{
+  "version": 1,
+  "tasks": [
+    {
+      "fingerprint": "8b6a2531b4921c5a6bdbe4cd9d2d6e9d6d0b69546fa1a581c99a1abb8678ab71",
+      "task_id": "task_01KX4RK5SD44GTR8YBC2G6KTD5",
+      "status": "completed",
+      "filename": "00-cover.png",
+      "size": "1:1",
+      "resolution": "1k",
+      "n": 1,
+      "submitted_at": "2026-07-10T00:59:41Z",
+      "updated_at": "2026-07-10T01:01:06Z",
+      "saved_paths": [
+        "content/2026-07-13-BPE/00-cover.png"
+      ]
+    },
+    {
+      "fingerprint": "7900d26682b11fa851a1e4f20118114ae785b75a734a059ff96da2b657c71edd",
+      "task_id": "task_01KX4RM3G1YDFRDQ8F8VWFA2F2",
+      "status": "completed",
+      "filename": "00-cover.png",
+      "size": "1:1",
+      "resolution": "1k",
+      "n": 1,
+      "submitted_at": "2026-07-10T01:00:12Z",
+      "updated_at": "2026-07-10T01:01:58Z",
+      "saved_paths": [
+        "content/2026-07-13-BPE/00-cover.png"
+      ]
+    },
+    {
+      "fingerprint": "40ceceae185c64e967fa37b97728694270ee63e14e48ac48da978e3d2cbfdd9d",
+      "task_id": "task_01KX4RRZJG0098VTT9HJBTPJF7",
+      "status": "completed",
+      "filename": "00-cover-v2.png",
+      "size": "1:1",
+      "resolution": "1k",
+      "n": 1,
+      "submitted_at": "2026-07-10T01:02:52Z",
+      "updated_at": "2026-07-10T01:04:44Z",
+      "saved_paths": [
+        "content/2026-07-13-BPE/00-cover-v2.png"
+      ]
+    },
+    {
+      "fingerprint": "eb0dc892a7fcfb55bd17ecc7f3e5fe2bb69eacaa249b418a7c04e3e5151510cc",
+      "task_id": "task_01KX4WQNVTA62YJQ8FS66FHH9E",
+      "status": "completed",
+      "filename": "01-infographic-token-id.png",
+      "size": "1:1",
+      "resolution": "1k",
+      "n": 1,
+      "submitted_at": "2026-07-10T02:12:03Z",
+      "updated_at": "2026-07-10T02:14:43Z",
+      "saved_paths": [
+        "content/2026-07-13-BPE/01-infographic-token-id.png"
+      ]
+    },
+    {
+      "fingerprint": "989fecb8f56008441fd5d55eb101aa1c6ca7a290aa215b36c1e7783585d30e10",
+      "task_id": "task_01KX4WWEZYGZDBFJJKTS5V9A0W",
+      "status": "processing",
+      "filename": "01-infographic-token-id.png",
+      "size": "1:1",
+      "resolution": "1k",
+      "n": 1,
+      "submitted_at": "2026-07-10T02:14:40Z",
+      "updated_at": "2026-07-10T02:19:40Z"
+    },
+    {
+      "fingerprint": "f8467d2ee23a1ac09b356ab9bb507b84038cde64a43c4c25eb75d5c51b270c9a",
+      "task_id": "task_01KX4WWJSTW6GA6MX6Q1H8BGGS",
+      "status": "completed",
+      "filename": "02-flowchart-bpe-merge.png",
+      "size": "1:1",
+      "resolution": "1k",
+      "n": 1,
+      "submitted_at": "2026-07-10T02:14:44Z",
+      "updated_at": "2026-07-10T02:19:43Z",
+      "saved_paths": [
+        "content/2026-07-13-BPE/02-flowchart-bpe-merge.png"
+      ]
+    },
+    {
+      "fingerprint": "93b7db131574bee75bc072209a648774ea24b546365c7481fd297bb4390ed114",
+      "task_id": "task_01KX4X5Q5J4ZCC9G9MB4GNMK4G",
+      "status": "completed",
+      "filename": "03-infographic-real-tokenizer.png",
+      "size": "1:1",
+      "resolution": "1k",
+      "n": 1,
+      "submitted_at": "2026-07-10T02:19:43Z",
+      "updated_at": "2026-07-10T02:20:58Z",
+      "saved_paths": [
+        "content/2026-07-13-BPE/03-infographic-real-tokenizer.png"
+      ]
+    },
+    {
+      "fingerprint": "30046def7b17c71b3c1de617f260d68cb0f7daa36b1a2d0b058c47d1059788b4",
+      "task_id": "task_01KX4X81KFZ9JYRSAKBCZS919A",
+      "status": "completed",
+      "filename": "04-flowchart-token-to-vector.png",
+      "size": "1:1",
+      "resolution": "1k",
+      "n": 1,
+      "submitted_at": "2026-07-10T02:20:59Z",
+      "updated_at": "2026-07-10T02:23:49Z",
+      "saved_paths": [
+        "content/2026-07-13-BPE/04-flowchart-token-to-vector.png"
+      ]
+    },
+    {
+      "fingerprint": "bb1133f2aa40d4a1626acb6abbd07092c9fc506ab30fa1169f43e1650bdbb33a",
+      "task_id": "task_01KX5E2N6Z9P6K48R4N09PM7XM",
+      "status": "processing",
+      "filename": "00-cover-v3.png",
+      "size": "16:9",
+      "resolution": "1k",
+      "n": 1,
+      "submitted_at": "2026-07-10T07:15:09Z",
+      "updated_at": "2026-07-10T07:17:04Z"
+    },
+    {
+      "fingerprint": "37baf4dc48809cb6d2c35d8f37d627edafde28a1a69c8380b156c02a069cbca9",
+      "task_id": "task_01KX9QZKV5P209PE8TSJ603HPJ",
+      "status": "completed",
+      "filename": "00-cover-new.png",
+      "size": "21:9",
+      "resolution": "2k",
+      "n": 1,
+      "submitted_at": "2026-07-11T23:25:13Z",
+      "updated_at": "2026-07-11T23:25:57Z",
+      "saved_paths": [
+        "content/2026-07-13-BPE/00-cover-new.png"
+      ]
+    }
+  ]
+}

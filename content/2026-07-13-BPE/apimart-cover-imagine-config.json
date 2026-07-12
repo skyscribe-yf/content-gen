@@ -1,0 +1,15 @@
+{
+  "series_title": "BPE cover 21:9",
+  "output_dir": "content/2026-07-13-BPE",
+  "size": "21:9",
+  "resolution": "2k",
+  "cards": [
+    {
+      "title": "BPE cover",
+      "filename": "00-cover-new.png",
+      "prompt": "Cinematic ultra-wide 21:9 editorial cover for a Chinese AI education article about BPE tokenization.\n\nMAIN VISUAL (left-to-center): A long horizontal ribbon of mixed Chinese characters and short English letter chunks floating on a warm cream paper background, being cleanly sliced into irregular colorful token blocks (muted coral, slate blue, soft teal). Blocks are uneven in size — some hold a full Chinese character, some hold only a syllable fragment, some tiny shards — showing frequency-based cuts, not human word boundaries. Thin dark ink scissors and subtle merge arrows between frequent neighbor fragments. Generous empty space on the right third for title breathing room.\n\nVISIBLE TEXT (exact only): Large clean modern Chinese sans-serif title on the right half:\n「一句话，为什么被切碎？」\nNo English words, no model names, no dates, no subtitles, no extra labels.\n\nSTYLE: Modern educational editorial illustration, flat-vector with light hand-drawn line weight, warm cream background (#F7F1E8), dark ink lines, muted coral and slate-blue accents, high legibility, 40%+ whitespace, no people, no logos, no photorealistic texture, no dense paragraphs.\n\nMOOD: Curious, precise, friendly science-magazine cover for WeChat Official Account.",
+      "size": "21:9",
+      "resolution": "2k"
+    }
+  ]
+}

@@ -6,6 +6,7 @@ type: "原理篇"
 series: "深度学习基础"
 keywords: ["残差连接", "ResNet", "梯度消失", "深度网络"]
 cover: 00-cover.png
+wechatUrl: "https://mp.weixin.qq.com/s/xefNN9Gjaw3TKl60KeHzAg"
 ---
 
 ## 🎯 驱动问题

@@ -1,0 +1,27 @@
+{
+  "output_dir": "content/2026-07-13-BPE",
+  "size": "1:1",
+  "resolution": "1k",
+  "cards": [
+    {
+      "title": "token id mapping",
+      "filename": "01-infographic-token-id.png",
+      "prompt": "Single-page hand-drawn educational infographic, square 1:1 composition, warm cream paper background, dark navy ink, muted blue, mint, lavender, and coral blocks, generous whitespace.\n\nTITLE: “文字 → Token → ID”\n\nZONES:\n- TOP: the exact Chinese title “文字 → Token → ID”.\n- MIDDLE: show the exact input text “请用 Python 写一个 Transformer，参数量 7B。” in one horizontal strip.\n- BELOW: split the sentence into a few clearly separated colored token blocks. Show representative labels only: “请用”, “Python”, “Transformer”, “7”, “B”, “。”; do not claim this row is the full 14-token output.\n- BOTTOM: draw arrows from the token blocks to integer ID blocks. Show the exact phrase “token 片段 → token ID”.\n- Add one small side note: “token 不等于词”.\n\nLABELS: All visible text must exactly match the Chinese labels and English technical terms listed above. No extra numbers, dates, model names, or invented IDs.\n\nSTYLE: Clear educational diagram, hand-drawn but legible, no realistic people, no gradients, no dense paragraphs, no decorative unrelated objects.\n\nAll visible text must be Chinese except the exact technical terms “Token”, “ID”, “Python”, “Transformer”, “token”, and the exact input sentence.\n"
+    },
+    {
+      "title": "bpe merge flow",
+      "filename": "02-flowchart-bpe-merge.png",
+      "prompt": "Single-page hand-drawn educational infographic, square 1:1 composition, warm cream paper background, dark navy ink, muted blue, mint, lavender, and coral blocks, generous whitespace.\n\nTITLE: “BPE：高频片段越合越大”\n\nZONES:\n- TOP: the exact Chinese title “BPE：高频片段越合越大”.\n- LEFT: a small training corpus with the exact words “low”, “low”, “lower”, “lowest”.\n- CENTER: a three-step downward flow. Step 1 shows “l o w”, “l o w e r”, “l o w e s t”. Step 2 highlights the pair “(l, o)” and shows “lo w”. Step 3 highlights the pair “(lo, w)” and shows “low”.\n- RIGHT/BOTTOM: show the exact results “low”, “low e r”, “low e s t”.\n- Add the exact takeaway “统计 → 合并 → 更新”.\n\nLABELS: Use only the exact words, symbols, and phrases specified above. Do not add frequencies, IDs, dates, model names, or explanatory paragraphs.\n\nSTYLE: Friendly hand-drawn flowchart, arrows must clearly show the order of merging, colored highlights for the merged pair, no realistic people, no gradients, no unrelated decoration.\n\nAll visible text must be Chinese except the exact BPE terms and example words listed above.\n"
+    },
+    {
+      "title": "real tokenizer output",
+      "filename": "03-infographic-real-tokenizer.png",
+      "prompt": "Single-page hand-drawn educational infographic, square 1:1 composition, warm cream paper background, dark navy ink, muted blue, mint, lavender, and coral blocks, generous whitespace.\n\nTITLE: “真实 tokenizer 怎么切？”\n\nZONES:\n- TOP: the exact Chinese title “真实 tokenizer 怎么切？”.\n- MIDDLE-LEFT: show the exact input sentence “请用 Python 写一个 Transformer，参数量 7B。”\n- MIDDLE: show a row labeled “token 显示形式” with the exact representative labels “è¯·”, “ĠPython”, “ĠTransformer”, “7”, “B”. Add the exact short note “byte-level 显示”.\n- MIDDLE-RIGHT: show a separate row labeled “token ID” with the exact values “2788”, “15255”, “105668”, “25”, “36”.\n- BOTTOM: show the exact statement “这句话：14 个 token”.\n- Add a small note with exact text “Ġ = 前导空格”.\n\nLABELS: All visible numbers and terms must match the specified values. No extra token IDs, dates, model names, or invented output.\n\nSTYLE: Technical but friendly comparison infographic, use arrows to distinguish display form from ID, keep labels large and readable, no realistic people, no gradients, no dense paragraphs.\n\nAll visible text must be Chinese except the exact English technical terms, byte-level fragments, and numbers listed above.\n"
+    },
+    {
+      "title": "token to vector",
+      "filename": "04-flowchart-token-to-vector.png",
+      "prompt": "Single-page hand-drawn educational infographic, square 1:1 composition, warm cream paper background, dark navy ink, muted blue, mint, lavender, and coral blocks, generous whitespace.\n\nTITLE: “从文字到向量”\n\nZONES:\n- TOP: the exact Chinese title “从文字到向量”.\n- CENTER: one clean left-to-right pipeline with five large stages and arrows:\n  1. “文字”\n  2. “字节或初始片段”\n  3. “token”\n  4. “token ID”\n  5. “向量”\n- Under the pipeline, add the exact takeaway “下一篇：词嵌入”.\n- Use abstract blank colored blocks and a small grid for the final vector stage. Do not add equations or parameter counts.\n\nLABELS: Use only the exact Chinese phrases and technical terms listed above. No extra numbers, dates, model names, or invented labels.\n\nSTYLE: Calm hand-drawn educational flowchart, clear directional arrows, visual continuity from text blocks to a coordinate grid, no realistic people, no gradients, no dense paragraphs.\n\nAll visible text must be Chinese except the exact technical terms “token” and “token ID”.\n"
+    }
+  ]
+}

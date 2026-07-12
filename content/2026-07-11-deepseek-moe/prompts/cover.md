@@ -24,4 +24,4 @@ ATMOSPHERE: Sophisticated, tech, elegant. Feels like a premium tech magazine cov
 
 COMPOSITION: The circular mechanism centered or slightly offset-left. 40% negative space on the right or bottom for title. No clutter.
 
-TITLE TEXT must be rendered accurately in Chinese: 为什么DeepSeek比GPT便宜10倍？
+TITLE TEXT must be rendered accurately in Chinese: DeepSeek便宜30倍的秘密：MoE混合专家入门

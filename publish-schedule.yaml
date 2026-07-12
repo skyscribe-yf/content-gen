@@ -1,17 +1,11 @@
 # 📅 错位发布调度配置
 
 # ── 平台发布窗口 ──
-# 每个平台的可发布时段，scheduler 只在这些时段安排发布
+# 公众号固定每 2 天于 08:00 发布；具体日期以 draft-status.yaml 的 slug 为准。
 
 windows:
   weixin:
-    - {day: mon, hour: 8}  # 热点系列穿插窗口
-    - {day: tue, hour: 8}
-    - {day: wed, hour: 8}  # 热点系列穿插窗口
-    - {day: fri, hour: 8}
-    - {day: sat, hour: 8}  # 热点系列穿插窗口
-    - {day: sun, hour: 8}
-    - {day: thu, hour: 8}  # 热点系列穿插窗口
+    - {day: any, hour: 8}
   xiaohongshu:
     - {day: tue, hour: 19}
     - {day: thu, hour: 19}

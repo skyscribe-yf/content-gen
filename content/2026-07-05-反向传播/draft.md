@@ -6,6 +6,7 @@ type: "原理篇"
 series: "深度学习基础"
 keywords: ["反向传播", "链式法则", "梯度", "ReLU"]
 cover: 00-cover.png
+wechatUrl: "https://mp.weixin.qq.com/s/oYj_qpwF4tZG84ImOn977g"
 scheduledPublish: "2026-07-06T21:00:00+08:00"
 ---
 

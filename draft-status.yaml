@@ -94,11 +94,11 @@ articles:
       cover: true
 
   # ═══════════════════════════════════════════
-  # 热点背后的数学 · DeepSeek 系列
+  # DeepSeek 技术解密系列
   # ═══════════════════════════════════════════
   - slug: "2026-07-11-deepseek-moe"
     title: "DeepSeek便宜30倍的秘密：MoE混合专家入门"
-    series: "热点背后的数学"
+    series: "DeepSeek 技术解密"
     status: published
     published_date: "2026-07-11"
     wechat_url: "https://mp.weixin.qq.com/s/QdkD0CR2fD-HfY77-gX3Ug"
@@ -109,9 +109,9 @@ articles:
       cover: true
 
   # D2-D5 planned
-  - slug: "2026-07-15-deepseek-mla"
+  - slug: "2026-07-21-deepseek-mla"
     title: "DeepSeek 的注意力为什么能省 90% 显存？"
-    series: "热点背后的数学"
+    series: "DeepSeek 技术解密"
     status: planned
     published_date: null
     wechat_url: null
@@ -121,9 +121,9 @@ articles:
       outline: false
       cover: false
 
-  - slug: "2026-07-18-deepseek-grpo"
-    title: "DeepSeek-R1 怎么学会"想清楚再说"？"
-    series: "热点背后的数学"
+  - slug: "2026-08-02-deepseek-grpo"
+    title: "DeepSeek-R1 怎么学会\"想清楚再说\"？"
+    series: "DeepSeek 技术解密"
     status: planned
     published_date: null
     wechat_url: null
@@ -133,9 +133,9 @@ articles:
       outline: false
       cover: false
 
-  - slug: "2026-07-20-deepseek-csa"
+  - slug: "2026-08-04-deepseek-csa"
     title: "DeepSeek-V4 为什么抛弃了 MLA？"
-    series: "热点背后的数学"
+    series: "DeepSeek 技术解密"
     status: planned
     published_date: null
     wechat_url: null
@@ -145,9 +145,9 @@ articles:
       outline: false
       cover: false
 
-  - slug: "2026-07-23-deepseek-fp8"
-    title: "FP8 训练：用"残缺数字"练出顶级模型"
-    series: "热点背后的数学"
+  - slug: "2026-07-29-deepseek-fp8"
+    title: "FP8 训练：用\"残缺数字\"练出顶级模型"
+    series: "DeepSeek 技术解密"
     status: planned
     published_date: null
     wechat_url: null
@@ -160,8 +160,21 @@ articles:
   # ═══════════════════════════════════════════
   # 大模型原理系列 (进行中)
   # ═══════════════════════════════════════════
-  - slug: "2026-07-14-BPE"
-    title: "BPE分词：AI为什么把一句话切成奇怪的碎片？"
+  - slug: "2026-07-13-BPE"
+    title: "BPE分词：AI为什么把文字切成碎片？"
+    series: "大模型原理"
+    status: ready
+    published_date: null
+    wechat_url: null
+    files:
+      weixin: true
+      draft: true
+      outline: true
+      cover: true
+    notes: "草稿已入公众号草稿箱 media_id=kOcXH4SytIYVIpYksTGfHgEcYXFrzJWEXphrxE2xMWVynAJ3y74TsUO4kIwse8wS (2026-07-12，新21:9封面)"
+
+  - slug: "2026-07-15-词嵌入"
+    title: "词嵌入是什么？5万个0怎么变成一串坐标"
     series: "大模型原理"
     status: drafting
     published_date: null
@@ -172,8 +185,8 @@ articles:
       outline: true
       cover: true
 
-  - slug: "2026-07-17-词嵌入"
-    title: "词嵌入入门：5万个0，怎么浓缩成一串坐标？"
+  - slug: "2026-07-17-位置编码"
+    title: "位置编码怎么工作？词序一错意思全变"
     series: "大模型原理"
     status: drafting
     published_date: null
@@ -184,8 +197,8 @@ articles:
       outline: true
       cover: true
 
-  - slug: "2026-07-19-位置编码"
-    title: "词序搞错意思全变！位置编码是怎么工作的"
+  - slug: "2026-07-19-注意力机制"
+    title: "注意力机制是什么？别再当数据库查询"
     series: "大模型原理"
     status: drafting
     published_date: null
@@ -193,22 +206,10 @@ articles:
     files:
       weixin: false
       draft: true
-      outline: true
-      cover: true
-
-  - slug: "2026-07-21-注意力机制"
-    title: "注意力机制是什么？AI为什么会选择性倾听"
-    series: "大模型原理"
-    status: planned
-    published_date: null
-    wechat_url: null
-    files:
-      weixin: false
-      draft: false
       outline: false
-      cover: false
+      cover: true
 
-  - slug: "2026-07-24-ffn"
+  - slug: "2026-07-23-ffn"
     title: "AI的知识到底存在哪里？FFN层拆解"
     series: "大模型原理"
     status: planned
@@ -220,7 +221,7 @@ articles:
       outline: false
       cover: false
 
-  - slug: "2026-07-26-归一化残差"
+  - slug: "2026-08-06-归一化残差"
     title: "61层网络为什么不崩？归一化与残差连接"
     series: "大模型原理"
     status: planned
@@ -232,7 +233,7 @@ articles:
       outline: false
       cover: false
 
-  - slug: "2026-07-28-transformer全景"
+  - slug: "2026-07-25-transformer全景"
     title: "Transformer是什么？把注意力叠出AI大脑"
     series: "大模型原理"
     status: planned
@@ -244,7 +245,7 @@ articles:
       outline: false
       cover: false
 
-  - slug: "2026-07-31-预训练"
+  - slug: "2026-07-27-预训练"
     title: "猜下一个字，AI怎么学会写文章？预训练全过程"
     series: "大模型原理"
     status: planned
@@ -256,7 +257,7 @@ articles:
       outline: false
       cover: false
 
-  - slug: "2026-08-02-rlhf"
+  - slug: "2026-07-31-rlhf"
     title: "AI怎么从工具变成助手？RLHF微调揭秘"
     series: "大模型原理"
     status: planned
@@ -268,7 +269,7 @@ articles:
       outline: false
       cover: false
 
-  - slug: "2026-08-04-推理加速"
+  - slug: "2026-08-08-推理加速"
     title: "AI回答为什么这么慢？推理与采样加速"
     series: "大模型原理"
     status: planned
@@ -285,7 +286,7 @@ articles:
   # ═══════════════════════════════════════════
   - slug: "2026-07-04-ai-memory-crash"
     title: "为什么AI上下文越长越慢？两道数学硬墙一次讲透"
-    series: "单篇"
+    series: "DeepSeek 技术解密"
     status: published
     published_date: "2026-07-04"
     wechat_url: "https://mp.weixin.qq.com/s/PLVRS0TTHXHDve1Z3r6M7Q"
@@ -299,16 +300,17 @@ articles:
 # Summary — auto-generated; update manually or via script
 # ═══════════════════════════════════════════
 summary:
-  total: 21
+  total: 23
   by_status:
     published: 9
     scheduled: 0
     ready: 0
-    drafting: 3
-    planned: 9
+    drafting: 4
+    planned: 10
   drafting_queue:
-    - "2026-07-14-BPE"
-    - "2026-07-17-词嵌入"
-    - "2026-07-19-位置编码"
+    - "2026-07-13-BPE"
+    - "2026-07-15-词嵌入"
+    - "2026-07-17-位置编码"
+    - "2026-07-19-注意力机制"
   ready_queue: []
-  next_publish_date: "2026-07-14"
+  next_publish_date: "2026-07-13"

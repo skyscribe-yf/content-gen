@@ -1,0 +1,14 @@
+{
+  "series_title": "注意力机制封面图",
+  "output_dir": "content/2026-07-19-注意力机制",
+  "size": "21:9",
+  "resolution": "1k",
+  "cards": [
+    {
+      "title": "00-cover-attention",
+      "filename": "00-cover.png",
+      "n": 1,
+      "prompt": "A cinematic 21:9 wide-format cover image for an AI/tech article. Dark background with deep navy-to-black gradient.\n\nCentral visual composition — a striking \"vs\" contrast between two halves:\n\nLEFT HALF (the misconception — database query, crossed out):\nA cold, rigid, mechanical server rack or database storage tower made of metallic blue-gray rectangles stacked in strict columns. The structure looks lifeless and binary. A large glowing red \"×\" or diagonal slash crosses through this entire left half. The database side feels like a mausoleum of data — dead, static, one-path.\n\nRIGHT HALF (the truth — attention mechanism as roundtable weighted aggregation):\nA warm, glowing round table seen from slightly above. Around it float 4-6 luminous nodes (representing tokens) connected by beams of light. The light beams have VISIBLY DIFFERENT THICKNESS AND BRIGHTNESS — some are thick and brilliant (weight 0.7), others thin and subtle (weight 0.2, 0.1). The connections form a web of varying intensity, creating a sense of fluid, continuous information flow. Warm amber/golden glow emanates from the connected nodes and spreads across the table surface. Small Chinese characters (猫, 追, 鼠) faintly visible inside or near the nodes as subtle labels.\n\nTransition between halves:\nA diagonal energy gradient from cold blue (left) to warm amber (right). The database side is visually \"losing\" — dimmer, with the red X dominating. The roundtable side is \"winning\" — brighter, more alive, drawing the eye.\n\nLighting and atmosphere:\nVolumetric light rays emanating from the right side nodes. Subtle particle/dust motes floating in the warm light. The red X on the left side casts a faint red glow. Overall cinematic lighting with dramatic contrast between the cold and warm zones.\n\nTitle at bottom third, centered, spanning both halves:\n\"注意力机制是什么？\" in large bold white Chinese characters. \"别再当数据库查询\" below in slightly smaller size, with \"数据库查询\" in a subtle struck-through or dimmed style.\n\nStyle reference: High-end tech editorial illustration, like MIT Technology Review or Nature cover art. Clean, sophisticated, no cartoonish elements. No realistic human faces. No English text. No LaTeX or formulas."
+    }
+  ]
+}

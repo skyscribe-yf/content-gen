@@ -1,7 +1,7 @@
 ---
 title: "Softmax为什么不直接取最大值？"
 author: "数解AI"
-digest: "Softmax用指数归一化把分数变成概率，直接取最大值不可导模型学不了——配交叉熵梯度简化为p−y，和sigmoid+交叉熵同一套链式法则魔法。"
+digest: "Softmax为什么不直接取最大值？指数归一化变概率，配交叉熵梯度才传得动。"
 type: "原理篇"
 series: "深度学习基础"
 keywords: ["Softmax", "概率", "交叉熵", "梯度"]

@@ -399,7 +399,7 @@ async function prepareEditorPasteTarget(
         active.matches?.('#title, #author, #js_description') ||
         ((active.tagName === 'INPUT' || active.tagName === 'TEXTAREA') && !editor.contains(active))
       );
-      if (activeIsUnsafeInput) return false;
+      if (activeIsUnsafeInput && !${JSON.stringify(Boolean(options.clickEditor))}) return false;
       if (selectionInEditor || focusInEditor) return true;
 
       if (${JSON.stringify(Boolean(options.clickEditor))}) {

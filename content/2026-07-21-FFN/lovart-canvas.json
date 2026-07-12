@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "project_id": "oIPTx0Wfa8",
+  "project_name": "前馈网络怎么工作？注意力之后还要想一遍",
+  "project_url": "https://www.lovart.ai/canvas?projectId=oIPTx0Wfa8",
+  "jobs": {
+    "f11d07fe479ae86a94ee88373ed61176df25902b1d88d2e1be95755163d74c02": {
+      "status": "completed",
+      "source": "00-cover-ffn.md",
+      "prompt": "Cinematic 21:9 widescreen editorial illustration for a Chinese technical article about a Transformer feed-forward network. A single luminous token enters from the left into a quiet, private thinking room containing an abstract expansion chamber, a soft amber gate, and a narrowing projection corridor; it leaves to the right as a refined luminous token. In the distant background, a separate round table with faint connecting threads suggests earlier token-to-token conversation, while the foreground makes the solitary transformation unmistakable. Deep navy and charcoal space, restrained ivory architecture, electric cyan signals, one warm amber gate, high contrast cinematic lighting, clean negative space, premium scientific visual language, no people.\n\nAbsolutely no visible words, letters, equations, labels, numerals, dates, logos, watermarks, UI panels, or title text. Do not depict a brain. The image must communicate “after exchanging information, one token thinks independently” only through architecture, light, and flow.",
+      "aspect_ratio": "21:9",
+      "output": "/home/skyscribe/srcs/content-gen/content/2026-07-21-FFN/images/00-cover-ffn.png",
+      "submitted_at": "2026-07-12T22:12:28.615718+08:00"
+    },
+    "8e636c11e83ba72fb97e9ec8b626f1e4e73ef7a2e950889ebbf97f348bd33ef9": {
+      "status": "completed",
+      "source": "01-roundtable-thinking-room.md",
+      "prompt": "Square 1:1 educational editorial illustration, two clearly connected scenes in one frame. Upper half: several small glowing token spheres around a round table, fine cyan light threads running between every sphere, showing cross-token information exchange by attention. Lower half: the same spheres each inside a separate identical quiet thinking room, with no threads between rooms; each room contains a small abstract transformation device. A graceful downward transition arrow visually says “exchange first, transform independently after.” Dark navy background, ivory linework, cyan signals and one amber accent, crisp vector-like technical illustration, generous negative space.\n\nNo visible words, letters, equations, labels, numerals, dates, logos, watermarks, or UI text. Do not add people, brains, or a literal meeting scene.",
+      "aspect_ratio": "1:1",
+      "output": "/home/skyscribe/srcs/content-gen/content/2026-07-21-FFN/images/01-roundtable-thinking-room.png",
+      "submitted_at": "2026-07-12T21:42:18.508470+08:00"
+    },
+    "34a2e3ae146c5fcac043aade6c83c8324e5ee31389392af54352333ba8e43937": {
+      "status": "completed",
+      "source": "02-swiglu-pipeline.md",
+      "prompt": "Square 1:1 educational technical flow diagram of a SwiGLU feed-forward network, using visual structure rather than text. One compact glowing input vector enters from the left and splits into two parallel paths. The upper path widens into an expansion chamber and passes through a smooth amber activation wave, representing SiLU gate. The lower path widens into a matching expansion chamber, representing up projection. The two paths meet at a clearly drawn elementwise multiplication junction marked only by a multiplication symbol ×, forming a richer hidden vector; it then narrows through a projection corridor to one output vector. Show the expand → gate → project logic through changing widths and color, with the multiplication junction as the focal point. Dark navy background, ivory outlines, cyan vectors, warm amber gate, precise spacious infographic composition.\n\nNo other visible words, letters, equations, labels, numerals, dates, logos, watermarks, or UI text. The only permitted character is the central multiplication symbol ×.",
+      "aspect_ratio": "1:1",
+      "output": "/home/skyscribe/srcs/content-gen/content/2026-07-21-FFN/images/02-swiglu-pipeline.png",
+      "submitted_at": "2026-07-12T21:50:42.722096+08:00"
+    },
+    "4819111f576722a0f32f01df875ba78cef08a6a723d5deb3b46b4fac4748cf64": {
+      "status": "completed",
+      "source": "03-fixed-matrix-experiment.md",
+      "prompt": "Square 1:1 educational experiment diagram showing that a feed-forward network transforms each token independently. On the left, two stacked input token cards enter the same compact SwiGLU transformation machine. On the right, two stacked output token cards emerge on separate horizontal lanes. Add a small visual perturbation: the top input card receives a tiny amber offset arrow, and only the top output lane visibly changes; the lower lane remains identical before and after, indicated by an unchanged cyan outline and an equality symbol =. The shared machine is visibly reused for both lanes, but no line crosses from one lane to the other. Use exact visual logic from the deterministic matrix experiment, without inventing a second mechanism. Dark navy, ivory, cyan, and amber, clean scientific infographic, large empty margins.\n\nNo visible words, letters, numbers, matrices, equations, dates, logos, watermarks, or UI text. The only permitted character is the equality symbol = beside the unchanged lower output.",
+      "aspect_ratio": "1:1",
+      "output": "/home/skyscribe/srcs/content-gen/content/2026-07-21-FFN/images/03-fixed-matrix-experiment.png",
+      "submitted_at": "2026-07-12T21:51:30.778521+08:00"
+    },
+    "116338b25ded0cfce2f421ed554ebd4405ba92df9920927459e2ddd7a3e9ad8c": {
+      "status": "completed",
+      "source": "04-transformer-preview.md",
+      "prompt": "Square 1:1 technical editorial illustration bridging a dense feed-forward network to a mixture-of-experts feed-forward network. Left side: one token flows through one complete expansion, amber gate, and projection module. A central transition shows a small routing beacon selecting only a few of several identical expert modules on the right; selected experts glow cyan and amber, unselected experts remain dim. Their selected outputs merge back into one token stream. The expert modules must visibly use the same expand → gate → project shape as the dense module, making clear that MoE chooses among FFN experts rather than replacing FFN with an unrelated operation. Include at the far right a subtle outline of a Transformer block with a residual return arc and a normalization halo as a preview only. Dark navy background, ivory architecture, cyan data flow, amber selection accents, polished diagrammatic design.\n\nNo visible words, letters, equations, labels, numerals, dates, logos, watermarks, or UI text. No people or literal brains.",
+      "aspect_ratio": "1:1",
+      "output": "/home/skyscribe/srcs/content-gen/content/2026-07-21-FFN/images/04-transformer-preview.png"
+    },
+    "0ca465794257e05f764d5719eb884d7b0ca3591ffefe093dc0eae5817aa9a218": {
+      "status": "completed",
+      "source": "00-cover-ffn.md",
+      "prompt": "Cinematic 21:9 widescreen editorial illustration for a Chinese technical article about a Transformer feed-forward network. A single luminous token enters from the left into a quiet, private thinking room containing an abstract expansion chamber, a soft amber gate, and a narrowing projection corridor; it leaves to the right as a refined luminous token. In the distant background, a separate round table with faint connecting threads suggests earlier token-to-token conversation, while the foreground makes the solitary transformation unmistakable. Deep navy and charcoal space, restrained ivory architecture, electric cyan signals, one warm amber gate, high contrast cinematic lighting, clean negative space in the upper-left for the exact Chinese headline text “不交流，最费算力？”, premium scientific visual language, no people.\n\nDisplay only the exact Chinese headline text “不交流，最费算力？” in the reserved upper-left space; do not add any other visible words, letters, equations, labels, numerals, dates, logos, watermarks, UI panels, or title text. Do not depict a brain. The image must communicate “after exchanging information, one token thinks independently” through architecture, light, and flow.",
+      "aspect_ratio": "21:9",
+      "output": "/home/skyscribe/srcs/content-gen/content/2026-07-21-FFN/images/00-cover-ffn.png",
+      "submitted_at": "2026-07-13T05:56:31.590464+08:00"
+    }
+  },
+  "submissions": [
+    {
+      "date": "2026-07-12",
+      "fingerprint": "8e636c11e83ba72fb97e9ec8b626f1e4e73ef7a2e950889ebbf97f348bd33ef9"
+    },
+    {
+      "date": "2026-07-12",
+      "fingerprint": "34a2e3ae146c5fcac043aade6c83c8324e5ee31389392af54352333ba8e43937"
+    },
+    {
+      "date": "2026-07-12",
+      "fingerprint": "4819111f576722a0f32f01df875ba78cef08a6a723d5deb3b46b4fac4748cf64"
+    },
+    {
+      "date": "2026-07-12",
+      "fingerprint": "f11d07fe479ae86a94ee88373ed61176df25902b1d88d2e1be95755163d74c02"
+    },
+    {
+      "date": "2026-07-13",
+      "fingerprint": "0ca465794257e05f764d5719eb884d7b0ca3591ffefe093dc0eae5817aa9a218"
+    }
+  ]
+}

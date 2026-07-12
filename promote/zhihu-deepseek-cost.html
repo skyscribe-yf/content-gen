@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DeepSeek V4 为什么能卖这么便宜</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 16px; line-height: 1.8; color: #1a1a1a;
+  max-width: 720px; margin: 40px auto; padding: 0 20px;
+}
+h1 { font-size: 24px; font-weight: 700; margin: 32px 0 16px; }
+h2 { font-size: 20px; font-weight: 700; margin: 28px 0 12px;
+     padding-bottom: 6px; border-bottom: 1px solid #eee; }
+h3 { font-size: 17px; font-weight: 700; margin: 24px 0 10px; }
+blockquote {
+  margin: 16px 0; padding: 12px 16px;
+  background: #f6f8fa; border-left: 4px solid #1a6dd4;
+  border-radius: 0 4px 4px 0;
+}
+table { border-collapse: collapse; width: 100%; margin: 16px 0; font-size: 15px; }
+th, td { border: 1px solid #ddd; padding: 10px 14px; text-align: left; }
+th { background: #f4f6f8; font-weight: 600; }
+.cta {
+  background: #f0f7ff; border: 1px solid #b8d8ff;
+  padding: 16px 20px; border-radius: 8px; margin: 20px 0;
+}
+hr { border: none; border-top: 1px solid #eee; margin: 28px 0; }
+strong { font-weight: 700; }
+em { font-style: italic; color: #666; }
+</style>
+</head>
+<body>
+
+<h1>DeepSeek V4 为什么能卖这么便宜：大模型的成本到底花在哪？</h1>
+
+<p><strong>大模型 API 的价格差距，不是"谁补贴多"——而是"谁少算了多少"。</strong></p>
+
+<p>我拿自己写代码时的真实 token 账单拆开算了一遍：DeepSeek-V4 Pro 每 1M 总 token 约 ¥0.20，GPT-5.6 Sol 约 ¥5.92，Claude Fable 5 约 ¥11.51。差距最大到 56 倍。</p>
+
+<p>这 56 倍不是靠亏本换来的。拆开看，便宜来自三层：缓存复用、稀疏计算、系统工程。下面逐层拆。</p>
+
+<hr>
+
+<h2>一、先算一笔真实账</h2>
+
+<p>很多人比价格只看"输入 ¥3/百万 token，输出 ¥6/百万 token"——这是标价，不是你实际付的钱。</p>
+
+<p>我写代码时的真实 token 结构：每 1M 总 token 中，99.5% 是输入，0.5% 是输出；输入里 95% 命中缓存，5% 是新写的需求。</p>
+
+<p>为什么 95% 能命中缓存？因为代码助手场景下，系统提示词、仓库目录、团队规则、相关文件——这些每轮都带，但内容几乎不变。第一轮写入缓存，后面每轮直接命中。</p>
+
+<p>成本公式：</p>
+<blockquote><p><strong>成本 = 0.995 ×（0.95 × 缓存命中价 + 0.05 × 普通输入价）+ 0.005 × 输出价</strong></p></blockquote>
+
+<p>2026 年 7 月 11 日核验的官方价格（单位：每百万 token）：</p>
+<table>
+<thead><tr><th>模型</th><th>普通输入</th><th>缓存命中输入</th><th>输出</th></tr></thead>
+<tbody>
+<tr><td>DeepSeek-V4 Pro</td><td>¥3.00</td><td>¥0.025</td><td>¥6.00</td></tr>
+<tr><td>GLM-5.2</td><td>¥8.00</td><td>¥2.00</td><td>¥28.00</td></tr>
+<tr><td>GPT-5.6 Sol</td><td>¥33.99</td><td>¥3.40</td><td>¥203.97</td></tr>
+<tr><td>Claude Fable 5</td><td>¥67.99</td><td>¥6.80</td><td>¥339.95</td></tr>
+</tbody>
+</table>
+
+<p>代入公式：</p>
+<table>
+<thead><tr><th>模型</th><th>每 1M 总 token 实际成本</th><th>相对 DeepSeek</th></tr></thead>
+<tbody>
+<tr><td>DeepSeek-V4 Pro</td><td><strong>¥0.203</strong></td><td>1 倍</td></tr>
+<tr><td>GLM-5.2</td><td>¥2.429</td><td>12 倍</td></tr>
+<tr><td>GPT-5.6 Sol</td><td>¥5.924</td><td>29 倍</td></tr>
+<tr><td>Claude Fable 5</td><td>¥11.509</td><td>57 倍</td></tr>
+</tbody>
+</table>
+
+<p><strong>标价差 10 倍，实际账单差 50 倍。</strong> 差距被放大的核心原因：缓存命中价差。DeepSeek 缓存命中 ¥0.025，Claude 是 ¥6.80——差 272 倍。而 95% 的输入都走缓存。</p>
+
+<p>所以第一个答案：<strong>DeepSeek 便宜的第一大原因不是模型架构，是缓存定价策略。</strong> 但缓存谁都能做，为什么 DeepSeek 敢定 ¥0.025？这就得看第二层。</p>
+
+<hr>
+
+<h2>二、稀疏计算：256 个专家只请 8 个干活</h2>
+
+<p>传统稠密模型像全科会诊——一个 token 进来，所有参数都参与计算。参数越多，每个 token 的计算量越大。</p>
+
+<p>MoE（混合专家）像分诊台：先看当前 token 需要什么，再决定请哪些专家处理。DeepSeek-V3 有 256 个路由专家，每个 token 只选 8 个，另有 1 个共享专家所有 token 都经过。</p>
+
+<p><strong>打个比方：一家医院有 256 个科室。传统模式是每个病人都要 256 个科室全看一遍；MoE 模式是分诊台根据症状只挂 8 个号。</strong> 病人还是能得到对症的治疗，但 248 个科室这轮不用开灯。</p>
+
+<p>专家前馈分支的计算量大致是全量执行的 <strong>8/256 = 1/32</strong>。这是 MoE 最核心的省算力来源。</p>
+
+<p>但注意：这不是整个模型端到端快 32 倍。注意力层、路由器、专家间通信、内存访问都还在。实际吞吐提升取决于硬件和服务系统能否把额外开销压下去。</p>
+
+<p>路由器怎么选人？三步：<strong>打分 → 选人 → 合并答案</strong>。</p>
+<blockquote><p><strong>sᵢ(x) = router(x)ᵢ</strong> （为每个专家打分）<br><strong>y = Σᵢ∈Top-k wᵢ(x) · Expertᵢ(x)</strong> （按权重合并选中专家的输出）</p></blockquote>
+
+<p>还有一个关键问题：会不会所有 token 都挤到同一个专家？DeepSeek-V3 用的是无辅助损失的负载均衡——不靠惩罚项硬推，而是动态调整偏置：忙的专家降低入选概率，闲的专家提高入选概率。像分诊台根据排队长度调整导流，而不是对病人收拥堵税。</p>
+
+<hr>
+
+<h2>三、系统工程：理论省算力 ≠ 实际低账单</h2>
+
+<p>MoE 负责"谁干活"，但稀疏计算变成低账单，还差三道工程关：</p>
+
+<p><strong>1. 低精度计算。</strong> FP8 训练和推理把每个数值从 16 bit 压到 8 bit，显存和带宽直接减半。DeepSeek-V4 是最早全量采用 FP8 的大模型之一。</p>
+
+<p><strong>2. 高效通信。</strong> 256 个专家分布在不同 GPU 上，token 要发过去、结果要收回来。通信延迟如果压不住，省下的计算全被等网络吃掉。DeepSeek 的方案是让每个 GPU 负责多个专家，减少跨设备通信次数。</p>
+
+<p><strong>3. 批处理与服务调度。</strong> 同一时刻不同用户的不同 token 可能需要不同专家。调度器要把"去同一个专家的 token"攒成一批一起算，避免专家空转。这叫专家并行（expert parallelism），是 MoE 服务最复杂的工程问题。</p>
+
+<p>所以完整的公式是：</p>
+<blockquote><p><strong>低成本 API = 缓存复用 + 稀疏计算 + 低精度计算 + 高效通信与服务</strong></p></blockquote>
+
+<p>四把钥匙，缺一把都锁打不开。</p>
+
+<hr>
+
+<h2>四、大模型的成本到底花在哪？</h2>
+
+<p>回到问题本身。训练一个大模型的成本主要花在：</p>
+<table>
+<thead><tr><th>成本项</th><th>占比（大致）</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>GPU 算力</td><td>60-70%</td><td>数千张 H100 跑几个月</td></tr>
+<tr><td>数据</td><td>10-15%</td><td>清洗、标注、去重</td></tr>
+<tr><td>人力</td><td>10-15%</td><td>研究员、工程师、基础设施</td></tr>
+<tr><td>电力与冷却</td><td>5-10%</td><td>数据中心运营</td></tr>
+</tbody>
+</table>
+
+<p>但<strong>训练成本是沉没成本，API 定价看的是推理成本</strong>——每生成一个 token 要花多少算力、带宽和电费。</p>
+
+<p>推理成本的核心公式：</p>
+<blockquote><p><strong>推理成本/token ∝ 激活参数量 × 精度位数 × 通信开销</strong></p></blockquote>
+
+<p>MoE 降低了第一项（只激活 8/256 专家），FP8 降低了第二项（8 bit 替代 16 bit），工程优化降低了第三项。三层叠加，才是 DeepSeek 敢定 ¥0.025 缓存命中价的底气。</p>
+
+<hr>
+
+<h2>五、一句话总结</h2>
+
+<p>DeepSeek 便宜不是单点突破，是四层叠加：缓存复用压低重复输入成本（95% 命中时账单差 50 倍），MoE 稀疏路由只激活 1/32 专家，FP8 减半精度开销，工程调度把理论优势变成实际吞吐。缺任何一层，价格都做不到现在的水平。</p>
+
+<div class="cta">
+<p>📖 <strong>这篇文章的完整版</strong>（含 4 张原创技术图解：分诊台类比、路由器选人流程、偏置调节机制、MoE 数据流全图 + DeepSeek 技术解密系列 6 篇完整导航 + MLA/GRPO/FP8 后续拆解）发在我的公众号「数解AI」上，回复"MoE"可以直接收到这篇。</p>
+
+<p>系列导航：AI 上下文为什么越长越慢 → <strong>MoE 混合专家（本篇）</strong> → MLA 多头潜在注意力 → GRPO → 注意力进化 → FP8 训练。六篇一条线，从"为什么贵"到"怎么省"，全部拆开讲。</p>
+
+<p><strong>关注「数解AI」，数学拆 AI，不堆公式不讲废话。</strong></p>
+</div>
+
+<hr>
+
+<p><em>如果这篇回答帮你理清了大模型的成本结构，点个赞同让更多人看到。评论区聊聊：你觉得 MoE 稀疏计算和缓存复用，哪个对降价的贡献更大？</em></p>
+
+</body>
+</html>

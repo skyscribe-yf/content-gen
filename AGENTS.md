@@ -29,14 +29,15 @@ Skill 位置：[`.agents/skills/grill-me/SKILL.md`](.agents/skills/grill-me/SKIL
 
 详见 [`docs/image-generation.md`](docs/image-generation.md)。
 
-优先级：**apimart.ai**（唯一后端）。默认 `size=1:1, resolution=1k`，升级前须确认费用。
+优先级：**apimart.ai**（唯一后端）。默认 `size=1:1, resolution=1k`，升级前须确认费用。**封面图强制 21:9 电影宽幅**（详见 `docs/image-generation.md` 封面图规则）。
 
 **规则**：
 1. 生成直接走 apimart.ai，用 `scripts/apimart_client.py --config` 批量 JSON 提交所有图片。
 2. **生成前核查**：每个 prompt 中的文字、数字、年份必须和正文一致。逐项检查：标题文本、数据数字、年份标注、技术术语——任一项不匹配则先修正 prompt。
-3. 批量提交后若脚本中途退出，用 `scripts/poll_tasks.py OUTPUT_DIR TASK_ID:filename...` 轮询已提交的 task，**禁止重新提交同内容 task**。
-4. prompt 文件（`prompts/NN-*.md`）是生成源，`scripts/apimart_client.py --config` 的 JSON 中 prompt 内容必须和 prompt 文件一致。禁止跳过 prompt 文件直接用临时内联 prompt。
-5. 生成完成后用 `wc -c` 比对文件和 `duplicates/` 中重复 task 的输出，保留更高质量的版本。
+3. **质量复核与重生成**：图片生成完成后，AI 必须先检查构图、文字、数据和与正文的一致性。如果 AI 判断图片质量不理想，**禁止自行重新生成**；应先使用当前版本提交到公众号草稿箱，由作者预览后决定是否重新生成。只有作者明确同意后，才可更新 prompt 并提交新的生成任务。
+4. 批量提交后若脚本中途退出，用 `scripts/poll_tasks.py OUTPUT_DIR TASK_ID:filename...` 轮询已提交的 task，**禁止重新提交同内容 task**。
+5. prompt 文件（`prompts/NN-*.md`）是生成源，`scripts/apimart_client.py --config` 的 JSON 中 prompt 内容必须和 prompt 文件一致。禁止跳过 prompt 文件直接用临时内联 prompt。
+6. 生成完成后用 `wc -c` 比对文件和 `duplicates/` 中重复 task 的输出，保留更高质量的版本。
 
 ## 多平台内容一致性
 
@@ -53,6 +54,12 @@ Skill 位置：[`.agents/skills/grill-me/SKILL.md`](.agents/skills/grill-me/SKIL
 详见 [`docs/xiaohongshu-copy.md`](docs/xiaohongshu-copy.md)。
 
 规则：文案写入独立 `copy.txt`，禁止嵌入 `cards.json` 或内联输出。纯文本、≤1000字、末尾带话题标签。
+
+## 知乎推广回答
+
+详见 [`docs/zhihu-promotion.md`](docs/zhihu-promotion.md)。
+
+核心规则：知乎是富文本编辑器，**不支持 Markdown**。输出两份文件：`.md`（内容源） + `.html`（浏览器打开后 Ctrl+A/Ctrl+C 粘贴到知乎）。公式用 Unicode + 加粗，禁用 LaTeX。回答必须有独立内容价值 + 至少 3 处公众号引流钩子。
 
 ## 小红书内容策略
 
@@ -78,6 +85,40 @@ title: "梯度下降：蒙着眼下山"
 wechatUrl: "https://mp.weixin.qq.com/s/abc123"
 ---
 ```
+
+## 公众号菜单维护
+
+**规则**：菜单分两类区域——「热门文章」手动替换爆款，「全部合集」只管合集页（永久不变）。
+
+### 菜单结构
+
+```
+🔥 热门文章（子菜单≤5）   📚 全部合集（子菜单不限）   📋 关于
+├─ 篇1（最优）            ├─ 合集A → 合集页URL        ├─ 联系作者
+├─ 篇2                    ├─ 合集B → 合集页URL
+├─ ...                    └─ （新系列就加一个子菜单）
+└─ 篇5（最弱）
+```
+
+### 热门文章（≤5篇，手动管理）
+
+- 从所有已发表文章中选阅读量最高的 5 篇
+- 新文章发布后若数据表现好，替换第 5 篇
+- 被替换的文章通过合集页和文末交叉链接仍可访问
+
+### 全部合集（合集页，一次配好永远不动）
+
+- 每个系列建立一个微信合集（后台 → 内容管理 → 合集）
+- 子菜单「跳转网页」可直接输入合集页 URL（`mp.weixin.qq.com/mp/appmsgalbum?...`），个人订阅号也支持
+- 合集自动收纳该系列所有文章，菜单地址**永久不变**
+- 发新文章时勾选对应合集即可，菜单无需任何修改
+- 新系列出现时，才需要在「全部合集」下新增一个子菜单
+
+### 发布后执行
+
+1. 第一时间把 `wechatUrl` 记入该文章 frontmatter
+2. 发文章时勾选对应合集（若忘记勾选，去合集管理添加）
+3. 若文章数据突出（阅读量进前 5），更新「热门文章」菜单
 
 ## 文章标题
 
@@ -139,7 +180,7 @@ wechatUrl: "https://mp.weixin.qq.com/s/abc123"
 
 详见 [`docs/wechat-data-insights.md`](docs/wechat-data-insights.md)。
 
-基于 2026-07-09 最新数据，记录了推广效果、标题表现、系列回读、留言互动的真实数据，以及从中提炼的执行规则。后续 AI 在决策内容策略时应首先参考此文的数据结论。
+基于 2026-07-12 最新复盘：内容分析近 30 天 **653 阅读人**（含 MoE）；用户日结仍截至 07/10（**141** 关注，后台统计延迟 + 采集早于 9:00）；首页实时总用户 **144**。文章表现：Adam 教程型标题自然冲到第 3（109 人）；MoE 首日仅 14 人（07/09–11 连发 + 周六 + 无推），但分享/留言率不低，宜二次分发后再判。流量：推荐 **31.5%**、推广（聊天+朋友圈）**35.1%**、主页 **26.5%**、搜一搜 **1.5%**（仍 <2%）。执行要点：恢复 ≥2 天间隔、发布日轻推、摘要 2–3 关键词、标题优先教程/痛点/反常识公式。账号日新增关注不能直接归因到单篇文章；后续 AI 决策内容策略时应首先参考此文。
 
 ## 公众号数据审计 Skill
 

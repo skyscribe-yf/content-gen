@@ -30,6 +30,15 @@ test("browser article body operations target the body ProseMirror, not the title
   assert.doesNotMatch(articleScript, /clickElement\(session, '\\.ProseMirror'\)/);
 });
 
+test("browser article recovers body focus after filling the author field", () => {
+  const focusRecovery = articleScript.indexOf('if (activeIsUnsafeInput && !${JSON.stringify(Boolean(options.clickEditor))}) return false;');
+  const focusAttempt = articleScript.indexOf('if (${JSON.stringify(Boolean(options.clickEditor))}) {', focusRecovery);
+
+  assert.notEqual(focusRecovery, -1);
+  assert.notEqual(focusAttempt, -1);
+  assert.ok(focusRecovery < focusAttempt);
+});
+
 test("browser article reuses the selected account Chrome profile before launching", () => {
   assert.match(articleScript, /await findExistingChromeDebugPort\(profileDir\)/);
 });

@@ -1,0 +1,17 @@
+{
+  "output_dir": "content/2026-07-17-位置编码",
+  "size": "1:1",
+  "resolution": "1k",
+  "cards": [
+    {
+      "title": "RoPE 2D rotation",
+      "filename": "02-rope-2d-rotation.png",
+      "prompt": "Square infographic for a Chinese AI education article about RoPE (Rotary Position Embedding).\n\nMAIN VISUAL: A 2D coordinate plane with x and y axes. Show a single vector q = (1, 0) as an arrow starting from the origin and pointing right along the x-axis at Position 0. At Position 1 (further right on the diagram), the same vector is rotated 60° counterclockwise — shown as a second arrow of the same length, labeled \"q₁\". At Position 2 (even further right), it's rotated 120° — a third arrow labeled \"q₂\". Draw a dashed arc between the q₁ and q₂ arrows and label the angle \"θ\" to show the relative rotation is constant. Small circular markers at the arrow tips.\n\nVISIBLE TEXT: Chinese labels only — \"位置 0\" at the first arrow, \"位置 1\" at the second, \"位置 2\" at the third. Angle label \"θ\" between q₁ and q₂. A small formula block: \"相对旋转 = (j−i)θ\" near the bottom. No English text, no title, no model names, no dates.\n\nSTYLE: Clean editorial science infographic, flat-vector style, light warm background, dark ink lines for axes and arrows, muted blue for the rotation arcs and angle label. Simple, precise, friendly. No realistic people, no logos, no gradients, no dense content.\n\nAll visible text must be Chinese.\n"
+    },
+    {
+      "title": "RoPE theta comparison",
+      "filename": "03-rope-theta-comparison.png",
+      "prompt": "Square infographic for a Chinese AI education article comparing rope_theta values across three LLMs.\n\nMAIN VISUAL: Three columns, one per model. Each column shows a circular dial/knob with a rotating pointer, representing rope_theta rotation speed. \n\nLeft column (DeepSeek-V3): Fast-spinning dial, pointer at moderate angle. Label below: \"rope_theta = 10,000\". Small annotation: \"128K 上下文\".\n\nCenter column (LLaMA-3-70B): Very slow-spinning dial, pointer barely moved. Label below: \"rope_theta = 500,000\". Small annotation: \"8K 上下文\".\n\nRight column (Qwen3-235B): Slowest dial, pointer at a tiny angle. Label below: \"rope_theta = 1,000,000\". Small annotation: \"128K + YaRN\".\n\nBelow each dial, a simple horizontal bar showing the context range — thin line for 8K, wide bar for 128K. The visual metaphor: faster rotation = shorter range but better nearby resolution; slower rotation = longer range but blurry nearby.\n\nVISIBLE TEXT: Chinese labels only — model names as shown above, values exactly as shown, a small label \"旋转速度\" above the three columns. No English text, no title, no dates.\n\nSTYLE: Clean editorial science infographic, flat-vector style, light warm background, dark ink lines, muted blue and coral accents. Three-column layout with generous whitespace between columns. Simple, precise, friendly. No realistic people, no logos, no gradients, no dense content.\n\nAll visible text must be Chinese and values must exactly match the numbers above: 10,000 / 500,000 / 1,000,000.\n"
+    }
+  ]
+}

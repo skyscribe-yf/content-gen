@@ -2,7 +2,7 @@
 title: "损失函数：打分标准决定学习方向"
 author: "数解AI"
 wechatUrl: "https://mp.weixin.qq.com/s/zIWqYqYVzEaF1e8P6fcTfw"
-digest: "MSE管回归，交叉熵管分类——用错损失函数，模型就像拿尺子量温度，越努力越离谱。"
+digest: "损失函数怎么选？MSE管回归、交叉熵管分类；用错像拿尺子量温度，模型越学越离谱。"
 type: "原理篇"
 series: "深度学习基础"
 ---

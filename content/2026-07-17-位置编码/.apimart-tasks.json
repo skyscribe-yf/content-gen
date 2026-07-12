@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "tasks": [
+    {
+      "fingerprint": "508f4d0bbe28801b179fd7437225cf6aaaebe3d542554c7727341fdab5f44bcb",
+      "task_id": "task_01KX5093XW1Y0JC1WCR4NC8HZ1",
+      "status": "completed",
+      "filename": "00-cover.png",
+      "size": "21:9",
+      "resolution": "1k",
+      "n": 1,
+      "submitted_at": "2026-07-10T03:14:00Z",
+      "updated_at": "2026-07-10T03:15:11Z",
+      "saved_paths": [
+        "content/2026-07-17-位置编码/00-cover.png"
+      ]
+    },
+    {
+      "fingerprint": "a124968b734bb326d50a05e83619dec2d5f4ee2dd97c9fc98abc68805741666e",
+      "task_id": "task_01KX5R318A05E9M3CMZJ26VET3",
+      "status": "completed",
+      "filename": "02-rope-2d-rotation.png",
+      "size": "1:1",
+      "resolution": "1k",
+      "n": 1,
+      "submitted_at": "2026-07-10T10:10:07Z",
+      "updated_at": "2026-07-10T10:11:24Z",
+      "saved_paths": [
+        "content/2026-07-17-位置编码/02-rope-2d-rotation.png"
+      ]
+    },
+    {
+      "fingerprint": "690180de884d6204833b67d55d4ee9d146e52663c843d5ba29eabd57b7c67cc6",
+      "task_id": "task_01KX5R5E8NX8WFSVYT6MKDEPR2",
+      "status": "completed",
+      "filename": "03-rope-theta-comparison.png",
+      "size": "1:1",
+      "resolution": "1k",
+      "n": 1,
+      "submitted_at": "2026-07-10T10:11:26Z",
+      "updated_at": "2026-07-10T10:12:47Z",
+      "saved_paths": [
+        "content/2026-07-17-位置编码/03-rope-theta-comparison.png"
+      ]
+    },
+    {
+      "fingerprint": "b3fefc68b85cf61b668717bddf3236726fa5963185a57c5f3db10b3baea52ee2",
+      "task_id": "task_01KX5S0KEY6AEW0Q9YFQB4TE00",
+      "status": "completed",
+      "filename": "01-position-vector.png",
+      "size": "1:1",
+      "resolution": "1k",
+      "n": 1,
+      "submitted_at": "2026-07-10T10:26:16Z",
+      "updated_at": "2026-07-10T10:27:26Z",
+      "saved_paths": [
+        "content/2026-07-17-位置编码/01-position-vector.png"
+      ]
+    },
+    {
+      "fingerprint": "2b2414b7c0e390809f8a9f0bf0d1fa147862abfd58002346320db58636249a13",
+      "task_id": "task_01KX5S2SY19ATDPNAGP5C9DQGQ",
+      "status": "completed",
+      "filename": "04-sinusoidal-encoding.png",
+      "size": "1:1",
+      "resolution": "1k",
+      "n": 1,
+      "submitted_at": "2026-07-10T10:27:28Z",
+      "updated_at": "2026-07-10T10:28:39Z",
+      "saved_paths": [
+        "content/2026-07-17-位置编码/04-sinusoidal-encoding.png"
+      ]
+    }
+  ]
+}

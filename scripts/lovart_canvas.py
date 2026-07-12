@@ -20,7 +20,7 @@ import shutil
 import socket
 import subprocess
 import time
-from urllib.parse import urlencode
+from urllib.parse import urlencode, urlparse, urlsplit
 
 import requests
 import websockets
@@ -64,7 +64,7 @@ class ArticlePlan:
 MANIFEST_NAME = "lovart-canvas.json"
 MANIFEST_VERSION = 1
 DAILY_LIMIT = 8
-REUSABLE_STATUSES = {"submitted", "running", "completed"}
+REUSABLE_STATUSES = {"submitted", "running", "completed", "deferred"}
 
 
 @dataclass
@@ -196,17 +196,49 @@ DEFAULT_PROFILE = Path.home() / ".local" / "share" / "content-gen" / "lovart-chr
 LOVART_CANVAS_URL = "https://www.lovart.ai/canvas"
 
 
-def chrome_command(chrome: str, profile: Path, port: int, initial_url: str) -> list[str]:
+def proxy_server_from_environment(environment: dict[str, str] | None = None) -> str | None:
+    """Return a credential-free proxy endpoint from the existing local environment."""
+
+    source = environment if environment is not None else os.environ
+    raw = next(
+        (source.get(name, "") for name in ("https_proxy", "HTTPS_PROXY", "http_proxy", "HTTP_PROXY", "all_proxy", "ALL_PROXY") if source.get(name)),
+        "",
+    )
+    if not raw:
+        return None
+    parsed = urlsplit(raw if "://" in raw else f"http://{raw}")
+    if not parsed.hostname or parsed.scheme.lower() not in {"http", "https", "socks4", "socks5"}:
+        return None
+    host = parsed.hostname if ":" not in parsed.hostname else f"[{parsed.hostname}]"
+    port = f":{parsed.port}" if parsed.port else ""
+    return f"{parsed.scheme.lower()}://{host}{port}"
+
+
+def chrome_command(
+    chrome: str, profile: Path, port: int, initial_url: str, proxy_server: str | None = None
+) -> list[str]:
     """Build Chrome's visible, isolated CDP launch command."""
 
-    return [
+    command = [
         chrome,
         f"--remote-debugging-port={port}",
         f"--user-data-dir={profile}",
         "--no-first-run",
         "--no-default-browser-check",
-        initial_url,
     ]
+    if proxy_server:
+        command.append(f"--proxy-server={proxy_server}")
+    return [*command, initial_url]
+
+
+def chrome_launch_options() -> dict:
+    """Keep the visible login window alive after the invoking CLI exits."""
+
+    return {
+        "stdout": subprocess.DEVNULL,
+        "stderr": subprocess.DEVNULL,
+        "start_new_session": True,
+    }
 
 
 def find_chrome() -> str:
@@ -295,9 +327,8 @@ def launch_or_reuse_chrome(profile: Path, initial_url: str) -> ChromeConnection:
 
     port = allocate_port()
     process = subprocess.Popen(
-        chrome_command(find_chrome(), profile, port, initial_url),
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL,
+        chrome_command(find_chrome(), profile, port, initial_url, proxy_server_from_environment()),
+        **chrome_launch_options(),
     )
     deadline = time.monotonic() + 30
     while time.monotonic() < deadline:
@@ -373,6 +404,7 @@ async def configure_page_session(cdp: CdpClient, target_id: str, image_dir: Path
     session_id = attached["sessionId"]
     for domain in ("Page", "Runtime", "DOM"):
         await cdp.send(f"{domain}.enable", session_id=session_id)
+    await cdp.send("Page.bringToFront", session_id=session_id)
     await cdp.send(
         "Page.setDownloadBehavior",
         {"behavior": "allow", "downloadPath": str(image_dir.resolve())},
@@ -388,6 +420,25 @@ class LovartUiBlocked(RuntimeError):
         super().__init__(f"Lovart UI blocked while trying to {action}: {snapshot}")
         self.action = action
         self.snapshot = snapshot
+
+
+def is_generated_image_url(url: str) -> bool:
+    """Exclude known analytics beacons from Canvas image-result detection."""
+
+    host = urlparse(url).hostname or ""
+    return not any(
+        blocked in host
+        for blocked in ("bat.bing.com", "t.co", "twitter.com", "clarity.ms", "doubleclick.net")
+    )
+
+
+def artifact_download_url(image_url: str) -> str:
+    """Use Lovart's original artifact attachment instead of its 512 px preview."""
+
+    parsed = urlsplit(image_url)
+    if parsed.hostname == "a.lovart.ai" and parsed.path.startswith("/artifacts/generator/"):
+        return parsed._replace(query="", fragment="").geturl()
+    return image_url
 
 
 def _sanitize_snapshot(raw: object) -> str:
@@ -435,6 +486,48 @@ class CdpPage:
     async def navigate(self, url: str) -> None:
         await self._cdp.send("Page.navigate", {"url": url}, session_id=self._session_id)
 
+    async def click(self, selector: str | None = None, text: str | None = None) -> bool:
+        """Send a normal browser pointer click to a visible Canvas control."""
+
+        target = await self.evaluate(_CLICK_TARGET, {"selector": selector, "text": text})
+        if not isinstance(target, dict):
+            return False
+        x, y = target.get("x"), target.get("y")
+        if not isinstance(x, (int, float)) or not isinstance(y, (int, float)):
+            return False
+        for event_type in ("mousePressed", "mouseReleased"):
+            await self._cdp.send(
+                "Input.dispatchMouseEvent",
+                {"type": event_type, "x": x, "y": y, "button": "left", "clickCount": 1},
+                session_id=self._session_id,
+            )
+        return True
+
+    async def fill(self, selector: str, text: str) -> bool:
+        """Replace text through normal focused keyboard input."""
+
+        if not await self.click(selector=selector):
+            return False
+        for event_type, key, code, key_code, modifiers in (
+            ("rawKeyDown", "a", "KeyA", 65, 2),
+            ("keyUp", "a", "KeyA", 65, 2),
+            ("rawKeyDown", "Backspace", "Backspace", 8, 0),
+            ("keyUp", "Backspace", "Backspace", 8, 0),
+        ):
+            await self._cdp.send(
+                "Input.dispatchKeyEvent",
+                {
+                    "type": event_type,
+                    "key": key,
+                    "code": code,
+                    "windowsVirtualKeyCode": key_code,
+                    "modifiers": modifiers,
+                },
+                session_id=self._session_id,
+            )
+        await self._cdp.send("Input.insertText", {"text": text}, session_id=self._session_id)
+        return True
+
 
 async def open_canvas_page(cdp: CdpClient, url: str, image_dir: Path) -> CdpPage:
     """Open or reuse a Lovart Canvas tab and attach a CDP page session."""
@@ -473,6 +566,22 @@ _CLICK_ELEMENT = """
 }
 """
 
+_CLICK_TARGET = """
+({ selector, text }) => {
+  const visible = (el) => !!el && !!(el.offsetWidth || el.offsetHeight || el.getClientRects().length);
+  const candidates = selector
+    ? [...document.querySelectorAll(selector)]
+    : [...document.querySelectorAll('button,[role="button"],label,span')];
+  const element = candidates.find((el) => visible(el) && (!text || el.textContent.trim().toLowerCase() === text.toLowerCase()));
+  if (!element) return null;
+  const target = element.closest('button,[role="button"],.lo-menu-item') || element;
+  target.scrollIntoView({ block: 'center', inline: 'center' });
+  const rect = target.getBoundingClientRect();
+  if (!rect.width || !rect.height) return null;
+  return { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
+}
+"""
+
 _FILL_ELEMENT = """
 ({ selectors, text }) => {
   const visible = (el) => !!el && !!(el.offsetWidth || el.offsetHeight || el.getClientRects().length);
@@ -492,16 +601,79 @@ _FILL_ELEMENT = """
 }
 """
 
+_FIELD_CONTAINS = """
+({ selector, text }) => {
+  const element = document.querySelector(selector);
+  if (!element) return false;
+  const value = element instanceof HTMLInputElement || element instanceof HTMLTextAreaElement
+    ? element.value
+    : element.innerText || element.textContent || '';
+  return value.includes(text);
+}
+"""
+
+_SET_CUSTOM_DIMENSIONS = """
+({ width, height }) => {
+  const dialogs = [...document.querySelectorAll('[role="dialog"]')]
+    .filter((dialog) => !!(dialog.offsetWidth || dialog.offsetHeight || dialog.getClientRects().length));
+  const dialog = dialogs.find((item) => item.innerText.includes('Dimensions'));
+  const inputs = dialog ? [...dialog.querySelectorAll('input[inputmode="decimal"]')] : [];
+  if (inputs.length < 2) return false;
+  const set = (input, value) => {
+    Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set.call(input, String(value));
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+    input.dispatchEvent(new Event('change', { bubbles: true }));
+    input.dispatchEvent(new Event('blur', { bubbles: true }));
+  };
+  set(inputs[0], width);
+  set(inputs[1], height);
+  return inputs[0].value === String(width) && inputs[1].value === String(height);
+}
+"""
+
 _PAGE_SNAPSHOT = "() => document.body ? document.body.innerHTML : ''"
 _PAGE_URL = "() => location.href"
+_CONTROL_VISIBLE = """
+({ selector }) => {
+  const element = document.querySelector(selector);
+  return !!element && !!(element.offsetWidth || element.offsetHeight || element.getClientRects().length);
+}
+"""
+_CONTROL_ENABLED = """
+({ selector }) => {
+  const element = document.querySelector(selector);
+  return !!element && !!(element.offsetWidth || element.offsetHeight || element.getClientRects().length)
+    && !element.disabled && element.getAttribute('aria-disabled') !== 'true';
+}
+"""
+_MODEL_OPTION_SELECTED = """
+({ selector }) => {
+  const element = document.querySelector(selector);
+  if (!element || !(element.offsetWidth || element.offsetHeight || element.getClientRects().length)) return false;
+  return element.getAttribute('aria-selected') === 'true' || !!element.querySelector('.ml-auto svg, [data-state="checked"]');
+}
+"""
+_ACTIVE_GPT_IMAGE_2 = """
+() => !!document.querySelector("[data-testid='generator-model-button'] img[src*='gpt_image_1.svg']")
+"""
+_CANVAS_READY = """
+() => ({
+  rootLength: document.getElementById('root')?.innerHTML.length || 0,
+  hasLoginFrame: [...document.querySelectorAll('iframe')].some((frame) => frame.src.includes('/login'))
+})
+"""
 _IMAGE_STATE = """
 () => {
   const pageText = (document.body?.innerText || '').toLowerCase();
   const warning = ['insufficient', 'quota', 'credit', 'login', 'verification', 'verify', '验证码']
     .find((word) => pageText.includes(word)) || '';
   const urls = [...document.querySelectorAll('img[src]')]
-    .map((image) => image.currentSrc || image.src)
-    .filter((url) => url && !url.startsWith('data:'));
+    .map((image) => {
+      const rect = image.getBoundingClientRect();
+      return { url: image.currentSrc || image.src, width: rect.width, height: rect.height };
+    })
+    .filter((image) => image.url && !image.url.startsWith('data:') && image.width >= 64 && image.height >= 64)
+    .map((image) => image.url);
   return { warning, urls };
 }
 """
@@ -521,6 +693,36 @@ _CLICK_DOWNLOAD = """
 }
 """
 
+_DOWNLOAD_ARTIFACT = """
+({ imageUrl }) => {
+  const link = document.createElement('a');
+  link.href = imageUrl;
+  link.download = '';
+  link.style.display = 'none';
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  return true;
+}
+"""
+
+
+async def wait_for_canvas_ready(page, timeout_seconds: float = 30) -> None:
+    """Wait for Canvas controls instead of racing the initial React render."""
+
+    deadline = time.monotonic() + timeout_seconds
+    latest = {"rootLength": 0, "hasLoginFrame": False}
+    while time.monotonic() < deadline:
+        state = await page.evaluate(_CANVAS_READY)
+        if isinstance(state, dict):
+            latest = state
+            if state.get("hasLoginFrame"):
+                raise LovartUiBlocked("wait for Lovart login", "page state: login required")
+            if state.get("rootLength", 0) > 1000:
+                return
+        await asyncio.sleep(0.25)
+    raise LovartUiBlocked("wait for Canvas to load", f"page state: root length {latest.get('rootLength', 0)}")
+
 
 class LovartCanvasUi:
     """Drive only normal, visible Lovart Canvas controls through a CDP page."""
@@ -537,6 +739,14 @@ class LovartCanvasUi:
             return "page state: unavailable"
 
     async def _try_click(self, selector: str | None = None, text: str | None = None) -> bool:
+        trusted_click = getattr(self.page, "click", None)
+        if trusted_click is not None:
+            return bool(await trusted_click(selector=selector, text=text))
+        return bool(await self.page.evaluate(_CLICK_ELEMENT, {"selector": selector, "text": text}))
+
+    async def _try_dom_click(self, selector: str | None = None, text: str | None = None) -> bool:
+        """Use a component's normal DOM click when a pointer click did not open its popover."""
+
         return bool(await self.page.evaluate(_CLICK_ELEMENT, {"selector": selector, "text": text}))
 
     async def click_first(self, selectors: list[str], action: str, text: str | None = None) -> None:
@@ -556,13 +766,86 @@ class LovartCanvasUi:
                 return
         raise LovartUiBlocked(action, await self._snapshot())
 
+    async def _click_labels_when_available(
+        self, selectors: list[str], labels: list[str], action: str, timeout_seconds: float = 10
+    ) -> None:
+        """Click a control that appears immediately after opening a Canvas popover."""
+
+        deadline = time.monotonic() + timeout_seconds
+        while time.monotonic() < deadline:
+            for selector in selectors:
+                if await self._try_click(selector=selector):
+                    return
+            for label in labels:
+                if await self._try_click(text=label):
+                    return
+            await asyncio.sleep(0.2)
+        raise LovartUiBlocked(action, await self._snapshot())
+
     async def _fill(self, selectors: list[str], text: str, action: str) -> None:
+        trusted_fill = getattr(self.page, "fill", None)
+        if trusted_fill is not None:
+            for selector in selectors:
+                if await trusted_fill(selector, text) and await self.page.evaluate(
+                    _FIELD_CONTAINS, {"selector": selector, "text": text}
+                ):
+                    return
         if not await self.page.evaluate(_FILL_ELEMENT, {"selectors": selectors, "text": text}):
             raise LovartUiBlocked(action, await self._snapshot())
+        for selector in selectors:
+            if await self.page.evaluate(_FIELD_CONTAINS, {"selector": selector, "text": text}):
+                return
+        raise LovartUiBlocked(action, await self._snapshot())
+
+    async def _control_visible(self, selector: str) -> bool:
+        return bool(await self.page.evaluate(_CONTROL_VISIBLE, {"selector": selector}))
+
+    async def _wait_for_control(self, selector: str, timeout_seconds: float = 10) -> bool:
+        deadline = time.monotonic() + timeout_seconds
+        while time.monotonic() < deadline:
+            if await self._control_visible(selector):
+                return True
+            await asyncio.sleep(0.2)
+        return False
+
+    async def _wait_for_enabled_control(self, selector: str, timeout_seconds: float = 10) -> bool:
+        deadline = time.monotonic() + timeout_seconds
+        while time.monotonic() < deadline:
+            if await self.page.evaluate(_CONTROL_ENABLED, {"selector": selector}):
+                return True
+            await asyncio.sleep(0.2)
+        return False
+
+    async def _model_option_selected(self, selector: str) -> bool:
+        return bool(await self.page.evaluate(_MODEL_OPTION_SELECTED, {"selector": selector}))
+
+    async def _set_custom_dimensions(self, width: int, height: int) -> None:
+        if not await self.page.evaluate(_SET_CUSTOM_DIMENSIONS, {"width": width, "height": height}):
+            raise LovartUiBlocked("enter custom image dimensions", await self._snapshot())
+
+    async def dismiss_overlays(self, timeout_seconds: float = 0) -> bool:
+        """Dismiss Lovart's optional Brand Kit onboarding prompt when present."""
+
+        deadline = time.monotonic() + timeout_seconds
+        while True:
+            for selector in ("[data-testid='brand-kit-skip-button']", "[data-testid='brand-kit-dismiss-button']"):
+                if await self._try_click(selector=selector):
+                    return True
+            for label in ("Skip", "跳过"):
+                if await self._try_click(text=label):
+                    return True
+            if time.monotonic() >= deadline:
+                return False
+            await asyncio.sleep(0.25)
 
     async def _current_url(self) -> str:
         url = await self.page.evaluate(_PAGE_URL)
         return url if isinstance(url, str) else ""
+
+    async def _open_project_menu(self) -> None:
+        """Open Canvas's visible project menu before choosing New Project."""
+
+        await self.click_first(["[data-testid='brand-menu-button']"], "open project menu")
 
     async def ensure_project(self, project_name: str) -> str:
         """Return a current project ID, creating a named project through the UI if needed."""
@@ -573,9 +856,10 @@ class LovartCanvasUi:
             self.project_url = url
             return match.group(1)
 
+        await self._open_project_menu()
         await self._click_labels(
             ["[data-testid='new-project']", "[data-testid='canvas-new-project']"],
-            ["New project", "新建项目"],
+            ["New Project", "新建项目"],
             "create project",
         )
         await self._fill(
@@ -599,18 +883,39 @@ class LovartCanvasUi:
         raise LovartUiBlocked("wait for created project", await self._snapshot())
 
     async def _open_image_generator(self) -> None:
-        await self._click_labels(
-            ["[data-testid='nav-generate-menu-button']", "[data-testid='generate-menu-trigger']"],
-            ["Generate", "生成"],
-            "open generator",
-        )
-        await self._click_labels(
-            ["[data-testid='generate-menu-image']"],
-            ["Image", "图片"],
-            "select image generation",
-        )
+        await self.dismiss_overlays(timeout_seconds=5)
+        # Current Canvas opens generation through the Agent mode switch. Network
+        # hydration can briefly reset the side panel, so confirm the final mode.
+        deadline = time.monotonic() + 15
+        while time.monotonic() < deadline:
+            await self.dismiss_overlays()
+            if await self._control_visible("[data-testid='generator-model-button']"):
+                return
+            if await self._control_visible("[data-testid='agent-mode-switch-option-image']"):
+                await self._try_click(selector="[data-testid='agent-mode-switch-option-image']")
+            else:
+                await self._try_click(selector="[data-testid='agent-mode-switch-trigger']")
+            await asyncio.sleep(0.35)
+        # Retain the former menu layout only as a compatibility fallback.
+        if await self._try_click(selector="[data-testid='generate-menu-image']"):
+            return
+        raise LovartUiBlocked("switch to Image Gen mode", await self._snapshot())
 
     async def _select_model(self) -> None:
+        if await self.page.evaluate(_ACTIVE_GPT_IMAGE_2):
+            return
+        if await self._try_click(selector="[data-testid='generator-model-button']"):
+            gpt_option = "[data-testid='generator-model-option-openai/gpt-image-2']"
+            if not await self._wait_for_control(gpt_option, timeout_seconds=0.75):
+                await self._try_dom_click(selector="[data-testid='generator-model-button']")
+            if await self._wait_for_control(gpt_option):
+                if not await self._model_option_selected(gpt_option):
+                    await self._try_dom_click(selector=gpt_option)
+                    await asyncio.sleep(0.2)
+                if await self._model_option_selected(gpt_option):
+                    await self._try_dom_click(selector="[data-testid='generator-model-button']")
+                    return
+            raise LovartUiBlocked("select GPT Image 2", await self._snapshot())
         for selector in ("[data-testid*='model-trigger']", "[aria-label*='Model']"):
             if await self._try_click(selector=selector):
                 break
@@ -621,11 +926,41 @@ class LovartCanvasUi:
         )
 
     async def _select_aspect_ratio(self, aspect_ratio: str) -> None:
+        if await self._try_click(selector="[data-testid='agent-image-generator-multi-params-button']"):
+            await asyncio.sleep(0.25)
+            if aspect_ratio == "21:9":
+                try:
+                    await self._set_custom_dimensions(1792, 768)
+                    await self._try_dom_click(selector="[data-testid='agent-image-generator-multi-params-button']")
+                    return
+                except LovartUiBlocked:
+                    await self._try_dom_click(selector="[data-testid='agent-image-generator-multi-params-button']")
+                    await asyncio.sleep(0.2)
+                    await self._set_custom_dimensions(1792, 768)
+                    await self._try_dom_click(selector="[data-testid='agent-image-generator-multi-params-button']")
+                    return
+            if await self._try_dom_click(text=aspect_ratio):
+                return
+            await self._try_dom_click(selector="[data-testid='agent-image-generator-multi-params-button']")
+            await asyncio.sleep(0.2)
+            if await self._try_dom_click(text=aspect_ratio):
+                return
+            await self._click_labels_when_available([], [aspect_ratio], f"select {aspect_ratio} aspect ratio")
+            return
         await self._click_labels(
             [f"[data-value='{aspect_ratio}']", f"[data-testid*='aspect'][data-value='{aspect_ratio}']"],
             [aspect_ratio],
             f"select {aspect_ratio} aspect ratio",
         )
+
+    async def _submit_image_generation(self) -> None:
+        """Submit only after Image Gen's visible send control is enabled."""
+
+        selector = "[data-testid='agent-image-generator-submit-button']"
+        if await self._wait_for_enabled_control(selector):
+            if await self._try_dom_click(selector=selector):
+                return
+        raise LovartUiBlocked("submit image generation", await self._snapshot())
 
     async def _image_urls(self) -> set[str]:
         state = await self.page.evaluate(_IMAGE_STATE)
@@ -634,7 +969,11 @@ class LovartCanvasUi:
         warning = state.get("warning", "")
         if warning:
             raise LovartUiBlocked("inspect generated images", f"page state: {warning}")
-        return {url for url in state.get("urls", []) if isinstance(url, str)}
+        return {
+            url
+            for url in state.get("urls", [])
+            if isinstance(url, str) and is_generated_image_url(url)
+        }
 
     async def wait_for_generated_image(self, before_urls: set[str]) -> str:
         deadline = time.monotonic() + 180
@@ -646,10 +985,32 @@ class LovartCanvasUi:
             await asyncio.sleep(2)
         raise LovartUiBlocked("wait for image generation", await self._snapshot())
 
+    async def _stable_image_urls(self) -> set[str]:
+        """Let existing Canvas thumbnails finish hydrating before detecting a new result."""
+
+        latest = await self._image_urls()
+        stable_reads = 0
+        for _ in range(8):
+            await asyncio.sleep(0.5)
+            current = await self._image_urls()
+            if current == latest:
+                stable_reads += 1
+                if stable_reads >= 2:
+                    return current
+            else:
+                latest = current
+                stable_reads = 0
+        return latest
+
     async def download_image(self, job: PromptJob, image_url: str) -> Path:
         self.image_dir.mkdir(parents=True, exist_ok=True)
         started = time.time()
-        if not await self.page.evaluate(_CLICK_DOWNLOAD, {"imageUrl": image_url}):
+        clicked_download = await self.page.evaluate(_CLICK_DOWNLOAD, {"imageUrl": image_url})
+        if not clicked_download:
+            clicked_download = await self.page.evaluate(
+                _DOWNLOAD_ARTIFACT, {"imageUrl": artifact_download_url(image_url)}
+            )
+        if not clicked_download:
             raise LovartUiBlocked("download generated image", await self._snapshot())
         deadline = time.monotonic() + 60
         suffixes = {".png", ".jpg", ".jpeg", ".webp"}
@@ -671,20 +1032,16 @@ class LovartCanvasUi:
     async def generate_and_download(self, job: PromptJob) -> Path:
         """Submit one visible image request and download its completed result."""
 
-        before_urls = await self._image_urls()
+        before_urls = await self._stable_image_urls()
         await self._open_image_generator()
         await self._select_model()
         await self._select_aspect_ratio(job.aspect_ratio)
         await self._fill(
-            ["textarea", "[contenteditable='true']", "input[placeholder*='prompt' i]"],
+            ["[data-testid='agent-image-generator-prompt']", "textarea", "[contenteditable='true']", "input[placeholder*='prompt' i]"],
             job.prompt,
             "enter image prompt",
         )
-        await self._click_labels(
-            ["[data-testid='image-generator-submit']", "[data-testid*='generate-button']"],
-            ["Generate", "生成"],
-            "submit image generation",
-        )
+        await self._submit_image_generation()
         image_url = await self.wait_for_generated_image(before_urls)
         return await self.download_image(job, image_url)
 
@@ -815,7 +1172,7 @@ async def run_with_browser(article: Path, profile: Path, retry_failed: bool, max
     cdp = await CdpClient.connect(connection.browser_ws_url)
     try:
         page = await open_canvas_page(cdp, _canvas_url(manifest), image_dir)
-        await asyncio.sleep(2)
+        await wait_for_canvas_ready(page)
         return await run_article(
             plan.article,
             ui=LovartCanvasUi(page, image_dir),
@@ -871,21 +1228,19 @@ def strip_front_matter(raw: str) -> str:
 
 
 def article_title(article: Path) -> str:
-    """Use the published WeChat title when available, otherwise the directory name."""
+    """Use the article title source available before publication, then its directory name."""
 
-    source = article / "weixin.md"
-    if not source.exists():
-        return article.name
-
-    match = re.search(
-        r'^title:\s*(?:"([^"]+)"|\'([^\']+)\'|([^#\n]+))\s*$',
-        source.read_text(encoding="utf-8"),
-        flags=re.MULTILINE,
-    )
-    if not match:
-        return article.name
-
-    return next((value.strip() for value in match.groups() if value and value.strip()), article.name)
+    for source in (article / "weixin.md", article / "draft.md"):
+        if not source.exists():
+            continue
+        match = re.search(
+            r'^title:\s*(?:"([^"]+)"|\'([^\']+)\'|([^#\n]+))\s*$',
+            source.read_text(encoding="utf-8"),
+            flags=re.MULTILINE,
+        )
+        if match:
+            return next((value.strip() for value in match.groups() if value and value.strip()), article.name)
+    return article.name
 
 
 def discover_article(article: Path) -> ArticlePlan:

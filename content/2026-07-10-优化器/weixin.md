@@ -1,25 +1,30 @@
 ---
-title: "学习率怎么自动调？拆开 Adam 的公式你就懂了"
+title: "学习率怎么自动调？Adam 优化器拆给你看"
 author: "数解AI"
-digest: "SGD 给所有参数同一个学习率——有的参数震荡有的闷着不动。Adam 用一个公式给每个参数单独调速：步长 = η × 方向 / 尺度。拆开看看里面的 m̂ₜ 和 v̂ₜ 分别干了什么。"
+digest: "学习率怎么自动调？Adam优化器给每参数单独调速：步长=方向/尺度，拆开动量与二阶矩。"
 type: "原理篇"
 series: "深度学习基础"
 keywords: ["Adam", "优化器", "SGD", "学习率", "动量"]
 cover: 00-cover.png
+wechatUrl: "https://mp.weixin.qq.com/s/aSLVO-otvr2rxIU1kr2eAA"
 scheduledPublish: "2026-07-10T08:00:00+08:00"
 ---
 
 ## 🎯 驱动问题
 
-前五篇我们搭好了梯度流的完整链路：
+梯度已经告诉模型：该往哪边走。
+但模型还有一个麻烦：**每个参数都要走同样大的步子吗？**
 
-- 梯度下降沿负梯度走一步就能降低误差（[梯度下降：蒙着眼下山](https://mp.weixin.qq.com/s/V6mGvCVFpTvmC51pNtxiTw)）
-- 交叉熵比 MSE 给的梯度信号更强（[损失函数：打分标准决定学习方向](https://mp.weixin.qq.com/s/zIWqYqYVzEaF1e8P6fcTfw)）
-- 反向传播用链式法则把梯度一层层传回去（[反向传播是什么？AI怎么知道自己错在哪](https://mp.weixin.qq.com/s/oYj_qpwF4tZG84ImOn977g)）
-- Softmax 把分数变成概率（[Softmax为什么不直接取最大值？](https://mp.weixin.qq.com/s/5wMquh_v3oon2-NEDeQLEw)）
-- 残差连接给梯度开直通车，保证梯度不消失（[残差连接：为什么56层比20层还差](https://mp.weixin.qq.com/s/xefNN9Gjaw3TKl60KeHzAg))
+不行。
 
-全到位了。现在只剩最后一个问题：**拿到梯度之后，怎么迈步？**
+有些参数的梯度很大，走一步就冲过头；有些参数的梯度很小，走半天还没动。SGD 却只给所有参数同一个学习率。
+
+**同一把尺子，量不了所有参数。**
+
+这就是 Adam 要解决的问题：
+**让每个参数，都有自己的步长。**
+
+前五篇讲了梯度从哪里来、怎么传回去。今天看最后一步：拿到梯度之后，模型到底怎么迈步？
 
 [梯度下降那篇](https://mp.weixin.qq.com/s/V6mGvCVFpTvmC51pNtxiTw)给出了最朴素的答案：沿负梯度方向走一步。更新规则简单到只有一行：
 
@@ -213,7 +218,7 @@ Adam 不是教科书玩具。DeepSeek-V3 和 Qwen3 的训练配置里，清清�
 
 （来源：DeepSeek-V3 Technical Report §4.2；Qwen3 torchtitan config_registry.py）
 
-> ⚠️ 但这已经是 2024 年的配方了。2025-2026 年，优化器的牌桌变了。DeepSeek-V4（2026年4月发布）把 AdamW 从大部分参数上撤掉，换成了 **Muon 优化器**——只有 embedding 和输出层还保留 AdamW。Kimi K2（1万亿参数）更彻底——全量用 Muon 的改进版 **MuonClip** 从头训到尾，15.5 万亿 token，零 loss spike。Adam 的文章还没写完，但下一章已经开始。
+> ⚠️ 但这已经是 2024 年的配方了。2025-2026 年，优化器的牌桌变了。Kimi K2（2025，1万亿参数）率先全量采用 Muon 的改进版 **MuonClip** 从头训到尾——15.5 万亿 token，零 loss spike。DeepSeek-V4（2026年4月发布）紧随其后，把大部分参数换成 **Muon 优化器**，只留 embedding 和输出层给 AdamW。Adam 的文章还没写完，但下一章已经开始。
 
 ![](06-timeline.png)
 
@@ -229,7 +234,7 @@ Adam 很强，但不是无敌的。
 
 **没有免费的午餐——优化器的选择本身也是一个超参数。** Adam 不是万能药，但它是工具箱里最好用的那把锤子。
 
-而且锤子的下一代已经来了。2024 年，Keller Jordan 提出了 **Muon 优化器**——不再像 Adam 那样逐元素缩放，而是对整个参数矩阵做 Newton-Schulz 迭代，把梯度更新矩阵正交化，一步释放所有更新方向。**DeepSeek-V4（1.6万亿参数）把大部分参数的优化器从 AdamW 换成了 Muon；Kimi K2 更进一步，自研 MuonClip，全程不用 AdamW。** 这篇我们后面单独讲。
+而且锤子的下一代已经来了。2024 年，Keller Jordan 提出了 **Muon 优化器**——不再像 Adam 那样逐元素缩放，而是对整个参数矩阵做 Newton-Schulz 迭代，把梯度更新矩阵正交化，一步释放所有更新方向。**Kimi K2（2025）率先自研 MuonClip，15.5 万亿 token 全程不用 AdamW；DeepSeek-V4（2026，1.6万亿参数）紧随其后，把大部分参数从 AdamW 换成了 Muon。** 这篇我们后面单独讲。
 
 ---
 
@@ -255,7 +260,15 @@ SGD 用同一个学习率 η 更新所有参数，导致大梯度震荡、小梯
 
 ---
 
-Adam 自动调学习率，但 SGD 反而泛化更好——到底该信谁？下一篇开新系列，从「嵌入」讲起：AI 是怎么把"猫"这个词变成一个向量的？评论区聊聊你用过的优化器 👇
+Adam 自动调学习率，但 SGD 反而可能泛化更好——到底该信谁？
+
+深度学习基础系列到这里暂告一段落。下一篇进入「大模型原理」系列：
+
+**BPE分词：AI为什么把文字切成碎片？**
+
+你输入“今天天气真好”，模型看到的可能不是 6 个汉字，而是一串 token。中文、英文、数字，甚至一个标点，都会影响 token 数量，进而影响上下文长度和推理成本。
+
+7 月 14 日，先从 BPE 分词开始。再往后，才是词嵌入、位置编码和注意力机制。
 
 ---
 
@@ -263,7 +276,7 @@ Adam 自动调学习率，但 SGD 反而泛化更好——到底该信谁？下�
 
 📖 **深度学习基础系列(完结)**:1 [梯度下降](https://mp.weixin.qq.com/s/V6mGvCVFpTvmC51pNtxiTw) → 2 [损失函数](https://mp.weixin.qq.com/s/zIWqYqYVzEaF1e8P6fcTfw) → 3 [反向传播](https://mp.weixin.qq.com/s/oYj_qpwF4tZG84ImOn977g) → 4 [Softmax](https://mp.weixin.qq.com/s/5wMquh_v3oon2-NEDeQLEw) → ⑤ [残差连接](https://mp.weixin.qq.com/s/xefNN9Gjaw3TKl60KeHzAg) → ⑥ 优化器（本篇）。**六篇一条线**:梯度下降(方向)→ 损失函数(打分)→ 反向传播(追责)→ Softmax(概率化)→ 残差连接(通路)→ 优化器(步伐)。
 
-📖 **下一篇开新系列：大模型原理** · 嵌入：AI 怎么把词语变成数字？
+📖 **下一篇：大模型原理系列开篇** · BPE分词：AI为什么把文字切成碎片？（7 月 13 日发布）
 
 持续更新，关注「数解AI」，下一篇第一时间推给你。
 
@@ -271,10 +284,4 @@ Adam 自动调学习率，但 SGD 反而泛化更好——到底该信谁？下�
 
 👍 如果觉得有收获，**点赞、在看、收藏**，支持一下～
 
-💬 **你还想了解什么？评论区告诉我：**
-
-- Muon 优化器的详细原理（Newton-Schulz 正交化怎么做的？）
-- 学习率调度策略（warmup + cosine decay 的设计思路）
-- 真实训练中的优化器踩坑实录（loss spike、梯度爆炸怎么排查）
-
-投票最高的选题，我优先写 👆
+💬 **你觉得 Adam 最聪明的地方，是记住梯度方向，还是自动判断每个参数该走多大步？**
