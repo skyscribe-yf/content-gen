@@ -10,7 +10,7 @@ The article must give readers a durable mental model: **attention communicates a
 
 Readers have completed the series articles on BPE, embeddings, positional encoding, and attention. They know Q/K/V at a conceptual level, but may assume attention performs all of a Transformer’s “thinking”.
 
-Title: **Attention 都够了，为什么还要 FFN？**
+Title: **Attention都够了，为什么还要FFN？**
 
 The article promises a concrete explanation of FFN processing, not a claim that FFN alone makes the final prediction or literally stores one fact per neuron. Its intended cognitive reversal is more specific: **an FFN processes tokens independently at this step, yet it is not context-free, because attention has already written context into each token representation.**
 
