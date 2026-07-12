@@ -168,5 +168,59 @@ class LovartUiTest(unittest.IsolatedAsyncioTestCase):
         self.assertIn("verification", str(caught.exception))
 
 
+class FakeLovartUi:
+    def __init__(self):
+        self.created_for = []
+        self.generated = []
+        self.project_url = "https://www.lovart.ai/canvas?projectId=project-123"
+
+    async def ensure_project(self, name):
+        self.created_for.append(name)
+        return "project-123"
+
+    async def generate_and_download(self, job):
+        self.generated.append(job.fingerprint)
+        job.output.parent.mkdir(parents=True, exist_ok=True)
+        job.output.write_bytes(b"png")
+        return job.output
+
+
+class OrchestrationTest(unittest.IsolatedAsyncioTestCase):
+    async def test_run_records_project_and_skips_completed_job_on_second_run(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            article = Path(tmp) / "article"
+            (article / "prompts").mkdir(parents=True)
+            (article / "prompts" / "00-cover.md").write_text("cover", encoding="utf-8")
+            ui = FakeLovartUi()
+
+            await lovart_canvas.run_article(article, ui=ui, today="2026-07-12", max_new=8)
+            await lovart_canvas.run_article(article, ui=ui, today="2026-07-12", max_new=8)
+
+            self.assertEqual(len(ui.generated), 1)
+            self.assertEqual(lovart_canvas.load_manifest(article, "article").project_id, "project-123")
+
+    async def test_dry_run_never_creates_project_or_writes_images(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            article = Path(tmp) / "article"
+            (article / "prompts").mkdir(parents=True)
+            (article / "prompts" / "00-cover.md").write_text("cover", encoding="utf-8")
+            ui = FakeLovartUi()
+
+            summary = await lovart_canvas.run_article(
+                article, ui=ui, today="2026-07-12", max_new=8, dry_run=True
+            )
+
+            self.assertEqual([job.aspect_ratio for job in summary.eligible], ["21:9"])
+            self.assertEqual(ui.created_for, [])
+            self.assertEqual(ui.generated, [])
+            self.assertFalse((article / "images").exists())
+
+    async def test_max_new_never_exceeds_eight(self):
+        with self.assertRaisesRegex(ValueError, "max-new.*8"):
+            await lovart_canvas.run_article(
+                Path("/tmp/article"), ui=FakeLovartUi(), today="2026-07-12", max_new=9
+            )
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -450,7 +450,7 @@ Expected: all tests pass and no browser opens.
     git add scripts/lovart_canvas.py scripts/test_lovart_canvas.py
     git commit -m "feat: automate Lovart Canvas generation UI"
 
-### Task 5: Wire the safe CLI, resume behaviour, and dry-run mode
+### Task 5: Wire the safe CLI, resume behaviour, and dry-run mode (completed)
 
 **Files:**
 
@@ -538,7 +538,7 @@ Expected: all discovery, manifest, Chrome, UI-fake, and orchestration tests pass
     git add scripts/lovart_canvas.py scripts/test_lovart_canvas.py
     git commit -m "feat: add resumable Lovart Canvas CLI"
 
-### Task 6: Perform a safe one-image live validation
+### Task 6: Perform a safe one-image live validation (in progress)
 
 **Files:**
 

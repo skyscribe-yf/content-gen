@@ -7,8 +7,10 @@ browser rather than accepting exported cookies or private API credentials.
 
 from __future__ import annotations
 
+import argparse
 import asyncio
 from dataclasses import dataclass, field
+from datetime import datetime
 import hashlib
 import json
 import os
@@ -652,6 +654,174 @@ class LovartCanvasUi:
         )
         image_url = await self.wait_for_generated_image(before_urls)
         return await self.download_image(job, image_url)
+
+
+@dataclass(frozen=True)
+class RunSummary:
+    """A non-sensitive account of one planned or completed article run."""
+
+    project_name: str
+    eligible: tuple[PromptJob, ...]
+    submitted: int
+    completed: int
+    skipped: int
+    cap_reached: bool
+
+
+def _remaining_daily_allowance(manifest: Manifest, today: str) -> int:
+    return max(DAILY_LIMIT - sum(entry.get("date") == today for entry in manifest.submissions), 0)
+
+
+def _sanitized_error(error: Exception) -> str:
+    if isinstance(error, LovartUiBlocked):
+        return str(error)
+    return f"{type(error).__name__}: generation stopped before completion"
+
+
+async def run_article(
+    article: Path,
+    ui,
+    today: str,
+    max_new: int,
+    retry_failed: bool = False,
+    dry_run: bool = False,
+) -> RunSummary:
+    """Generate a safely resumable, sequential batch for one article."""
+
+    if not 1 <= max_new <= DAILY_LIMIT:
+        raise ValueError(f"max-new must be between 1 and {DAILY_LIMIT}")
+
+    plan = discover_article(article)
+    manifest = load_manifest(plan.article, plan.project_name)
+    for job in plan.jobs:
+        record = manifest.jobs.get(job.fingerprint, {})
+        if record.get("status") == "completed" and not job.output.is_file():
+            raise RuntimeError(f"completed manifest entry is missing its output: {job.output}")
+
+    daily_allowance = _remaining_daily_allowance(manifest, today)
+    candidates = new_jobs_for_run(plan.jobs, manifest, today=today, retry_failed=retry_failed)
+    eligible = tuple(candidates[:max_new])
+    skipped = len(plan.jobs) - len(eligible)
+    cap_reached = daily_allowance == 0 or len(candidates) > len(eligible)
+    summary = RunSummary(
+        project_name=plan.project_name,
+        eligible=eligible,
+        submitted=0,
+        completed=0,
+        skipped=skipped,
+        cap_reached=cap_reached,
+    )
+    if dry_run or not eligible:
+        return summary
+    if ui is None:
+        raise ValueError("a Lovart UI driver is required for a non-dry run")
+
+    if not manifest.project_id:
+        manifest.project_id = await ui.ensure_project(plan.project_name)
+        manifest.project_url = getattr(ui, "project_url", None)
+        save_manifest(plan.article, manifest)
+
+    submitted = 0
+    completed = 0
+    for job in eligible:
+        if job.output.exists():
+            raise RuntimeError(f"refusing to submit while output already exists: {job.output}")
+        manifest.record_submitted(job, datetime.now().astimezone().isoformat())
+        save_manifest(plan.article, manifest)
+        submitted += 1
+        try:
+            output = await ui.generate_and_download(job)
+            if Path(output) != job.output or not job.output.is_file() or job.output.stat().st_size == 0:
+                raise RuntimeError("Lovart download did not produce the expected non-empty output")
+        except Exception as exc:
+            manifest.jobs[job.fingerprint]["last_error"] = _sanitized_error(exc)
+            save_manifest(plan.article, manifest)
+            raise
+        manifest.mark_completed(job.fingerprint, str(job.output))
+        save_manifest(plan.article, manifest)
+        completed += 1
+
+    return RunSummary(
+        project_name=summary.project_name,
+        eligible=summary.eligible,
+        submitted=submitted,
+        completed=completed,
+        skipped=summary.skipped,
+        cap_reached=summary.cap_reached,
+    )
+
+
+def _canvas_url(manifest: Manifest) -> str:
+    if manifest.project_url:
+        return manifest.project_url
+    if manifest.project_id:
+        return f"{LOVART_CANVAS_URL}?{urlencode({'projectId': manifest.project_id})}"
+    return LOVART_CANVAS_URL
+
+
+async def run_with_browser(article: Path, profile: Path, retry_failed: bool, max_new: int) -> RunSummary:
+    """Preflight local state before launching Chrome, then run through the visible UI."""
+
+    if not 1 <= max_new <= DAILY_LIMIT:
+        raise ValueError(f"max-new must be between 1 and {DAILY_LIMIT}")
+    plan = discover_article(article)
+    manifest = load_manifest(plan.article, plan.project_name)
+    image_dir = plan.article / "images"
+    image_dir.mkdir(parents=True, exist_ok=True)
+    connection = launch_or_reuse_chrome(profile, _canvas_url(manifest))
+    cdp = await CdpClient.connect(connection.browser_ws_url)
+    try:
+        page = await open_canvas_page(cdp, _canvas_url(manifest), image_dir)
+        await asyncio.sleep(2)
+        return await run_article(
+            plan.article,
+            ui=LovartCanvasUi(page, image_dir),
+            today=datetime.now().astimezone().date().isoformat(),
+            max_new=max_new,
+            retry_failed=retry_failed,
+        )
+    finally:
+        await cdp.close()
+
+
+def _print_summary(summary: RunSummary, dry_run: bool) -> None:
+    prefix = "Dry run" if dry_run else "Lovart run"
+    print(f"{prefix}: {summary.project_name}")
+    for job in summary.eligible:
+        print(f"  {'would generate' if dry_run else 'generated'} {job.source.name} ({job.aspect_ratio}) -> {job.output}")
+    print(
+        f"  submitted={summary.submitted} completed={summary.completed} "
+        f"skipped={summary.skipped} cap_reached={summary.cap_reached}"
+    )
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description="Generate one article's images through Lovart Canvas")
+    parser.add_argument("--article", type=Path, required=True)
+    parser.add_argument("--profile-dir", type=Path, default=DEFAULT_PROFILE)
+    parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--retry-failed", action="store_true")
+    parser.add_argument("--max-new", type=int, default=DAILY_LIMIT)
+    args = parser.parse_args(argv)
+    today = datetime.now().astimezone().date().isoformat()
+    try:
+        if args.dry_run:
+            summary = asyncio.run(
+                run_article(args.article, ui=None, today=today, max_new=args.max_new, dry_run=True)
+            )
+        else:
+            summary = asyncio.run(
+                run_with_browser(args.article, args.profile_dir, args.retry_failed, args.max_new)
+            )
+    except (LovartUiBlocked, RuntimeError, ValueError) as exc:
+        print(f"❌ {_sanitized_error(exc)}")
+        return 2
+    _print_summary(summary, args.dry_run)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
 
 
 def strip_front_matter(raw: str) -> str:
