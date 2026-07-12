@@ -114,6 +114,16 @@ class ChromeLaunchTest(unittest.TestCase):
             ],
         )
 
+    def test_finds_running_profile_debug_port_from_process_line(self):
+        profile = Path("/tmp/lovart-profile")
+        lines = [
+            "agent 123 0.0 chrome --remote-debugging-port=41407 "
+            "--user-data-dir=/tmp/lovart-profile --no-first-run",
+            "agent 124 0.0 chrome --remote-debugging-port=9222 --user-data-dir=/tmp/other-profile",
+        ]
+
+        self.assertEqual(lovart_canvas.running_debug_port_from_process_lines(lines, profile), 41407)
+
 
 class FakeCdp:
     def __init__(self):

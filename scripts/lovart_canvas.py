@@ -245,8 +245,30 @@ def _existing_debug_port(profile: Path) -> int | None:
     try:
         port = int(port_file.read_text(encoding="utf-8").splitlines()[0])
     except (OSError, ValueError, IndexError):
+        port = None
+    if port and port > 0:
+        return port
+
+    if os.name == "nt":
         return None
-    return port if port > 0 else None
+    try:
+        result = subprocess.run(["ps", "aux"], capture_output=True, text=True, timeout=5, check=False)
+    except (OSError, subprocess.TimeoutExpired):
+        return None
+    return running_debug_port_from_process_lines(result.stdout.splitlines(), profile)
+
+
+def running_debug_port_from_process_lines(lines: list[str], profile: Path) -> int | None:
+    """Find a Chrome port when an explicit debug port omitted DevToolsActivePort."""
+
+    profile_text = str(profile.resolve())
+    for line in lines:
+        if profile_text not in line:
+            continue
+        match = re.search(r"--remote-debugging-port=(\d+)", line)
+        if match and int(match.group(1)) > 0:
+            return int(match.group(1))
+    return None
 
 
 @dataclass
@@ -374,7 +396,18 @@ def _sanitize_snapshot(raw: object) -> str:
     text = str(raw).lower()
     signals = [
         signal
-        for signal in ("login", "sign in", "verification", "verify", "验证码", "quota", "credit", "insufficient")
+        for signal in (
+            "login",
+            "sign in",
+            "verification",
+            "verify",
+            "验证码",
+            "quota",
+            "credit",
+            "insufficient",
+            "cloudflare",
+            "turnstile",
+        )
         if signal in text
     ]
     return "page state: " + (", ".join(signals) if signals else "required controls not visible")
