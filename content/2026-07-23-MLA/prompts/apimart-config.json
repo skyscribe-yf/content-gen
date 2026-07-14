@@ -1,0 +1,34 @@
+{
+  "series_title": "MLA DeepSeek显存优化",
+  "output_dir": "content/2026-07-23-MLA/images",
+  "size": "1:1",
+  "resolution": "1k",
+  "cards": [
+    {
+      "title": "MLA封面：便利贴墙压缩",
+      "prompt": "Create a 21:9 cinematic wide cover illustration for a Chinese AI explainer article. On the left, a towering wall of dense yellow sticky notes is about to overflow from a GPU-shaped room, representing memory that grows with every conversation. On the right, the same information becomes one slim, elegant blue notebook with a small luminous index tab, representing compression into a useful summary. A single glowing blue stream carries the notes from left to right. Clean white background, editorial tech illustration, premium and uncluttered, warm amber versus cool blue palette, large blank area around the center for breathing room. The only visible text is the bold Chinese hook “显存去哪了” (exactly these five characters). Do not add any other words, numbers, logos, formulas, English, watermarks, or UI elements.",
+      "filename": "00-cover.png",
+      "size": "21:9",
+      "resolution": "1k",
+      "n": 1
+    },
+    {
+      "title": "KV cache显存占比",
+      "prompt": "A clean 1:1 infographic in tech style showing GPU memory allocation for LLaMA-3-70B at 100K context. Three horizontal stacked bars with labels in Chinese: '模型权重 bf16 约140GB' taking 81% in dark blue, 'KV cache 约31GB' taking 18% in orange/amber, '其他 约2GB' taking 1% in light gray. Title at top in bold Chinese: 'LLaMA-3-70B 显存占用（100K上下文）'. Subtitle: 'GQA 8头压缩后'. The KV cache bar has a small icon of stacked key-value vector pairs. Clean white background, rounded corner bars, modern data visualization style. No English text. Minimal and professional.",
+      "filename": "01-kv-ratio.png",
+      "n": 1
+    },
+    {
+      "title": "MLA三步压缩流程",
+      "prompt": "A clean 1:1 tech infographic in Chinese showing the 3-step MLA compression pipeline. Three connected stages flowing left to right with glowing blue arrows: Stage 1 labeled '低秩投影' with icon of a wide vector (128×128=16384维) compressing into a narrow latent (512维), formula 'c_t^KV = W^DK · h_t'. Stage 2 labeled '矩阵吸收' showing W^UK being absorbed into Q projection, formula 'score=(Q·W^UK)·(c^KV)^T'. Stage 3 labeled '解耦RoPE' showing two parallel paths — content path (blue) going through low-rank compression and position path (orange) going through RoPE separately, then merging. Title at top: 'MLA 三步压缩'. Each stage has a small icon. Clean white background with subtle grid. Modern flat design, blue and orange color scheme. No English text anywhere.",
+      "filename": "02-mla-flow.png",
+      "n": 1
+    },
+    {
+      "title": "MLA同架构缓存对照",
+      "prompt": "Create a square 1:1 Chinese editorial data infographic, clean white background with a restrained navy-blue and amber palette. Use a grouped horizontal bar chart to compare KV cache per token in DeepSeek-V2 paired experiments. The title, exactly: “同架构对照：MLA 省下86%–96%的KV缓存”. Show two clearly separated groups: “小型MoE对照” and “大型MoE对照”. In each group, use an amber MHA bar and a blue MLA bar. Exact data labels: 小型MoE: “MHA 110.6K 个元素”, “MLA 15.6K 个元素（14%）”; 大型MoE: “MHA 860.2K 个元素”, “MLA 34.6K 个元素（4%）”. Add one small bottom note, exactly: “来源：DeepSeek-V2 技术报告 Table 9；元素数量不等于固定字节数”. Make the relative bar lengths visually accurate. No model-versus-model comparison, no LLaMA, no Qwen, no context-length curve, no invented metrics, no logos, no watermarks, and no extra text.",
+      "filename": "03-comparison.png",
+      "n": 1
+    }
+  ]
+}

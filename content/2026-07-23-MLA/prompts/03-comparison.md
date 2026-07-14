@@ -1,0 +1,5 @@
+title: "MLA同架构缓存对照"
+prompt: "Create a square 1:1 Chinese editorial data infographic, clean white background with a restrained navy-blue and amber palette. Use a grouped horizontal bar chart to compare KV cache per token in DeepSeek-V2 paired experiments. The title, exactly: “同架构对照：MLA 省下86%–96%的KV缓存”. Show two clearly separated groups: “小型MoE对照” and “大型MoE对照”. In each group, use an amber MHA bar and a blue MLA bar. Exact data labels: 小型MoE: “MHA 110.6K 个元素”, “MLA 15.6K 个元素（14%）”; 大型MoE: “MHA 860.2K 个元素”, “MLA 34.6K 个元素（4%）”. Add one small bottom note, exactly: “来源：DeepSeek-V2 技术报告 Table 9；元素数量不等于固定字节数”. Make the relative bar lengths visually accurate. No model-versus-model comparison, no LLaMA, no Qwen, no context-length curve, no invented metrics, no logos, no watermarks, and no extra text."
+filename: "03-comparison.png"
+size: "1:1"
+resolution: "1k"

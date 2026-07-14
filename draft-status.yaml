@@ -109,17 +109,18 @@ articles:
       cover: true
 
   # D2-D5 planned
-  - slug: "2026-07-21-deepseek-mla"
-    title: "DeepSeek 的注意力为什么能省 90% 显存？"
+  - slug: "2026-07-23-MLA"
+    title: "显存被谁吃掉了？DeepSeek如何省下90%"
     series: "DeepSeek 技术解密"
-    status: planned
+    status: ready
     published_date: null
     wechat_url: null
     files:
-      weixin: false
-      draft: false
-      outline: false
-      cover: false
+      weixin: true
+      draft: true
+      outline: true
+      cover: true
+    notes: "draft in WeChat backend, cover fixed, JL lemma image added, KV cache quantization footnote updated"
 
   - slug: "2026-08-02-deepseek-grpo"
     title: "DeepSeek-R1 怎么学会\"想清楚再说\"？"
@@ -163,6 +164,18 @@ articles:
   - slug: "2026-07-13-BPE"
     title: "BPE分词：AI为什么把文字切成碎片？"
     series: "大模型原理"
+    status: published
+    published_date: "2026-07-13"
+    wechat_url: "https://mp.weixin.qq.com/s/5nR_KI47v_U8KwpQA4Uv5Q"
+    files:
+      weixin: true
+      draft: true
+      outline: true
+      cover: true
+
+  - slug: "2026-07-15-词嵌入"
+    title: "词嵌入是什么？5万个0怎么变成一串坐标"
+    series: "大模型原理"
     status: ready
     published_date: null
     wechat_url: null
@@ -171,28 +184,15 @@ articles:
       draft: true
       outline: true
       cover: true
-    notes: "草稿已入公众号草稿箱 media_id=kOcXH4SytIYVIpYksTGfHgEcYXFrzJWEXphrxE2xMWVynAJ3y74TsUO4kIwse8wS (2026-07-12，新21:9封面)"
-
-  - slug: "2026-07-15-词嵌入"
-    title: "词嵌入是什么？5万个0怎么变成一串坐标"
-    series: "大模型原理"
-    status: drafting
-    published_date: null
-    wechat_url: null
-    files:
-      weixin: false
-      draft: true
-      outline: true
-      cover: true
 
   - slug: "2026-07-17-位置编码"
     title: "位置编码怎么工作？词序一错意思全变"
     series: "大模型原理"
-    status: drafting
+    status: ready
     published_date: null
     wechat_url: null
     files:
-      weixin: false
+      weixin: true
       draft: true
       outline: true
       cover: true
@@ -200,26 +200,27 @@ articles:
   - slug: "2026-07-19-注意力机制"
     title: "注意力机制是什么？别再当数据库查询"
     series: "大模型原理"
+    status: ready
+    published_date: null
+    wechat_url: null
+    files:
+      weixin: true
+      draft: true
+      outline: true
+      cover: true
+
+  - slug: "2026-07-21-FFN"
+    title: "Attention都够了，为什么还要FFN？"
+    series: "大模型原理"
     status: drafting
     published_date: null
     wechat_url: null
     files:
       weixin: false
       draft: true
-      outline: false
+      outline: true
       cover: true
-
-  - slug: "2026-07-23-ffn"
-    title: "AI的知识到底存在哪里？FFN层拆解"
-    series: "大模型原理"
-    status: planned
-    published_date: null
-    wechat_url: null
-    files:
-      weixin: false
-      draft: false
-      outline: false
-      cover: false
+    notes: "draft polished, waiting for weixin.md"
 
   - slug: "2026-08-06-归一化残差"
     title: "61层网络为什么不崩？归一化与残差连接"
@@ -233,7 +234,7 @@ articles:
       outline: false
       cover: false
 
-  - slug: "2026-07-25-transformer全景"
+  - slug: "2026-07-25-Transformer全景"
     title: "Transformer是什么？把注意力叠出AI大脑"
     series: "大模型原理"
     status: planned
@@ -300,17 +301,18 @@ articles:
 # Summary — auto-generated; update manually or via script
 # ═══════════════════════════════════════════
 summary:
-  total: 23
+  total: 22
   by_status:
     published: 9
     scheduled: 0
-    ready: 0
-    drafting: 4
-    planned: 10
+    ready: 4
+    drafting: 1
+    planned: 8
   drafting_queue:
-    - "2026-07-13-BPE"
+    - "2026-07-21-FFN"
+  ready_queue:
+    - "2026-07-23-MLA"
     - "2026-07-15-词嵌入"
     - "2026-07-17-位置编码"
     - "2026-07-19-注意力机制"
-  ready_queue: []
-  next_publish_date: "2026-07-13"
+  next_publish_date: "2026-07-21"

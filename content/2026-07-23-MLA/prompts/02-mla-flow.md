@@ -1,0 +1,5 @@
+title: "MLA三步压缩流程"
+prompt: "A clean 1:1 tech infographic in Chinese showing the 3-step MLA compression pipeline. Three connected stages flowing left to right with glowing blue arrows: Stage 1 labeled '低秩投影' with icon of a wide vector (128×128=16384维) compressing into a narrow latent (512维), formula 'c_t^KV = W^DK · h_t'. Stage 2 labeled '矩阵吸收' showing W^UK being absorbed into Q projection, formula 'score=(Q·W^UK)·(c^KV)^T'. Stage 3 labeled '解耦RoPE' showing two parallel paths — content path (blue) going through low-rank compression and position path (orange) going through RoPE separately, then merging. Title at top: 'MLA 三步压缩'. Each stage has a small icon. Clean white background with subtle grid. Modern flat design, blue and orange color scheme. No English text anywhere."
+filename: "02-mla-flow.png"
+size: "1:1"
+resolution: "1k"

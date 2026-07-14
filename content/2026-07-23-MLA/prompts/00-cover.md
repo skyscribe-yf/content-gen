@@ -1,0 +1,5 @@
+title: "MLA封面：便利贴墙压缩"
+prompt: "Create a 21:9 cinematic wide cover illustration for a Chinese AI explainer article. On the left, a towering wall of dense yellow sticky notes is about to overflow from a GPU-shaped room, representing memory that grows with every conversation. On the right, the same information becomes one slim, elegant blue notebook with a small luminous index tab, representing compression into a useful summary. A single glowing blue stream carries the notes from left to right. Clean white background, editorial tech illustration, premium and uncluttered, warm amber versus cool blue palette, large blank area around the center for breathing room. The only visible text is the bold Chinese hook “显存去哪了” (exactly these five characters). Do not add any other words, numbers, logos, formulas, English, watermarks, or UI elements."
+filename: "00-cover.png"
+size: "21:9"
+resolution: "1k"

@@ -7,7 +7,7 @@
 > **草稿状态看 `../draft-status.yaml`** — 那是唯一真实来源。本文件的状态列从 yaml 派生，手动更新同步。
 > 运行 `python3 scripts/scan-status.py` 快速检视所有草稿状态。
 
-## 📈 发布进度总览（更新于 2026-07-11）
+## 📈 发布进度总览（更新于 2026-07-13）
 
 | 日期 | 标题 | 系列 | 微信链接 |
 |------|------|------|----------|
@@ -18,12 +18,12 @@
 | 07-09 | 残差连接：为什么56层比20层还差 | 深度学习基础⑤ | [链接](https://mp.weixin.qq.com/s/xefNN9Gjaw3TKl60KeHzAg) |
 | 07-10 | 学习率怎么自动调？拆开 Adam 的公式你就懂了 | 深度学习基础⑥ | [链接](https://mp.weixin.qq.com/s/aSLVO-otvr2rxIU1kr2eAA) |
 | 07-11 | DeepSeek便宜30倍的秘密：MoE混合专家入门 | DeepSeek 技术解密 D1 | [链接](https://mp.weixin.qq.com/s/QdkD0CR2fD-HfY77-gX3Ug) |
-| 07-13 | BPE分词：AI为什么把文字切成碎片？ | 大模型原理① | drafting |
+| 07-13 | BPE分词：AI为什么把文字切成碎片？ | 大模型原理① | published |
 | 07-15 | 词嵌入是什么？5万个0怎么变成一串坐标 | 大模型原理② | drafting |
 | 07-17 | 位置编码怎么工作？词序一错意思全变 | 大模型原理③ | drafting |
 | 07-19 | 注意力机制是什么？别再当数据库查询 | 大模型原理④ | drafting |
-| 07-21 | DeepSeek 的注意力为什么能省 90% 显存？ | DeepSeek 技术解密 D2 | planned |
-| 07-23 | AI的知识到底存在哪里？FFN层拆解 | 大模型原理⑤ | planned |
+| 07-21 | AI的知识到底存在哪里？FFN层拆解 | 大模型原理⑤ | ready |
+| 07-23 | DeepSeek 的注意力为什么能省 90% 显存？ | DeepSeek 技术解密 D2 | planned |
 | 07-25 | Transformer是什么？把注意力叠出AI大脑 | 大模型原理⑦ | planned |
 | 07-27 | 猜下一个字，AI怎么学会写文章？预训练全过程 | 大模型原理⑧ | planned |
 | 07-29 | FP8 训练：用"残缺数字"练出顶级模型 | DeepSeek 技术解密 D5 | planned |
@@ -43,8 +43,8 @@
 | 07-15 | 大模型原理② 词嵌入 |
 | 07-17 | 大模型原理③ 位置编码 |
 | 07-19 | 大模型原理④ 注意力机制 |
-| 07-21 | DeepSeek 技术解密 D2 MLA |
-| 07-23 | 大模型原理⑤ FFN / MLP |
+| 07-21 | 大模型原理⑤ FFN / MLP |
+| 07-23 | DeepSeek 技术解密 D2 MLA |
 | 07-25 | 大模型原理⑦ Transformer 全景 |
 | 07-27 | 大模型原理⑧ 预训练与 Chinchilla 定律 |
 | 07-29 | DeepSeek 技术解密 D5 FP8 |
@@ -135,7 +135,7 @@
 
 ### 系列二：大模型原理（10期，原理篇）— drafting
 
-> **当前进度**：① BPE 分词 drafting（目录 `2026-07-14-BPE/`，draft.md 已起笔）；② 词嵌入 drafting（目录 `2026-07-17-词嵌入/`）；③ 位置编码 drafting（目录 `2026-07-19-位置编码/`）；④-⑩ planned。
+> **当前进度**：① BPE 分词 published（2026-07-13）；② 词嵌入 drafting；③ 位置编码 drafting；④ 注意力机制 drafting；⑤ FFN ready（draft 打磨完毕待复核）；⑥-⑩ planned。
 
 | # | 标题 | 核心内容 | 搜索力 |
 |---|------|---------|--------|
@@ -183,7 +183,7 @@ F1→F2→F3→F4→F5→F6→F7→F8，按热点优先级插队
 > **定位**：作为「大模型原理」的模型案例镜头，不与主线形成独立的内容品牌。
 > **核心问题**：DeepSeek 为什么能用 1/10 成本做出同等水平的模型？答案在数学里。
 > **发布规则**：D1 已于 07/11 发布；D2-D5 仅在相应前置原理完成后，按固定两天节奏发布。
-> **当前进度**：D1 MoE published（[链接](https://mp.weixin.qq.com/s/QdkD0CR2fD-HfY77-gX3Ug)）；D2-D5 planned。
+> **当前进度**：D1 MoE published（[链接](https://mp.weixin.qq.com/s/QdkD0CR2fD-HfY77-gX3Ug)）；D2 MLA 前置（④ 注意力） drafting，D2-D5 planned。
 > **素材来源**：~/vaults/papers/ 下 16 课笔记 + 全部论文 PDF。
 
 | # | 篇名（暂定） | 核心数学 | 驱动问题 | 对应笔记 | 搜索力 |

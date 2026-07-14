@@ -1,0 +1,5 @@
+title: "KV cache显存占比"
+prompt: "A clean 1:1 infographic in tech style showing GPU memory allocation for LLaMA-3-70B at 100K context. Three horizontal stacked bars with labels in Chinese: '模型权重 bf16 约140GB' taking 81% in dark blue, 'KV cache 约31GB' taking 18% in orange/amber, '其他 约2GB' taking 1% in light gray. Title at top in bold Chinese: 'LLaMA-3-70B 显存占用（100K上下文）'. Subtitle: 'GQA 8头压缩后'. The KV cache bar has a small icon of stacked key-value vector pairs. Clean white background, rounded corner bars, modern data visualization style. No English text. Minimal and professional."
+filename: "01-kv-ratio.png"
+size: "1:1"
+resolution: "1k"

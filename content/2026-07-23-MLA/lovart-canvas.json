@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "project_id": "oIPTx0Wfa8",
+  "project_name": "显存被谁吃掉了？DeepSeek如何省下90%",
+  "project_url": "https://www.lovart.ai/canvas?projectId=oIPTx0Wfa8",
+  "jobs": {
+    "9b784085029aef71b1039c0fa3ec79f51944de35a53767f10f5a20ce4840c591": {
+      "status": "completed",
+      "source": "00-cover.md",
+      "prompt": "title: \"MLA封面：便利贴墙压缩\"\nprompt: \"Create a 21:9 cinematic wide cover illustration for a Chinese AI explainer article. On the left, a towering wall of dense yellow sticky notes is about to overflow from a GPU-shaped room, representing memory that grows with every conversation. On the right, the same information becomes one slim, elegant blue notebook with a small luminous index tab, representing compression into a useful summary. A single glowing blue stream carries the notes from left to right. Clean white background, editorial tech illustration, premium and uncluttered, warm amber versus cool blue palette, large blank area around the center for breathing room. The only visible text is the bold Chinese hook “显存去哪了” (exactly these five characters). Do not add any other words, numbers, logos, formulas, English, watermarks, or UI elements.\"\nfilename: \"00-cover.png\"\nsize: \"21:9\"\nresolution: \"1k\"",
+      "aspect_ratio": "21:9",
+      "output": "/home/skyscribe/srcs/content-gen/content/2026-07-23-MLA/images/00-cover.png",
+      "submitted_at": "2026-07-13T21:22:44.750123+08:00"
+    },
+    "3d6b3815d5167b84d43860d3d9f20d60074a75b76dfc3f5c77fa6fd8500230a3": {
+      "status": "submitted",
+      "source": "03-comparison.md",
+      "prompt": "title: \"MLA同架构缓存对照\"\nprompt: \"Create a square 1:1 Chinese editorial data infographic, clean white background with a restrained navy-blue and amber palette. Use a grouped horizontal bar chart to compare KV cache per token in DeepSeek-V2 paired experiments. The title, exactly: “同架构对照：MLA 省下86%–96%的KV缓存”. Show two clearly separated groups: “小型MoE对照” and “大型MoE对照”. In each group, use an amber MHA bar and a blue MLA bar. Exact data labels: 小型MoE: “MHA 110.6K 个元素”, “MLA 15.6K 个元素（14%）”; 大型MoE: “MHA 860.2K 个元素”, “MLA 34.6K 个元素（4%）”. Add one small bottom note, exactly: “来源：DeepSeek-V2 技术报告 Table 9；元素数量不等于固定字节数”. Make the relative bar lengths visually accurate. No model-versus-model comparison, no LLaMA, no Qwen, no context-length curve, no invented metrics, no logos, no watermarks, and no extra text.\"\nfilename: \"03-comparison.png\"\nsize: \"1:1\"\nresolution: \"1k\"",
+      "aspect_ratio": "1:1",
+      "output": "/home/skyscribe/srcs/content-gen/content/2026-07-23-MLA/images/03-comparison.png",
+      "submitted_at": "2026-07-13T21:22:52.423913+08:00",
+      "last_error": "Lovart UI blocked while trying to inspect generated images: page state: credit"
+    }
+  },
+  "submissions": [
+    {
+      "date": "2026-07-13",
+      "fingerprint": "9b784085029aef71b1039c0fa3ec79f51944de35a53767f10f5a20ce4840c591"
+    },
+    {
+      "date": "2026-07-13",
+      "fingerprint": "3d6b3815d5167b84d43860d3d9f20d60074a75b76dfc3f5c77fa6fd8500230a3"
+    }
+  ]
+}
