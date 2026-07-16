@@ -6,6 +6,7 @@ type: "原理篇"
 series: "大模型原理"
 keywords: ["BPE", "分词", "Tokenizer", "token", "API计费"]
 cover: 00-cover.png
+wechatUrl: "https://mp.weixin.qq.com/s/5nR_KI47v_U8KwpQA4Uv5Q"
 scheduledPublish: "2026-07-13T08:00:00+08:00"
 ---
 

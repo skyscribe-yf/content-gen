@@ -1,0 +1,19 @@
+{
+  "device": "NVIDIA GeForce RTX 4090 D",
+  "torch_cuda": "12.6",
+  "seed": 20260716,
+  "stories_loaded": 500000,
+  "train_stories": 490011,
+  "validation_stories": 9989,
+  "vocabulary_size": 8192,
+  "steps": 24112,
+  "initial_step": 16104,
+  "resumed_from": "/root/autodl-tmp/pretraining-demo/artifacts/gpu-main-20260716-final-artifacts/checkpoint.pt",
+  "optimizer_state_restored": false,
+  "best_step": 24100,
+  "best_validation_nll": 3.9264748245477676,
+  "best_validation_ppl": 50.72783757681511,
+  "stopped_early": false,
+  "peak_memory_bytes": 4039741440,
+  "generated_greedy": "从前，有一个小女孩叫Lily。她有一件粉红色裙子，非常喜欢穿。有一天，Lily的家人决定去海滩度假。他们全都上了车，Lily坐在她的舒适车座上都很高兴。\n结束。他们很开心。结束。结束。结束。结束游戏家。他们是一个非常快乐而自豪。他们是一个家庭。他们是一个家庭一来拥有的东西。他们明天见到了更多的朋友。他们是一个快乐的家庭一个家庭。他们是一个很好的故事可以让他们感到颤而自豪。他们是一个家庭。结束。他们是一个勇敢而快乐的朋友好人是世界上最好的礼物。他们很开心生气。结束。结束。他们还是朋友了他们的爸爸和我的家。他们是一个非常好的爸爸和你的手上�柠�。结束。他们是一个快乐的家庭。他们是一个不过得很愉快。他们是一个家庭"
+}

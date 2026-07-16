@@ -1,0 +1,109 @@
+{
+  "version": 1,
+  "project_id": "oNwcpco1gY",
+  "project_name": "猜下一个字，为什么能学会写文章？预训练全过程",
+  "project_url": "https://www.lovart.ai/canvas?projectId=oNwcpco1gY",
+  "jobs": {
+    "1f91e6c6adf290ffab2c9e396337f7044170e4be8fdf060bb5c38f59ee7e47e0": {
+      "status": "completed",
+      "source": "00-cover-water-revelation.md",
+      "prompt": "The Revelation of Pretraining - Cinematic Concept Scene\n\nA cinematic 21:9 widescreen poster. A vast ocean scene at golden hour: the water level is dramatically receded, revealing layered geological structures beneath the surface. The top third shows barely submerged peaks representing \"reasoning ability.\" The mid-water line reveals distinct rock formations labeled with Chinese text. The deepest exposed layer shows ancient bedrock structures with embedded glowing golden Chinese characters. Dramatic lighting, ocean waves in the distance, god rays piercing through clouds.\n\nCOLORS: Deep Ocean Blue (#1A3A5C) for water, warm golden hour sky (#F4A261), coral reef tones (#E76F51) for mid-level structures, rich amber (#E9C46A) for deepest bedrock layer, white foam accents.\n\nChinese text integrated as natural rock carvings: \"预训练\" on the bedrock, \"猜下一字?\" as floating surface text.\n\nComposition: centered, dramatic depth layers, 60% negative space in sky/water. Halftone texture, slight print misregistration for screen-print aesthetic.\n\nColor values (#hex) and color names are rendering guidance only — do NOT display color names, hex codes, or palette labels as visible text in the image. Keep on-image Chinese text minimal and large.\n\nASPECT: 21:9\nCOMPOSITION: complex cinematic",
+      "aspect_ratio": "21:9",
+      "output": "/home/skyscribe/srcs/content-gen/content/2026-07-27-预训练/images/00-cover-water-revelation.png",
+      "submitted_at": "2026-07-16T05:32:52.543074+08:00"
+    },
+    "dd7ceb08ca384ae92aa6e58d8505e36b8d6feb69796cda3d236301ef9e6c395a": {
+      "status": "completed",
+      "source": "01-timeline-gpt-scaling.md",
+      "prompt": "GPT Scaling Timeline - Model Evolution 2019-2026\n\nHorizontal timeline infographic showing the evolution of language model capabilities through scale. Five milestone markers on a left-to-right progression arc.\n\nEVENTS (left to right):\n- 2019 GPT-2: 1.5B parameters → \"流畅语法\" (fluent grammar)\n- 2020 GPT-3: 175B parameters → \"翻译和编程\" (translation & coding)\n- 2023 GPT-3.5: +RLHF → \"对话能力\" (conversation)\n- 2024 GPT-4 → \"多模态推理\" (multimodal reasoning)\n- 2026 DeepSeek V4: 1.6T MoE → \"代码数学超越开源\" (code & math leadership)\n\nEach marker: circular node with year below, parameter count, and capability icon above. Arc rises upward to show growing capability. Base line shows compute (FLOPs) increasing logarithmically.\n\nCOLORS: Soft Peach background (#FFECD2), nodes in Warm Orange (#ED8936), Terracotta (#C05621), Golden Yellow (#F6AD55), Deep Brown (#744210) accents\n\nELEMENTS: Rising arc line connecting里程碑 markers, upward arrow at right end suggesting continuation, small icons for each capability (book for grammar, code brackets for programming, speech bubble for conversation, brain for reasoning, trophy for leadership)\n\nSTYLE: Clean vector illustration with black outlines, rounded elements, generous white space\n\nASPECT: 16:9",
+      "aspect_ratio": "1:1",
+      "output": "/home/skyscribe/srcs/content-gen/content/2026-07-27-预训练/images/01-timeline-gpt-scaling.png",
+      "submitted_at": "2026-07-16T05:33:45.439653+08:00"
+    },
+    "2d1172e07009b38e34f47efffbf38d218b7b10daf18f5f820214c42ca69c959a": {
+      "status": "completed",
+      "source": "02-infographic-cross-entropy.md",
+      "prompt": "Cross Entropy Decomposition - H(p) + D_KL\n\nCentral infographic titled \"交叉熵分解\" showing the mathematical relationship between cross-entropy, entropy, and KL divergence.\n\nLAYOUT: Top-to-bottom flow with three connected zones.\n\nTOP ZONE: Cross-entropy equation shown as a large container:\n\"交叉熵 H(p,q) = −Σ p(x) · log q(x)\"\nVisual: A vertical bar divided into two colored segments.\n\nMIDDLE ZONE: The decomposition arrow splits into two parallel containers:\nLEFT: \"H(p) = 真实分布的熵\" (Entropy of true distribution)\n- Label: \"固定不变，模型控制不了\" (Fixed, model cannot change)\n- Visual: A locked padlock icon\nRIGHT: \"D_KL(p‖q) = KL散度\" (KL Divergence)\n- Label: \"模型要最小化的目标\" (What model minimizes)\n- Visual: A downward trending arrow icon\n\nBOTTOM ZONE: Conclusion box:\n\"最小化交叉熵 = 最小化 KL 散度\"\nSubtitle: \"让模型分布 q 逼近真实分布 p\"\n\nCOLORS: Soft Peach background (#FFECD2), H(p) segment in Warm Orange (#ED8936), D_KL segment in Terracotta (#C05621), conclusion in Golden Yellow (#F6AD55), Deep Brown (#744210) for text\n\nELEMENTS: Black outlines, rounded containers, bold Chinese labels, connecting arrows between zones, simple icons (lock, target,_equals sign)\n\nSTYLE: Clean vector illustration, generous white space, centered composition\n\nASPECT: 1:1",
+      "aspect_ratio": "1:1",
+      "output": "/home/skyscribe/srcs/content-gen/content/2026-07-27-预训练/images/02-infographic-cross-entropy.png",
+      "submitted_at": "2026-07-16T05:34:55.092448+08:00"
+    },
+    "7a0fc82e73ba7d59c5d13f6ac8c13287629dd698d864774352221533d53d7a72": {
+      "status": "completed",
+      "source": "03-concept-water-receding.md",
+      "prompt": "Water Receding Metaphor - Pretraining Stages\n\nConceptual illustration showing water gradually receding to reveal deeper and more complex structures, as a metaphor for pretraining progress.\n\nLAYOUT: Vertical cross-section view with four water levels, left to right.\n\nLEFTMOST (highest water ~ppl 100): Completely submerged landscape. Only random ripples visible on surface. Label: \"随机初始化 — 完全混乱\"\n\nSECOND (~ppl 15): Water recedes slightly, revealing basic rock formations. Simple geometric shapes emerge. Label: \"字频学习 — 高频字浮现\"\n\nTHIRD (~ppl 5): More water recedes, revealing structured terrain — small buildings, pathways, recognizable shapes. Names of characters appear carved into stone. Label: \"语法搭配 — 名字与短语\"\n\nRIGHTMOST (~ppl 2 lowest water): Full landscape revealed — complex city with interconnected structures, bridges, networks. All detailed and organized. Label: \"知识浮现 — 长程依赖\"\n\nWATER LINE: Shown as a descending stepped line from left to right with ppl values at each step. Arrow pointing down labeled \"训练步数增加\".\n\nCOLORS: Deep Ocean Blue (#1A3A5C) for water, Golden Yellow (#F6AD55) for exposed structures, Terracotta (#C05621) for deepest layer details, Soft Peach (#FFECD2) for sky, Warm Orange (#ED8936) for mid-stage elements\n\nSTYLE: Clean vector illustration, isometric cross-section view, bold Chinese labels, clear layering\n\nASPECT: 1:1",
+      "aspect_ratio": "1:1",
+      "output": "/home/skyscribe/srcs/content-gen/content/2026-07-27-预训练/images/03-concept-water-receding.png",
+      "submitted_at": "2026-07-16T05:35:58.720310+08:00"
+    },
+    "a0ff21509407af9ae96d21190cc774a1e686b5f36c7c9f42c186252b14f5768c": {
+      "status": "failed",
+      "source": "04-comparison-distribution.md",
+      "prompt": "Three-Stage Probability Distribution Comparison\n\nSide-by-side comparison of three probability distributions at different training stages. Demonstrates how the model's output distribution evolves from uniform precision.\n\nLAYOUT: Three vertical panels, left to right.\n\nLEFT PANEL: \"初始状态 ppl≈109\"\n- Visual: Nearly uniform bar chart — 10 bars of almost equal short height\n- Label: \"近似均匀分布 — 每个字概率 ~1%\"\n- Color: Pale gray bars on peach background\n\nMIDDLE PANEL: \"中期 ppl≈5\"\n- Visual: Several bars are now taller (peaking around common characters), others shorter\n- Label: \"尖峰初现 — 高频字概率升高\"\n- Color: Warm Orange (#ED8936) for peaks, terracotta for short bars\n\nRIGHT PANEL: \"收敛 ppl≈2\"\n- Visual: One very tall sharp peak (correct token), others minimal\n- Label: \"尖峰精准 — 模型确定了\"\n- Color: Coral Red (#E07A5F) for the peak, minimal others\n\nEach panel has a small perplexity gauge icon below showing the ppl value.\n\nCONNECTING ELEMENTS: Upward arrow between panels showing sharpening distribution. Label: \"Perplexity 持续下降\".\n\nCOLORS: Soft Peach background (#FFECD2), black outlines, warm palette fills\n\nSTYLE: Clean scientific visualization, bold labels, clear contrast between stages\n\nASPECT: 1:1\nCOMPOSITION: balanced three-panel comparison",
+      "aspect_ratio": "1:1",
+      "output": "/home/skyscribe/srcs/content-gen/content/2026-07-27-预训练/images/04-comparison-distribution.png",
+      "submitted_at": "2026-07-16T05:37:18.375414+08:00",
+      "last_error": "Lovart UI blocked while trying to wait for image download: page state: cloudflare"
+    },
+    "c41928e947d5c7e2576474204b2e57a883b8579a6b6b663ddd2798fab89c3ad7": {
+      "status": "failed",
+      "source": "05-comparison-text-output.md",
+      "prompt": "Three-Stage Text Output Comparison\n\nSide-by-side comparison of generated text quality at three training stages. Uses code-output aesthetic with Chinese text samples.\n\nLAYOUT: Three rounded-rect cards arranged left to right on white background.\n\nLEFT CARD: \"随机初始化 (ppl≈109)\"\n- Header: monospace label \"step=1\"\n- Content: Gibberish characters mixed randomly, no pattern\n- Visual: Scattered characters like scattered dice, chaotic arrangement\n- Color: Muted gray text on pale background\n\nMIDDLE CARD: \"中期训练 (ppl≈5)\"\n- Header: monospace label \"step=2000\"\n- Content: Some real words and names emerging amid fragments (\"杨铁心\"\"柯镇恶\"\"为徒\")\n- Visual: Characters forming loose groupings, some recognizable patterns\n- Color: Black text with warm orange highlights on key names\n\nRIGHT CARD: \"收敛 (ppl≈2)\"\n- Header: monospace label \"step=4000\"\n- Content: Coherent phrases from training text (\"这孩子日后\"\"收了晚饭\")\n- Visual: Clear sentence-like structure with recognizable patterns\n- Color: Bold black text with teal underlines on coherent phrases\n\nCONNECTING ELEMENTS: Wavy hand-drawn arrow from left to right labeled \"训练推进\" (training progress). Star doodles on the right card indicating quality.\n\nFOOTER: Single-line hand-lettered tagline: \"从乱码到原文 — 水落石出\"\n\nSTYLE: Professional hand-drawn sketchnote style, Mike Rohde-inspired, generous white space\n\nASPECT: 1:1\nCOMPOSITION: balanced three-card horizontal layout",
+      "aspect_ratio": "1:1",
+      "output": "/home/skyscribe/srcs/content-gen/content/2026-07-27-预训练/images/05-comparison-text-output.png",
+      "submitted_at": "2026-07-16T05:39:09.784045+08:00",
+      "last_error": "Lovart UI blocked while trying to select GPT Image 2: page state: cloudflare"
+    },
+    "e538ea60107606846f53a41654c080bec230f74832e132d9058def232474afc9": {
+      "status": "completed",
+      "source": "06-infographic-scaling-law.md",
+      "prompt": "Scaling Law - Loss vs Compute Power Law Curve\n\nScientific infographic showing the empirical scaling law relationship between model compute and loss.\n\nLAYOUT: Scatter plot with curve fitting, plus explanatory annotations.\n\nMAIN PLOT AREA: Log-log scatter plot\n- X-axis: \"计算量 (FLOPs)\" — logarithmic scale, labeled with values from 10^20 to 10^25\n- Y-axis: \"验证集 Loss\" — logarithmic scale, labeled from 1.0 to 4.0\n- Data points: 8-10 scattered dots showing decreasing trend\n- Fitted line: Smooth downward curve (power law) passing through points\n- Trend arrow: Downward-pointing arrow along the curve labeled \"Loss 持续下降\"\n\nMODEL LABELS near data points:\n- \"GPT-2\" at lower-left\n- \"GPT-3\" at mid-range\n- \"GPT-4\" at upper-mid\n- \"DeepSeek V4\" at the compute frontier\n- Question mark \"?\" at right edge beyond current data — future models\n\nKEY ANNOTATION: Arrow pointing right with caption \"目前还没到平坦区\" (Haven't hit the flat zone yet). Shaded region to the right of current data labeled \"未知区域\".\n\nFORMULA BOX: Bottom-right corner showing the scaling law equation in a rounded rectangle.\n\nCOLORS: Soft Peach background (#FFECD2), data points in Terracotta (#C05621), fitted curve in Coral Red (#E07A5F), axis lines in Deep Brown (#744210), model labels in Deep Brown, question mark area in light blue tint\n\nSTYLE: Clean scientific visualization, bold axis labels, clear annotations, generous white space\n\nASPECT: 16:9",
+      "aspect_ratio": "1:1",
+      "output": "/home/skyscribe/srcs/content-gen/content/2026-07-27-预训练/images/06-infographic-scaling-law.png",
+      "submitted_at": "2026-07-16T05:41:19.094823+08:00"
+    },
+    "261152e31e9a8d4cffa7dda5f343fa83a012ceca3a1b8568470848578ffd3d5d": {
+      "status": "failed",
+      "source": "07-flowchart-pipeline.md",
+      "prompt": "LLM Training Pipeline - Pretraining → RLHF → Deployment\n\nHorizontal flowchart showing the three major stages of large language model training and deployment.\n\nLAYOUT: Left-to-right process flow with three main stages connected by thick arrows.\n\nSTAGE 1 (left): \"预训练 Pretraining\"\n- Icon: Large data lake/ocean feeding into a brain silhouette\n- Input label: \"海量互联网文本\" (Massive internet text)\n- Output label: \"原始大脑 (Base Model)\"\n- Visual: Blue ocean waves on left, transforming into a neutral brain shape\n- Key metric: \"15 万亿 token\" badge\n\nSTAGE 2 (middle): \"RLHF 微调\"\n- Icon: Human figure giving thumbs up/down to the brain\n- Input label: \"人类反馈\" (Human feedback)\n- Output label: \"对齐助手 (Aligned Model)\"\n- Visual: Brain with smiley face emerging from feedback loop\n- Key metric: \" reward model + PPO\" badge\n\nSTAGE 3 (right): \"部署 Deployment\"\n- Icon: Phone/laptop screens showing chat interface\n- Input label: \"用户 Prompt\" (User prompt)\n- Output label: \"有用回答\" (Helpful response)\n- Visual: Multiple device screens with chat bubbles\n- Key metric: \"低延迟 低成本\" badge\n\nCONNECTORS: Thick arrows between stages with small doodle icons (waves, humans, devices). Each stage in a rounded rectangle with distinct background shade.\n\nFOOTER: \"预训练是基础 — 它决定了模型能力的天花板\"\n\nCOLORS: Soft Peach background (#FFECD2), Stage 1 in Ocean Blue tones, Stage 2 in Warm Orange (#ED8936), Stage 3 in Golden Yellow (#F6AD55), text in Deep Brown (#744210)\n\nSTYLE: Clean vector flowchart, bold stage labels, simple icons, generous white space\n\nASPECT: 16:9",
+      "aspect_ratio": "1:1",
+      "output": "/home/skyscribe/srcs/content-gen/content/2026-07-27-预训练/images/07-flowchart-pipeline.png",
+      "submitted_at": "2026-07-16T05:41:27.759508+08:00",
+      "last_error": "Lovart UI blocked while trying to inspect generated images: page state: credit"
+    }
+  },
+  "submissions": [
+    {
+      "date": "2026-07-16",
+      "fingerprint": "1f91e6c6adf290ffab2c9e396337f7044170e4be8fdf060bb5c38f59ee7e47e0"
+    },
+    {
+      "date": "2026-07-16",
+      "fingerprint": "dd7ceb08ca384ae92aa6e58d8505e36b8d6feb69796cda3d236301ef9e6c395a"
+    },
+    {
+      "date": "2026-07-16",
+      "fingerprint": "2d1172e07009b38e34f47efffbf38d218b7b10daf18f5f820214c42ca69c959a"
+    },
+    {
+      "date": "2026-07-16",
+      "fingerprint": "7a0fc82e73ba7d59c5d13f6ac8c13287629dd698d864774352221533d53d7a72"
+    },
+    {
+      "date": "2026-07-16",
+      "fingerprint": "a0ff21509407af9ae96d21190cc774a1e686b5f36c7c9f42c186252b14f5768c"
+    },
+    {
+      "date": "2026-07-16",
+      "fingerprint": "c41928e947d5c7e2576474204b2e57a883b8579a6b6b663ddd2798fab89c3ad7"
+    },
+    {
+      "date": "2026-07-16",
+      "fingerprint": "e538ea60107606846f53a41654c080bec230f74832e132d9058def232474afc9"
+    },
+    {
+      "date": "2026-07-16",
+      "fingerprint": "261152e31e9a8d4cffa7dda5f343fa83a012ceca3a1b8568470848578ffd3d5d"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "series_title": "大模型原理合集封面",
+  "output_dir": "content/collection-covers",
+  "size": "3:4",
+  "resolution": "1k",
+  "cards": [
+    {
+      "title": "大模型原理合集封面",
+      "prompt": "A premium hardcover book front cover design, flat layout, portrait 3:4 aspect ratio, for a Chinese technical book series titled \"大模型原理\".\n\nComposition: deep navy matte background fills the entire cover. From the bottom, a subtle radial glow in warm amber rises and fades into navy — suggesting light emerging from knowledge. Across the upper third, a constellation of small cyan nodes connected by fine luminous threads forms an abstract network, representing tokens flowing through a Transformer.\n\nTypography: centered in the upper-middle, the bold Chinese title \"大模型原理\" in large ivory serif type with generous letter-spacing. Below the title, a thin amber horizontal rule. Beneath the rule, smaller subtitle text in clean ivory sans-serif: \"从分词到注意力，拆开 Transformer 的每一层\". At the very bottom, small ivory text: \"数解AI\".\n\nNo barcode, no price, no author photo, no ISBN, no dust jacket texture, no realistic human, no window reflections. Clean, editorial, premium book design — the kind you'd see on a technical publisher's catalog cover.\n\nAbsolutely no other visible words, letters, equations, logos, or watermarks beyond the specified Chinese text above.",
+      "filename": "大模型原理-合集封面.png",
+      "size": "3:4",
+      "resolution": "1k"
+    }
+  ]
+}

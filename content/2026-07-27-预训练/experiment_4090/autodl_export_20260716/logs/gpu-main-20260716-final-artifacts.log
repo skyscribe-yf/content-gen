@@ -1,0 +1,6 @@
+
+
+
+/root/autodl-tmp/conda/envs/pretrain-4090/lib/python3.11/site-packages/torch/nn/modules/transformer.py:382: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+{"device": "NVIDIA GeForce RTX 4090 D", "torch_cuda": "12.6", "seed": 20260716, "stories_loaded": 500000, "train_stories": 490011, "validation_stories": 9989, "vocabulary_size": 8192, "steps": 16104, "best_step": 15500, "best_validation_nll": 4.040791243314743, "best_validation_ppl": 56.87132406252785, "stopped_early": false, "peak_memory_bytes": 4039741440, "generated_greedy": "从前，有一个小女孩叫Lily。她有一件粉红色裙子，非常喜欢穿。有一天，Lily的家人决定去海滩度假。他们全都上了车，Lily坐在她的舒适车座上自行车上自行车。她不再过得很愉快。她不再需要他的自行车上自行车上自行车。她不再过自行车。她不再喜欢她的自行车。她不再自行车。她不再有她的自行车上自行车上自行车。她不再争吵。她不再争吵。她不再争吵。她不再有自己的故事的结局。她不再争吵。她不再过得很愉快。她不再争吵。她不再争吵。她不再争吵。她不再争吵。她不再争吵。她不再争吵。她不再争吵。她不再自私。她不再喜欢她的自行车上自行车。她不再争吵。她不再争吵。她不再争吵。她不再需要她的"}

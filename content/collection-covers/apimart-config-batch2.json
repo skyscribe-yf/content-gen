@@ -1,0 +1,22 @@
+{
+  "series_title": "合集封面批量生成",
+  "output_dir": "content/collection-covers",
+  "size": "3:4",
+  "resolution": "1k",
+  "cards": [
+    {
+      "title": "训练回路合集封面",
+      "prompt": "A premium hardcover book front cover design, flat layout, portrait 3:4 aspect ratio, for a Chinese technical book series titled \"训练回路\".\n\nComposition: deep charcoal-to-black gradient background fills the entire cover. From the bottom-left, a single luminous golden thread spirals upward in a smooth descending curve — like a gradient descent path finding its way down a loss landscape. Small cyan nodes dot the thread at key turning points, each glowing slightly brighter than the last, representing the six steps of training: gradient descent, loss function, backpropagation, softmax, residual connection, and Adam optimizer. The thread converges toward a bright amber minimum point near the top-right.\n\nTypography: centered in the upper-middle, the bold Chinese title \"训练回路\" in large ivory serif type with generous letter-spacing. Below the title, a thin golden horizontal rule. Beneath the rule, smaller subtitle text in clean ivory sans-serif: \"从梯度下降到Adam，拆开模型学习的每一步\". At the very bottom, small ivory text: \"数解AI\".\n\nNo barcode, no price, no author photo, no ISBN, no dust jacket texture, no realistic human, no window reflections. Clean, editorial, premium book design — the kind you'd see on a technical publisher's catalog cover.\n\nAbsolutely no other visible words, letters, equations, logos, or watermarks beyond the specified Chinese text above.",
+      "filename": "训练回路-合集封面.png",
+      "size": "3:4",
+      "resolution": "1k"
+    },
+    {
+      "title": "DeepSeek解密合集封面",
+      "prompt": "A premium hardcover book front cover design, flat layout, portrait 3:4 aspect ratio, for a Chinese technical book series titled \"DeepSeek 解密\".\n\nComposition: deep navy matte background fills the entire cover. At the center, an abstract geometric structure — a sleek hexagonal core glowing in cyan, surrounded by multiple smaller modules orbiting at different distances, some lit in amber (active experts), others dim (dormant experts). Fine luminous threads connect the core to each active module, representing a Mixture-of-Experts architecture. A subtle circuit-board texture fades into the background, barely visible. The overall feel is \"opening the black box\" — revealing the elegant engineering inside.\n\nTypography: centered in the upper-middle, the bold Chinese title \"DeepSeek 解密\" in large ivory serif type with generous letter-spacing. Below the title, a thin amber horizontal rule. Beneath the rule, smaller subtitle text in clean ivory sans-serif: \"MoE、MLA、FP8——中国团队如何省下90%成本\". At the very bottom, small ivory text: \"数解AI\".\n\nNo barcode, no price, no author photo, no ISBN, no dust jacket texture, no realistic human, no window reflections. Clean, editorial, premium book design with a futuristic tech edge.\n\nAbsolutely no other visible words, letters, equations, logos, or watermarks beyond the specified Chinese text above.",
+      "filename": "DeepSeek解密-合集封面.png",
+      "size": "3:4",
+      "resolution": "1k"
+    }
+  ]
+}

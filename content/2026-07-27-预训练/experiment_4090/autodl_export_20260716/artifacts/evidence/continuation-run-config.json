@@ -1,0 +1,29 @@
+{
+  "text_field": "story_zh",
+  "max_stories": 500000,
+  "validation_fraction": 0.02,
+  "vocab_size": 8192,
+  "context_length": 256,
+  "hidden_size": 512,
+  "heads": 8,
+  "layers": 8,
+  "batch_size": 64,
+  "gradient_accumulation_steps": 2,
+  "learning_rate": 0.0005,
+  "warmup_steps": 500,
+  "decay_steps": 30000,
+  "max_minutes": 30.0,
+  "max_steps": null,
+  "eval_every": 100,
+  "eval_batches": 16,
+  "early_stopping_evaluations": 120,
+  "snapshot_steps": [
+    0,
+    500,
+    2000
+  ],
+  "snapshot_every_after": 5000,
+  "snapshot_interval": 1000,
+  "resume_checkpoint": "/root/autodl-tmp/pretraining-demo/artifacts/gpu-main-20260716-final-artifacts/checkpoint.pt",
+  "seed": 20260716
+}

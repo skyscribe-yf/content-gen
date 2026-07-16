@@ -1,11 +1,12 @@
 ---
-title: "词嵌入是什么？5万个0怎么变成一串坐标"
+title: "词嵌入为什么让AI懂"苹果"？5万个0变坐标"
 author: "数解AI"
-digest: "词嵌入是什么？token ID如何变成坐标：one-hot、嵌入矩阵、余弦相似度一次讲清。"
+digest: "词嵌入为什么能让AI懂语义？token ID如何变成坐标：one-hot、嵌入矩阵、余弦相似度一次讲清。"
 type: "原理篇"
 series: "大模型原理"
 keywords: ["词嵌入", "embedding", "one-hot", "余弦相似度", "嵌入矩阵"]
 cover: 00-cover.png
+wechatUrl: "https://mp.weixin.qq.com/s/rDryn1z_hLt7mwi3X8fsxQ"
 scheduledPublish: "2026-07-15T08:00:00+08:00"
 ---
 
@@ -227,6 +228,12 @@ print(f"DeepSeek-V4-Pro 嵌入矩阵总参数: {deepseek_vocab * deepseek_dim / 
 
 ---
 
+**进度小结**：走到这里，三步已经走完两步——①分词给每个 token 一个编号，②one-hot 因为维度灾难和语义为零被否掉，③嵌入矩阵把编号查成一串坐标，④解释了这串坐标凭什么带语义。还剩一个问题：**怎么量化两个向量「意思有多近」？** ⑤余弦相似度登场。
+
+---
+
+---
+
 ## ⑤ 余弦相似度：在坐标空间里量"意思有多近"
 
 有了向量，怎么量两个词的意思有多近？
@@ -279,7 +286,7 @@ Word2Vec 是**一词一向量。** "苹果"不管在"吃苹果"还是"苹果发�
 
 ## ⑦ 结尾
 
-回到开头的问题：AI 怎么把文字变成数字？
+回到开头的问题：AI 怎么把「苹果」变成它能懂的数字？
 
 三步——
 
@@ -292,7 +299,7 @@ Word2Vec 是**一词一向量。** "苹果"不管在"吃苹果"还是"苹果发�
 ---
 
 📖 **大模型原理**（本系列 · 第 2/10 篇）
-① [BPE分词：AI为什么把文字切成碎片？](https://mp.weixin.qq.com/s/5nR_KI47v_U8KwpQA4Uv5Q) → ② 词嵌入是什么？5万个0怎么变成一串坐标（本篇）→ ③ 位置编码怎么工作？词序一错意思全变（即将发布）→ ④ 注意力机制是什么？别再当数据库查询（即将发布）→ ⑤ FFN → ⑥ 归一化与残差 → ⑦ Transformer → ⑧ 预训练 → ⑨ RLHF → ⑩ 推理加速
+① [BPE分词：AI为什么把文字切成碎片？](https://mp.weixin.qq.com/s/5nR_KI47v_U8KwpQA4Uv5Q) → ② 词嵌入为什么让AI懂“苹果”？5万个0变坐标（本篇）→ ③ 位置编码怎么工作？词序一错意思全变（即将发布）→ ④ 注意力机制是什么？别再当数据库查询（即将发布）→ ⑤ FFN → ⑥ 归一化与残差 → ⑦ Transformer → ⑧ 预训练 → ⑨ RLHF → ⑩ 推理加速
 
 🔥 **DeepSeek 技术解密**
 ① [AI上下文为什么越长越慢](https://mp.weixin.qq.com/s/PLVRS0TTHXHDve1Z3r6M7Q) → ② [MoE混合专家入门](https://mp.weixin.qq.com/s/QdkD0CR2fD-HfY77-gX3Ug) → ③ MLA（即将发布）

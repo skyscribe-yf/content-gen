@@ -1,0 +1,114 @@
+{
+  "version": 1,
+  "tasks": [
+    {
+      "fingerprint": "7e9a86e77ad7f871aab8c7d6bc806ed063b393e4e7e8bab6bd4b064facd544c8",
+      "task_id": "task_01KXMRVBA1V2Q1AX1RNSXN8FCT",
+      "status": "completed",
+      "filename": "00-cover-evidence-v2.png",
+      "size": "21:9",
+      "resolution": "1k",
+      "n": 1,
+      "submitted_at": "2026-07-16T06:12:00Z",
+      "updated_at": "2026-07-16T06:13:05Z",
+      "saved_paths": [
+        "content/2026-07-27-预训练/00-cover-evidence-v2.png"
+      ]
+    },
+    {
+      "fingerprint": "8d861468aba05199b06ff6bba624889ad1d8276a46ad74d97576ff4bd5cc76f9",
+      "task_id": "task_01KXMRXBFVXXR7NAVKF9JTR3YN",
+      "status": "completed",
+      "filename": "02-cross-entropy-context-v2.png",
+      "size": "1:1",
+      "resolution": "1k",
+      "n": 1,
+      "submitted_at": "2026-07-16T06:13:06Z",
+      "updated_at": "2026-07-16T06:14:16Z",
+      "saved_paths": [
+        "content/2026-07-27-预训练/02-cross-entropy-context-v2.png"
+      ]
+    },
+    {
+      "fingerprint": "dcb57c776987a22a048c349292fa5b84a922f11f25c546a0fadf621ae6b00587",
+      "task_id": "task_01KXMRZHF19MEZKGS9VH8MJ3W1",
+      "status": "processing",
+      "filename": "04-validation-ppl-evidence-v2.png",
+      "size": "1:1",
+      "resolution": "1k",
+      "n": 1,
+      "submitted_at": "2026-07-16T06:14:17Z",
+      "updated_at": "2026-07-16T06:15:23Z"
+    },
+    {
+      "fingerprint": "116e25419b05cd161fbd84b0928f1e43c8456cca5322129513cac2376db21126",
+      "task_id": "task_01KXMS4VH2V66H20FS7KPW83R6",
+      "status": "completed",
+      "filename": "00-cover-evidence-v3.png",
+      "size": "21:9",
+      "resolution": "1k",
+      "n": 1,
+      "submitted_at": "2026-07-16T06:17:12Z",
+      "updated_at": "2026-07-16T06:18:22Z",
+      "saved_paths": [
+        "content/2026-07-27-预训练/00-cover-evidence-v3.png"
+      ]
+    },
+    {
+      "fingerprint": "64473cfff5340f2daae2085d3a38239bb3587fa4f155c3961a35d6c494d64558",
+      "task_id": "task_01KXMS7163SRHDSPYX37BP0VGW",
+      "status": "completed",
+      "filename": "02-cross-entropy-context-v3.png",
+      "size": "1:1",
+      "resolution": "1k",
+      "n": 1,
+      "submitted_at": "2026-07-16T06:18:23Z",
+      "updated_at": "2026-07-16T06:19:51Z",
+      "saved_paths": [
+        "content/2026-07-27-预训练/02-cross-entropy-context-v3.png"
+      ]
+    },
+    {
+      "fingerprint": "69fda16d7a6fb01e8d32bac0d1c04ed5594744039354a2bd218f81e35ae29202",
+      "task_id": "task_01KXMS9QPTWFPZREERPH2QP5Q8",
+      "status": "completed",
+      "filename": "04-validation-perplexity-v3.png",
+      "size": "1:1",
+      "resolution": "1k",
+      "n": 1,
+      "submitted_at": "2026-07-16T06:19:52Z",
+      "updated_at": "2026-07-16T06:21:13Z",
+      "saved_paths": [
+        "content/2026-07-27-预训练/04-validation-perplexity-v3.png"
+      ]
+    },
+    {
+      "fingerprint": "678f1ef4d186cc360e5609cc85fe90d2cd4b5e47610d100d8e17dec75890ad50",
+      "task_id": "task_01KXMSC8AJXB6YZCBW40B41HS6",
+      "status": "completed",
+      "filename": "05-generation-evidence-v3.png",
+      "size": "1:1",
+      "resolution": "1k",
+      "n": 1,
+      "submitted_at": "2026-07-16T06:21:14Z",
+      "updated_at": "2026-07-16T06:22:46Z",
+      "saved_paths": [
+        "content/2026-07-27-预训练/05-generation-evidence-v3.png"
+      ]
+    },
+    {
+      "fingerprint": "c08fdf6ba8120ce21ee2729f27f080c74d34aaea7f1d0cb373758439f1433270",
+      "task_id": "task_01KXMSF2DEBS5G1Q4YJCD3EM1R",
+      "status": "completed",
+      "filename": "07-posttraining-boundary-v3.png",
+      "size": "1:1",
+      "resolution": "1k",
+      "n": 1,
+      "submitted_at": "2026-07-16T06:22:46Z",
+      "updated_at": "2026-07-16T06:24:09Z",
+      "saved_paths": [
+        "content/2026-07-27-预训练/07-posttraining-boundary-v3.png"
+      ]
+    }
+  ]
+}

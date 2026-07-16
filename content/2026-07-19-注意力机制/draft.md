@@ -15,8 +15,8 @@ scheduledPublish: "2026-07-19T08:00:00+08:00"
 
 前面三篇已经把一句话变成一组向量：
 
-- BPE 分词把"猫追老鼠"切成 token——猫、追、老鼠（即将发布）
-- 词嵌入把每个 token 变成一串坐标——"猫"和"狗"的坐标近，和"追"的坐标远（即将发布）
+- [BPE 分词](https://mp.weixin.qq.com/s/5nR_KI47v_U8KwpQA4Uv5Q)把"猫追老鼠"切成 token——猫、追、老鼠
+- [词嵌入](https://mp.weixin.qq.com/s/rDryn1z_hLt7mwi3X8fsxQ)把每个 token 变成一串坐标——"猫"和"狗"的坐标近，和"追"的坐标远
 - 位置编码给每串坐标加上位置信息——"猫追老鼠"和"老鼠追猫"的向量不再相同（即将发布）
 
 现在每个 token 都带着「我是谁」和「我在第几位」的信息。但它们怎么互相影响？
@@ -262,7 +262,7 @@ GQA 在效果和效率之间找平衡。MLA 从压缩 KV 表示入手，MQA 则�
 ---
 
 📖 **大模型原理**（本系列 · 第 4/10 篇）
-① [BPE分词：AI为什么把文字切成碎片？](https://mp.weixin.qq.com/s/5nR_KI47v_U8KwpQA4Uv5Q) → ② 词嵌入是什么？5万个0怎么变成一串坐标（即将发布）→ ③ 位置编码怎么工作？词序一错意思全变（即将发布）→ ④ 注意力机制是什么？别再当数据库查询（本篇）→ ⑤ FFN → ⑥ 归一化与残差 → ⑦ Transformer → ⑧ 预训练 → ⑨ RLHF → ⑩ 推理加速
+1 [BPE分词:AI为什么把文字切成碎片?](https://mp.weixin.qq.com/s/5nR_KI47v_U8KwpQA4Uv5Q) → ② [词嵌入为什么让AI懂"苹果"？5万个0变坐标](https://mp.weixin.qq.com/s/rDryn1z_hLt7mwi3X8fsxQ) → ③ 位置编码怎么工作？词序一错意思全变（即将发布）→ ④ 注意力机制是什么？别再当数据库查询（本篇）→ 5 FFN → 6 归一化与残差 → 7 Transformer → 8 预训练 → 9 RLHF → 10 推理加速
 
 🔥 **DeepSeek 技术解密**
 ① [AI上下文为什么越长越慢](https://mp.weixin.qq.com/s/PLVRS0TTHXHDve1Z3r6M7Q) → ② [MoE混合专家入门](https://mp.weixin.qq.com/s/QdkD0CR2fD-HfY77-gX3Ug) → ③ MLA（即将发布）

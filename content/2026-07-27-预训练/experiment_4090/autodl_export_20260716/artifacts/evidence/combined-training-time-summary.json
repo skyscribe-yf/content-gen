@@ -1,0 +1,17 @@
+{
+  "axis": "cumulative training time; preprocessing and checkpoint-reload time are excluded",
+  "initial_training_budget_seconds": 3600,
+  "continuation_training_budget_seconds": 1800,
+  "total_training_budget_seconds": 5400,
+  "last_initial_metric": {
+    "step": 16100,
+    "elapsed_seconds": 3599.21689376235,
+    "combined_training_elapsed_seconds": 3599.21689376235
+  },
+  "last_continuation_metric": {
+    "step": 24100,
+    "elapsed_seconds": 1797.1592714190483,
+    "combined_training_elapsed_seconds": 5397.159271419048
+  },
+  "final_non_evaluated_step": 24112
+}

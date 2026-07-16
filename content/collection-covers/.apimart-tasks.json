@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "tasks": [
+    {
+      "fingerprint": "c5896c6cc89bf1f0e77141027bf866a3c12c4ae8d718f763e8fc3296db3420bd",
+      "task_id": "task_01KXHV21HSA4MKE2Y9D9AQGTBQ",
+      "status": "completed",
+      "filename": "大模型原理-合集封面.png",
+      "size": "3:4",
+      "resolution": "1k",
+      "n": 1,
+      "submitted_at": "2026-07-15T02:52:53Z",
+      "updated_at": "2026-07-15T02:54:04Z",
+      "saved_paths": [
+        "content/collection-covers/大模型原理-合集封面.png"
+      ]
+    },
+    {
+      "fingerprint": "f606bb4777da08e8b6905c5063130e130e5cbc39878bdc9feecd119809e440ce",
+      "task_id": "task_01KXHVP5VZ9T5BZHCEG1XJTNGF",
+      "status": "completed",
+      "filename": "训练回路-合集封面.png",
+      "size": "3:4",
+      "resolution": "1k",
+      "n": 1,
+      "submitted_at": "2026-07-15T03:03:53Z",
+      "updated_at": "2026-07-15T03:04:56Z",
+      "saved_paths": [
+        "content/collection-covers/训练回路-合集封面.png"
+      ]
+    },
+    {
+      "fingerprint": "08ae7af457fa0799cc9d548b9c93ee09363b5cc90e738708fb0342691d554a36",
+      "task_id": "task_01KXHVR3GECA99JD928J9KS8QB",
+      "status": "completed",
+      "filename": "DeepSeek解密-合集封面.png",
+      "size": "3:4",
+      "resolution": "1k",
+      "n": 1,
+      "submitted_at": "2026-07-15T03:04:56Z",
+      "updated_at": "2026-07-15T03:06:06Z",
+      "saved_paths": [
+        "content/collection-covers/DeepSeek解密-合集封面.png"
+      ]
+    }
+  ]
+}

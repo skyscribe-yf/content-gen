@@ -20,9 +20,13 @@ description: "Audit WeChat Official Account article data, extract performance me
 快速步骤：
 
 1. 读取 `.env` 确认有 `WECHAT_COOKIE`
+2. **前置时效检查**（2026-07-14 复盘新增）：Cookie 实测有效期 **≤ 2 天**（远短于 wechat-stats 文档所述 7–30 天）。若上次注入距本次审计 ≥ 2 天，直接按过期处理，跳到扫码降级流程，避免注入后仍在登录页打转浪费时间。注入后导航 `https://mp.weixin.qq.com/cgi-bin/home?t=home/index&lang=zh_CN`，用 `window.wx.uin > 0` 判定；uin=0 即过期。
 2. 用 `agent_browser` `sessionMode=fresh` 打开 `https://mp.weixin.qq.com/`
-3. 通过 CDP 注入 Cookie（用 Node.js 脚本连 DevTools port，调用 `Network.setCookie`，domain 设 `.qq.com`）
-4. 导航到 `https://mp.weixin.qq.com/` 验证登录（`window.wx.uin > 0` 即为成功）
+3. 通过 CDP 注入 Cookie：`node scripts/wechat-cdp-cookie.mjs inject`（自动定位 `/tmp/agent-browser-chrome-*/DevToolsActivePort`，读 `.env` 的 `WECHAT_COOKIE`，在 weixin page tab 上调 `Network.setCookie`，domain `.qq.com`）
+4. 导航到 `https://mp.weixin.qq.com/cgi-bin/home?t=home/index&lang=zh_CN` 验证登录：`node scripts/wechat-cdp-cookie.mjs status`（`uin > 0` 即成功；uin=0 → Cookie 过期，降级扫码）
+5. 扫码登录成功后**立即导出新 Cookie**：`node scripts/wechat-cdp-cookie.mjs export`（写回 `.env`，下次免扫码）
+
+> 脚本封装了裸 WebSocket CDP 调用，无第三方依赖（Node ≥ 22 全局 WebSocket）。注入用 page target 的 `Network.setCookie`，导出用 `Network.getAllCookies`。
 
 ### Phase 2: 采集内容分析数据
 

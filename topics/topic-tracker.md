@@ -19,7 +19,7 @@
 | 07-10 | 学习率怎么自动调？拆开 Adam 的公式你就懂了 | 深度学习基础⑥ | [链接](https://mp.weixin.qq.com/s/aSLVO-otvr2rxIU1kr2eAA) |
 | 07-11 | DeepSeek便宜30倍的秘密：MoE混合专家入门 | DeepSeek 技术解密 D1 | [链接](https://mp.weixin.qq.com/s/QdkD0CR2fD-HfY77-gX3Ug) |
 | 07-13 | BPE分词：AI为什么把文字切成碎片？ | 大模型原理① | published |
-| 07-15 | 词嵌入是什么？5万个0怎么变成一串坐标 | 大模型原理② | drafting |
+| 07-15 | 词嵌入为什么让AI懂“苹果”？5万个0变坐标 | 大模型原理② | drafting |
 | 07-17 | 位置编码怎么工作？词序一错意思全变 | 大模型原理③ | drafting |
 | 07-19 | 注意力机制是什么？别再当数据库查询 | 大模型原理④ | drafting |
 | 07-21 | AI的知识到底存在哪里？FFN层拆解 | 大模型原理⑤ | ready |

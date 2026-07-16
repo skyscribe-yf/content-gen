@@ -1,0 +1,11 @@
+{
+  "points": 242,
+  "first_step": 1,
+  "last_step": 24100,
+  "first_train_ppl": 9752.732043936321,
+  "last_train_ppl": 35.13422092156873,
+  "first_validation_ppl": 9552.429330187657,
+  "last_validation_ppl": 50.72783757681511,
+  "best_validation_ppl": 50.72783757681511,
+  "best_validation_step": 24100
+}

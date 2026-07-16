@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/root/autodl-tmp/pretraining-demo/code/analyze_metrics.py", line 66, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/root/autodl-tmp/pretraining-demo/code/analyze_metrics.py", line 56, in main
+    summary = summarize_metrics(args.metrics)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/pretraining-demo/code/analyze_metrics.py", line 18, in summarize_metrics
+    rows = read_metrics(metric_path)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/pretraining-demo/code/analyze_metrics.py", line 11, in read_metrics
+    rows = [json.loads(line) for line in metric_path.read_text(encoding="utf-8").splitlines()]
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/conda/envs/pretrain-4090/lib/python3.11/pathlib.py", line 1058, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/conda/envs/pretrain-4090/lib/python3.11/pathlib.py", line 1044, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/root/autodl-tmp/pretraining-demo/artifacts/gpu-main-20260716-fixed-validation/metrics.jsonl'

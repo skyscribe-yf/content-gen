@@ -4,20 +4,7 @@
 
 ## 文章写作流程（硬性门禁）
 
-**规则**：每次开始起草文章大纲之前，**必须先调用 grill-me skill 与作者进行深入讨论**，讨论收敛后才能起笔撰写。禁止跳过 grill-me 直接起草大纲或正文。
-
-Skill 位置：[`.agents/skills/grill-me/SKILL.md`](.agents/skills/grill-me/SKILL.md)
-
-执行流程：
-1. 作者提出选题方向 → AI 加载 grill-me skill
-2. grill-me 逐轮追问：意图、约束、核心冲突、类比选择、受众假设等
-3. 讨论收敛后，AI 将结论写入 `.grill/<slug>.md` 日志
-4. 确认 grill 日志无误 → 方可进入大纲起草
-
-**禁止行为**：
-- 禁止在 grill-me 讨论完成前输出大纲或草稿
-- 禁止 AI 单方面生成 grill 日志（必须经过逐轮追问）
-- 禁止以"我已经了解了"跳过 grill-me 流程
+起草大纲前**必须先调用 grill-me skill** 与作者深入讨论（`.agents/skills/grill-me/SKILL.md`）。禁止 AI 单方面生成 `.grill/<slug>.md` 日志。详见 [`docs/writing-flow.md`](docs/writing-flow.md)。
 
 ## 数学公式
 
@@ -27,27 +14,11 @@ Skill 位置：[`.agents/skills/grill-me/SKILL.md`](.agents/skills/grill-me/SKIL
 
 ## 图片生成
 
-详见 [`docs/image-generation.md`](docs/image-generation.md)。
-
-优先级：**apimart.ai**（唯一后端）。默认 `size=1:1, resolution=1k`，升级前须确认费用。**封面图强制 21:9 电影宽幅**（详见 `docs/image-generation.md` 封面图规则）。
-
-**规则**：
-1. 生成直接走 apimart.ai，用 `scripts/apimart_client.py --config` 批量 JSON 提交所有图片。
-2. **生成前核查**：每个 prompt 中的文字、数字、年份必须和正文一致。逐项检查：标题文本、数据数字、年份标注、技术术语——任一项不匹配则先修正 prompt。
-3. **质量复核与重生成**：图片生成完成后，AI 必须先检查构图、文字、数据和与正文的一致性。如果 AI 判断图片质量不理想，**禁止自行重新生成**；应先使用当前版本提交到公众号草稿箱，由作者预览后决定是否重新生成。只有作者明确同意后，才可更新 prompt 并提交新的生成任务。
-4. 批量提交后若脚本中途退出，用 `scripts/poll_tasks.py OUTPUT_DIR TASK_ID:filename...` 轮询已提交的 task，**禁止重新提交同内容 task**。
-5. prompt 文件（`prompts/NN-*.md`）是生成源，`scripts/apimart_client.py --config` 的 JSON 中 prompt 内容必须和 prompt 文件一致。禁止跳过 prompt 文件直接用临时内联 prompt。
-6. 生成完成后用 `wc -c` 比对文件和 `duplicates/` 中重复 task 的输出，保留更高质量的版本。
+唯一后端：**apimart.ai**。默认 `size=1:1, resolution=1k`，封面图强制 **21:9 电影宽幅**。prompt 内文字/数字/年份必须与正文一致。详细流程见 [`docs/image-generation.md`](docs/image-generation.md)。
 
 ## 多平台内容一致性
 
-**规则**：生成小红书卡片、文案等衍生内容时，**必须以 `weixin.md` 为准**，禁止参照 `draft.md`。
-
-检查清单：
-1. 生成前确认 `weixin.md` 存在
-2. 逐节对比 draft → weixin.md 差异，以 weixin.md 为准
-3. weixin.md 不存在则暂停衍生内容生成
-4. 生成后自检卡片内容是否与 weixin.md 一致
+衍生内容（小红书卡片/文案等）**必须以 `weixin.md` 为准**，禁止参照 `draft.md`。weixin.md 不存在则暂停生成。
 
 ## 小红书文案格式
 
@@ -57,31 +28,18 @@ Skill 位置：[`.agents/skills/grill-me/SKILL.md`](.agents/skills/grill-me/SKIL
 
 ## 知乎推广回答
 
-详见 [`docs/zhihu-promotion.md`](docs/zhihu-promotion.md)。
-
-核心规则：知乎是富文本编辑器，**不支持 Markdown**。输出两份文件：`.md`（内容源） + `.html`（浏览器打开后 Ctrl+A/Ctrl+C 粘贴到知乎）。公式用 Unicode + 加粗，禁用 LaTeX。回答必须有独立内容价值 + 至少 3 处公众号引流钩子。
+知乎不支持 Markdown → 输出 `.md` + `.html` 两份文件。公式用 Unicode，回答须有独立价值 + ≥3 处公众号引流钩子。详见 [`docs/zhihu-promotion.md`](docs/zhihu-promotion.md)。
 
 ## 小红书内容策略
 
-详见 [`docs/xiaohongshu-strategy.md`](docs/xiaohongshu-strategy.md)。
-
-核心原则：**入口必须是痛点，不是概念**。标题从痛点改写，封面图只放一句话钩子（≤8字），标签用长尾词不打大词。
-
-检查清单：
-1. 标题是否从"概念是什么"改写为"症状怎么办"
-2. 封面图核心文字是否 ≤8 字
-3. 标签是否包含长尾关键词（非大词）
-4. 选题是否面向从业者痛点（非学生）
+入口必须是痛点（不是概念）。封面图钩子 ≤8 字，标签用长尾词。详见 [`docs/xiaohongshu-strategy.md`](docs/xiaohongshu-strategy.md)。
 
 ## 微信文章链接规则
 
 - 系列导航链接**必须**是微信 URL（`https://mp.weixin.qq.com/s/...`），禁止相对路径
 - 未发布用 `（待发布）` 标注，发布后补 URL
 - 发布后**必须**把微信 URL 记入 frontmatter `wechatUrl` 字段，供后续文章引用
-- **尾部链接限制**：微信公众号 API 对 `mp.weixin.qq.com/s/` 文章链接数量有限制
-  - 正文+尾部累计 ≤5 个文章链接（合集链接 `mp.weixin.qq.com/mp/appmsgalbum` 不算）
-  - 超出会返回 `45166: invalid content hint` 错误
-  - **解决方案**：尾部只用合集链接，不用逐篇链接
+- **尾部惯例**：尾部只用合集链接收纳逐篇链接，不用单篇链接堆叠
 
 ```yaml
 ---
@@ -98,37 +56,7 @@ wechatUrl: "https://mp.weixin.qq.com/s/abc123"
 
 ## 公众号菜单维护
 
-**规则**：菜单分两类区域——「热门文章」手动替换爆款，「全部合集」只管合集页（永久不变）。
-
-### 菜单结构
-
-```
-🔥 热门文章（子菜单≤5）   📚 全部合集（子菜单不限）   📋 关于
-├─ 篇1（最优）            ├─ 合集A → 合集页URL        ├─ 联系作者
-├─ 篇2                    ├─ 合集B → 合集页URL
-├─ ...                    └─ （新系列就加一个子菜单）
-└─ 篇5（最弱）
-```
-
-### 热门文章（≤5篇，手动管理）
-
-- 从所有已发表文章中选阅读量最高的 5 篇
-- 新文章发布后若数据表现好，替换第 5 篇
-- 被替换的文章通过合集页和文末交叉链接仍可访问
-
-### 全部合集（合集页，一次配好永远不动）
-
-- 每个系列建立一个微信合集（后台 → 内容管理 → 合集）
-- 子菜单「跳转网页」可直接输入合集页 URL（`mp.weixin.qq.com/mp/appmsgalbum?...`），个人订阅号也支持
-- 合集自动收纳该系列所有文章，菜单地址**永久不变**
-- 发新文章时勾选对应合集即可，菜单无需任何修改
-- 新系列出现时，才需要在「全部合集」下新增一个子菜单
-
-### 发布后执行
-
-1. 第一时间把 `wechatUrl` 记入该文章 frontmatter
-2. 发文章时勾选对应合集（若忘记勾选，去合集管理添加）
-3. 若文章数据突出（阅读量进前 5），更新「热门文章」菜单
+「热门文章」≤5 篇（手动管理），「全部合集」永久不变（合集页 URL）。发新文时勾选合集 + 记入 frontmatter `wechatUrl`。详见 [`docs/wechat-menu.md`](docs/wechat-menu.md)。
 
 ## 文章标题
 
@@ -138,49 +66,15 @@ wechatUrl: "https://mp.weixin.qq.com/s/abc123"
 
 ## 理论与实践结合
 
-**规则**：讲理论知识点时，必须关联最新国产模型实际情况（HuggingFace config.json 参数）。
-
-- 模型优先级：DeepSeek-V4 > GLM-5.2 > Kimi K2.6 > Qwen3
-- 引用须标注来源（如 `config.json: hidden_act: "silu"`）
-- 关联内容放延伸说明位置，不替代理论讲解
-
-**自检**：每个核心理论知识点是否至少关联了一个真实模型？模型版本是否最新？
+理论知识点必须关联最新国产模型（HuggingFace config.json）。模型优先级：DeepSeek-V4 > GLM-5.2 > Kimi K2.6 > Qwen3。引用须标注来源。详见 [`docs/theory-practice.md`](docs/theory-practice.md)。
 
 ## 数据时效性
 
-**规则**：文章中引用的所有价格、版本号、参数规模、发布时间必须基于当前最新数据，禁止用过时信息。
+所有价格、版本号、参数规模必须实时搜索验证，标题数字和正文一致。⚠️ AI 模型倾向将 DeepSeek V4 Pro 发布时间记为"2025"，**实际为 2026 年 4 月**，所有涉及 V4 Pro 的 prompt/正文须显式标注"2026"。详见 [`docs/data-freshness.md`](docs/data-freshness.md)。
 
-执行：
-1. 引用 API 价格时，查官方定价页（DeepSeek API docs、OpenAI pricing 等）
-2. 引用模型参数时，以最新 release 的 config.json / technical report 为准
-3. 标题/开头的数字（"便宜10倍"/"便宜30倍"）必须和正文数据一致
+## 人物故事嵌入
 
-**自检**：文中每个数字是否都经实时搜索验证？标题数字和正文数字是否一致？
-
-**已知陷阱**：AI 模型（图像生成和文本生成）倾向将 DeepSeek V4 Pro 的发布时间记忆为"2025 年"，实际为 **2026 年 4 月**。所有涉及 V4 Pro 的 prompt 和正文必须显式标注"2026"，不可依赖模型默认输出。
-
-## 人物故事嵌入规则
-
-**规则**：**禁止**开设独立的人物故事系列或纯人物传记文章。人物故事只能嵌入技术文章内部作为钩子，服务于讲清技术概念。
-
-**原因**：品牌「数解AI」= 用数学解释 AI。纯人物文章导致品牌分裂、标题搜索力归零、读者困惑。
-
-### 三种嵌入模式
-
-| 模式 | 位置 | 示例 |
-|------|------|------|
-| ① 技术起源钩子 | 文章开头 | "2015 年，何恺明在微软研究院发现一个反直觉现象：层数越深，模型越差。这个 bug 后来催生了残差连接。" |
-| ② 命名典故钩子 | 过渡段落 | "Attention Is All You Need 这篇论文，8 位作者在 Google 咖啡厅写了 3 个月。标题不是学术委员会定的——是他们在白板上随手写的。" |
-| ③ 竞争叙事钩子 | 文章结尾 | "DeepSeek 的 MLA 方案，本质是在和 Hinton 35 年前提出的思路对话。技术演进从来不是一个人的事。" |
-
-### 约束
-
-- 人物内容 ≤ 全文篇幅的 10%
-- 人物出现的目的必须是帮助读者理解技术，不能反过来
-- 标题**禁止**以人物名开头（如"何恺明：从实习生到 AI 大神"）
-- 人物封面图**禁止**——封面图必须传达技术核心概念
-
-**自检**：删掉文中所有人物内容，技术主线是否仍然成立？如果成立，通过；如果不成立（人物成为主线），重写。
+**禁止**独立人物故事/传记文章。人物只能作为嵌入技术文章的钩子（≤10% 篇幅）。标题禁止以人物名开头。详见 [`docs/story-embed.md`](docs/story-embed.md)。
 
 ## 公众号运营
 
@@ -188,9 +82,7 @@ wechatUrl: "https://mp.weixin.qq.com/s/abc123"
 
 ## 公众号运营数据验证
 
-详见 [`docs/wechat-data-insights.md`](docs/wechat-data-insights.md)。
-
-基于 2026-07-12 最新复盘：内容分析近 30 天 **653 阅读人**（含 MoE）；用户日结仍截至 07/10（**141** 关注，后台统计延迟 + 采集早于 9:00）；首页实时总用户 **144**。文章表现：Adam 教程型标题自然冲到第 3（109 人）；MoE 首日仅 14 人（07/09–11 连发 + 周六 + 无推），但分享/留言率不低，宜二次分发后再判。流量：推荐 **31.5%**、推广（聊天+朋友圈）**35.1%**、主页 **26.5%**、搜一搜 **1.5%**（仍 <2%）。执行要点：恢复 ≥2 天间隔、发布日轻推、摘要 2–3 关键词、标题优先教程/痛点/反常识公式。账号日新增关注不能直接归因到单篇文章；后续 AI 决策内容策略时应首先参考此文。
+内容策略决策的实证基础。账号日新增关注不能直接归因到单篇文章。详见 [`docs/wechat-data-insights.md`](docs/wechat-data-insights.md)。
 
 ## 公众号数据审计 Skill
 
@@ -206,18 +98,7 @@ wechatUrl: "https://mp.weixin.qq.com/s/abc123"
 
 ## 文章质量核查
 
-详见 [`docs/article-quality-check.md`](docs/article-quality-check.md)。
-
-草稿写完后**必须执行核查**，全部通过才能进入发布流程：
-1. 代码先行 — 示例代码必须先跑通再写入文章，不在文内 debug
-2. 数据准确性 — 所有数值实时搜索验证（价格、版本、参数）
-3. 逻辑一致性 — 反直觉值必须解释、矛盾必须化解、参数双视角（训练+推理）
-4. 本土化 — 产品举例用中国用户可访问的（DeepSeek/豆包/Kimi，不用 ChatGPT）
-5. 配图不少于 4 张，穿插各段落；图片中文字必须和正文一致（年份、数字）
-6. 结尾钩子 — 结合内容 + 真开放 + 引发讨论
-7. 系列回引 — 主动嵌入前文微信链接，勾引读者回读
-8. 原创声明 — 发布时勾选声明原创
-9. **微信链接检查** — `mp.weixin.qq.com/s/` 链接累计 ≤5 个，尾部用合集链接收纳多余链接
+草稿写完后**必须执行**，全部通过才能进入发布流程。详见 [`docs/article-quality-check.md`](docs/article-quality-check.md)（含 9 项核查清单）。
 
 ## 发布前检查
 
@@ -226,7 +107,11 @@ wechatUrl: "https://mp.weixin.qq.com/s/abc123"
 1. **封面图已生成** — `00-cover.png` 存在于文章目录，缺失则先生成
 2. **wechatUrl 已补** — 发布后第一时间把微信 URL 写入 frontmatter `wechatUrl` 字段
 3. **目录名 = 发布日期** — 发布日期变更时同步重命名目录
-4. **尾部链接 ≤5** — `mp.weixin.qq.com/s/` 文章链接在正文+尾部累计不超过 5 个，超出改用合集链接
+4. **图片路径正确** — 图片与 `weixin.md` 同级，无 `images/` 前缀（详见 `docs/wechat-image-path.md`）
+
+## 公众号图片路径
+
+详见 [`docs/wechat-image-path.md`](docs/wechat-image-path.md)（硬性规则，发布 45166 的根因）。
 
 ## 小红书卡片结构
 

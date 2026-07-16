@@ -1,0 +1,7 @@
+{
+  "python": "3.11.15",
+  "torch": "2.7.0+cu126",
+  "torch_cuda": "12.6",
+  "cudnn": 90501,
+  "tokenizers": "0.23.1"
+}

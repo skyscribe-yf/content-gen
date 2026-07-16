@@ -174,11 +174,11 @@ articles:
       cover: true
 
   - slug: "2026-07-15-词嵌入"
-    title: "词嵌入是什么？5万个0怎么变成一串坐标"
+    title: "词嵌入为什么让AI懂"苹果"？5万个0变坐标"
     series: "大模型原理"
-    status: ready
-    published_date: null
-    wechat_url: null
+    status: published
+    published_date: "2026-07-15"
+    wechat_url: "https://mp.weixin.qq.com/s/rDryn1z_hLt7mwi3X8fsxQ"
     files:
       weixin: true
       draft: true
@@ -235,16 +235,17 @@ articles:
       cover: false
 
   - slug: "2026-07-25-Transformer全景"
-    title: "Transformer是什么？把注意力叠出AI大脑"
+    title: "注意力找人，FFN存知识：跟一句话走完Transformer"
     series: "大模型原理"
-    status: planned
+    status: drafting
     published_date: null
     wechat_url: null
     files:
       weixin: false
-      draft: false
-      outline: false
+      draft: true
+      outline: true
       cover: false
+    notes: "draft completed, attention data extracted from Qwen3-1.7B"
 
   - slug: "2026-07-27-预训练"
     title: "猜下一个字，AI怎么学会写文章？预训练全过程"

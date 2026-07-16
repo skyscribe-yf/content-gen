@@ -13,7 +13,7 @@ scheduledPublish: "2026-07-17T08:00:00+08:00"
 
 **位置编码** 解决一件事：Transformer 默认「看得见词，分不清先后」。词嵌入只告诉模型「这是谁」，位置编码才补上「排第几」——词序一错，意思全变。
 
-前两篇 BPE 分词和词嵌入（即将发布），解决了一件事：把每个 token 变成一个向量。模型拿到向量，就知道这个 token "是谁"。
+前两篇 [BPE 分词](https://mp.weixin.qq.com/s/5nR_KI47v_U8KwpQA4Uv5Q)和[词嵌入](https://mp.weixin.qq.com/s/rDryn1z_hLt7mwi3X8fsxQ)，解决了一件事：把每个 token 变成一个向量。模型拿到向量，就知道这个 token "是谁"。
 
 但它还不知道 token 之间谁先谁后。
 
@@ -250,7 +250,7 @@ RoPE 的关键参数只有一个：基频 θ（`rope_theta`）。它决定了旋
 ---
 
 📖 **大模型原理**（本系列 · 第 3/10 篇）
-① [BPE分词：AI为什么把文字切成碎片？](https://mp.weixin.qq.com/s/5nR_KI47v_U8KwpQA4Uv5Q) → ② 词嵌入是什么？5万个0怎么变成一串坐标（即将发布）→ ③ 位置编码怎么工作？词序一错意思全变（本篇）→ ④ 注意力机制是什么？别再当数据库查询（即将发布）→ ⑤ FFN → ⑥ 归一化与残差 → ⑦ Transformer → ⑧ 预训练 → ⑨ RLHF → ⑩ 推理加速
+1 [BPE分词:AI为什么把文字切成碎片?](https://mp.weixin.qq.com/s/5nR_KI47v_U8KwpQA4Uv5Q) → ② [词嵌入为什么让AI懂"苹果"？5万个0变坐标](https://mp.weixin.qq.com/s/rDryn1z_hLt7mwi3X8fsxQ) → ③ 位置编码怎么工作？词序一错意思全变（本篇）→ 4 注意力机制是什么?别再当数据库查询(即将发布)→ 5 FFN → 6 归一化与残差 → 7 Transformer → 8 预训练 → 9 RLHF → 10 推理加速
 
 🔥 **DeepSeek 技术解密**
 ① [AI上下文为什么越长越慢](https://mp.weixin.qq.com/s/PLVRS0TTHXHDve1Z3r6M7Q) → ② [MoE混合专家入门](https://mp.weixin.qq.com/s/QdkD0CR2fD-HfY77-gX3Ug) → ③ MLA（即将发布）

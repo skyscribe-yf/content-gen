@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "tasks": [
+    {
+      "fingerprint": "bb3f6a7ba24684b58642022c99388838e54336b28aa0dd654beff6b8ee3d7f1a",
+      "task_id": "task_01KXKXAP07E7TZSZBQY3Y4Z1SH",
+      "status": "completed",
+      "filename": null,
+      "size": "1:1",
+      "resolution": "1k",
+      "n": 1,
+      "submitted_at": "2026-07-15T22:11:02Z",
+      "updated_at": "2026-07-15T22:12:17Z",
+      "saved_paths": [
+        "task_01KXKXAP07E7TZSZBQY3Y4Z1SH_1.png"
+      ]
+    }
+  ]
+}

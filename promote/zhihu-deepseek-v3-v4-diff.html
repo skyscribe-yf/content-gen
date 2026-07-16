@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><title>知乎回答 - DeepSeek V3 与 V4 有什么区别</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; font-size: 16px; line-height: 1.8; color: #1a1a1a; max-width: 720px; margin: 40px auto; padding: 0 20px; }
+  h1 { font-size: 24px; font-weight: 700; margin: 32px 0 16px; }
+  h2 { font-size: 20px; font-weight: 700; margin: 28px 0 12px; padding-bottom: 6px; border-bottom: 1px solid #eee; }
+  h3 { font-size: 17px; font-weight: 700; margin: 24px 0 10px; }
+  p { margin: 14px 0; }
+  blockquote { margin: 16px 0; padding: 12px 16px; background: #f6f8fa; border-left: 4px solid #1a6dd4; border-radius: 0 4px 4px 0; }
+  blockquote p { margin: 6px 0; }
+  hr { border: none; border-top: 1px solid #e8e8e8; margin: 32px 0; }
+  table { border-collapse: collapse; width: 100%; margin: 16px 0; font-size: 15px; }
+  th, td { border: 1px solid #ddd; padding: 10px 14px; text-align: left; }
+  th { background: #f4f6f8; font-weight: 600; }
+  ul { padding-left: 22px; margin: 10px 0; }
+  li { margin: 6px 0; }
+  .cta { background: #f0f7ff; border: 1px solid #b8d8ff; padding: 16px 20px; border-radius: 8px; margin: 20px 0; }
+  .source-note { font-size: 14px; color: #666; margin-top: 32px; }
+</style>
+</head>
+<body>
+
+<h1>DeepSeek V3 与 V4 有什么区别？V4 是 V3 的升级版吗？</h1>
+
+<p>先给结论：<strong>V4 不是 V3 的简单升级版，而是架构层面的代际跃迁。</strong>两者在注意力机制、残差连接方式、优化器、上下文长度、训练数据量上都发生了根本性变化。如果 V3 是一辆油改电的混动轿车，V4 是从底盘开始重新设计的纯电平台——虽然外观都是"DeepSeek 牌"，但内部的力学结构已经不同。</p>
+
+<p>下面按"到底变了什么"逐项拆开。</p>
+
+<hr>
+
+<h2>一、参数规模：总参数翻了 2.4 倍，但激活参数只增了 32%</h2>
+
+<table>
+  <tr><th>维度</th><th>DeepSeek-V3 (2024.12)</th><th>DeepSeek-V4-Pro (2026.04)</th></tr>
+  <tr><td>总参数</td><td>671B</td><td>1.6T</td></tr>
+  <tr><td>激活参数</td><td>37B</td><td>49B</td></tr>
+  <tr><td>上下文长度</td><td>128K</td><td>1,000K（1M）</td></tr>
+  <tr><td>训练 token 数</td><td>14.8T</td><td>32T+</td></tr>
+</table>
+
+<p>数据来源：DeepSeek-V3 技术报告（arXiv:2412.19437）§2；DeepSeek-V4 技术报告（arXiv:2606.19348）Introduction。</p>
+
+<p>关键细节：总参数从 671B 暴涨到 1.6T，但激活参数只从 37B 增到 49B。这说明 V4 继续走 MoE（混合专家）路线——模型的知识存储容量大幅扩展，但每次推理时真正参与计算的参数增长有限。</p>
+
+<p>打个比方：V3 是一个拥有 256 个科室、每次请 8 个科室会诊的医院；V4 是扩建到 384 个科室、每次只请 6 个科室的新院区。总床位多了很多，但每次会诊的医生反而省了一个——因为每个诊室的专业化程度更高了。</p>
+
+<hr>
+
+<h2>二、注意力机制：MLA 被 CSA+HCA 取代</h2>
+
+<p>这是 V3 到 V4 最核心的架构变化。</p>
+
+<p><strong>V3 用的是 MLA（Multi-head Latent Attention，多头潜在注意力）。</strong>它的核心思路是低秩压缩：把每个 token 的完整 Key、Value 压成一个更小的潜在向量 cᴷⱽ。在 DeepSeek-V3 的公开配置中，这个 KV latent 维度是 512。推理时只需缓存压缩后的摘要而非完整 KV，大幅减少显存占用。</p>
+
+<p><strong>V4 彻底抛弃了 MLA，改用混合注意力架构 CSA + HCA：</strong></p>
+
+<ul>
+  <li><strong>CSA（Compressed Sparse Attention，压缩稀疏注意力）</strong>：先把 KV 序列沿长度方向 4 倍压缩（每 4 个 token 压成 1 个），再用"闪电索引器"（Lightning Indexer）从压缩后的池子里挑出最相关的 top-k 个块，做稀疏注意力。相当于先把一本书缩成目录，再从目录里挑出最相关的几章精读。</li>
+  <li><strong>HCA（Heavily Compressed Attention，重度压缩注意力）</strong>：更激进，直接 128 倍压缩，不做稀疏选择，每个 query 都对全部压缩块做 dense attention。但因为序列已经被压得很短，dense 计算量反而很小。相当于只读全书的"一句话摘要"。</li>
+</ul>
+
+<p>两种机制在层间交替排列。V4-Pro 的 61 层中，第 0-1 层用 HCA，第 2-60 层 CSA 和 HCA 交替。</p>
+
+<p>官方数据：在 1M token 场景下，V4-Pro 的单 token 推理 FLOPs 仅为 V3.2 的 <strong>27%</strong>，KV Cache 仅为 <strong>10%</strong>。（来源：DeepSeek-V4 技术报告 Introduction）</p>
+
+<hr>
+
+<h2>三、残差连接：从简单相加到流形约束超连接</h2>
+
+<p>Transformer 的标准残差连接是 y = x + F(x)——输入直接加上子层输出。V3 也用这个。</p>
+
+<p><strong>V4 换成了 mHC（Manifold-Constrained Hyper-Connections，流形约束超连接）。</strong>核心变化是：不再是"一条线"把输入送过子层，而是用 hc_mult 条并行残差流（默认 4 条），每条流保持独立形状 [B, S, hc_mult, D]，经过注意力/FFN 子层时通过一个(pre, post, comb)三元组来混合这些流。关键是 comb 矩阵是一个双随机投影，通过 Sinkhorn-Knopp 迭代实现，使信号传播成为非膨胀映射——直觉上，它让信息在多深度网络中流动时更稳定、更不容易爆炸或消失。</p>
+
+<hr>
+
+<h2>四、优化器：从 AdamW 到 Muon</h2>
+
+<table>
+  <tr><th></th><th>V3</th><th>V4</th></tr>
+  <tr><td>优化器</td><td>AdamW（β₁=0.9, β₂=0.95）</td><td>Muon（大部分参数）+ AdamW（仅 embedding 和输出层）</td></tr>
+</table>
+
+<p>（来源：V3 技术报告 §4.2；V4 技术报告 Introduction）</p>
+
+<p>Adam 给每个参数单独算学习率，用一阶矩 m̂ₜ 除二阶矩 √v̂ₜ 做自适应缩放。Muon 走得更远：对整个参数矩阵做 Newton-Schulz 迭代，把梯度更新矩阵正交化，一步释放所有更新方向。2024 年 Keller Jordan 提出 Muon，2025 年 Kimi K2 率先全量采用 MuonClip，2026 年 V4 紧随其后。</p>
+
+<p>这意味着 V4 的训练动力学和 V3 完全不同——不只是"换了个更好的工具"，而是优化器改变了参数空间的探索方式。</p>
+
+<hr>
+
+<h2>五、MoE 细节的变化</h2>
+
+<p>虽然都是 MoE，但具体设置有明显调整：</p>
+
+<table>
+  <tr><th></th><th>V3</th><th>V4-Pro</th></tr>
+  <tr><td>路由专家数</td><td>256</td><td>384</td></tr>
+  <tr><td>共享专家数</td><td>1</td><td>1</td></tr>
+  <tr><td>每 token 激活专家数</td><td>8</td><td>6</td></tr>
+  <tr><td>路由激活函数</td><td>Sigmoid</td><td>Sqrt(Softplus(·))</td></tr>
+  <tr><td>路由方式</td><td>纯动态路由</td><td>前几层 Hash-MoE（静态查表），后续层动态路由</td></tr>
+</table>
+
+<p>（来源：V3 技术报告 §2.1.2；V4 技术报告 §2.1）</p>
+
+<p>值得注意：V4 每 token 激活的专家数从 8 降到了 6，但总专家数从 256 增到 384。这意味着激活比（每次计算占总专家的比例）从 3.1% 降到了 1.6%——单次推理更稀疏，但专家池更大、分工更细。</p>
+
+<p>V4 还在前几层引入了 Hash-MoE：用冻结的 token-id → expert-id 哈希表做静态路由，跳过学习路由的收敛成本，相当于医院的"预检分诊台"——常见症状直接分流到对应科室，只有复杂病例才走专家会诊。</p>
+
+<hr>
+
+<h2>六、精度与推理效率</h2>
+
+<ul>
+  <li><strong>训练精度</strong>：V3 首次在超大模型上验证 FP8 混合精度训练；V4 进一步用 FP4 + FP8 混合（MoE 专家用 FP4，其他参数用 FP8）</li>
+  <li><strong>上下文</strong>：V3 支持 128K；V4 支持 1M（8 倍扩展）</li>
+  <li><strong>推理成本</strong>：1M token 场景下，V4-Pro 的单 token FLOPs 仅 V3.2 的 27%，KV Cache 仅 10%</li>
+</ul>
+
+<hr>
+
+<h2>七、一张对比表总结</h2>
+
+<table>
+  <tr><th>维度</th><th>DeepSeek-V3 (2024.12)</th><th>DeepSeek-V4-Pro (2026.04)</th></tr>
+  <tr><td>总参数</td><td>671B</td><td>1.6T</td></tr>
+  <tr><td>激活参数</td><td>37B</td><td>49B</td></tr>
+  <tr><td>上下文</td><td>128K</td><td>1M</td></tr>
+  <tr><td>注意力</td><td>MLA（低秩压缩）</td><td>CSA + HCA（压缩稀疏 + 重度压缩）</td></tr>
+  <tr><td>残差</td><td>标准 x+F(x)</td><td>mHC（多流形约束超连接）</td></tr>
+  <tr><td>优化器</td><td>AdamW</td><td>Muon + AdamW(仅 embedding/head)</td></tr>
+  <tr><td>MoE 专家</td><td>256 routed + 1 shared</td><td>384 routed + 1 shared</td></tr>
+  <tr><td>激活专家数</td><td>8</td><td>6</td></tr>
+  <tr><td>路由函数</td><td>Sigmoid</td><td>Sqrt(Softplus(·))</td></tr>
+  <tr><td>训练 token</td><td>14.8T</td><td>32T+</td></tr>
+  <tr><td>推理精度</td><td>FP8/BF16</td><td>FP4+FP8混合</td></tr>
+  <tr><td>新增特性</td><td>FP8 训练、MTP 多 token 预测</td><td>三档推理模式、跨轮工具推理保持、DSML 工具调用格式</td></tr>
+</table>
+
+<hr>
+
+<h2>所以，V4 是 V3 的升级版吗？</h2>
+
+<p>准确地说：<strong>V4 是 V3 的"继任者"，不是"升级版"。</strong></p>
+
+<p>"升级版"意味着同样的架构做参数扩容（像 iPhone 15 → 15 Pro）。但 V4 在注意力、残差、优化器三个最根本的组件上都做了重新设计。它更像是从"用 MLA 压缩 KV cache"的技术路线，转向了"用 CSA/HCA 同时压缩 KV cache 和注意力计算量"的新路线。</p>
+
+<p>V3 解决的核心问题是"怎么用 MoE + MLA 把模型做大同时控制推理成本"；V4 解决的核心问题是"怎么在 1M token 的极端长上下文场景下，让注意力和存储成本仍然可承受"。</p>
+
+<hr>
+
+<div class="cta">
+<p>如果你关注的技术正是长上下文效率、Agent 长程任务、或者优化器对训练稳定性的影响，我在公众号「数解AI」按这条路线拆过已发和待发的内容：</p>
+<ul>
+  <li>✅ <strong>已发</strong>：「DeepSeek 便宜 30 倍的秘密：MoE 混合专家入门」— 讲清 MoE 路由、负载均衡</li>
+  <li>✅ <strong>已发</strong>：「学习率怎么自动调？Adam 优化器拆给你看」— 讲清 AdamW 和 Muon 的演进</li>
+  <li>📝 <strong>待发</strong>：DeepSeek-V4 为什么抛弃了 MLA？— CSA/HCA 混合注意力的完整拆解</li>
+  <li>📝 <strong>待发</strong>：FP8 训练：用"残缺数字"练出顶级模型 — 精度与效率的取舍</li>
+</ul>
+<p>关注公众号「数解AI」，回复 <strong>"DeepSeek"</strong>，可以收到已发内容和后续更新的推送提醒。</p>
+</div>
+
+<p>最后留一个问题：你觉得下一代架构的突破点会在注意力效率上，还是在训练范式（比如 Muon 带来的优化器革命）上？</p>
+
+<p class="source-note"><em>文中 V3 数据以 2024 年 12 月技术报告（arXiv:2412.19437）为核验依据；V4 数据以 2026 年 4 月 24 日官方发布说明、HuggingFace 模型卡、技术报告（arXiv:2606.19348）为核验依据。</em></p>
+
+</body>
+</html>
