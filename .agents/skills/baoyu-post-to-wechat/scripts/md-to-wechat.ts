@@ -17,6 +17,7 @@ import {
   stripWrappingQuotes,
 } from "baoyu-md";
 import { closeRenderer, renderMermaidToPng } from "baoyu-chrome-cdp/mermaid";
+import { makeCodeBlocksWechatSafe } from "./wechat-code-blocks.ts";
 
 interface ImageInfo {
   placeholder: string;
@@ -90,13 +91,17 @@ export async function convertMarkdown(
     `[md-to-wechat] Rendering markdown with theme: ${options?.theme ?? "default"}${options?.color ? `, color: ${options.color}` : ""}, citeStatus: ${citeStatus}`,
   );
 
-  const { html } = await renderMarkdownDocument(rewrittenMarkdown, {
+  const { html: renderedHtml } = await renderMarkdownDocument(rewrittenMarkdown, {
     citeStatus,
     defaultTitle: title,
+    // WeChat's editor sanitizes the SVG terminal decoration inside <pre>, which
+    // can corrupt the adjacent code block. Keep the markup to pre > code only.
+    isMacCodeBlock: false,
     keepTitle: false,
     primaryColor: resolveColorToken(options?.color),
     theme: options?.theme,
   });
+  const html = makeCodeBlocksWechatSafe(renderedHtml);
   fs.writeFileSync(htmlPath, html, "utf-8");
 
   const contentImages = await resolveContentImages(images, baseDir, tempDir, "md-to-wechat");

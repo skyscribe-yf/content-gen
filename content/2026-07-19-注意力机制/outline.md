@@ -3,7 +3,7 @@ type: mixed
 series: 大模型原理
 style: notion
 palette: warm
-image_count: 6
+image_count: 5
 size: "1:1"
 resolution: "1k"
 ---
@@ -39,9 +39,3 @@ resolution: "1k"
 **Purpose**: 展示因果 mask 产生的上三角零值，以及每行权重和为 1。  
 **Visual Content**: 4×4 因果注意力热力图，token 为猫、追、老、鼠。  
 **Filename**: 06-attention-heatmap.png
-
-## Illustration 6
-**Position**: Qwen3-8B GQA 段落后。  
-**Purpose**: 说明 32 个 Q 头如何共享 8 组 KV，为什么减少 KV Cache。  
-**Visual Content**: MHA 与 GQA 并排结构图，标明 32、8、每 4 个 Q 头共享 1 组 KV。  
-**Filename**: 05-gqa.png

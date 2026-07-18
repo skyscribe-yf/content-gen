@@ -1,9 +1,17 @@
 Square infographic for a Chinese AI education article about RoPE (Rotary Position Embedding).
 
-MAIN VISUAL: A 2D coordinate plane with x and y axes. Show a single vector q = (1, 0) as an arrow starting from the origin and pointing right along the x-axis at Position 0. At Position 1 (further right on the diagram), the same vector is rotated 60° counterclockwise — shown as a second arrow of the same length, labeled "q₁". At Position 2 (even further right), it's rotated 120° — a third arrow labeled "q₂". Draw a dashed arc between the q₁ and q₂ arrows and label the angle "θ" to show the relative rotation is constant. Small circular markers at the arrow tips.
+MAIN VISUAL: A 2D coordinate plane, x-axis pointing right, y-axis pointing up. From the SAME single origin point, draw three arrows of identical length, fanning out counterclockwise:
 
-VISIBLE TEXT: Chinese labels only — "位置 0" at the first arrow, "位置 1" at the second, "位置 2" at the third. Angle label "θ" between q₁ and q₂. A small formula block: "相对旋转 = (j−i)θ" near the bottom. No English text, no title, no model names, no dates.
+- Arrow 1 lies flat along the positive x-axis (angle 0°). Label: "位置 0：不旋转".
+- Arrow 2 rotated 60° counterclockwise, pointing to the UPPER RIGHT (well to the right of the y-axis). Label: "q₁ = (0.5, 0.866)，位置 1：旋转 60°".
+- Arrow 3 rotated 120° counterclockwise, pointing to the UPPER LEFT (to the LEFT of the y-axis, its x component is negative). Label: "q₂ = (−0.5, 0.866)，位置 2：旋转 120°".
 
-STYLE: Clean editorial science infographic, flat-vector style, light warm background, dark ink lines for axes and arrows, muted blue for the rotation arcs and angle label. Simple, precise, friendly. No realistic people, no logos, no gradients, no dense content.
+Draw a small dashed arc between the x-axis and arrow q₁, labeled "60°". Draw a second dashed arc between arrow q₁ and arrow q₂, also labeled "60°" — showing that each step of position rotates by the same angle.
+
+CRITICAL GEOMETRY (must be exact): all three arrows start from the same origin; q₁ leans RIGHT of the y-axis; q₂ leans LEFT of the y-axis (pointing upper-left). Both arcs read "60°". Do NOT draw arrows starting from different points on the x-axis.
+
+VISIBLE TEXT: Chinese labels only — "位置 0：不旋转", "位置 1：旋转 60°", "位置 2：旋转 120°", vector labels "q₁ = (0.5, 0.866)" and "q₂ = (−0.5, 0.866)", axis labels "x 轴" and "y 轴", the two arc labels "60°". A small formula block near the bottom: "相对旋转 = (j−i)θ". No English text, no title, no model names, no dates.
+
+STYLE: Clean editorial science infographic, flat-vector style, light warm background, dark ink lines for axes and arrows, muted blue for the rotation arcs and angle labels. Simple, precise, friendly. No realistic people, no logos, no gradients, no dense content.
 
 All visible text must be Chinese.

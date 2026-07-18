@@ -14,7 +14,7 @@
 
 ## 图片生成
 
-唯一后端：**apimart.ai**。默认 `size=1:1, resolution=1k`，封面图强制 **21:9 电影宽幅**。prompt 内文字/数字/年份必须与正文一致。详细流程见 [`docs/image-generation.md`](docs/image-generation.md)。
+唯一后端：**zairouter**（gpt-image-2）。默认 1K，封面图强制 **21:9**。具体尺寸由 `scripts/zairouter_client.py` 控制。prompt 内文字/数字/年份必须与正文一致。详细流程见 [`docs/image-generation.md`](docs/image-generation.md)。
 
 ## 多平台内容一致性
 

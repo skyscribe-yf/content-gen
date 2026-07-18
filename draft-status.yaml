@@ -112,15 +112,15 @@ articles:
   - slug: "2026-07-23-MLA"
     title: "显存被谁吃掉了？DeepSeek如何省下90%"
     series: "DeepSeek 技术解密"
-    status: ready
+    status: drafting
     published_date: null
     wechat_url: null
     files:
       weixin: true
       draft: true
       outline: true
-      cover: true
-    notes: "draft in WeChat backend, cover fixed, JL lemma image added, KV cache quantization footnote updated"
+      cover: false
+    notes: "微信稿与草稿已完成；本地 00-cover.png 缺失，补齐封面并完成质量核查后可转 ready"
 
   - slug: "2026-08-02-deepseek-grpo"
     title: "DeepSeek-R1 怎么学会\"想清楚再说\"？"
@@ -174,7 +174,7 @@ articles:
       cover: true
 
   - slug: "2026-07-15-词嵌入"
-    title: "词嵌入为什么让AI懂"苹果"？5万个0变坐标"
+    title: "词嵌入为什么让 AI 懂‘苹果’？5 万个 0 变坐标"
     series: "大模型原理"
     status: published
     published_date: "2026-07-15"
@@ -219,7 +219,7 @@ articles:
       weixin: false
       draft: true
       outline: true
-      cover: true
+      cover: false
     notes: "draft polished, waiting for weixin.md"
 
   - slug: "2026-08-06-归一化残差"
@@ -244,20 +244,21 @@ articles:
       weixin: false
       draft: true
       outline: true
-      cover: false
+      cover: true
     notes: "draft completed, attention data extracted from Qwen3-1.7B"
 
   - slug: "2026-07-27-预训练"
     title: "猜下一个字，AI怎么学会写文章？预训练全过程"
     series: "大模型原理"
-    status: planned
+    status: drafting
     published_date: null
     wechat_url: null
     files:
-      weixin: false
-      draft: false
-      outline: false
-      cover: false
+      weixin: true
+      draft: true
+      outline: true
+      cover: true
+    notes: "大纲、草稿、微信稿和封面均已存在；待文章质量核查与排期"
 
   - slug: "2026-07-31-rlhf"
     title: "AI怎么从工具变成助手？RLHF微调揭秘"
@@ -304,16 +305,17 @@ articles:
 summary:
   total: 22
   by_status:
-    published: 9
+    published: 10
     scheduled: 0
-    ready: 4
-    drafting: 1
-    planned: 8
+    ready: 2
+    drafting: 4
+    planned: 6
   drafting_queue:
     - "2026-07-21-FFN"
-  ready_queue:
     - "2026-07-23-MLA"
-    - "2026-07-15-词嵌入"
+    - "2026-07-25-Transformer全景"
+    - "2026-07-27-预训练"
+  ready_queue:
     - "2026-07-17-位置编码"
     - "2026-07-19-注意力机制"
   next_publish_date: "2026-07-21"

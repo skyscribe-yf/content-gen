@@ -70,6 +70,34 @@
       "saved_paths": [
         "content/2026-07-17-位置编码/04-sinusoidal-encoding.png"
       ]
+    },
+    {
+      "fingerprint": "4a9a9502d0053757ebe12cedc8562529fd3ff3950aa9519521feaa4e42432cbb",
+      "task_id": "task_01KXNNG27660TER8PCY27PC5GC",
+      "status": "completed",
+      "filename": "02-rope-2d-rotation.png",
+      "size": "1:1",
+      "resolution": "1k",
+      "n": 1,
+      "submitted_at": "2026-07-16T14:32:39Z",
+      "updated_at": "2026-07-16T14:33:49Z",
+      "saved_paths": [
+        "content/2026-07-17-位置编码/02-rope-2d-rotation.png"
+      ]
+    },
+    {
+      "fingerprint": "3b5078e7189cd04b35dc910baa561aecc27fa52d5697f33e600f7c35a62a661c",
+      "task_id": "task_01KXNNJ8CGPJHVXCHYWMWZKHNM",
+      "status": "completed",
+      "filename": "03-rope-theta-comparison.png",
+      "size": "1:1",
+      "resolution": "1k",
+      "n": 1,
+      "submitted_at": "2026-07-16T14:33:51Z",
+      "updated_at": "2026-07-16T14:35:27Z",
+      "saved_paths": [
+        "content/2026-07-17-位置编码/03-rope-theta-comparison.png"
+      ]
     }
   ]
 }

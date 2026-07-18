@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RoPE 最早是为了解决 LLM 外推问题提出的吗？</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 16px; line-height: 1.8; color: #1a1a1a;
+  max-width: 720px; margin: 40px auto; padding: 0 20px;
+}
+h2 { font-size: 20px; font-weight: 700; margin: 28px 0 12px;
+     padding-bottom: 6px; border-bottom: 1px solid #eee; }
+blockquote {
+  margin: 16px 0; padding: 12px 16px;
+  background: #f6f8fa; border-left: 4px solid #1a6dd4;
+  border-radius: 0 4px 4px 0;
+}
+blockquote p { margin: 8px 0; }
+p { margin: 12px 0; }
+strong { color: #0d0d0d; }
+table { border-collapse: collapse; width: 100%; margin: 16px 0; font-size: 15px; }
+th, td { border: 1px solid #ddd; padding: 10px 14px; text-align: left; }
+th { background: #f4f6f8; font-weight: 600; }
+hr { border: none; border-top: 1px solid #e8e8e8; margin: 28px 0; }
+.cta {
+  background: #f0f7ff; border: 1px solid #b8d8ff;
+  padding: 16px 20px; border-radius: 8px; margin: 20px 0;
+}
+.cta p { margin: 6px 0; }
+</style>
+</head>
+<body>
+
+<p><strong>不是。RoPE 最早是为了让注意力机制天然感知"相对距离"，而不是解决外推。</strong></p>
+
+<p>这个误会很常见，因为 RoPE 后来确实成了长文本外推的核心基础设施。但回到 2021 年苏剑林提出 RoPE 的原始动机，它解决的是另一个问题。</p>
+
+<p class="hint" style="color:#999;font-size:14px;">（公众号「数解AI」有完整图解版，文末说获取方式。）</p>
+
+<hr>
+
+<h2>问题出在哪：注意力没有顺序感</h2>
+
+<p>Transformer 的自注意力机制有一个天生的缺陷：它能同时看到所有 token，却分不清谁先谁后。</p>
+
+<p>"猫追老鼠"和"老鼠追猫"——三个词完全一样，只换了顺序，意思反了。但最基础的注意力只看向量之间的相似度，没有"第几个"这个概念。</p>
+
+<p>所以位置编码的任务很朴素：<strong>让同一个词出现在不同位置时，输入给注意力的表示不一样。</strong></p>
+
+<hr>
+
+<h2>早期方案：给每个位置加一个向量</h2>
+
+<p>最直接的做法是绝对位置编码——给位置 1 学一个向量 p₁，位置 2 学一个向量 p₂，然后跟词向量加在一起喂给 Transformer。</p>
+
+<p>问题是 p₁ 和 p₂ 只是两张不同的随机向量，它们之间"相邻"的关系全靠模型从数据里硬学。而且训练时只见过 2048 个位置，推理时来了 8192 个 token，后面的位置向量根本没学过——这就是<strong>长度外推问题</strong>。</p>
+
+<p>正弦位置编码（Transformer 2017 论文的方案）用 sin/cos 函数替代了随机表，让位置向量自带规律。但本质上仍然是绝对位置编码：先生成位置向量，再加到词向量上。</p>
+
+<hr>
+
+<h2>RoPE 的真正创新：不"加"位置，而是"旋转"Q 和 K</h2>
+
+<p>RoPE 的思路很特别：<strong>不把位置信息作为一个独立向量加到 token 上，而是根据位置，把 Query 和 Key 旋转一个角度。</strong></p>
+
+<p>二维情况下，旋转矩阵是：</p>
+
+<blockquote>
+  <p><strong>R(θ) = [[cos θ, −sin θ], [sin θ, cos θ]]</strong></p>
+</blockquote>
+
+<p>位置 0 不旋转。位置 1 旋转 θ。位置 2 旋转 2θ。以此类推。</p>
+
+<p>注意力计算的是旋转后的 qᵢ′ 和 kⱼ′ 的点积：</p>
+
+<blockquote>
+  <p><strong>qᵢ′ᵀkⱼ′ = qᵢᵀR((j−i)θ)kⱼ</strong></p>
+</blockquote>
+
+<p>关键就在 <strong>j − i</strong>。两个 token 的注意力分数，现在天然携带了它们之间的距离信息。</p>
+
+<p>第 3 个词看第 4 个词（间隔 1）和第 100 个词看第 101 个词（间隔也是 1），对 RoPE 来说旋转差相同。这就是它的核心价值：<strong>绝对位置参与了计算，最后留下的是相对距离。</strong></p>
+
+<p>打个比方：绝对位置编码像是给每个人发一张写了座位号的纸条，换座位纸条就废了；RoPE 像是让每个人戴一块表，两个人之间的关系取决于表针的角度差，坐多远都认得出来。</p>
+
+<p>再打个比方：绝对位置编码是拍集体照时在地上画站位格——换了一群人，格子数量不够，后面的人就没地方站。RoPE 是让每个人记住自己左右是谁——人数翻倍也能排。这就是外推能力在直觉层面的来源。</p>
+
+<hr>
+
+<h2>外推是"副作用"，不是原始动机</h2>
+
+<p>RoPE 论文（RoFormer, 2021）的核心卖点是：<strong>用旋转矩阵把相对位置信息天然嵌入注意力计算，同时不丢失绝对位置信息。</strong></p>
+
+<p>外推能力是被后来的研究者"发掘"出来的。因为 RoPE 携带的是相对距离，理论上模型遇到训练时没见过的位置，只要"间隔"是熟悉的，就应该还能工作。但实际并不完美——直接外推效果有限。</p>
+
+<p>真正让 RoPE 成为长文本外推基石的是后续的一系列技巧：</p>
+
+<p>• <strong>NTK-aware scaling</strong>：不直接插值位置编号，而是调整旋转频率，让高频保持分辨率、低频覆盖更远范围<br>
+• <strong>YaRN</strong>：NTK 的升级版，兼顾了近处和远处</p>
+
+<p>所以回答你的问题：<strong>RoPE 最早是为了让注意力自然感知相对距离而设计的，外推是它的"隐藏天赋"，后来被 NTK/YaRN 等技巧充分释放。</strong></p>
+
+<hr>
+
+<h2>真实模型里的 RoPE 怎么用？</h2>
+
+<p>看三个国产模型 config.json 里的 <code>rope_theta</code>（旋转基准频率）：</p>
+
+<table>
+<tr><th>模型</th><th>rope_theta</th><th>策略</th></tr>
+<tr><td>DeepSeek-V4 Pro（2026）</td><td>10000</td><td>快旋转，YaRN 从 64K 插值到 1M</td></tr>
+<tr><td>Qwen3-235B</td><td>1000000</td><td>中速，原生 32K，可选 YaRN 到 128K</td></tr>
+<tr><td>GLM-5.2</td><td>8000000</td><td>极慢旋转，原生覆盖 1M</td></tr>
+</table>
+
+<p>θ 越小，旋转越快，近处分得清但远处模糊。θ 越大，旋转越慢，能看很远但近处分辨变差。三种策略背后是对"近处 vs 远处"的不同取舍。</p>
+
+<hr>
+
+<h2>一句话总结</h2>
+
+<p>RoPE 最初是为"让相对距离进入注意力"而生，不是为外推。外推是它数学结构里的隐藏礼包，被 NTK/YaRN 等后来者拆开的。</p>
+
+<div class="cta">
+  <p>位置编码系列——从正弦编码、可学习编码到 RoPE 的旋转机制，公众号「<strong>数解AI</strong>」有一篇完整图解版。关注后回复「<strong>位置编码</strong>」可以直接收到。</p>
+</div>
+
+<div class="cta">
+  <p>微信搜「<strong>数解AI</strong>」——用数学和图解把大模型原理讲清楚。深度学习基础已完结，大模型原理（BPE → 词嵌入 → 位置编码 → 注意力 → MLA）连载中，每 2 天一篇。</p>
+</div>
+
+<p>如果让你调 rope_theta，你会拧快一点（近处更清）还是拧慢一点（看得更远）？</p>
+
+</body>
+</html>
