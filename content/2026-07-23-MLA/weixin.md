@@ -5,14 +5,14 @@ digest: "长上下文时，吃掉显存的不只模型权重，还有会持续�
 type: "原理篇"
 series: "DeepSeek 技术解密"
 keywords: ["GPU显存", "KV cache", "MLA", "DeepSeek", "推理优化", "长上下文"]
-cover: images/00-cover.png
+cover: 00-cover.png
 ---
 
 上一篇我们讲完 FFN——Transformer 里存放“知识”的模块。按主线，下一篇本该讲归一化；但先插一个很实际的问题：**为什么模型参数没变，聊天聊长了，显存却还是会爆？**
 
 答案藏在注意力机制的账本里。DeepSeek 提出的 MLA，正是把这笔账压下去的办法。讲完它，我们再回到主线讲⑥归一化。
 
-![](images/00-cover.png)
+![](00-cover.png)
 
 ---
 
@@ -32,7 +32,7 @@ cover: images/00-cover.png
 
 > 注：这里的计算基于 BF16（16 位，每参数 2 字节）。今天的模型几乎不会这样存储权重——今天的模型早已推进到 INT8/INT4 甚至更稀疏的量化，以 INT4 为例，70B 权重大约只有 35GB，但 KV cache 该 31GB 还是 31GB，此消彼长之下 KV cache 反而成了更大的那个。后面的比例图如果按量化权重重画，KV cache 的占比还会更高。
 
-![](images/01-kv-ratio.png)
+![](01-kv-ratio.png)
 
 所以，判断一个模型能否处理长文本，不能只问“它有多少 B 参数”，还得问：**每多一个 token，它要留下多少 KV cache？**
 
@@ -76,7 +76,7 @@ DeepSeek 的 MLA（Multi-head Latent Attention，多头潜在注意力）换了�
 
 MLA 的设计看似复杂，直觉其实只有三步。
 
-![](images/02-mla-flow.png)
+![](02-mla-flow.png)
 
 ### 第一步：先写摘要，不存完整笔记
 
@@ -127,7 +127,7 @@ DeepSeek-V2 的技术报告做过成对实验：在其他架构尽量对齐的�
 
 这也解释了为什么不要把不同模型的一串“KB/token”直接当成 MLA 的唯一成绩单：模型层数、KV 头数、头维度和缓存精度都会改变绝对值。比如 DeepSeek-V3 的公开配置是 61 层、512 维 KV latent、64 维 RoPE key；按 BF16 存储计算，KV cache 约为 **70KB/token**。这个数字适合估算 V3，却不是所有模型共用的常数。
 
-![](images/03-comparison.png)
+![](03-comparison.png)
 
 ---
 
@@ -172,7 +172,7 @@ MLA 先通过低秩蒸馏把每 token 的缓存从 110K 元素压到 15K，**量
 
 MLA 不是直接套一个随机矩阵。它的下投影、上投影会随训练数据一起学习，目标也不是保证任意向量都完美保真，而是让语言模型在任务中保留足以计算注意力的信息。所以更准确的说法是：JL 引理帮助我们理解“低维仍可能保住关系”；MLA 则把这个想法变成一个由数据学习、并由实验检验的工程设计。
 
-![JL引理直观图解：高维空间的点经过随机投影到低维空间后，单个坐标丢失，但点间距离关系近似保留](images/05-jl-lemma.png)
+![JL引理直观图解：高维空间的点经过随机投影到低维空间后，单个坐标丢失，但点间距离关系近似保留](05-jl-lemma.png)
 
 ---
 
@@ -189,7 +189,7 @@ MLA 不是直接套一个随机矩阵。它的下投影、上投影会随训练�
 
 🔥 **DeepSeek 技术解密**
 
-① [DeepSeek便宜30倍的秘密：MoE混合专家入门](https://mp.weixin.qq.com/s/QdkD0CR2fD-HfY77-gX3Ug) → ② 显存被谁吃掉了？DeepSeek如何省下90%（本篇）→ ③ DeepSeek-R1 怎么学会“想清楚再说”？（即将发布）→ ④ DeepSeek-V4 为什么抛弃 MLA？（即将发布）→ ⑤ FP8 训练：用“残缺数字”练出顶级模型（即将发布）
+1 [DeepSeek便宜30倍的秘密:MoE混合专家入门](https://mp.weixin.qq.com/s/QdkD0CR2fD-HfY77-gX3Ug) → 2 显存被谁吃掉了?DeepSeek如何省下90%(本篇)→ ③ DeepSeek-R1 怎么学会"想清楚再说"？（待发布）→ ④ DeepSeek-V4 为什么抛弃 MLA？（待发布）→ ⑤ FP8 训练：用"残缺数字"练出顶级模型（待发布）
 
 这组文章会把 DeepSeek 的“便宜、能记、会推理、能训练”拆成可复用的数学直觉，和「大模型原理」主线穿插发布。
 
