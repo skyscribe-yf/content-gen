@@ -179,3 +179,5 @@ Scaling law 同样要这样读。它是特定模型族、数据和算力范围�
 📖 **[大模型原理合集](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzkyMzQyODExNQ==&action=getalbum&album_id=4597831652025925632#wechat_redirect)**：BPE → 词嵌入 → 位置编码 → 注意力 → FFN → Transformer全景 → **预训练** → RLHF → 推理加速
 
 📖 **[深度学习基础合集](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzkyMzQyODExNQ==&action=getalbum&album_id=4597831652025925633#wechat_redirect)**：梯度下降 → 损失函数 → 反向传播 → Softmax → 残差连接 → Adam
+
+#预训练 #交叉熵 #PPL #大模型原理 #数解AI

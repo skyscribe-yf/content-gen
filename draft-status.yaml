@@ -45,7 +45,7 @@ articles:
       outline: false
       cover: false
 
-  - slug: "2026-07-05-反向传播"
+  - slug: "2026-07-06-反向传播"
     title: "反向传播是什么？AI怎么知道自己错在哪"
     series: "深度学习基础"
     status: published
@@ -109,18 +109,18 @@ articles:
       cover: true
 
   # D2-D5 planned
-  - slug: "2026-07-23-MLA"
+  - slug: "2026-07-21-MLA"
     title: "显存被谁吃掉了？DeepSeek如何省下90%"
     series: "DeepSeek 技术解密"
     status: ready
-    published_date: null
+    published_date: "2026-07-21"
     wechat_url: null
     files:
       weixin: true
       draft: true
       outline: true
       cover: true
-    notes: "图片已从 images/ 复制到根目录，路径已修正，待发布标签已统一"
+    notes: "图片已从 images/ 复制到根目录，路径已修正，待发布标签已统一。排期：7月21日晚间"
 
   - slug: "2026-08-02-deepseek-grpo"
     title: "DeepSeek-R1 怎么学会\"想清楚再说\"？"
@@ -197,11 +197,11 @@ articles:
       outline: true
       cover: true
 
-  - slug: "2026-07-19-注意力机制"
+  - slug: "2026-07-18-注意力机制"
     title: "注意力机制是什么？别再当数据库查询"
     series: "大模型原理"
     status: published
-    published_date: "2026-07-19"
+    published_date: "2026-07-18"
     wechat_url: "https://mp.weixin.qq.com/s/KrilwX6VRjI9KfjvD7C6kw"
     files:
       weixin: true
@@ -209,43 +209,44 @@ articles:
       outline: true
       cover: true
 
-  - slug: "2026-07-21-FFN"
+  - slug: "2026-07-23-FFN"
     title: "Attention都够了，为什么还要FFN？"
     series: "大模型原理"
     status: ready
-    published_date: null
+    published_date: "2026-07-23"
     wechat_url: null
     files:
       weixin: true
       draft: true
       outline: true
       cover: true
-    notes: "weixin.md 已生成，图片已从 images/ 复制到根目录，实验输出已验证"
+      notes: "weixin.md 已生成，图片已从 images/ 复制到根目录，实验输出已验证。排期：7月23日早晨"
 
-  - slug: "2026-08-06-归一化残差"
-    title: "61层网络为什么不崩？归一化与残差连接"
+  - slug: "2026-07-24-归一化残差"
+    title: "归一化为什么总在前面？61层模型靠它不崩"
     series: "大模型原理"
-    status: planned
-    published_date: null
+    status: ready
+    published_date: "2026-07-24"
     wechat_url: null
     files:
-      weixin: false
-      draft: false
-      outline: false
-      cover: false
+      weixin: true
+      draft: true
+      outline: true
+      cover: true
+    notes: "公众号稿、大纲、21:9 封面与 5 张文内图已完成；草稿已保存至公众号草稿箱（media_id: kOcXH4SytIYVIpYksTGfHk6Z-UIezI7D9Ld208I-_GNmBFb62_Gr8y3DfIwypxax）。发布前已核验图片路径、公式格式和 DeepSeek-V4-Pro 配置。排期：7月24日19:30。"
 
-  - slug: "2026-07-25-Transformer全景"
+  - slug: "2026-07-26-Transformer全景"
     title: "注意力找人，FFN存知识：跟一句话走完Transformer"
     series: "大模型原理"
     status: ready
-    published_date: null
+    published_date: "2026-07-26"
     wechat_url: null
     files:
       weixin: true
       draft: true
       outline: true
       cover: true
-    notes: "weixin.md 已生成，图片已从 imgs/ 复制到根目录，frontmatter 已补全"
+    notes: "weixin.md 已生成，图片已从 imgs/ 复制到根目录，frontmatter 已补全。排期：7月26日07:00"
 
   - slug: "2026-07-27-预训练"
     title: "猜下一个字，AI怎么学会写文章？预训练全过程"
@@ -275,7 +276,7 @@ articles:
   - slug: "2026-07-20-kimi-k3-attention"
     title: "Kimi K3：KDA怎么撑住1M上下文？"
     series: "大模型原理"
-    status: ready
+    status: scheduled
     published_date: "2026-07-20"
     wechat_url: null
     files:
@@ -283,7 +284,7 @@ articles:
       draft: true
       outline: true
       cover: true
-    notes: "已保存至公众号草稿箱；已补上下文与 MoE 回链。本文先讲 KDA 的混合分工，MLA 仅在结尾预告。正式发布时勾选原创声明并回填 wechat_url。"
+    notes: "已保存至公众号草稿箱；已补上下文与 MoE 回链。本文先讲 KDA 的混合分工，MLA 仅在结尾预告。正式发布时勾选原创声明并回填 wechat_url。排期：7月20日早晨08:00"
 
   - slug: "2026-08-08-推理加速"
     title: "AI回答为什么这么慢？推理与采样加速"
@@ -319,16 +320,17 @@ summary:
   total: 23
   by_status:
     published: 12
-    scheduled: 0
+    scheduled: 1
     ready: 4
     drafting: 1
-    planned: 6
+    planned: 5
   drafting_queue:
     - "2026-07-27-预训练"
-  planned_queue:
   ready_queue:
+    - "2026-07-21-MLA"
+    - "2026-07-23-FFN"
+    - "2026-07-24-归一化残差"
+    - "2026-07-26-Transformer全景"
+  scheduled_queue:
     - "2026-07-20-kimi-k3-attention"
-    - "2026-07-21-FFN"
-    - "2026-07-23-MLA"
-    - "2026-07-25-Transformer全景"
   next_publish_date: "2026-07-20"

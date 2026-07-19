@@ -54,6 +54,10 @@ wechatUrl: "https://mp.weixin.qq.com/s/abc123"
 📖 **[训练回路合集](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=XXX&action=getalbum&album_id=YYY)**：梯度下降 → 损失函数 → 反向传播 → Softmax → 残差连接 → Adam
 ```
 
+## 微信话题标签
+
+每篇 `weixin.md` 末尾**必须**添加 3-5 个话题标签（`#标签`），用于搜一搜 SEO 和话题聚合。格式：系列标签 + 2-3 个主题标签 + `#数解AI`。详见 [`docs/wechat-topic-tags.md`](docs/wechat-topic-tags.md)。
+
 ## 公众号菜单维护
 
 「热门文章」≤5 篇（手动管理），「全部合集」永久不变（合集页 URL）。发新文时勾选合集 + 记入 frontmatter `wechatUrl`。详见 [`docs/wechat-menu.md`](docs/wechat-menu.md)。
@@ -102,12 +106,13 @@ wechatUrl: "https://mp.weixin.qq.com/s/abc123"
 
 ## 发布前检查
 
-**规则**：调用 `baoyu-post-to-wechat` 发布前，必须确认以下三项就绪：
+**规则**：调用 `baoyu-post-to-wechat` 发布前，必须确认以下就绪：
 
 1. **封面图已生成** — `00-cover.png` 存在于文章目录，缺失则先生成
 2. **wechatUrl 已补** — 发布后第一时间把微信 URL 写入 frontmatter `wechatUrl` 字段
 3. **目录名 = 发布日期** — 发布日期变更时同步重命名目录
 4. **图片路径正确** — 图片与 `weixin.md` 同级，无 `images/` 前缀（详见 `docs/wechat-image-path.md`）
+5. **话题标签已添加** — 文末含 3-5 个 `#标签`（详见 `docs/wechat-topic-tags.md`）
 
 ## 公众号图片路径
 

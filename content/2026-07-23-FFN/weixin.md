@@ -163,3 +163,5 @@ MoE 没有把 FFN 换成完全不同的东西。它多加了一个路由器：�
 📖 **大模型原理系列**：① [词嵌入](https://mp.weixin.qq.com/s/rDryn1z_hLt7mwi3X8fsxQ)→ ② [位置编码](https://mp.weixin.qq.com/s/4nO2VqQLaYxGdDmtQeypCQ)→ ③ 注意力机制（待发布）→ ④ 前馈网络 FFN（本篇）→ ⑤ 归一化（待发布）→ ⑥ Transformer 全景（待发布）
 
 📖 **[训练回路合集](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzkyMzQyODExNQ==&action=getalbum&album_id=4594958081087864833#wechat_redirect)**：梯度下降 → 损失函数 → 反向传播 → Softmax → 残差连接 → Adam
+
+#FFN #前馈网络 #SwiGLU #大模型原理 #数解AI
