@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q 和 K 长得一模一样，为什么还要分开？</title>
+<style>
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 16px; line-height: 1.8; color: #1a1a1a;
+  max-width: 720px; margin: 40px auto; padding: 0 20px;
+}
+h1 { font-size: 24px; font-weight: 700; margin: 32px 0 16px; }
+h2 { font-size: 20px; font-weight: 700; margin: 28px 0 12px;
+     padding-bottom: 6px; border-bottom: 1px solid #eee; }
+h3 { font-size: 17px; font-weight: 700; margin: 24px 0 10px; }
+blockquote {
+  margin: 16px 0; padding: 12px 16px;
+  background: #f6f8fa; border-left: 4px solid #1a6dd4;
+  border-radius: 0 4px 4px 0;
+}
+table { border-collapse: collapse; width: 100%; margin: 16px 0; font-size: 15px; }
+th, td { border: 1px solid #ddd; padding: 10px 14px; text-align: left; }
+th { background: #f4f6f8; font-weight: 600; }
+.cta {
+  background: #f0f7ff; border: 1px solid #b8d8ff;
+  padding: 16px 20px; border-radius: 8px; margin: 20px 0;
+}
+strong { font-weight: 700; }
+</style>
+</head>
+<body>
+
+<p><strong>因为「长得像」不等于「可以合并」——把 Q 和 K 粘到一起的那一刻，注意力就失去了方向感。</strong></p>
+
+<p>先给结论：Q 和 K 用两套独立的投影矩阵，是为了让注意力可以是非对称的——token A 觉得 B 重要，不代表 token B 也觉得 A 重要。如果你让它们共享投影，这个非对称性瞬间消失，注意力矩阵变成对称的，因果语言建模就废了。</p>
+
+<p>这不是猜测。2026 年 ICML 的一篇系统性研究（"Do Transformers Need Three Projections?"）直接对比了所有可能的合并方案，实验跨度从合成任务到 1.2B 参数语言模型，结论很明确。往下看。</p>
+
+<h2>三种合并方案，三种结局</h2>
+
+<p>研究者测试了三种让 Q、K、V 共享投影的方案（论文原文见 arxiv.org/html/2606.04032v2）：</p>
+
+<table>
+<tr><th>方案</th><th>具体内容</th><th>效果</th></tr>
+<tr><td>Q=K-V</td><td>Q 和 K 共享，V 独立</td><td>注意力矩阵对称，语言模型 perplexity 下降 4.9%，且<strong>零 KV 缓存收益</strong></td></tr>
+<tr><td>Q-K=V</td><td>Q 独立，K 和 V 共享</td><td>Perplexity 仅下降 3.1%，<strong>KV 缓存减半</strong></td></tr>
+<tr><td>Q=K=V</td><td>三者全共享</td><td>Perplexity 暴跌 25.4%，彻底崩盘</td></tr>
+</table>
+
+<p>Perplexity 是语言模型的困惑度指标，数值越低代表模型对文本的预测越准确。3.1% 的退化在工程上几乎可以忽略，而 25.4% 意味着模型基本不能用了。</p>
+
+<p>关键发现：<strong>Q=K-V（合并 Q 和 K）会破坏注意力的方向性</strong>。因果语言模型里，token 只能看到前面的内容——方向一旦消失，模型就不知道信息该怎么流动了。</p>
+
+<h2>方向性为什么重要</h2>
+
+<p>对图像分类这种<strong>无序输入</strong>，对称不是问题——一只猫在左在右都一样。但对语言来说，「我爱你」和「你爱我」含义完全不同，方向就是语义。</p>
+
+<p>用 Q 和 K 投影，模型才能学会：token A 关注 B，但 B 不一定关注 A。这是非对称匹配。一旦 Q=K，同一个向量既当查询又当键，A 关注 B 的强度和 B 关注 A 的强度完全相同——注意力变成双向对称，语言模型就分不清因果了。</p>
+
+<h2>那为什么 K 和 V 可以合并？</h2>
+
+<p>更有趣的是：K=V 效果很好，Q=K 却崩了。为什么？</p>
+
+<p>论文给出了一个反直觉的解释：<strong>Key 和 Value 天然住在差不多的表示空间里</strong>。</p>
+
+<p>在训练好的模型里，研究者测量了投影矩阵的余弦相似度：</p>
+
+<ul>
+<li>K 和 V 投影矩阵的余弦相似度 ≈ <strong>0.73</strong>（高度相似）</li>
+<li>Q 和 K 投影矩阵的余弦相似度 ≈ <strong>0.42</strong>（明显不同）</li>
+</ul>
+
+<p>这意味着 K 和 V 做的本来就是差不多的事——"告诉你去哪里找"和"找到之后拿什么"，语义上高度重合。把它们合并，模型几乎不丢信息。</p>
+
+<p>但 Q 做的事不一样：<strong>"我在找什么"和"你能提供什么"是两种完全不同的角色</strong>。把它们压成一个向量，模型就分不清方向了。</p>
+
+<p>实验也验证了这一点：Q-K=V 的 300M 模型 perplexity 只退化 3.1%，而 Q=K-V 退化了 4.9%——<strong>共享 K-V 远好于共享 Q-K</strong>。</p>
+
+<h2>历史进化的证据</h2>
+
+<p>Transformer 的三投影结构不是拍脑袋想出来的，是一路踩坑踩出来的：</p>
+
+<ol>
+<li><strong>单投影（2013-2014）</strong>：Word2Vec、Siamese 网络，K=Q=V。做"找最近邻"够用，但做不了条件聚合——定位和负载没分开。</li>
+<li><strong>双投影（2014-2016）</strong>：Bahdanau 注意力、双编码器检索——把 Q 和 K 分开，允许"被问"和"提问"是不同的空间。效果立刻提升。</li>
+<li><strong>三投影（2017）</strong>：Transformer 把 V 也独立出去——K 负责定位（"去哪里找"），V 负责负载（"拿什么"），Q 负责寻址（"我要什么"）。每个角色专职化。</li>
+</ol>
+
+<p>这条进化链每一步都是上一个方案碰了壁才走的：单个投影做不了复杂检索，双投影做不了条件聚合。三投影够了吗？ICML 2026 的论文告诉我们：对于语言建模，三个确实够了。</p>
+
+<h2>为什么不是四投影？</h2>
+
+<p>既然分开有好处，为什么不再加一个——比如 K1 负责定位、K2 负责长期依赖、K3 负责短时模式？</p>
+
+<p>两个原因：</p>
+
+<p><strong>第一，线性投影的额外维度通常是冗余的</strong>。如果你在线性投影之后再加一个线性投影 W_b 做双线性打分：</p>
+
+<blockquote><p><strong>score = qᵀ · W_b · k = (W_bᵀq)ᵀ · k = qᵀ · (W_b · k)</strong></p></blockquote>
+
+<p>翻译成大白话：这个"额外投影"可以被吸收回 W_Q 或 W_K——它对模型能力没有真正增加。</p>
+
+<p><strong>第二，多头注意力已经在做"多投影"了</strong>。比如 Qwen3-8B 有 32 个头，每个头有独立的 W_Q、W_K、W_V。这本身就是 32 组独立的 QKV 投影——模型已经在做"多个 Q、多个 K、多个 V"了，只不过是在不同的低维子空间里。再加一个投影维度，不如直接增加头的数量（DeepSeek-V4 Pro 用到 128 个 Q 头）。</p>
+
+<h2>真实模型的数据</h2>
+
+<table>
+<tr><th>模型</th><th>Q 头数</th><th>KV 头数</th><th>head_dim</th><th>Q-K 分离？</th></tr>
+<tr><td>Qwen3-8B</td><td>32</td><td>8（GQA）</td><td>128</td><td>✅</td></tr>
+<tr><td>DeepSeek-V4 Pro</td><td>128</td><td>1（MQA）</td><td>512</td><td>✅</td></tr>
+<tr><td>GLM-5.2</td><td>64</td><td>4（GQA）</td><td>128</td><td>✅</td></tr>
+</table>
+
+<p>注意 KV 头的数量可以远少于 Q 头——这是 GQA/MQA 在工程上压缩缓存的方式。但<strong>没有任何一个主流模型把 Q 和 K 粘成同一个投影</strong>。即使在最激进的缓存压缩方案里（MQA 只有 1 个 KV 头），Q 和 K 仍然是两个不同的矩阵。</p>
+
+<h2>回到你的问题</h2>
+
+<p><strong>为什么分开？</strong> 分开是为了保持注意力的非对称方向性。Q 和 K 用不同投影，模型才学会"A 关注 B 但 B 不一定关注 A"。</p>
+
+<p><strong>为什么不差分成更多？</strong> 因为线性投影的额外维度会被现有矩阵吸收，真正的多样性靠多头注意力解决——每个头独立投影，32 头就是 32 组不同的 QKV 空间。再加投影维度是边际收益为零的数学冗余。</p>
+
+<p>如果你在部署时想省内存，方向是 K=V 合并（Q-K=V 方案，KV 缓存减半，质量几乎不变），而不是 Q=K 合并。</p>
+
+<hr>
+
+<p>公众号「<strong>数解AI</strong>」系列正在连载注意力机制的工程取舍。</p>
+
+<div class="cta">
+<p>微信搜「<strong>数解AI</strong>」——用数学和图解把大模型原理讲清楚。深度学习基础已完结，大模型原理连载中（BPE → 词嵌入 → 位置编码 → 注意力 → FFN → 归一化残差 → Transformer → 预训练 → RLHF），每 2 天一篇。</p>
+</div>
+
+<p>给你一个思想实验：假设让 Q 和 K 共享投影（Q=K），但对每对 token 人为加一个方向偏置来强行恢复非对称性——这个方案可行吗？它的天花板在哪里？评论区说说你的推理。</p>
+
+</body>
+</html>

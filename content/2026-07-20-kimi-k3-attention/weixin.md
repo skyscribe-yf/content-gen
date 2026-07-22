@@ -7,6 +7,7 @@ series: "大模型原理"
 keywords: ["Kimi K3", "KDA", "线性注意力"]
 cover: 00-cover.png
 scheduledPublish: "2026-07-20T08:00:00+08:00"
+wechatUrl: "https://mp.weixin.qq.com/s/_RR5LLWgjGNm-qXdSdnAGA"
 ---
 
 ## 🎯 驱动问题：1M 上下文，难的不是塞进去
@@ -166,12 +167,12 @@ KDA 给出的思路是：
 
 ---
 
-📖 **[大模型原理合集](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzkyMzQyODExNQ==&action=getalbum&album_id=4597831652025925632#wechat_redirect)**：BPE → 词嵌入 → 位置编码 → 注意力 → **KDA 长上下文** → FFN → Transformer 全景 → 预训练 → RLHF → 推理加速
+📖 **[大模型原理合集](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzkyMzQyODExNQ==&action=getalbum&album_id=4597831652025925632#wechat_redirect)**：BPE → 词嵌入 → 位置编码 → 注意力 → **KDA 长上下文** → MLA → FFN → 归一化残差 → Transformer 全景 → 预训练 → RLHF → 推理加速
 
 每 2 天更新一篇，把大模型从输入到生成的链路讲到不用回头查。关注「数解AI」，下一篇第一时间推给你。
 
-*如果这篇帮到了你，点个「在看」让更多朋友看到。*
+*觉得有用就点个赞 👍、收藏 ⭐ 备用；点个「在看」让更多朋友看到。*
 
 假如你在设计一个长上下文模型：你会多留几层做"全局回看"，还是把更多层交给"会议速记"？为什么？评论区聊聊。
 
-#KimiK3 #KDA #线性注意力 #长上下文 #大模型原理 #数解AI
+#KimiK3 #KDA #线性注意力 #大模型原理 #数解AI

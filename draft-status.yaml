@@ -51,6 +51,7 @@ articles:
     status: published
     published_date: "2026-07-06"
     wechat_url: "https://mp.weixin.qq.com/s/oYj_qpwF4tZG84ImOn977g"
+    zhihu_url: "https://zhuanlan.zhihu.com/p/2063165927319984060"
     files:
       weixin: true
       draft: true
@@ -63,6 +64,7 @@ articles:
     status: published
     published_date: "2026-07-07"
     wechat_url: "https://mp.weixin.qq.com/s/5wMquh_v3oon2-NEDeQLEw"
+    zhihu_url: "https://zhuanlan.zhihu.com/p/2063278567371322536"
     files:
       weixin: true
       draft: true
@@ -75,6 +77,7 @@ articles:
     status: published
     published_date: "2026-07-09"
     wechat_url: "https://mp.weixin.qq.com/s/xefNN9Gjaw3TKl60KeHzAg"
+    zhihu_url: "https://zhuanlan.zhihu.com/p/2063280395374834864"
     files:
       weixin: true
       draft: true
@@ -87,6 +90,7 @@ articles:
     status: published
     published_date: "2026-07-10"
     wechat_url: "https://mp.weixin.qq.com/s/aSLVO-otvr2rxIU1kr2eAA"
+    zhihu_url: "https://zhuanlan.zhihu.com/p/2063286132717180758"
     files:
       weixin: true
       draft: false

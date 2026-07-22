@@ -30,6 +30,17 @@
 
 知乎不支持 Markdown → 输出 `.md` + `.html` 两份文件。公式用 Unicode，回答须有独立价值 + ≥3 处公众号引流钩子。详见 [`docs/zhihu-promotion.md`](docs/zhihu-promotion.md)。
 
+## 知乎发布 Skill
+
+项目级 skill：[`.agents/skills/post-zhihu/SKILL.md`](.agents/skills/post-zhihu/SKILL.md)
+
+封装了「内容裁剪 → 链接替换 → LaTeX 公式保留 → HTML 生成 → CDP 粘贴 → 图片上传 → 发布回写」的知乎专栏/回答全自动发布流程。关键规则：
+- 知乎原生支持 MathJax，公式保留 `$$...$$` 不转 Unicode
+- 正文中的微信链接必须替换为知乎链接（查 `templates/zhihu-urls.yaml`）
+- 图片必须串行上传到知乎 CDN（`pic*.zhihu.com`），禁止外部图床
+- 发布后必须回填知乎 URL 到 `draft-status.yaml` 的 `zhihu_url` 字段
+- 末尾引流只提及公众号名称和回复关键词，不放可点击外链
+
 ## 小红书内容策略
 
 入口必须是痛点（不是概念）。封面图钩子 ≤8 字，标签用长尾词。详见 [`docs/xiaohongshu-strategy.md`](docs/xiaohongshu-strategy.md)。
@@ -99,6 +110,8 @@ wechatUrl: "https://mp.weixin.qq.com/s/abc123"
 - 末尾含关注引导（价值承诺 + 系列结构）
 - 结尾含 1 个开放式问题引导留言
 - 摘要须含 2-3 个搜索关键词
+- 最新审计：2026-07-21，详见 [`docs/wechat-data-insights.md`](docs/wechat-data-insights.md)
+- 数字事实源：[`docs/wechat-data-audit-log.json`](docs/wechat-data-audit-log.json)，结构见同名 `.schema.json`，操作脚本为 `scripts/wechat_audit_log.py`，报告生成脚本为 `scripts/wechat_audit_report.py`，产物为 `docs/wechat-data-audit-report.html`
 
 ## 文章质量核查
 
@@ -113,6 +126,11 @@ wechatUrl: "https://mp.weixin.qq.com/s/abc123"
 3. **目录名 = 发布日期** — 发布日期变更时同步重命名目录
 4. **图片路径正确** — 图片与 `weixin.md` 同级，无 `images/` 前缀（详见 `docs/wechat-image-path.md`）
 5. **话题标签已添加** — 文末含 3-5 个 `#标签`（详见 `docs/wechat-topic-tags.md`）
+6. **最终检查已通过** — 逐项过 `docs/pre-publish-final-check.md` 的 7 项清单
+
+## 发布前最终检查
+
+发布前最后一道门禁，9 项：标题/关键词 SEO、正文开头无重复封面图、硬件数字核查（GPU/模型/上下文组合可实际跑通）、无「待发布」残留（替换为已发布微信链接）、文末话题标签、尾部系列导航（合集链接 + 箭头链，不漏篇）、下一篇预告、点赞/关注/收藏引导、叙事闭环（开头 ↔ 结尾预告完整逻辑链）。详见 [`docs/pre-publish-final-check.md`](docs/pre-publish-final-check.md)。
 
 ## 公众号图片路径
 

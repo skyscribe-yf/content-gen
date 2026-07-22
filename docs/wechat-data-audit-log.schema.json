@@ -1,0 +1,258 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-gen.local/schemas/wechat-data-audit-log.schema.json",
+  "title": "WeChat Data Audit Log",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "account", "audits"],
+  "properties": {
+    "schemaVersion": {"const": 1},
+    "account": {"type": "string", "minLength": 1},
+    "audits": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/audit"}
+    }
+  },
+  "$defs": {
+    "date": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "dateTime": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:Z|[+-]\\d{2}:\\d{2})$"
+    },
+    "nonNegativeInteger": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "money": {
+      "type": "number",
+      "minimum": 0
+    },
+    "optionalMoney": {
+      "type": ["number", "null"],
+      "minimum": 0
+    },
+    "percentage": {
+      "type": ["number", "null"],
+      "minimum": 0,
+      "maximum": 100
+    },
+    "period": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["from", "to"],
+      "properties": {
+        "from": {"$ref": "#/$defs/date"},
+        "to": {"$ref": "#/$defs/date"}
+      }
+    },
+    "dailyContent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["date", "reads", "shares", "comments"],
+      "properties": {
+        "date": {"$ref": "#/$defs/date"},
+        "reads": {"$ref": "#/$defs/nonNegativeInteger"},
+        "shares": {"$ref": "#/$defs/nonNegativeInteger"},
+        "comments": {"$ref": "#/$defs/nonNegativeInteger"}
+      }
+    },
+    "article": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["date", "title", "reads", "share"],
+      "properties": {
+        "date": {"$ref": "#/$defs/date"},
+        "title": {"type": "string", "minLength": 1},
+        "reads": {"$ref": "#/$defs/nonNegativeInteger"},
+        "share": {"$ref": "#/$defs/percentage"}
+      }
+    },
+    "content": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["readers30d", "daily", "sources", "articles"],
+      "properties": {
+        "readers30d": {"$ref": "#/$defs/nonNegativeInteger"},
+        "daily": {"$ref": "#/$defs/dailyContent"},
+        "sources": {
+          "type": "object",
+          "additionalProperties": {"$ref": "#/$defs/percentage"}
+        },
+        "articles": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/article"}
+        }
+      }
+    },
+    "dailyUsers": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["date", "new", "cancelled", "net", "total"],
+      "properties": {
+        "date": {"$ref": "#/$defs/date"},
+        "new": {"$ref": "#/$defs/nonNegativeInteger"},
+        "cancelled": {"$ref": "#/$defs/nonNegativeInteger"},
+        "net": {"type": "integer"},
+        "total": {"$ref": "#/$defs/nonNegativeInteger"}
+      }
+    },
+    "userChannel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["count", "share"],
+      "properties": {
+        "count": {"$ref": "#/$defs/nonNegativeInteger"},
+        "share": {"$ref": "#/$defs/percentage"}
+      }
+    },
+    "users": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["daily", "channelTotal", "channels", "trend"],
+      "properties": {
+        "daily": {"$ref": "#/$defs/dailyUsers"},
+        "channelTotal": {"$ref": "#/$defs/nonNegativeInteger"},
+        "channels": {
+          "type": "object",
+          "additionalProperties": {"$ref": "#/$defs/userChannel"}
+        },
+        "trend": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/dailyUsers"}
+        }
+      }
+    },
+    "incomeSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pulls", "impressions", "exposureRate", "clicks", "ctr", "ecpm", "revenue"],
+      "properties": {
+        "pulls": {"$ref": "#/$defs/nonNegativeInteger"},
+        "impressions": {"$ref": "#/$defs/nonNegativeInteger"},
+        "exposureRate": {"$ref": "#/$defs/percentage"},
+        "clicks": {"$ref": "#/$defs/nonNegativeInteger"},
+        "ctr": {"$ref": "#/$defs/percentage"},
+        "ecpm": {"$ref": "#/$defs/optionalMoney"},
+        "revenue": {"$ref": "#/$defs/money"}
+      }
+    },
+    "incomeDay": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["date", "pulls", "impressions", "exposureRate", "clicks", "ctr", "ecpm", "revenue"],
+      "properties": {
+        "date": {"$ref": "#/$defs/date"},
+        "pulls": {"$ref": "#/$defs/nonNegativeInteger"},
+        "impressions": {"$ref": "#/$defs/nonNegativeInteger"},
+        "exposureRate": {"$ref": "#/$defs/percentage"},
+        "clicks": {"$ref": "#/$defs/nonNegativeInteger"},
+        "ctr": {"$ref": "#/$defs/percentage"},
+        "ecpm": {"$ref": "#/$defs/optionalMoney"},
+        "revenue": {"$ref": "#/$defs/money"}
+      }
+    },
+    "incomeSlot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["summary", "dailyRevenueTotal", "daily"],
+      "properties": {
+        "summary": {"$ref": "#/$defs/incomeSummary"},
+        "dailyRevenueTotal": {"$ref": "#/$defs/money"},
+        "daily": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/incomeDay"}
+        }
+      }
+    },
+    "articleIncomeArticle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["date", "title", "original", "revenue", "slots"],
+      "properties": {
+        "date": {"$ref": "#/$defs/date"},
+        "title": {"type": "string", "minLength": 1},
+        "original": {"type": "boolean"},
+        "revenue": {"$ref": "#/$defs/money"},
+        "slots": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["revenue", "share"],
+            "properties": {
+              "revenue": {"$ref": "#/$defs/money"},
+              "share": {"$ref": "#/$defs/percentage"}
+            }
+          }
+        }
+      }
+    },
+    "articleIncome": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scope", "articles"],
+      "properties": {
+        "scope": {"type": "string", "minLength": 1},
+        "articles": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/articleIncomeArticle"}
+        }
+      }
+    },
+    "incomeOverview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cumulativeRevenue", "programmaticRevenue", "yesterdayIncrement", "mutualSelectionRevenue", "commerceRevenue"],
+      "properties": {
+        "cumulativeRevenue": {"$ref": "#/$defs/money"},
+        "programmaticRevenue": {"$ref": "#/$defs/money"},
+        "yesterdayIncrement": {"$ref": "#/$defs/money"},
+        "mutualSelectionRevenue": {"$ref": "#/$defs/money"},
+        "commerceRevenue": {"$ref": "#/$defs/money"}
+      }
+    },
+    "income": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["overview", "articleIncomeAvailable", "slots"],
+      "properties": {
+        "overview": {"$ref": "#/$defs/incomeOverview"},
+        "articleIncomeAvailable": {"type": "boolean"},
+        "articleIncome": {"$ref": "#/$defs/articleIncome"},
+        "slots": {
+          "type": "object",
+          "additionalProperties": {"$ref": "#/$defs/incomeSlot"}
+        }
+      }
+    },
+    "audit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["collectedAt", "dataThrough", "periods", "content", "users", "income", "notes"],
+      "properties": {
+        "collectedAt": {"$ref": "#/$defs/dateTime"},
+        "dataThrough": {"$ref": "#/$defs/date"},
+        "periods": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["content", "users", "income"],
+          "properties": {
+            "content": {"$ref": "#/$defs/period"},
+            "users": {"$ref": "#/$defs/period"},
+            "income": {"$ref": "#/$defs/period"}
+          }
+        },
+        "content": {"$ref": "#/$defs/content"},
+        "users": {"$ref": "#/$defs/users"},
+        "income": {"$ref": "#/$defs/income"},
+        "notes": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+# 知乎文章 URL 映射表
+
+# 微信公众号 URL → 知乎专栏/回答 URL
+# 发布知乎文章后，将实际 URL 填入对应位置
+
+mappings:
+  # 深度学习基础系列
+  "https://mp.weixin.qq.com/s/V6mGvCVFpTvmC51pNtxiTw": "https://zhuanlan.zhihu.com/p/2063147154118644063"  # 梯度下降
+  "https://mp.weixin.qq.com/s/zIWqYqYVzEaF1e8P6fcTfw": "https://zhuanlan.zhihu.com/p/2063150067784082359"  # 损失函数
+  "https://mp.weixin.qq.com/s/oYj_qpwF4tZG84ImOn977g": "https://zhuanlan.zhihu.com/p/2063165927319984060"  # 反向传播
+  "https://mp.weixin.qq.com/s/5wMquh_v3oon2-NEDeQLEw": "https://zhuanlan.zhihu.com/p/2063278567371322536"  # Softmax
+  "https://mp.weixin.qq.com/s/xefNN9Gjaw3TKl60KeHzAg": "https://zhuanlan.zhihu.com/p/2063280395374834864"  # 残差连接
+  "https://mp.weixin.qq.com/s/aSLVO-otvr2rxIU1kr2eAA": "https://zhuanlan.zhihu.com/p/2063286132717180758"  # Adam 优化器
+
+  # DeepSeek 技术解密系列
+  "https://mp.weixin.qq.com/s/QdkD0CR2fD-HfY77-gX3Ug": ""  # DeepSeek MoE
+  "https://mp.weixin.qq.com/s/PLVRS0TTHXHDve1Z3r6M7Q": ""  # AI Memory Crash
+
+  # 大模型原理系列
+  "https://mp.weixin.qq.com/s/5nR_KI47v_U8KwpQA4Uv5Q": ""  # BPE 分词
+  "https://mp.weixin.qq.com/s/rDryn1z_hLt7mwi3X8fsxQ": ""  # 词嵌入
+  "https://mp.weixin.qq.com/s/4nO2VqQLaYxGdDmtQeypCQ": ""  # 位置编码
+  "https://mp.weixin.qq.com/s/KrilwX6VRjI9KfjvD7C6kw": ""  # 注意力机制
+  "https://mp.weixin.qq.com/s/JC4oRkVZIp0Sv7iMSAc1Yw": ""  # MLA（待确认）
+
+# 使用说明：
+# 1. 文章发布到知乎后，将知乎 URL 填入对应微信 URL 右侧
+# 2. 运行 zhihu-links.py 时，所有 match 的链接将被自动替换
+# 3. 未匹配的微信链接会被替换为纯文字（原文发于公众号數解AI）
+# 4. 新增文章时，先在 draft-status.yaml 中记录微信 URL

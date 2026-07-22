@@ -102,24 +102,39 @@ sessionMode: fresh (或 auto)
 args: open https://mp.weixin.qq.com/
 ```
 
-### Step 2: 展示二维码给用户扫码
+### Step 2: 检查模型 + 展示二维码
+
+**先读取 `~/.pi/agent/models.json`，检查当前模型的 `input` 是否包含 `"image"`。**
+
+**若支持视觉**（如 `gpt-5.6-luna`、`xopkimik26`）：
 
 ```
 agent_browser: screenshot /tmp/wechat-qr.png
+read /tmp/wechat-qr.png
 ```
 
-告知用户："VPS 浏览器里的二维码"，请用微信扫码确认。
+Pi TUI 会内联渲染二维码。告知用户用微信扫码确认。
+
+**若不支持视觉**（如 `deepseek-v4-pro`、`xopglm51`）：
+
+> 🚫 **直接退出。** 告诉用户切换到视觉模型（`gpt-5.6-luna`、`xopkimik26` 等）或手动刷新 `.env` 中的 Cookie 后重试。
 
 **注意**：TLS 指纹绑定意味着用户必须在同一个 VPS 浏览器环境扫码。你从本地浏览器拷贝的 cookie 在 VPS 上无效。
 
 ### Step 3: 等待登录确认
 
-用户确认后验证：
+**不要轮询**。告知用户扫码后回复确认，然后用 `eval` 验证登录态：
 
 ```
 agent_browser: eval --stdin
-  location.href.includes('/cgi-bin/home') ? 'LOGIN_OK' : 'WAITING'
+  JSON.stringify({
+    href: location.href,
+    uin: window.wx?.uin,
+    loggedIn: location.href.includes('/cgi-bin/home')
+  })
 ```
+
+`uin > 0` 且 `loggedIn: true` → 登录成功。仍在 `/cgi-bin/loginpage` → 让用户重扫。
 
 ### Step 4: 立即导出 cookie（扫码成功后必做）
 

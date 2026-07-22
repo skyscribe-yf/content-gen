@@ -13,6 +13,35 @@ description: "Audit WeChat Official Account article data, extract performance me
 
 ## 工作流
 
+### Phase 0: 加载和保存本地审计历史
+
+微信后台历史数据可见范围有限。数字事实必须先从本地 JSON 加载，采集后再追加到本地 JSON，不能只依赖后台当前页面或覆盖旧快照。
+
+固定文件：
+
+- 数字事实源：`docs/wechat-data-audit-log.json`
+- JSON Schema：`docs/wechat-data-audit-log.schema.json`
+- 操作脚本：`scripts/wechat_audit_log.py`
+- 人读版日志：`docs/wechat-data-audit-log.md`
+
+#### 审计开始前
+
+1. 运行 `python scripts/wechat_audit_log.py validate`，确认本地日志未损坏。
+2. 运行 `python scripts/wechat_audit_log.py latest`，加载最近一次快照作为对照基线。
+3. 需要查看历史时，使用 `show --date YYYY-MM-DD` 或 `compare --from YYYY-MM-DD --to YYYY-MM-DD`，不要返回微信后台翻查已经不可见的旧数据。
+
+#### 采集完成后
+
+1. 把本次采集结果规范化为一个独立快照 JSON，写入 `/tmp/audit-snapshot.json`。
+2. 快照必须包含 `collectedAt`、`dataThrough`、`periods`、`content`、`users`、`income`、`notes`。
+3. 内容字段使用稳定英文键：`readers30d`、`daily`、`sources`、`articles`；用户字段使用 `channels`、`trend`；流量主广告位放在 `income.slots` 下，例如 `messageArea`、`bottom`、`inline`、`keyword`；文章发布后 7 日累计收入放在 `income.articleIncome`，按文章保存分广告位收入占比。
+4. 无数据的曝光率、CTR 或 eCPM 使用 JSON `null`，不要写字符串 `-`；后台卡片和每日明细不一致时，两种口径都保留在 `notes` 或对应字段中。
+5. 运行 `python scripts/wechat_audit_log.py append --input /tmp/audit-snapshot.json`。脚本会校验结构、拒绝重复 `collectedAt`，并使用原子替换保护历史文件。
+6. 再运行 `python scripts/wechat_audit_log.py validate`。验证通过后，才更新 `docs/wechat-data-insights.md`、`docs/wechat-ops.md` 和 `docs/article-title-seo.md`。
+7. 运行 `python scripts/wechat_audit_report.py` 生成 `docs/wechat-data-audit-report.html`。报告是展示产物，不是数字事实源；需要临时文件时使用 `--out`，需要历史快照时使用 `--date YYYY-MM-DD`。
+
+JSON 是数字唯一事实源；Markdown 只保存人读版和分析结论。禁止直接删除或重写已有 `audits` 快照。
+
 ### Phase 1: Cookie 注入 + 登录
 
 先按 `wechat-stats` 的流程注入 Cookie，确保登录态。
@@ -23,10 +52,28 @@ description: "Audit WeChat Official Account article data, extract performance me
 2. **前置时效检查**（2026-07-14 复盘新增）：Cookie 实测有效期 **≤ 2 天**（远短于 wechat-stats 文档所述 7–30 天）。若上次注入距本次审计 ≥ 2 天，直接按过期处理，跳到扫码降级流程，避免注入后仍在登录页打转浪费时间。注入后导航 `https://mp.weixin.qq.com/cgi-bin/home?t=home/index&lang=zh_CN`，用 `window.wx.uin > 0` 判定；uin=0 即过期。
 2. 用 `agent_browser` `sessionMode=fresh` 打开 `https://mp.weixin.qq.com/`
 3. 通过 CDP 注入 Cookie：`node scripts/wechat-cdp-cookie.mjs inject`（自动定位 `/tmp/agent-browser-chrome-*/DevToolsActivePort`，读 `.env` 的 `WECHAT_COOKIE`，在 weixin page tab 上调 `Network.setCookie`，domain `.qq.com`）
-4. 导航到 `https://mp.weixin.qq.com/cgi-bin/home?t=home/index&lang=zh_CN` 验证登录：`node scripts/wechat-cdp-cookie.mjs status`（`uin > 0` 即成功；uin=0 → Cookie 过期，降级扫码）
-5. 扫码登录成功后**立即导出新 Cookie**：`node scripts/wechat-cdp-cookie.mjs export`（写回 `.env`，下次免扫码）
+4. 导航到 `https://mp.weixin.qq.com/cgi-bin/home?t=home/index&lang=zh_CN` 验证登录：`node scripts/wechat-cdp-cookie.mjs status`（`uin > 0` 即成功；uin=0 → Cookie 过期）
+5. 登录成功后**立即导出新 Cookie**：`node scripts/wechat-cdp-cookie.mjs export`（写回 `.env`，下次免扫码）
 
-> 脚本封装了裸 WebSocket CDP 调用，无第三方依赖（Node ≥ 22 全局 WebSocket）。注入用 page target 的 `Network.setCookie`，导出用 `Network.getAllCookies`。
+#### ⚠️ Cookie 过期时的处理
+
+**第一步：检查当前模型是否支持视觉。** 读取 `~/.pi/agent/models.json`，检查当前模型的 `input` 数组是否包含 `"image"`。
+
+**若模型支持视觉**（如 `gpt-5.6-luna`、`xopkimik26`）：
+
+1. `agent_browser screenshot /tmp/wechat-qr.png`
+2. `read /tmp/wechat-qr.png` → Pi TUI 会内联渲染二维码
+3. 告知用户扫码，等待确认后用 `eval` 验证登录态
+
+**若模型不支持视觉**（如 `deepseek-v4-pro`、`xopglm51`）：
+
+> 🚫 **直接退出，不要继续。** 告诉用户：
+>
+> "Cookie 已过期，当前模型不支持视觉，无法展示二维码。请执行以下任一操作后重试：
+> 1. 切换到支持图片的模型（如 `gpt-5.6-luna`、`xopkimik26`），然后重新运行
+> 2. 或手动刷新 `.env` 中的 `WECHAT_COOKIE`（在浏览器中登录 mp.weixin.qq.com 后导出 cookie）"
+
+**禁止**尝试任何 workaround（`open file://`、base64、`read` 代理描述等）——它们要么不可靠，要么会触发截图→读取的死循环。
 
 ### Phase 2: 采集内容分析数据
 
@@ -289,3 +336,6 @@ A: 概览页可能含多广告位汇总（留言区 + 底部 + 文中广告等�
 
 **Q: 日报表只显示 4-7 天数据**
 A: 默认近 7 天。可通过页面上的日期选择器调整范围。新开通流量主可能只有开通后的数据。
+
+**Q: 为什么 `read` 二维码截图只返回文字描述、看不到图片？**
+A: 当前模型不支持视觉输入（`input` 不含 `"image"`），`read` 工具会自动降级到讯飞 Kimi 代理。切换到 `gpt-5.6-luna` 或 `xopkimik26` 等视觉模型即可内联显示。
