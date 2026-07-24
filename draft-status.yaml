@@ -230,9 +230,9 @@ articles:
   - slug: "2026-07-24-归一化残差"
     title: "归一化为什么总在前面？61层模型靠它不崩"
     series: "大模型原理"
-    status: ready
+    status: published
     published_date: "2026-07-24"
-    wechat_url: null
+    wechat_url: "https://mp.weixin.qq.com/s/v-SBuMTbMANSTxHj7gYDkg"
     files:
       weixin: true
       draft: true

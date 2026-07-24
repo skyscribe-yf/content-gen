@@ -7,6 +7,7 @@ series: "大模型原理"
 keywords: ["归一化", "RMSNorm", "Pre-Norm"]
 cover: 00-cover.png
 scheduledPublish: "2026-07-24T19:30:00+08:00"
+wechatUrl: "https://mp.weixin.qq.com/s/v-SBuMTbMANSTxHj7gYDkg"
 ---
 
 ## 残差都开了直通车，61 层为什么还要归一化？
