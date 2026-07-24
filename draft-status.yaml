@@ -171,6 +171,7 @@ articles:
     status: published
     published_date: "2026-07-13"
     wechat_url: "https://mp.weixin.qq.com/s/5nR_KI47v_U8KwpQA4Uv5Q"
+    zhihu_url: "https://zhuanlan.zhihu.com/p/2063912096258056251"
     files:
       weixin: true
       draft: true
@@ -214,9 +215,9 @@ articles:
       cover: true
 
   - slug: "2026-07-23-FFN"
-    title: "Attention都够了，为什么还要FFN？"
+    title: "Attention都够了，为什么还要前馈网络？"
     series: "大模型原理"
-    status: ready
+    status: scheduled
     published_date: "2026-07-23"
     wechat_url: null
     files:
@@ -224,7 +225,7 @@ articles:
       draft: true
       outline: true
       cover: true
-      notes: "weixin.md 已生成，图片已从 images/ 复制到根目录，实验输出已验证。排期：7月23日早晨"
+    notes: "已保存至公众号草稿箱（media_id: kOcXH4SytIYVIpYksTGfHtF1MWCuFkIlRDoGA1VNde2WP3vFJhtW0lQtloWlTiG7）。排期：7月23日早晨08:00"
 
   - slug: "2026-07-24-归一化残差"
     title: "归一化为什么总在前面？61层模型靠它不崩"

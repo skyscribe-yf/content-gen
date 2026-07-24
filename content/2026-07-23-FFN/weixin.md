@@ -1,25 +1,21 @@
 ---
-title: "Attention都够了，为什么还要FFN？"
+title: "Attention都够了，为什么还要前馈网络？"
 author: "数解AI"
 type: "原理篇"
 series: "大模型原理"
 scheduledPublish: "2026-07-21T08:00:00+08:00"
-digest: "Transformer 里，前馈网络（FFN）为什么接在注意力之后？注意力先把上下文汇进每个 token，FFN 再用 SwiGLU 独立扩张、筛选和投影这份表示。用一个可运行实验验证：改动一个 token，不会穿过 FFN 改变另一个。"
-keywords: ["前馈网络", "FFN", "SwiGLU"]
+digest: "Transformer 里，前馈网络（FFN）为什么接在注意力之后？注意力把上下文汇进每个 token，FFN 再用 SwiGLU 独立扩张、筛选和投影这份表示。用一个可运行实验验证：改动一个 token，不会穿过 FFN 改变另一个。"
+keywords: ["前馈网络", "FFN", "SwiGLU", "Transformer", "注意力机制"]
 cover: 00-cover-ffn.png
 ---
 
 ## 🎯 驱动问题
 
-![](00-cover-ffn.png)
-
 如果 Attention 都够了，Transformer 为什么还要留下一大块前馈网络（Feed-Forward Network，FFN）？更反直觉的是：它不让 token 彼此交流，却常常占去更多参数和计算。
 
-注意力已经把其他 token 的线索汇进当前 token。FFN 不再开圆桌，而是接手这份**带上下文的表示**。
+先回顾一下你已经知道的：在注意力这一步里，每个 token 会“看向”序列里的其他 token，把它们的线索汇入自己的向量表示。如果你熟悉这部分，可以直接往下读；如果想回顾“上下文怎样汇入 token”，建议回头看看我前面这篇：[《注意力机制是什么？别再当数据库查询》](https://mp.weixin.qq.com/s/KrilwX6VRjI9KfjvD7C6kw)。
 
-**逐 token 独立计算**，只说 FFN 这一步不再读取别的 token；上下文已经留在前一步更新过的向量里。
-
-如果你熟悉注意力机制，可以直接往下读；如果想回顾“上下文怎样汇入 token”，可回看《注意力机制》（待发布）。这一篇只接着问：拿到上下文之后，每个 token 到底如何处理它？
+这篇要接着聊的是：当每个 token 都带着上下文进入 FFN 之后，这一步到底对它们做了什么？
 
 ![](01-roundtable-thinking-room.png)
 
@@ -44,7 +40,13 @@ FFN 的写法则很克制：
 
 ## 📐 一次 FFN：先扩张，再开门，再投影
 
-现代大模型常用 SwiGLU 形式的 FFN。为了和后面的实验保持一致，先把它拆成四步：
+现代大模型常用 SwiGLU 形式的 FFN。在写公式之前，先把符号交代清楚：
+
+- **x** 是进入这一层的输入向量，维度是 **d_model**（比如 DeepSeek-V4-Pro 的 7168）。
+- **d_ff** 是 FFN 内部的中间维度，通常比 d_model 宽得多（比如 4 倍）。
+- **W_gate、W_up、W_down** 是三组可学习的权重矩阵。
+
+有了这些，把 FFN 拆成四步就很自然了：
 
 > **gate ＝ SiLU(xW_gate)**
 >
@@ -54,11 +56,11 @@ FFN 的写法则很克制：
 >
 > **y ＝ hiddenW_down**
 
-两条支路都把 d_model 维的输入送往更宽的 d_ff 维空间。向量在这里临时展开出更多可组合的方向；“更丰富”说的是容量，不是每一维都能贴上一个语义标签。
+第一步，x 分别乘 W_gate 和 W_up，两条支路都把 d_model 维的输入送往更宽的 d_ff 维空间。向量在这里临时展开出更多可组合的方向；“更丰富”说的是容量，不是每一维都能贴上一个语义标签。
 
-接着，SiLU 生成的 gate 像一排随输入而变的阀门。SiLU 不是只输出 0 或 1；它会连续地缩放每个方向。再把 gate 与 up 逐元素相乘，便得到“这份上下文表示这次该让哪些扩张方向通过、通过多少”的结果。
+第二步，SiLU 生成的 gate 像一排随输入而变的阀门。SiLU 不是只输出 0 或 1；它会连续地缩放每个方向。再把 gate 与 up 做 **Hadamard 乘**（逐元素相乘，记作 ⊙），便得到“这份上下文表示这次该让哪些扩张方向通过、通过多少”的结果。Hadamard 乘在这里的意义是：gate 的每一个维度都像一个小闸门，独立控制 up 对应维度的通过比例——开到最大就放行，关到接近零就截断。整套门控是连续的、可微的，训练时能学出“在什么上下文中该激活哪些方向”。
 
-W_down 随后把较宽的 hidden 投影回 d_model 维，才能与这一层原有的表示相加。
+第三步，W_down 把较宽的 hidden 映射回 d_model 维，才能与这一层原有的表示相加。注意它只是一个线性变换（矩阵乘法），维度从高变低，习惯上叫“投影”，但它不是严格的投影算子——机器学习领域习惯把维度增加的叫 up（升维）、维度减少的叫 down（降维），只是形象说法，不是数学定义。
 
 ![](02-swiglu-pipeline.png)
 
@@ -130,9 +132,11 @@ y = [[ 0.694  0.154]
 
 ![](03-fixed-matrix-experiment.png)
 
-## 🌍 真实国产模型的一条旁注
+## 🌍 上面说的这些，真实模型也在用
 
-以 2026 年 [DeepSeek-V4-Pro 固定版本的 `config.json`](https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro/raw/b5968e9190ef611bbf34a7229255be88a0e937c1/config.json) 为例，配置写有 `hidden_size: 7168` 与 `hidden_act: "silu"`：真实工程同样要确定表示宽度与非线性。配置是声明，不能单独推出能力因果。
+上面拆的是抽象的 SwiGLU 四步。你可能会问：真实模型真的这么搭吗？
+
+以 2026 年 [DeepSeek-V4-Pro 固定版本的 `config.json`](https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro/raw/b5968e9190ef611bbf34a7229255be88a0e937c1/config.json) 为例，配置写有 `hidden_size: 7168` 与 `hidden_act: "silu"`：表示宽度和非线性函数都和我们上面讲的对得上。配置是声明，不能单独推出能力因果。
 
 ## 🔀 Dense FFN 怎样长成 MoE？
 
@@ -140,7 +144,7 @@ y = [[ 0.694  0.154]
 
 MoE 没有把 FFN 换成完全不同的东西。它多加了一个路由器：面对多个专家 FFN，路由器为当前 token 选出少数几个，再将选中专家的输出汇总。区别是“走同一间思考室”，还是“按题目分配到少数几间专科思考室”；共同点是，专家内部仍是 FFN。
 
-先看懂 dense FFN 的逐 token 变换，才不会把 MoE 的“选专家”误认为“取消 FFN”。真实国产模型如何用路由组织多个 FFN，可回读[《DeepSeek便宜30倍的秘密：MoE混合专家入门》](https://mp.weixin.qq.com/s/QdkD0CR2fD-HfY77-gX3Ug)。
+先看懂 dense FFN 的逐 token 变换，才不会把 MoE 的“选专家”误认为“取消 FFN”。如果你对“多个专家 FFN 怎样被路由器调度”感兴趣，我前面这篇聊得更详细：[《DeepSeek便宜30倍的秘密：MoE混合专家入门》](https://mp.weixin.qq.com/s/QdkD0CR2fD-HfY77-gX3Ug)。
 
 ![](04-transformer-preview.png)
 
@@ -150,18 +154,20 @@ MoE 没有把 FFN 换成完全不同的东西。它多加了一个路由器：�
 
 > **输出 ＝ 输入 ＋ FFN(输入)**
 
-即使 FFN 暂时学不到有用变换，原信息仍有直通路。想看这条路为什么重要，可回看[残差连接：为什么 56 层比 20 层还差](https://mp.weixin.qq.com/s/xefNN9Gjaw3TKl60KeHzAg)。归一化负责把数值尺度稳住，下一篇再拆。
+即使 FFN 暂时学不到有用变换，原信息仍有直通路。想知道这条路为什么关键，建议回头看看我前面这篇：[残差连接：为什么 56 层比 20 层还差](https://mp.weixin.qq.com/s/xefNN9Gjaw3TKl60KeHzAg)。归一化负责把数值尺度稳住，下一篇我们再细细聊。
 
 一层 Transformer 的节奏很清楚：注意力把上下文写进 token，FFN 各自加工，残差和归一化把结果接回去。
 
-你更想下一篇先拆“归一化为什么能稳住数值”，还是再用一个例子把 MoE 的路由过程走一遍？评论区告诉我。
+FFN 不让 token 之间交流，却占了 Transformer 里大部分参数。你觉得这种"各自思考"的设计是浪费，还是不可或缺？有没有可能用一个更简单的层替代它？评论区聊聊。
 
-关注「数解AI」，我们会把 Transformer 从 token 如何进入模型，到每个模块如何计算、如何协作，连成一条能自己推演的线，而不只记住术语。
+觉得有用就点个赞 👍、收藏 ⭐ 备用；关注「数解AI」，下一篇第一时间推给你。
+
+*下一篇：FFN 把每个 token 加工完后，数值可能忽大忽小——归一化怎么稳住训练，让 61 层模型不崩？*
 
 ---
 
-📖 **大模型原理系列**：① [词嵌入](https://mp.weixin.qq.com/s/rDryn1z_hLt7mwi3X8fsxQ)→ ② [位置编码](https://mp.weixin.qq.com/s/4nO2VqQLaYxGdDmtQeypCQ)→ ③ 注意力机制（待发布）→ ④ 前馈网络 FFN（本篇）→ ⑤ 归一化（待发布）→ ⑥ Transformer 全景（待发布）
+📖 **[大模型原理合集](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzkyMzQyODExNQ==&action=getalbum&album_id=4597831652025925632#wechat_redirect)**：① [BPE分词](https://mp.weixin.qq.com/s/5nR_KI47v_U8KwpQA4Uv5Q) → ② [词嵌入](https://mp.weixin.qq.com/s/rDryn1z_hLt7mwi3X8fsxQ) → ③ [位置编码](https://mp.weixin.qq.com/s/4nO2VqQLaYxGdDmtQeypCQ) → ④ [注意力机制](https://mp.weixin.qq.com/s/KrilwX6VRjI9KfjvD7C6kw) → ⑤ **前馈网络 FFN（本篇）** → ⑥ 归一化残差（待发布） → ⑦ Transformer 全景（待发布）
 
 📖 **[训练回路合集](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzkyMzQyODExNQ==&action=getalbum&album_id=4594958081087864833#wechat_redirect)**：梯度下降 → 损失函数 → 反向传播 → Softmax → 残差连接 → Adam
 
-#FFN #前馈网络 #SwiGLU #大模型原理 #数解AI
+#前馈网络 #Transformer #SwiGLU #大模型原理 #数解AI

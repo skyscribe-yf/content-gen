@@ -17,7 +17,7 @@ mappings:
   "https://mp.weixin.qq.com/s/PLVRS0TTHXHDve1Z3r6M7Q": ""  # AI Memory Crash
 
   # 大模型原理系列
-  "https://mp.weixin.qq.com/s/5nR_KI47v_U8KwpQA4Uv5Q": ""  # BPE 分词
+  "https://mp.weixin.qq.com/s/5nR_KI47v_U8KwpQA4Uv5Q": "https://zhuanlan.zhihu.com/p/2063912096258056251"  # BPE 分词
   "https://mp.weixin.qq.com/s/rDryn1z_hLt7mwi3X8fsxQ": ""  # 词嵌入
   "https://mp.weixin.qq.com/s/4nO2VqQLaYxGdDmtQeypCQ": ""  # 位置编码
   "https://mp.weixin.qq.com/s/KrilwX6VRjI9KfjvD7C6kw": ""  # 注意力机制
