@@ -9,15 +9,13 @@ import {
   extractTitleFromMarkdown,
   parseFrontmatter,
   preprocessMermaidInMarkdown,
-  renderMarkdownDocument,
   replaceMarkdownImagesWithPlaceholders,
-  resolveColorToken,
   resolveContentImages,
   serializeFrontmatter,
   stripWrappingQuotes,
 } from "baoyu-md";
 import { closeRenderer, renderMermaidToPng } from "baoyu-chrome-cdp/mermaid";
-import { makeCodeBlocksWechatSafe } from "./wechat-code-blocks.ts";
+import { execFile } from "node:child_process";
 
 interface ImageInfo {
   placeholder: string;
@@ -82,26 +80,27 @@ export async function convertMarkdown(
     mermaidProcessedBody,
     "WECHATIMGPH_",
   );
-  const rewrittenMarkdown = `${serializeFrontmatter(frontmatter)}${rewrittenBody}`;
+  // mdnice doesn't understand YAML frontmatter — pass body only
+  const rewrittenMarkdown = rewrittenBody;
 
   const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "wechat-article-images-"));
   const htmlPath = path.join(tempDir, "temp-article.html");
 
+  // Map baoyu-md theme names to mdnice theme names
+  const mdniceThemeMap: Record<string, string> = {
+    grace: "scienceBlue",
+    simple: "simple",
+    modern: "geekBlack",
+    default: "normal",
+  };
+  const mdniceTheme = mdniceThemeMap[options?.theme ?? "default"] ?? "scienceBlue";
+
   console.error(
-    `[md-to-wechat] Rendering markdown with theme: ${options?.theme ?? "default"}${options?.color ? `, color: ${options.color}` : ""}, citeStatus: ${citeStatus}`,
+    `[md-to-wechat] Rendering markdown with mdnice theme: ${mdniceTheme}`,
   );
 
-  const { html: renderedHtml } = await renderMarkdownDocument(rewrittenMarkdown, {
-    citeStatus,
-    defaultTitle: title,
-    // WeChat's editor sanitizes the SVG terminal decoration inside <pre>, which
-    // can corrupt the adjacent code block. Keep the markup to pre > code only.
-    isMacCodeBlock: false,
-    keepTitle: false,
-    primaryColor: resolveColorToken(options?.color),
-    theme: options?.theme,
-  });
-  const html = makeCodeBlocksWechatSafe(renderedHtml);
+  const html = await renderWithMdnice(rewrittenMarkdown, mdniceTheme, tempDir);
+
   fs.writeFileSync(htmlPath, html, "utf-8");
 
   const contentImages = await resolveContentImages(images, baseDir, tempDir, "md-to-wechat");
@@ -113,6 +112,48 @@ export async function convertMarkdown(
     htmlPath,
     contentImages,
   };
+}
+
+async function renderWithMdnice(
+  markdown: string,
+  theme: string,
+  tempDir: string,
+): Promise<string> {
+  // Write markdown to a temp file (mdnice reads from file)
+  const mdPath = path.join(tempDir, "input.md");
+  fs.writeFileSync(mdPath, markdown, "utf-8");
+
+  const scriptPath = path.resolve(
+    __dirname,
+    "../../../../scripts/mdnice-render.py",
+  );
+  const venvPython = path.resolve(
+    __dirname,
+    "../../../../.venv-mdnice/bin/python",
+  );
+
+  const htmlOutPath = path.join(tempDir, "mdnice-output.html");
+
+  return new Promise<string>((resolve, reject) => {
+    execFile(
+      venvPython,
+      [scriptPath, mdPath, "--theme", theme, "--output", htmlOutPath],
+      { timeout: 120_000, maxBuffer: 50 * 1024 * 1024 },
+      (error, stdout, stderr) => {
+        if (error) {
+          console.error(`[md-to-wechat] mdnice stderr:`, stderr);
+          reject(new Error(`mdnice render failed: ${error.message}`));
+          return;
+        }
+        if (stderr) {
+          // mdnice prints progress to stderr, log it
+          console.error(stderr);
+        }
+        const html = fs.readFileSync(htmlOutPath, "utf-8");
+        resolve(html);
+      },
+    );
+  });
 }
 
 function printUsage(): never {

@@ -22,6 +22,8 @@ import {
 } from "baoyu-md";
 import type { CliOptions } from "baoyu-md";
 import { closeRenderer, renderMermaidToPng } from "baoyu-chrome-cdp/mermaid";
+import { extractMath, injectMath } from "./math";
+import type { MathSnippet } from "./math";
 
 interface ImageInfo {
   placeholder: string;
@@ -77,7 +79,8 @@ export async function convertMarkdown(
   const keepTitle = options?.keepTitle ?? false;
   const citeStatus = options?.citeStatus ?? false;
 
-  const { frontmatter, body } = parseFrontmatter(content);
+  const { frontmatter, body: rawBody } = parseFrontmatter(content);
+  const { markdown: body, snippets: mathSnippets } = extractMath(rawBody);
 
   let title = stripWrappingQuotes(options?.title ?? "")
     || stripWrappingQuotes(frontmatter.title ?? "")
@@ -133,7 +136,7 @@ export async function convertMarkdown(
     `[markdown-to-html] Rendering with theme: ${theme ?? "default"}, keepTitle: ${keepTitle}, citeStatus: ${citeStatus}`,
   );
 
-  const { html } = await renderMarkdownDocument(rewrittenMarkdown, {
+  const { html: renderedHtml } = await renderMarkdownDocument(rewrittenMarkdown, {
     codeTheme: options?.codeTheme,
     countStatus: options?.countStatus,
     citeStatus,
@@ -157,9 +160,12 @@ export async function convertMarkdown(
     fs.renameSync(finalHtmlPath, backupPath);
   }
 
+  // Inject KaTeX-rendered formulas with inline styles (WeChat-compatible)
+  const mathHtml = injectMath(renderedHtml, mathSnippets);
+
   // Fix table header rendering for WeChat: thead color:#fff + th background:rgba(0,0,0,0.05) causes white-on-near-white
   // Replace th headers with visible purple bg + white text (grace theme accent color #92617E)
-  const fixedHtml = html
+  const fixedHtml = mathHtml
     .replace(/(<thead[^>]*style="[^"]*?)color: #fff;?\s*/g, '$1')
     .replace(
       /<th class="th" style="[^"]*">/g,

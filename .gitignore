@@ -19,3 +19,4 @@ tmp_*.html
 .grill/
 .pi-subagents/
 .worktrees/
+.venv-mdnice/

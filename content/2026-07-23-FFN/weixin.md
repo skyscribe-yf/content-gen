@@ -4,6 +4,7 @@ author: "数解AI"
 type: "原理篇"
 series: "大模型原理"
 scheduledPublish: "2026-07-21T08:00:00+08:00"
+wechatUrl: "https://mp.weixin.qq.com/s/vBCzukDlQyB9O6ASgAmlvQ"
 digest: "Transformer 里，前馈网络（FFN）为什么接在注意力之后？注意力把上下文汇进每个 token，FFN 再用 SwiGLU 独立扩张、筛选和投影这份表示。用一个可运行实验验证：改动一个 token，不会穿过 FFN 改变另一个。"
 keywords: ["前馈网络", "FFN", "SwiGLU", "Transformer", "注意力机制"]
 cover: 00-cover-ffn.png

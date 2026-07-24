@@ -8,9 +8,9 @@
 
 ## 数学公式
 
-详见 [`docs/math-unicode.md`](docs/math-unicode.md)。
+详见 [`docs/math-latex.md`](docs/math-latex.md)。
 
-规则：禁用 LaTeX（`$...$` / `$$...$$`），全部用 Unicode 字符。独立公式用引用块+加粗，内联公式用加粗。
+规则：使用 LaTeX 公式。独立公式用 `$$...$$`，内联公式用 `$...$`。
 
 ## 图片生成
 

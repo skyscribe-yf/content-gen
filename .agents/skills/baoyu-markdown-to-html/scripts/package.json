@@ -4,6 +4,7 @@
   "type": "module",
   "dependencies": {
     "baoyu-chrome-cdp": "^0.1.1",
-    "baoyu-md": "^0.1.1"
+    "baoyu-md": "^0.1.1",
+    "katex": "^0.18.1"
   }
 }

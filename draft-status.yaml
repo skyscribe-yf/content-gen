@@ -217,9 +217,9 @@ articles:
   - slug: "2026-07-23-FFN"
     title: "Attention都够了，为什么还要前馈网络？"
     series: "大模型原理"
-    status: scheduled
+    status: published
     published_date: "2026-07-23"
-    wechat_url: null
+    wechat_url: "https://mp.weixin.qq.com/s/vBCzukDlQyB9O6ASgAmlvQ"
     files:
       weixin: true
       draft: true
