@@ -172,7 +172,7 @@ MoE 负责“谁干活”，但它不负责全部故事。
 ---
 
 🔬 **DeepSeek 技术解密**
-① [AI上下文为什么越长越慢](https://mp.weixin.qq.com/s/PLVRS0TTHXHDve1Z3r6M7Q) → ② MoE（本篇）→ ③ MLA（待发布）→ ④ GRPO → ⑤ 注意力进化 → ⑥ FP8 训练
+① [AI上下文为什么越长越慢](https://mp.weixin.qq.com/s/PLVRS0TTHXHDve1Z3r6M7Q) → ② MoE（本篇）→ ③ MLA（待发布）→ ④ [GRPO](https://mp.weixin.qq.com/s/t4sO-zC5v1_jq8hJT_YTGA) → ⑤ 注意力进化 → ⑥ FP8 训练
 
 📖 **深度学习基础**（已完结）
 ① [梯度下降](https://mp.weixin.qq.com/s/V6mGvCVFpTvmC51pNtxiTw) → ② [损失函数](https://mp.weixin.qq.com/s/zIWqYqYVzEaF1e8P6fcTfw) → ③ [反向传播](https://mp.weixin.qq.com/s/oYj_qpwF4tZG84ImOn977g) → ④ [Softmax](https://mp.weixin.qq.com/s/5wMquh_v3oon2-NEDeQLEw) → ⑤ [残差连接](https://mp.weixin.qq.com/s/xefNN9Gjaw3TKl60KeHzAg) → ⑥ [Adam优化器](https://mp.weixin.qq.com/s/aSLVO-otvr2rxIU1kr2eAA)

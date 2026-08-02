@@ -1,0 +1,46 @@
+{
+  "prompt": "请解释什么是梯度下降",
+  "top10": [
+    {
+      "token": "算法",
+      "probability": 0.5703
+    },
+    {
+      "token": "法",
+      "probability": 0.209
+    },
+    {
+      "token": "，",
+      "probability": 0.0598
+    },
+    {
+      "token": "，并",
+      "probability": 0.0598
+    },
+    {
+      "token": "。\n",
+      "probability": 0.0134
+    },
+    {
+      "token": "？",
+      "probability": 0.0104
+    },
+    {
+      "token": "？\n",
+      "probability": 0.0104
+    },
+    {
+      "token": "方法",
+      "probability": 0.0081
+    },
+    {
+      "token": "。\n\n",
+      "probability": 0.0081
+    },
+    {
+      "token": "。",
+      "probability": 0.0081
+    }
+  ],
+  "generated": "算法，并提供一个简单的Python实现。\n梯度下降算法是一种优化算法，用于最小化函数的值。它通过迭代地更新参数来逼近函数的最小值。在每次迭代中，算法计算当前参数的梯度（即函数在该点的导数），然后沿着梯度的反方向更新参数，以减小函数的值。\n\n以下是一个简单的Python实现梯度下降算法的示例，用于最小化一个二次函数 \\( f(x) = x"
+}

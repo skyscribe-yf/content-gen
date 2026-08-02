@@ -1,0 +1,8 @@
+{
+  "compacted": true,
+  "fullOutputPath": "/home/skyscribe/.pi/agent/sessions/--home-skyscribe-srcs-content-gen--/.pi-agent-browser-artifacts/019fa3c4-66c9-7612-9641-616106d4e3f4/pi-agent-browser-output-d67893c827baccb6.json",
+  "outputCharCount": 21250,
+  "outputLineCount": 4,
+  "previewCharCount": 296,
+  "previewLineCount": 4
+}

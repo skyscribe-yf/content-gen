@@ -1,0 +1,46 @@
+{
+  "prompt": "请解释什么是梯度下降",
+  "top10": [
+    {
+      "token": "梯",
+      "probability": 0.8125
+    },
+    {
+      "token": "当然",
+      "probability": 0.0757
+    },
+    {
+      "token": "**",
+      "probability": 0.0757
+    },
+    {
+      "token": "好的",
+      "probability": 0.0315
+    },
+    {
+      "token": "“",
+      "probability": 0.0029
+    },
+    {
+      "token": "好",
+      "probability": 0.0001
+    },
+    {
+      "token": "###",
+      "probability": 0.0001
+    },
+    {
+      "token": "很好",
+      "probability": 0.0001
+    },
+    {
+      "token": "「",
+      "probability": 0.0001
+    },
+    {
+      "token": "Gradient",
+      "probability": 0.0
+    }
+  ],
+  "generated": "梯度下降（Gradient Descent）是一种在机器学习和优化问题中广泛使用的**迭代算法**，用于**寻找函数的最小值**。它通过不断调整参数，使目标函数（损失函数）的值逐渐减小，最终趋于最小值。\n\n---\n\n## 📌 一、基本概念\n\n### 1. **目标函数（Loss Function）**\n- 在机器学习中，我们通常要最小化一个损失函数（如均方误差、交叉"
+}

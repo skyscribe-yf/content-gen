@@ -1,11 +1,11 @@
 # 📅 错位发布调度配置
 
 # ── 平台发布窗口 ──
-# 公众号固定每 2 天于 08:00 发布；具体日期以 draft-status.yaml 的 slug 为准。
+# 公众号固定每天于 20:00 发布；具体日期以 draft-status.yaml 的 slug 为准。
 
 windows:
   weixin:
-    - {day: any, hour: 8}
+    - {day: any, hour: 20}
   xiaohongshu:
     - {day: tue, hour: 19}
     - {day: thu, hour: 19}

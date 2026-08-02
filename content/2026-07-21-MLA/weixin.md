@@ -6,6 +6,7 @@ type: "原理篇"
 series: "DeepSeek 技术解密"
 keywords: ["GPU显存", "KV cache", "MLA", "DeepSeek", "推理优化", "长上下文"]
 cover: 00-cover.png
+wechatUrl: "https://mp.weixin.qq.com/s/HHMNEdCYThOjCLRozQorhg"
 ---
 
 昨天我们聊了 [Kimi K3 的 KDA](https://mp.weixin.qq.com/s/_RR5LLWgjGNm-qXdSdnAGA)——线性注意力，用"会议速记"的思路绕开长上下文的 O(T²) 配对墙。那是 Kimi 的方案：换个方式算注意力。
@@ -258,7 +259,7 @@ MLA 解决的是"存得下"；但上下文极长时，模型仍要面对全部�
 
 ---
 
-📖 **[大模型原理合集](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzkyMzQyODExNQ==&action=getalbum&album_id=4597831652025925632#wechat_redirect)**：BPE → 词嵌入 → 位置编码 → 注意力 → KDA 长上下文 → **MLA 压缩 KV cache** → FFN → 归一化残差 → Transformer 全景 → 预训练 → RLHF → 推理加速
+📖 **[大模型原理合集](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzkyMzQyODExNQ==&action=getalbum&album_id=4597831652025925632#wechat_redirect)**：BPE → 词嵌入 → 位置编码 → 注意力 → KDA 长上下文 → **MLA 压缩 KV cache** → FFN → 归一化残差 → Transformer 全景 → [预训练](https://mp.weixin.qq.com/s/XoGHVycQHR5Tp-BWPac9Hg) → RLHF → 推理加速
 
 🔥 **DeepSeek 技术解密**
 ① [MoE混合专家入门](https://mp.weixin.qq.com/s/QdkD0CR2fD-HfY77-gX3Ug) → ② [KDA长上下文](https://mp.weixin.qq.com/s/_RR5LLWgjGNm-qXdSdnAGA) → ③ MLA（本篇）→ ④ DeepSeek-R1 怎么学会"想清楚再说"？（待发布）→ ⑤ DeepSeek-V4 为什么抛弃 MLA？（待发布）→ ⑥ FP8 训练（待发布）

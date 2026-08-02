@@ -116,41 +116,55 @@ articles:
   - slug: "2026-07-21-MLA"
     title: "显存被谁吃掉了？DeepSeek如何省下90%"
     series: "DeepSeek 技术解密"
-    status: ready
+    status: published
     published_date: "2026-07-21"
+    wechat_url: "https://mp.weixin.qq.com/s/HHMNEdCYThOjCLRozQorhg"
+    files:
+      weixin: true
+      draft: true
+      outline: true
+      cover: true
+    notes: "已发布。"
+
+  - slug: "2026-08-01-grpo"
+    title: "GRPO为什么省显存，却撑不住长程任务？"
+    series: "大模型原理"
+    status: published
+    published_date: "2026-08-01"
+    wechat_url: "https://mp.weixin.qq.com/s/t4sO-zC5v1_jq8hJT_YTGA"
+    files:
+      weixin: true
+      draft: false
+      outline: true
+      cover: true
+
+  - slug: "2026-08-02-rlvr"
+    title: "RLVR：可验证奖励怎么重塑后训练？"
+    series: "大模型原理"
+    status: drafting
+    published_date: null
+    wechat_url: null
+    files:
+      weixin: true
+      draft: false
+      outline: true
+      cover: true
+    notes: "训练回路收尾篇。RLVR 用数学题/代码测试的可验证奖励替代主观偏好。排期 2026-08-02 20:00。"
+
+  - slug: "2026-08-04-deepseek-csa"
+    title: "DeepSeek-V4为何不用MLA？"
+    series: "DeepSeek 技术解密"
+    status: ready
+    published_date: null
     wechat_url: null
     files:
       weixin: true
       draft: true
       outline: true
       cover: true
-    notes: "图片已从 images/ 复制到根目录，路径已修正，待发布标签已统一。排期：7月21日晚间"
+    notes: "正文、提纲、封面、5 张正文图和 mini 机制实验已完成；文章质量核查通过。"
 
-  - slug: "2026-08-02-deepseek-grpo"
-    title: "DeepSeek-R1 怎么学会\"想清楚再说\"？"
-    series: "DeepSeek 技术解密"
-    status: planned
-    published_date: null
-    wechat_url: null
-    files:
-      weixin: false
-      draft: false
-      outline: false
-      cover: false
-
-  - slug: "2026-08-04-deepseek-csa"
-    title: "DeepSeek-V4 为什么抛弃了 MLA？"
-    series: "DeepSeek 技术解密"
-    status: planned
-    published_date: null
-    wechat_url: null
-    files:
-      weixin: false
-      draft: false
-      outline: false
-      cover: false
-
-  - slug: "2026-07-29-deepseek-fp8"
+  - slug: "2026-07-30-deepseek-fp8"
     title: "FP8 训练：用\"残缺数字\"练出顶级模型"
     series: "DeepSeek 技术解密"
     status: planned
@@ -243,68 +257,109 @@ articles:
   - slug: "2026-07-26-Transformer全景"
     title: "注意力找人，FFN存知识：跟一句话走完Transformer"
     series: "大模型原理"
-    status: ready
+    status: published
     published_date: "2026-07-26"
-    wechat_url: null
+    wechat_url: "https://mp.weixin.qq.com/s/22J8JPkdpVeUx23KahbBmA"
     files:
       weixin: true
       draft: true
       outline: true
       cover: true
-    notes: "weixin.md 已生成，图片已从 imgs/ 复制到根目录，frontmatter 已补全。排期：7月26日07:00"
+    notes: "已发布。排期：7月26日晚间。"
 
   - slug: "2026-07-27-预训练"
-    title: "猜下一个字，AI怎么学会写文章？预训练全过程"
+    title: "预训练：只会猜下一个词，模型怎么学会了写文章？"
+    series: "大模型原理"
+    status: published
+    published_date: "2026-07-27"
+    wechat_url: "https://mp.weixin.qq.com/s/XoGHVycQHR5Tp-BWPac9Hg"
+    files:
+      weixin: true
+      draft: true
+      outline: true
+      cover: true
+    notes: "已发布。排期：7月27日。"
+
+  - slug: "2026-07-28-kimi-k3-architecture"
+    title: "Kimi K3 架构怎么撑住 2.8T 参数？三轴拆给你看"
+    series: "大模型原理"
+    status: scheduled
+    published_date: null
+    wechat_url: null
+    files:
+      weixin: true
+      draft: false
+      outline: true
+      cover: true
+    notes: "架构全貌篇，KDA+AttnRes+LatentMoE 三轴，含数学直觉。排期：2026-07-28 20:00（Asia/Shanghai）。"
+
+  - slug: "2026-07-29-SFT"
+    title: "SFT微调：为什么同一个模型，突然就听懂指令了？"
+    series: "大模型原理"
+    status: published
+    published_date: "2026-07-29"
+    wechat_url: "https://mp.weixin.qq.com/s/vwXGbjm9Ai1GPvQi5O3UyQ"
+    files:
+      weixin: true
+      draft: true
+      outline: false
+      cover: true
+    notes: "已发布 2026-07-29 20:00。weixin/draft/cover齐全。"
+
+  - slug: "2026-07-30-rlhf"
+    title: "RLHF怎么让模型选出好回答？"
+    series: "大模型原理"
+    status: published
+    published_date: "2026-07-30"
+    wechat_url: "https://mp.weixin.qq.com/s/NJDuCLAEfDpILf2J9D6qLQ"
+    files:
+      weixin: true
+      draft: true
+      outline: true
+      cover: true
+    notes: "已发布 2026-07-30 20:00。基础篇，埋下 PPO/KL/奖励黑客/RLVR 伏笔；DPO 降为旁注，不出单篇。"
+
+  - slug: "2026-07-31-ppo"
+    title: "PPO：被顶会拒稿，怎么成了RLHF发动机？"
+    series: "大模型原理"
+    status: published
+    published_date: "2026-07-31"
+    wechat_url: "https://mp.weixin.qq.com/s/OEZtUhm8MT_En7enJo_8dw?token=2031108942&lang=zh_CN"
+    files:
+      weixin: true
+      draft: false
+      outline: true
+      cover: true
+    notes: "已发布 2026-07-31 20:00。拆 Clip/Critic/KL 三道机关 + 奖励黑客。"
+
+  - slug: "2026-07-20-kimi-k3-attention"
+    title: "Kimi K3：KDA怎么撑住1M上下文？"
+    series: "大模型原理"
+    status: published
+    published_date: "2026-07-20"
+    wechat_url: "https://mp.weixin.qq.com/s/_RR5LLWgjGNm-qXdSdnAGA"
+    files:
+      weixin: true
+      draft: true
+      outline: true
+      cover: true
+    notes: "已发布。KDA混合分工，MLA结尾预告。"
+
+  - slug: "2026-08-03-推理加速"
+    title: "大模型 API 为什么这么慢？首字延迟揭秘"
     series: "大模型原理"
     status: drafting
     published_date: null
     wechat_url: null
     files:
-      weixin: true
+      weixin: false
       draft: true
       outline: true
       cover: true
-    notes: "大纲、草稿、微信稿和封面均已存在；待文章质量核查与排期"
-
-  - slug: "2026-07-31-rlhf"
-    title: "AI怎么从工具变成助手？RLHF微调揭秘"
-    series: "大模型原理"
-    status: planned
-    published_date: null
-    wechat_url: null
-    files:
-      weixin: false
-      draft: false
-      outline: false
-      cover: false
-
-  - slug: "2026-07-20-kimi-k3-attention"
-    title: "Kimi K3：KDA怎么撑住1M上下文？"
-    series: "大模型原理"
-    status: scheduled
-    published_date: "2026-07-20"
-    wechat_url: null
-    files:
-      weixin: true
-      draft: true
-      outline: true
-      cover: true
-    notes: "已保存至公众号草稿箱；已补上下文与 MoE 回链。本文先讲 KDA 的混合分工，MLA 仅在结尾预告。正式发布时勾选原创声明并回填 wechat_url。排期：7月20日早晨08:00"
-
-  - slug: "2026-08-08-推理加速"
-    title: "AI回答为什么这么慢？推理与采样加速"
-    series: "大模型原理"
-    status: planned
-    published_date: null
-    wechat_url: null
-    files:
-      weixin: false
-      draft: false
-      outline: false
-      cover: false
+    notes: "主线收官篇。以作者 Pi 真实请求日志分析用户侧 TTFT，排期意向：2026-08-03；不做 AutoDL 实验，不从讯飞样本推导缓存命中效果。"
 
   # ═══════════════════════════════════════════
-  # 单篇 / 其他
+  # 单篇 / 调剂品
   # ═══════════════════════════════════════════
   - slug: "2026-07-04-ai-memory-crash"
     title: "为什么AI上下文越长越慢？两道数学硬墙一次讲透"
@@ -318,24 +373,36 @@ articles:
       outline: false
       cover: false
 
+  - slug: "2026-07-25-fields-medal"
+    title: "数学太难？菲尔兹奖得主也差点放弃"
+    series: "调剂品"
+    status: ready
+    published_date: "2026-07-25"
+    wechat_url: null
+    files:
+      weixin: true
+      draft: true
+      outline: true
+      cover: true
+    notes: "周末散文，菲尔兹奖+冷板凳主题。4张人物照片+封面图已就绪。排期：7月25日。"
+
 # ═══════════════════════════════════════════
 # Summary — auto-generated; update manually or via script
 # ═══════════════════════════════════════════
 summary:
-  total: 23
+  total: 28
   by_status:
-    published: 12
+    published: 22
     scheduled: 1
-    ready: 4
-    drafting: 1
-    planned: 5
+    ready: 2
+    drafting: 2
+    planned: 1
   drafting_queue:
-    - "2026-07-27-预训练"
+    - "2026-08-02-rlvr"
+    - "2026-08-03-推理加速"
   ready_queue:
-    - "2026-07-21-MLA"
-    - "2026-07-23-FFN"
-    - "2026-07-24-归一化残差"
-    - "2026-07-26-Transformer全景"
+    - "2026-07-25-fields-medal"
+    - "2026-08-04-deepseek-csa"
   scheduled_queue:
-    - "2026-07-20-kimi-k3-attention"
-  next_publish_date: "2026-07-20"
+    - "2026-07-28-kimi-k3-architecture"
+  next_publish_date: "2026-07-28"

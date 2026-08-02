@@ -1,0 +1,10 @@
+{
+  "base": {
+    "mean_top1_first_32": 0.819745,
+    "mean_entropy_bits_first_32": 0.896382
+  },
+  "posttrained": {
+    "mean_top1_first_32": 0.9163,
+    "mean_entropy_bits_first_32": 0.333152
+  }
+}

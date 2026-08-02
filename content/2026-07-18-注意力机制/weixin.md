@@ -6,6 +6,7 @@ type: "原理篇"
 series: "大模型原理"
 keywords: ["注意力机制", "自注意力", "QKV", "因果注意力", "softmax"]
 cover: 00-cover.png
+wechatUrl: "https://mp.weixin.qq.com/s/KrilwX6VRjI9KfjvD7C6kw"
 scheduledPublish: "2026-07-19T08:00:00+08:00"
 ---
 
@@ -216,7 +217,7 @@ for i, t in enumerate(tokens):
 ---
 
 📖 **大模型原理**（本系列 · 第 4/10 篇）
-1 [BPE分词:AI为什么把文字切成碎片?](https://mp.weixin.qq.com/s/5nR_KI47v_U8KwpQA4Uv5Q) → ② [词嵌入为什么让AI懂"苹果"？5万个0变坐标](https://mp.weixin.qq.com/s/rDryn1z_hLt7mwi3X8fsxQ) → ③ [位置编码怎么工作？词序一错意思全变](https://mp.weixin.qq.com/s/4nO2VqQLaYxGdDmtQeypCQ) → ④ 注意力机制是什么？别再当数据库查询（本篇）→ 5 FFN → 6 归一化与残差 → 7 Transformer → 8 预训练 → 9 RLHF → 10 推理加速
+1 [BPE分词:AI为什么把文字切成碎片?](https://mp.weixin.qq.com/s/5nR_KI47v_U8KwpQA4Uv5Q) → ② [词嵌入为什么让AI懂"苹果"？5万个0变坐标](https://mp.weixin.qq.com/s/rDryn1z_hLt7mwi3X8fsxQ) → ③ [位置编码怎么工作？词序一错意思全变](https://mp.weixin.qq.com/s/4nO2VqQLaYxGdDmtQeypCQ) → ④ 注意力机制是什么？别再当数据库查询（本篇）→ 5 FFN → 6 归一化与残差 → 7 Transformer → 8 [预训练](https://mp.weixin.qq.com/s/XoGHVycQHR5Tp-BWPac9Hg) → 9 RLHF → 10 推理加速
 
 🔥 **DeepSeek 技术解密**
 ① [AI上下文为什么越长越慢](https://mp.weixin.qq.com/s/PLVRS0TTHXHDve1Z3r6M7Q) → ② [MoE混合专家入门](https://mp.weixin.qq.com/s/QdkD0CR2fD-HfY77-gX3Ug) → ③ MLA（即将发布）

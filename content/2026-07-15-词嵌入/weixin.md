@@ -299,7 +299,7 @@ Word2Vec 是**一词一向量。** "苹果"不管在"吃苹果"还是"苹果发�
 ---
 
 📖 **大模型原理**（本系列 · 第 2/10 篇）
-① [BPE分词：AI为什么把文字切成碎片？](https://mp.weixin.qq.com/s/5nR_KI47v_U8KwpQA4Uv5Q) → ② 词嵌入为什么让AI懂“苹果”？5万个0变坐标（本篇）→ ③ 位置编码怎么工作？词序一错意思全变（即将发布）→ ④ 注意力机制是什么？别再当数据库查询（即将发布）→ ⑤ FFN → ⑥ 归一化与残差 → ⑦ Transformer → ⑧ 预训练 → ⑨ RLHF → ⑩ 推理加速
+① [BPE分词：AI为什么把文字切成碎片？](https://mp.weixin.qq.com/s/5nR_KI47v_U8KwpQA4Uv5Q) → ② 词嵌入为什么让AI懂“苹果”？5万个0变坐标（本篇）→ ③ 位置编码怎么工作？词序一错意思全变（即将发布）→ ④ 注意力机制是什么？别再当数据库查询（即将发布）→ ⑤ FFN → ⑥ 归一化与残差 → ⑦ Transformer → ⑧ [预训练](https://mp.weixin.qq.com/s/XoGHVycQHR5Tp-BWPac9Hg) → ⑨ RLHF → ⑩ 推理加速
 
 🔥 **DeepSeek 技术解密**
 ① [AI上下文为什么越长越慢](https://mp.weixin.qq.com/s/PLVRS0TTHXHDve1Z3r6M7Q) → ② [MoE混合专家入门](https://mp.weixin.qq.com/s/QdkD0CR2fD-HfY77-gX3Ug) → ③ MLA（即将发布）

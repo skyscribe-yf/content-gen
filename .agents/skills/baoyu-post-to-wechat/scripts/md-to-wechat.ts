@@ -16,6 +16,7 @@ import {
 } from "baoyu-md";
 import { closeRenderer, renderMermaidToPng } from "baoyu-chrome-cdp/mermaid";
 import { execFile } from "node:child_process";
+import { normalizeWechatLists } from "./wechat-list-safety.ts";
 
 interface ImageInfo {
   placeholder: string;
@@ -99,7 +100,8 @@ export async function convertMarkdown(
     `[md-to-wechat] Rendering markdown with mdnice theme: ${mdniceTheme}`,
   );
 
-  const html = await renderWithMdnice(rewrittenMarkdown, mdniceTheme, tempDir);
+  const renderedHtml = await renderWithMdnice(rewrittenMarkdown, mdniceTheme, tempDir);
+  const html = await normalizeWechatLists(renderedHtml);
 
   fs.writeFileSync(htmlPath, html, "utf-8");
 

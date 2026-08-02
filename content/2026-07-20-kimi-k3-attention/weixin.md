@@ -167,7 +167,7 @@ KDA 给出的思路是：
 
 ---
 
-📖 **[大模型原理合集](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzkyMzQyODExNQ==&action=getalbum&album_id=4597831652025925632#wechat_redirect)**：BPE → 词嵌入 → 位置编码 → 注意力 → **KDA 长上下文** → MLA → FFN → 归一化残差 → Transformer 全景 → 预训练 → RLHF → 推理加速
+📖 **[大模型原理合集](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzkyMzQyODExNQ==&action=getalbum&album_id=4597831652025925632#wechat_redirect)**：BPE → 词嵌入 → 位置编码 → 注意力 → **KDA 长上下文** → MLA → FFN → 归一化残差 → Transformer 全景 → [预训练](https://mp.weixin.qq.com/s/XoGHVycQHR5Tp-BWPac9Hg) → RLHF → 推理加速
 
 每 2 天更新一篇，把大模型从输入到生成的链路讲到不用回头查。关注「数解AI」，下一篇第一时间推给你。
 

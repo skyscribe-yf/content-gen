@@ -106,11 +106,11 @@ wechatUrl: "https://mp.weixin.qq.com/s/abc123"
 封装了「Cookie 注入 → 采集内容/用户数据 → 分析 → 写入项目文档」的完整工作流。AI 在接到数据复盘或运营分析类请求时应优先加载此 skill。
 
 关键规则：
-- 每天最多 1 篇，间隔 ≥2 天
+- 每天最多 1 篇，日更节奏（2026-07-25 起试行），固定 20:00 发布
 - 末尾含关注引导（价值承诺 + 系列结构）
 - 结尾含 1 个开放式问题引导留言
 - 摘要须含 2-3 个搜索关键词
-- 最新审计：2026-07-21，详见 [`docs/wechat-data-insights.md`](docs/wechat-data-insights.md)
+- 最新审计：2026-08-02（数据截至 2026-08-01），详见 [`docs/wechat-data-insights.md`](docs/wechat-data-insights.md)
 - 数字事实源：[`docs/wechat-data-audit-log.json`](docs/wechat-data-audit-log.json)，结构见同名 `.schema.json`，操作脚本为 `scripts/wechat_audit_log.py`，报告生成脚本为 `scripts/wechat_audit_report.py`，产物为 `docs/wechat-data-audit-report.html`
 
 ## 文章质量核查

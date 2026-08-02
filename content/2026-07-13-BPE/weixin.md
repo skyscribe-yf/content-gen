@@ -342,7 +342,7 @@ token ID
 ---
 
 📖 **大模型原理**（本系列 · 第 1/10 篇）
-① BPE分词：AI为什么把文字切成碎片？（本篇）→ ② 词嵌入是什么？5万个0怎么变成一串坐标（07/15）→ ③ 位置编码怎么工作？词序一错意思全变（07/17）→ ④ 注意力机制是什么？别再当数据库查询（07/19）→ ⑤ FFN → ⑥ 归一化与残差 → ⑦ Transformer → ⑧ 预训练 → ⑨ RLHF → ⑩ 推理加速
+① BPE分词：AI为什么把文字切成碎片？（本篇）→ ② 词嵌入是什么？5万个0怎么变成一串坐标（07/15）→ ③ 位置编码怎么工作？词序一错意思全变（07/17）→ ④ 注意力机制是什么？别再当数据库查询（07/19）→ ⑤ FFN → ⑥ 归一化与残差 → ⑦ Transformer → ⑧ [预训练](https://mp.weixin.qq.com/s/XoGHVycQHR5Tp-BWPac9Hg) → ⑨ RLHF → ⑩ 推理加速
 
 🔥 **DeepSeek 技术解密**（账单与工程）
 ① [AI上下文为什么越长越慢](https://mp.weixin.qq.com/s/PLVRS0TTHXHDve1Z3r6M7Q) → ② [MoE混合专家入门](https://mp.weixin.qq.com/s/QdkD0CR2fD-HfY77-gX3Ug) → ③ MLA（待发布）
