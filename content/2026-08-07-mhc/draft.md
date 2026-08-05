@@ -20,7 +20,7 @@ keywords: ["mHC", "流形约束超连接", "残差连接", "双随机矩阵", "B
 
 先交代排篇：K=V 和 Muon 两篇文末都预告了 mHC，说它解决"普通残差在 61 层传话传没"。但这条线其实埋得更早。在 [《残差连接》](https://mp.weixin.qq.com/s/xefNN9Gjaw3TKl60KeHzAg) 篇里，我们写过这样一句：
 
-> 💡 钩子：DeepSeek-V3 的残差不只是简单的 x + F(x)——它用了 MHC（Multi-Head Connection），一种更高效的残差结构。这个我们后面专门讲。
+> DeepSeek-V3 的残差不只是简单的 x + F(x)——它用了 MHC（Multi-Head Connection），一种更高效的残差结构。这个我们后面专门讲。
 
 今天兑现这个承诺，但要先做两处校准：
 

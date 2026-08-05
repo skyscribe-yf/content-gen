@@ -201,7 +201,7 @@ articles:
       draft: true
       outline: true
       cover: true
-    notes: "排期 2026-08-07。兑现 K=V/Muon/CSA 三篇文末预告 + 07-09 残差篇 MHC 伏笔（校准：V3 未用，V4 首代全量）。数学双深潜：谱半径不次乘 vs 谱范数次乘 + Kronecker 结构。正文 4244 字、9 节、8 组公式；27B 实验数据逐项核对 mHC 论文（arXiv:2512.24880）；config.json 核验 hc_mult=4 / hc_sinkhorn_iters=20 / 61 层。双实验：Sinkhorn 收敛 + 60 层连乘谱范数（8597×，复现 3000 vs 1.6 机制）。配图 6 张已生成（封面 21:9 + 5 张正文图，中文标注与正文一致）。已保存至公众号草稿箱（remote-api，media_id: kOcXH4SytIYVIpYksTGfHh5eHqA9k14zNiLGL3TqLu-GkfQEaC9OjpQAiqNE0NB6）。发布前在网页确认声明原创。grill 日志：.grill/mhc.md。"
+    notes: "排期 2026-08-07。兑现 K=V/Muon/CSA 三篇文末预告 + 07-09 残差篇 MHC 伏笔（校准：V3 未用，V4 首代全量）。数学双深潜：谱半径不次乘 vs 谱范数次乘 + Kronecker 结构。正文 4244 字、9 节、8 组公式；27B 实验数据逐项核对 mHC 论文（arXiv:2512.24880）；config.json 核验 hc_mult=4 / hc_sinkhorn_iters=20 / 61 层。双实验：Sinkhorn 收敛 + 60 层连乘谱范数（8597×，复现 3000 vs 1.6 机制）。配图 6 张已生成（封面 21:9 + 5 张正文图，中文标注与正文一致）。已保存至公众号草稿箱（remote-api，media_id: kOcXH4SytIYVIpYksTGfHjVc_U3kiPI8rsnUENPl3DwdZI2tDYQkSOyMI2CNQprh）。发布前在网页确认声明原创。grill 日志：.grill/mhc.md。"
 
   - slug: "2026-08-08-deepseek-fp8"
     title: "FP8 训练：用\"残缺数字\"练出顶级模型"
