@@ -190,7 +190,20 @@ articles:
       cover: true
     notes: "Muon 优化器解密篇（V4 技术报告 §2.4/§3.5.1/§4.2.2）。主线：AdamW 显存账（m/v 两份状态 → 状态减半）。数学深度：Newton-Schulz 迭代完整推导 + 二阶收敛 + 条件数 + 预条件三层表。双实验：NS 收敛性（κ 扫描）+ 更新方向特性（experiment.py 已跑）。兑现 07-10 篇 Muon/MuonClip 双伏笔；延伸 Kimi K2 MuonClip（QK-Clip 与 logit 爆炸分析，已核验 arXiv:2507.20534）。排篇说明：K=V 预告的 mHC 顺延下篇。配图 6 张已生成（封面 21:9 + 5 张正文图，prompt 与正文一致）。已保存至公众号草稿箱（remote-api，media_id: kOcXH4SytIYVIpYksTGfHrnYJAVgYBI6uvrrU3DNBOsFVX8w5N6KB3Arj8LF9ik3）。发布前在网页确认声明原创。"
 
-  - slug: "2026-07-30-deepseek-fp8"
+  - slug: "2026-08-07-mhc"
+    title: "mHC：61层网络怎么不崩？流形约束超连接"
+    series: "DeepSeek 技术解密"
+    status: planned
+    published_date: null
+    wechat_url: null
+    files:
+      weixin: false
+      draft: false
+      outline: false
+      cover: false
+    notes: "排期 2026-08-07。兑现 K=V/Muon 文末预告：普通残差在 61 层「传话传没」。数学主线：HC 加宽残差流（n_hc=4）→ B 矩阵约束到双随机矩阵流形（Birkhoff 多面体，谱范数 ≤1 非扩张）→ Sinkhorn-Knopp 迭代（t_max=20）→ A/C 用 Sigmoid 限幅防信号抵消 → 动态参数化（输入相关 + 静态偏置）。V4 §2.2 + §3.4.2（recomputation/fused kernel 把 mHC 开销压到 pipeline 的 6.7%）+ mHC 专文。校准 07-09 残差连接篇的 MHC 伏笔。待 grill-me 出大纲。"
+
+  - slug: "2026-08-08-deepseek-fp8"
     title: "FP8 训练：用\"残缺数字\"练出顶级模型"
     series: "DeepSeek 技术解密"
     status: planned
@@ -201,6 +214,46 @@ articles:
       draft: false
       outline: false
       cover: false
+    notes: "排期 2026-08-08（原占位 slug 2026-07-30-deepseek-fp8 与 RLHF 同日重复，已改）。FP8 全链路：E4M3 动态范围、scaling factor、混合精度存储（RoPE 维 BF16 + 其余 FP8）、与 mHC/Muon 的衔接。末尾预告 FP4 QAT。"
+
+  - slug: "2026-08-09-deepseek-fp4-qat"
+    title: "FP4 QAT：专家权重怎么再省一半？"
+    series: "DeepSeek 技术解密"
+    status: planned
+    published_date: null
+    wechat_url: null
+    files:
+      weixin: false
+      draft: false
+      outline: false
+      cover: false
+    notes: "排期 2026-08-09。V4 技术报告 §5.2.1：后训练阶段 FP4（MXFP4）量化感知训练，MoE 专家权重 + CSA indexer QK path 全 FP4。FP4→FP8 无损反量化（E4M3 多 2 个指数位，scale 可被吸收）、STE 直通梯度、index 分数 BF16 化（top-k 选择器 2× 加速、99.7% recall）。直续 FP8 篇。"
+
+  - slug: "2026-08-10-deepseek-opd"
+    title: "OPD：10个专家模型怎么合并成一个？"
+    series: "DeepSeek 技术解密"
+    status: planned
+    published_date: null
+    wechat_url: null
+    files:
+      weixin: false
+      draft: false
+      outline: false
+      cover: false
+    notes: "排期 2026-08-10。V4 技术报告 §5.1.2/§5.2.2：On-Policy Distillation 同策略蒸馏。两阶段后训练（领域专家独立培养 → 统一合并）；reverse KL、全词表 logit 蒸馏（避免 token 级 KL 高方差）；teacher 权重分布式存储 + 按需加载、只缓存最后一层 hidden state。衔接 PPO/GRPO/RLVR 后训练线。"
+
+  - slug: "2026-08-11-deepseek-grm"
+    title: "GRM：模型自己当裁判，奖励从哪来？"
+    series: "DeepSeek 技术解密"
+    status: planned
+    published_date: null
+    wechat_url: null
+    files:
+      weixin: false
+      draft: false
+      outline: false
+      cover: false
+    notes: "排期 2026-08-11。V4 技术报告 §5.1.1：Generative Reward Model 生成式奖励模型。硬验证（规则/测试用例）vs 软验证（人类标注标量奖励模型）的鸿沟；GRM 直接用 RL 优化、actor 原生充当 GRM，评判与生成能力联合进化，少量人类标注即可泛化。接 RLVR 篇（可验证奖励）的延伸。"
 
   # ═══════════════════════════════════════════
   # 大模型原理系列 (进行中)
