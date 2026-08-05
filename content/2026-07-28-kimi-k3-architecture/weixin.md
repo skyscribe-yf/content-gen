@@ -3,10 +3,10 @@ title: "Kimi K3 架构怎么撑住 2.8T 参数？三轴拆给你看"
 author: "数解AI"
 digest: "Kimi K3 的 2.8T 参数不是暴力堆料。从数学直觉拆解三条扩展路线：KDA 省序列、AttnRes 换深度、Latent MoE 控通道。"
 type: "架构全貌篇"
-series: "大模型原理"
+series: "DeepSeek 技术解密"
 keywords: ["Kimi K3", "KDA", "Attention Residuals", "Latent MoE", "架构拆解"]
 cover: 00-cover.png
-wechatUrl: "https://mp.weixin.qq.com/s/6GJ2781jJh-dqYswJ07dfA?token=1097302935&lang=zh_CN"
+wechatUrl: "https://mp.weixin.qq.com/s/6GJ2781jJh-dqYswJ07dfA"
 scheduledPublish: "2026-07-28T20:00:00+08:00"
 ---
 

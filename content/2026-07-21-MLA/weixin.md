@@ -262,7 +262,7 @@ MLA 解决的是"存得下"；但上下文极长时，模型仍要面对全部�
 📖 **[大模型原理合集](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzkyMzQyODExNQ==&action=getalbum&album_id=4597831652025925632#wechat_redirect)**：BPE → 词嵌入 → 位置编码 → 注意力 → KDA 长上下文 → **MLA 压缩 KV cache** → FFN → 归一化残差 → Transformer 全景 → [预训练](https://mp.weixin.qq.com/s/XoGHVycQHR5Tp-BWPac9Hg) → RLHF → 推理加速
 
 🔥 **DeepSeek 技术解密**
-① [MoE混合专家入门](https://mp.weixin.qq.com/s/QdkD0CR2fD-HfY77-gX3Ug) → ② [KDA长上下文](https://mp.weixin.qq.com/s/_RR5LLWgjGNm-qXdSdnAGA) → ③ MLA（本篇）→ ④ DeepSeek-R1 怎么学会"想清楚再说"？（待发布）→ ⑤ DeepSeek-V4 为什么抛弃 MLA？（待发布）→ ⑥ FP8 训练（待发布）
+① [MoE混合专家入门](https://mp.weixin.qq.com/s/QdkD0CR2fD-HfY77-gX3Ug) → ② [KDA长上下文](https://mp.weixin.qq.com/s/_RR5LLWgjGNm-qXdSdnAGA) → ③ MLA（本篇）→ ④ DeepSeek-R1 怎么学会"想清楚再说"？（待发布）→ ⑤ [DeepSeek-V4 为什么抛弃 MLA？](https://mp.weixin.qq.com/s/MQEgbY16mLs-N7g2xKW1HQ) → ⑥ FP8 训练（待发布）
 
 📖 **深度学习基础**（已完结）
 ① [梯度下降](https://mp.weixin.qq.com/s/V6mGvCVFpTvmC51pNtxiTw) → ② [损失函数](https://mp.weixin.qq.com/s/zIWqYqYVzEaF1e8P6fcTfw) → ③ [反向传播](https://mp.weixin.qq.com/s/oYj_qpwF4tZG84ImOn977g) → ④ [Softmax](https://mp.weixin.qq.com/s/5wMquh_v3oon2-NEDeQLEw) → ⑤ [残差连接](https://mp.weixin.qq.com/s/xefNN9Gjaw3TKl60KeHzAg) → ⑥ [Adam优化器](https://mp.weixin.qq.com/s/aSLVO-otvr2rxIU1kr2eAA)

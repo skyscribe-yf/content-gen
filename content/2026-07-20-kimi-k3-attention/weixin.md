@@ -3,7 +3,7 @@ title: "Kimi K3：KDA怎么撑住1M上下文？"
 author: "数解AI"
 digest: "Kimi K3 的 1M 上下文为什么不能只靠堆显存？用 KDA 拆解线性注意力如何处理长历史，以及为什么模型仍要保留全局注意力。"
 type: "热点原理篇"
-series: "大模型原理"
+series: "DeepSeek 技术解密"
 keywords: ["Kimi K3", "KDA", "线性注意力"]
 cover: 00-cover.png
 scheduledPublish: "2026-07-20T08:00:00+08:00"

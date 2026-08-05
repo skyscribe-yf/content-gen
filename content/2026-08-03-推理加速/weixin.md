@@ -6,7 +6,7 @@ type: "推理服务链路篇"
 keywords: ["大模型 API", "首字延迟", "TTFT", "prefill", "decode", "KV Cache", "推测解码", "量化", "流式输出"]
 digest: "调用大模型 API 并不是直接把请求交给 GPU。本文用作者 Pi 的真实请求日志拆解首字延迟 TTFT，解释排队、prefill、decode、KV Cache 和推测解码分别影响哪一段。"
 cover: "00-cover.png"
-wechatUrl: null
+wechatUrl: "https://mp.weixin.qq.com/s/LvxasW-4t0YuXy8nWpyzVw"
 ---
 
 你给大模型 API 发出一个请求。

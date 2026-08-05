@@ -3,20 +3,24 @@
 
 import sys
 import argparse
+import os
 
 
 def convert(markdown_path: str, theme: str = "scienceBlue", code_theme: str = "atom-one-dark") -> str:
     from mdnice import to_wechat
 
-    html = to_wechat(
-        markdown_path,
-        theme=theme,
-        code_theme=code_theme,
-        mac_style=False,
-        headless=True,
-        wait_timeout=60,
-        retry_count=2,
-    )
+    options = {
+        "theme": theme,
+        "code_theme": code_theme,
+        "mac_style": False,
+        "headless": True,
+        "wait_timeout": 60,
+        "retry_count": 2,
+    }
+    proxy = os.environ.get("MDNICE_PROXY")
+    if proxy:
+        options["proxy"] = {"server": proxy}
+    html = to_wechat(markdown_path, **options)
     return html
 
 

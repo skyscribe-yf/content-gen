@@ -3,7 +3,7 @@ title: "PPO：被顶会拒稿，怎么成了RLHF发动机？"
 series: "大模型原理"
 author: "数解AI"
 type: "原理篇（深入）"
-wechatUrl: "https://mp.weixin.qq.com/s/OEZtUhm8MT_En7enJo_8dw?token=2031108942&lang=zh_CN"
+wechatUrl: "https://mp.weixin.qq.com/s/OEZtUhm8MT_En7enJo_8dw"
 keywords: ["PPO", "TRPO", "GRPO", "策略梯度", "价值网络", "GLM-5.2", "奖励黑客", "KL约束"]
 digest: "PPO 曾是 OpenAI 的默认 RL 算法，被 NIPS 2017 拒稿，却在 LLM 时代迎来第二春。本文用 GLM-5.2 的案例，拆解 PPO 的三道机关——Clip、Critic 和 KL 约束，以及长程任务为什么让 GRPO 站不住。"
 cover: "00-cover.png"

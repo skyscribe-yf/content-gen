@@ -7,6 +7,7 @@ keywords: ["RLVR", "可验证奖励", "Reward hacking", "verifier", "DeepSeek-R1
 digest: "RLVR 用数学答案、代码测试和执行环境提供可验证奖励，解释 coding 为什么能外溢为 Agent 能力。本文也拆解 Reward hacking：可验证不等于不可作弊。"
 cover: "00-cover.png"
 scheduledPublish: "2026-08-02T20:00:00+08:00"
+wechatUrl: "https://mp.weixin.qq.com/s/NvemnDdtkinRKEbmtcckzA"
 ---
 
 一个 coding agent 接到任务后，会经历一串动作：读仓库、找文件、改代码、跑测试、看报错、再改一次。训练器最后收到的，却可能只有一个数字：
