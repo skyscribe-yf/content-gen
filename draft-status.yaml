@@ -214,7 +214,7 @@ articles:
       draft: true
       outline: true
       cover: true
-    notes: "排期 2026-08-08。主线：残缺数字的工程美学（V3 FP8 工程探索，V4 继承）。双深潜：per-tensor vs per-group 量化误差 + online quantization。实验：outlier 量化误差对比（per-tensor 普通行 62.0% vs per-group 2.6%，改善 24 倍；权重场景揭示 128×128 粗粒度缘由）。结构 9 节、正文 3078 字、7 组公式。关键校准（vs 第 9 课笔记）：全链路只用 E4M3（非 forward/backward 分流）；激活 1×128 tile / 权重 128×128 block；Online Quantization 非 Loss Scaling；H800 14-bit 累加陷阱 N_C=128；FP8 vs BF16 相对误差 < 0.25%（V3 附录 B）。标题 17 字。衔接 Muon 篇两处 FP8 线索；末尾预告 FP4 QAT。配图 5 张已生成（封面 21:9 + 4 正文图）。已保存至公众号草稿箱（remote-api，media_id: kOcXH4SytIYVIpYksTGfHvb2_bVpzHA4uOwDbtR1-QD7eVlxR13-gDf6cBCDdqQ0）。发布前在网页确认声明原创。grill 日志：.grill/deepseek-fp8.md。"
+    notes: "排期 2026-08-08。主线：残缺数字的工程美学（V3 FP8 工程探索，V4 继承）。双深潜：per-tensor vs per-group 量化误差 + online quantization。实验：outlier 量化误差对比（per-tensor 普通行 62.0% vs per-group 2.6%，改善 24 倍；权重场景揭示 128×128 粗粒度缘由）。结构 9 节、正文 3574 字、7 组公式（§2 补浮点范围具体例子）。关键校准（vs 第 9 课笔记）：全链路只用 E4M3（非 forward/backward 分流）；激活 1×128 tile / 权重 128×128 block；Online Quantization 非 Loss Scaling；H800 14-bit 累加陷阱 N_C=128；FP8 vs BF16 相对误差 < 0.25%（V3 附录 B）。标题 17 字。衔接 Muon 篇两处 FP8 线索；末尾预告 FP4 QAT。配图 5 张已生成（封面 21:9 + 4 正文图）。已保存至公众号草稿箱（remote-api，media_id: kOcXH4SytIYVIpYksTGfHiNbiiOBGCTtpiB4JyYfriYCsokVHtHgrYMhISDyLrjJ）。发布前在网页确认声明原创。grill 日志：.grill/deepseek-fp8.md。"
 
   - slug: "2026-08-09-deepseek-fp4-qat"
     title: "FP4 QAT：专家权重怎么再省一半？"
