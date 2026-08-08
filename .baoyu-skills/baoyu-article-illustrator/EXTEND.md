@@ -1,4 +1,4 @@
-preferred_image_backend: xabcimg
+preferred_image_backend: yairouter
 preferred_type: infographic
 preferred_style: notion
 preferred_palette: warm

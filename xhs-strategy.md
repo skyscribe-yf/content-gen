@@ -114,10 +114,10 @@
 
 ### 图片生成方案
 
-**高质量（推荐）**：`xabc_client.py`（gpt-image-2，xabcimg.com）
-- 尺寸：1024×1536
+**高质量（推荐）**：`yairouter_img.py`（gpt-image-2，yairouter）
+- 尺寸：1024×1536（实际输出以返回为准，上游忽略 size，见 docs/yairouter-gpt-image-2-experiment.md）
 - 质量：high
-- 费用：约 $0.04-0.08/张
+- 费用：按张计费，1K 起步
 - 适用：封面、概念图、数据冲击图
 
 **低成本**：`cheap_img_client.py`（MiniMax/Gemini Flash）
@@ -140,7 +140,7 @@
 ### 发文流程
 
 ```
-1. 准备卡片（6-9张信息图，用 xabc_client.py 高质量出图）
+1. 准备卡片（6-9张信息图，用 yairouter_img.py 高质量出图）
 2. 写文案（≤300字，含钩子+标签）
 3. 发布时间：工作日 19:00-22:00 / 周末 15:00-18:00
 4. 黄金2小时：

@@ -1,0 +1,19 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Noto Sans CJK SC,36,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,3,0,2,48,48,72,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:09.15,Default,,0,0,0,,学习率调了一整天，loss 还是抖？问题可能\N不在你，而在 S-G-D 那把尺子。
+Dialogue: 0,0:00:09.15,0:00:25.62,Default,,0,0,0,,梯度已经告诉模型该往哪走，但 S-G-D\N只给所有参数同一个学习率。有的梯度大一百倍，\N走一步就冲过；有的几乎不动。同一把尺子，\N量不了百万个参数。
+Dialogue: 0,0:00:25.62,0:00:36.60,Default,,0,0,0,,损失面像压扁的椭球：陡处像深谷，平处像浅盘。\NS-G-D 在陡壁上之字横跳，该走的长轴却几\N乎没动。
+Dialogue: 0,0:00:36.60,0:00:51.02,Default,,0,0,0,,Adam 就一句话：方向，除以尺度。分子稳住\N方向，来回抖的会抵消；分母看梯度大小——大的\N减速，小的加速。每个参数，自己的步长。
+Dialogue: 0,0:00:51.02,0:01:00.40,Default,,0,0,0,,所以 DeepSeek、Qwen 训练里常见\NAdam-W，不是跟风，是自动调速。
+Dialogue: 0,0:01:00.40,0:01:11.61,Default,,0,0,0,,记住：Adam 等于方向除以尺度。完整拆解，\N公众号数解 AI，搜 Adam。你还在手动试\N学习率吗？

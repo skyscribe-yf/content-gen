@@ -20,3 +20,5 @@ tmp_*.html
 .pi-subagents/
 .worktrees/
 .venv-mdnice/
+*.wav
+*.mov

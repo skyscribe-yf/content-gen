@@ -1,7 +1,7 @@
 """
 apimart.ai GPT-Image-2 图片生成客户端（首选后端）
 
-⚠️  本工具为项目首选图片生成后端，优先于 xabcimg。
+⚠️  本工具为历史后端，默认图片生成请用 yairouter_img.py（gpt-image-2）。
 
 用法:
   # 单张生成（API key 自动从 .env 读取）

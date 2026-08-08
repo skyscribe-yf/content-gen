@@ -41,7 +41,7 @@ content-gen/
     ├── scan-status.py        # 草稿状态扫描 → draft-status.yaml
     ├── new-topic.sh          # 新建选题脚手架
     ├── xhs_card.py           # 小红书信息图生成器（本地Pillow）
-    ├── xabc_client.py        # 高质量AI出图（gpt-image-2）
+    ├── yairouter_img.py      # 高质量AI出图（gpt-image-2，默认后端）
     ├── cheap_img_client.py   # 廉价AI出图（MiniMax等）
     └── eval_benchmark.py     # 模型评测脚本（多模型算法实现对比）
 ```

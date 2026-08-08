@@ -1,0 +1,17 @@
+file '/home/skyscribe/srcs/content-gen/content/2026-07-10-优化器/shipinhao/_render_work/frames/scene_00.png'
+duration 7.2330
+file '/home/skyscribe/srcs/content-gen/content/2026-07-10-优化器/shipinhao/_render_work/frames/scene_01.png'
+duration 11.5728
+file '/home/skyscribe/srcs/content-gen/content/2026-07-10-优化器/shipinhao/_render_work/frames/scene_02.png'
+duration 9.4029
+file '/home/skyscribe/srcs/content-gen/content/2026-07-10-优化器/shipinhao/_render_work/frames/scene_03.png'
+duration 8.6796
+file '/home/skyscribe/srcs/content-gen/content/2026-07-10-优化器/shipinhao/_render_work/frames/scene_04.png'
+duration 13.0193
+file '/home/skyscribe/srcs/content-gen/content/2026-07-10-优化器/shipinhao/_render_work/frames/scene_05.png'
+duration 6.5097
+file '/home/skyscribe/srcs/content-gen/content/2026-07-10-优化器/shipinhao/_render_work/frames/scene_06.png'
+duration 7.2330
+file '/home/skyscribe/srcs/content-gen/content/2026-07-10-优化器/shipinhao/_render_work/frames/scene_07.png'
+duration 7.9563
+file '/home/skyscribe/srcs/content-gen/content/2026-07-10-优化器/shipinhao/_render_work/frames/scene_07.png'

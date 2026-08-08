@@ -3029,6 +3029,857 @@
         "Income overview cumulative revenue is the operating decision baseline; overview yesterday increment (0.23) may differ from a single-slot daily total.",
         "Article income covers the visible 7-day post-publication window and excludes affiliate goods and mutual-selection ads."
       ]
+    },
+    {
+      "collectedAt": "2026-08-06T14:18:53+08:00",
+      "dataThrough": "2026-08-05",
+      "periods": {
+        "content": {
+          "from": "2026-07-07",
+          "to": "2026-08-05"
+        },
+        "users": {
+          "from": "2026-07-06",
+          "to": "2026-08-05"
+        },
+        "income": {
+          "from": "2026-07-30",
+          "to": "2026-08-05"
+        }
+      },
+      "content": {
+        "readers30d": 4554,
+        "daily": {
+          "date": "2026-08-05",
+          "reads": 156,
+          "shares": 24,
+          "comments": 3
+        },
+        "sources": {
+          "recommendation": 64.6,
+          "accountHome": 9.9,
+          "chatSession": 9.9,
+          "officialMessage": 8.8,
+          "other": 6.9,
+          "moments": 2.6,
+          "search": 1.7
+        },
+        "articles": [
+          {
+            "date": "2026-07-10",
+            "title": "学习率怎么自动调？Adam 优化器拆给你看",
+            "reads": 1109,
+            "share": 24.35
+          },
+          {
+            "date": "2026-07-08",
+            "title": "Softmax为什么不直接取最大值？",
+            "reads": 540,
+            "share": 11.86
+          },
+          {
+            "date": "2026-07-29",
+            "title": "SFT微调：1万条数据就能让模型听话？",
+            "reads": 447,
+            "share": 9.82
+          },
+          {
+            "date": "2026-07-09",
+            "title": "残差连接：为什么56层比20层还差",
+            "reads": 362,
+            "share": 7.95
+          },
+          {
+            "date": "2026-07-23",
+            "title": "Attention都够了，为什么还要前馈网络？",
+            "reads": 212,
+            "share": 4.66
+          },
+          {
+            "date": "2026-07-06",
+            "title": "反向传播是什么？AI怎么知道自己错在哪",
+            "reads": 150,
+            "share": 3.29
+          },
+          {
+            "date": "2026-07-26",
+            "title": "注意力找人，FFN存知识：跟一句话走完Transformer",
+            "reads": 148,
+            "share": 3.25
+          },
+          {
+            "date": "2026-07-28",
+            "title": "Kimi K3 架构怎么撑住 2.8T 参数？三轴拆给你看",
+            "reads": 140,
+            "share": 3.07
+          },
+          {
+            "date": "2026-07-13",
+            "title": "BPE分词：AI为什么把文字切成碎片？",
+            "reads": 134,
+            "share": 2.94
+          },
+          {
+            "date": "2026-07-27",
+            "title": "Uncle Bob是当之无愧的向导",
+            "reads": 119,
+            "share": 2.61
+          },
+          {
+            "date": "2026-07-25",
+            "title": "数学太难？菲尔兹奖得主也差点放弃",
+            "reads": 96,
+            "share": 2.11
+          },
+          {
+            "date": "2026-08-01",
+            "title": "GRPO为什么省显存，却撑不住长程任务？",
+            "reads": 81,
+            "share": 1.78
+          },
+          {
+            "date": "2026-07-03",
+            "title": "损失函数：打分标准决定学习方向",
+            "reads": 81,
+            "share": 1.78
+          },
+          {
+            "date": "2026-07-17",
+            "title": "位置编码怎么工作？词序一错意思全变",
+            "reads": 73,
+            "share": 1.6
+          },
+          {
+            "date": "2026-07-20",
+            "title": "Kimi K3：KDA怎么撑住1M上下文？",
+            "reads": 71,
+            "share": 1.56
+          },
+          {
+            "date": "2026-08-04",
+            "title": "DeepSeek-V4为何不用MLA？",
+            "reads": 65,
+            "share": 1.43
+          },
+          {
+            "date": "2026-07-31",
+            "title": "PPO：被顶会拒稿，怎么成了RLHF发动机？",
+            "reads": 63,
+            "share": 1.38
+          },
+          {
+            "date": "2026-07-11",
+            "title": "DeepSeek便宜30倍的秘密：MoE混合专家入门",
+            "reads": 63,
+            "share": 1.38
+          },
+          {
+            "date": "2026-07-23",
+            "title": "菲尔兹奖第一次落到本土成长的数学家头上",
+            "reads": 62,
+            "share": 1.36
+          },
+          {
+            "date": "2026-07-03",
+            "title": "梯度下降：蒙着眼下山",
+            "reads": 60,
+            "share": 1.32
+          },
+          {
+            "date": "2026-07-18",
+            "title": "注意力机制是什么？别再当数据库查询",
+            "reads": 59,
+            "share": 1.3
+          },
+          {
+            "date": "2026-08-02",
+            "title": "RLVR：可验证奖励怎么重塑后训练？",
+            "reads": 58,
+            "share": 1.27
+          },
+          {
+            "date": "2026-07-05",
+            "title": "为什么AI上下文越长越慢？两道数学硬墙一次讲透",
+            "reads": 50,
+            "share": 1.1
+          },
+          {
+            "date": "2026-07-24",
+            "title": "归一化为什么总在前面？61层模型靠它不崩",
+            "reads": 48,
+            "share": 1.05
+          }
+        ]
+      },
+      "users": {
+        "daily": {
+          "date": "2026-08-05",
+          "new": 6,
+          "cancelled": 0,
+          "net": 6,
+          "total": 337
+        },
+        "channelTotal": 342,
+        "channels": {
+          "articlePage": {
+            "count": 221,
+            "share": 64.62
+          },
+          "other": {
+            "count": 62,
+            "share": 18.13
+          },
+          "more": {
+            "count": 58,
+            "share": 16.96
+          },
+          "qrCode": {
+            "count": 1,
+            "share": 0.29
+          }
+        },
+        "trend": [
+          {
+            "date": "2026-07-06",
+            "new": 48,
+            "cancelled": 0,
+            "net": 48,
+            "total": 49
+          },
+          {
+            "date": "2026-07-07",
+            "new": 8,
+            "cancelled": 1,
+            "net": 7,
+            "total": 56
+          },
+          {
+            "date": "2026-07-08",
+            "new": 49,
+            "cancelled": 0,
+            "net": 49,
+            "total": 105
+          },
+          {
+            "date": "2026-07-09",
+            "new": 21,
+            "cancelled": 0,
+            "net": 21,
+            "total": 126
+          },
+          {
+            "date": "2026-07-10",
+            "new": 15,
+            "cancelled": 0,
+            "net": 15,
+            "total": 141
+          },
+          {
+            "date": "2026-07-11",
+            "new": 3,
+            "cancelled": 0,
+            "net": 3,
+            "total": 144
+          },
+          {
+            "date": "2026-07-12",
+            "new": 4,
+            "cancelled": 0,
+            "net": 4,
+            "total": 148
+          },
+          {
+            "date": "2026-07-13",
+            "new": 6,
+            "cancelled": 0,
+            "net": 6,
+            "total": 154
+          },
+          {
+            "date": "2026-07-14",
+            "new": 18,
+            "cancelled": 0,
+            "net": 18,
+            "total": 172
+          },
+          {
+            "date": "2026-07-15",
+            "new": 26,
+            "cancelled": 0,
+            "net": 26,
+            "total": 198
+          },
+          {
+            "date": "2026-07-16",
+            "new": 12,
+            "cancelled": 1,
+            "net": 11,
+            "total": 209
+          },
+          {
+            "date": "2026-07-17",
+            "new": 12,
+            "cancelled": 0,
+            "net": 12,
+            "total": 221
+          },
+          {
+            "date": "2026-07-18",
+            "new": 3,
+            "cancelled": 0,
+            "net": 3,
+            "total": 224
+          },
+          {
+            "date": "2026-07-19",
+            "new": 8,
+            "cancelled": 0,
+            "net": 8,
+            "total": 232
+          },
+          {
+            "date": "2026-07-20",
+            "new": 9,
+            "cancelled": 0,
+            "net": 9,
+            "total": 241
+          },
+          {
+            "date": "2026-07-21",
+            "new": 4,
+            "cancelled": 0,
+            "net": 4,
+            "total": 245
+          },
+          {
+            "date": "2026-07-22",
+            "new": 8,
+            "cancelled": 1,
+            "net": 7,
+            "total": 252
+          },
+          {
+            "date": "2026-07-23",
+            "new": 12,
+            "cancelled": 0,
+            "net": 12,
+            "total": 264
+          },
+          {
+            "date": "2026-07-24",
+            "new": 5,
+            "cancelled": 0,
+            "net": 5,
+            "total": 269
+          },
+          {
+            "date": "2026-07-25",
+            "new": 9,
+            "cancelled": 0,
+            "net": 9,
+            "total": 278
+          },
+          {
+            "date": "2026-07-26",
+            "new": 3,
+            "cancelled": 1,
+            "net": 2,
+            "total": 280
+          },
+          {
+            "date": "2026-07-27",
+            "new": 2,
+            "cancelled": 0,
+            "net": 2,
+            "total": 282
+          },
+          {
+            "date": "2026-07-28",
+            "new": 2,
+            "cancelled": 0,
+            "net": 2,
+            "total": 284
+          },
+          {
+            "date": "2026-07-29",
+            "new": 5,
+            "cancelled": 0,
+            "net": 5,
+            "total": 289
+          },
+          {
+            "date": "2026-07-30",
+            "new": 13,
+            "cancelled": 0,
+            "net": 13,
+            "total": 302
+          },
+          {
+            "date": "2026-07-31",
+            "new": 3,
+            "cancelled": 0,
+            "net": 3,
+            "total": 305
+          },
+          {
+            "date": "2026-08-01",
+            "new": 4,
+            "cancelled": 0,
+            "net": 4,
+            "total": 309
+          },
+          {
+            "date": "2026-08-02",
+            "new": 6,
+            "cancelled": 1,
+            "net": 5,
+            "total": 314
+          },
+          {
+            "date": "2026-08-03",
+            "new": 10,
+            "cancelled": 0,
+            "net": 10,
+            "total": 324
+          },
+          {
+            "date": "2026-08-04",
+            "new": 8,
+            "cancelled": 1,
+            "net": 7,
+            "total": 331
+          },
+          {
+            "date": "2026-08-05",
+            "new": 6,
+            "cancelled": 0,
+            "net": 6,
+            "total": 337
+          }
+        ]
+      },
+      "income": {
+        "overview": {
+          "cumulativeRevenue": 14.71,
+          "programmaticRevenue": 14.71,
+          "yesterdayIncrement": 0.36,
+          "mutualSelectionRevenue": 0,
+          "commerceRevenue": 0
+        },
+        "articleIncomeAvailable": true,
+        "articleIncome": {
+          "scope": "2026-07-30 to 2026-08-05; cumulative revenue within 7 days after publication; excludes affiliate goods and mutual-selection ads",
+          "articles": [
+            {
+              "date": "2026-07-30",
+              "title": "RLHF怎么让模型选出好回答？",
+              "original": true,
+              "revenue": 0.03,
+              "slots": {
+                "bottom": {
+                  "revenue": 0.02,
+                  "share": 66.67
+                }
+              }
+            },
+            {
+              "date": "2026-07-31",
+              "title": "DeepSeek V4 flash居然要压Opus4.8一头了",
+              "original": false,
+              "revenue": 0.02,
+              "slots": {
+                "stickerBottom": {
+                  "revenue": 0,
+                  "share": 0
+                },
+                "messageArea": {
+                  "revenue": 0,
+                  "share": 0
+                }
+              }
+            },
+            {
+              "date": "2026-07-31",
+              "title": "PPO：被顶会拒稿，怎么成了RLHF发动机？",
+              "original": true,
+              "revenue": 0.42,
+              "slots": {
+                "bottom": {
+                  "revenue": 0.36,
+                  "share": 85.71
+                },
+                "messageArea": {
+                  "revenue": 0.06,
+                  "share": 14.29
+                }
+              }
+            },
+            {
+              "date": "2026-08-01",
+              "title": "GRPO为什么省显存，却撑不住长程任务？",
+              "original": true,
+              "revenue": 0.6,
+              "slots": {
+                "bottom": {
+                  "revenue": 0.47,
+                  "share": 78.33
+                },
+                "messageArea": {
+                  "revenue": 0.14,
+                  "share": 23.33
+                }
+              }
+            },
+            {
+              "date": "2026-08-02",
+              "title": "RLVR：可验证奖励怎么重塑后训练？",
+              "original": true,
+              "revenue": 0.31,
+              "slots": {
+                "bottom": {
+                  "revenue": 0.21,
+                  "share": 67.74
+                },
+                "inline": {
+                  "revenue": 0.09,
+                  "share": 29.03
+                }
+              }
+            },
+            {
+              "date": "2026-08-03",
+              "title": "大模型 API 为什么这么慢？首字延迟揭秘",
+              "original": true,
+              "revenue": 0.13,
+              "slots": {
+                "bottom": {
+                  "revenue": 0.04,
+                  "share": 30.77
+                },
+                "inline": {
+                  "revenue": 0.09,
+                  "share": 69.23
+                }
+              }
+            },
+            {
+              "date": "2026-08-04",
+              "title": "DeepSeek-V4为何不用MLA？",
+              "original": true,
+              "revenue": 1.33,
+              "slots": {
+                "bottom": {
+                  "revenue": 0.45,
+                  "share": 33.83
+                },
+                "inline": {
+                  "revenue": 0.81,
+                  "share": 60.9
+                },
+                "messageArea": {
+                  "revenue": 0.07,
+                  "share": 5.26
+                }
+              }
+            },
+            {
+              "date": "2026-08-05",
+              "title": "AI时代的软件工程永不消亡",
+              "original": false,
+              "revenue": 0.05,
+              "slots": {
+                "stickerBottom": {
+                  "revenue": 0.05,
+                  "share": 100
+                },
+                "messageArea": {
+                  "revenue": 0,
+                  "share": 0
+                }
+              }
+            },
+            {
+              "date": "2026-08-05",
+              "title": "K=V：一份KV缓存怎么干两份活？",
+              "original": true,
+              "revenue": 0.01,
+              "slots": {
+                "bottom": {
+                  "revenue": 0.01,
+                  "share": 100
+                },
+                "inline": {
+                  "revenue": 0,
+                  "share": 0
+                }
+              }
+            }
+          ]
+        },
+        "slots": {
+          "messageArea": {
+            "summary": {
+              "pulls": 948,
+              "impressions": 91,
+              "exposureRate": 9.6,
+              "clicks": 0,
+              "ctr": 0,
+              "ecpm": 4.84,
+              "revenue": 0.44
+            },
+            "dailyRevenueTotal": 0.44,
+            "daily": [
+              {
+                "date": "2026-08-05",
+                "pulls": 160,
+                "impressions": 10,
+                "exposureRate": 6.25,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 5,
+                "revenue": 0.05
+              },
+              {
+                "date": "2026-08-04",
+                "pulls": 196,
+                "impressions": 20,
+                "exposureRate": 10.2,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 3,
+                "revenue": 0.06
+              },
+              {
+                "date": "2026-08-03",
+                "pulls": 134,
+                "impressions": 15,
+                "exposureRate": 11.19,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 2,
+                "revenue": 0.03
+              },
+              {
+                "date": "2026-08-02",
+                "pulls": 140,
+                "impressions": 14,
+                "exposureRate": 10,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 10,
+                "revenue": 0.14
+              },
+              {
+                "date": "2026-08-01",
+                "pulls": 92,
+                "impressions": 14,
+                "exposureRate": 15.22,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 5.71,
+                "revenue": 0.08
+              },
+              {
+                "date": "2026-07-31",
+                "pulls": 106,
+                "impressions": 6,
+                "exposureRate": 5.66,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 1.67,
+                "revenue": 0.01
+              },
+              {
+                "date": "2026-07-30",
+                "pulls": 120,
+                "impressions": 12,
+                "exposureRate": 10,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 5,
+                "revenue": 0.06
+              }
+            ]
+          },
+          "bottom": {
+            "summary": {
+              "pulls": 1222,
+              "impressions": 253,
+              "exposureRate": 20.7,
+              "clicks": 4,
+              "ctr": 1.58,
+              "ecpm": 7.55,
+              "revenue": 1.91
+            },
+            "dailyRevenueTotal": 1.91,
+            "daily": [
+              {
+                "date": "2026-08-05",
+                "pulls": 154,
+                "impressions": 26,
+                "exposureRate": 16.88,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 6.92,
+                "revenue": 0.18
+              },
+              {
+                "date": "2026-08-04",
+                "pulls": 261,
+                "impressions": 53,
+                "exposureRate": 20.31,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 6.79,
+                "revenue": 0.36
+              },
+              {
+                "date": "2026-08-03",
+                "pulls": 178,
+                "impressions": 39,
+                "exposureRate": 21.91,
+                "clicks": 1,
+                "ctr": 2.56,
+                "ecpm": 4.87,
+                "revenue": 0.19
+              },
+              {
+                "date": "2026-08-02",
+                "pulls": 141,
+                "impressions": 27,
+                "exposureRate": 19.15,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 20.74,
+                "revenue": 0.56
+              },
+              {
+                "date": "2026-08-01",
+                "pulls": 80,
+                "impressions": 16,
+                "exposureRate": 20,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 8.75,
+                "revenue": 0.14
+              },
+              {
+                "date": "2026-07-31",
+                "pulls": 160,
+                "impressions": 38,
+                "exposureRate": 23.75,
+                "clicks": 2,
+                "ctr": 5.26,
+                "ecpm": 8.68,
+                "revenue": 0.33
+              },
+              {
+                "date": "2026-07-30",
+                "pulls": 248,
+                "impressions": 54,
+                "exposureRate": 21.77,
+                "clicks": 1,
+                "ctr": 1.85,
+                "ecpm": 2.96,
+                "revenue": 0.16
+              }
+            ]
+          },
+          "inline": {
+            "summary": {
+              "pulls": 658,
+              "impressions": 248,
+              "exposureRate": 37.69,
+              "clicks": 3,
+              "ctr": 1.21,
+              "ecpm": 4.4,
+              "revenue": 1.09
+            },
+            "dailyRevenueTotal": 1.09,
+            "daily": [
+              {
+                "date": "2026-08-05",
+                "pulls": 128,
+                "impressions": 44,
+                "exposureRate": 34.38,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 1.82,
+                "revenue": 0.08
+              },
+              {
+                "date": "2026-08-04",
+                "pulls": 216,
+                "impressions": 86,
+                "exposureRate": 39.81,
+                "clicks": 2,
+                "ctr": 2.33,
+                "ecpm": 9.3,
+                "revenue": 0.8
+              },
+              {
+                "date": "2026-08-03",
+                "pulls": 122,
+                "impressions": 45,
+                "exposureRate": 36.89,
+                "clicks": 1,
+                "ctr": 2.22,
+                "ecpm": 1.11,
+                "revenue": 0.05
+              },
+              {
+                "date": "2026-08-02",
+                "pulls": 60,
+                "impressions": 12,
+                "exposureRate": 20,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 6.67,
+                "revenue": 0.08
+              },
+              {
+                "date": "2026-08-01",
+                "pulls": 20,
+                "impressions": 9,
+                "exposureRate": 45,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 1.11,
+                "revenue": 0.01
+              },
+              {
+                "date": "2026-07-31",
+                "pulls": 54,
+                "impressions": 22,
+                "exposureRate": 40.74,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 0.91,
+                "revenue": 0.02
+              },
+              {
+                "date": "2026-07-30",
+                "pulls": 58,
+                "impressions": 30,
+                "exposureRate": 51.72,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 1.67,
+                "revenue": 0.05
+              }
+            ]
+          }
+        }
+      },
+      "notes": [
+        "Content API scene=9999 provides the 30-day reader trend from 2026-07-07 to 2026-08-05; source-channel counts overlap, so displayed percentages sum to 104.4% and are retained as channel-level metrics.",
+        "The content page reports 4,554 readers for the window; the daily API rows sum to the same value. The article list was fetched in three pages (offset 0, 10, 20) and contains 24 articles.",
+        "The user page reports 342 channel-attributed new follows: articlePage 221, other 62, more 58, qrCode 1. Expanding the More chart changes the visible denominator, so the original four-slice view is retained.",
+        "The home dashboard showed 343 total users while User Analysis showed 337 cumulative users through 2026-08-05; both readings are retained because the cards use different refresh timing.",
+        "Income overview is the operating baseline. Report card totals and rounded daily rows may differ: messageArea card 0.44 versus visible row sum 0.43; bottom card 1.91 versus visible row sum 1.92.",
+        "Article income covers the visible 7-day post-publication window and excludes affiliate goods and mutual-selection ads. Slot income is normalized from the article-stat API; daily cent rounding can make slot sums exceed the displayed article total, as for GRPO (0.61 versus 0.60).",
+        "The income report was collected for messageArea (留言区广告), bottom (底部广告), and inline (文中广告); keyword, mutualSelection, videoPost, and stickerBottom report no standalone slot summary in this collection window."
+      ]
     }
   ]
 }

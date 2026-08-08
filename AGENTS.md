@@ -14,7 +14,7 @@
 
 ## 图片生成
 
-唯一后端：**zairouter**（gpt-image-2）。默认 1K，封面图强制 **21:9**。具体尺寸由 `scripts/zairouter_client.py` 控制。prompt 内文字/数字/年份必须与正文一致。详细流程见 [`docs/image-generation.md`](docs/image-generation.md)。
+默认后端：**yairouter**（gpt-image-2），客户端 `scripts/yairouter_img.py`。默认 1K，封面图强制 **21:9**。⚠️ 上游 API 忽略 size 参数（2026-08-07 实测），输出尺寸以实际返回为准。prompt 内文字/数字/年份必须与正文一致。详细流程见 [`docs/image-generation.md`](docs/image-generation.md)。
 
 ## 多平台内容一致性
 
@@ -110,8 +110,19 @@ wechatUrl: "https://mp.weixin.qq.com/s/abc123"
 - 末尾含关注引导（价值承诺 + 系列结构）
 - 结尾含 1 个开放式问题引导留言
 - 摘要须含 2-3 个搜索关键词
-- 最新审计：2026-08-02（数据截至 2026-08-01），详见 [`docs/wechat-data-insights.md`](docs/wechat-data-insights.md)
+- 最新审计：2026-08-06（数据截至 2026-08-05），详见 [`docs/wechat-data-insights.md`](docs/wechat-data-insights.md)
 - 数字事实源：[`docs/wechat-data-audit-log.json`](docs/wechat-data-audit-log.json)，结构见同名 `.schema.json`，操作脚本为 `scripts/wechat_audit_log.py`，报告生成脚本为 `scripts/wechat_audit_report.py`，产物为 `docs/wechat-data-audit-report.html`
+
+## 视频号视频加工 Skill
+
+项目级 skill：[`.agents/skills/gemini-video-to-shipinhao/SKILL.md`](.agents/skills/gemini-video-to-shipinhao/SKILL.md)
+
+封装了「Gemini Notebook 视频 → 视频号成品」全流程：MiMo ASR 字幕 → 拆长句 → 对照公众号文章校对 → 定位/去除 Gemini logo → 烧录黄色字幕 → 替换片尾品牌页为关注卡 → 归档。关键规则：
+
+- 字幕基准是 `weixin.md`，术语/年份必须逐条对照校对（MiMo 误听清单见 SKILL）
+- 烧录必须用 `scripts/burn_shipinhao.py`（滤镜顺序、字号补偿、码率参数、片尾截断点探测已固化，禁止手动拼 ffmpeg 命令丢滤镜链）
+- SRT 备份不得与视频同名（VLC 自动加载同名 .srt 会叠加显示）
+- 产物归档 `content/<日期>-<主题>/shipinhao/`，发布时用「扩展链接」挂公众号文章
 
 ## 文章质量核查
 

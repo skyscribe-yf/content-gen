@@ -218,5 +218,5 @@ V3 铺好的 FP8 地基，V4 直接在上面盖楼。V4 报告里逐项核对原
 - [DeepSeek-V3 Technical Report](https://arxiv.org/abs/2412.19437)（DeepSeek-AI，2024）：§3.3 FP8 训练（混合精度框架、fine-grained 量化 1×128/128×128、N_C=128 累加提升、E4M3 全用、online quantization、低精度存储与通信）、§3.5 硬件建议、附录 B 对照实验（16B/230B 两尺度，相对误差 < 0.25%）、H800 14-bit 累加——全部逐项核对原文。
 - [DeepSeek-V4 Technical Report](https://arxiv.org/abs/2606.19348)（2026）：FP8 FLOPs 度量（27%）、FP8 Dispatch + BF16 Combine、KV 混合存储（RoPE BF16 + 其余 FP8）、FP4 QAT 复用 FP8 框架（§5.2.1）。
 - IEEE FP8 格式规范：E4M3/E5M2 动态范围与尾数精度（E4M3 max=448、min normal 2⁻⁶；E5M2 max=57344）。
-- [《Muon 优化器》](https://mp.weixin.qq.com/s/…)（08-06 已发布）：Newton-Schulz BF16 稳定、MoE 梯度随机舍入压 BF16 两处 FP8 线索出处。
+- [《Muon 优化器》](https://mp.weixin.qq.com/s/7bpfjLYn9E-CiBS4TY8A6w)（08-06 已发布）：Newton-Schulz BF16 稳定、MoE 梯度随机舍入压 BF16 两处 FP8 线索出处。
 - 实验：`experiment.py` 自包含 NumPy 实现（outlier 量化误差对比），仅机制演示，不代表官方性能。

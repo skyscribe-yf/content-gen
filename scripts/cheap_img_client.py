@@ -1,7 +1,7 @@
 """
 廉价图片生成客户端 — 用于要求不高的低质量图片
 
-⚠️  高质量图片请用 xabc_client.py；本脚本只走廉价 API
+⚠️  高质量图片请用 yairouter_img.py（gpt-image-2）；本脚本只走廉价 API
 
 支持的提供商（按价格排序）:
   minimax   MiniMax Image 01,  $0.0035/张  — 最便宜

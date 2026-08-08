@@ -1,11 +1,18 @@
 """
-yairouter 高质量图片生成客户端 — gpt-image-1
+yairouter 高质量图片生成客户端 — gpt-image-2
 
-基于 AGENTS.md 文档中的 yairouter API 配置：
+yairouter API 配置（实测 2026-08-07）：
   端点: https://api.yairouter.com/v1/images/generations
-  模型: gpt-image-1
-  认证: Authorization: Bearer $XAI_API_KEY
+  模型: gpt-image-2
+  认证: Authorization: Bearer $YAI_API_KEY（shell 环境变量优先，.env 兜底）
   质量: high
+
+⚠️ 已知问题：上游官方 API 忽略 size 参数（实测请求任意 size 均返回
+1254x1254 / 1536x1024 / 1024x1536 等随机尺寸），详见
+docs/yairouter-gpt-image-2-experiment.md。本工具按实际输出保存，不做裁剪。
+
+✅ 质量核查：每张生成后自动读取实际尺寸并与请求尺寸比对，不符时
+打印 ⚠️ 通知；批量模式结束时汇总不符清单。
 
 用法:
   # 单张生成
@@ -50,9 +57,9 @@ def _load_dotenv():
 
 def _api_key() -> str:
     _load_dotenv()
-    key = os.environ.get("XAI_API_KEY", "").strip()
+    key = os.environ.get("YAI_API_KEY", "").strip()
     if not key:
-        sys.exit("❌ 请设置 XAI_API_KEY 环境变量或在 .env 中配置")
+        sys.exit("❌ 请设置 YAI_API_KEY 环境变量（export YAI_API_KEY=...）或在 .env 中配置")
     return key
 
 
@@ -63,6 +70,32 @@ SIZE_MAP = {
     "16:9": "1792x1024",
     "2.35:1": "1792x768",
 }
+
+# 尺寸核查记录（批量模式汇总用）
+_size_mismatches: list[tuple[str, str, str]] = []
+
+
+def _check_size(filepath: Path, requested: str) -> bool:
+    """质量核查：读取实际图片尺寸，与请求尺寸不符时通知用户。
+
+    上游已知忽略 size 参数（见 docs/yairouter-gpt-image-2-experiment.md），
+    因此尺寸不符不是脚本 bug，但仍需显式告知用户，避免误用。
+    """
+    try:
+        from PIL import Image
+        with Image.open(filepath) as im:
+            actual = f"{im.width}x{im.height}"
+    except ImportError:
+        print(f"  ⚠️ 缺少 Pillow，无法核查尺寸: {filepath}")
+        return False
+
+    req = requested.lower()
+    if actual != req:
+        print(f"  ⚠️ 尺寸不符: 请求 {req}，实际 {actual}（上游忽略 size 参数）")
+        _size_mismatches.append((str(filepath), req, actual))
+        return False
+    print(f"  ✅ 尺寸核查通过: {actual}")
+    return True
 
 
 def generate(
@@ -80,7 +113,7 @@ def generate(
     if size in SIZE_MAP:
         size = SIZE_MAP[size]
 
-    print(f"📤 提交 gpt-image-1 (size={size}, quality={quality}, n={n})")
+    print(f"📤 提交 gpt-image-2 (size={size}, quality={quality}, n={n})")
     print(f"   Prompt: {prompt[:80]}...")
 
     resp = requests.post(
@@ -90,7 +123,7 @@ def generate(
             "Content-Type": "application/json",
         },
         json={
-            "model": "gpt-image-1",
+            "model": "gpt-image-2",
             "prompt": prompt,
             "n": n,
             "size": size,
@@ -138,6 +171,7 @@ def generate(
         filepath.write_bytes(img_bytes)
         saved.append(str(filepath))
         print(f"  ✅ 已保存: {filepath} ({len(img_bytes)//1024}KB)")
+        _check_size(filepath, size)
 
     return saved
 
@@ -149,7 +183,7 @@ def generate_series(config_path: str):
 
     cards = config.get("cards", [])
     output_dir = config.get("output_dir", "output")
-    # gpt-image-1 不用 model/quality 字段，直接用默认
+    # gpt-image-2 不用 model/quality 字段，直接用默认
     size = config.get("size", "1024x1536")
     quality = config.get("quality", "high")
 
@@ -182,9 +216,15 @@ def generate_series(config_path: str):
     print(f"\n🎉 系列图完成！共 {total} 组，{len(all_saved)} 张")
     print(f"   保存目录: {output_dir}")
 
+    if _size_mismatches:
+        print(f"\n⚠️ 尺寸核查: {len(_size_mismatches)} 张与请求尺寸不符（上游忽略 size 参数）:")
+        for path, req, actual in _size_mismatches:
+            print(f"   - {path}  请求 {req} → 实际 {actual}")
+        print("   如需精确尺寸，请裁剪或换用支持尺寸的生成方式（见 docs/yairouter-gpt-image-2-experiment.md）")
+
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="yairouter gpt-image-1 高质量图片生成")
+    parser = argparse.ArgumentParser(description="yairouter gpt-image-2 高质量图片生成")
     parser.add_argument("--prompt", help="生成提示词")
     parser.add_argument("--size", default="1024x1536", help="尺寸 (默认 1024x1536)")
     parser.add_argument("--quality", default="high", choices=["low", "medium", "high", "auto"])
@@ -197,7 +237,7 @@ if __name__ == "__main__":
 
     if args.check:
         key = _api_key()
-        print(f"✅ XAI_API_KEY 已配置 ({key[:8]}...{key[-4:]})")
+        print(f"✅ YAI_API_KEY 已配置 ({key[:8]}...{key[-4:]})")
     elif args.config:
         generate_series(args.config)
     elif args.prompt:

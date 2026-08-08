@@ -6,7 +6,7 @@ type: "原理篇"
 keywords: ["K=V", "KV缓存", "Partial RoPE", "de-RoPE", "DeepSeek-V4", "CSA", "位置编码"]
 digest: "KV 缓存为什么能让 K 和 V 共用一份？Partial RoPE 把位置收进最后 64 维，de-RoPE 再还原为相对距离。"
 cover: "00-cover.png"
-wechatUrl: null
+wechatUrl: "https://mp.weixin.qq.com/s/88kscO8p0kMxHmeGm2llLA"
 ---
 
 前两篇我们先把长上下文的问题拆成两层。在[MLA 那篇](https://mp.weixin.qq.com/s/HHMNEdCYThOjCLRozQorhg)里，MLA 解决 KV cache 存多少。
@@ -167,7 +167,7 @@ HCA 每 128 个合成 1 个；V4-Pro 前两层先用 HCA，后续 CSA/HCA 交替
 
 📖 **[大模型原理合集](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzkyMzQyODExNQ==&action=getalbum&album_id=4597831652025925632#wechat_redirect)**：[BPE](https://mp.weixin.qq.com/s/5nR_KI47v_U8KwpQA4Uv5Q) → [词嵌入](https://mp.weixin.qq.com/s/rDryn1z_hLt7mwi3X8fsxQ) → [位置编码](https://mp.weixin.qq.com/s/4nO2VqQLaYxGdDmtQeypCQ) → [注意力](https://mp.weixin.qq.com/s/KrilwX6VRjI9KfjvD7C6kw) → [FFN](https://mp.weixin.qq.com/s/vBCzukDlQyB9O6ASgAmlvQ) → [归一化残差](https://mp.weixin.qq.com/s/v-SBuMTbMANSTxHj7gYDkg) → [Transformer 全景](https://mp.weixin.qq.com/s/22J8JPkdpVeUx23KahbBmA) → [预训练](https://mp.weixin.qq.com/s/XoGHVycQHR5Tp-BWPac9Hg) → [SFT](https://mp.weixin.qq.com/s/vwXGbjm9Ai1GPvQi5O3UyQ) → [RLHF](https://mp.weixin.qq.com/s/NJDuCLAEfDpILf2J9D6qLQ) → [PPO](https://mp.weixin.qq.com/s/OEZtUhm8MT_En7enJo_8dw) → [GRPO](https://mp.weixin.qq.com/s/t4sO-zC5v1_jq8hJT_YTGA) → [RLVR](https://mp.weixin.qq.com/s/NvemnDdtkinRKEbmtcckzA) → [推理加速](https://mp.weixin.qq.com/s/LvxasW-4t0YuXy8nWpyzVw)
 
-🔥 **DeepSeek 技术解密**：[AI 上下文为什么越长越慢](https://mp.weixin.qq.com/s/PLVRS0TTHXHDve1Z3r6M7Q) → [MoE 混合专家](https://mp.weixin.qq.com/s/QdkD0CR2fD-HfY77-gX3Ug) → [KDA 长上下文](https://mp.weixin.qq.com/s/_RR5LLWgjGNm-qXdSdnAGA) → [MLA](https://mp.weixin.qq.com/s/HHMNEdCYThOjCLRozQorhg) → [Kimi K3 架构](https://mp.weixin.qq.com/s/6GJ2781jJh-dqYswJ07dfA) → [V4 注意力](https://mp.weixin.qq.com/s/MQEgbY16mLs-N7g2xKW1HQ) → K=V（本篇） → mHC → FP8 训练
+🔥 **DeepSeek 技术解密**：[AI 上下文为什么越长越慢](https://mp.weixin.qq.com/s/PLVRS0TTHXHDve1Z3r6M7Q) → [MoE 混合专家](https://mp.weixin.qq.com/s/QdkD0CR2fD-HfY77-gX3Ug) → [KDA 长上下文](https://mp.weixin.qq.com/s/_RR5LLWgjGNm-qXdSdnAGA) → [MLA](https://mp.weixin.qq.com/s/HHMNEdCYThOjCLRozQorhg) → [Kimi K3 架构](https://mp.weixin.qq.com/s/6GJ2781jJh-dqYswJ07dfA) → [V4 注意力](https://mp.weixin.qq.com/s/MQEgbY16mLs-N7g2xKW1HQ) → K=V（本篇） → [mHC](https://mp.weixin.qq.com/s/VKD1Epopeuj_od-ITbg_dQ) → FP8 训练
 
 如果你是架构师，会把位置信息放在少数维度（像 V4），还是干脆不旋转（像 K3）？你最担心的是位置信息丢失，还是内容被位置污染？评论区聊聊你的取舍。
 
