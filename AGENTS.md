@@ -124,6 +124,19 @@ wechatUrl: "https://mp.weixin.qq.com/s/abc123"
 - SRT 备份不得与视频同名（VLC 自动加载同名 .srt 会叠加显示）
 - 产物归档 `content/<日期>-<主题>/shipinhao/`，发布时用「扩展链接」挂公众号文章
 
+## Manim 文章视频 Skill
+
+项目级 skill：[`.agents/skills/manim-article-video/SKILL.md`](.agents/skills/manim-article-video/SKILL.md)
+
+封装了「公众号文章 → Manim 动画视频号成品」全流程：分镜脚本 → MiMo 逐段配音 → Manim 竖屏场景 → 渲染 → `scripts/manim_video_build.py` 一键构建（mux 配音 + 无缝拼接 + 黄色字幕 + 品牌尾卡）→ 验证归档。关键规则：
+
+- **用户用文章标题指代文章**，先 grep 定位 `content/<日期>-<主题>/`，再读 `weixin.md`
+- **语速定稿 speed 1.15 + pitch +2**（2026-08-10 试听定稿，勿擅自改）；段间停顿是红线，段尾缓冲 0.1s
+- **配音默认用作者克隆音色**（`--clone-audio branding/my-voice-denoised.wav`，MiniMax speech-2.8-turbo 默认、hd 可选；2026-08-11 起 MiMo → MiniMax，用户反馈 MiMo 声音不真实、感情不足）；录音参考 `branding/my-voice-original.m4a`
+- 场景 `construct` 末尾必须 `pad_to_voice()` 补齐到配音时长；ASS 时间戳是**厘秒** `h:mm:ss.cc` 不是毫秒
+- 结尾品牌尾卡：`avatar-sjai.png` 圆角透明化 + 图下黄色「关注「数解AI」」引导
+- 规格（竖屏/时长/配音）先 `ask_user_question`；sudo 类系统操作停下交给用户执行
+
 ## 文章质量核查
 
 草稿写完后**必须执行**，全部通过才能进入发布流程。详见 [`docs/article-quality-check.md`](docs/article-quality-check.md)（含 9 项核查清单）。

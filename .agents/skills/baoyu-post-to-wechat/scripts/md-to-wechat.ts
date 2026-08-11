@@ -25,6 +25,17 @@ interface ImageInfo {
   alt?: string;
 }
 
+/**
+ * mdnice 代码主题给 <code class="hljs"> 设 display: -webkit-box（旧式 flex），
+ * 微信 webview 中会把代码块所有行压成一行。换成 block + white-space: pre 恢复换行。
+ */
+function normalizeWechatCodeBlocks(html: string): string {
+  return html.replace(
+    /display:\s*-webkit-box/g,
+    "display: block; white-space: pre",
+  );
+}
+
 interface ParsedResult {
   title: string;
   author: string;
@@ -101,7 +112,7 @@ export async function convertMarkdown(
   );
 
   const renderedHtml = await renderWithMdnice(rewrittenMarkdown, mdniceTheme, tempDir);
-  const html = await normalizeWechatLists(renderedHtml);
+  const html = normalizeWechatCodeBlocks(await normalizeWechatLists(renderedHtml));
 
   fs.writeFileSync(htmlPath, html, "utf-8");
 

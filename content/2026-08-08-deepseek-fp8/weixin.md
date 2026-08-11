@@ -1,12 +1,12 @@
 ---
 title: "FP8训练：残缺数字怎么练出顶级模型"
 author: "数解AI"
-date: "2026-08-08"
+date: "2026-08-09"
 type: "解密篇"
 series: "DeepSeek 技术解密"
+wechatUrl: "https://mp.weixin.qq.com/s/yxrkmxPSZ8CnsFhWZ1bCPA"
 digest: "FP8 训练的每个数字只有 8 位——1 个符号位、4 个指数位、3 个尾数位，被戏称为「残缺数字」。1.6T 参数的模型在 BF16 下要占 10TB+ 显存，不用 FP8 根本装不下。可 8 位数字精度够吗？一个 outlier 就可能毁掉整块量化，H800 的 FP8 累加还只有 14 位精度。DeepSeek 用三招化解：分组量化、在线缩放、E4M3 全链路统一格式，把 FP8 训练的差距压到 0.25% 以内。"
 cover: "00-cover.png"
-wechatUrl: null
 keywords: ["FP8 训练", "混合精度", "E4M3", "量化", "outlier", "在线量化", "DeepSeek-V3", "DeepSeek-V4"]
 ---
 
@@ -22,7 +22,7 @@ FP8 训练干的就是这件事。每个数字只占 **8 位**——1 个符号�
 
 > 每天更新一篇，把大模型的底层原理讲到不用回头查。关注「数解AI」，下一篇拆 FP8 训练怎么用残缺数字练出顶级模型。
 
-但正式开讲前，先做一处**归属校准**：FP8 训练的机制细节，几乎全部来自 [DeepSeek-V3 技术报告](https://arxiv.org/abs/2412.19437)（§3.3 + 附录 B）。V4 报告只顺带提了几处 FP8（FP8 FLOPs 度量、FP4 QAT 复用 FP8 框架）——**FP8 是 V3 发明的，V4 是继承者**。这点和 Muon 篇的处理方式一样：系列文章留档，谁发明的就记在谁头上。
+但正式开讲前，先做一处**归属校准**：FP8 训练的机制细节，几乎全部来自 [DeepSeek-V3 技术报告](https://arxiv.org/abs/2412.19437)（§3.3 + 附录 B）。V4 报告只顺带提了几处 FP8（FP8 FLOPs 度量、FP4 QAT 复用 FP8 框架）——**FP8 是 V3 发明的，V4 是继承者**。这点和 [Muon 篇](https://mp.weixin.qq.com/s/7bpfjLYn9E-CiBS4TY8A6w) 的处理方式一样：系列文章留档，谁发明的就记在谁头上。
 
 Muon 那篇我还留了两个尾巴，这里正好接上：一是 Newton-Schulz 迭代在 BF16 下数值稳定，和低精度路径兼容；二是 MoE 梯度用随机舍入压到 BF16 再跨 rank 同步，通信量减半。两处都会在第六、七节落地。
 
@@ -65,7 +65,7 @@ $s$ 是符号位，$e$ 是指数（决定数量级），$m$ 是尾数（决定�
 
 $$Q(x) = \text{round}\left(\frac{x}{s}\right) \cdot s, \qquad s = \frac{\max|x|}{X_{\max}}$$
 
-$s$ 是缩放因子（台阶间距），$X_{\max}$ 是格式能表示的最大值。关键认识是：**台阶数是死的，$s$ 是活的**。$s$ 定得好，残缺数字也能逼近精确值；$s$ 定得不好，误差雪崩。而 $s$ 怎么定，就是量化粒度问题——下一篇深潜。
+$s$ 是缩放因子（台阶间距），$X_{\max}$ 是格式能表示的最大值。关键认识是：**台阶数是死的，$s$ 是活的**。$s$ 定得好，残缺数字也能逼近精确值；$s$ 定得不好，误差雪崩。而 $s$ 怎么定，就是量化粒度问题——下一节深潜。
 
 ![E4M3 vs E5M2：尾数定多准，指数定多大](01-fp8-format.png)
 
@@ -211,7 +211,7 @@ V3 铺好的 FP8 地基，V4 直接在上面盖楼。V4 报告里逐项核对原
 | KV 混合存储：RoPE 维度 BF16 + 其余 FP8，缓存近减半 | §2.2 |
 | FP4 QAT："直接复用现有 FP8 训练框架，不加任何修改" | §5.2.1 |
 
-最后一行，值得单独说。V4 的后训练阶段把 MoE 专家权重压到 **FP4**（4 位），官方明确说这是无损的——FP8（E4M3）比 FP4 多 2 个指数位，动态范围更大，细粒度 scale 可以被 FP8 的扩展范围完全吸收。**FP8 训练框架是 V4 全链路的底座**：mHC 管结构稳定（上篇），Muon 管优化器（前篇），FP8 管数值精度（本篇），FP4 管推理压缩（下篇）——四条线拼成 V4 的完整图景。
+最后一行，值得单独说。V4 的后训练阶段把 MoE 专家权重压到 **FP4**（4 位），官方明确说这是无损的。FP8（E4M3）比 FP4 多 2 个指数位，动态范围更大，细粒度 scale 可以被 FP8 的扩展范围完全吸收。**FP8 训练框架是 V4 全链路的底座**：mHC 管结构稳定（上篇），Muon 管优化器（前篇），FP8 管数值精度（本篇），FP4 管推理压缩（下篇）。四条线拼成 V4 的完整图景。
 
 ## 结尾：残缺数字的美学
 
@@ -243,6 +243,21 @@ V3 铺好的 FP8 地基，V4 直接在上面盖楼。V4 报告里逐项核对原
 [Attention都够了，为什么还要前馈网络？](https://mp.weixin.qq.com/s/vBCzukDlQyB9O6ASgAmlvQ)
 
 [反向传播是什么？AI怎么知道自己错在哪](https://mp.weixin.qq.com/s/oYj_qpwF4tZG84ImOn977g)
+
+📖 **DeepSeek 技术解密**
+- [为什么AI上下文越长越慢？两道数学硬墙一次讲透](https://mp.weixin.qq.com/s/PLVRS0TTHXHDve1Z3r6M7Q)
+- [DeepSeek便宜30倍的秘密：MoE混合专家入门](https://mp.weixin.qq.com/s/QdkD0CR2fD-HfY77-gX3Ug)
+- [Kimi K3：KDA怎么撑住1M上下文？](https://mp.weixin.qq.com/s/_RR5LLWgjGNm-qXdSdnAGA)
+- [显存被谁吃掉了？DeepSeek如何省下90%](https://mp.weixin.qq.com/s/HHMNEdCYThOjCLRozQorhg)
+- [Kimi K3 架构怎么撑住 2.8T 参数？三轴拆给你看](https://mp.weixin.qq.com/s/6GJ2781jJh-dqYswJ07dfA)
+- [DeepSeek-V4为何不用MLA？](https://mp.weixin.qq.com/s/MQEgbY16mLs-N7g2xKW1HQ)
+- [K=V：一份KV缓存怎么干两份活？](https://mp.weixin.qq.com/s/88kscO8p0kMxHmeGm2llLA)
+- [Muon 怎么省一半显存？优化器只记一份账](https://mp.weixin.qq.com/s/7bpfjLYn9E-CiBS4TY8A6w)
+- [mHC 怎么让 DeepSeek-V4 稳定训练 61 层？](https://mp.weixin.qq.com/s/VKD1Epopeuj_od-ITbg_dQ)
+- **FP8 训练：残缺数字怎么练出顶级模型（本篇）**
+- FP4 量化：4位数字怎么做到无损（下一篇，待发布）
+
+📖 **[大模型原理合集](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzkyMzQyODExNQ==&action=getalbum&album_id=4597831652025925632#wechat_redirect)**：① [BPE分词](https://mp.weixin.qq.com/s/5nR_KI47v_U8KwpQA4Uv5Q) → ② [词嵌入](https://mp.weixin.qq.com/s/rDryn1z_hLt7mwi3X8fsxQ) → ③ [位置编码](https://mp.weixin.qq.com/s/4nO2VqQLaYxGdDmtQeypCQ) → ④ [注意力机制](https://mp.weixin.qq.com/s/KrilwX6VRjI9KfjvD7C6kw) → ⑤ [前馈网络 FFN](https://mp.weixin.qq.com/s/vBCzukDlQyB9O6ASgAmlvQ) → ⑥ [归一化残差](https://mp.weixin.qq.com/s/v-SBuMTbMANSTxHj7gYDkg) → ⑦ [Transformer 全景](https://mp.weixin.qq.com/s/22J8JPkdpVeUx23KahbBmA) → ⑧ [预训练](https://mp.weixin.qq.com/s/XoGHVycQHR5Tp-BWPac9Hg) → ⑨ [SFT](https://mp.weixin.qq.com/s/vwXGbjm9Ai1GPvQi5O3UyQ) → ⑩ [RLHF](https://mp.weixin.qq.com/s/NJDuCLAEfDpILf2J9D6qLQ) → ⑪ [PPO](https://mp.weixin.qq.com/s/OEZtUhm8MT_En7enJo_8dw) → ⑫ [GRPO](https://mp.weixin.qq.com/s/t4sO-zC5v1_jq8hJT_YTGA) → ⑬ [RLVR](https://mp.weixin.qq.com/s/NvemnDdtkinRKEbmtcckzA) → ⑭ [推理加速](https://mp.weixin.qq.com/s/LvxasW-4t0YuXy8nWpyzVw)
 
 #DeepSeek技术解密 #FP8训练 #混合精度 #量化 #数解AI
 

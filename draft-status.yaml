@@ -206,9 +206,9 @@ articles:
   - slug: "2026-08-08-deepseek-fp8"
     title: "FP8训练：残缺数字怎么练出顶级模型"
     series: "DeepSeek 技术解密"
-    status: drafting
-    published_date: null
-    wechat_url: null
+    status: published
+    published_date: "2026-08-09"
+    wechat_url: "https://mp.weixin.qq.com/s/yxrkmxPSZ8CnsFhWZ1bCPA"
     files:
       weixin: true
       draft: true
@@ -216,14 +216,15 @@ articles:
       cover: true
     notes: "排期 2026-08-08。主线：残缺数字的工程美学（V3 FP8 工程探索，V4 继承）。双深潜：per-tensor vs per-group 量化误差 + online quantization。实验：outlier 量化误差对比（per-tensor 普通行 62.0% vs per-group 2.6%，改善 24 倍；权重场景揭示 128×128 粗粒度缘由）。结构 9 节、正文 3574 字、7 组公式（§2 补浮点范围具体例子）。关键校准（vs 第 9 课笔记）：全链路只用 E4M3（非 forward/backward 分流）；激活 1×128 tile / 权重 128×128 block；Online Quantization 非 Loss Scaling；H800 14-bit 累加陷阱 N_C=128；FP8 vs BF16 相对误差 < 0.25%（V3 附录 B）。标题 17 字。衔接 Muon 篇两处 FP8 线索；末尾预告 FP4 QAT。配图 5 张已生成（封面 21:9 + 4 正文图）。2026-08-08 打磨后已重新保存至公众号草稿箱（remote-api，新 media_id: kOcXH4SytIYVIpYksTGfHoiTJo_aAdd-rvREQ7gYHgDUx5T7oDXtSA6mT77JiVZH，封面 media_id: kOcXH4SytIYVIpYksTGfHi6GOjiGK_57l9eD6-SwzCHskRyKRpeAulAisA8uvfxd，citeStatus: true）。⚠️ 旧草稿（media_id: kOcXH4SytIYVIpYksTGfHqPqaakzpx18vk0YeklGLkeYVQZ_UFUYs5-PHzdfwhxx）作废，发布前请在草稿箱删除。发布前在网页确认声明原创。grill 日志：.grill/deepseek-fp8.md。2026-08-08 打磨：去说书腔（删「先交代排篇」「今天拆三件事」，标题改「mHC 篇的承诺，今天兑现」）；注入人味十处（①埋我×2：8 个台阶愣了 + 62% 以为是 bug 排查三遍 / ②卡住合并 ① / ③记账比喻开头 / ④闲笔×2：试出来的 128 间隔 + 结尾好系统直觉 / ⑤自嘲：以为 FP8 是 BF16 砍一半 / ⑥读论文：附录 B 专门找大尺度数字 / ⑦callback 带记忆：Muon 留了两个尾巴 / ⑧承认不知道：非第三方复现，不当 FP8 无敌证据 / ⑨拉读者算账：1.6T 权重 BF16 3.2TB vs FP8 1.6TB）；结尾补 💬 开放留言问题（FP8 微调/推理经验）+ 点赞收藏 CTA；改「读者可能会想」→「你可能会想」、「我们一笔带过」→「这里就不展开了」；拆超长句 2 处。实验数字已复现（62.0%/2.6%/23.9 倍）。长句 0 超标、无禁词、话题标签 5 个。
 2026-08-11 重存草稿（尾部改为「🔥 近期热门」Top 6 每篇一行，去掉合集箭头链），新 media_id: kOcXH4SytIYVIpYksTGfHh4KOLCgSt7o4vsqxZ5yQnt0IXorv36ekwp3IJRzW_dm（封面 media_id: kOcXH4SytIYVIpYksTGfHqKs0VEt4CL8sTSHY-SIAKKaMDNHb7-uIzEeDtm508gl）。旧草稿 kOcXH4SytIYVIpYksTGfHoiTJo_aAdd-rvREQ7gYHgDUx5T7oDXtSA6mT77JiVZH 及作废稿 kOcXH4SytIYVIpYksTGfHqPqaakzpx18vk0YeklGLkeYVQZ_UFUYs5-PHzdfwhxx 需在草稿箱删除。
-2026-08-11 第三轮重存（--theme grace 蓝色主题 + 热门链接每行独立段落），**最终 media_id: kOcXH4SytIYVIpYksTGfHms_8-gF1LkrflPq5GC8Kz1DubJDFs80WtjQWB2MIO1P**。前两轮草稿（…Hh4KOLCg… 与 …HvAmfbsp…）均作废需删除。⚠️ wechat-api.ts 不读 EXTEND.md 的 default_theme，保存草稿必须显式加 --theme grace，否则渲染成 normal 黑白主题。"
+2026-08-11 第三轮重存（--theme grace 蓝色主题 + 热门链接每行独立段落），**最终 media_id: kOcXH4SytIYVIpYksTGfHms_8-gF1LkrflPq5GC8Kz1DubJDFs80WtjQWB2MIO1P**。前两轮草稿（…Hh4KOLCg… 与 …HvAmfbsp…）均作废需删除。⚠️ wechat-api.ts 不读 EXTEND.md 的 default_theme，保存草稿必须显式加 --theme grace，否则渲染成 normal 黑白主题。
+2026-08-09 发布前终检：wechatUrl 回填（去 query string）；Muon 正文首提处补内联链接（§1）；修复 §2「下一篇深潜」→「下一节深潜」（粒度深潜在本篇 §3）；拆分 §9 两处超长句（61/63 字 → 破折号改句号）；尾部在近期热门基础上补齐系列合集导航（DeepSeek 技术解密列表 + 大模型原理合集，本篇加粗、FP4 待发布）。实验复现 62.0%/2.6%/23.9×。质量门禁 10 项全部通过。published_date 按实际发布日 08-09。"
 
   - slug: "2026-08-09-deepseek-fp4-qat"
     title: "FP4量化：4位数字怎么做到无损"
     series: "DeepSeek 技术解密"
-    status: drafting
-    published_date: null
-    wechat_url: null
+    status: published
+    published_date: "2026-08-09"
+    wechat_url: "https://mp.weixin.qq.com/s/Bra0y-wCSeYEW5ABxa3slw"
     files:
       weixin: true
       draft: true
@@ -232,10 +233,64 @@ articles:
     notes: "排期 2026-08-09。主线：无损压缩的算术（FP4→FP8 反量化无损）。双深潜：STE 直通梯度 + FP4→FP8 无损反量化（E4M3 多 2 个指数位、1×32 子块 / 128×128 块、scale 比值 ≤ 约 2×10³ 条件）。双实验（experiment.py 已跑通）：STE vs 截断收敛对比（截断 6.866 恒 / STE 0.993 / 基线 0.951）+ 无损性验证（≤2000× 误差 0，3000× 开始有损）。indexer 节正文兑现 99.7% recall（QK path FP4 + 分数 BF16 化 2× 加速）。结尾预告 KV 磁盘（08-10）。grill 日志：.grill/deepseek-fp4-qat.md。配图 5 张已生成（封面 21:9 + 4 张正文图，prompt 与正文一致，已逐张核验文字）。已保存至公众号草稿箱（remote-api，media_id: kOcXH4SytIYVIpYksTGfHvKPZ0WgbusGvIzWqLs_Lf2AoqOL1b7tGQhvAxunOZG-，封面 media_id: kOcXH4SytIYVIpYksTGfHtO54PEFEAWn0ck2htE6XzJXro4KKCu2PrAE48G0LNpS）。⚠️ 旧稿（media_id 以 …fHjLeOeRu 开头）作废，发布前请在草稿箱删除。发布前在网页确认声明原创。
 文风迭代：2026-08-09 二稿按 style-guide.md 重写，去除说书腔（「先交代排篇」「今天拆三件事」等），注入人味八法（①埋我 7 处 / ②卡住 2 / ③比喻故事 / ⑤自嘲 / ⑥读论文时刻 / ⑦callback 带记忆 / ⑧承认不知道 / ⑨拉读者算账：专家权重 1.55T 占 97%，FP4 省 776GB≈再装一个 700B 模型），结尾改开放式显存话题。质量自检：无禁词、无超 60 字句、口语词 0。
 2026-08-11 重存草稿（尾部改为「🔥 近期热门」Top 6 每篇一行，去掉合集箭头链），新 media_id: kOcXH4SytIYVIpYksTGfHo7bVdfJvHyYxQlSjJIcKxUZFlkHLuka3oPr6zaCsvs6（封面 media_id: kOcXH4SytIYVIpYksTGfHmBJIcBwiNeUxcAyE5Gd9d_FnS2j6SmGwx38L2vWyL8J）。旧草稿 kOcXH4SytIYVIpYksTGfHvKPZ0WgbusGvIzWqLs_Lf2AoqOL1b7tGQhvAxunOZG- 及旧稿（…fHjLeOeRu 开头）需在草稿箱删除。
-2026-08-11 第三轮重存（--theme grace 蓝色主题 + 热门链接每行独立段落），**最终 media_id: kOcXH4SytIYVIpYksTGfHmcT0J8RzBShBC2WaRw8gXizUh84aUrI79FBQgL32H2D**。前两轮草稿（…Ho7bVdfJ… 与 …）均作废需删除。保存草稿必须显式加 --theme grace（wechat-api.ts 不读 EXTEND.md default_theme）。"
+2026-08-11 第三轮重存（--theme grace 蓝色主题 + 热门链接每行独立段落），**最终 media_id: kOcXH4SytIYVIpYksTGfHmcT0J8RzBShBC2WaRw8gXizUh84aUrI79FBQgL32H2D**。前两轮草稿（…Ho7bVdfJ… 与 …）均作废需删除。保存草稿必须显式加 --theme grace（wechat-api.ts 不读 EXTEND.md default_theme）。
+2026-08-09 发布日质量核查（9 项清单）：发现并修复 4 处——①§4.3 scale 比值公式指数符号反了（(448×2⁻⁶)/(6×0.5)=2.33 ≠ 2.4×10³，改为 (448×0.5)/(6×2⁻⁶)=2389，与实验表 2000×✓/3000×✗ 吻合）；②H800 张数 19→20（1550/80=19.4 需进位）；③超长句拆分（STE 段 74 字 → 2 句）；④专家数 385→384 路由专家（对照 V4 报告 §4.2.1 原文「1 shared + 384 routed」与官方 config.json n_routed_experts:384，1.55T/97% 不变）；另补 FP8 篇内链（08-08 已发布 yxrkmxPSZ8CnsFhWZ1bCPA）+ 点赞/收藏引导。实验数据重跑全部吻合（STE 0.993/截断 6.866/基线 0.951；≤2000× 无损）。**核查后重存草稿 media_id: kOcXH4SytIYVIpYksTGfHmq6BKQGNvzG9wxzSnV6rntsu6Kf6rwwSI9w43vu8II1**（封面 media_id: kOcXH4SytIYVIpYksTGfHjVysmZkv2kbMp2C4he0XYcvikdduuzEACLBsyOH40bu）。旧草稿 …HmcT0J8Rz…（第三轮）、…Ho7bVdfJ…、…HvKPZ0Wg… 及 …fHjLeOeRu 开头旧稿均需在草稿箱删除，保留最新一版即可。发布前在网页确认声明原创。
+2026-08-09 按作者反馈补 STE 机制解释（§3.2）：公式后新增两段——「:= 念作定义不念作等于，是人为规定」+「拆计算图：W_q 之后全可微，∂L/∂W_q 早已算出，卡住的只有量化器这一环（导数 0），STE 直接取用不再过量化器」，衔接原有「当恒等映射求导」句与 3.3 V4 等价写法。长句/禁词扫描通过。**重存草稿 media_id: kOcXH4SytIYVIpYksTGfHhcEVOGlu-2lyBQ8DQZj59GHUEVioHGN0NWbzbjBiHs4**（封面 media_id: kOcXH4SytIYVIpYksTGfHmEEookobfQdWQLq2eK1I477q6OQ9La79utsMEJg547V）。旧草稿 …Hmq6BKQG… 及更早版本均作废需删除。发布前在网页确认声明原创。
+2026-08-09 已发布，wechatUrl 已回填：https://mp.weixin.qq.com/s/Bra0y-wCSeYEW5ABxa3slw（同步回填 KV 磁盘篇正文「FP4 量化篇（待发布）」为内链）。"
 
   - slug: "2026-08-10-deepseek-kv-disk"
     title: "KV缓存存进SSD：慢50倍的硬盘，为什么反而更快？"
+    series: "DeepSeek 技术解密"
+    status: published
+    published_date: 2026-08-10
+    wechat_url: "https://mp.weixin.qq.com/s/40BQ06eDTv4-2r8FmQ_rMA"
+    files:
+      weixin: true
+      draft: true
+      outline: true
+      cover: true
+    notes: "排期 2026-08-10。主线：秒回之谜 → 档案/状态分层。双深潜：磁盘 vs 重算权衡 + lcm(m,m') 对齐。三实验（experiment.py 已跑通：交叉点 36K token、1M 读盘 2s vs 重算 61s 快 30 倍；SWA 三策略存储 81.9/1.28/0 GB；lcm 对齐 2667 块 vs 单分支 8000+ 块）。V4 报告 §3.6.2 原文核验（注意是 §3.6 不是 §3.5）：m=4/m'=128（V4-Flash）、SWA 8×、n_win=128、三策略原文、尾部不完整块重算。K=V 与异构分层维度澄清（entry 内部 vs entry 之间）已写入。第 8 节 K3 同题不同解（KDA 固定状态 + vLLM 32K 检查点 + Mooncake >90% 命中率，来源已核验）。标题 B'：KV缓存存进SSD：慢50倍的硬盘，为什么反而更快？（21 字）。grill 日志：.grill/deepseek-kv-disk.md。2026-08-10 定稿：补数学细节（prefill FLOPs 公式、交叉点推导 n*=kG/(BLc)、lcm 最小性两理由、SWA Zero 有界重算推导 ≤n_win×L、半块不存盘 m 倍算术账、K3 O(n) vs O(1)），正文 3769 字、6 组公式、无禁词无长句；加量级估算说明。封面 00-cover.png 已生成（21:9，标题与正文一致）。已保存至公众号草稿箱（remote-api，media_id: kOcXH4SytIYVIpYksTGfHrXgWrSQm5OzIt4Owpwu0znPz_Nk2jvELH3eC1Rksz9d，2026-08-10 人味终版：埋我×3（§3 疯了吗 / §5 犯嘀咕 / §7 愣住了）、闲笔×2（§7 丑但够用 / 结尾 放哪儿）、回扣节改名「第二次问，为什么秒回？」与开头对仗；旧草稿 …HqRdFMPV… / …HoRLI_SV… / …Higdi-Ws… 需删除）。发布前在网页确认声明原创。待办：FP4 发布后回填其链接；发布时勾选合集。
+2026-08-11 重存草稿（尾部改为「🔥 近期热门」Top 6 每篇一行，去掉合集箭头链），新 media_id: kOcXH4SytIYVIpYksTGfHm00F-Pd96tPCMx2AzENXw7wA_bFb2IpJFXM69Kq7PjK（封面 media_id: kOcXH4SytIYVIpYksTGfHhGCP63LQD0TC006V8vf1q1wdDm8bJSPGpmFCcHNJUpo）。旧草稿 kOcXH4SytIYVIpYksTGfHrXgWrSQm5OzIt4Owpwu0znPz_Nk2jvELH3eC1Rksz9d 及 …HqRdFMPV…/…HoRLI_SV…/…Higdi-Ws… 开头旧稿需在草稿箱删除。
+2026-08-11 第三轮重存（--theme grace 蓝色主题 + 热门链接每行独立段落），**最终 media_id: kOcXH4SytIYVIpYksTGfHvrQvkVkBYuseTTmlZGkL07mZ-AsmLQSymnWt13WZSyj**。前两轮草稿（…Hm00F-Pd… 与 …Hh4KOLCg… 无关，第二轮 …HvAmfbsp… 系 FP8）均作废需删除。保存草稿必须显式加 --theme grace（wechat-api.ts 不读 EXTEND.md default_theme）。
+2026-08-10 打磨后重存草稿（remote-api --theme grace）：**新 media_id: kOcXH4SytIYVIpYksTGfHrPuKBxoPomaY1PeGu6CCEmwJG2QkaOt6N2SFHuI5r_H**（封面 media_id: kOcXH4SytIYVIpYksTGfHgstv9NSTNzLW009i__Jb1mFR3LLsV1JxMMNuATuvosY）。旧草稿 …HvrQvkVkBY…（第三轮）作废需在草稿箱删除，保留最新一版即可。
+2026-08-10 已发布，wechatUrl 已回填：https://mp.weixin.qq.com/s/40BQ06eDTv4-2r8FmQ_rMA（同步回填 Indexer 篇正文「KV 落盘篇（待发布）」为内链）。
+2026-08-10 发布前打磨（quality check 11 项全过）：修复 6 处——①「上上篇」×3 →「V4 注意力篇」（V4 注意力篇为 08-04，隔 K=V/mHC/FP8/FP4 四篇，原指称不准）；②开头「上一篇 K=V」→「K=V 篇」（上一篇实为 FP4）；③带宽口径自洽：HBM 1-3 TB/s vs NVMe 3-7 GB/s 实为 140~1000 倍，补「按保守口径：显存 1 TB/s、阵列 20 GB/s」使 50 倍成立；④「V4-Flash 的配置 n_win=128、L=61」→「V4-Pro」（Flash 43 层，61 层是 Pro，硬伤）；⑤「130 token 文档问第三章/第五章」逻辑矛盾 →「同一份长文档…最后一个完整块」；⑥长句拆分 1 处（61 汉字→2 句）。实验复现全过（36K 交叉点、2s/61s/30 倍、81.9/1.28/0 GB、2667 vs 8000/13334 块）；图片 6 张文字与正文一致；尾部近期热门 6 链接全部有效。"
+
+  - slug: "2026-08-11-deepseek-indexer"
+    title: "几万块挑几百块：Lightning Indexer 凭什么敢这么挑"
+    series: "DeepSeek 技术解密"
+    status: published
+    published_date: "2026-08-11"
+    wechat_url: "https://mp.weixin.qq.com/s/QcZUcxYZUw27_J2ykESUHA"
+    files:
+      weixin: true
+      draft: true
+      outline: false
+      cover: false
+    notes: "排期 2026-08-11（Obsidian 第3.1+3.3课优先）。KV 落盘篇链接已回填（08-10 已发布）。V4 技术报告 §2.3.1：indexer 低秩双投影（W_DQ 降维 + W_IUQ 升维）、逐头 ReLU 打分加权求和、top-k 选择；V3.2 DSA 桥接；indexer 显存/算力账。CSA 篇（08-04）只略提 DSA，本篇深化选块机制。
+2026-08-11 重存草稿（尾部改为「🔥 近期热门」Top 6 每篇一行，去掉合集箭头链），新 media_id: kOcXH4SytIYVIpYksTGfHpQTReGi2L28I4hIHTCoD_sWMCXZnD3tWx5rVgG_ady_（封面 media_id: kOcXH4SytIYVIpYksTGfHhKrrAsHQHadwSN-fXJoaQ9q6BVUgj6YwAF5MULhnUui）。
+2026-08-11 第三轮重存（--theme grace 蓝色主题 + 热门链接每行独立段落），**最终 media_id: kOcXH4SytIYVIpYksTGfHjvQPbPGS2DF64v59UrOuiD0sNdQRMeEu4r1Dyk6nHdc**。第二轮草稿（…HpQTReGi…）作废需删除。保存草稿必须显式加 --theme grace（wechat-api.ts 不读 EXTEND.md default_theme）。
+2026-08-12 已发布，wechatUrl 已回填：https://mp.weixin.qq.com/s/QcZUcxYZUw27_J2ykESUHA（同步回填 MTP 篇正文「Indexer 篇（待发布）」为内链）。"
+
+  - slug: "2026-08-12-deepseek-mtp"
+    title: "MTP：一次猜两个词，推理快1.8倍"
+    series: "DeepSeek 技术解密"
+    status: drafting
+    media_id: "kOcXH4SytIYVIpYksTGfHmoamT-_dU9gUVW45bnLd50AdxL0L1_Oml_jpk132V3H"
+    cover_media_id: "kOcXH4SytIYVIpYksTGfHiswiS2j1muinBxiuiyxUlQdicz7ccsi0aGV1Lev3p60"
+    notes: "草稿已入草稿箱（2026-08-09，remote-api）。6 图齐（封面 21:9 + 5 正文 1:1，文字已与正文核对）。正文引用 Indexer 篇已替换为真实链接（2026-08-12：https://mp.weixin.qq.com/s/QcZUcxYZUw27_J2ykESUHA）；尾部近期热门 Top 6 发布前核对。标题/主线经事实核查修正：1.8× 为推理 TPS（V3 §5.4.3），非训练加速。
+排期 2026-08-12（Obsidian 第5课后半）。V3 继承设计：Multi-Token Prediction 并行预测下一 token + 侧头链；训练加速 ~1.8×、推理投机解码两用；V4 保持 MTP 深度 1。小篇幅架构篇。"
+
+    published_date: null
+    wechat_url: null
+    files:
+      weixin: false
+      draft: false
+      outline: false
+      cover: false
+
+  - slug: "2026-08-13-deepseek-parallel"
+    title: "1.6T参数怎么塞进GPU？V4五维并行策略"
     series: "DeepSeek 技术解密"
     status: ready
     published_date: null
@@ -245,63 +300,21 @@ articles:
       draft: true
       outline: true
       cover: true
-    notes: "排期 2026-08-10。主线：秒回之谜 → 档案/状态分层。双深潜：磁盘 vs 重算权衡 + lcm(m,m') 对齐。三实验（experiment.py 已跑通：交叉点 36K token、1M 读盘 2s vs 重算 61s 快 30 倍；SWA 三策略存储 81.9/1.28/0 GB；lcm 对齐 2667 块 vs 单分支 8000+ 块）。V4 报告 §3.6.2 原文核验（注意是 §3.6 不是 §3.5）：m=4/m'=128（V4-Flash）、SWA 8×、n_win=128、三策略原文、尾部不完整块重算。K=V 与异构分层维度澄清（entry 内部 vs entry 之间）已写入。第 8 节 K3 同题不同解（KDA 固定状态 + vLLM 32K 检查点 + Mooncake >90% 命中率，来源已核验）。标题 B'：KV缓存存进SSD：慢50倍的硬盘，为什么反而更快？（21 字）。grill 日志：.grill/deepseek-kv-disk.md。2026-08-10 定稿：补数学细节（prefill FLOPs 公式、交叉点推导 n*=kG/(BLc)、lcm 最小性两理由、SWA Zero 有界重算推导 ≤n_win×L、半块不存盘 m 倍算术账、K3 O(n) vs O(1)），正文 3769 字、6 组公式、无禁词无长句；加量级估算说明。封面 00-cover.png 已生成（21:9，标题与正文一致）。已保存至公众号草稿箱（remote-api，media_id: kOcXH4SytIYVIpYksTGfHrXgWrSQm5OzIt4Owpwu0znPz_Nk2jvELH3eC1Rksz9d，2026-08-10 人味终版：埋我×3（§3 疯了吗 / §5 犯嘀咕 / §7 愣住了）、闲笔×2（§7 丑但够用 / 结尾 放哪儿）、回扣节改名「第二次问，为什么秒回？」与开头对仗；旧草稿 …HqRdFMPV… / …HoRLI_SV… / …Higdi-Ws… 需删除）。发布前在网页确认声明原创。待办：FP4 发布后回填其链接；发布时勾选合集。
-2026-08-11 重存草稿（尾部改为「🔥 近期热门」Top 6 每篇一行，去掉合集箭头链），新 media_id: kOcXH4SytIYVIpYksTGfHm00F-Pd96tPCMx2AzENXw7wA_bFb2IpJFXM69Kq7PjK（封面 media_id: kOcXH4SytIYVIpYksTGfHhGCP63LQD0TC006V8vf1q1wdDm8bJSPGpmFCcHNJUpo）。旧草稿 kOcXH4SytIYVIpYksTGfHrXgWrSQm5OzIt4Owpwu0znPz_Nk2jvELH3eC1Rksz9d 及 …HqRdFMPV…/…HoRLI_SV…/…Higdi-Ws… 开头旧稿需在草稿箱删除。
-2026-08-11 第三轮重存（--theme grace 蓝色主题 + 热门链接每行独立段落），**最终 media_id: kOcXH4SytIYVIpYksTGfHvrQvkVkBYuseTTmlZGkL07mZ-AsmLQSymnWt13WZSyj**。前两轮草稿（…Hm00F-Pd… 与 …Hh4KOLCg… 无关，第二轮 …HvAmfbsp… 系 FP8）均作废需删除。保存草稿必须显式加 --theme grace（wechat-api.ts 不读 EXTEND.md default_theme）。"
+    notes: "排期 2026-08-13（Obsidian 第16课优先）。DP+TP+PP+CP+EP 五维各切什么、一块 GPU 的多重身份、通信量汇总（V4 配置）、DualPipe/CP 协同。训练系统线入口，后接 CP 与 DualPipe/DeepEP。
+排期 2026-08-13。五维并行（DP/TP/PP/CP/EP）训练系统线入口，接 MTP 预告。grill 日志：.grill/v4-five-dim-parallel.md（谜题式主线 + 并行账本计算器实验）。experiment.py 已跑通：推理 FP8 20 卡 / FP4 部署 10 卡 / 训练分片后每卡 ~16GB；EP 16GB/层 vs CP 9MB/层（近千倍）；EP 61 层 ≈1TB/step、@IB 50GB/s 约 20s。正文 2618 汉字、超长句 0、禁词 0、算术 10 项全对。配图 6 张（yairouter，1254²）文字与正文一致；封面 00-cover.png 已生成（21:9 请求、实际 1930x815，标题完整）。已保存至公众号草稿箱（remote-api --theme grace，media_id: kOcXH4SytIYVIpYksTGfHk-wzRPQTjjw-wnpy4iAAFZ1QJ-cSm_ZvTZ59TtBkgJU，封面 media_id: kOcXH4SytIYVIpYksTGfHm5NV16--wi1bPZcVijiyUwjZ1-s3BTvg64pTOo0PSIa）。发布前在网页确认声明原创 + 勾选合集。待办：发布后回填 wechatUrl。"
 
-  - slug: "2026-08-11-deepseek-indexer"
-    title: "几万块挑几百块：Lightning Indexer 凭什么敢这么挑"
+  - slug: "2026-08-14-deepseek-cp"
+    title: "上下文并行：1M序列为什么切了会坏？"
     series: "DeepSeek 技术解密"
-    status: ready
+    status: drafting
     published_date: null
     wechat_url: null
     files:
       weixin: true
       draft: true
-      outline: false
-      cover: false
-    notes: "排期 2026-08-11（Obsidian 第3.1+3.3课优先）。V4 技术报告 §2.3.1：indexer 低秩双投影（W_DQ 降维 + W_IUQ 升维）、逐头 ReLU 打分加权求和、top-k 选择；V3.2 DSA 桥接；indexer 显存/算力账。CSA 篇（08-04）只略提 DSA，本篇深化选块机制。
-2026-08-11 重存草稿（尾部改为「🔥 近期热门」Top 6 每篇一行，去掉合集箭头链），新 media_id: kOcXH4SytIYVIpYksTGfHpQTReGi2L28I4hIHTCoD_sWMCXZnD3tWx5rVgG_ady_（封面 media_id: kOcXH4SytIYVIpYksTGfHhKrrAsHQHadwSN-fXJoaQ9q6BVUgj6YwAF5MULhnUui）。
-2026-08-11 第三轮重存（--theme grace 蓝色主题 + 热门链接每行独立段落），**最终 media_id: kOcXH4SytIYVIpYksTGfHjvQPbPGS2DF64v59UrOuiD0sNdQRMeEu4r1Dyk6nHdc**。第二轮草稿（…HpQTReGi…）作废需删除。保存草稿必须显式加 --theme grace（wechat-api.ts 不读 EXTEND.md default_theme）。"
-
-  - slug: "2026-08-12-deepseek-mtp"
-    title: "MTP：一次猜两个词，训练快1.8倍"
-    series: "DeepSeek 技术解密"
-    status: planned
-    published_date: null
-    wechat_url: null
-    files:
-      weixin: false
-      draft: false
-      outline: false
-      cover: false
-    notes: "排期 2026-08-12（Obsidian 第5课后半）。V3 继承设计：Multi-Token Prediction 并行预测下一 token + 侧头链；训练加速 ~1.8×、推理投机解码两用；V4 保持 MTP 深度 1。小篇幅架构篇。"
-
-  - slug: "2026-08-13-deepseek-parallel"
-    title: "1.6T参数怎么塞进GPU？V4五维并行策略"
-    series: "DeepSeek 技术解密"
-    status: planned
-    published_date: null
-    wechat_url: null
-    files:
-      weixin: false
-      draft: false
-      outline: false
-      cover: false
-    notes: "排期 2026-08-13（Obsidian 第16课优先）。DP+TP+PP+CP+EP 五维各切什么、一块 GPU 的多重身份、通信量汇总（V4 配置）、DualPipe/CP 协同。训练系统线入口，后接 CP 与 DualPipe/DeepEP。"
-
-  - slug: "2026-08-14-deepseek-cp"
-    title: "上下文并行：1M序列怎么拆给多张GPU？"
-    series: "DeepSeek 技术解密"
-    status: planned
-    published_date: null
-    wechat_url: null
-    files:
-      weixin: false
-      draft: false
-      outline: false
-      cover: false
-    notes: "排期 2026-08-14（Obsidian 第15课优先，558行最厚笔记）。V4 技术报告 §3.4.3：为什么长序列必须 CP；两阶段通信（跨 rank 传 m 个未压缩 KV → all-gather 压缩 KV）；每 rank 压缩长度 s/m+1；对比 Ring-Attention 为什么不适用压缩稀疏注意力。"
+      outline: true
+      cover: true
+    notes: "排期 2026-08-14（Obsidian 第15课优先，558行最厚笔记）。V4 技术报告 §3.5.3（注意非 §3.4.3）：为什么长序列必须 CP；两阶段通信（跨 rank 传 m 个未压缩 KV → all-gather 压缩 KV）；每 rank 压缩长度 s/m+1；对比 Ring-Attention 为什么不适用压缩稀疏注意力。grill 日志：.grill/contextual-parallelism.md（谜题式主线「切了会坏」+ 切了会坏模拟器实验）。关键校准：V4-Pro 真实压缩比 CSA m=4/HCA m'=128（config.json compress_ratios，弃用笔记 m=64 演示值）；CP 通信沿用 parallel 篇口径 9MB/层（KV entry 576B）；阶段1 发 m 个未压缩 KV、产出 s/m+1 个 entry、select-and-pad 后总长 cp_size·s/m；CP=8 为长上下文训练配置口径（报告未披露数值）。experiment.py 已跑通：朴素 CP 缺/错块 vs 两阶段 CP 与单卡基准逐一比对一致（CSA 277/276/277、HCA 4/2/4），10 个随机种子全过。正文 2714 汉字、超长句 0、禁词 0。配图 6 张已生成（yairouter，1254²）文字与正文一致；封面 00-cover.png 已生成（21:9 请求、实际 1928x816，标题完整）。已保存至公众号草稿箱（remote-api --theme grace，media_id: kOcXH4SytIYVIpYksTGfHrvOeVGcn6GYlHEcOwro-DBgSYs2KVknHY6ntsowjqaP，封面 media_id: kOcXH4SytIYVIpYksTGfHgQDI7PsmMMs7pFaDikEtUje41-bXE11-CehAo3VVqZ0）。发布前在网页确认声明原创 + 勾选合集。待办：发布后回填 wechatUrl + 上篇 parallel 链接。"
 
   - slug: "2026-08-15-deepseek-dualpipe-deepep"
     title: "训练时GPU在等什么？DualPipe与DeepEP通信解密"
@@ -423,15 +436,15 @@ articles:
   - slug: "2026-07-28-kimi-k3-architecture"
     title: "Kimi K3 架构怎么撑住 2.8T 参数？三轴拆给你看"
     series: "大模型原理"
-    status: scheduled
-    published_date: null
-    wechat_url: null
+    status: published
+    published_date: "2026-07-28"
+    wechat_url: "https://mp.weixin.qq.com/s/6GJ2781jJh-dqYswJ07dfA"
     files:
       weixin: true
       draft: false
       outline: true
       cover: true
-    notes: "架构全貌篇，KDA+AttnRes+LatentMoE 三轴，含数学直觉。排期：2026-07-28 20:00（Asia/Shanghai）。"
+    notes: "架构全貌篇，KDA+AttnRes+LatentMoE 三轴，含数学直觉。排期：2026-07-28 20:00（Asia/Shanghai）。已发布（frontmatter wechatUrl 已回填；2026-08-09 核查时同步修正 status/wechat_url，原为 scheduled/null 残留）。"
 
   - slug: "2026-07-29-SFT"
     title: "SFT微调：为什么同一个模型，突然就听懂指令了？"
@@ -532,18 +545,16 @@ articles:
 summary:
   total: 38
   by_status:
-    published: 27
-    scheduled: 1
-    ready: 3
+    published: 33
+    scheduled: 0
+    ready: 2
     drafting: 2
-    planned: 5
+    planned: 1
   drafting_queue:
-    - "2026-08-08-deepseek-fp8"
-    - "2026-08-09-deepseek-fp4-qat"
+    - "2026-08-12-deepseek-mtp"
+    - "2026-08-14-deepseek-cp"
   ready_queue:
     - "2026-07-25-fields-medal"
-    - "2026-08-07-mhc"
-    - "2026-08-10-deepseek-kv-disk"
-  scheduled_queue:
-    - "2026-07-28-kimi-k3-architecture"
-  next_publish_date: "2026-08-07"
+    - "2026-08-13-deepseek-parallel"
+  scheduled_queue: []
+  next_publish_date: "2026-08-12"

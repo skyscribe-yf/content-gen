@@ -1,0 +1,67 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Noto Sans CJK SC,34,&H0000FFFF,&H0000FFFF,&H00000000,&H64000000,0,0,0,0,100,100,0,0,1,3,1,2,60,60,52,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.25,0:00:01.25,Default,,0,0,0,,先做个游戏。
+Dialogue: 0,0:00:01.25,0:00:05.91,Default,,0,0,0,,你的账本上，只能写 0.5、1、1.5、2、3、4、6。
+Dialogue: 0,0:00:05.91,0:00:10.74,Default,,0,0,0,,0.8 只能写成 1——每个数字，最多带 25% 的误差。
+Dialogue: 0,0:00:10.74,0:00:13.57,Default,,0,0,0,,要拿这本账记一亿个参数，你干不干？
+Dialogue: 0,0:00:13.57,0:00:14.56,Default,,0,0,0,,反正我不干。
+Dialogue: 0,0:00:14.56,0:00:18.39,Default,,0,0,0,,但 DeepSeek 干了，还宣称反量化无损。
+Dialogue: 0,0:00:18.39,0:00:20.89,Default,,0,0,0,,16 个可选值，你跟我说无损？
+Dialogue: 0,0:00:20.99,0:00:28.85,Default,,0,0,0,,这个账本有个学名：E2M1——1 个符号位、2 个指数位、1 个尾数位。
+Dialogue: 0,0:00:28.85,0:00:34.31,Default,,0,0,0,,正数就 7 个，最大的才 6，连 10 都装不下。
+Dialogue: 0,0:00:34.31,0:00:39.56,Default,,0,0,0,,动态范围 12 倍，精度比 FP8 糙 4 倍。
+Dialogue: 0,0:00:39.56,0:00:46.11,Default,,0,0,0,,但关键在结构：32 个元素共享一个 2 的幂的 scale。
+Dialogue: 0,0:00:46.21,0:00:48.42,Default,,0,0,0,,量化不可微，怎么训练？
+Dialogue: 0,0:00:48.42,0:00:56.04,Default,,0,0,0,,量化是阶梯函数，导数处处是 0——梯度归零，权重永不更新，训练当场死给你看。
+Dialogue: 0,0:00:56.04,0:00:59.65,Default,,0,0,0,,STE 很粗暴：前向照常用量化权重；
+Dialogue: 0,0:00:59.65,0:01:03.26,Default,,0,0,0,,反传假装量化器不存在，梯度原样穿墙。
+Dialogue: 0,0:01:03.26,0:01:07.67,Default,,0,0,0,,严格说这是错的，但它是 QAT 的事实标准。
+Dialogue: 0,0:01:07.67,0:01:15.49,Default,,0,0,0,,实验里，截断那列 300 个 epoch 纹丝不动，STE 降到 0.993。
+Dialogue: 0,0:01:15.59,0:01:17.31,Default,,0,0,0,,「无损」藏在哪？
+Dialogue: 0,0:01:17.31,0:01:24.64,Default,,0,0,0,,先说明白：无损不是 FP4 不丢精度——25% 的精度丢得明明白白。
+Dialogue: 0,0:01:24.64,0:01:30.45,Default,,0,0,0,,无损指的是回程：FP4 反量化回 FP8，零信息损失。
+Dialogue: 0,0:01:30.45,0:01:31.31,Default,,0,0,0,,凭什么？
+Dialogue: 0,0:01:31.31,0:01:37.34,Default,,0,0,0,,两个算术事实：FP4 能表示的数，FP8 全能精确表示；
+Dialogue: 0,0:01:37.34,0:01:41.44,Default,,0,0,0,,scale 是 2 的幂，只移指数位。
+Dialogue: 0,0:01:41.44,0:01:42.08,Default,,0,0,0,,就这？
+Dialogue: 0,0:01:42.08,0:01:43.59,Default,,0,0,0,,一句话就完了。
+Dialogue: 0,0:01:43.69,0:01:45.07,Default,,0,0,0,,但有个边界。
+Dialogue: 0,0:01:45.07,0:01:50.34,Default,,0,0,0,,E4M3 最大到 448，最小约 0.016。
+Dialogue: 0,0:01:50.34,0:01:58.59,Default,,0,0,0,,子块 scale 的比值，不能超过约两千倍——两千以内，误差精确为 0；
+Dialogue: 0,0:01:58.59,0:02:00.89,Default,,0,0,0,,超过三千，溢出饱和。
+Dialogue: 0,0:02:00.89,0:02:09.60,Default,,0,0,0,,打个比方，搬家：4 位的小箱子挪进 8 位的大箱子，东西都是整块的，放得下；
+Dialogue: 0,0:02:09.60,0:02:12.81,Default,,0,0,0,,但容量有上限，塞不下就扁了。
+Dialogue: 0,0:02:12.91,0:02:14.80,Default,,0,0,0,,这套设计换来的大奖：
+Dialogue: 0,0:02:14.80,0:02:19.54,Default,,0,0,0,,QAT 管线直接复用 V3 的 FP8 训练框架，
+Dialogue: 0,0:02:19.54,0:02:20.86,Default,,0,0,0,,不加任何修改。
+Dialogue: 0,0:02:20.86,0:02:25.41,Default,,0,0,0,,算笔账：专家权重 1.55T，占总参数 97%。
+Dialogue: 0,0:02:25.41,0:02:28.06,Default,,0,0,0,,FP8 存要 1.55TB，
+Dialogue: 0,0:02:28.06,0:02:33.55,Default,,0,0,0,,FP4 只要 776GB——一张 H800 才 80GB，
+Dialogue: 0,0:02:33.55,0:02:35.82,Default,,0,0,0,,FP8 得串 20 张，
+Dialogue: 0,0:02:35.82,0:02:38.10,Default,,0,0,0,,FP4 不到 10 张。
+Dialogue: 0,0:02:38.10,0:02:42.83,Default,,0,0,0,,省下的 776GB，够再装一个 700B 的模型。
+Dialogue: 0,0:02:42.93,0:02:45.54,Default,,0,0,0,,99.7% 的召回怎么保住？
+Dialogue: 0,0:02:45.54,0:02:49.27,Default,,0,0,0,,V4 对 indexer 做了两处量化：
+Dialogue: 0,0:02:49.27,0:02:51.88,Default,,0,0,0,,QK path 全 FP4，
+Dialogue: 0,0:02:51.88,0:02:53.19,Default,,0,0,0,,连激活都量化；
+Dialogue: 0,0:02:53.19,0:02:59.15,Default,,0,0,0,,分数压到 BF16，选择器提速 2 倍，召回还停在 99.7%。
+Dialogue: 0,0:02:59.15,0:03:03.07,Default,,0,0,0,,直觉：top-k 选的是排序，不是绝对值。
+Dialogue: 0,0:03:03.07,0:03:09.97,Default,,0,0,0,,BF16 扰动 0.4%——只有压线的第 1024、1025 名可能互换。
+Dialogue: 0,0:03:10.07,0:03:15.18,Default,,0,0,0,,为什么 33T 预训练全用 FP8，QAT 偏偏留到后训练？
+Dialogue: 0,0:03:15.18,0:03:16.20,Default,,0,0,0,,报告没解释。
+Dialogue: 0,0:03:16.20,0:03:18.75,Default,,0,0,0,,我的猜测：预训练最贵、最敏感；
+Dialogue: 0,0:03:18.75,0:03:20.29,Default,,0,0,0,,后训练是临门一脚。
+Dialogue: 0,0:03:20.29,0:03:24.88,Default,,0,0,0,,一句话：模型先学会知识，再学会在 16 个台阶上表达。
+Dialogue: 0,0:03:24.88,0:03:30.33,Default,,0,0,0,,FP4 的美学，是把有损量化放进训练里适应，把回程压缩做成无损。
+Dialogue: 0,0:03:30.33,0:03:33.91,Default,,0,0,0,,下一篇：KV 缓存存进 SSD——明天见。

@@ -37,7 +37,7 @@ keywords: ["Lightning Indexer", "稀疏注意力", "CSA", "DeepSeek-V4", "长上
 
 ## 二、压缩块：把问题从 128K 缩到 32K
 
-V4 的第一步是压缩——把每 m=4 个 token 压成一个「块」（压缩机制在 [V4 注意力篇](https://mp.weixin.qq.com/s/MQEgbY16mLs-N7g2xKW1HQ) 讲过，落盘细节见 KV 落盘篇（待发布），此处只回链不重推）。128K 的上下文，压完之后是 32K 个块——这就是标题里说的「几万块」。
+V4 的第一步是压缩——把每 m=4 个 token 压成一个「块」（压缩机制在 [V4 注意力篇](https://mp.weixin.qq.com/s/MQEgbY16mLs-N7g2xKW1HQ) 讲过，落盘细节见 [KV 落盘篇](https://mp.weixin.qq.com/s/40BQ06eDTv4-2r8FmQ_rMA)，此处只回链不重推）。128K 的上下文，压完之后是 32K 个块——这就是标题里说的「几万块」。
 
 压缩解决了「存得下」，没解决「算得完」：核心注意力还是要对全部 32K 个块做点积。1M 上下文更夸张，每个 query 要面对 **25 万个块**。
 
@@ -175,7 +175,7 @@ DeepSeek 发明了「筛」，GLM 把「筛」变便宜，Kimi 把「筛」整�
 
 如果「先筛后算」这么好用，你觉得模型里还有哪些「全部算一遍」的地方，可以换成先筛后算？评论区聊聊。
 
-下一篇算另一笔时间账：Indexer 省的是推理时翻档案的时间，MTP 省的是训练时猜词的时间。一次猜两个词，训练为什么快 1.8 倍？
+下一篇算另一笔时间账：Indexer 省的是推理时翻档案的时间，MTP 省的是猜词的时间。一次猜两个词，推理为什么快 1.8 倍？
 
 📖 **[大模型原理合集](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzkyMzQyODExNQ==&action=getalbum&album_id=4597831652025925632#wechat_redirect)**：BPE → 词嵌入 → 位置编码 → 注意力 → KDA 长上下文 → FFN → 归一化残差 → Transformer 全景 → 预训练 → Kimi K3 架构 → SFT → RLHF → PPO → GRPO → RLVR → 推理加速
 
