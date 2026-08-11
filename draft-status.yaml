@@ -276,9 +276,11 @@ articles:
     title: "MTP：一次猜两个词，推理快1.8倍"
     series: "DeepSeek 技术解密"
     status: drafting
-    media_id: "kOcXH4SytIYVIpYksTGfHmoamT-_dU9gUVW45bnLd50AdxL0L1_Oml_jpk132V3H"
-    cover_media_id: "kOcXH4SytIYVIpYksTGfHiswiS2j1muinBxiuiyxUlQdicz7ccsi0aGV1Lev3p60"
-    notes: "草稿已入草稿箱（2026-08-09，remote-api）。6 图齐（封面 21:9 + 5 正文 1:1，文字已与正文核对）。正文引用 Indexer 篇已替换为真实链接（2026-08-12：https://mp.weixin.qq.com/s/QcZUcxYZUw27_J2ykESUHA）；尾部近期热门 Top 6 发布前核对。标题/主线经事实核查修正：1.8× 为推理 TPS（V3 §5.4.3），非训练加速。
+    media_id: "kOcXH4SytIYVIpYksTGfHpL9OBJDjBhBIuXviDLPZsf1qLUrYy-t6AaBBuID3nRY"
+    cover_media_id: "kOcXH4SytIYVIpYksTGfHpKnLA1TdiIuEpUbb8zKRunfO-cczGFWedXtyPxp6cDI"
+    notes: "2026-08-12 用户看卡后二改重存草稿（remote-api --theme grace --color blue）：**新 media_id: kOcXH4SytIYVIpYksTGfHpL9OBJDjBhBIuXviDLPZsf1qLUrYy-t6AaBBuID3nRY**（封面 media_id: kOcXH4SytIYVIpYksTGfHpKnLA1TdiIuEpUbb8zKRunfO-cczGFWedXtyPxp6cDI）。修改：删除正文开头大标题（保留 frontmatter 标题作为推送标题）；「一个词一个词往外蹦」改为「一个 token 一个 token 往外蹦」（开头 + §一 + 摘要同步，§一 内「第 1/2 个词」改 token，§三「第 2 个词还没生成」改 token）。质量复查：长句 0、禁词 0、待发布 0。作废草稿需在草稿箱删除：…h4ABDQJ…（首轮终检版）与 …moamT…（08-09 初版）。
+2026-08-12 发布前终检打磨后重存草稿（remote-api --theme grace --color blue）：**新 media_id: kOcXH4SytIYVIpYksTGfHh4ABDQJ_pGjXVE2M34GHEttLhM1ptGiIsuYo-gU_C3N**（封面 media_id: kOcXH4SytIYVIpYksTGfHgAq8WQ3cXOq5GyYV0x-KUZ_TNJ1lb3PLecBHkHCPPp3）。修复：长句拆分 10 处归零（含列表块断句）；CTA 补「收藏 ⭐」；GLM-5.2 消融口径补注（接受长度 4.56→5.47 的消融里 MTP 步数设 7，vLLM 服务配置为 5）；候选词示例改「的地得」。事实全部对源核验：V3 报告 §5.4.3（接受率 85-90%、1.8× TPS）、Table 4（39.0→41.4/20.7→26.8/67.5→66.6/44.5→53.7）、V4-Pro HF config（num_nextn_predict_layers=1）与 V4 报告（MTP 配置同 V3、1.6T）、GLM-5.2 blog/config（IndexShare+KVShare、index_share_for_mtp_iteration=True）、vLLM recipe（num_speculative_tokens 5）。质量门禁全过（长句 0、禁词 0、待发布 0、图片路径/话题标签/尾部链接核对）。旧草稿 …moamT… 及旧封面 …iswi… 需在草稿箱删除。
+草稿已入草稿箱（2026-08-09，remote-api）。6 图齐（封面 21:9 + 5 正文 1:1，文字已与正文核对）。正文引用 Indexer 篇已替换为真实链接（2026-08-12：https://mp.weixin.qq.com/s/QcZUcxYZUw27_J2ykESUHA）；尾部近期热门 Top 6 发布前核对。标题/主线经事实核查修正：1.8× 为推理 TPS（V3 §5.4.3），非训练加速。
 排期 2026-08-12（Obsidian 第5课后半）。V3 继承设计：Multi-Token Prediction 并行预测下一 token + 侧头链；训练加速 ~1.8×、推理投机解码两用；V4 保持 MTP 深度 1。小篇幅架构篇。"
 
     published_date: null

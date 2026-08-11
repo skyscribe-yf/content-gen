@@ -47,16 +47,17 @@ def boxed(label: str, w: float, h: float, color: str, fs: float = 28,
 
 
 def sqrt_group(d_size: float = 52, color: str = YELL, weight: str = "BOLD") -> VGroup:
-    """手绘 √d。结构仿 LaTeX \\sqrt{d}：斜线从横线左端连到 d 左下（斜率≈2），d 顶紧贴横线（2026-08-11 两轮返工定稿）。"""
+    """手绘 √d（2026-08-11 五轮返工定稿）：√ 字形自带顶部横线（只到字形右缘），手绘横线从 √ 右缘**向右延伸**覆盖 d——勿把横线画在 √ 字形上方（叠成粗杠被用户否）。"""
+    sq = Text("√", font=FONT, font_size=d_size, color=color, weight=weight)
     d = Text("d", font=FONT, font_size=d_size, color=color, weight=weight)
-    w, h = d.width, d.height
-    sw = max(3, int(d_size / 5))
-    bar = Line(np.array([-0.8 * w, 0.62 * h, 0]), np.array([1.08 * w, 0.62 * h, 0]),
+    ws, hs = sq.width, sq.height
+    wd, hd = d.width, d.height
+    sw = max(2, int(d_size / 16))  # 细线匹配字形横线，勿用粗线
+    bar_y = sq.get_top()[1] - 0.02 * hs
+    bar = Line(np.array([0.48 * ws, bar_y, 0]), np.array([1.05 * ws, bar_y, 0]),
                color=color, stroke_width=sw)
-    diag = Line(np.array([-0.68 * w, 0.62 * h, 0]), np.array([0.28 * w, -0.55 * h, 0]),
-                color=color, stroke_width=sw)
-    d.shift(RIGHT * 0.55 * w + UP * 0.10 * h)  # d 顶 0.60h，横线 0.62h → 空隙 0.02h
-    return VGroup(bar, diag, d)
+    d.shift(RIGHT * 0.62 * ws + UP * (bar_y - 0.52 * hd))
+    return VGroup(sq, bar, d)
 
 
 def fit(mob, frac: float = 0.85):
@@ -334,7 +335,7 @@ class S4(_Base):
 
         # 页3：关注 ≠ 只看一个
         self.at(15.4)
-        self.play(FadeOut(VGroup(lab2, curve, zero), shift=UP * 0.05), run_time=0.4)
+        self.play(FadeOut(VGroup(lab2, axes, curve, zero), shift=UP * 0.05), run_time=0.4)
         look = t("「关注」= 只看一个", 36, WHITE)
         fit(look, 0.95)
         look.next_to(head, DOWN, buff=1.75)

@@ -176,8 +176,8 @@ class S1(_Base):
 13. **长链路分两行蛇形**：≥5 节点（如 7 步链路）排两行（4+3），行间用黄色折线箭头（`Arrow(行1底部, 行2顶部)`），禁止单行硬塞
 14. **弧线方向与遮挡**：`CurvedArrow` 的 `angle` 正负决定弧凸向——start 在右、end 在左时 `angle=-PI/2` 弧向**下**凸，`+PI/2` 向上凸。循环弧放元素**下方**：`CurvedArrow(右端.get_bottom()+DOWN×0.3, 左端.get_bottom()+DOWN×0.3, angle=-PI/2)`，标签在弧下方，后续元素全部 `next_to` 到标签之下；弧线扫过的区域禁止任何元素（会「遮挡」）
 15. **标签对齐（硬性，2026-08-11 事故）**：多个标签对应多个元素（如 token 标签↔权重条）时，**逐个 `next_to` 对准对应元素**（`t("token 2").next_to(bars[0], UP)`），禁止整组 arrange 后居中（组中心与条中心不重合）
-16. **公式符号禁止 Text 直渲染**（2026-08-11 事故：`√d` 的 √ 与 d 分离不连贯 3 处）：系统无 LaTeX 时用 `sqrt_group()` 手绘（斜线+顶横线+d，scenes.py 模板内置）；**曲线必须配坐标轴**（`Axes` + `axes.plot`，禁止裸 `FunctionGraph` 悬空）
-17. **弧线角度用 arctan2 精确计算**（2026-08-11 事故：拍脑袋 angle=0.5 画过头，弧线未连接 q 与 k₁）：`start_angle=arctan2(q_y, q_x)`、`angle=arctan2(k_y, k_x)-start_angle`
+16. **公式符号禁止 Text 直渲染**（2026-08-11 事故：`√d` 的 √ 与 d 分离不连贯 3 处）：系统无 LaTeX 时用 `sqrt_group()`（scenes.py 模板内置）——**√ 字形自带顶部横线但只到字形右缘**，手绘横线必须从 √ 右缘（`0.48*ws`）**向右延伸**覆盖 d、用**细线**（`d_size/16`）；⚠️ 横线画在 √ 字形上方会叠成粗杠（被用户否）；纯线条画法缺尖角也被否 3 版；**曲线必须配坐标轴**（`Axes` + `axes.plot`，禁止裸 `FunctionGraph` 悬空）；**换页 FadeOut 必须包含本页全部元素**（2026-08-11 事故：S4 页2 加 Axes 后 FadeOut 漏了它，坐标轴残留到页3）
+17. **弧线角度用 arctan2 精确计算**（2026-08-11 事故：拍脑袋 angle=0.5 画过头，弧线未连接 q 与 k₁）：`start_angle=arctan2(q_y, q_x)`、`angle=arctan2(k_y, k_x)-start_angle`；⚠️ **`Arc` 定位必须用 `arc_center=` 参数**（`move_to()` 移动的是弧线 bbox 中心而非圆心，会把弧线整体平移错位）
 18. **next_to 到非居中父元素后必须 `set_x(0)`**（2026-08-11 事故：rowlab 对齐到 ell 偏移中心 + fit 不缩放 → 右端超界被裁「打分」二字）：fit 过的宽文字 next_to(ell/curve/箭头等 bbox 中心≠0 的元素) 后强制水平居中
 19. **否定/纠错视觉（用户拍板 2026-08-11）**：用 `play_red_cross()`（两条粗红线 GrowFromCenter 交叉 + 弹跳，模板内置）盖住被否定的元素，**文字本身用 WHITE**——禁止红色文字 + 单条斜线（红叉已表达否定，文字红色与叉撞色）
 
@@ -258,7 +258,7 @@ python3 scripts/manim_video_build.py content/<日期>-<主题>/shipinhao \
 | 15 | 封面内容集中在**中间 3:4 安全区**（y∈[240,1680]），上下留装饰 | 曾全幅布局被视频号 3:4 裁剪切断标题（2026-08-11 手工重调封面） |
 | 16 | 完播率三件套：**开场 3 秒钩子 + 段间悬念钩 + 结尾预告&互动** | 曾平铺直叙，完播率低（2026-08-11） |
 | 17 | 否定/纠错视觉：**`play_red_cross()` 动态大红叉**（两笔 GrowFromCenter + 弹跳）+ **白色文字**（2026-08-11 注意力视频 3 处） | 曾红字 + 单条斜线被否（「文字就不要用红色了」「红叉叉最好加一个动态效果」） |
-| 18 | **√d 用模板内置 `sqrt_group()` 手绘**（斜线+顶横线+d，Text 渲染 √ 与 d 分离不连贯）；系统无 LaTeX 时禁用 MathTex | 曾 Text 直写 √d 被否（3 处不连贯） |
+| 18 | **√d 用模板内置 `sqrt_group()`**（√ 字形自带横线只到字形右缘，手绘横线从右缘向右延伸、细线）；系统无 LaTeX 时禁用 MathTex | 曾 Text 直写 √d（3 处不连贯）→ 曾纯线条 3 版（像 \\d/¬/v+d）→ 曾横线叠字形上（粗杠，2026-08-11） |
 | 19 | **boxed()/fit() 只缩小不放大**（`if width > limit` 才 set_width） | 曾无条件 set_width 放大短字符（Q/K/V/追/猫/qᵢ 顶出框，2026-08-11 四连发） |
 
 ## 常见坑（快速自查，细节见正文对应步骤）
@@ -271,13 +271,14 @@ python3 scripts/manim_video_build.py content/<日期>-<主题>/shipinhao \
 6. logo/品牌图背景色与画布不一致 → 先裁圆角透明 PNG（PIL `rounded_rectangle` mask）（Step 5）
 7. 配音稿写公式符号 → TTS 卡顿 2s+（实测 ‖Q‖‖K‖cosθ 停 2.18s）；生成后必须扫段内长静音（≥1.5s），有则口语化重跑（Step 3.8 / Step 4）
 8. `boxed()`/`fit()` 忘加「只缩小不放大」→ 短字符被放大顶出框（Q/K/V/追/猫/qᵢ，2026-08-11 四连发）（Step 5.9）
-9. Text 直渲染 `√d` → √ 与 d 分离不连贯 → 用模板内置 `sqrt_group()` 手绘（Step 5.16）
+9. Text 直渲染 `√d` → √ 与 d 分离不连贯 → 用模板内置 `sqrt_group()`（√ 字形 + 从字形右缘向右延伸的细横线，勿叠粗杠）（Step 5.16）
 10. 标签组整组居中不对准对应条/卡 → 逐个 `next_to` 对准（Step 5.15）
 11. 裸 `FunctionGraph` 无坐标轴 → 曲线悬空，必须 `Axes` + `plot`（Step 5.16）
 12. 弧线角度拍脑袋 → 画过头/对不齐，用 `arctan2` 算起止角（Step 5.17）
 13. 宽文字 `next_to` 到非居中元素后超界 → `set_x(0)` 强制居中（Step 5.18）
 14. 删变量后 FadeOut 残留引用 → NameError，改完 `grep` 复查（2026-08-11 S8 slash→cross）
 15. 红字+斜线表示否定 → 用户否：改 `play_red_cross()` 动态大红叉 + 白色文字（Step 5.19）
+16. 场景内新增元素（Axes/装饰）后换页 FadeOut 漏掉它 → 残留到下一页（2026-08-11 S4 坐标轴残留到页3）；改完 grep 每处 FadeOut 与当页元素清单核对
 
 ## 发布要点（同 gemini-video-to-shipinhao SKILL）
 
