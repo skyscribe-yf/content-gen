@@ -1,0 +1,25 @@
+{
+  "output_dir": "content/2026-08-12-维度诅咒",
+  "size": "1792x1024",
+  "quality": "high",
+  "cards": [
+    {
+      "title": "封面",
+      "prompt": "Cinematic wide conceptual illustration on a deep navy-blue background with subtle gold accents. A vast high-dimensional sphere rendered as a translucent glowing shell, countless tiny luminous points concentrated on its thin surface, hollow interior. In the far distance, faint low-dimensional geometric shapes (line segment, square, cube) dissolve into the shell. Vast scale and quiet awe. Clean digital art, minimalist composition, generous empty space on the left. No text, no numbers, no letters.",
+      "size": "1792x768",
+      "filename": "00-cover.png"
+    },
+    {
+      "title": "低维直觉vs高维球壳",
+      "prompt": "Conceptual comparison illustration, split composition. Left side: everyday intuition — a straight line segment, a flat square area, and a solid cube, drawn simply and solidly. Right side: a high-dimensional sphere as a glowing hollow shell with luminous points only on its thin surface, interior empty. A subtle curved arrow flows from left to right, representing intuition breaking down. Deep navy background with warm gold highlights, flat vector style with soft gradients. No text, no numbers, no letters.",
+      "size": "1792x1024",
+      "filename": "02-shell-vs-lowdim.png"
+    },
+    {
+      "title": "内积尺子",
+      "prompt": "Conceptual illustration of a better measuring tool. A glowing golden ruler emits beams of light that measure the direction and projection of abstract vectors, while a plain straight ruler measuring direct distance fades into the background. Abstract mathematical atmosphere, deep navy background, clean minimal flat-vector style, warm gold and cyan accents. No text, no numbers, no letters.",
+      "size": "1792x1024",
+      "filename": "04-inner-product-ruler.png"
+    }
+  ]
+}

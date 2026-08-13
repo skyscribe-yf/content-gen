@@ -6,6 +6,19 @@
 
 起草大纲前**必须先调用 grill-me skill** 与作者深入讨论（`.agents/skills/grill-me/SKILL.md`）。禁止 AI 单方面生成 `.grill/<slug>.md` 日志。详见 [`docs/writing-flow.md`](docs/writing-flow.md)。
 
+## 素材直出公众号草稿 Skill
+
+项目级 skill：[`.agents/skills/raw-material-to-wechat-draft/SKILL.md`](.agents/skills/raw-material-to-wechat-draft/SKILL.md)
+
+封装了「作者扔原始素材 → AI 归纳整理（原声句逐字保留）→ 作者检查点确认 → 双轨配图 → 渲染 → 存公众号草稿箱」流程。关键规则：
+
+- 素材入口：`scripts/new-raw-topic.sh` 创建 `content/<日期>-<slug>/raw.md`，作者把想表达的一切贴进去
+- 动笔前必须读风格语料 `branding/style-corpus/style-features.md`（13 篇作者手敲贴图，2026-08-12 确认）
+- 原声句逐字保留，AI 只补结构、过渡和公众号惯例
+- 整理后必须停在检查点（结构 + 原声句清单 + 配图清单），作者确认前禁止出图
+- 双轨配图：AI 概念图 4-6 张（封面 21:9），数字/结构用脚本画图，AI 图禁止承载数字
+- 只存草稿箱（`--submit` / `draft/add`），禁止直接发布
+
 ## 数学公式
 
 详见 [`docs/math-latex.md`](docs/math-latex.md)。

@@ -22,3 +22,9 @@ tmp_*.html
 .venv-mdnice/
 *.wav
 *.mov
+*.srt
+*.ass
+concat.txt
+full.txt
+tts/
+media/texts/

@@ -13,27 +13,25 @@
 ```
 🔥 热门文章               📚 系列合集               📋 关于
 ├─ 篇1（数据最强）          ├─ 训练回路（6篇·已完结）     ├─ 💬 联系作者
-├─ 篇2                    ├─ 大模型原理（6篇·更新中）   
-├─ 篇3                    ├─ DeepSeek解密（更新中）    
-├─ 篇4                    └─ AI上下文为什么越来越慢      
-├─ 篇5（数据最弱）
+└─ 篇2（次强）             ├─ 大模型原理（6篇·更新中）
+                          ├─ DeepSeek解密（更新中）
+                          └─ AI上下文为什么越来越慢
 ```
 
 ## 各菜单详细配置
 
-### 🔥 热门文章（手动维护，≤5篇）
+### 🔥 热门文章（手动维护，账号当前仅支持 2 篇）
 
 所有子菜单类型选「跳转网页」。按当前阅读量从高到低排列：
 
 | 排序 | 子菜单名 | 链接 |
 |-----|---------|------|
-| 1 | 损失函数 | `https://mp.weixin.qq.com/s/zIWqYqYVzEaF1e8P6fcTfw` |
-| 2 | Adam优化器 | `https://mp.weixin.qq.com/s/aSLVO-otvr2rxIU1kr2eAA` |
-| 3 | 反向传播 | `https://mp.weixin.qq.com/s/oYj_qpwF4tZG84ImOn977g` |
-| 4 | Softmax | `https://mp.weixin.qq.com/s/5wMquh_v3oon2-NEDeQLEw` |
-| 5 | 残差连接 | `https://mp.weixin.qq.com/s/xefNN9Gjaw3TKl60KeHzAg` |
+| 1 | Adam优化器 | `https://mp.weixin.qq.com/s/aSLVO-otvr2rxIU1kr2eAA` |
+| 2 | KV缓存SSD | `https://mp.weixin.qq.com/s/40BQ06eDTv4-2r8FmQ_rMA` |
 
-**维护规则**：新文章阅读量进前 5 时替换末位。被替下的文章通过合集页仍可访问。更新频率：约每月一次。
+**2026-08-12 更新**：按 08-12 审计快照（数据截至 08-11）置顶 Adam 优化器（历史最强长尾，1,109+ 读）与 KV缓存存进SSD（原创技术文推荐动量最快，2 天 647 读）；Softmax、损失函数、反向传播、残差连接被替下，仍通过合集页访问。
+
+**维护规则**：新文章阅读量进前 2 时替换末位。被替下的文章通过合集页仍可访问。更新频率：约每月一次或推荐窗口出现明显变化时。
 
 ### 📚 系列合集（一次配置，永远不动）
 

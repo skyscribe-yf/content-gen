@@ -273,12 +273,13 @@ articles:
 2026-08-12 已发布，wechatUrl 已回填：https://mp.weixin.qq.com/s/QcZUcxYZUw27_J2ykESUHA（同步回填 MTP 篇正文「Indexer 篇（待发布）」为内链）。"
 
   - slug: "2026-08-12-deepseek-mtp"
-    title: "MTP：一次猜两个词，推理快1.8倍"
+    title: "多Token预测：一次猜两个词，快1.8倍"
     series: "DeepSeek 技术解密"
     status: drafting
-    media_id: "kOcXH4SytIYVIpYksTGfHpL9OBJDjBhBIuXviDLPZsf1qLUrYy-t6AaBBuID3nRY"
-    cover_media_id: "kOcXH4SytIYVIpYksTGfHpKnLA1TdiIuEpUbb8zKRunfO-cczGFWedXtyPxp6cDI"
-    notes: "2026-08-12 用户看卡后二改重存草稿（remote-api --theme grace --color blue）：**新 media_id: kOcXH4SytIYVIpYksTGfHpL9OBJDjBhBIuXviDLPZsf1qLUrYy-t6AaBBuID3nRY**（封面 media_id: kOcXH4SytIYVIpYksTGfHpKnLA1TdiIuEpUbb8zKRunfO-cczGFWedXtyPxp6cDI）。修改：删除正文开头大标题（保留 frontmatter 标题作为推送标题）；「一个词一个词往外蹦」改为「一个 token 一个 token 往外蹦」（开头 + §一 + 摘要同步，§一 内「第 1/2 个词」改 token，§三「第 2 个词还没生成」改 token）。质量复查：长句 0、禁词 0、待发布 0。作废草稿需在草稿箱删除：…h4ABDQJ…（首轮终检版）与 …moamT…（08-09 初版）。
+    media_id: "kOcXH4SytIYVIpYksTGfHoCMVjp5B7OnAn4ipjHqyitEI_Vbg3ZSxBLL9TIgEETM"
+    cover_media_id: "kOcXH4SytIYVIpYksTGfHr_q_sSLIa-e_IE2HN9jsbjTFL1uE6RPCVxbsXwg4suY"
+    notes: "2026-08-12 按 SEO 洞察改标题（多Token预测：一次猜两个词，快1.8倍）+ 重写开头后重存草稿（remote-api --theme grace --color blue）：**新 media_id: kOcXH4SytIYVIpYksTGfHoCMVjp5B7OnAn4ipjHqyitEI_Vbg3ZSxBLL9TIgEETM**（封面 media_id: kOcXH4SytIYVIpYksTGfHr_q_sSLIa-e_IE2HN9jsbjTFL1uE6RPCVxbsXwg4suY）。标题 21 字，中文搜索词「多Token预测」前置；开头改为痛点先行（陌生人可读），摘要补「多 Token 预测」。封面未重生成，仍为旧标题图（用户确认不管）。旧草稿 …pL9OBJDj… 需在草稿箱删除。发布前在网页确认声明原创。
+2026-08-12 用户看卡后二改重存草稿（remote-api --theme grace --color blue）：**新 media_id: kOcXH4SytIYVIpYksTGfHpL9OBJDjBhBIuXviDLPZsf1qLUrYy-t6AaBBuID3nRY**（封面 media_id: kOcXH4SytIYVIpYksTGfHpKnLA1TdiIuEpUbb8zKRunfO-cczGFWedXtyPxp6cDI）。修改：删除正文开头大标题（保留 frontmatter 标题作为推送标题）；「一个词一个词往外蹦」改为「一个 token 一个 token 往外蹦」（开头 + §一 + 摘要同步，§一 内「第 1/2 个词」改 token，§三「第 2 个词还没生成」改 token）。质量复查：长句 0、禁词 0、待发布 0。作废草稿需在草稿箱删除：…h4ABDQJ…（首轮终检版）与 …moamT…（08-09 初版）。
 2026-08-12 发布前终检打磨后重存草稿（remote-api --theme grace --color blue）：**新 media_id: kOcXH4SytIYVIpYksTGfHh4ABDQJ_pGjXVE2M34GHEttLhM1ptGiIsuYo-gU_C3N**（封面 media_id: kOcXH4SytIYVIpYksTGfHgAq8WQ3cXOq5GyYV0x-KUZ_TNJ1lb3PLecBHkHCPPp3）。修复：长句拆分 10 处归零（含列表块断句）；CTA 补「收藏 ⭐」；GLM-5.2 消融口径补注（接受长度 4.56→5.47 的消融里 MTP 步数设 7，vLLM 服务配置为 5）；候选词示例改「的地得」。事实全部对源核验：V3 报告 §5.4.3（接受率 85-90%、1.8× TPS）、Table 4（39.0→41.4/20.7→26.8/67.5→66.6/44.5→53.7）、V4-Pro HF config（num_nextn_predict_layers=1）与 V4 报告（MTP 配置同 V3、1.6T）、GLM-5.2 blog/config（IndexShare+KVShare、index_share_for_mtp_iteration=True）、vLLM recipe（num_speculative_tokens 5）。质量门禁全过（长句 0、禁词 0、待发布 0、图片路径/话题标签/尾部链接核对）。旧草稿 …moamT… 及旧封面 …iswi… 需在草稿箱删除。
 草稿已入草稿箱（2026-08-09，remote-api）。6 图齐（封面 21:9 + 5 正文 1:1，文字已与正文核对）。正文引用 Indexer 篇已替换为真实链接（2026-08-12：https://mp.weixin.qq.com/s/QcZUcxYZUw27_J2ykESUHA）；尾部近期热门 Top 6 发布前核对。标题/主线经事实核查修正：1.8× 为推理 TPS（V3 §5.4.3），非训练加速。
 排期 2026-08-12（Obsidian 第5课后半）。V3 继承设计：Multi-Token Prediction 并行预测下一 token + 侧头链；训练加速 ~1.8×、推理投机解码两用；V4 保持 MTP 深度 1。小篇幅架构篇。"
@@ -303,7 +304,11 @@ articles:
       outline: true
       cover: true
     notes: "排期 2026-08-13（Obsidian 第16课优先）。DP+TP+PP+CP+EP 五维各切什么、一块 GPU 的多重身份、通信量汇总（V4 配置）、DualPipe/CP 协同。训练系统线入口，后接 CP 与 DualPipe/DeepEP。
-排期 2026-08-13。五维并行（DP/TP/PP/CP/EP）训练系统线入口，接 MTP 预告。grill 日志：.grill/v4-five-dim-parallel.md（谜题式主线 + 并行账本计算器实验）。experiment.py 已跑通：推理 FP8 20 卡 / FP4 部署 10 卡 / 训练分片后每卡 ~16GB；EP 16GB/层 vs CP 9MB/层（近千倍）；EP 61 层 ≈1TB/step、@IB 50GB/s 约 20s。正文 2618 汉字、超长句 0、禁词 0、算术 10 项全对。配图 6 张（yairouter，1254²）文字与正文一致；封面 00-cover.png 已生成（21:9 请求、实际 1930x815，标题完整）。已保存至公众号草稿箱（remote-api --theme grace，media_id: kOcXH4SytIYVIpYksTGfHk-wzRPQTjjw-wnpy4iAAFZ1QJ-cSm_ZvTZ59TtBkgJU，封面 media_id: kOcXH4SytIYVIpYksTGfHm5NV16--wi1bPZcVijiyUwjZ1-s3BTvg64pTOo0PSIa）。发布前在网页确认声明原创 + 勾选合集。待办：发布后回填 wechatUrl。"
+排期 2026-08-13。五维并行（DP/TP/PP/CP/EP）训练系统线入口，接 MTP 预告。grill 日志：.grill/v4-five-dim-parallel.md（谜题式主线 + 并行账本计算器实验）。experiment.py 已跑通：推理 FP8 20 卡 / FP4 部署 10 卡 / 训练分片后每卡 ~16GB；EP 16GB/层 vs CP 9MB/层（近千倍）；EP 61 层 ≈1TB/step、@IB 50GB/s 约 20s。正文 2618 汉字、超长句 0、禁词 0、算术 10 项全对。配图 6 张（yairouter，1254²）文字与正文一致；封面 00-cover.png 已生成（21:9 请求、实际 1930x815，标题完整）。已保存至公众号草稿箱（remote-api --theme grace，media_id: kOcXH4SytIYVIpYksTGfHk-wzRPQTjjw-wnpy4iAAFZ1QJ-cSm_ZvTZ59TtBkgJU，封面 media_id: kOcXH4SytIYVIpYksTGfHm5NV16--wi1bPZcVijiyUwjZ1-s3BTvg64pTOo0PSIa）。发布前在网页确认声明原创 + 勾选合集。待办：发布后回填 wechatUrl。
+2026-08-13 发布前打磨（数字硬伤 + 长句 + 配图）：①「参数的 12 倍」→「4 倍」（10B FP16 例子 80/20）；「省掉 12 倍显存」→「省掉一整份优化器状态」；②FP4 部署 826GB/80 = 10.3 → 「11 块卡」（10 卡 800GB 装不下，experiment.py 同步修 ceil）；③EP/CP「近千倍」→「近 1800 倍」（1738，digest 同步）；④「EP 一层抵得上 CP 全模型」→「是 CP 全模型（61 层）的近 30 倍」（16.1GB vs 61×9MB）；⑤「横跨几十个节点」→「横跨 8 个节点（64 张卡）」（V3 报告 64 GPUs/8 nodes）；⑥「十年前」→「七八年前」（Megatron 2019/3D 2021）；⑦digest+§二「MLA/CSA」→「CSA/HCA」（V4 无 MLA，硬伤）；⑧长句拆分 12 处归零；⑨03-pp-bubble.png 从 §五 移到 §二 PP 段（图位错位）；⑩CTA 补收藏 ⭐；⑪02/04 两张 AI 图承载错误数字已用 yairouter 重新生成并逐字核验（02 底部改「≈ CP 全模型的 30 倍」、04 塔改「4 倍」3橙+1青），prompts/cards.json 同步更新。
+2026-08-13 打磨后重存草稿（remote-api --theme grace --color blue）：**新 media_id: kOcXH4SytIYVIpYksTGfHo6-TQ2C8C1iB3t1qphDxsHP5bya9hcpHHSAKv9qYQCQ**（封面 media_id: kOcXH4SytIYVIpYksTGfHl14C6Qjjgl6Z4soSOVWqqfjTDYYzPCACRDpb9ggq7zM）。旧草稿 kOcXH4SytIYVIpYksTGfHk-wzRPQTjjw-wnpy4iAAFZ1QJ-cSm_ZvTZ59TtBkgJU 及旧封面需在草稿箱删除。发布前在网页确认声明原创 + 勾选合集。待办：发布后回填 wechatUrl。
+2026-08-13 二改重存草稿：删正文开头大标题（保留 frontmatter 推送标题）；小标题改「四、通信主角」（呼应正文“它是整场戏的主角”）与「结尾：五把刀，各切一刀」；三张尾部堆叠图分散到对应章节（04-ZeRO-1→§三、05-CP→§五、06 留§六，每节一图）。**最终 media_id: kOcXH4SytIYVIpYksTGfHhT1aBInvGvXvFX05BgSzjQSpr4PniSDoqiRdhqWK0mn**（封面同前）。作废草稿需删：…Hk-wzRPQT…（首轮）、…Ho6-TQ2C…（上版）、…HhT1aBInv…（二改）。
+2026-08-13 三改重存草稿：小标题「算快」→「算得快」；§六开头代码块（```）改四行加粗段落（微信渲染不保留代码块换行，挤成一行）。**最终 media_id: kOcXH4SytIYVIpYksTGfHrJSEKhpzj60Fr49MD4jx4k5-cpQSARMSz49ePIYM-f3**（封面同前）。"
 
   - slug: "2026-08-14-deepseek-cp"
     title: "上下文并行：1M序列为什么切了会坏？"

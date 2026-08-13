@@ -101,6 +101,7 @@ def comm_ledger(per_card_params):
     return rows, ep, cp
 
 def main():
+    import math
     mem_rows, per_card = mem_ledger()
     print("=" * 74)
     print("表 1：V4-Pro 1.6T 参数 · 显存账（H800 80GB）")
@@ -110,7 +111,7 @@ def main():
         if "训练" in name:
             print(f"{name:<40}{gb(b):>10.1f} GB{cards:>9.1f} 块/卡")
         else:
-            print(f"{name:<40}{gb(b):>10.0f} GB{cards:>8.0f} 块")
+            print(f"{name:<40}{gb(b):>10.0f} GB{math.ceil(cards):>8.0f} 块")
     print(f"  训练注：分片后每卡仅 ~{gb(mem_rows[-1][1]):.0f}GB 状态，显存不是瓶颈；")
     print(f"  2048 卡的动机是算力（94.4M tokens/step 的 batch，V4 §4.2.2）+ 激活值空间。")
 
@@ -123,7 +124,7 @@ def main():
     for name, b, freq, bus, t in rows:
         size = f"{gb(b):.0f} GB" if b >= 1e9 else f"{b/1e6:.0f} MB"
         print(f"{name:<30}{size:>11}{freq:>14}{bus:>12}{t:>10.2f} s")
-    print(f"\n结论：EP/CP 通信量比 = {ep/cp:.0f} 倍（近千倍）→ EP 是训练系统真正的带宽瓶颈")
+    print(f"\n结论：EP/CP 通信量比 = {ep/cp:.0f} 倍（EP 单层 16GB vs CP 单层 9MB）→ EP 是训练系统真正的带宽瓶颈")
     print(f"  EP 单层 {gb(ep):.1f}GB；61 层全模型 EP 通信 ≈ {gb(ep*N_LAYER):.0f}GB/step（未 overlap 时）")
     print(f"  MegaMoE 融合 kernel 的意义：把这段通信藏进计算（V4 §3.1，1.50~1.73×）")
 
