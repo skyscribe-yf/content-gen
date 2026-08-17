@@ -666,16 +666,56 @@ articles:
     kOcXH4SytIYVIpYksTGfHqDa-VMGRObVnsfmtIFrS9jBahMrdwJ7b0KD9_BxhPks）。旧草稿
     kOcXH4SytIYVIpYksTGfHmW1zi7CMrfrkKB4-WIJEySEJDbdQ7xc6ToIrqDllA3T 与更早的
     …eZBb 需在草稿箱删除。
+    2026-08-17 系列地图改口：文末预告由多维高斯改为 TD / Q-learning；CTA 去掉「十篇」硬承诺。草稿箱需重存后旧 media_id 作废。
+- slug: 2026-08-18-q-learning
+  title: Q-learning是什么？没有转移表怎么解
+  series: 强化学习原理
+  status: drafting
+  published_date: null
+  wechat_url: null
+  files:
+    weixin: true
+    draft: false
+    outline: true
+    cover: true
+  media_id: kOcXH4SytIYVIpYksTGfHibGBWBvJYbbwrAQVUdOwq0REQlwzxrWKdCe4dNtEwh_
+  cover_media_id: kOcXH4SytIYVIpYksTGfHkmX4hlIW6xgUlb8JRmglkXeqzTERHivFKUbfaG1OwMG
+  notes: 强化学习原理系列第三篇。grill 日志 .grill/2026-08-18-q-learning.md。2026-08-17 已存公众号草稿箱
+    （remote-api --theme grace --color blue）。封面 00-cover.png 1280x548 21:9（gpt-image-2
+    1928x816 裁剪，标题完整）。正文 01 概念图 / 02 概念图 / 03-04 脚本图。上篇 wechatUrl 发布后回填。
+    目录日期暂定 08-18，视第二篇实际发布日顺延。
+- slug: 2026-08-19-policy-gradient
+  title: 策略梯度是什么？直接改概率行不行
+  series: 强化学习原理
+  status: drafting
+  published_date: null
+  wechat_url: null
+  files:
+    weixin: true
+    draft: false
+    outline: true
+    cover: true
+  media_id: kOcXH4SytIYVIpYksTGfHp9XsS5xVBgs8SqmU5OFlEt4kMlG1YM0Ex2vHyWS2Xu0
+  cover_media_id: kOcXH4SytIYVIpYksTGfHvVJ_BW9ja2AgqwSG-vessIgtrFoS3tS83Kon-1PCYAn
+  notes: 强化学习原理系列第四篇。grill 日志 .grill/2026-08-19-policy-gradient.md。
+    2026-08-17 已存公众号草稿箱（remote-api --theme grace --color blue）。
+    封面 00-cover.png 1280x548 21:9（gpt-image-2 1915x821 裁剪，标题完整）。
+    正文 01 AI 概念图 / 02-04 脚本图。上篇 wechatUrl 发布后回填开头引用。
+    目录日期暂定 08-19，视第二、三篇实际发布日顺延。
+    **media_id: kOcXH4SytIYVIpYksTGfHp9XsS5xVBgs8SqmU5OFlEt4kMlG1YM0Ex2vHyWS2Xu0**
+    （封面 kOcXH4SytIYVIpYksTGfHvVJ_BW9ja2AgqwSG-vessIgtrFoS3tS83Kon-1PCYAn）。
 summary:
-  total: 39
+  total: 41
   by_status:
     published: 37
     scheduled: 1
     ready: 1
-    drafting: 1
+    drafting: 3
     planned: 0
   drafting_queue:
   - 2026-08-17-bellman
+  - 2026-08-18-q-learning
+  - 2026-08-19-policy-gradient
   ready_queue:
   - 2026-07-25-fields-medal
   scheduled_queue:
