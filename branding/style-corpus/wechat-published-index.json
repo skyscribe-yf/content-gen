@@ -1,0 +1,198 @@
+[
+  {
+    "title": "稀疏注意力怎么挑重点？DeepSeek-V4 只算 1/64 原创",
+    "url": "https://mp.weixin.qq.com/s/QcZUcxYZUw27_J2ykESUHA"
+  },
+  {
+    "title": "突飞猛进的pi agent和友善的openai，你选谁",
+    "url": "https://mp.weixin.qq.com/s/BvD7bEskkqHZOEU6LLKE3w"
+  },
+  {
+    "title": "KV缓存存进SSD：慢50倍的硬盘，为什么反而更快？ 原创",
+    "url": "https://mp.weixin.qq.com/s/40BQ06eDTv4-2r8FmQ_rMA"
+  },
+  {
+    "title": "FP4量化：4位数字怎么做到无损 原创",
+    "url": "https://mp.weixin.qq.com/s/Bra0y-wCSeYEW5ABxa3slw"
+  },
+  {
+    "title": "即将反转！opencode go也要搞峰谷价",
+    "url": "https://mp.weixin.qq.com/s/2dZ2pg3jgfLCKKrCnAnx-Q"
+  },
+  {
+    "title": "FP8训练：残缺数字怎么练出顶级模型 原创",
+    "url": "https://mp.weixin.qq.com/s/yxrkmxPSZ8CnsFhWZ1bCPA"
+  },
+  {
+    "title": "惨烈的厮杀，真是因为用户欲壑难填?",
+    "url": "https://mp.weixin.qq.com/s/KE6AmLnTgtbj1Imoj2M6dg"
+  },
+  {
+    "title": "全额退款！讯飞的coding plan要跑路了吗?",
+    "url": "https://mp.weixin.qq.com/s/JZLtIcE-2tqbPHMvqU49rQ"
+  },
+  {
+    "title": "极限肉搏战背景下，略显落寞的meta何去何从",
+    "url": "https://mp.weixin.qq.com/s/-l23YF6mb_0YLbIk5bp9mQ"
+  },
+  {
+    "title": "QWen3.8 Max评分接近Kimi k3",
+    "url": "https://mp.weixin.qq.com/s/GHpzmgjRKprw6l2VarOyYQ"
+  },
+  {
+    "title": "mHC 怎么让 DeepSeek-V4 稳定训练 61 层？ 原创",
+    "url": "https://mp.weixin.qq.com/s/VKD1Epopeuj_od-ITbg_dQ"
+  },
+  {
+    "title": "opencode这波真要杀疯了",
+    "url": "https://mp.weixin.qq.com/s/QpBB3FosO44aVxmrlTi0Ew"
+  },
+  {
+    "title": "第三方DeepSeek0731还是有希望",
+    "url": "https://mp.weixin.qq.com/s/UtuLritrXLkdWMSBYwm5Uw"
+  },
+  {
+    "title": "Muon 怎么省一半显存？优化器只记一份账 原创",
+    "url": "https://mp.weixin.qq.com/s/7bpfjLYn9E-CiBS4TY8A6w"
+  },
+  {
+    "title": "强悍的大模型之间最强烈的厮杀进行中",
+    "url": "https://mp.weixin.qq.com/s/03KC3uy6xxVKh4dwH7pBNg"
+  },
+  {
+    "title": "K=V：一份KV缓存怎么干两份活？ 原创",
+    "url": "https://mp.weixin.qq.com/s/88kscO8p0kMxHmeGm2llLA"
+  },
+  {
+    "title": "AI时代的软件工程永不消亡",
+    "url": "https://mp.weixin.qq.com/s/G7b0ntRNqP-ijNYrNlEaXA"
+  },
+  {
+    "title": "DeepSeek-V4为何不用MLA？ 原创",
+    "url": "https://mp.weixin.qq.com/s/MQEgbY16mLs-N7g2xKW1HQ"
+  },
+  {
+    "title": "大模型 API 为什么这么慢？首字延迟揭秘 原创",
+    "url": "https://mp.weixin.qq.com/s/LvxasW-4t0YuXy8nWpyzVw"
+  },
+  {
+    "title": "RLVR：可验证奖励怎么重塑后训练？ 原创",
+    "url": "https://mp.weixin.qq.com/s/NvemnDdtkinRKEbmtcckzA"
+  },
+  {
+    "title": "GRPO为什么省显存，却撑不住长程任务？ 原创",
+    "url": "https://mp.weixin.qq.com/s/t4sO-zC5v1_jq8hJT_YTGA"
+  },
+  {
+    "title": "PPO：被顶会拒稿，怎么成了RLHF发动机？ 原创",
+    "url": "https://mp.weixin.qq.com/s/OEZtUhm8MT_En7enJo_8dw"
+  },
+  {
+    "title": "DeepSeek V4 flash居然要压Opus4.8一头了",
+    "url": "https://mp.weixin.qq.com/s/YO1u3QiYnQZeLLDefm3Xcw"
+  },
+  {
+    "title": "RLHF怎么让模型选出好回答？ 原创",
+    "url": "https://mp.weixin.qq.com/s/NJDuCLAEfDpILf2J9D6qLQ"
+  },
+  {
+    "title": "SFT微调：1万条数据就能让模型听话？ 原创",
+    "url": "https://mp.weixin.qq.com/s/vwXGbjm9Ai1GPvQi5O3UyQ"
+  },
+  {
+    "title": "Kimi K3 架构怎么撑住 2.8T 参数？三轴拆给你看 原创",
+    "url": "https://mp.weixin.qq.com/s/6GJ2781jJh-dqYswJ07dfA"
+  },
+  {
+    "title": "一个简单的创作复盘",
+    "url": "https://mp.weixin.qq.com/s/vssjIj3m8k3bvpw3RE0QHA"
+  },
+  {
+    "title": "预训练：只会猜下一个词，模型怎么学会了写文章？ 原创",
+    "url": "https://mp.weixin.qq.com/s/XoGHVycQHR5Tp-BWPac9Hg"
+  },
+  {
+    "title": "Uncle Bob是当之无愧的向导",
+    "url": "https://mp.weixin.qq.com/s/M3blGqL1fWKe6r3pPWqzwA"
+  },
+  {
+    "title": "注意力找人，FFN存知识：跟一句话走完Transformer 原创",
+    "url": "https://mp.weixin.qq.com/s/22J8JPkdpVeUx23KahbBmA"
+  },
+  {
+    "title": "数学太难？菲尔兹奖得主也差点放弃 原创",
+    "url": "https://mp.weixin.qq.com/s/JcqY0-ClRN6Coh0PJjQ2RA"
+  },
+  {
+    "title": "归一化为什么总在前面？61层模型靠它不崩 原创",
+    "url": "https://mp.weixin.qq.com/s/v-SBuMTbMANSTxHj7gYDkg"
+  },
+  {
+    "title": "菲尔兹奖第一次落到本土成长的数学家头上",
+    "url": "https://mp.weixin.qq.com/s/pM2OylOxhnxl5oEyys6Qug"
+  },
+  {
+    "title": "Attention都够了，为什么还要前馈网络？ 原创 已修改",
+    "url": "https://mp.weixin.qq.com/s/vBCzukDlQyB9O6ASgAmlvQ"
+  },
+  {
+    "title": "显存被谁吃掉了？DeepSeek如何省下90% 原创",
+    "url": "https://mp.weixin.qq.com/s/HHMNEdCYThOjCLRozQorhg"
+  },
+  {
+    "title": "Kimi K3：KDA怎么撑住1M上下文？ 原创",
+    "url": "https://mp.weixin.qq.com/s/_RR5LLWgjGNm-qXdSdnAGA"
+  },
+  {
+    "title": "注意力机制是什么？别再当数据库查询 原创",
+    "url": "https://mp.weixin.qq.com/s/KrilwX6VRjI9KfjvD7C6kw"
+  },
+  {
+    "title": "位置编码怎么工作？词序一错意思全变 原创",
+    "url": "https://mp.weixin.qq.com/s/4nO2VqQLaYxGdDmtQeypCQ"
+  },
+  {
+    "title": "词嵌入为什么让AI懂\"苹果\"？5万个0变坐标 原创",
+    "url": "https://mp.weixin.qq.com/s/rDryn1z_hLt7mwi3X8fsxQ"
+  },
+  {
+    "title": "BPE分词：AI为什么把文字切成碎片？ 原创 已修改",
+    "url": "https://mp.weixin.qq.com/s/5nR_KI47v_U8KwpQA4Uv5Q"
+  },
+  {
+    "title": "DeepSeek便宜30倍的秘密：MoE混合专家入门 原创 已修改",
+    "url": "https://mp.weixin.qq.com/s/QdkD0CR2fD-HfY77-gX3Ug"
+  },
+  {
+    "title": "学习率怎么自动调？Adam 优化器拆给你看 原创 已修改",
+    "url": "https://mp.weixin.qq.com/s/aSLVO-otvr2rxIU1kr2eAA"
+  },
+  {
+    "title": "残差连接：为什么56层比20层还差 原创 已修改",
+    "url": "https://mp.weixin.qq.com/s/xefNN9Gjaw3TKl60KeHzAg"
+  },
+  {
+    "title": "Softmax为什么不直接取最大值？ 原创 已修改",
+    "url": "https://mp.weixin.qq.com/s/5wMquh_v3oon2-NEDeQLEw"
+  },
+  {
+    "title": "反向传播是什么？AI怎么知道自己错在哪 已修改",
+    "url": "https://mp.weixin.qq.com/s/oYj_qpwF4tZG84ImOn977g"
+  },
+  {
+    "title": "为什么AI上下文越长越慢？两道数学硬墙一次讲透 已修改",
+    "url": "https://mp.weixin.qq.com/s/PLVRS0TTHXHDve1Z3r6M7Q"
+  },
+  {
+    "title": "损失函数：打分标准决定学习方向 已修改",
+    "url": "https://mp.weixin.qq.com/s/zIWqYqYVzEaF1e8P6fcTfw"
+  },
+  {
+    "title": "梯度下降：蒙着眼下山 已修改",
+    "url": "https://mp.weixin.qq.com/s/V6mGvCVFpTvmC51pNtxiTw"
+  },
+  {
+    "title": "敏捷软件开发：回归本源的本源是什么 原创 已修改",
+    "url": "https://mp.weixin.qq.com/s/NIJepAMwa6i47WKEXREIhA"
+  }
+]

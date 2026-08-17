@@ -12,15 +12,41 @@
 
 原因：电影宽幅（2.35:1）在微信消息列表和朋友圈分享中不会被裁切，视觉冲击力更强，且能容纳更多画面内容。16:9 仍有轻微裁切风险。
 
+**grok 模型下的封面生成（2026-08-15 实测）**：grok 不支持 size 参数，输出固定 1024x1024（偶尔 1280x720）。封面需生成后用 PIL center-crop 到 21:9：
+
+```python
+from PIL import Image
+im = Image.open("00-cover.png")
+tw, th = 1280, 548  # 21:9 at 1280 wide（或 1024x438）
+src_ratio, dst_ratio = im.width/im.height, tw/th
+if src_ratio > dst_ratio:
+    new_w = int(im.height*dst_ratio); x=(im.width-new_w)//2; im = im.crop((x,0,x+new_w,im.height))
+else:
+    new_h = int(im.width/dst_ratio); y=(im.height-new_h)//2; im = im.crop((0,y,im.width,y+new_h))
+im = im.resize((tw,th), Image.LANCZOS)
+im.save("00-cover.png")
+```
+
+⚠️ 裁剪风险：center-crop 可能切掉边缘内容（如底部小字、角落元素）。封面 prompt 须写「主标题居中/居右中部、四周留白、重要元素避开上下边缘」。
+
 ## 语言规则
 
 **所有图片中的文字必须使用中文**，包括标题、标签、坐标轴、图例、注释等。Prompt 中需明确写明中文文字内容，避免生成英文图片后返工。
 
 ---
 
-## ⭐ yairouter API (gpt-image-2) — 默认后端
+## ⭐ yairouter API — 默认后端（gpt-image-2，自动 fallback grok）
 
 客户端脚本：`scripts/yairouter_img.py`
+
+**模型选择（2026-08-15 起）**：默认 `gpt-image-2`；若它不可用（API 返回 404 无权限 / 400 `Argument not supported: size` 等），脚本**自动改用 `grok-imagine-image-quality`**，无需人工干预。也可用 `--model grok-imagine-image-quality` 或 cards.json 的 `model` 字段显式指定。
+
+**grok 模型的差异（实测 2026-08-15）**：
+- 不支持 `size` 参数（请求必 400）——输出固定 **1024x1024 JPEG**
+- 必须带 `response_format="b64_json"`（Zero Data Retention team 无 URL 格式）
+- 中文渲染可靠（标题/标签逐字正确，已用 5 张公众号配图验证）
+- 封面 21:9 需生成后裁剪：见下方「封面图规则」的 grok 补充
+- 脚本保存时自动把 JPEG 字节转成真 PNG（避免微信上传格式不匹配）
 
 **默认参数（成本控制）**：
 - **size: `1:1`**（1024×1024，正方形）
@@ -28,7 +54,7 @@
 
 **默认分辨率规则**：所有图片默认 1K，包括封面图。`1:1` = 1024×1024，`21:9` = 1248×528。需要 2K/4K 时**必须先告知费用差异并要求用户确认**，不得擅自升级。
 
-**ENV**：需要 `YAI_API_KEY` 环境变量（shell 环境变量优先，`.env` 兜底）
+**ENV**：需要 `YAI_API_KEY` 环境变量（shell 环境变量优先，`.env` 兜底）。**若 shell / `.env` 都找不到 key，先 `source ~/.bash_env` 再重试**——`~/.bash_env` 是作者维护的全局密钥文件（含 `YAI_API_KEY` 等），不要直接报「缺 key」或擅自换后端。
 
 ### Size 快捷映射
 

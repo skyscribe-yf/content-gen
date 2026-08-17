@@ -27,7 +27,9 @@
 
 ## 图片生成
 
-默认后端：**yairouter**（gpt-image-2），客户端 `scripts/yairouter_img.py`。默认 1K，封面图强制 **21:9**。⚠️ 上游 API 忽略 size 参数（2026-08-07 实测），输出尺寸以实际返回为准。prompt 内文字/数字/年份必须与正文一致。详细流程见 [`docs/image-generation.md`](docs/image-generation.md)。
+默认后端：**yairouter**，客户端 `scripts/yairouter_img.py`。默认模型 gpt-image-2；**若 gpt-image-2 不可用（404 无权限 / 400 size 拒绝），脚本自动 fallback 到 grok-imagine-image-quality**，无需换后端（grok 不支持 size 参数、输出固定 1024x1024 JPEG 需裁剪封面，脚本自动转真 PNG，详见 [`docs/image-generation.md`](docs/image-generation.md)）。默认 1K，封面图强制 **21:9**。⚠️ 上游 API 忽略 size 参数（2026-08-07 实测），输出尺寸以实际返回为准。prompt 内文字/数字/年份必须与正文一致。详细流程见 [`docs/image-generation.md`](docs/image-generation.md)。
+
+**API Key 规则**：若 shell 环境 / `.env` 中找不到所需 API Key（如 `YAI_API_KEY`、`MINIMAX_API_KEY` 等），**先 `source ~/.bash_env`** 再重试，不要直接报「缺 key」或擅自换后端。`~/.bash_env` 是作者维护的全局密钥文件（含 `YAI_API_KEY` 等）。
 
 ## 多平台内容一致性
 
@@ -123,7 +125,7 @@ wechatUrl: "https://mp.weixin.qq.com/s/abc123"
 - 末尾含关注引导（价值承诺 + 系列结构）
 - 结尾含 1 个开放式问题引导留言
 - 摘要须含 2-3 个搜索关键词
-- 最新审计：2026-08-12（数据截至 2026-08-11），详见 [`docs/wechat-data-insights.md`](docs/wechat-data-insights.md)
+- 最新审计：2026-08-15（数据截至 2026-08-14），详见 [`docs/wechat-data-insights.md`](docs/wechat-data-insights.md)
 - 数字事实源：[`docs/wechat-data-audit-log.json`](docs/wechat-data-audit-log.json)，结构见同名 `.schema.json`，操作脚本为 `scripts/wechat_audit_log.py`，报告生成脚本为 `scripts/wechat_audit_report.py`，产物为 `docs/wechat-data-audit-report.html`
 
 ## 视频号视频加工 Skill

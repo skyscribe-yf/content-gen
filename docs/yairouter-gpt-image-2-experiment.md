@@ -113,3 +113,27 @@ curl -sS https://api.yairouter.com/v1/images/generations \
   -d '{"model":"gpt-image-2","prompt":"...","n":1,"size":"1024x1024","quality":"low","output_format":"png"}'
 # 实际尺寸从返回 b64 的 PNG IHDR 读取（偏移 16=宽, 20=高）
 ```
+
+---
+
+## 补充实测（2026-08-15）
+
+**结论：gpt-image-2 对该 key 的 team 已无权限，项目默认后端自动 fallback 到 grok-imagine-image-quality。**
+
+| 项目 | 结果 |
+|------|------|
+| gpt-image-2 带 size 参数 | ❌ HTTP 400 `Argument not supported: size`（不再「忽略」，直接拒绝） |
+| gpt-image-2 不带 size | ❌ HTTP 404 `model does not exist or your team ... does not have access` |
+| zairouter（备选） | ❌ HTTP 401 key 已失效（`authentication token has been invalidated`） |
+| grok-imagine-image-quality + `response_format=b64_json` | ✅ HTTP 200，输出 1024x1024 JPEG |
+| grok-imagine-image-quality 不带 b64_json | ❌ HTTP 400（Zero Data Retention team 只能用 b64_json） |
+| grok-imagine-image-quality 中文渲染 | ✅ 5 张公众号配图验证：标题/标签逐字正确 |
+| grok 封面（1280x720） | ⚠️ 输出非 21:9，需 PIL center-crop 到 1280x548 |
+
+**落地改动**（`scripts/yairouter_img.py` 2026-08-15）：
+- 请求体按模型分支：gpt-image-2 带 `size`；grok 不带 `size`、带 `response_format="b64_json"`
+- gpt-image-2 失败（400/404）自动 fallback grok，无需人工换后端
+- 保存时检测 JPEG 字节 + `.png` 扩展名 → 自动转真 PNG（微信上传格式匹配）
+- 封面 21:9 裁剪流程见 `docs/image-generation.md`
+
+**教训**：grok 不支持 size，封面需裁剪；裁剪前确认 prompt 已要求「重要元素避开上下边缘」，否则 center-crop 会切掉角落内容（本次 00-cover 左下角小字被裁，可接受）。

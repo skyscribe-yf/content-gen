@@ -4,35 +4,33 @@ author: "数解AI"
 date: "2026-08-14"
 type: "解密篇"
 series: "DeepSeek 技术解密"
-digest: "1M token 的序列太长，必须切成 8 段分给 8 张 GPU——听起来像切蛋糕。但 DeepSeek-V4 的答案是：一切就坏。压缩注意力把 KV 按块压缩，压缩块可能横跨两张卡的边界，切完再压，每张卡产出的压缩 KV 还长短不一。V4 用两阶段通信解决：先交换边界原料补齐跨边界块，再 all-gather 压缩 KV、用 select-and-pad 重组。本篇用一个小模拟器，把『为什么切了会坏』和『两阶段怎么修好』跑给你看。"
+digest: "上下文并行（CP）是为 1M 长上下文而生的：序列太长，切成 8 段分给 8 张 GPU——听起来像切蛋糕。但 DeepSeek-V4 的答案是：一切就坏。压缩注意力把 KV 按块压缩，压缩块可能横跨两张卡的边界，切完再压，每张卡产出的压缩 KV 还长短不一。V4 用两阶段通信解决：先交换边界原料补齐跨边界块，再 all-gather 压缩 KV、用 select-and-pad 重组。本篇用一个小模拟器，把『为什么切了会坏』和『两阶段怎么修好』跑给你看。"
 cover: "00-cover.png"
-wechatUrl: null
+wechatUrl: "https://mp.weixin.qq.com/s/UB_ILj-62K3VBUY4_AopSw"
 keywords: ["上下文并行", "CP", "长上下文", "压缩注意力", "CSA", "HCA", "DeepSeek-V4", "大模型训练"]
 ---
 
-# 上下文并行：1M序列为什么切了会坏？
+上篇拆解五维并行时，CP（上下文并行）只给了个开头：把 1M token 的序列切成 8 段，每张卡管一段，各算各的注意力。听起来像切蛋糕——蛋糕切 8 块，每人一块，有什么难的？
 
-上篇拆五维并行时，CP（上下文并行）只给了个开头：把 1M token 的序列切成 8 段，每张卡管一段，各算各的注意力。听起来像切蛋糕——蛋糕切 8 块，每人一块，有什么难的？
+V4 技术报告的回答是：**一切就坏**。今天把「为什么坏」和「怎么修」拆解，再用一个小模拟器跑给你看。
 
-V4 技术报告的回答是：**一切就坏**。今天把「为什么坏」和「怎么修」拆开，再用一个小模拟器跑给你看。
-
-## 一、为什么必须切：3.5TB 的显存账
+## 一、为什么必须切：1.3TB 的显存账
 
 先回到动机。1M token 的序列，注意力这一步要存多少东西？
 
-只看 Q：1M 个 token，每个 token 的 Q 是 7168 维，BF16 每个数占 2 字节：
+只看 Q：1M 个 token，每个 token 的 Q 是 7168 维，FP8 每个数占 1 字节（V4 已不用 BF16，见 [FP8训练那篇](https://mp.weixin.qq.com/s/yxrkmxPSZ8CnsFhWZ1bCPA)）：
 
-$$Q = 10^6 \times 7168 \times 2 \approx 14.3 \text{ GB}$$
+$$Q = 10^6 \times 7168 \times 1 \approx 7.2 \text{ GB}$$
 
-单层注意力要把 Q、K、V、输出都留在显存里，加起来约 **57GB**。V4 有 61 层，激活总量：
+单层注意力要把 Q、KV、输出都留在显存里。注意 V4 的 K/V 已经合并成一份（shared KV MQA，见 [K=V那篇](https://mp.weixin.qq.com/s/88kscO8p0kMxHmeGm2llLA)），所以是 3 份张量而不是 4 份，加起来约 **21.5GB**。V4 有 61 层，激活总量：
 
-$$57 \times 61 \approx 3.5 \text{ TB}$$
+$$21.5 \times 61 \approx 1.3 \text{ TB}$$
 
-一块 H800 只有 80GB。**3.5TB 对 80GB，差了约 44 倍。**
+一块 H800 只有 80GB。**1.3TB 对 80GB，差了约 16 倍。**
 
-你可能会问：Flash Attention 不是解决了注意力矩阵占显存的问题吗？对，它把 T×T 的分数矩阵压成了 O(T)——但 Q、K、V 这些张量本身就是 O(T)，3.5TB 一分没少。
+你可能会问：Flash Attention 不是解决了注意力矩阵占显存的问题吗？对，它把 T×T 的分数矩阵压成了 O(T)——但 Q、KV、输出这些张量本身就是 O(T)，1.3TB 一分没少。
 
-CP 就是为这个而生的：切成 8 段后，每张卡只持有 125K token。所有线性于序列长度的张量都同比缩小 8 倍，Q 从 14.3GB 降到 1.8GB。
+CP 就是为这个而生的：切成 8 段后，每张卡只持有 125K token。所有线性于序列长度的张量都同比缩小 8 倍，Q 从 7.2GB 降到 0.9GB。
 
 所以 CP 不是优化，是**必须**。1M 上下文训练，没有 CP 根本跑不起来。
 
@@ -114,7 +112,7 @@ KB 级，几乎可以忽略。反向传播时梯度原路返回（右 rank 把�
 
 all-gather 要求形状整齐。V4 的办法是：**每张卡先把产出 pad 到统一上界，再 all-gather**。gather 之后每个 rank 拿到的是一块形状整齐的 blob：
 
-$$\text{shape} = \text{cp\_size} \times \text{padded\_len} \times d_{KV}$$
+$$\text{shape} = \text{cp_size} \times \text{padded_len} \times d_{KV}$$
 
 但这块 blob 里**有洞**——padding 不对应任何真实压缩块。如果直接喂给注意力，padding 行会污染注意力分数。
 
@@ -130,9 +128,9 @@ all-gather 解决的是**通信接口的形状对齐**，不是**语义正确**�
 
 举个最小的例子（cp_size=2，m=4）：
 
-```
-Rank 0 sends: [C0, PAD, PAD, PAD]    valid_count = 1
-Rank 1 sends: [C1, C2, C3, PAD]    valid_count = 3
+```text
+Rank 0 sends: [C0, PAD, PAD, PAD]   valid_count = 1
+Rank 1 sends: [C1, C2, C3, PAD]   valid_count = 3
 
 select-and-pad 后: [C0, C1, C2, C3]
 ```
@@ -141,7 +139,13 @@ HCA 和 CSA 的 indexer 拿到去 padding 的全量 entry。CSA 的稀疏路径�
 
 ![阶段 2：all-gather 对齐形状，select-and-pad 修好语义](04-select-pad.png)
 
-顺便解释一个设计取舍：为什么三条路径的「可见范围」要在这里统一处理？为什么两条路径的视图不一样？因为 HCA 和 indexer 的可见范围可以按规则静态预计算。但 CSA sparse 的 top-k，要等 indexer 跑完才知道。所以必须先 gather 全量，才能做选择。这也是为什么 V4 不能像 Ring-Attention 那样「来一块算一块」。压缩边界要等邻居数据就绪，top-k 要全局视野，流水线的 overlap 基础直接消失。一句话：Ring 用流水线藏通信，V4 用压缩省通信，代价是必须先 gather 再算。
+顺便解释一个设计取舍：为什么三条路径的「可见范围」要在这里统一处理？为什么两条路径的视图不一样？
+
+因为 HCA 和 indexer 的可见范围，可以按规则静态预计算。但 CSA sparse 的 top-k，要等 indexer 跑完才知道。所以必须先 gather 全量，才能做选择。
+
+这也是为什么 V4 不能像 Ring-Attention 那样「来一块算一块」。压缩边界要等邻居数据就绪，top-k 要全局视野，流水线的 overlap 基础直接消失。
+
+一句话：Ring 用流水线藏通信，V4 用压缩省通信，代价是必须先 gather 再算。
 
 ## 六、通信量账：9MB vs 72MB
 
@@ -203,14 +207,27 @@ HCA 场景（m=128）更夸张：朴素 CP 从 4 个 entry 直接丢到 2 个，
 
 一个问题留给你：如果让你设计一个「压缩注意力 + 长序列」的训练系统，你会选「先 gather 再算」的 V4 方案吗？还是想办法保留「来一块算一块」的流水线？压缩省通信和流水线藏通信，你更看好哪条路？
 
+🔥 **近期热门**：
+[1.6T参数怎么塞进GPU？V4五维并行策略](https://mp.weixin.qq.com/s/ae1iwvau14gFCnyfg4hVIw)
+
+[多Token预测：一次猜两个词，快1.8倍](https://mp.weixin.qq.com/s/EmjgFu5C6bkpltYidQhLRQ)
+
+[KV缓存存进SSD：慢50倍的硬盘，为什么反而更快？](https://mp.weixin.qq.com/s/40BQ06eDTv4-2r8FmQ_rMA)
+
+[FP8训练：残缺数字怎么练出顶级模型](https://mp.weixin.qq.com/s/yxrkmxPSZ8CnsFhWZ1bCPA)
+
+[mHC 怎么让 DeepSeek-V4 稳定训练 61 层？](https://mp.weixin.qq.com/s/VKD1Epopeuj_od-ITbg_dQ)
+
+[K=V：一份KV缓存怎么干两份活？](https://mp.weixin.qq.com/s/88kscO8p0kMxHmeGm2llLA)
+
 📖 **DeepSeek 技术解密**
-- 1.6T参数怎么塞进GPU？V4五维并行策略（上篇）
+- [1.6T参数怎么塞进GPU？V4五维并行策略（上篇）](https://mp.weixin.qq.com/s/ae1iwvau14gFCnyfg4hVIw)
 - **上下文并行：1M序列为什么切了会坏？（本篇）**
 - DualPipe 与 DeepEP：训练时 GPU 在等什么（下一篇）
 
 📖 **[大模型原理合集](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzkyMzQyODExNQ==&action=getalbum&album_id=4597831652025925632#wechat_redirect)**：① [BPE分词](https://mp.weixin.qq.com/s/5nR_KI47v_U8KwpQA4Uv5Q) → ② [词嵌入](https://mp.weixin.qq.com/s/rDryn1z_hLt7mwi3X8fsxQ) → ③ [位置编码](https://mp.weixin.qq.com/s/4nO2VqQLaYxGdDmtQeypCQ) → ④ [注意力机制](https://mp.weixin.qq.com/s/KrilwX6VRjI9KfjvD7C6kw) → ⑤ [前馈网络 FFN](https://mp.weixin.qq.com/s/vBCzukDlQyB9O6ASgAmlvQ) → ⑥ [归一化残差](https://mp.weixin.qq.com/s/v-SBuMTbMANSTxHj7gYDkg) → ⑦ [Transformer 全景](https://mp.weixin.qq.com/s/22J8JPkdpVeUx23KahbBmA) → ⑧ [预训练](https://mp.weixin.qq.com/s/XoGHVycQHR5Tp-BWPac9Hg) → ⑨ [SFT](https://mp.weixin.qq.com/s/vwXGbjm9Ai1GPvQi5O3UyQ) → ⑩ [RLHF](https://mp.weixin.qq.com/s/NJDuCLAEfDpILf2J9D6qLQ) → ⑪ [PPO](https://mp.weixin.qq.com/s/OEZtUhm8MT_En7enJo_8dw) → ⑫ [GRPO](https://mp.weixin.qq.com/s/t4sO-zC5v1_jq8hJT_YTGA) → ⑬ [RLVR](https://mp.weixin.qq.com/s/NvemnDdtkinRKEbmtcckzA) → ⑭ [推理加速](https://mp.weixin.qq.com/s/LvxasW-4t0YuXy8nWpyzVw)
 
-觉得有用就点个赞 👍、收藏 ⭐ 备用；关注「数解AI」。下一篇拆 DualPipe 与 DeepEP：训练时 GPU 到底在等什么。
+觉得有用就点个赞 👍、收藏 ⭐ 备用；关注「数解AI」。下一篇拆解 DualPipe 与 DeepEP：训练时 GPU 到底在等什么。
 
 #DeepSeek技术解密 #上下文并行 #长上下文 #大模型训练 #数解AI
 
@@ -219,4 +236,6 @@ HCA 场景（m=128）更夸张：朴素 CP 从 4 个 entry 直接丢到 2 个，
 - [DeepSeek-V4 Technical Report](https://arxiv.org/abs/2606.19348)（2026）：§3.5.3 Contextual Parallelism for Long-Context Attention 原文（两阶段通信、s/m+1、cp_size·s/m、select-and-pad、三路径可见范围）——逐项核对原文。
 - HuggingFace `deepseek-ai/DeepSeek-V4-Pro/config.json`（已抓取核验）：`compress_ratios` 交替 [4, 128]（CSA m=4 / HCA m'=128）、61 层、`sliding_window: 128`。
 - [Ring Attention with Blockwise Transformers for Near-Infinite Context](https://arxiv.org/abs/2310.01889)（Liu et al., 2023）：Ring-Attention 原理（击鼓传花 + 在线 softmax），对比 V4 为什么不能流水线式。
+- [FP8训练：残缺数字怎么练出顶级模型](https://mp.weixin.qq.com/s/yxrkmxPSZ8CnsFhWZ1bCPA)：V4 训练用 FP8（E4M3，1 字节）而非 BF16，显存账按 1 字节/数计。
+- [K=V：一份KV缓存怎么干两份活？](https://mp.weixin.qq.com/s/88kscO8p0kMxHmeGm2llLA)：V4 的 K/V 合并为一份（shared KV MQA，head_dim 512），显存账按 3 份张量（Q/KV/输出）计。
 - 实验：`experiment.py` 自包含纯 Python 模拟器（packed sequences 切 8 rank，朴素 CP vs 两阶段 CP vs 单卡基准），仅机制演示，不代表官方性能。

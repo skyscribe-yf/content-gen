@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>数解 AI · 口播录音室</title>
+  <style>
+    :root{color-scheme:dark;--paper:#12171c;--panel:#1b242c;--panel-2:#182027;--line:#33434f;--ink:#edf3f7;--muted:#a8b7c1;--blue:#66b9eb;--yellow:#f2c14e;--green:#69d38c;--red:#ff8181;--quiet:#273139}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.65 ui-sans-serif,system-ui,"Noto Sans CJK SC",sans-serif}.shell{max-width:1120px;margin:auto;padding:26px 18px 54px}.top{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;border-bottom:1px solid var(--line);padding-bottom:20px}.eyebrow{color:var(--yellow);font-size:12px;letter-spacing:.12em;text-transform:uppercase}h1{margin:3px 0;font-size:27px;line-height:1.25}h2{margin:8px 0}.sub{margin:0;color:var(--muted)}
+    button{border:0;border-radius:8px;background:var(--blue);color:#06131b;font-weight:750;padding:9px 15px;cursor:pointer;font-size:14px}button:hover{filter:brightness(1.1)}button:disabled{background:#45525b;color:#94a0a7;cursor:not-allowed}.ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}.danger{background:var(--red)}.device{min-width:270px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px}.device-title{font-weight:700}.status{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}.dot{width:8px;height:8px;border-radius:50%;background:#75828a}.dot.ok{background:var(--green)}.dot.wait{background:var(--yellow)}
+    .layout{display:grid;grid-template-columns:246px minmax(0,1fr);gap:22px;margin-top:24px}.steps{padding:0;margin:0;list-style:none}.steps li{display:flex;gap:10px;align-items:center;padding:10px 9px;border-left:2px solid #40505a;color:var(--muted)}.steps li.selectable{cursor:pointer}.steps li.selectable:hover{background:#202d35;color:var(--ink)}.steps li.current{border-color:var(--yellow);color:var(--ink);background:#1c252b}.steps li.done{border-color:var(--green)}.stepnum{width:25px;height:25px;border-radius:50%;border:1px solid currentColor;text-align:center;line-height:23px;font-size:12px}
+    .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:23px}.label{font-size:12px;letter-spacing:.09em;color:var(--yellow);text-transform:uppercase}.script{font-size:20px;line-height:1.9;margin:12px 0 18px;white-space:pre-wrap}.guide{padding:12px 14px;border-left:3px solid var(--yellow);background:#222c33;color:#d6e0e4}.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}.meta{font-size:13px;color:var(--muted)}.warn{border-color:#8c6d2d;background:#2b291e}.issues{margin:12px 0;padding-left:20px;color:#ffd092}.timeline{display:flex;height:10px;overflow:hidden;border-radius:5px;background:#3d4b53;margin:16px 0 10px}.clipbar{background:#3d87b3;border-right:1px solid #d8edf8}.ready{border-color:#3d8861}.finished{border-color:#3d8861;background:#17261f}.log{max-height:220px;overflow:auto;background:#0d1215;border-radius:8px;padding:12px;font:12px/1.5 ui-monospace,monospace;white-space:pre-wrap;color:#bad0bd}
+    .alignment{margin-top:18px;border:1px solid #486171;border-radius:10px;background:#152027}.align-body{padding:14px}.align-intro{margin:0 0 14px;color:#c5d6df}.map-list{display:grid;gap:10px}.map-row{border:1px solid #3b5361;border-radius:9px;padding:12px;background:#111a20}.map-head{display:flex;justify-content:space-between;gap:12px;font-size:13px;color:var(--muted)}.piece-audios{display:grid;gap:7px;margin:10px 0}.piece-audio{border-left:2px solid #3d87b3;padding-left:9px}.piece-audio audio{display:block;width:100%;height:32px;margin-top:4px}.auto-text,.current-text{margin:8px 0;font-size:14px}.auto-text{color:#c8d6dd}.current-text{padding:8px 10px;border-radius:7px;background:#1c3747}.chips{display:flex;flex-wrap:wrap;gap:6px}.block-chip{display:inline-block;border:1px solid #4f7a91;background:#1c3747;border-radius:999px;padding:2px 8px;font-size:13px;line-height:1.5}.piece-edit{margin-top:11px;border-top:1px solid #334955;padding-top:9px}.piece-edit summary{cursor:pointer;color:#d8edf8;font-weight:700}.candidate-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:7px;margin-top:10px}.candidate{display:flex;flex-direction:column;align-items:flex-start;gap:3px;text-align:left;background:#274b60;color:#edf3f7;padding:9px}.candidate.active{outline:2px solid var(--yellow)}.candidate small{font-weight:400;color:#c7d9e2}.delete-note{color:#ffd092}.save-note{margin:14px 0 0;font-size:13px;color:var(--muted)}.mapping-error{padding:10px;border-radius:8px;background:#2b291e;color:#ffd092}
+    @media(max-width:760px){.top,.layout{display:block}.device{margin-top:16px;min-width:0}.layout{margin-top:16px}.steps{display:flex;overflow:auto;margin-bottom:16px}.steps li{min-width:max-content;border-left:0;border-bottom:2px solid #40505a}.steps li.current{border-color:var(--yellow)}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="top"><div><div class="eyebrow">Voice input / Manim handoff</div><h1>口播录音室</h1><p class="sub">逐段确认；人工匹配会成为后续字幕与动画的时间锚点。</p></div><aside class="device" id="device"></aside></header>
+    <div class="layout"><nav><ol class="steps" id="steps"></ol></nav><section id="content"></section></div>
+  </main>
+  <script>
+    const $=s=>document.querySelector(s);
+    const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+    const PUNCT=new Set(['。','！','？','；','，','、','：']);
+    const alignments=new Map();
+    let snapshot=null,lastRenderKey='',selectedSegmentId=null;
+
+    async function post(url,payload){const options={method:'POST'};if(payload!==undefined){options.headers={'Content-Type':'application/json'};options.body=JSON.stringify(payload)}const response=await fetch(url,options);const data=await response.json();if(!response.ok)alert(data.message||data.error||'操作失败');else{selectedSegmentId=null;await refresh()}return data}
+    function device(m,probing){const cls=m.input_ready?'ok':m.available?'wait':'';const signal=m.signal_db===null||m.signal_db===undefined?'待检测':m.signal_db+' dB';return `<div class="device-title">🎙 ${esc(m.name||'CM40')}</div><div class="status"><i class="dot ${cls}"></i>${esc(m.message||'检测中')}</div><div class="meta">输入电平：${signal}</div><div class="actions"><button class="ghost" ${probing?'disabled':''} onclick="post('/api/mic/probe')">${probing?'检测中…':'检测输入（请说话）'}</button></div>`}
+    function selectSegment(segmentId){
+      if(!snapshot)return;
+      const segment=snapshot.segments.find(item=>item.id===segmentId);
+      if(!segment||segment.status==='pending')return;
+      selectedSegmentId=segmentId;lastRenderKey='';render(snapshot);
+    }
+    function steps(state){return state.segments.map((s,i)=>{const selectable=s.status!=='pending';return `<li class="${s.is_current?'current ':''}${s.status==='approved'?'done ':''}${selectable?'selectable':''}" ${selectable?`onclick="selectSegment('${s.id}')"`:''} title="${selectable?'点击查看并可重新录制':'请按顺序录制'}"><span class="stepnum">${s.status==='approved'?'✓':i+1}</span><span>第 ${i+1} 段<br><small>${s.status==='approved'?'已确认':s.status==='review'?'待试听':'待录制'}</small></span></li>`}).join('')}
+    function textBlocks(text){const blocks=[];let start=0;for(let i=0;i<text.length;i++){if(PUNCT.has(text[i])){blocks.push(text.slice(start,i+1));start=i+1}}if(start<text.length)blocks.push(text.slice(start));return blocks.filter(Boolean)}
+    function plainLength(text){return String(text||'').replace(/\s+/g,'').length}
+    function chips(blocks,start,count){return blocks.slice(start,start+count).map((block,index)=>`<span class="block-chip" title="标点文本块 ${start+index+1}">${esc(block)}</span>`).join('')}
+
+    function automaticPlan(blocks,pieces){
+      // Queue first: keep 1 audio ↔ 1 text while possible.  Only the tail
+      // absorbs an unavoidable count mismatch, so an earlier delete never
+      // makes a middle piece suddenly claim the next two sentences.
+      const groups=[];let audioIndex=0,textIndex=0;
+      const usableAudio=Math.min(pieces.length,blocks.length*3);
+      while(audioIndex<usableAudio&&textIndex<blocks.length){
+        const remainingAudio=usableAudio-audioIndex,remainingText=blocks.length-textIndex;
+        const audioCount=Math.max(1,remainingAudio-3*(remainingText-1));
+        const textCount=Math.max(1,remainingText-3*(remainingAudio-audioCount));
+        if(audioCount>3||textCount>3)return null;
+        groups.push({audioStart:audioIndex,audioCount,textStart:textIndex,textCount,delete:false});
+        audioIndex+=audioCount;textIndex+=textCount;
+      }
+      if(textIndex!==blocks.length)return null;
+      while(audioIndex<pieces.length){
+        groups.push({audioStart:audioIndex,audioCount:1,textStart:textIndex,textCount:0,delete:true});
+        audioIndex++;
+      }
+      return groups;
+    }
+
+    function savedPlan(analysis,pieces){
+      if(!analysis.manual_alignment||!Array.isArray(analysis.clips))return null;
+      const groups=[];let nextAudio=0,nextText=0;
+      for(const mapped of analysis.clips){
+        if(!Number.isInteger(mapped.block_start)||!Number.isInteger(mapped.block_end))return null;
+        const start=pieces.findIndex((piece,index)=>index>=nextAudio&&Math.abs(piece.start-mapped.start)<.01);
+        const end=pieces.findIndex((piece,index)=>index>=start&&Math.abs(piece.end-mapped.end)<.01);
+        if(start!==nextAudio||end<start||mapped.block_start!==nextText)return null;
+        groups.push({audioStart:start,audioCount:end-start+1,textStart:nextText,textCount:mapped.block_end-mapped.block_start+1,delete:false});
+        nextAudio=end+1;nextText=mapped.block_end+1;
+      }
+      return nextAudio===pieces.length?groups:null;
+    }
+
+    function rebuildPlan(model){
+      const groups=[];let audioIndex=0,textIndex=0;model.error='';
+      while(audioIndex<model.pieces.length){
+        const fixed=model.overrides.get(audioIndex);
+        if(fixed){
+          if(fixed.delete){groups.push({audioStart:audioIndex,audioCount:1,textStart:textIndex,textCount:0,delete:true,manual:true});audioIndex++;continue}
+          if(audioIndex+fixed.audioCount>model.pieces.length||textIndex+fixed.textCount>model.blocks.length){model.error='当前选择超出了剩余的音频或文本块。';break}
+          groups.push({audioStart:audioIndex,audioCount:fixed.audioCount,textStart:textIndex,textCount:fixed.textCount,delete:false,manual:true});
+          audioIndex+=fixed.audioCount;textIndex+=fixed.textCount;continue;
+        }
+        const tail=automaticPlan(model.blocks.slice(textIndex),model.pieces.slice(audioIndex));
+        if(!tail){model.error='剩余文本无法按每次 1～3 个音频和 1～3 个文本块匹配；请调整前面的选择。';break}
+        groups.push(...tail.map(group=>({...group,audioStart:group.audioStart+audioIndex,textStart:group.textStart+textIndex,manual:false})));
+        audioIndex=model.pieces.length;textIndex=model.blocks.length;
+      }
+      if(!model.error&&textIndex!==model.blocks.length)model.error='仍有文本块没有对应音频。';
+      model.plan=groups;
+    }
+
+    function alignmentModel(segment){
+      if(alignments.has(segment.id))return alignments.get(segment.id);
+      const analysis=segment.analysis,blocks=textBlocks(segment.text),pieces=analysis.audio_pieces||analysis.clips||[];
+      if(!blocks.length||!pieces.length)return null;
+      const model={blocks,pieces,overrides:new Map(),plan:[],error:''};
+      const saved=savedPlan(analysis,pieces);
+      if(saved)for(const group of saved)model.overrides.set(group.audioStart,group);
+      rebuildPlan(model);alignments.set(segment.id,model);return model;
+    }
+
+    function viableChoice(model,group,audioCount,textCount){
+      if(group.audioStart+audioCount>model.pieces.length||group.textStart+textCount>model.blocks.length)return false;
+      return Boolean(automaticPlan(model.blocks.slice(group.textStart+textCount),model.pieces.slice(group.audioStart+audioCount)));
+    }
+
+    function setGroup(segmentId,audioStart,audioCount,textCount){
+      const model=alignments.get(segmentId);if(!model)return;
+      for(const key of [...model.overrides.keys()])if(key>=audioStart)model.overrides.delete(key);
+      model.overrides.set(audioStart,{audioCount,textCount,delete:false});rebuildPlan(model);refreshAlignment(segmentId);
+    }
+
+    function confirmAutoSubtitle(segmentId,audioStart){
+      const model=alignments.get(segmentId);if(!model)return;
+      const group=model.plan.find(item=>item.audioStart===audioStart);
+      if(!group||group.delete||!group.textCount)return;
+      for(const key of [...model.overrides.keys()])if(key>=audioStart)model.overrides.delete(key);
+      model.overrides.set(audioStart,{audioCount:group.audioCount,textCount:group.textCount,delete:false});
+      rebuildPlan(model);refreshAlignment(segmentId);
+    }
+
+    function deletePiece(segmentId,audioStart){
+      const model=alignments.get(segmentId);if(!model)return;
+      for(const key of [...model.overrides.keys()])if(key>=audioStart)model.overrides.delete(key);
+      model.overrides.set(audioStart,{delete:true});rebuildPlan(model);refreshAlignment(segmentId);
+    }
+
+    function pieceAudios(segment,model,group){
+      return model.pieces.slice(group.audioStart,group.audioStart+group.audioCount).map((piece,index)=>`<div class="piece-audio"><div class="meta">音频片段 ${group.audioStart+index+1} · ${Number(piece.start).toFixed(2)}–${Number(piece.end).toFixed(2)}s</div>${piece.audio?`<audio controls preload="none" src="/api/audio/phrase/${segment.id}/${piece.audio}"></audio>`:''}${group.manual?'':`<div class="auto-text">自动匹配：${esc(piece.text||'（无文字候选）')}</div>`}</div>`).join('');
+    }
+
+    function groupEditor(segment,model,group){
+      const start=group.textStart;
+      const choices=[];
+      for(let audioCount=1;audioCount<=3;audioCount++)for(let textCount=1;textCount<=3;textCount++)if(viableChoice(model,group,audioCount,textCount)){
+        const active=!group.delete&&group.audioCount===audioCount&&group.textCount===textCount?'active':'';
+        choices.push(`<button class="candidate ${active}" onclick="setGroup('${segment.id}',${group.audioStart},${audioCount},${textCount})"><strong>连续 ${audioCount} 段音频 → ${textCount} 个文本块</strong><small>${esc(model.blocks.slice(start,start+textCount).join(''))}</small></button>`);
+      }
+      return `<details class="piece-edit"><summary>编辑此片段的对应关系</summary><p class="meta">候选从文本块 ${start+1} 开始。选择后，后续片段会从这组文本的下一块自动重排。</p><div class="candidate-grid">${choices.join('')}</div><div class="actions"><button class="danger" onclick="deletePiece('${segment.id}',${group.audioStart})">删除当前这 1 段音频</button></div><p class="meta">可把连续 1～3 段音频标为同一组文本；这是匹配关系，不会合并音频文件。</p></details>`;
+    }
+
+    function groupCard(segment,model,group,index){
+      const current=group.delete?'<p class="delete-note"><strong>当前字幕：—（已删除）</strong>；下一段候选从这里继续。</p>':group.manual?`<div class="current-text"><strong>当前字幕：</strong><div class="chips">${chips(model.blocks,group.textStart,group.textCount)}</div></div>`:`<div class="current-text"><strong>自动匹配：</strong><div class="chips">${chips(model.blocks,group.textStart,group.textCount)}</div><button class="ghost" onclick="confirmAutoSubtitle('${segment.id}',${group.audioStart})">确认字幕</button></div>`;
+      return `<article class="map-row"><div class="map-head"><span>匹配单元 ${index+1} · 音频 ${group.audioStart+1}${group.audioCount>1?'–'+(group.audioStart+group.audioCount):''}</span><span>${group.delete?'删除':group.audioCount+' 段音频 ↔ '+group.textCount+' 个文本块'}</span></div><div class="piece-audios">${pieceAudios(segment,model,group)}</div>${current}${groupEditor(segment,model,group)}</article>`;
+    }
+
+    function alignmentBody(segment){
+      const model=alignmentModel(segment);if(!model)return '<p class="meta">当前没有可编辑的音频或文本块。</p>';
+      const body=model.error?`<div class="mapping-error">${esc(model.error)}</div>`:model.plan.map((group,index)=>groupCard(segment,model,group,index)).join('');
+      return `<p class="align-intro">每个自动切出的音频片段都在下方列出试听与自动匹配。点击各自的「编辑」后，只能删除当前一段音频，或选择连续 <strong>1～3 段音频</strong>对应连续 <strong>1～3 个标点文本块</strong>；下一候选会自动接着已确认文本往后排。</p><div class="map-list">${body}</div><p class="save-note">保存会删除已标记的音频片段（原始录音保留），其余片段不合并；人工确认的对应关系会用于字幕与 Manim。</p><div class="actions"><button onclick="saveAlignment('${segment.id}')" ${model.error?'disabled':''}>保存这段对应关系</button></div>`;
+    }
+
+    function refreshAlignment(segmentId){const segment=snapshot.segments.find(item=>item.id===segmentId);const node=document.getElementById('alignment-body-'+segmentId);if(segment&&node)node.innerHTML=alignmentBody(segment)}
+    async function saveAlignment(segmentId){const model=alignments.get(segmentId);if(!model||model.error)return;const pieces=model.plan.map(group=>group.delete?{audio_start:group.audioStart,delete:true}:{audio_start:group.audioStart,audio_count:group.audioCount,block_start:group.textStart,block_end:group.textStart+group.textCount-1});const result=await post('/api/alignment/'+segmentId,{pieces});if(result.ok){alignments.delete(segmentId);lastRenderKey='';await refresh()}}
+    function alignmentEditor(segment){const label=segment.analysis.manual_alignment?'已保存人工匹配，可再次编辑':'逐个确认音频片段与文本候选';return `<section class="alignment"><div class="align-body"><div class="label">${label}</div><div id="alignment-body-${segment.id}">${alignmentBody(segment)}</div></div></section>`}
+
+    function review(segment){
+      const analysis=segment.analysis,pieces=analysis.audio_pieces||analysis.clips||[];
+      const bars=pieces.map(piece=>`<i class="clipbar" style="width:${Math.max(1,(piece.end-piece.start)/analysis.duration*100)}%" title="${piece.start.toFixed(2)}–${piece.end.toFixed(2)}s"></i>`).join('');
+      const issues=(analysis.issues||[]).map(issue=>`<li>${esc(issue)}</li>`).join('');
+      const blocked=(analysis.blocking||[]).length>0;
+      const primary=blocked?'<span class="meta">存在必须修复的问题；请重录此段。</span>':'<button onclick="post(\'/api/approve/'+segment.id+'\')">确认对应关系，下一段</button>';
+      const record=`<button class="ghost" onclick="post('/api/record/${segment.id}')">重新录制</button>`;
+      const alignment=segment.status==='review'&&segment.is_current?alignmentEditor(segment):'';
+      const actions=segment.status==='approved'?`<span class="meta">这段已确认；如需修正，可直接重新录制。</span>${record}`:segment.is_current?`${primary}${record}`:`<span class="meta">请先确认前面的段落；本段仍可重新录制。</span>${record}`;
+      return `<article class="card ${analysis.issues?.length?'warn':'ready'}"><div class="label">第 ${segment.id.slice(1)} 段 · ${segment.status==='approved'?'已确认 · ':''}试听与文本对应</div><p class="meta">裁剪后 ${analysis.duration}s · 语音占比 ${Math.round(analysis.speech_ratio*100)}% · 最长停顿 ${analysis.longest_pause}s${analysis.peak_db!=null?` · 峰值 ${analysis.peak_db}dB${analysis.clip_ratio>0?` · 削波样本 ${(analysis.clip_ratio*100).toFixed(3)}%`:''}`:''}</p><audio controls preload="metadata" src="/api/audio/trim/${segment.id}"></audio><div class="timeline" title="自动切出的音频片段">${bars}</div>${issues?`<ul class="issues">${issues}</ul>`:''}${alignment}<div class="actions">${actions}</div></article>`;
+    }
+
+    function activeCard(segment,state){if(state.recording&&state.recording.seg===segment.id){const phase=state.recording.phase,count=Math.ceil(state.countdown);return `<article class="card"><div class="label">第 ${segment.id.slice(1)} 段 · ${phase==='countdown'?'准备':'录制中'}</div><div class="script">${esc(segment.text)}</div><p class="guide">${phase==='countdown'?`准备 <span id="countdown">${count}</span>s 后开始。`:`请自然朗读；每句间停顿 0.3–0.5 秒。软上限 ${state.recording.cap}s。`}</p><div class="actions"><button class="danger" onclick="post('/api/record/stop')">${phase==='processing'?'正在分析…':'结束录音'}</button></div></article>`}if(segment.status==='review'||segment.status==='approved')return review(segment);return `<article class="card"><div class="label">第 ${segment.id.slice(1)} 段 · 待录制</div><div class="script">${esc(segment.text)}</div><div class="guide">面向 CM40，距离约 20–30cm。每段一口气完成；每句话自然停顿 0.3–0.5 秒。若念错，直接结束后重录本段。</div><p class="meta">音量提示：别离麦太近、别太用力，重音/大声时不要顶满（0dB）——顶满就是削波，后期救不回来，声音会发破发闷。建议峰值在 -6~-1dB 之间。</p><p class="meta">建议时长约 ${(segment.text.replaceAll(' ','').length*.195).toFixed(0)} 秒；录音软上限 ${Math.floor(segment.text.replaceAll(' ','').length*.195*1.15)+10} 秒。</p>${segment.error?`<p class="issues">${esc(segment.error)}</p>`:''}<div class="actions"><button onclick="post('/api/record/${segment.id}')" ${!state.mic.available?'disabled':''}>开始录制</button></div></article>`}
+    function finished(state){const final=state.finalize;if(final.status==='running')return '<article class="card"><div class="label">最终交接</div><h2>正在修音并生成停顿时间线…</h2></article>';if(final.status==='complete')return `<article class="card finished"><div class="label">已交接</div><h2>可以进入 Manim 场景制作</h2><p>最终音频、逐段时长和句级边界已经就绪：<code>${esc(final.manifest)}</code></p>${final.log?`<pre class="log">${esc(final.log)}</pre>`:''}</article>`;if(final.status==='error')return `<article class="card warn"><div class="label">交接失败</div><h2>${esc(final.message)}</h2><pre class="log">${esc(final.log||'')}</pre><button onclick="post('/api/finalize')">重试生成</button></article>`;return '<article class="card"><div class="label">全部段落已确认</div><h2>生成后续流程需要的音频文件</h2><p>将按现有 <code>voice_process.py</code> 做去噪、响度与一致性处理，并写入自动或人工确认的边界。</p><button onclick="post(\'/api/finalize\')">生成制作文件</button></article>'}
+    function updateLive(state){const countdown=$('#countdown');if(countdown)countdown.textContent=Math.ceil(state.countdown)}
+    function render(state){snapshot=state;const {countdown,...stable}=state,key=JSON.stringify(stable);if(key===lastRenderKey){updateLive(state);return}lastRenderKey=key;$('#device').innerHTML=device(state.mic,state.mic_probing);$('#steps').innerHTML=steps(state);const activeId=state.recording?.seg||selectedSegmentId||state.current;const active=state.segments.find(segment=>segment.id===activeId)||state.segments.find(segment=>segment.is_current);$('#content').innerHTML=active?activeCard(active,state):finished(state);updateLive(state)}
+    async function refresh(){try{render(await (await fetch('/api/state',{cache:'no-store'})).json())}catch(error){console.error(error)}}setInterval(refresh,800);refresh();
+  </script>
+</body>
+</html>

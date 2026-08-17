@@ -28,3 +28,13 @@ concat.txt
 full.txt
 tts/
 media/texts/
+
+.npm-cache/
+.pi/
+media/videos/
+media/Tex/
+media/papers/
+**/shipinhao/media/texts/
+**/shipinhao/recordings/
+**/shipinhao/media/videos/
+**/shipinhao/media/Tex/

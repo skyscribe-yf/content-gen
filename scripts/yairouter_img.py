@@ -1,15 +1,21 @@
 """
-yairouter 高质量图片生成客户端 — gpt-image-2
+yairouter 高质量图片生成客户端 — gpt-image-2（自动 fallback grok-imagine-image-quality）
 
 yairouter API 配置（实测 2026-08-07）：
   端点: https://api.yairouter.com/v1/images/generations
-  模型: gpt-image-2
+  模型: gpt-image-2（默认）/ grok-imagine-image-quality（备选）
   认证: Authorization: Bearer $YAI_API_KEY（shell 环境变量优先，.env 兜底）
   质量: high
 
-⚠️ 已知问题：上游官方 API 忽略 size 参数（实测请求任意 size 均返回
-1254x1254 / 1536x1024 / 1024x1536 等随机尺寸），详见
-docs/yairouter-gpt-image-2-experiment.md。本工具按实际输出保存，不做裁剪。
+⚠️ 已知问题：
+  1. 上游 API 忽略 size 参数（实测请求任意 size 均返回 1254x1254 / 1536x1024 /
+     1024x1536 等随机尺寸），详见 docs/yairouter-gpt-image-2-experiment.md。
+     本工具按实际输出保存，不做裁剪。
+  2. 2026-08-15 实测：gpt-image-2 对该 team 返回 404 无权限 + size 参数被 400 拒绝
+     （"Argument not supported: size"）；grok-imagine-image-quality 可用，但要求
+     response_format=b64_json（Zero Data Retention team 无 URL 格式）、不支持 size
+     参数、输出固定 1024x1024 JPEG。脚本在 gpt-image-2 失败时自动 fallback 到
+     grok，并把 JPEG 字节转成真 PNG 保存。
 
 ✅ 质量核查：每张生成后自动读取实际尺寸并与请求尺寸比对，不符时
 打印 ⚠️ 通知；批量模式结束时汇总不符清单。
@@ -17,6 +23,9 @@ docs/yairouter-gpt-image-2-experiment.md。本工具按实际输出保存，不�
 用法:
   # 单张生成
   python yairouter_img.py --prompt "..." --size 1024x1536 --output card.png
+
+  # 显式指定 grok 模型（跳过 gpt-image-2 探测）
+  python yairouter_img.py --prompt "..." --model grok-imagine-image-quality --output card.png
 
   # 批量从 cards.json
   python yairouter_img.py --config content/2026-07-03-梯度下降/xiaohongshu/cards.json
@@ -71,6 +80,11 @@ SIZE_MAP = {
     "2.35:1": "1792x768",
 }
 
+# 备选模型：gpt-image-2 不可用时自动 fallback
+FALLBACK_MODEL = "grok-imagine-image-quality"
+# grok 模型：不支持 size 参数、要求 b64_json、输出固定 1024x1024 JPEG
+GROK_OUTPUT_SIZE = "1024x1024"
+
 # 尺寸核查记录（批量模式汇总用）
 _size_mismatches: list[tuple[str, str, str]] = []
 
@@ -105,15 +119,25 @@ def generate(
     n: int = 1,
     output_dir: str = ".",
     filename: str = "",
+    model: str = "gpt-image-2",
 ) -> list[str]:
-    """生成图片并保存"""
+    """生成图片并保存。gpt-image-2 失败时自动 fallback 到 grok-imagine-image-quality。"""
     key = _api_key()
 
     # 解析尺寸
     if size in SIZE_MAP:
         size = SIZE_MAP[size]
 
-    print(f"📤 提交 gpt-image-2 (size={size}, quality={quality}, n={n})")
+    def _payload(m):
+        p = {"model": m, "prompt": prompt, "n": n, "quality": quality}
+        if m == FALLBACK_MODEL:
+            # grok：Zero Data Retention team 只能用 b64_json，不支持 size
+            p["response_format"] = "b64_json"
+        else:
+            p["size"] = size
+        return p
+
+    print(f"📤 提交 {model} (size={size if model != FALLBACK_MODEL else GROK_OUTPUT_SIZE}, quality={quality}, n={n})")
     print(f"   Prompt: {prompt[:80]}...")
 
     resp = requests.post(
@@ -122,15 +146,24 @@ def generate(
             "Authorization": f"Bearer {key}",
             "Content-Type": "application/json",
         },
-        json={
-            "model": "gpt-image-2",
-            "prompt": prompt,
-            "n": n,
-            "size": size,
-            "quality": quality,
-        },
+        json=_payload(model),
         timeout=180,
     )
+
+    # gpt-image-2 失败（404 无权限 / 400 参数拒绝等）→ 自动 fallback grok
+    if resp.status_code != 200 and model != FALLBACK_MODEL:
+        print(f"❌ {model} 返回 {resp.status_code}: {resp.text[:200]}")
+        print(f"🔄 自动改用 {FALLBACK_MODEL} 重试...")
+        model = FALLBACK_MODEL
+        resp = requests.post(
+            API_URL,
+            headers={
+                "Authorization": f"Bearer {key}",
+                "Content-Type": "application/json",
+            },
+            json=_payload(model),
+            timeout=180,
+        )
 
     if resp.status_code != 200:
         print(f"❌ API 返回 {resp.status_code}: {resp.text[:300]}")
@@ -168,10 +201,23 @@ def generate(
             fname = f"yairouter-{int(time.time())}-{i+1}.{ext}"
 
         filepath = output_dir / fname
+        # grok 返回 JPEG 字节：扩展名是 .png 时转成真 PNG，避免微信上传格式不匹配
+        if fname.lower().endswith(".png"):
+            try:
+                from PIL import Image
+                import io
+                im = Image.open(io.BytesIO(img_bytes))
+                if im.format != "PNG":
+                    buf = io.BytesIO()
+                    im.convert("RGB").save(buf, "PNG")
+                    img_bytes = buf.getvalue()
+                    print(f"  🔄 {fname}: {im.format} 字节 → 真 PNG")
+            except Exception:
+                pass
         filepath.write_bytes(img_bytes)
         saved.append(str(filepath))
         print(f"  ✅ 已保存: {filepath} ({len(img_bytes)//1024}KB)")
-        _check_size(filepath, size)
+        _check_size(filepath, GROK_OUTPUT_SIZE if model == FALLBACK_MODEL else size)
 
     return saved
 
@@ -183,9 +229,10 @@ def generate_series(config_path: str):
 
     cards = config.get("cards", [])
     output_dir = config.get("output_dir", "output")
-    # gpt-image-2 不用 model/quality 字段，直接用默认
+    # gpt-image-2 不用 model/quality 字段，直接用默认；cards.json 可覆盖
     size = config.get("size", "1024x1536")
     quality = config.get("quality", "high")
+    default_model = config.get("model", "gpt-image-2")
 
     total = len(cards)
     all_saved = []
@@ -205,6 +252,7 @@ def generate_series(config_path: str):
             n=n,
             output_dir=output_dir,
             filename=filename,
+            model=card.get("model", default_model),
         )
         all_saved.extend(saved)
 
@@ -224,9 +272,10 @@ def generate_series(config_path: str):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="yairouter gpt-image-2 高质量图片生成")
+    parser = argparse.ArgumentParser(description="yairouter 图片生成（gpt-image-2，自动 fallback grok-imagine-image-quality）")
     parser.add_argument("--prompt", help="生成提示词")
-    parser.add_argument("--size", default="1024x1536", help="尺寸 (默认 1024x1536)")
+    parser.add_argument("--size", default="1024x1536", help="尺寸 (默认 1024x1536；grok 模型忽略此参数)")
+    parser.add_argument("--model", default="gpt-image-2", choices=["gpt-image-2", "grok-imagine-image-quality"], help="模型 (默认 gpt-image-2，失败自动 fallback grok)")
     parser.add_argument("--quality", default="high", choices=["low", "medium", "high", "auto"])
     parser.add_argument("--n", type=int, default=1)
     parser.add_argument("--output-dir", default=".")
@@ -248,6 +297,7 @@ if __name__ == "__main__":
             n=args.n,
             output_dir=args.output_dir,
             filename=args.filename,
+            model=args.model,
         )
     else:
         parser.print_help()

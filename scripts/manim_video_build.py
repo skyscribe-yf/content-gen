@@ -4,7 +4,10 @@
 约定工作目录（shipinhao/，见 .agents/skills/manim-article-video/SKILL.md）：
   scenes.py          Manim 场景（S1..SN，竖屏 config + pad_to_voice）
   tts.txt            配音稿（每段一行，与 tts/sN.wav 一一对应，是字幕基准）
-  tts/s1.wav..sN.wav 逐段配音（xiaomi_mimo_tts.py 生成）
+  tts/s1.wav..sN.wav 逐段配音（TTS 模式 minimax_tts.py 生成；口播模式 voice_process.py 修音）
+  tts/pauses.json    口播模式停顿边界（voice_process.py 生成，字幕停顿对齐兜底用）
+  tts/sentence-boundaries.json
+                     口播/TTS 最终句级时间戳（每条 clip 的 start/end 与语音逐句对应，字幕优先使用）
   media/...          Manim 渲染输出（先跑 manim render -qm）
 
 用法：
@@ -14,12 +17,13 @@
 说明：
   - 段间无缝衔接靠 --tail（默认 0.1s）；用户嫌停顿改小、嫌太赶改大
   - 语速用 ffmpeg atempo 后处理（无需重生成 TTS / 重渲染 Manim）
-  - 字幕：拆长句（>40 字按标点）+ 段内按字数比例分配时间
+  - 字幕：优先 tts/sentence-boundaries.json 的逐句 start/end；没有时才退回口播停顿驱动切分
   - ASS 时间戳是【厘秒】h:mm:ss.cc（不是毫秒！写错会被放大 10 倍导致字幕错位）
 """
 from __future__ import annotations
 
 import argparse
+import json
 import re
 import subprocess
 import sys
@@ -43,8 +47,39 @@ def dur_of(path: Path) -> float:
     return float(out.strip())
 
 
+def _hard_cut_text(s: str, limit: int = 26) -> list[str]:
+    """超限硬切，但不在英文/数字串内部切断（DeepSeekMath、77.9%、2024 等）。
+    切点优先落在英文/数字串之前，保证词串完整。"""
+    if len(s) <= limit:
+        return [s]
+    limit = min(limit, len(s) - 1)
+    cut = limit
+    for i in range(limit, max(limit - 12, 1) - 1, -1):
+        a, b = s[i - 1], s[i]
+        a_word = a.isascii() and (a.isalnum() or a in ".%+-/")
+        b_word = b.isascii() and (b.isalnum() or b in ".%+-/")
+        if not (a_word and b_word):
+            cut = i
+            break
+    # 中文长句刚好超过上限时，按上限切可能留下 3～7 字的闪现尾条。
+    # 英文/数字混排仍保留原来的词边界策略（例如 AIME 百分比字幕）。
+    ascii_ratio = sum(1 for ch in s if ch.isascii()) / len(s)
+    if len(s) - cut < 8 and ascii_ratio < 0.35:
+        target = max(1, len(s) // 2)
+        cut = target
+        for i in range(target, max(target - 12, 1) - 1, -1):
+            a, b = s[i - 1], s[i]
+            a_word = a.isascii() and (a.isalnum() or a in ".%+-/")
+            b_word = b.isascii() and (b.isalnum() or b in ".%+-/")
+            if not (a_word and b_word):
+                cut = i
+                break
+    return [s[:cut]] + _hard_cut_text(s[cut:], limit)
+
+
 def split_long(text: str, limit: int = 26) -> list[str]:
-    """>26 字按句号拆；单句仍超限按逗号拆；仍超限 26 字一刀（75 号字一行约 13 字，防字幕折 3 行）。"""
+    """>26 字按句号拆；单句仍超限按逗号拆；仍超限按词边界切（75 号字一行约 13 字，防字幕折 3 行）。
+    英文/数字串（DeepSeekMath、77.9%、2024）不拆断；纯标点段并入前一条（2026-08-15 B4 修复）。"""
     if len(text) <= limit:
         return [text]
     parts = [p for p in re.split(r"(?<=[。！？；])", text) if p.strip()]
@@ -54,11 +89,33 @@ def split_long(text: str, limit: int = 26) -> list[str]:
             subs = [s for s in re.split(r"(?<=[，、：])", p) if s.strip()]
             for s in subs:
                 if len(s) > limit:
-                    out.extend(s[i:i + limit] for i in range(0, len(s), limit))
+                    out.extend(_hard_cut_text(s, limit))
                 else:
                     out.append(s)
         else:
             out.append(p)
+    out = [p.strip() for p in out if p.strip()]
+    if len(out) > 1:
+        merged: list[str] = []
+        for p in out:
+            if merged and all(ch in "。！？；，、：…—" for ch in p):
+                if len(merged[-1]) + len(p) <= limit:
+                    merged[-1] += p
+                else:
+                    # 标点并入会让前条超限：从尾部分出「尾词+标点」成新条，避免孤立标点
+                    prev = merged[-1]
+                    cut = -1
+                    for i in range(len(prev) - 1, -1, -1):
+                        if prev[i] in " ，。！？；、：—" and len(prev) - i - 1 + len(p) <= limit:
+                            cut = i
+                            break
+                    if cut < 0:
+                        cut = max(0, len(prev) - (limit - len(p)))
+                    merged[-1] = prev[:cut + 1].rstrip()
+                    merged.append((prev[cut + 1:] + p).lstrip())
+            else:
+                merged.append(p)
+        out = merged
     return out
 
 
@@ -96,17 +153,388 @@ def parse_srt_ts(s: str) -> float:
     return int(h) * 3600 + int(m) * 60 + int(sec) + int(ms) / 1000
 
 
-def build_srt(segments: dict[str, str], seg_dur: dict[str, float], tail: float) -> list[tuple[float, float, str]]:
-    """段内字幕按字数比例分布，段间连续。返回 [(start, end, text)]。"""
+def _merge_split_word_slots(
+    slots: list[tuple[float, float, str]],
+) -> list[tuple[float, float, str]]:
+    """合并 ASR 在词中间切开的相邻字幕槽。
+
+    逐句边界来自录音标注，但 ASR 仍可能把 ``SFT baseline`` 切成
+    ``SFT ba`` + ``seline``，或把「数学」「变成」切成单字。字幕不能
+    在英文词中间换屏，也不应让单字字幕闪现。
+    """
+    out: list[tuple[float, float, str]] = []
+    for begin, end, text in slots:
+        if out:
+            prev_begin, prev_end, prev_text = out[-1]
+            contiguous = abs(begin - prev_end) <= 0.02
+            prev_last = prev_text[-1:] if prev_text else ""
+            cur_first = text[:1] if text else ""
+            english_word = (
+                prev_last.isascii() and prev_last.isalpha()
+                and cur_first.isascii() and cur_first.isalpha()
+            )
+            single_cjk = (
+                len(prev_text.strip()) == 1 and len(text.strip()) == 1
+                and all("\u4e00" <= ch <= "\u9fff" for ch in (prev_text.strip() + text.strip()))
+            )
+            if contiguous and (english_word or single_cjk):
+                out[-1] = (prev_begin, end, prev_text + text)
+                continue
+        out.append((begin, end, text))
+    return out
+
+
+def manual_alignment_slots(
+    manual_alignment: dict | None,
+    seg: str,
+    text: str,
+    audio_duration: float,
+) -> list[tuple[float, float, str]]:
+    """Return Web-confirmed slots, scaled to the final rendered audio duration.
+
+    A slot may deliberately include multiple punctuation blocks.  Long on-screen
+    text still splits within that *same* confirmed time span, so display limits
+    never alter the author-confirmed audio/text correspondence.
+    """
+    if not isinstance(manual_alignment, dict):
+        return []
+    segments = manual_alignment.get("segments")
+    if not isinstance(segments, dict):
+        return []
+    candidate = segments.get(seg)
+    if not isinstance(candidate, dict) or not isinstance(candidate.get("clips"), list):
+        return []
+    try:
+        source_duration = float(candidate["source_duration"])
+    except (KeyError, TypeError, ValueError):
+        return []
+    if source_duration <= 0 or audio_duration <= 0:
+        return []
+
+    slots: list[tuple[float, float, str]] = []
+    previous_end = 0.0
+    for item in candidate["clips"]:
+        if not isinstance(item, dict) or not isinstance(item.get("text"), str):
+            return []
+        try:
+            start = float(item["start"])
+            end = float(item["end"])
+        except (KeyError, TypeError, ValueError):
+            return []
+        if not 0.0 <= start < end <= source_duration + 0.01 or start < previous_end - 0.01:
+            return []
+        slots.append((start, end, strip_tts_tags(item["text"])))
+        previous_end = end
+    if not slots or "".join(slot[2] for slot in slots) != text:
+        return []
+    scale = audio_duration / source_duration
+    scaled = [(start * scale, min(audio_duration, end * scale), slot_text) for start, end, slot_text in slots]
+    return _merge_split_word_slots(scaled)
+
+
+def sentence_boundary_alignment(data: dict | None) -> dict | None:
+    """把 tts/sentence-boundaries.json 规整成 manual_alignment_slots 接受的格式。
+
+    sentence-boundaries.json 的 segments 是列表 [{id, duration, clips:[{start,end,text}]}]；
+    这里转成 {"segments": {"S1": {"source_duration":..., "clips": [...]}}}，
+    使 build_srt 可以复用同一条「逐句时间戳」路径。
+    """
+    if not isinstance(data, dict) or not isinstance(data.get("segments"), list):
+        return None
+    out: dict[str, dict] = {}
+    for seg in data["segments"]:
+        if not isinstance(seg, dict):
+            return None
+        try:
+            seg_id = str(seg["id"]).upper()
+            duration = float(seg["duration"])
+            clips = seg["clips"]
+        except (KeyError, TypeError, ValueError):
+            return None
+        if not isinstance(clips, list):
+            return None
+        out[seg_id] = {"source_duration": duration, "clips": clips}
+    return {"segments": out}
+
+
+def _merge_pure_punct_entries(entries: list[tuple[float, float, str]]) -> list[tuple[float, float, str]]:
+    """纯标点字幕（孤立「。」等）并入前一条：语音把「反思。」拆成 clips「反思」+「。」时，
+    sentence-boundaries 会产出 0.12s 的纯标点碎片，不能单独上屏（2026-08-16 GRPO 反馈）。"""
+    out: list[tuple[float, float, str]] = []
+    for begin, end, text in entries:
+        stripped = text.strip()
+        if out and stripped and all(ch in "。！？；，、：…—" for ch in stripped):
+            prev_begin, _, prev_text = out[-1]
+            out[-1] = (prev_begin, end, prev_text + stripped)
+        else:
+            out.append((begin, end, text))
+    return out
+
+
+def build_srt(segments: dict[str, str], seg_dur: dict[str, float], tail: float,
+              subtitle_ts: list | None = None,
+              pauses: dict[str, list[float]] | None = None,
+              manual_alignment: dict | None = None,
+              sentence_ts: dict | None = None) -> list[tuple[float, float, str]]:
+    """段内字幕按字数比例分布，段间连续。返回 [(start, end, text)]。
+
+    时间戳优先级（越高越贴合真实语音节奏）:
+      1. manual_alignment（Web 人工确认）：作者确认的音频/标点块对应关系
+      2. sentence_ts（tts/sentence-boundaries.json）：逐句 start/end 与语音严格对应
+      3. pauses（口播模式，tts/pauses.json）：真人停顿边界驱动字幕块
+      4. subtitle_ts（TTS 模式，full.subtitle.json）：官方句子级时间戳对齐
+      5. 无时间戳：纯字数比例分布
+    """
     entries: list[tuple[float, float, str]] = []
-    t = 0.0
+    t = 0.0      # 累计视频时间
+    audio_t = 0.0  # 累计配音时间（full audio 时间轴）
     for seg, text in segments.items():
         text = strip_tts_tags(text)  # 双保险：字幕文本永不含拟声标签
         vd = seg_dur[seg]
         ad = vd - tail  # 配音实际占用
+
+        manual_slots = manual_alignment_slots(manual_alignment, seg, text, ad)
+        if not manual_slots:
+            manual_slots = manual_alignment_slots(sentence_ts, seg, text, ad)
+        if manual_slots:
+            for begin, end, slot_text in manual_slots:
+                chunks = split_long(slot_text)
+                total = sum(len(chunk) for chunk in chunks) or 1
+                progress = 0.0
+                for chunk in chunks:
+                    chunk_begin = t + begin + progress * (end - begin)
+                    progress += len(chunk) / total
+                    chunk_end = t + begin + progress * (end - begin)
+                    if chunk_end > chunk_begin and chunk:
+                        entries.append((chunk_begin, chunk_end, chunk))
+            t += vd
+            audio_t += ad
+            continue
+
+        if pauses is not None and pauses.get(seg):
+            # 口播模式（2026-08-17 重写）：停顿驱动切分——每个真实停顿都是字幕边界。
+            # 旧算法「先按标点切文本，再均匀采样停顿点」会跳过 28% 的真实停顿
+            # （RLHF 实测 96 个停顿跳过 27 个），导致字幕跨过说话者的自然停顿，
+            # 观众听到停顿但字幕还在 → 不同步（00:44 是典型案例）。
+            #
+            # 新算法：先取所有停顿作为时间槽，再把文本按字符比例分配到各槽，
+            # 在自然标点处对齐——0 个停顿被跳过。
+            def split_sent(s):
+                if len(s) <= 26:
+                    return [s]
+                sub = [p for p in re.split(r"(?<=[。！？])", s) if p.strip()]
+                if len(sub) > 1:
+                    out = []
+                    for x in sub:
+                        out.extend(split_sent(x))
+                    return out
+                parts = [p for p in re.split(r"(?<=[，、：])", s) if p.strip()]
+                if len(parts) <= 1:
+                    # 无标点可拆：26 字附近找词边界硬切（防无限递归 + 不拆断英文/数字串）
+                    def hard_cut(t, limit=26):
+                        if len(t) <= limit:
+                            return [t]
+                        # 英文/数字占比高（如 AIME 2024 正确率从 15.6% 冲到 77.9%，）显示宽度窄，
+                        # 放宽到 30 字符（折 2 行安全），避免切出 77.9%， 这类过短碎片（2026-08-16）
+                        ascii_ratio = sum(1 for c in t if c.isascii()) / len(t)
+                        if ascii_ratio > 0.35:
+                            limit = 30
+                        limit = min(limit, len(t) - 1)  # 防越界（放宽后 limit 可能 > len(t)-1）
+                        cut = limit
+                        for i in range(limit, max(limit - 10, 1) - 1, -1):
+                            a, b = t[i - 1], t[i]
+                            a_word = a.isascii() and (a.isalnum() or a in ".%+-/")
+                            b_word = b.isascii() and (b.isalnum() or b in ".%+-/")
+                            if not (a_word and b_word):
+                                cut = i
+                                break
+                        return [t[:cut]] + hard_cut(t[cut:], limit)
+                    return hard_cut(s)
+                out = []
+                cur = ""
+                for p in parts:
+                    if len(cur) + len(p) <= 26:
+                        cur += p
+                    else:
+                        if cur:
+                            out.append(cur)
+                        if len(p) > 26:
+                            out.extend(split_sent(p))
+                            cur = ""  # 修复：append 后必须清空，否则下段重复入列（2026-08-16 字幕重复）
+                        else:
+                            cur = p
+                if cur:
+                    out.append(cur)
+                return out or [s]
+            stops = sorted(set([0.0] + [s for s in pauses[seg] if 0.0 <= s < ad] + [ad]))
+            if len(stops) >= 2:
+                # ① 把文本拆成原子（按所有标点），用于在停顿槽内对齐
+                atoms = [a for a in re.split(r"(?<=[。！？；，、：])", text) if a.strip()]
+                if not atoms:
+                    atoms = [text]
+                total_chars = sum(len(a) for a in atoms)
+                total_dur = stops[-1] - stops[0]
+                # 原子字符累计边界
+                atom_bounds = [0]
+                for a in atoms:
+                    atom_bounds.append(atom_bounds[-1] + len(a))
+                # ② 每个停顿对应的「期望字符位置」= 按时间比例映射
+                # 优先对齐原子（标点）边界；若最近原子边界距离 > 4 字符，允许在原子内部硬切
+                # （中文可单字切；英文/数字串保留完整，切点取最近的非字母数字边界）
+                seg_boundaries = [0]
+                for k in range(1, len(stops)):
+                    target = total_chars * (stops[k] - stops[0]) / total_dur if total_dur > 0 else total_chars
+                    best = seg_boundaries[-1]
+                    best_dist = abs(atom_bounds[min(best, len(atom_bounds) - 1)] - target)
+                    for i in range(seg_boundaries[-1] + 1, len(atom_bounds)):
+                        d = abs(atom_bounds[i] - target)
+                        if d < best_dist:
+                            best_dist = d
+                            best = i
+                        elif d > best_dist:
+                            break
+                    if k < len(stops) - 1:
+                        best = max(best, seg_boundaries[-1] + 1)  # 每槽至少 1 个原子
+                        # 长原子硬切：目标位置严格落在 atoms[best-1] 内部才切
+                        # （target 已越过原子结尾时不切，整个原子归本槽）
+                        if best_dist > 4.0 and best - 1 >= seg_boundaries[-1] \
+                                and atom_bounds[best - 1] < target < atom_bounds[best]:
+                            # 在 atoms[best-1] 内部切：先把 atoms 从 best-1 处拆开，再重算边界
+                            atom = atoms[best - 1]
+                            loc = int(round(target)) - atom_bounds[best - 1]  # 原子内局部切点
+                            loc = max(1, min(loc, len(atom) - 1))
+                            # 英文保护：切点若在字母/数字串中间，移到该串结尾
+                            def is_word(ch):
+                                # 字母数字 + 数字串常见标点（. % + - /）视为同一词，防拆断 77.9%/1.3B/DeepSeekMath
+                                return ch.isascii() and (ch.isalnum() or ch in ".%+-/")
+                            while loc < len(atom) and is_word(atom[loc - 1]) and is_word(atom[loc]):
+                                loc += 1
+                            # 切点若落在单词开头（loc-1 非词、loc 是词）→ 左移到词前；
+                            # 勿把「单词结尾后」（loc-1 是词、loc 非词）左移回词内（2026-08-16 DeepSeekMath 拆断）
+                            while loc > 1 and not is_word(atom[loc - 1]) and is_word(atom[loc]):
+                                loc -= 1
+                            atoms[best - 1:best] = [atom[:loc], atom[loc:]]
+                            atom_bounds = [0]
+                            for a in atoms:
+                                atom_bounds.append(atom_bounds[-1] + len(a))
+                            total_chars = atom_bounds[-1]
+                            best = seg_boundaries[-1] + 1
+                    else:
+                        best = len(atoms)  # 末边界 = 全部原子
+                    seg_boundaries.append(best)
+                # ③ 构建 (begin, end, text) 三元组
+                raw_slots = []
+                for k in range(len(stops) - 1):
+                    si = seg_boundaries[k]
+                    ei = seg_boundaries[k + 1]
+                    if ei <= si:
+                        ei = min(si + 1, len(atoms))
+                    blk = "".join(atoms[si:ei]).strip()
+                    raw_slots.append((stops[k], stops[k + 1], blk))
+                # ④ 超过 26 字的槽：在标点处拆分，时间按字数比例分配
+                final_slots = []
+                for (vb, ve, txt) in raw_slots:
+                    if len(txt) <= 26:
+                        final_slots.append((vb, ve, txt))
+                    else:
+                        sub_blks = split_sent(txt)
+                        sub_total = sum(len(sb) for sb in sub_blks) or 1
+                        acc = 0.0
+                        for sb in sub_blks:
+                            w = len(sb) / sub_total
+                            sb_begin = vb + acc * (ve - vb)
+                            acc += w
+                            sb_end = vb + acc * (ve - vb)
+                            final_slots.append((sb_begin, sb_end, sb))
+                # ⑤ 合并空文本或过短槽（<0.5s）到前一条——前提：合并后不超 26 字
+                merged = []
+                for (vb, ve, txt) in final_slots:
+                    # 纯标点槽（孤立「。」等）或 <0.5s 槽 → 并入前一条（前提：不超 26 字）；
+                    # 超限时重平衡：从尾部切出「尾词+标点」成条，避免孤立标点
+                    punct_only = bool(txt) and all(ch in "。！？；，、：…—" for ch in txt)
+                    too_short = (not txt or ve - vb < 0.5 or punct_only)
+                    if too_short and merged:
+                        prev_text = merged[-1][2]
+                        if len(prev_text) + len(txt) <= 26:
+                            merged[-1] = (merged[-1][0], ve, prev_text + txt)
+                        elif punct_only and prev_text:
+                            cut = -1
+                            for i in range(len(prev_text) - 1, -1, -1):
+                                if prev_text[i] in " ，。！？；、：—" and len(prev_text) - i - 1 + len(txt) <= 26:
+                                    cut = i
+                                    break
+                            if cut < 0:
+                                cut = max(0, len(prev_text) - (26 - len(txt)))
+                            merged[-1] = (merged[-1][0], vb, prev_text[:cut + 1].rstrip())
+                            merged.append((vb, ve, (prev_text[cut + 1:] + txt).lstrip()))
+                        else:
+                            merged.append((vb, ve, txt))
+                    else:
+                        merged.append((vb, ve, txt))
+                # ⑥ 首条仍过短（前向合并到第二条）
+                if len(merged) >= 2 and merged[0][1] - merged[0][0] < 0.5:
+                    if len(merged[0][2]) + len(merged[1][2]) <= 26:
+                        merged[1] = (merged[0][0], merged[1][1],
+                                     merged[0][2] + merged[1][2])
+                        merged.pop(0)
+                for (vb, ve, txt) in merged:
+                    v_begin = t + vb
+                    v_end = t + ve
+                    if v_end > v_begin and txt:
+                        entries.append((v_begin, v_end, txt))
+            else:
+                # 无停顿点：按句号切分 + 字数比例分配
+                sentences = [s for s in re.split(r"(?<=[。！？；])", text) if s.strip()]
+                if not sentences:
+                    sentences = [text]
+                blocks = []
+                for s in sentences:
+                    blocks.extend(split_sent(s))
+                total = sum(len(b) for b in blocks) or 1
+                acc = 0.0
+                for blk in blocks:
+                    w = len(blk) / total
+                    v_begin = t + acc * ad
+                    acc += w
+                    v_end = t + acc * ad
+                    if v_end <= v_begin:
+                        continue
+                    entries.append((v_begin, v_end, blk))
+            t += vd
+            audio_t += ad
+            continue
+
+        if subtitle_ts is not None:
+            # 该段在 full audio 时间轴上的句子
+            sents = [
+                (s["time_begin"] / 1000.0, s["time_end"] / 1000.0, strip_tts_tags(s["text"]))
+                for s in subtitle_ts
+                if audio_t - 0.01 <= s["time_begin"] / 1000.0 < audio_t + ad + 0.01
+            ]
+            if sents:
+                for s_begin, s_end, s_text in sents:
+                    v_begin = t + max(0.0, s_begin - audio_t)
+                    v_end = t + min(ad, s_end - audio_t)
+                    if v_end <= v_begin:
+                        continue
+                    chunks = split_long(s_text)
+                    total = sum(len(c) for c in chunks) or 1
+                    acc = 0.0
+                    span = v_end - v_begin
+                    for c in chunks:
+                        w = len(c) / total
+                        a = v_begin + acc * span
+                        acc += w
+                        b = v_begin + acc * span
+                        entries.append((a, b, c))
+                t += vd
+                audio_t += ad
+                continue
+
+        # 无时间戳 fallback：按字数比例分布
         start = t + 0.25
         chunks = split_long(text)
-        total = sum(len(c) for c in chunks)
+        total = sum(len(c) for c in chunks) or 1
         acc = 0.0
         for c in chunks:
             w = len(c) / total
@@ -115,7 +543,8 @@ def build_srt(segments: dict[str, str], seg_dur: dict[str, float], tail: float) 
             b = start + acc * ad
             entries.append((a, b, c))
         t += vd
-    return entries
+        audio_t += ad
+    return _merge_pure_punct_entries(entries)
 
 
 PUNCT = "，。！？、；：\"\"''…—·"
@@ -173,8 +602,62 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
     if typewriter:
         entries = typewriter_events(entries)
         fade = False  # 打字机已逐字出现，不再叠加淡入
+    def wrap_line(txt: str, per_line: int = 13) -> str:
+        # 手动按 per_line 字折行（libass 对中文不自动折行，长字幕会超出画面被裁）。
+        # 最多折 2 行：若片段 ≤ 2*per_line，在中间找一个可断点（中文标点 > 英文空格 > 字符）
+        # 拆成 2 行，每行尽量 ≤ per_line，不拆断英文单词。
+        if len(txt) <= per_line:
+            return txt
+        if len(txt) <= 2 * per_line:
+            # 折 2 行：在中间附近找可断点
+            mid = len(txt) // 2
+            # 在 [mid-3, mid+3] 范围内找中文标点或空格
+            best = -1
+            for i in range(mid, -1, -1):
+                if txt[i] in "，。！？；、： ":
+                    best = i
+                    break
+            if best < 0:
+                for i in range(mid, len(txt)):
+                    if txt[i] in "，。！？；、： ":
+                        best = i
+                        break
+            if best < 0:
+                # 无标点/空格：避免拆断英文单词，回退到单词边界
+                m = re.search(r'[A-Za-z]+$', txt[:mid])
+                if m and m.start() > 0:
+                    best = m.start()
+                else:
+                    best = mid
+            return txt[:best + 1] + "\\N" + txt[best + 1:]
+        # 超过 2 行容量（>26 字）：在标点/空格处拆成多行，但尽量少行
+        lines = []
+        cur = ""
+        for ch in txt:
+            cur += ch
+            if len(cur) >= per_line:
+                break_at = -1
+                for i in range(len(cur) - 1, -1, -1):
+                    if cur[i] in "，。！？；、： ":
+                        break_at = i
+                        break
+                if break_at >= 0:
+                    lines.append(cur[:break_at + 1])
+                    cur = cur[break_at + 1:]
+                else:
+                    m = re.search(r'[A-Za-z]+$', cur)
+                    if m and m.start() > 0:
+                        lines.append(cur[:m.start()])
+                        cur = cur[m.start():]
+                    else:
+                        lines.append(cur)
+                        cur = ""
+        if cur:
+            lines.append(cur)
+        return "\\N".join(lines)
+
     events = [
-        f"Dialogue: 0,{ass_ts(a)},{ass_ts(b)},Default,,0,0,0,,{'{\\fad(150,80)}' if fade else ''}{txt.replace(chr(10), '\\N')}"
+        f"Dialogue: 0,{ass_ts(a)},{ass_ts(b)},Default,,0,0,0,,{r'{\fad(60,40)}' if fade else ''}{wrap_line(txt)}"
         for a, b, txt in entries
     ]
     with open(out, "w", encoding="utf-8") as f:
@@ -185,8 +668,18 @@ def self_test() -> None:
     assert strip_tts_tags("(breath) 为什么 loss 一直抖？(inhale) 但别慌。") == "为什么 loss 一直抖？但别慌。"
     assert strip_tts_tags("(sighs)(breath) 连写标签") == "连写标签"
     assert strip_tts_tags("无标签文本") == "无标签文本"
+    assert "DeepSeekMath" in "".join(split_long("GRPO 的起点，是 2024 年 DeepSeek 的 DeepSeekMath。"))
+    assert split_long("AIME 2024 正确率从 15.6% 冲到 77.9%，") == ["AIME 2024 正确率从 15.6% 冲到", "77.9%，"]
+    merged = _merge_pure_punct_entries([(0.0, 1.0, "反思"), (1.0, 1.2, "。")])
+    assert merged == [(0.0, 1.2, "反思。")]
     entries = build_srt({"S1": "(breath) 一二三四五六七八九十"}, {"S1": 10.0}, 0.1)
     assert entries[0][2] == "一二三四五六七八九十"
+    # 口播模式：停顿边界驱动字幕（seg_dur 10s, tail 0.1 → ad=9.9）
+    pe = build_srt({"S1": "一二三。四五六。七八九。"}, {"S1": 10.0}, 0.1, pauses={"S1": [3.3, 6.6]})
+    # 停顿切 3 块，字幕应落在对应的停顿区间内，且最后一块结束于 t+ad
+    assert abs(pe[0][0] - 0.0) < 1e-6, pe
+    assert abs(pe[-1][1] - 9.9) < 1e-6, pe
+    assert abs(pe[1][0] - 3.3) < 1e-6 or abs(pe[2][0] - 3.3) < 1e-6, pe
     tw = typewriter_events([(0.0, 1.0, "你好，世界")])
     assert tw[0][2] == "你" and tw[-1][2] == "你好，世界"  # 前缀累积，标点并入前字
     assert tw[-1][1] == 1.0  # 末事件结束于原字幕结束
@@ -257,7 +750,9 @@ def main():
              "-filter_complex", "[1:a]apad[a]", "-map", "0:v", "-map", "[a]",
              "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-t", str(vd),
              str(wd / f"build_{seg}.mp4")])
-        print(f"{seg}: 配音 {ad:.2f}s → 视频 {vd:.2f}s")
+        actual = dur_of(wd / f"build_{seg}.mp4")
+        seg_dur[seg] = actual  # 用实际段时长（AAC 编码 padding 后略超 vd），字幕时间轴与 concat 严格一致
+        print(f"{seg}: 配音 {ad:.2f}s → 视频 {vd:.2f}s（实际 {actual:.2f}s）")
 
     # 4) concat
     concat_txt = wd / "concat.txt"
@@ -266,9 +761,42 @@ def main():
     run(["ffmpeg", "-y", "-v", "error", "-f", "concat", "-safe", "0",
          "-i", str(concat_txt), "-c", "copy", str(full)])
 
-    # 5) 字幕 SRT + ASS
+    # 5) 字幕 SRT + ASS（优先用 TTS 句子级时间戳对齐，修复对白漂移）
     voices_map = {seg: v for seg, v in zip(segments, voices)}
-    entries = build_srt(voices_map, seg_dur, args.tail)
+    # 字幕时间戳：Web 人工确认边界 > 口播真实停顿 > TTS 句子级时间戳。
+    manual_alignment = None
+    manual_json = wd / "tts" / "manual-boundaries.json"
+    if manual_json.exists():
+        try:
+            manual_alignment = json.loads(manual_json.read_text(encoding="utf-8"))
+            print(f"口播字幕时间戳: {manual_json.name}（人工确认优先）")
+        except Exception as e:  # noqa: BLE001
+            print(f"⚠️ 读取 {manual_json} 失败（{e}），退回自动停顿对齐")
+    pauses = None
+    pause_json = wd / "tts" / "pauses.json"
+    if pause_json.exists():
+        try:
+            pauses = json.loads(pause_json.read_text(encoding="utf-8"))
+            print(f"口播字幕时间戳: {pause_json.name}（兜底：无逐句时间戳时用）")
+        except Exception as e:  # noqa: BLE001
+            print(f"⚠️ 读取 {pause_json} 失败（{e}），退回其他时间戳策略")
+    sentence_ts = None
+    sentence_json = wd / "tts" / "sentence-boundaries.json"
+    if sentence_json.exists():
+        try:
+            sentence_ts = sentence_boundary_alignment(json.loads(sentence_json.read_text(encoding="utf-8")))
+            if sentence_ts:
+                print(f"字幕时间戳: {sentence_json.name}（逐句 start/end，最高自动优先级）")
+        except Exception as e:  # noqa: BLE001
+            print(f"⚠️ 读取 {sentence_json} 失败（{e}），字幕退回停顿/字数比例")
+    sub_ts = None
+    sub_json = wd / "tts" / "full.subtitle.json"
+    if sub_json.exists():
+        try:
+            sub_ts = json.loads(sub_json.read_text(encoding="utf-8"))
+        except Exception as e:  # noqa: BLE001
+            print(f"⚠️ 读取 {sub_json} 失败（{e}），字幕退回字数比例分布")
+    entries = build_srt(voices_map, seg_dur, args.tail, sub_ts, pauses, manual_alignment, sentence_ts)
     srt_path = wd / "subs.srt"
     ass_path = wd / "subs.ass"
     write_srt(entries, srt_path)

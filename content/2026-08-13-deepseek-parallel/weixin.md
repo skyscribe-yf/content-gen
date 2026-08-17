@@ -6,7 +6,7 @@ type: "解密篇"
 series: "DeepSeek 技术解密"
 digest: "一块 H800 只有 80G 显存，DeepSeek-V4-Pro 却有 1.6T 参数——差 20 倍，怎么装？答案是切：按层切（PP）、按矩阵切（TP）、按数据切（DP）、按专家切（EP）、按序列切（CP）。但装下只是第一步：一张卡同时是四个角色，EP 专家通信量是 CP 的近 1800 倍，IB 带宽才是训练系统的命脉。V4 甚至反直觉地关掉了 TP——CSA/HCA 把注意力压扁后，张量并行的通信税不值了。2048 块 GPU 怎么分活，这篇算给你看。"
 cover: "00-cover.png"
-wechatUrl: null
+wechatUrl: "https://mp.weixin.qq.com/s/ae1iwvau14gFCnyfg4hVIw"
 keywords: ["并行策略", "数据并行", "张量并行", "流水线并行", "专家并行", "上下文并行", "DeepSeek-V4", "ZeRO"]
 ---
 
