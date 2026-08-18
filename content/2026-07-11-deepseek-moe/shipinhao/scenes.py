@@ -552,7 +552,7 @@ class S8(_Base):
         row3 = boxed("1 / 56.7\n约 Claude Fable 5", 2.05, 3.05, CYAN, 34, weight="BOLD")
         summary_rows = VGroup(row1, row2, row3).arrange(RIGHT, buff=0.28)
         note2 = boxed("按笔者真实写代码的 token 结构", 6.4, 1.45, WHITE, 32, weight="BOLD")
-        page2 = _page(title2, summary_rows, note2, buff=0.92)
+        page2 = _page(title2, summary_rows, note2, buff=1.00)
         self.at(14.592925)  # subtitle[32]
         _clear(self, page1)
         _reveal_page_title(self, title2)
