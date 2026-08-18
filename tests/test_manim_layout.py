@@ -26,7 +26,7 @@ from manim_helpers import (  # noqa: E402
 
 def test_page_band_contract():
     assert 0 < MAX_PAGE_MARGIN <= 0.3
-    assert MIN_PAGE_FILL == 1 - 2 * MAX_PAGE_MARGIN == 0.4
+    assert MIN_PAGE_FILL == 1 - 2 * MAX_PAGE_MARGIN == 0.8
     assert PAGE_TOP - PAGE_BOTTOM == pytest.approx(PAGE_BAND)
     assert PAGE_TOP == pytest.approx(FH * 0.32)
     assert PAGE_BOTTOM == pytest.approx(-FH * 0.292)
@@ -49,7 +49,7 @@ def test_page_stack_centers_horizontally():
 
 
 def test_layout_page_centers_equal_margins():
-    card = _card("整页卡", 6.0, 3.6, "#5FC4E8", "#F2F5FA", 40)
+    card = _card("整页卡", 6.0, 7.2, "#5FC4E8", "#F2F5FA", 40)
     layout_page(card)
     assert card.get_center()[0] == pytest.approx(0.0, abs=1e-6)
     top_margin = PAGE_TOP - card.get_top()[1]

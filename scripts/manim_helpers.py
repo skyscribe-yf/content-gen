@@ -19,6 +19,9 @@
 """
 from __future__ import annotations
 
+import inspect
+import os
+import re
 import sys
 import numpy as np
 from manim import *
@@ -44,24 +47,30 @@ CARD_FILL2 = "#223450"     # 次卡片实心填充
 CARD_BORDER = "#5C769D"    # 卡片默认边框
 TXT_HL = "#8FB4E6"         # 正文柔和亮字
 
+# 卡片文字设计 token：所有 card 统一使用，场景不得为单个卡片手调缩放。
+CARD_TEXT_MAX_FS = 48
+CARD_TEXT_MIN_FS = 18
+CARD_TEXT_MAX_LINES = 4
+CARD_TEXT_LINE_SPACING = 0.42
+
 FH = config.frame_height
 FW = config.frame_width
 
 # ---- 竖屏整页规划（2026-08-16 用户拍板：先算整页 box，再算元素起点）----
 # 每页先组装「该页全部元素的最终稳定状态」，得到整体 box；再放入标题下方→字幕安全区上方的显示带，
-# 上下留白严格相等，且各边留白 ≤ 显示带 30%（内容高度 ≥ 显示带 40%）。
+# 上下留白严格相等，且各边留白 ≤ 显示带 10%（内容高度 ≥ 显示带 80%）。
 # 闪烁/强调类装饰（红叉/circumscribe/indicate/breathe/数字滚动）不参与整页 box，按稳定后几何计算。
 PAGE_TOP = FH * 0.32           # 显示带上边界（标题下方）
 PAGE_BOTTOM = -FH * 0.292      # 显示带下边界（距底 ≈400px，字幕上方）
 PAGE_BAND = PAGE_TOP - PAGE_BOTTOM
-MAX_PAGE_MARGIN = 0.30         # 上下留白各 ≤ 显示带 30%
-MIN_PAGE_FILL = 1 - 2 * MAX_PAGE_MARGIN  # 内容高度 ≥ 显示带 40%
+MAX_PAGE_MARGIN = 0.10         # 上下留白各 ≤ 显示带 10%（2026-08-19 用户拍板：留白各自小于 10% 即可，原 30%）
+MIN_PAGE_FILL = 1 - 2 * MAX_PAGE_MARGIN  # 内容高度 ≥ 显示带 80%
 
 
 def layout_page(block: Group):
     """整页规划器：先量稳定后的整页 box，再垂直居中放入显示带。
     - 上下留白完全相等；
-    - 内容高度不足显示带 40% 直接 ValueError，逼着先把短页元素放大/加页内间距；
+    - 内容高度不足显示带 80% 直接 ValueError，逼着先把短页元素放大/加页内间距；
     - 超过显示带才等比缩小（正常情况下应通过减内容/拆页避免）。
     页面元素位置全部由整页 box 派生，禁止「第一条放中间、其余向下平铺」的接龙式排布。
     """
@@ -70,11 +79,13 @@ def layout_page(block: Group):
     min_h = PAGE_BAND * MIN_PAGE_FILL
     if block.height < min_h:
         raise ValueError(
-            f"页面内容高度 {block.height:.2f} < 显示带 40%({min_h:.2f})，"\
+            f"页面内容高度 {block.height:.2f} < 显示带 80%({min_h:.2f})，"\
             "请先放大元素或增加页内间距再 layout_page"
         )
     if block.height > PAGE_BAND:
         block.scale_to_fit_height(PAGE_BAND)
+    if block.width > FW:
+        block.scale_to_fit_width(FW)
     block.set_y((PAGE_TOP + PAGE_BOTTOM) / 2.0)
     return block
 
@@ -89,23 +100,137 @@ def page_stack(*mobs, buff: float = 0.55):
 
 
 
-def t(text: str, size: float = 34, color: str = WHITE, weight: str = "NORMAL") -> Text:
-    return Text(text, font=FONT, font_size=size, color=color, weight=weight)
+def t(text: str, size: float = 34, color: str = WHITE, weight: str = "NORMAL",
+      line_spacing: float = -1) -> Text:
+    return Text(text, font=FONT, font_size=size, color=color, weight=weight,
+                line_spacing=line_spacing)
+
+
+def _balanced_lines(label: str, line_count: int) -> list[str]:
+    """Split a label into roughly balanced lines without assuming Latin spaces.
+
+    Manim's ``Text.set_width`` can only make an overlong label smaller.  For a
+    tall card that is the wrong trade-off: wrapping gives the label a readable
+    font size and uses the vertical space that the card deliberately reserves.
+    """
+    if line_count <= 1 or len(label) <= 1:
+        return [label]
+    # Keep Latin/number tokens whole, but allow CJK runs to use the available
+    # vertical space character by character.  This avoids both "DeepSeek"
+    # being split and a mixed label such as "256 个路由专家" being forced into
+    # one tiny line merely because it contains a space.
+    tokens = re.findall(r"[A-Za-z0-9.%+/_-]+|[\u3400-\u9fff]|[^\s]", label)
+    if not tokens:
+        return [label]
+
+    def token_weight(token: str) -> int:
+        return len(token) if token.isascii() else 2
+
+    def join_tokens(items: list[str]) -> str:
+        result = ""
+        for token in items:
+            needs_space = (
+                bool(result)
+                and " " in label
+                and (result[-1].isascii() or token[0].isascii())
+                and token not in ",.!?;:%，。！？；：、"
+            )
+            result += (" " if needs_space else "") + token
+        return result
+
+    lines: list[str] = []
+    cursor = 0
+    for line_index in range(line_count):
+        remaining_lines = line_count - line_index
+        remaining = tokens[cursor:]
+        if not remaining:
+            break
+        if remaining_lines == 1:
+            lines.append(join_tokens(remaining))
+            break
+        target = max(1, int(np.ceil(sum(map(token_weight, remaining)) / remaining_lines)))
+        current = [remaining[0]]
+        current_weight = token_weight(remaining[0])
+        cursor += 1
+        while cursor < len(tokens):
+            next_weight = token_weight(tokens[cursor])
+            tokens_left = len(tokens) - cursor
+            if current_weight + next_weight > target and tokens_left >= remaining_lines - 1:
+                break
+            current.append(tokens[cursor])
+            current_weight += next_weight
+            cursor += 1
+        lines.append(join_tokens(current))
+    closing_punctuation = "，。！？；：、,.!?;:%)]}》」』"
+    for index in range(1, len(lines)):
+        while lines[index] and lines[index][0] in closing_punctuation:
+            lines[index - 1] += lines[index][0]
+            lines[index] = lines[index][1:].lstrip()
+    return [line for line in lines if line]
+
+
+def fit_text_in_box(label: str, width: float, height: float, fs: float = 28,
+                    color: str = WHITE, weight: str = "NORMAL",
+                    width_ratio: float = 0.76, height_ratio: float = 0.72,
+                    min_fs: float = CARD_TEXT_MIN_FS,
+                    max_fs: float = CARD_TEXT_MAX_FS,
+                    max_lines: int | None = None,
+                    line_spacing: float = CARD_TEXT_LINE_SPACING) -> Text:
+    """Create readable text that fits a fixed card, wrapping before shrinking.
+
+    Candidates with one to ``max_lines`` lines are measured against the card's
+    actual layout box and the largest readable font is selected, capped by the
+    shared ``CARD_TEXT_MAX_FS`` token.  Multiline candidates use the shared
+    ``CARD_TEXT_LINE_SPACING`` token and their complete rendered height is
+    measured, so growing a card vertically can grow its label without manual
+    scene-specific font constants.  The returned object is not positioned;
+    callers align it to their card after construction.
+    """
+    max_w = max(0.1, width * width_ratio)
+    max_h = max(0.1, height * height_ratio)
+    min_fs = min(float(min_fs), float(fs))
+    if max_lines is None:
+        max_lines = min(CARD_TEXT_MAX_LINES, max(1, len(label)))
+    max_fs = max(min_fs, max_fs)
+
+    best: tuple[float, int, Text] | None = None
+    for line_count in range(1, max_lines + 1):
+        lines = _balanced_lines(label, line_count)
+        for size in np.linspace(max_fs, min_fs, 31):
+            candidate = t("\n".join(lines), float(size), color, weight,
+                          line_spacing=line_spacing if len(lines) > 1 else -1)
+            if candidate.width <= max_w + 1e-6 and candidate.height <= max_h + 1e-6:
+                # Font size is primary, with a small fragmentation penalty so
+                # a two-line 46pt label wins over a three-line 48pt label.
+                score = float(size) - 1.5 * (len(lines) - 1)
+                key = (score, -len(lines), candidate)
+                if best is None or key[:2] > best[:2]:
+                    best = key
+                break
+    if best is not None:
+        return best[2]
+
+    # Extremely long labels still get a deterministic result.  The final
+    # width clamp is a last resort, not the normal fitting path.
+    fallback = t(label, min_fs, color, weight)
+    if fallback.width > max_w:
+        fallback.set_width(max_w)
+    if fallback.height > max_h:
+        fallback.set_height(max_h)
+    return fallback
 
 
 def _card(label: str, w: float, h: float, border: str, txt_fill: str,
           fs: float = 28, fill: str = CARD_FILL, weight: str = "NORMAL") -> VGroup:
-    """统一风格卡片：实心填充 + 轻微圆角 + 左对齐限宽文字。
-    文字 ≤ 框宽 76%（只缩小不放大），水平居左、垂直居中。
+    """统一风格卡片：实心填充 + 轻微圆角 + 左对齐自适应文字。
+    文字优先换行并利用高卡的可用高度，最终宽度 ≤ 框宽 76%，水平居左、垂直居中。
     圆角半径 0.18，默认填充 CARD_FILL（中性石板蓝，不与黄/青/绿/红高亮色混淆）。"""
-    txt = t(label, fs, txt_fill, weight)
-    if txt.width > w * 0.76:
-        txt.set_width(w * 0.76)
-    txt.align_to(ORIGIN, LEFT)
     box = RoundedRectangle(corner_radius=0.18, width=w, height=h,
                            color=border, stroke_width=2.5,
                            fill_color=fill, fill_opacity=1.0)
+    txt = fit_text_in_box(label, w, h, fs, txt_fill, weight)
     grp = VGroup(box, txt)
+    txt.align_to(box, LEFT)
     txt.move_to(box.get_center())
     txt.shift(LEFT * w * 0.10)  # 文字略靠左，不居中
     return grp
@@ -124,6 +249,22 @@ def boxrow(labels, w, h, colors, fs=28, fill=CARD_FILL, left=True, gap=0.55, wei
     grp = VGroup(*cards)
     grp.arrange(DOWN, buff=gap, aligned_edge=LEFT if left else ORIGIN)
     return grp
+
+
+def dynamic_slot(width: float, height: float = 0.6) -> Rectangle:
+    """Reserve geometry for a value that will be animated later.
+
+    Put this transparent slot in the final row/group before calling a dynamic
+    helper such as ``counter_value``.  The animated value can then be anchored
+    to the slot and cannot push a neighbour, drift off-canvas, or appear on a
+    different baseline when its width changes from one to two digits.
+    """
+    return Rectangle(width=width, height=height, stroke_opacity=0, fill_opacity=0)
+
+
+def stable_row(*mobs, buff: float = 0.3, aligned_edge=ORIGIN) -> VGroup:
+    """Arrange static and dynamic slots on one shared baseline."""
+    return VGroup(*mobs).arrange(RIGHT, buff=buff, aligned_edge=aligned_edge)
 
 
 def fit(mob, frac: float = 0.85):
@@ -236,11 +377,60 @@ class _Base(MovingCameraScene):
         mod = sys.modules[self.__class__.__module__]
         dur = getattr(mod, "VOICE_DUR", {})
         self.scene_dur = dur.get(self.__class__.__name__, 10.0) + getattr(mod, "TAIL", 2.5)
+        self.strict_timeline = os.getenv("MANIM_STRICT_TIMELINE", "").lower() in {
+            "1", "true", "yes", "on"
+        }
+        self._timeline_contract = None
 
     def at(self, t: float):
         """推进到配音时间轴绝对时刻（动画动作挂到台词节点上）。"""
+        if t < self.time - 1e-6:
+            message = (
+                f"时间轴回退：{self.__class__.__name__}.at({t:.3f}) "
+                f"< 当前动画时间 {self.time:.3f}；请把动作移到字幕边界之后"
+            )
+            if self.strict_timeline:
+                raise RuntimeError(message)
+            return
         if t > self.time:
             self.wait(t - self.time)
+
+    def at_strict(self, target: float, tolerance: float = 0.02):
+        """严格推进到绝对时间；回退或明显错过目标时立即报错。"""
+        if target < self.time - tolerance:
+            raise RuntimeError(
+                f"{self.__class__.__name__}.at_strict({target:.3f}) 回退到 "
+                f"{self.time:.3f}，动画顺序与字幕不一致"
+            )
+        self.at(target)
+
+    def at_clip(self, clip_id: str, offset: float = 0.0):
+        """按 sentence-boundaries 的 clip id 对齐，而不是手写魔法数字。
+
+        Contract is loaded lazily so ordinary Manim renders remain independent
+        of the checker.  Missing metadata is a hard error: silently falling
+        back to a guessed timestamp recreates the original sync bug.
+        """
+        if self._timeline_contract is None:
+            try:
+                from manim_timeline import TimelineContract
+            except ImportError as exc:  # pragma: no cover - only in production
+                raise RuntimeError("无法加载 scripts/manim_timeline.py") from exc
+            source_file = inspect.getfile(self.__class__)
+            self._timeline_contract = TimelineContract.for_scene(source_file)
+        target = self._timeline_contract.start_of(clip_id) + offset
+        self.at_strict(target)
+
+    def play_parallel(self, *animations, run_time: float | None = None, **kwargs):
+        """Play sibling animations in one clock interval.
+
+        This small wrapper makes the intended relationship explicit in scene
+        code and gives the static preflight a reliable marker for parallel
+        reveals.  Every animation must already be positioned in its final slot.
+        """
+        if run_time is not None:
+            kwargs["run_time"] = run_time
+        return self.play(*animations, **kwargs)
 
     def pad_to_voice(self):
         """末尾兜底补齐，使场景总时长 = 配音时长 + TAIL。每个 construct 末尾必调。"""
@@ -405,11 +595,88 @@ class _Base(MovingCameraScene):
         self.remove(growing)
         self.add(grp)
 
-    def grow_bar(self, rect, tracker, target, run_time=0.7, **kw):
+    def play_scroll_unroll_many(self, *groups, run_time: float = 1.5):
+        """Unroll sibling cards in parallel on one shared clock interval.
+
+        Use this for vertical lists, comparison columns, or any group whose
+        items have the same semantic start time.  It prevents the common
+        failure where cards appear one by one while their shared subtitle has
+        already moved on.
+        """
+        if not groups:
+            raise ValueError("play_scroll_unroll_many 至少需要一个卡片组")
+        trackers = []
+        growing_boxes = []
+        text_objects = []
+        full_widths = []
+        for grp in groups:
+            box, txt = grp[0], grp[1]
+            left_x = box.get_left()[0]
+            y = box.get_center()[1]
+            h = box.height
+            full_w = box.width
+            tracker = ValueTracker(0.08)
+            radius = float(getattr(box, "corner_radius", 0.18))
+            growing = RoundedRectangle(
+                corner_radius=radius, width=0.08, height=h,
+                color=box.get_stroke_color(), fill_color=box.get_fill_color(),
+                fill_opacity=box.get_fill_opacity(), stroke_width=box.get_stroke_width(),
+            )
+            growing.move_to(np.array([left_x + 0.04, y, 0]))
+
+            def box_updater(mob, tr=tracker, lx=left_x, yy=y, hh=h,
+                            rr=radius, source=box):
+                width = max(tr.get_value(), 0.08)
+                replacement = RoundedRectangle(
+                    corner_radius=rr, width=width, height=hh,
+                    color=source.get_stroke_color(),
+                    fill_color=source.get_fill_color(),
+                    fill_opacity=source.get_fill_opacity(),
+                    stroke_width=source.get_stroke_width(),
+                )
+                replacement.move_to(np.array([lx + width / 2.0, yy, 0]))
+                mob.become(replacement)
+
+            growing.add_updater(box_updater)
+            character_count = len(txt)
+
+            def text_updater(mob, tr=tracker, fw=full_w, count=character_count):
+                visible = int(count * min(tr.get_value() / fw, 1.0))
+                for index, char in enumerate(mob):
+                    char.set_opacity(1.0 if index < visible else 0.0)
+
+            for char in txt:
+                char.set_opacity(0.0)
+            txt.add_updater(text_updater)
+            self.add(growing, txt)
+            trackers.append(tracker)
+            growing_boxes.append(growing)
+            text_objects.append(txt)
+            full_widths.append(full_w)
+
+        self.play(
+            *[tracker.animate.set_value(width) for tracker, width in zip(trackers, full_widths)],
+            run_time=run_time,
+            rate_func=smooth,
+        )
+        for grp, growing, txt in zip(groups, growing_boxes, text_objects):
+            growing.clear_updaters()
+            txt.clear_updaters()
+            for char in txt:
+                char.set_opacity(1.0)
+            self.remove(growing)
+            self.add(grp)
+        return VGroup(*groups)
+
+    def grow_bar(self, rect, tracker, target, run_time=0.7, extra_anims=None, **kw):
         """用 ValueTracker 驱动矩形条从底部生长到 target 宽/高。
         ⚠️ 锚点必须用左下角（get_corner(DL)）并只捕获一次——get_left() 返回左缘中心
-        （垂直中点），每帧 become 后参考点抬高半条高 → 条累积上移（2026-08-16 S3 事故）。"""
+        （垂直中点），每帧 become 后参考点抬高半条高 → 条累积上移（2026-08-16 S3 事故）。
+        extra_anims：可选动画列表，与条生长并行播放（如柱子标签 type_in），
+        避免「先条后标签」的顺序漂移（2026-08-19 打磨）。
+        内部自动 self.add(rect)——调用方不再需要先 add（2026-08-19 修复遗漏 add 导致柱子不显示）。"""
         left_bottom = rect.get_corner(DL)
+        self.add(rect)
 
         def upd(m):
             w = tracker.get_value()
@@ -420,18 +687,24 @@ class _Base(MovingCameraScene):
             new.move_to(left_bottom + RIGHT * w / 2, aligned_edge=DOWN)
             m.become(new)
         rect.add_updater(upd)
-        self.play(tracker.animate.set_value(target), run_time=run_time, **kw)
+        anims = [tracker.animate.set_value(target)]
+        if extra_anims:
+            anims.extend(extra_anims)
+        self.play(*anims, run_time=run_time, **kw)
         rect.clear_updaters()
         return rect
 
     def counter_value(self, start: float, end: float, suffix: str = "", decimals: int = 0,
                       size: int = 64, color: str = YELL, run_time: float = 0.9,
-                      anchor=None) -> DecimalNumber:
+                      anchor=None, extra_anims=None) -> DecimalNumber:
         """数字滚动动画（数据动效，2026-08-15 新增）：从 start 滚到 end。
         返回已停在 end 的 VGroup(数字, 后缀)（无后缀时返回 DecimalNumber 本身），
         调用方自行 next_to/arrange 定位。suffix（如 "%" / " 步" / "×"）拼在数字右侧。
+        extra_anims 可传同一行静态标签的入场动画，使标签和数字同拍出现，
+        避免动态值先出、静态说明后补（或反过来）。
         用法：
-          n = self.counter_value(0, 32, suffix=" 组")   # 已播放滚动
+          n = self.counter_value(0, 32, suffix=" 组",
+                                 extra_anims=[type_in(label, 0.6)])
           n.next_to(card, DOWN, buff=0.5)
         数字类台词（步数/分数/百分比/倍率）优先用本工具，禁止纯文字陈述数字。
         """
@@ -465,7 +738,10 @@ class _Base(MovingCameraScene):
         else:
             num.add_updater(lambda m: m.set_value(tracker.get_value()))
         self.add(grp)
-        self.play(tracker.animate.set_value(end), run_time=run_time, rate_func=smooth)
+        animations = [tracker.animate.set_value(end)]
+        if extra_anims:
+            animations.extend(extra_anims)
+        self.play(*animations, run_time=run_time, rate_func=smooth)
         num.clear_updaters()
         if suffix:
             tail.clear_updaters()

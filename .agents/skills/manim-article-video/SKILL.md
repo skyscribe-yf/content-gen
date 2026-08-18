@@ -67,6 +67,8 @@ metadata:
 subagent(agent="manim-qa-reviewer", task="QA 检查 <shipinhao目录> 渲染产物（A 组）")
 # 主 agent 派 QA（构建后）：
 subagent(agent="manim-qa-reviewer", task="QA 检查 <shipinhao目录> 成品（B 组）")
+# ⚠️ manim-qa-reviewer 默认模型已固定为 ollama-cloud/deepseek-v4-flash:0731
+# （2026-08-19 用户拍板，.pi/agents/manim-qa-reviewer.md 已配），派发时无需显式传 model
 ```
 
 QA subagent 为 review-only（不改文件），发现的问题由主 agent 修复。

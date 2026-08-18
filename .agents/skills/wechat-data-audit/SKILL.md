@@ -303,6 +303,13 @@ agent_browser get text body
 **更新 `AGENTS.md`**：
 - 引用最新的 `docs/wechat-data-insights.md`
 
+**更新热门文章列表（每次审计必做）**：
+- 从 `docs/wechat-data-audit-log.json` 聚合各文章历史最高阅读量（跨快照取 max）
+- **过滤贴图**（`item_show_type=8`，参考 `branding/style-corpus/publish-data*.json`；贴图阅读量再高也不进热门列表）
+- 按阅读量降序取前 5 篇文章，同步更新 `content/navigation/menu-config.md` 的「热门文章」表和 `docs/wechat-menu.md`
+- 文章链接缺失时从 `branding/style-corpus/publish-data*.json` 的 `content_url` 提取，仍缺失则向作者索要
+- 账号菜单子菜单数受限时（当前仅支持 2 个），文档维护完整前 5，实际配置取前 N 篇
+
 ---
 
 ## 关键参考

@@ -21,7 +21,9 @@
 ⚠️ 硬性规则（详见 .agents/skills/manim-article-video/SKILL.md）：
   - 每个场景 construct 末尾必须 self.pad_to_voice()（否则时长 < 配音）
   - 每页先组装全部元素的稳定状态，再 layout_page() 整页垂直居中：上下留白相等，
-    且各 ≤ 显示带 30%（内容高度 ≥ 40%，不足会 ValueError）——禁止 next_to(head) 向下接龙
+    且各 ≤ 显示带 10%（内容高度 ≥ 80%，不足会 ValueError）——禁止 next_to(head) 向下接龙
+  - 动态数字先用 dynamic_slot()/stable_row() 预留最终几何，再用 anchor=slot 播放
+  - 优先使用 self.at_clip("S1-c01")；渲染前运行 scripts/check_manim_scene.py --strict
   - 闪烁/强调类装饰（红叉/circumscribe/indicate/breathe/数字滚动）不参与整页 box
   - 裸文字入场用 type_in()（逐字），卡片用 play_scroll_unroll()（席子式），禁止整段 FadeIn
   - FadeOut 必须带走本页全部元素（含箭头/Axes/装饰），换页无交叉
@@ -66,7 +68,7 @@ class S1(_Base):
         line = t("一句正文", 30, WHITE)
         card = _card("核心卡片", 5.6, 3.6, CYAN, WHITE, 40, CARD_FILL, "BOLD")
         page = page_stack(line, card, buff=0.8)
-        layout_page(page)   # 上下留白相等；内容高度 ≥ 显示带 40%，不足会报错
+        layout_page(page)   # 上下留白相等；内容高度 ≥ 显示带 80%，不足会报错
 
         self.play(type_in(head, run_time=1.1))
         self.at(1.0)

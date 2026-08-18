@@ -6,6 +6,7 @@ type: "数学篇"
 series: "数学直觉"
 digest: "高维空间的反直觉真相：随机点互相远离、质量全在薄球壳上。空间没怪，是直觉用的尺子不对——内积才是更好的尺子，而注意力机制的核心就是它。从托里拆利小号讲到 MLA 低秩压缩为什么信息不丢，再到 DeepSeek-V4 为什么换掉 MLA。"
 cover: "00-cover.png"
+wechatUrl: "https://mp.weixin.qq.com/s/Nrfr-90Fpu3mFDML9s0d1Q"
 wechatUrl: ""
 keywords: ["维度诅咒", "高维空间", "内积", "薄球壳", "JL引理", "MLA"]
 ---

@@ -4,6 +4,7 @@ author: "数解AI"
 date: "2026-08-17"
 type: "原理篇"
 series: "强化学习原理"
+wechatUrl: "https://mp.weixin.qq.com/s/kHvjDKrQElvWXrA92yqAfA"
 digest: "决策发生在现在，奖励却全在未来。价值函数把从当前到终局的所有未来奖励折现，压成每个状态一个数；贝尔曼方程就是这笔账的递归记账法。今天从回报定义一步步推出方程，并公开修正上一篇结尾的一句话：Q-learning 解它，PPO 用一半，GRPO 绕开它。"
 cover: "00-cover.png"
 keywords: ["贝尔曼方程", "Bellman", "价值函数", "强化学习", "Q-learning", "折扣回报"]

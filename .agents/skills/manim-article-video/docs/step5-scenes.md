@@ -63,10 +63,10 @@ class S1(_Base):
 | `PAGE_TOP` | `FH * 0.32` | 显示带上边界（标题下方） |
 | `PAGE_BOTTOM` | `-FH * 0.292` | 显示带下边界（距底 ≈400px，字幕上方） |
 | `PAGE_BAND` | `PAGE_TOP - PAGE_BOTTOM` | 整页可用高度 |
-| `MAX_PAGE_MARGIN` | `0.30` | 上下留白各 ≤ 显示带 30% |
-| `MIN_PAGE_FILL` | `1 - 2×0.30 = 0.40` | 内容高度 ≥ 显示带 40% |
+| `MAX_PAGE_MARGIN` | `0.10` | 上下留白各 ≤ 显示带 10%（2026-08-19 用户拍板，原 30%） |
+| `MIN_PAGE_FILL` | `1 - 2×0.10 = 0.80` | 内容高度 ≥ 显示带 80% |
 
-- 内容高度不足 40% → `layout_page()` 直接 `ValueError`。**必须放大元素、增加页内 buff 或补真实视觉内容**，不能用透明占位撑高度（透明占位只用于数字终值定位）。
+- 内容高度不足 80% → `layout_page()` 直接 `ValueError`。**必须放大元素、增加页内 buff 或补真实视觉内容**，不能用透明占位撑高度（透明占位只用于数字终值定位）。
 - 内容高度超过 100% 显示带 → `layout_page()` 等比缩小；正常设计应先删内容/拆页，不依赖缩小。
 - **闪烁/强调类装饰不参与整页 box**：`play_red_cross`、`circumscribe`、`indicate`、`breathe`、数字滚动过程都按稳定后的几何计算，不占留白预算。
 
@@ -93,8 +93,8 @@ chips.next_to(line, DOWN, buff=0.4)
 1. **整页规划优先 + VGroup 原子化**：先 `page_stack()` 组页，再 `layout_page()` 放版；组内 `arrange(RIGHT/DOWN/arrange_in_grid, buff=...)`。**禁止散落硬编码绝对坐标**（如 `move_to(UP * 2.2)` 魔法数字）
 2. **页内锚点链只表达相对关系**：`next_to(prev, DOWN/UP/RIGHT, buff=...)` 只能用于组内元素互锚（标签↔对应条、箭头两端↔卡片）；整页位置一律交给 `layout_page()`。**禁止 `next_to(head, DOWN, buff=4.x)` 作为页面起点**——那正是“元素挤在上半屏”和留白不等的根因
 3. **网格**：≥2 行的重复元素（GPU 块、列表项）用 `arrange_in_grid(rows, cols, buff, cell_alignment=LEFT)`，禁止手算格子宽度
-4. **安全区与留白**：整页 box 必须在 `PAGE_TOP..PAGE_BOTTOM` 显示带内，横向 `|x| ≤ config.frame_width/2 - 0.4`；页末内容最低点距底 399~800px（<399 撞两行 75 号字幕，>800 画面空）。**在此基础上，上下留白必须相等且各 ≤ 显示带 30%**（`layout_page` 自动保证并校验）；含 ImageMobject/曲线等 bbox 含透明边的页面，以整页 bbox 为规划依据，抽帧复核可见内容不越安全区
-5. **内容占屏**：整页内容高度 ≥ 显示带 40%（`layout_page` 硬校验），多数页 45-65%。短页手段：大字号（单卡页标题字可到 40+、爆点字 56-88）、卡片加高（单卡横幅可到 3.6 高）、间距 buff 1.0-1.9、图表/柱体加大；禁止透明占位撑高度
+4. **安全区与留白**：整页 box 必须在 `PAGE_TOP..PAGE_BOTTOM` 显示带内，横向 `|x| ≤ config.frame_width/2 - 0.4`；页末内容最低点距底 399~800px（<399 撞两行 75 号字幕，>800 画面空）。**在此基础上，上下留白必须相等且各 ≤ 显示带 10%**（2026-08-19 用户拍板，原 30%；`layout_page` 自动保证并校验）；含 ImageMobject/曲线等 bbox 含透明边的页面，以整页 bbox 为规划依据，抽帧复核可见内容不越安全区
+5. **内容占屏**：整页内容高度 ≥ 显示带 80%（`layout_page` 硬校验，2026-08-19 用户拍板收紧，原 40%），多数页 85-95%。短页手段：大字号（单卡页标题字可到 40+、爆点字 56-88）、卡片加高（单卡横幅可到 3.6 高）、间距 buff 1.0-1.9、图表/柱体加大；禁止透明占位撑高度
 6. **溢出控制**：长文本/宽图表先 `set_width(config.frame_width * 0.8)` 或 `scale_to_fit_width(...)`，禁止超界截断。Manim Text 实际宽度常比估算宽 20-30%，不要凭字数估算宽度
 7. **比例坐标**：确需绝对定位时用画布比例（如 `UP * config.frame_height * 0.3`），保证换分辨率不崩
 8. **叠放顺序**：用 `z_index=` 控制，不依赖 add 顺序
@@ -119,3 +119,9 @@ chips.next_to(line, DOWN, buff=0.4)
 27. **容器包住子元素；代码框贴合行数并居中；下面有空别挤两行（归一化 02:53/03:26/03:46）**：外框 bbox 必须覆盖全部内框；伪代码框高度贴合行数、水平居中，禁止框下大片留白；同屏两行文字若下方仍有安全区，加大 buff
 28. **转折/爆点画面只留关键词（预训练 01:05/02:15）**：提醒只留 ≤2 字 + 一次 Flash（「注意」不是「但注意。」+⚠+Indicate）；短句爆点只留该词并可闪烁（「没崩！」），不要复述整句
 29. **卡片默认实心 + 轻微圆角（2026-08-16 GRPO 用户拍板）**：所有文本方框统一走 `_card()`/`boxed()`：实心填充 `CARD_FILL=#2C3F60`（中性石板蓝，默认色），`fill_opacity=1.0`；`RoundedRectangle(corner_radius=0.18)`，禁止普通 `Rectangle` 文本方框。高亮色（黄/青/绿/红）只用于标题、关键词、强调卡和状态条，不与默认卡片底色混淆；`play_scroll_unroll()` 同步改为圆角拉幕
+30. **首轮设计必须先过预检器**：在渲染前运行 `python scripts/check_manim_scene.py <shipinhao-dir> --strict`。它会检查 `at()` 时间回退、动作越过下一字幕边界、`pad_to_voice()`、动态槽位/并行 reveal 提示，以及高卡小字。预检器只报错不自动改时间点；修正后再渲染。
+31. **动态值先占位后动画**：同一行的静态标签和数字必须先用 `dynamic_slot()` + `stable_row()` 完成最终几何，再把 `counter_value(..., anchor=slot)` 放入槽位。禁止动态元素先在 ORIGIN 出现、随后用 `next_to()` 追赶静态元素。
+32. **多项 reveal 同拍**：同一层级的列表/柱/卡片要在一个 `self.play(...)` 或 `self.play_parallel(...)` 中并行；纵向列表先 `page_stack()`，再统一 reveal。连续调用多个会播放的 helper 会触发预检提示，必须明确这是有意的时序还是合并为并行动画。
+33. **高卡文字优先换行**：固定框文字统一走 `_card()` 的 `fit_text_in_box()`，按布局后的实际宽高动态增大字号，再在全局 `CARD_TEXT_MAX_FS` 上限内优先换行；多行使用统一 `CARD_TEXT_LINE_SPACING`，不能靠单行极小字体“填满”高框，也不要在场景里硬编码换行/字号补丁。仍放不下时拆卡/拆页。
+
+首轮设计门禁的详细说明和示例见 [`docs/manim-scene-preflight.md`](../../../docs/manim-scene-preflight.md)。

@@ -13,7 +13,7 @@
 | 9 | ≥5 节点链路蛇形两行；禁止假占位符 | 曾单行硬塞每框 1.47 单位；曾 [—] 凑数被否（「非常丑陋」） |
 | 10 | FadeIn shift ≤0.1；验证抽动画中帧 | 曾 0.2 位移暂停逐帧看到错位 |
 | 11 | **整段配音 + 段尾过渡句 + 时间戳切分**；默认 speech-2.8-turbo | 曾逐段 TTS（段间话题跳跃生硬）；曾 hd（贵） |
-| 12 | 时长门禁：生成前 `wc -m` 预估（×0.19~0.20）；默认 ≤4:20；**本篇用户拍板可放到 5:30** | 曾生成后报超长反复返工；Transformer 2026-08-13 拍板 5:30 |
+| 12 | 时长门禁：生成前 `wc -m` 预估（×0.19~0.20）；默认 **5 分钟左右、软上限 6 分钟**（2026-08-19 用户拍板「可以慢一点，5 分钟也可以，最长不超过 6 分钟」） | 曾生成后报超长反复返工；曾默认 ≤4:20（Transformer 2026-08-13 拍板 5:30）；2026-08-19 放宽到 6 分钟 |
 | 13 | 动画节奏 = 台词时间轴；`pad_to_voice()` 兜底，静止 ≤20% | 曾动作挤前 1/3 后 2/3 画面僵住（FP4 复盘） |
 | 14 | 转折前停顿用 `<#0.5#>`；拟声标签整段生成可用 | 曾 `(inhale)` 被否（只管发声不管停留） |
 | 15 | 封面关键内容集中在**中间 3:4 安全区**（y∈[240,1680]）；成图用 yairouter | 曾全幅布局被 3:4 裁切；曾用 Manim Cover 当发布封面 |
@@ -51,3 +51,4 @@
 | 47 | **整页规划（2026-08-16 GRPO 用户拍板）**：每次换页都按该页全部元素的最终稳定状态组装整页 box → `page_stack()` 定页内相对位置 → `layout_page()` 把整页 box 居中放入显示带（`PAGE_TOP=0.32FH` 到 `PAGE_BOTTOM=-0.292FH`）；**上下留白严格相等，且各 ≤ 显示带 30%（内容高度 ≥40%，helper 直接 ValueError）**；短页用放大元素/加大页内间距满足下限，闪烁/强调类装饰（红叉/circumscribe/indicate/breathe/数字滚动）不参与整页 box。禁止 `next_to(head, DOWN)` 接龙式排布。工具已固化进 `scripts/manim_helpers.py` 的 `layout_page`/`page_stack` + 模板 | 曾 VGroup+锚点链从标题向下堆（页挤上半屏）；曾底边对齐（短页顶部留白过大）；曾整页居中但不强制 40%（短页留白 >30%） |
 | 49 | **卡片默认实心 + 轻微圆角（2026-08-16 GRPO 用户拍板）**：所有文本方框统一 `_card()`/`boxed()`：实心填充 `CARD_FILL=#2C3F60`（中性石板蓝默认色，不与黄/青/绿/红高亮混淆）、`fill_opacity=1.0`、`RoundedRectangle(corner_radius=0.18)`；`play_scroll_unroll()` 同步圆角拉幕。普通 `Rectangle` 只用于柱状条/数据块/装饰线，不再用于文本卡片 | 曾 `Rectangle` + 半透明填充，方框生硬、默认色与高亮色容易撞 |
 | 48 | **字幕时间戳优先 `tts/sentence-boundaries.json`（2026-08-16 GRPO 用户反馈字幕不同步）**：build 脚本自动优先级 = Web `manual-boundaries.json` > `sentence-boundaries.json` 逐句 start/end > `pauses.json` 停顿兜底 > `full.subtitle.json` > 字数比例。`sentence-boundaries.json` 的 clips 文本必须逐字拼回 tts.txt，start/end 与 trim 后语音逐句对应；build 时按实际配音时长等比缩放。split_long 不得拆断英文/数字串（DeepSeekMath/77.9%/2024） | 曾只认 `pauses.json`，用停顿槽按字数比例重分文本 → S2「GRPO 的起点」挂 6.1s、后续整句错位；曾 split_long 把 DeepSeekMath/77.9% 切成两半 |
+| 50 | **上下留白各 <10%（2026-08-19 用户拍板）**：整页规划留白上限从 30% 收紧到 10%，内容高度 ≥ 显示带 80%（`MAX_PAGE_MARGIN=0.10` 已固化进 manim_helpers.py，layout_page 硬校验） | 曾 30%/40%（页面偏空，用户要求更满） |

@@ -22,7 +22,9 @@ def test_split_long_keeps_english_number_tokens_whole():
     assert all(len(c) <= 30 for c in chunks)
 
     chunks = split_long("AIME 2024 正确率从 15.6% 冲到 77.9%，")
-    assert chunks == ["AIME 2024 正确率从 15.6% 冲到", "77.9%，"]
+    # 分句器可能去掉跨字幕边界的空格，但不能破坏数字/百分比 token。
+    assert "AIME" in chunks[0] and "15.6%" in chunks[0]
+    assert any("77.9%" in chunk for chunk in chunks)
 
 
 def test_sentence_boundary_alignment_normalizes_list_segments():

@@ -98,7 +98,10 @@ def split_long(text: str, limit: int = 26) -> list[str]:
     if len(out) > 1:
         merged: list[str] = []
         for p in out:
-            if merged and all(ch in "。！？；，、：…—" for ch in p):
+            # 纯标点段，或 ≤8 字且不以句号结尾的短段（"而是："、"等显存、"等连接碎片）
+            # → 并入前一条，避免 0.4s 级闪字幕（2026-08-18 修复）
+            if merged and (all(ch in "。！？；，、：…—" for ch in p)
+                           or (len(p) <= 8 and not p.endswith(("。", "！", "？", "；")))):
                 if len(merged[-1]) + len(p) <= limit:
                     merged[-1] += p
                 else:
@@ -288,6 +291,7 @@ def build_srt(segments: dict[str, str], seg_dur: dict[str, float], tail: float,
     entries: list[tuple[float, float, str]] = []
     t = 0.0      # 累计视频时间
     audio_t = 0.0  # 累计配音时间（full audio 时间轴）
+    seen_sents: set[float] = set()  # 已归属的句子 time_begin（跨段句去重，2026-08-18）
     for seg, text in segments.items():
         text = strip_tts_tags(text)  # 双保险：字幕文本永不含拟声标签
         vd = seg_dur[seg]
@@ -505,16 +509,23 @@ def build_srt(segments: dict[str, str], seg_dur: dict[str, float], tail: float,
             continue
 
         if subtitle_ts is not None:
-            # 该段在 full audio 时间轴上的句子
-            sents = [
-                (s["time_begin"] / 1000.0, s["time_end"] / 1000.0, strip_tts_tags(s["text"]))
-                for s in subtitle_ts
-                if audio_t - 0.01 <= s["time_begin"] / 1000.0 < audio_t + ad + 0.01
-            ]
+            # 该段在 full audio 时间轴上的句子。
+            # 归属规则（2026-08-18 修复跨段句碎片）：句子归属第一个匹配段
+            # （放宽 ±0.5s 吸收 tts_split 段边界与 ffprobe 实测的 ~0.1s 差），
+            # v_end 不截断（跨段句的语音实际在段内，字幕跨段显示与语音同步）；
+            # seen_sents 去重，避免句子被相邻两段重复处理。
+            sents = []
+            for s in subtitle_ts:
+                sb = s["time_begin"] / 1000.0
+                if sb in seen_sents:
+                    continue
+                if audio_t - 0.5 <= sb < audio_t + ad + 0.5:
+                    seen_sents.add(sb)
+                    sents.append((sb, s["time_end"] / 1000.0, strip_tts_tags(s["text"])))
             if sents:
                 for s_begin, s_end, s_text in sents:
                     v_begin = t + max(0.0, s_begin - audio_t)
-                    v_end = t + min(ad, s_end - audio_t)
+                    v_end = t + (s_end - audio_t)
                     if v_end <= v_begin:
                         continue
                     chunks = split_long(s_text)
