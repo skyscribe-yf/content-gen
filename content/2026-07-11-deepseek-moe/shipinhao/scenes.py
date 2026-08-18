@@ -568,7 +568,10 @@ class S8(_Base):
         self.play_scroll_unroll_many(mla, note3, run_time=0.76)
 
         title4 = t("评论区聊聊", 39, WHITE, "BOLD")
-        question = boxed("你更愿意为更强的模型付高价，\n还是用足够强、但能反复调用的模型做日常开发？", 6.4, 2.75, GREEN, 35, weight="BOLD")
+        # This is intentionally a tall, single-card page.  The shared card
+        # fitter uses the reserved height for readable two-line type instead
+        # of leaving the lower half of the vertical frame empty.
+        question = boxed("你更愿意为更强的模型付高价，\n还是用足够强、但能反复调用的模型做日常开发？", 6.4, 5.10, GREEN, 35, weight="BOLD")
         page4 = _page(title4, question, buff=1.35)
         self.at(37.425261)  # subtitle[34]
         _clear(self, page3)
@@ -583,7 +586,7 @@ class S8(_Base):
             t("查看公众号文章 · 图文全解", 25, GREEN),
             t("下一篇：MLA 多头潜在注意力", 23, MUTED),
         ).arrange(DOWN, buff=0.38)
-        brand_page = _page(logo, follow, buff=0.68)
+        brand_page = _page(logo, follow, buff=0.75)
         self.at(46.097914)  # subtitle[35]
         _clear(self, page4)
         self.play_parallel(FadeIn(logo, scale=0.9), type_in(follow, run_time=0.82), run_time=0.82)
