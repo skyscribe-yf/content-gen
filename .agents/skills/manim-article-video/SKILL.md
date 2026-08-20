@@ -76,7 +76,7 @@ QA subagent 为 review-only（不改文件），发现的问题由主 agent 修�
 ## 规则速查
 
 - **卡片样式**（2026-08-16 用户拍板）：文本方框统一 `_card()`/`boxed()`：实心 `CARD_FILL=#2C3F60` + 圆角 `RoundedRectangle(corner_radius=0.18)`；高亮色只做强调，不给默认卡底——详见 [docs/step5-scenes.md](docs/step5-scenes.md) 规范 29
-- **字幕同步**（2026-08-16 用户反馈）：字幕与声音不同步而声音与画面同步时，先查 build 是否用了 `tts/sentence-boundaries.json` 逐句 start/end（优先级：manual > sentence-boundaries > pauses 兜底 > full.subtitle）；详情 [docs/step7-build.md](docs/step7-build.md)、[docs/pitfalls.md](docs/pitfalls.md) #42
+- **字幕同步**（2026-08-16 用户反馈）：字幕与声音不同步而声音与画面同步时，先查 build 是否用了 `tts/sentence-boundaries.json` 逐句 start/end（优先级：manual > sentence-boundaries > pauses 兜底 > full.subtitle）；用户报「XX:XX 声音滞后」时的诊断/精修/复验全套方法见 [docs/av-sync.md](docs/av-sync.md)（MiMo ASR 内容验证 + silencedetect 局限 + validate_sentence_ts 防线）；详情 [docs/step7-build.md](docs/step7-build.md)、[docs/pitfalls.md](docs/pitfalls.md) #42
 - **整页规划**（2026-08-16 用户拍板）：每次换页都按该页全部元素的稳定状态组装整页 box → `page_stack()` → `layout_page()` 垂直居中；上下留白相等且各 ≤ 显示带 30%（内容高度 ≥40%，不足会 ValueError）；闪烁/强调装饰不参与整页 box——详见 [docs/step5-scenes.md](docs/step5-scenes.md)「整页规划」
 - **生动化三件套**（2026-08-15 新增）：AI 概念图嵌入（yairouter+make_round_logo，禁数字）+ 数据动效（counter_value/grow_bar/轨迹 Create，数字台词必配动效）+ 场景转场（transition_out）——详见 [docs/vividness.md](docs/vividness.md)
 - **动效库 v2**（2026-08-18 新增）：镜头推拉（camera_zoom_to，必须成对）+ 形变（morph_to）+ 轨迹追踪点（trace_dot）+ 关键词强调（emphasize）+ 呼吸微动（breathe，≤3%）——详见 [docs/vividness.md](docs/vividness.md) 第四节

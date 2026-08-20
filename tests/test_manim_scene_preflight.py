@@ -18,29 +18,28 @@ def test_contract_resolves_sentence_clip_starts():
     assert contract.start_of("S1-c03") > contract.start_of("S1-c01")
 
 
-def test_existing_memory_scene_exposes_known_timing_regressions():
+def test_existing_memory_scene_passes_timing_contract():
     scene = ROOT / "content/2026-07-04-ai-memory-crash/shipinhao"
     result = analyze_scene(scene)
-    codes = {issue["code"] for issue in result["issues"]}
-    assert not result["ok"]
-    assert "action_overrun" in codes
-    assert "at_not_on_boundary" in codes
+    assert result["ok"]
+    assert result["issues"] == []
+    assert all(not item["issues"] for item in result["scenes"])
 
 
-def test_existing_deepseek_scene_exposes_tall_card_and_serial_reveals():
+def test_existing_deepseek_scene_passes_layout_and_reveal_contract():
     scene = ROOT / "content/2026-07-11-deepseek-moe/shipinhao"
     result = analyze_scene(scene)
-    codes = {issue["code"] for issue in result["issues"]}
-    assert "high_card_small_text" in codes
-    assert "serial_animation" in codes
+    assert result["ok"]
+    assert result["issues"] == []
+    assert all(not item["issues"] for item in result["scenes"])
 
 
-def test_strict_mode_promotes_nested_scene_warnings():
+def test_strict_mode_keeps_repaired_scenes_clean():
     scene = ROOT / "content/2026-07-11-deepseek-moe/shipinhao"
     result = analyze_scene(scene, strict=True)
     nested = [issue for item in result["scenes"] for issue in item["issues"]]
-    assert nested
-    assert all(issue["severity"] == "error" for issue in nested)
+    assert result["ok"]
+    assert nested == []
 
 
 def test_checker_reports_missing_pad_and_static_backtrack(tmp_path):

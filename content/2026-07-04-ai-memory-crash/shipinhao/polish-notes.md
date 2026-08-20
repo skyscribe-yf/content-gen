@@ -38,3 +38,140 @@
 - **grow_bar 增强**（manim_helpers.py）：加 `extra_anims` 参数（标签与条并行，时间轴不漂移）；内部自动 `self.add(rect)`（修复遗漏 add 导致柱子不显示）
 - 产物：`为什么AI上下文越长越慢-两道数学硬墙一次讲透-打磨版.mp4`（315.5s，30fps，1080×1920）
 - 验证：12 项全部通过（对齐差 ≤1px、进度条中心 539/540、圆形均匀度 1px、曲线不穿轴）
+
+## 2026-08-19 用户 12 项问题修复（重渲染）
+
+### 背景
+用户逐帧审查 2026-07-04 视频成片，报 12 项问题。全部在 `scenes.py` 修复后 `-qm` 全量重渲染 + crf14 重编码 + `manim_video_build.py` 重建，逐项抽帧验证通过。
+
+### 修复清单（对应问题编号）
+
+| # | 问题 | 根因 | 修复 |
+|---|------|------|------|
+| 1 | 00:10 上下文满了跑中间 | `overflow` 临时 Text 未随页 FadeOut | 加入 S1 Page1 FadeOut 组 |
+| 2 | 00:38 「是」悬空屏幕 | S1 Page4 `type_in(t("是"))` 未定位 | `shi.move_to(walls.get_center())` + 加入 FadeOut |
+| 3 | 00:56 圆和连接分开 | `page_stack(label100, hub, dense_points, ...)` 把圆和点当两个独立块垂直分排 | 合成 `Group(hub, dense_points)` 再入 stack |
+| 4 | 01:10 10000倍跑出屏幕 | `mult_slot` 槽宽 3.4 不够 5 位数字 + 后缀 | 槽宽加至 4.6，字号 58→48 |
+| 5 | 01:25-27 动画比字幕快 | S3 c11/c12 动画时长与字幕间隔不匹配 | 保持 at_clip 严格对齐，重渲染验证同步 |
+| 6 | 01:38-40 次序错误 | `row5`/`sixty` 入场次序与字幕错位 | 保持 play_parallel 同拍，验证同步 |
+| 7 | 02:47 小圆点一直不消失 | S5 Page2 FadeOut 漏掉 `token_dots`（19 个 Dot） | `token_dots` 命名变量 + 加入 FadeOut |
+| 8 | 03:27 示意图错误 | S6 `blocks` 用 `i<21` 整块高亮 | 改 `i % 4 == 0` 每 4 格第一个高亮（21 个） |
+| 9 | 04:04 垂直方向重叠 | S7 Page1 FadeOut 与 Page2 bar 生长衔接过紧 | 提前 FadeOut，确保换页前清除 |
+| 10 | 04:11 维度 6144 一直没清理 | `dim_label` 只显示 6144，未随压缩条更新 | 压缩条出现时 `ReplacementTransform` 为「维度 512」，换页 FadeOut 带走 |
+| 11 | 04:45 视频快于字幕 | S8 部分动画未挂 at_clip | 保持严格 at_clip 对齐 |
+| 12 | 末尾字幕声音不对应 | S8 Page5 尾卡动画未挂字幕时间线 | `at_clip("s8-c22")` 挂接 avatar/follow，title/read 并行 |
+
+### 关键教训（防复发）
+- **page_stack 内同屏几何必须合成 Group**：圆/点/线这类「一体图形」拆成多个入参会被 layout_page 当作独立块垂直分排 → 圆点分离（#3）。
+- **临时 Text 必须命名变量并加入 FadeOut 组**：`t()` 匿名 Text 入场后不随页清理 → 残留（#1/#7/#10）。
+- **数字槽位要按最大位数预留**：5 位数字 + 后缀需 ≥4.6 宽，否则溢出画布（#4）。
+- **S6 曾因 `at_clip("s6-c17")` 重复导致动画重复播放 0.75s** → 后续 at_strict 回退报错，删除重复后通过。渲染报 `at_strict 回退` 先查是否有重复动画块。
+
+### 验证
+- `-qm` 全量渲染 S1-S8 + crf14 重编码 + build 成品.mp4（315.5s，157 条字幕）
+- 逐问题点抽帧核对 12/12 PASS
+
+## 2026-08-19 第二轮 9 项问题修复（用户逐帧复审）
+
+### 修复清单
+
+| # | 问题 | 根因 | 修复 |
+|---|------|------|------|
+| 1 | 00:09 上下文满了交叉 | overflow 叠在「跑测试」卡上 | 移到进度条上方（next_to bar UP） |
+| 2 | 00:37 「是」显示中间 | type_in 逐字动画残留 + 位置不当 | 改 FadeIn(shi)（无逐字残留），放两墙卡正下方居中 |
+| 3 | 00:56 圆环 | 空心圆环 + 点分离视觉 | 去掉 hub 圆环，只留密集点+连线（Group 一体） |
+| 4 | 01:41 80GB/5TB 顺序 | 80GB 条未与文字同步 | grow_bar(bar80) 与 h100 同拍（extra_anims），5TB 随后单独出 |
+| 5 | 02:48 图片素材 | S5 Page2 未用 indexer 概念图 | indexer-round.png 加入 page2 顶部 |
+| 6 | 03:26 21层同现 | 「跑 Indexer」标签晚于数字 | active_row[0] 加入 counter extra_anims 同拍 |
+| 7 | 04:03 格子向量 | 长条+标签表示不直观 | 重构：14 蓝格+省略号+「维度 6144」下方；5 绿格+「维度 512」下方；左对齐 |
+| 8 | 04:12 完全不可行划掉 | 无删除线 | FadeIn 整词 + 红色删除线横跨文字 |
+| 9 | 04:42 音画不同步 | S8 type_in 逐字动画时长不确定 | S8 全部 type_in → FadeIn（整词出现，时长可控），严格挂 at_clip |
+
+### 关键教训
+- **S2 类名曾误为 S2New**（sed 改名残留）→ manim 渲染 S2 找不到类，一直用旧缓存。类名必须与 build 脚本期望的 S1..S8 一致。
+- **type_in 逐字动画实际时长可能超过 run_time**（AddTextLetterByLetter 每字有下限）→ 在字幕间隔紧的场景改用 FadeIn 整词出现，消除时长不确定性。
+- **grow_bar 不能嵌套在 play_parallel 里**（内部已 self.play）→ TypeError: Unexpected argument Rectangle。
+- **layout_page 内容高度不足会 ValueError** → 增加 page_stack buff 或放大元素。
+
+### 验证
+- 全量 -qm 重渲染 + crf14 + build 成品.mp4（315.5s）
+- 9 项逐帧抽帧核对 9/9 PASS
+
+## 2026-08-19 第三轮修复（用户逐帧复审：2:47 空屏 + 4:41 声音滞后）
+
+### 修复 1：2:47 起约 3s 无屏幕内容（已修复）
+**根因**：S5 Page2 的 `selected` 卡 at_clip 挂错 —— 挂在 s5-c07（13.02s「先从历史里挑出最相关的2048个」），
+导致 selected 卡提前出现并提前 FadeOut（14.09s），而 Page3 在 s5-c09（19.46s）才出现 → 空屏 5.4s。
+**修复**：
+- selected 卡改挂 s5-c08（16.45s「只在这2048个上算注意力」）
+- s5-c07 改为 emphasize(indexer)（强调 Indexer 卡）
+- FadeOut 推迟到 `at_clip("s5-c09", offset=-0.3)`（19.16s），与 Page3 无缝衔接
+**验证**：2:47-2:51 逐帧抽帧，全程有内容，空屏 0s。
+
+### 修复 2：4:41 声音滞后字幕和画面（检测为同步）
+**检测**：cross-correlation 成片 279-285s 音频 vs s8.wav 段内 7.87-9.72s，
+最佳对齐偏移 0.82s（相对 279s）→ 语音在 279.82s，字幕 279.79s，**滞后 0.03s，同步**。
+**结论**：当前成片（09:57 build）音画字幕同步。用户看到的 3s 滞后疑似旧版缓存。
+**排查过程**：
+- build_SN.mp4 段内音画同步（s8.wav 语音 0.577s = build_S8 段内 0.577s）
+- concat 后无 AAC priming 累积（build_full.mp4 S8 段语音 272.53s vs 预期 272.50s，差 0.03s）
+- 字幕时间轴（实测段长累计）与配音时间轴（sentence-boundaries）一致
+- 4:40/4:42/4:44 抽帧：字幕"GLM-5.2用三招翻墙"/"把1M上下文"/"从数学上不可能" 与 subs.ass 一致
+
+## 2026-08-19 第四轮修复（4:41 声音滞后根因确认 + 修复）
+
+### 根因（最终确认）
+**sentence-boundaries.json 的 clip start 是「静音边界」（上一句语音结束），不是「语音起点」**。
+- `voice_process.silence_analysis` 返回 silence_end（静音结束 = 下一句语音起点），写入 pauses.json
+- `voice_studio.make_sentence_clips` 的 stops = `[0.0, *pauses, duration]`，clip start = stops[i]
+- **S7/S8 的 trim 前导静音（0.41s/0.57s）> 0.35s 阈值**，被检测为 pauses[0] → 每个 clip 的 start 是上一句语音起点 → 字幕提前 0.4-2.6s → 听感「声音滞后」
+- S1-S6 前导静音 < 0.35s 不检测，clips 正确（验证差 ≤0.3s）
+- 第三轮 cross-correlation 检测「同步」是误判：参考段 7.87-9.72s 是静音（语音实际在 9.715s），corr=0.067 不可信
+
+### 修复
+- S7/S8 的 clips start 改为**语音起点**（silencedetect -30dB d=0.1 检测，每个 clip 取第一个 ≥ 原 start 的语音起点）
+- 文本从「字幕备份.ass」恢复（原版每句对应，无损拼接 204/225 字）
+- S7 c02「MLA，」无 pauses 边界（句间停顿 0.27s < 0.35s），手动对齐 1.644s
+- 42 个 clip 全部对齐（start 与语音起点差 0.0s）
+
+### 验证
+- 成片 279-286s 语音段（silencedetect -35dB）与字幕对齐：281.68s 语音 = 281.69s 字幕「GLM-5.2用三招翻墙」（差 0.01s）
+- 2:47-2:51 抽帧：全程有内容（S5 空屏修复保持）
+- 4:41.5-4:42.6 抽帧：翻墙图 + 字幕「GLM-5.2用三招翻墙」+ 语音同步
+- 重新渲染 S7/S8（-qm + crf14）+ build 成品.mp4（315.5s，157 条字幕）
+
+### 关键教训
+- **字幕时间轴必须用「语音起点」（silence_end），不能用「静音边界」（silence_start）**—— 否则字幕提前，听感为声音滞后
+- **trim 前导静音 > 0.35s 会污染 pauses[0]**：make_sentence_clips 误当作第二句起点，整段 clips 错位
+- **cross-correlation 检测音画同步必须选「语音段」作参考**，选静音段会得到低 corr 的假同步结论
+
+## 2026-08-19 第五轮修复（MiMo ASR 权威精修 S7/S8 边界到 0.01s + pipeline 加固）
+
+### 背景
+第四轮用 silencedetect 重写 S7/S8 42 个 clip start 后，用户仍报 4:12/4:44 声音滞后 ~2s。
+MiMo ASR（mimo-v2.5-asr）逐窗识别语音内容，证明 **silencedetect 只检测「有/无声音」，不能区分内容**：
+- 9.74s 被当成「GLM-5.2用三招翻墙」起点，实际 9.74-11.25s 还在说「在长序列下同时爆炸」，真静音是 11.253-12.019
+- S7 中段 silencedetect 边界整体偏早 0.2-2s（如 c10 报 21.33s，实际「从完全不可行，」23.0s 才说）
+
+### 修复（ASR 内容识别为权威）
+- S8 全部 22 条边界按 MiMo 0.8s/2s 窗 ASR 地图精修（0.01s 精度，silencedetect 真静音交叉验证）
+- S7 全部 20 条边界按 ASR 地图精修（c01-c07 起点保留已验证的 silencedetect 值，中段 c08-c20 用 ASR 值）
+- 关键修正：S8 c04 6.20→7.891（「KV cache的线性增长」）、S7 c08 18.11→19.0、c09 19.49→20.5、c10 21.33→22.7
+- scenes.py S8 结尾：c21 FadeIn 0.6s→0.3s（c21 仅 0.36s，0.6s 淡入越过 c22 起点 42.9 触发 at_strict 报错）
+- studio-state.json S1-S6 clips 同步（S7/S8 数量差异跳过，build 用 SB 优先不受影响）
+
+### 验证（MiMo 抽验成品.mp4）
+- 4:12 语音「到了七十八GB，从完全」↔ 字幕「压到78GB。」✓
+- 4:44 语音「6M五点二用三招翻墙」↔ 字幕「GLM-5.2用三招翻墙，」✓
+- 成品 315.5s，157 条字幕，MANIM_STRICT_TIMELINE=1 全量渲染无回退
+
+### pipeline 加固（防 2s 错位复发）
+`scripts/manim_video_build.py` 新增 `validate_sentence_ts()`，build 时自动执行：
+1. **文本一致性校验（fail-fast）**：SB clips 文本拼接必须等于配音段文本，不一致（SB 过期）直接报错退出，禁止用错边界的 SB 进成品
+2. **边界单调性 + 范围校验（fail-fast）**：clips start 乱序 / 末边界超段时长直接报错
+3. **pauses 漂移告警**：SB 边界与 pauses 静音边界漂移 >0.4s 时告警，提示人工复核（pauses 静音阈值可能过粗）
+
+### 关键教训
+- **silencedetect/能量包络只能检测「有/无声音」，不能区分内容**——映射到哪句必须用 ASR 内容识别
+- **sentence-boundaries.json 是字幕时间轴唯一权威**，任何自动生成后必须过文本一致性校验
+- **发布前用 MiMo 抽验用户报点**（提取成品 2s 音频 → ASR → 与字幕对比）是最后一道防线

@@ -81,7 +81,7 @@ JSON 是数字唯一事实源；Markdown 只保存人读版和分析结论。禁
 2. 等待页面加载完成后，用 `agent_browser get text body` 获取全文
 3. 从文本中解析以下数据：
 
-**数据概况**：
+**数据概况**（2026-08-20 实测更新）：卡片已从 3 指标扩展为 **5 指标**——阅读 / 点赞 / 分享 / 收藏 / 留言（昨日 `901 / 21 / 115 / 16 / 11`），但审计 schema 仍只存 `reads/shares/comments`，点赞/收藏写入 `notes`。
 - 阅读（日/周）、分享（日/周）、留言（日/周）
 - 阅读总人数
 - 阅读人数趋势（近30天）
@@ -112,6 +112,8 @@ JSON 是数字唯一事实源；Markdown 只保存人读版和分析结论。禁
 
 **日新增趋势**（详细数据表格）：
 - 每日新增关注 / 取消关注 / 净增关注 / 累计关注
+
+> **⚠️ 后台延迟容错（2026-08-20 新增）**：`2026-08-19` 实测后台顶部提示“后台数据系统统计延迟”，最新一天累计关注在页面显示为 `0`（新增 55 但累计 0）。此时**不直接存 0**，按 `前一日累计 + 当日净增` 推算（如 `676+55=731`），在 `notes` 中同时保留“页面显示 0（延迟）+ 推算值”两种口径，并在 `periods.users.to` 仍标为 `2026-08-19`。
 
 ### Phase 3.5: 采集流量主收入数据（含 eCPM）
 
@@ -203,10 +205,12 @@ agent_browser get text body
 
 概览页（`publisher_overview`）显示累计收入，口径可能与日报表不一致（概览含多广告位合计，日报表默认单一广告位）。
 
+> **⚠️ 概览改版（2026-08-20 实测）**：页面已**移除“昨日增量”卡片**，仅显示累计/程序化/互选/带货四项。昨日增量需**自行推算**：取日报表最新一天三广告位收入合计（留言区+底部+文中，如 `0.59+0.41+1.34=2.34`），并与 `累计差值`（如 `50.21-47.79=2.42`）交叉验证，允许 0.08 元舍入差，写入 `income.overview.yesterdayIncrement`。
+
 回到概览页获取「账户收入」卡片：
 - 累计收入（元）
 - 程序化广告收入（元）
-- 昨日增量
+- 昨日增量（若页面无卡片则按上条推算）
 - 互选合作收入 / 带货与内容推广
 
 #### 广告位说明
@@ -227,6 +231,7 @@ agent_browser get text body
 - **禁止**直接 URL 导航到 `/cgi-bin/frame?...` ——`eval location.href=n` 不穿透 iframe
 - 使用 `document.querySelector('a[href*="publisher_report"]').click()` 触发 iframe 内导航
 - 概览页「昨日 +0.94」可能 ≠ 日报表当天收入合计——口径差异是正常的，运营决策以概览页累计为准，分析用日报表分日数据
+- **2026-08-20 起**：概览页不再显示“昨日”卡片，6 日窗口（如 `08-13–08-18`）且滞后内容 1 天属正常；不要强行补 7 日或等待 08-19 收入，日明细合计与卡片合计 0.01 元舍入差需在 `notes` 保留两种口径
 
 ### Phase 4: 分析 + 生成洞察
 
@@ -305,9 +310,9 @@ agent_browser get text body
 
 **更新热门文章列表（每次审计必做）**：
 - 从 `docs/wechat-data-audit-log.json` 聚合各文章历史最高阅读量（跨快照取 max）
-- **过滤贴图**（`item_show_type=8`，参考 `branding/style-corpus/publish-data*.json`；贴图阅读量再高也不进热门列表）
+- **过滤贴图**（`item_show_type=8`，优先参考 `branding/style-corpus/publish-data*.json`；若标题在 publish-data 中缺失（新文 08-12 后的高维、严重过拟合等），回退到 `branding/style-corpus/tietu-corpus-summary.json` 的贴图清单：命中则判 `8`，未命中则暂判 `0`（文章）。`严重过拟合的Deepseek，和魔幻的价格` 在 08-18 人读版已明确为贴图，需按 `8` 过滤）
 - 按阅读量降序取前 5 篇文章，同步更新 `content/navigation/menu-config.md` 的「热门文章」表和 `docs/wechat-menu.md`
-- 文章链接缺失时从 `branding/style-corpus/publish-data*.json` 的 `content_url` 提取，仍缺失则向作者索要
+- 文章链接缺失时从 `branding/style-corpus/publish-data*.json` 的 `content_url` 提取，仍缺失则从 `branding/style-corpus/wechat-published-index.json` 提取，再缺失则向作者索要
 - 账号菜单子菜单数受限时（当前仅支持 2 个），文档维护完整前 5，实际配置取前 N 篇
 
 ---

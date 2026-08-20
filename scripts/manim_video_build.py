@@ -177,7 +177,7 @@ def _merge_split_word_slots(
                 and cur_first.isascii() and cur_first.isalpha()
             )
             single_cjk = (
-                len(prev_text.strip()) == 1 and len(text.strip()) == 1
+                len(prev_text.strip()) <= 2 and len(text.strip()) == 1
                 and all("\u4e00" <= ch <= "\u9fff" for ch in (prev_text.strip() + text.strip()))
             )
             if contiguous and (english_word or single_cjk):
@@ -272,6 +272,46 @@ def _merge_pure_punct_entries(entries: list[tuple[float, float, str]]) -> list[t
         else:
             out.append((begin, end, text))
     return out
+
+
+def validate_sentence_ts(sentence_ts: dict, voices_map: dict[str, str],
+                         pauses: dict | None = None) -> None:
+    """加固：SB 与配音文本一致性 + 边界单调性 + pauses 漂移告警。
+
+    2026-08-18 事故根因：sentence-boundaries.json 直接拿 pauses 当字幕边界，
+    静音阈值太粗导致 S8 中部漂 ~2s，无校验直接进成品。此校验 fail-fast。
+    """
+    problems: list[str] = []
+    for seg, info in sentence_ts["segments"].items():
+        text = strip_tts_tags(voices_map.get(seg, ""))
+        clips = info["clips"]
+        joined = "".join(c["text"] for c in clips)
+        if text.replace(" ", "") != joined.replace(" ", ""):
+            problems.append(
+                f"{seg}: SB 文本与配音不一致（SB {len(joined)} 字 vs 配音 {len(text)} 字），"
+                "SB 已过期，禁止使用")
+        prev_end = 0.0
+        for c in clips:
+            if c["start"] < prev_end - 1e-6 or c["end"] < c["start"]:
+                problems.append(f"{seg} {c['id']}: 边界乱序 {c['start']:.2f}-{c['end']:.2f}")
+            prev_end = c["end"]
+        if clips and clips[-1]["end"] > info["source_duration"] + 0.05:
+            problems.append(
+                f"{seg}: 末边界 {clips[-1]['end']:.2f}s 超段时长 {info['source_duration']:.2f}s")
+    if problems:
+        raise SystemExit("✗ sentence-boundaries.json 校验失败：\n  " + "\n  ".join(problems))
+    if pauses:
+        for seg, info in sentence_ts["segments"].items():
+            p = pauses.get(seg)
+            if not p:
+                continue
+            for c in info["clips"]:
+                if c["start"] < 0.05:  # 第一句起点固定 0.0，非漂移信号
+                    continue
+                if min(abs(c["start"] - x) for x in p) > 0.4:
+                    print(f"⚠️ {seg}: SB 边界 {c['start']:.2f}s 与 pauses 漂移 >0.4s，"
+                          "请人工复核（pauses 静音阈值可能过粗）")
+                    break
 
 
 def build_srt(segments: dict[str, str], seg_dur: dict[str, float], tail: float,
@@ -765,9 +805,13 @@ def main():
         seg_dur[seg] = actual  # 用实际段时长（AAC 编码 padding 后略超 vd），字幕时间轴与 concat 严格一致
         print(f"{seg}: 配音 {ad:.2f}s → 视频 {vd:.2f}s（实际 {actual:.2f}s）")
 
-    # 4) concat
+    # 4) concat（ts 中转：ffmpeg concat demuxer 直接拼 mp4 会改写第 2+ 段的 AAC
+    #    （edit list/priming 处理），导致段内音画漂移——先转 mpegts 再拼，字节保留）
+    for seg in segments:
+        run(["ffmpeg", "-y", "-v", "error", "-i", str(wd / f"build_{seg}.mp4"),
+             "-c", "copy", "-f", "mpegts", str(wd / f"build_{seg}.ts")])
     concat_txt = wd / "concat.txt"
-    concat_txt.write_text("".join(f"file 'build_{s}.mp4'\n" for s in segments), encoding="utf-8")
+    concat_txt.write_text("".join(f"file 'build_{s}.ts'\n" for s in segments), encoding="utf-8")
     full = wd / "build_full.mp4"
     run(["ffmpeg", "-y", "-v", "error", "-f", "concat", "-safe", "0",
          "-i", str(concat_txt), "-c", "copy", str(full)])
@@ -797,6 +841,7 @@ def main():
         try:
             sentence_ts = sentence_boundary_alignment(json.loads(sentence_json.read_text(encoding="utf-8")))
             if sentence_ts:
+                validate_sentence_ts(sentence_ts, voices_map, pauses)
                 print(f"字幕时间戳: {sentence_json.name}（逐句 start/end，最高自动优先级）")
         except Exception as e:  # noqa: BLE001
             print(f"⚠️ 读取 {sentence_json} 失败（{e}），字幕退回停顿/字数比例")

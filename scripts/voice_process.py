@@ -47,12 +47,16 @@ import subprocess
 import sys
 from pathlib import Path
 
-# 修音滤镜链：高通去隆隆声 -> afftdn 去噪（nf 噪声底）-> 降高频毛刺 -> 响度统一
+
+# 修音滤镜链：高通去隆隆声 -> afftdn 去噪（nf 噪声底）-> 提亮（presence + 减高频衰减）-> 响度统一
+# 2026-08-19 用户反馈「口播修音后发闷」：原 highshelf 8.5kHz -3dB 压掉空气感/齿音区是主因。
+# 改为 9kHz -1.5dB（保留轻微去毛刺）+ 3.2kHz presence +2dB（清晰度/临场感，不刺耳）。
 # nf=-25 适中（过高会吃掉齿音/s音）；录音底噪大时调到 -30
 DEFAULT_FILTER = (
     "highpass=f=60,"
     "afftdn=nf=-25,"
-    "highshelf=f=8500:g=-3:width=1.2,"
+    "highshelf=f=9000:g=-1.5:width=1.2,"
+    "equalizer=f=3200:t=q:w=1.0:g=+2,"
     "loudnorm=I=-16:TP=-1.5:LRA=11"
 )
 SILENCE_DB = -30      # 静音判定阈值（2026-08-17：-35 漏检 8% 真实停顿，RLHF 02:06 处 0.37s 停顿未检出导致字幕不同步）

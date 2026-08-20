@@ -4,6 +4,7 @@ author: "数解AI"
 date: "2026-08-18"
 type: "原理篇"
 series: "强化学习原理"
+wechatUrl: "https://mp.weixin.qq.com/s/W9Bd--EtnidWy65Yx4Kyfw"
 digest: "贝尔曼方程右边有一张转移表。修 bug、写代码、对话，这张表不存在。时序差分用「实际奖励 + 下一步估值」当老师，从样本逼近方程；Q-learning 是这个办法里每步按最优动作记账的那一个。"
 cover: "00-cover.png"
 keywords: ["Q-learning", "时序差分", "TD", "价值函数", "强化学习", "转移概率"]

@@ -125,7 +125,7 @@ wechatUrl: "https://mp.weixin.qq.com/s/abc123"
 - 末尾含关注引导（价值承诺 + 系列结构）
 - 结尾含 1 个开放式问题引导留言
 - 摘要须含 2-3 个搜索关键词
-- 最新审计：2026-08-18（数据截至 2026-08-17），详见 [`docs/wechat-data-insights.md`](docs/wechat-data-insights.md)
+- 最新审计：2026-08-20（数据截至 2026-08-19，累计关注 731、累计收入 50.21 元），详见 [`docs/wechat-data-insights.md`](docs/wechat-data-insights.md)
 - 数字事实源：[`docs/wechat-data-audit-log.json`](docs/wechat-data-audit-log.json)，结构见同名 `.schema.json`，操作脚本为 `scripts/wechat_audit_log.py`，报告生成脚本为 `scripts/wechat_audit_report.py`，产物为 `docs/wechat-data-audit-report.html`
 
 ## 视频号视频加工 Skill

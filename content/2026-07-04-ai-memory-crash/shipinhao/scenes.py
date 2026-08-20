@@ -88,7 +88,9 @@ class S1(_Base):
         self.at_clip("s1-c04")
         tracker = ValueTracker(0)
         self.grow_bar(bar, tracker, 4.5, run_time=0.65)
+        # 修复A: 「上下文满了」放进度条上方（不压跑测试卡），作为进度条到顶的标注
         overflow = t("上下文满了", 34, RED, "BOLD")
+        overflow.next_to(bar, UP, buff=0.18)
         self.at_clip("s1-c05")
         self.play(type_in(overflow, run_time=0.65))
         # Keep the actual metric in the stable slot; the red label is a local beat.
@@ -98,6 +100,7 @@ class S1(_Base):
         self.at_clip("s1-c07")
         cross = self.play_red_cross(bar, run_time=0.65)
         self.wait(0.07)
+        # 修复#1: overflow 已包含在 FadeOut 组，避免「上下文满了」残留在屏幕上
         self.play(FadeOut(Group(task, loop_lab, loop, ar1, ar2, bar, step, cross, overflow),
                           shift=UP * 0.03), run_time=0.25)
 
@@ -188,12 +191,15 @@ class S1(_Base):
         self.play(type_in(why, run_time=0.75))
         self.at_clip("s1-c19")
         self.play(FadeIn(walls), run_time=0.55)
+        # 修复B: 「是」作为两墙之间的连接词，放在两墙卡正下方居中（不用 type_in，避免逐字残留）
+        shi = t("是", 40, WHITE, "BOLD")
+        shi.move_to(walls.get_center() + DOWN * (wall1.height / 2 + 0.55))
         self.at_clip("s1-c20")
-        self.play(type_in(t("是", 40, WHITE, "BOLD"), run_time=0.45))
+        self.play(FadeIn(shi, scale=0.8), run_time=0.4)
         self.at_clip("s1-c21")
         self.play(FadeOut(Group(head, footer_mob, g52, mem100, score_label, score13,
-                                 pct_row, pct, why, walls), shift=RIGHT * 0.1 + DOWN * 0.03),
-                  run_time=0.5)
+                                 pct_row, pct, why, walls, shi),
+                          shift=RIGHT * 0.1 + DOWN * 0.03), run_time=0.5)
         self.pad_to_voice()
 
 
@@ -259,9 +265,10 @@ class S2(_Base):
         # Page 2b: dense graph for the 100-person case.
         label100 = t("100 个人开会？", 50, YELL, "BOLD")
         fit(label100, 0.86)
-        hub = Circle(radius=2.25, color=MUTED, stroke_width=2.5)
+        # 修复C: 去掉空心圆环，只保留密集点 + 连线（用户：只要一个图）
+        hub_r = 2.25
         dense_points = VGroup(*[
-            Dot(2.2 * np.array([np.cos(2 * PI * i / 18), np.sin(2 * PI * i / 18), 0]),
+            Dot(hub_r * np.array([np.cos(2 * PI * i / 18), np.sin(2 * PI * i / 18), 0]),
                 radius=0.1, color=CYAN)
             for i in range(18)
         ])
@@ -271,7 +278,9 @@ class S2(_Base):
             for i in range(18) for j in range(i + 1, 18)
         ])
         count4950_slot = dynamic_slot(3.2, 1.2)
-        page2b = page_stack(label100, hub, dense_points, count4950_slot, buff=0.9)
+        # 点+线合成一个 Group，layout_page 不会拆开；无圆环
+        hub_group = Group(dense_points, dense_lines)
+        page2b = page_stack(label100, hub_group, count4950_slot, buff=0.9)
         layout_page(page2b)
         # Rebuild connectors after layout so they follow the final point positions.
         dense_lines = VGroup(*[
@@ -283,11 +292,11 @@ class S2(_Base):
         self.at_clip("s2-c07")
         self.play(type_in(label100, run_time=0.75))
         self.at_clip("s2-c08")
-        self.play_parallel(Create(hub), FadeIn(dense_points), Create(dense_lines), run_time=0.7)
+        self.play_parallel(FadeIn(dense_points), Create(dense_lines), run_time=0.7)
         count4950 = self.counter_value(0, 4950, suffix=" 次", size=56,
                                        color=YELL, anchor=count4950_slot, run_time=0.65)
         self.wait(0.07)
-        self.play(FadeOut(Group(label100, hub, dense_points, dense_lines, count4950),
+        self.play(FadeOut(Group(label100, dense_points, dense_lines, count4950),
                           shift=UP * 0.03), run_time=0.25)
 
         # Page 3: the square law.
@@ -317,7 +326,8 @@ class S2(_Base):
         context = t("100 万字的上下文", 40, WHITE, "BOLD")
         fit(context, 0.86)
         mult_label = t("计算量是 1 万字的", 31, WHITE)
-        mult_slot = dynamic_slot(3.4, 1.15)
+        # 修复#4: 10000 有 5 位 + 后缀，槽位加宽并缩小字号，防止跑出屏幕
+        mult_slot = dynamic_slot(4.6, 1.15)
         mult_row = stable_row(mult_label, mult_slot, buff=0.3)
         gpu = t("GPU 再快，也扛不住", 46, WHITE, "BOLD")
         fit(gpu, 0.86)
@@ -328,7 +338,7 @@ class S2(_Base):
         self.at_clip("s2-c14")
         self.play(type_in(context, run_time=0.7))
         self.at_clip("s2-c15")
-        mult = self.counter_value(0, 10000, suffix=" 倍", size=58,
+        mult = self.counter_value(0, 10000, suffix=" 倍", size=48,
                                   color=YELL, anchor=mult_slot, run_time=0.7,
                                   extra_anims=[type_in(mult_label, run_time=0.55)])
         self.at_clip("s2-c16")
@@ -419,8 +429,9 @@ class S3(_Base):
                          fill_color=YELL, fill_opacity=0.9).move_to(bar5_slot.get_center())
 
         self.at_clip("s3-c11")
-        self.play_parallel(type_in(h100, run_time=0.7), type_in(row80[0], run_time=0.45),
-                           run_time=0.7)
+        # 修复D: 80GB 条与「一张 H100 才 80 GB」同时出现，5TB 色块随后单独对比
+        self.grow_bar(bar80, ValueTracker(0), 1.6, run_time=0.65,
+                      extra_anims=[type_in(h100, run_time=0.6), type_in(row80[0], run_time=0.45)])
         self.at_clip("s3-c12")
         self.grow_bar(bar5, ValueTracker(0), 5.8, run_time=0.65)
         self.at_clip("s3-c13")
@@ -608,22 +619,33 @@ class S5(_Base):
         standard = _card("标准注意力：看所有历史 token", 6.2, 1.7, CYAN, WHITE, 30, CARD_FILL, "BOLD")
         indexer = _card("Indexer：先挑最相关的 2048 个", 6.2, 1.7, GREEN, WHITE, 30, CARD_FILL, "BOLD")
         selected = _card("只在 2048 个上算注意力", 6.2, 1.7, YELL, WHITE, 32, CARD_FILL, "BOLD")
-        page2 = page_stack(standard, indexer, selected, buff=1.05)
+        # 修复E: 02:48 前用上 indexer 概念图（信使从人群挑出最相关的）
+        indexer_img = _img("indexer-round.png", 3.6)
+        page2 = page_stack(indexer_img, standard, indexer, selected, buff=0.75)
         layout_page(page2)
 
         self.at_clip("s5-c04")
+        self.play(FadeIn(indexer_img, shift=DOWN * 0.05), run_time=0.55)
         self.play_scroll_unroll(standard, run_time=0.8)
         self.at_clip("s5-c05")
-        self.play_parallel(FadeIn(VGroup(*[
+        token_dots = VGroup(*[
             Dot(np.array([-2.7 + i * 0.3, 0, 0]), radius=0.07, color=MUTED)
             for i in range(19)
-        ])), run_time=0.55)
+        ])
+        self.play(FadeIn(token_dots), run_time=0.55)
         self.at_clip("s5-c06")
         self.play_scroll_unroll(indexer, run_time=0.75)
+        # 修复J: selected 卡必须等 s5-c08（16.45s「只在这2048个上算注意力」）才出现，
+        # 之前挂在 s5-c07 导致提前 FadeOut → 2:47 起空屏 5.4s
         self.at_clip("s5-c07")
+        self.emphasize(indexer, run_time=0.5)
+        self.at_clip("s5-c08")
         self.play_scroll_unroll(selected, run_time=0.75)
         self.wait(0.07)
-        self.play(FadeOut(Group(standard, indexer, selected), shift=UP * 0.03), run_time=0.25)
+        # 修复J: selected 卡保持显示到 s5-c09 前 0.3s 再 FadeOut，消除 2:47 空屏
+        self.at_clip("s5-c09", offset=-0.3)
+        # 修复#7: token_dots 必须随换页带走，否则一长排小圆点一直不消失
+        self.play(FadeOut(Group(indexer_img, standard, indexer, selected, token_dots), shift=UP * 0.03), run_time=0.25)
 
         # Page 3: the linear-growth claim.
         all_hand = t("跟所有人握手", 43, WHITE, "BOLD")
@@ -708,9 +730,10 @@ class S6(_Base):
         active_slot = dynamic_slot(2.4, 1.1)
         active_row = stable_row(t("跑 Indexer", 31, WHITE), active_slot, buff=0.3)
         reuse = _card("剩下 57 层：直接复用最近的索引", 6.2, 1.8, GREEN, WHITE, 32, CARD_FILL, "BOLD")
+        # 修复#8: 每 4 格第一个高亮（21 个高亮），其余灰色 —— 对应「21 层跑 Indexer」
         blocks = VGroup(*[
-            Rectangle(width=0.22, height=0.32, color=CYAN if i < 21 else MUTED,
-                      fill_color=CYAN if i < 21 else MUTED, fill_opacity=0.8,
+            Rectangle(width=0.22, height=0.32, color=CYAN if i % 4 == 0 else MUTED,
+                      fill_color=CYAN if i % 4 == 0 else MUTED, fill_opacity=0.8,
                       stroke_width=1.0)
             for i in range(78)
         ]).arrange_in_grid(rows=6, cols=13, buff=0.08)
@@ -718,9 +741,12 @@ class S6(_Base):
         layout_page(page2)
 
         self.at_clip("s6-c07")
+        # 修复F: 「跑 Indexer」标签与 21层 counter 同时出现（同一拍）
         active = self.counter_value(0, 21, suffix=" 层", size=54,
                                     color=YELL, anchor=active_slot, run_time=0.65,
-                                    extra_anims=[type_in(layer_label, run_time=0.7), FadeIn(blocks)])
+                                    extra_anims=[type_in(active_row[0], run_time=0.45),
+                                                 type_in(layer_label, run_time=0.7), FadeIn(blocks)])
+        # 修复#11: 压缩动画时长，避免后续 at_strict 回退（动画总时长不得超过字幕间隔）
         self.at_clip("s6-c08")
         self.play_scroll_unroll(reuse, run_time=0.75)
         self.at_clip("s6-c09")
@@ -767,14 +793,15 @@ class S6(_Base):
         self.at_clip("s6-c15")
         self.play(type_in(context, run_time=0.6))
         self.at_clip("s6-c16")
+        self.play(type_in(gain_row[0], run_time=0.45))
         gain = self.counter_value(0, 2.9, decimals=1, suffix=" 倍", size=58,
-                                  color=YELL, anchor=gain_slot, run_time=0.7,
-                                  extra_anims=[type_in(gain_row[0], run_time=0.55)])
+                                  color=YELL, anchor=gain_slot, run_time=0.7)
         self.at_clip("s6-c17")
         self.play_scroll_unroll(passed, run_time=0.75)
         self.at_clip("s6-c18")
         self.play(type_in(storage_q, run_time=0.7))
         self.wait(0.07)
+        # 修复#11: 确保 head/footer 也随本页清理，换页不残留
         self.play(FadeOut(Group(head, footer_mob, stacked, context, gain_row, gain, passed, storage_q),
                           shift=RIGHT * 0.1 + DOWN * 0.03), run_time=0.5)
         self.pad_to_voice()
@@ -803,34 +830,49 @@ class S7(_Base):
         self.play(type_in(intro, run_time=0.7))
         self.at_clip("s7-c03")
         self.play_parallel(type_in(subtitle, run_time=0.7), FadeIn(full_kv), run_time=0.7)
+        # 修复#9: Page1 换页前确保完全淡出（不再与 Page2 bar 重叠）
         self.play(FadeOut(Group(intro, subtitle, full_kv), shift=UP * 0.03), run_time=0.25)
 
-        # Page 2: 6144 -> 512 dimensions.
-        standard = t("完整向量", 34, WHITE, "BOLD")
-        standard_slot = dynamic_slot(5.8, 0.75)
-        compressed = t("压缩表示", 34, WHITE, "BOLD")
-        compressed_slot = dynamic_slot(1.7, 0.75)
-        row_standard = stable_row(standard, standard_slot, buff=0.3)
-        row_compressed = stable_row(compressed, compressed_slot, buff=0.3)
+        # 修复G: 完整向量用一堆小格子横向紧凑排列 + 省略号，数字放下方；
+        # 压缩表示用短很多的格子，两个向量左对齐、间距适中
+        standard_label = t("完整向量", 34, WHITE, "BOLD")
+        standard_cells = VGroup(*[
+            Rectangle(width=0.26, height=0.62, color=CYAN, fill_color=CYAN, fill_opacity=0.85,
+                      stroke_width=1.0)
+            for _ in range(14)
+        ]).arrange(RIGHT, buff=0.06)
+        ellipsis = t("…", 40, MUTED, "BOLD")
+        standard_row = Group(standard_label, standard_cells, ellipsis).arrange(RIGHT, buff=0.3)
+        dim6144 = t("维度 6144", 30, MUTED).next_to(standard_cells, DOWN, buff=0.15)
+
+        compressed_label = t("压缩表示", 34, WHITE, "BOLD")
+        compressed_cells = VGroup(*[
+            Rectangle(width=0.26, height=0.62, color=GREEN, fill_color=GREEN, fill_opacity=0.85,
+                      stroke_width=1.0)
+            for _ in range(5)
+        ]).arrange(RIGHT, buff=0.06)
+        compressed_row = Group(compressed_label, compressed_cells).arrange(RIGHT, buff=0.3)
+        dim512 = t("维度 512", 30, MUTED).next_to(compressed_cells, DOWN, buff=0.15)
+
+        # 两个向量左对齐（label 对齐），压缩表示明显短很多
+        standard_row.align_to(compressed_row, LEFT)
         over = t("压缩超 10 倍", 54, YELL, "BOLD")
         fit(over, 0.86)
-        page2 = page_stack(row_standard, row_compressed, over, buff=2.45)
+        page2 = page_stack(standard_row, dim6144, compressed_row, dim512, over, buff=1.5)
         layout_page(page2)
-        wide = Rectangle(width=5.8, height=0.75, color=CYAN, fill_color=CYAN, fill_opacity=0.8).move_to(standard_slot.get_center())
-        narrow = Rectangle(width=1.7, height=0.75, color=GREEN, fill_color=GREEN, fill_opacity=0.8).move_to(compressed_slot.get_center())
 
         self.at_clip("s7-c04")
-        self.add(standard)
-        self.grow_bar(wide, ValueTracker(0), 5.8, run_time=0.65)
+        self.play(type_in(standard_label, run_time=0.5), FadeIn(standard_cells), run_time=0.6)
         self.at_clip("s7-c05")
-        self.play(type_in(t("维度 6144", 30, MUTED), run_time=0.55))
+        self.play(type_in(dim6144, run_time=0.45))
         self.at_clip("s7-c06")
-        self.add(compressed)
-        self.grow_bar(narrow, ValueTracker(0), 1.7, run_time=0.65)
+        self.play(type_in(compressed_label, run_time=0.5), FadeIn(compressed_cells), run_time=0.6)
+        self.play(type_in(dim512, run_time=0.45))
         self.at_clip("s7-c07")
         self.play(type_in(over, run_time=0.75))
         self.wait(0.07)
-        self.play(FadeOut(Group(row_standard, row_compressed, wide, narrow, over), shift=UP * 0.03), run_time=0.25)
+        self.play(FadeOut(Group(standard_row, dim6144, compressed_row, dim512, over),
+                          shift=UP * 0.03), run_time=0.25)
 
         # Page 3: storage reduction, with anchored bars.
         cache_label = t("KV cache", 40, WHITE, "BOLD")
@@ -852,11 +894,15 @@ class S7(_Base):
         self.add(new_row[0])
         self.grow_bar(new_bar, ValueTracker(0), 1.7, run_time=0.65)
         self.at_clip("s7-c10")
-        self.play(type_in(impossible, run_time=0.7))
+        # 修复H: 「完全不可行」整词出现（不用 type_in 逐字，避免动画未完就划删除线），然后删除线划掉
+        self.play(FadeIn(impossible, scale=0.85), run_time=0.45)
+        strike = Line(impossible.get_corner(UL) + RIGHT * 0.1, impossible.get_corner(DR) - RIGHT * 0.1,
+                      color=RED, stroke_width=10)
+        self.play(Create(strike), run_time=0.4)
         self.at_clip("s7-c11")
         self.play(type_in(feasible, run_time=0.65))
         self.wait(0.07)
-        self.play(FadeOut(Group(cache_label, old_row, new_row, old_bar, new_bar, impossible, feasible), shift=UP * 0.03), run_time=0.25)
+        self.play(FadeOut(Group(cache_label, old_row, new_row, old_bar, new_bar, impossible, strike, feasible), shift=UP * 0.03), run_time=0.25)
 
         # Page 4: the three fixes are a coordinated system.
         synergy = t("三招协同", 46, YELL, "BOLD")
@@ -912,9 +958,9 @@ class S8(_Base):
         layout_page(page1)
 
         self.at_clip("s8-c01")
-        self.play(type_in(head, run_time=0.4))
+        self.play(FadeIn(head, run_time=0.4))
         self.at_clip("s8-c02")
-        self.play(type_in(opening, run_time=0.65))
+        self.play(FadeIn(opening, run_time=0.65))
         self.at_clip("s8-c03")
         self.play_scroll_unroll(wall1, run_time=0.7)
         self.at_clip("s8-c04")
@@ -945,9 +991,9 @@ class S8(_Base):
         self.at_clip("s8-c07")
         self.play_parallel(FadeIn(chain), Create(chain_arrows), run_time=0.65)
         self.at_clip("s8-c08")
-        self.play(type_in(impossible, run_time=0.7))
+        self.play(FadeIn(impossible, run_time=0.7))
         self.at_clip("s8-c09")
-        self.play(type_in(feasible, run_time=0.7))
+        self.play(FadeIn(feasible, run_time=0.7))
         self.wait(0.07)
         self.play(FadeOut(Group(image, chain, chain_arrows, impossible, feasible), shift=UP * 0.03), run_time=0.25)
 
@@ -965,14 +1011,14 @@ class S8(_Base):
         self.at_clip("s8-c10")
         old_score = self.counter_value(0, 1.0, decimals=1, size=60,
                                        color=MUTED, anchor=old_slot, run_time=0.55,
-                                       extra_anims=[type_in(score_label, run_time=0.65)])
+                                       extra_anims=[FadeIn(score_label, run_time=0.65)])
         self.at_clip("s8-c11")
         new_score = self.counter_value(1.0, 13.0, decimals=1, size=68,
                                        color=YELL, anchor=new_slot, run_time=0.65)
         self.wait(0.07)
         pct = self.counter_value(0, 1200, suffix="%", size=54,
                                  color=YELL, anchor=pct_slot, run_time=0.65,
-                                 extra_anims=[type_in(pct_row[0], run_time=0.5)])
+                                 extra_anims=[FadeIn(pct_row[0], run_time=0.5)])
         self.at_clip("s8-c12")
         self.play(FadeIn(math), run_time=0.65)
         self.at_clip("s8-c13")
@@ -997,13 +1043,13 @@ class S8(_Base):
         )
 
         self.at_clip("s8-c14")
-        self.play(type_in(insight, run_time=0.7))
+        self.play(FadeIn(insight, run_time=0.7))
         self.at_clip("s8-c15")
         self.play_parallel(FadeIn(nodes), Create(arrows), run_time=0.7)
         self.at_clip("s8-c16")
         n3_cross = self.play_red_cross(n3, run_time=0.6)
         self.at_clip("s8-c17")
-        self.play(type_in(next_label, run_time=0.55))
+        self.play(FadeIn(next_label, run_time=0.55))
         self.at_clip("s8-c18")
         self.play_scroll_unroll(next_card, run_time=0.8)
         self.wait(0.07)
@@ -1024,12 +1070,13 @@ class S8(_Base):
         layout_page(end_page)
 
         self.at_clip("s8-c19")
-        self.play(type_in(question1, run_time=0.6))
+        self.play(FadeIn(question1, run_time=0.6))
         self.at_clip("s8-c20")
-        self.play(type_in(question2, run_time=0.8))
+        self.play(FadeIn(question2, run_time=0.8))
         self.at_clip("s8-c21")
-        self.play(type_in(comment, run_time=0.6))
+        self.play(FadeIn(comment, run_time=0.3))  # c21 仅 0.36s，0.6s 淡入会越过 c22 起点
         self.at_clip("s8-c22")
-        self.play_parallel(FadeIn(avatar), type_in(follow, run_time=0.55), run_time=0.65)
-        self.play_parallel(type_in(title, run_time=0.8), type_in(read, run_time=0.6), run_time=0.8)
+        self.play_parallel(FadeIn(avatar), FadeIn(follow, run_time=0.55), run_time=0.65)
+        # 修复I: 品牌尾卡 title/read 挂到同一字幕节拍，不提前抢跑
+        self.play_parallel(FadeIn(title, run_time=0.8), FadeIn(read, run_time=0.6), run_time=0.8)
         self.pad_to_voice()

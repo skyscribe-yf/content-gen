@@ -6875,6 +6875,611 @@
         "The 文章收入 tab matched the 广告位数据 table, so article-level income detail was not available in this collection; articleIncomeAvailable is false.",
         "Keyword ads had no pulls or impressions; exposureRate, ctr and ecpm are recorded as null rather than '-'."
       ]
+    },
+    {
+      "collectedAt": "2026-08-20T06:29:27+08:00",
+      "dataThrough": "2026-08-19",
+      "periods": {
+        "content": {
+          "from": "2026-07-21",
+          "to": "2026-08-19"
+        },
+        "users": {
+          "from": "2026-07-20",
+          "to": "2026-08-19"
+        },
+        "income": {
+          "from": "2026-08-13",
+          "to": "2026-08-18"
+        }
+      },
+      "content": {
+        "readers30d": 22354,
+        "daily": {
+          "date": "2026-08-19",
+          "reads": 901,
+          "shares": 115,
+          "comments": 11
+        },
+        "sources": {
+          "recommendation": 84.8,
+          "officialMessage": 4.9,
+          "chatSession": 4.0,
+          "accountHome": 3.4,
+          "other": 2.8,
+          "search": 1.0,
+          "moments": 0.8
+        },
+        "articles": [
+          {
+            "date": "2026-08-07",
+            "title": "opencode这波真要杀疯了",
+            "reads": 5431,
+            "share": 24.3
+          },
+          {
+            "date": "2026-08-10",
+            "title": "KV缓存存进SSD：慢50倍的硬盘，为什么反而更快？",
+            "reads": 2328,
+            "share": 10.41
+          },
+          {
+            "date": "2026-08-09",
+            "title": "即将反转！opencode go也要搞峰谷价",
+            "reads": 1710,
+            "share": 7.65
+          },
+          {
+            "date": "2026-08-11",
+            "title": "突飞猛进的pi agent和友善的openai，你选谁",
+            "reads": 1347,
+            "share": 6.03
+          },
+          {
+            "date": "2026-08-16",
+            "title": "严重过拟合的Deepseek，和魔幻的价格",
+            "reads": 1305,
+            "share": 5.84
+          },
+          {
+            "date": "2026-08-12",
+            "title": "高维空间为什么全是壳？内积才是那把尺子",
+            "reads": 1179,
+            "share": 5.27
+          },
+          {
+            "date": "2026-08-07",
+            "title": "第三方DeepSeek0731还是有希望",
+            "reads": 1072,
+            "share": 4.8
+          },
+          {
+            "date": "2026-08-07",
+            "title": "QWen3.8 Max评分接近Kimi k3",
+            "reads": 1048,
+            "share": 4.69
+          },
+          {
+            "date": "2026-08-04",
+            "title": "DeepSeek-V4为何不用MLA？",
+            "reads": 995,
+            "share": 4.45
+          },
+          {
+            "date": "2026-07-08",
+            "title": "Softmax为什么不直接取最大值？",
+            "reads": 566,
+            "share": 2.53
+          }
+        ]
+      },
+      "users": {
+        "daily": {
+          "date": "2026-08-19",
+          "new": 55,
+          "cancelled": 0,
+          "net": 55,
+          "total": 731
+        },
+        "channelTotal": 505,
+        "channels": {
+          "articlePage": {
+            "count": 404,
+            "share": 80.0
+          },
+          "search": {
+            "count": 58,
+            "share": 11.49
+          },
+          "qrCode": {
+            "count": 2,
+            "share": 0.4
+          },
+          "video": {
+            "count": 6,
+            "share": 1.19
+          },
+          "other": {
+            "count": 35,
+            "share": 6.93
+          }
+        },
+        "trend": [
+          {
+            "date": "2026-08-19",
+            "new": 55,
+            "cancelled": 0,
+            "net": 55,
+            "total": 731
+          },
+          {
+            "date": "2026-08-18",
+            "new": 45,
+            "cancelled": 2,
+            "net": 43,
+            "total": 676
+          },
+          {
+            "date": "2026-08-17",
+            "new": 33,
+            "cancelled": 0,
+            "net": 33,
+            "total": 633
+          },
+          {
+            "date": "2026-08-16",
+            "new": 46,
+            "cancelled": 0,
+            "net": 46,
+            "total": 600
+          },
+          {
+            "date": "2026-08-15",
+            "new": 35,
+            "cancelled": 0,
+            "net": 35,
+            "total": 554
+          },
+          {
+            "date": "2026-08-14",
+            "new": 51,
+            "cancelled": 0,
+            "net": 51,
+            "total": 519
+          },
+          {
+            "date": "2026-08-13",
+            "new": 34,
+            "cancelled": 0,
+            "net": 34,
+            "total": 468
+          },
+          {
+            "date": "2026-08-12",
+            "new": 15,
+            "cancelled": 0,
+            "net": 15,
+            "total": 434
+          },
+          {
+            "date": "2026-08-11",
+            "new": 28,
+            "cancelled": 0,
+            "net": 28,
+            "total": 419
+          },
+          {
+            "date": "2026-08-10",
+            "new": 13,
+            "cancelled": 0,
+            "net": 13,
+            "total": 391
+          },
+          {
+            "date": "2026-08-09",
+            "new": 11,
+            "cancelled": 0,
+            "net": 11,
+            "total": 378
+          },
+          {
+            "date": "2026-08-08",
+            "new": 7,
+            "cancelled": 0,
+            "net": 7,
+            "total": 367
+          },
+          {
+            "date": "2026-08-07",
+            "new": 16,
+            "cancelled": 0,
+            "net": 16,
+            "total": 360
+          },
+          {
+            "date": "2026-08-06",
+            "new": 7,
+            "cancelled": 0,
+            "net": 7,
+            "total": 344
+          },
+          {
+            "date": "2026-08-05",
+            "new": 6,
+            "cancelled": 0,
+            "net": 6,
+            "total": 337
+          },
+          {
+            "date": "2026-08-04",
+            "new": 8,
+            "cancelled": 1,
+            "net": 7,
+            "total": 331
+          },
+          {
+            "date": "2026-08-03",
+            "new": 10,
+            "cancelled": 0,
+            "net": 10,
+            "total": 324
+          },
+          {
+            "date": "2026-08-02",
+            "new": 6,
+            "cancelled": 1,
+            "net": 5,
+            "total": 314
+          },
+          {
+            "date": "2026-08-01",
+            "new": 4,
+            "cancelled": 0,
+            "net": 4,
+            "total": 309
+          },
+          {
+            "date": "2026-07-31",
+            "new": 3,
+            "cancelled": 0,
+            "net": 3,
+            "total": 305
+          },
+          {
+            "date": "2026-07-30",
+            "new": 13,
+            "cancelled": 0,
+            "net": 13,
+            "total": 302
+          },
+          {
+            "date": "2026-07-29",
+            "new": 5,
+            "cancelled": 0,
+            "net": 5,
+            "total": 289
+          },
+          {
+            "date": "2026-07-28",
+            "new": 2,
+            "cancelled": 0,
+            "net": 2,
+            "total": 284
+          },
+          {
+            "date": "2026-07-27",
+            "new": 2,
+            "cancelled": 0,
+            "net": 2,
+            "total": 282
+          },
+          {
+            "date": "2026-07-26",
+            "new": 3,
+            "cancelled": 1,
+            "net": 2,
+            "total": 280
+          },
+          {
+            "date": "2026-07-25",
+            "new": 9,
+            "cancelled": 0,
+            "net": 9,
+            "total": 278
+          },
+          {
+            "date": "2026-07-24",
+            "new": 5,
+            "cancelled": 0,
+            "net": 5,
+            "total": 269
+          },
+          {
+            "date": "2026-07-23",
+            "new": 12,
+            "cancelled": 0,
+            "net": 12,
+            "total": 264
+          },
+          {
+            "date": "2026-07-22",
+            "new": 8,
+            "cancelled": 1,
+            "net": 7,
+            "total": 252
+          },
+          {
+            "date": "2026-07-21",
+            "new": 4,
+            "cancelled": 0,
+            "net": 4,
+            "total": 245
+          },
+          {
+            "date": "2026-07-20",
+            "new": 9,
+            "cancelled": 0,
+            "net": 9,
+            "total": 241
+          }
+        ]
+      },
+      "income": {
+        "overview": {
+          "cumulativeRevenue": 50.21,
+          "programmaticRevenue": 50.21,
+          "yesterdayIncrement": 2.34,
+          "mutualSelectionRevenue": 0.0,
+          "commerceRevenue": 0.0
+        },
+        "articleIncomeAvailable": false,
+        "slots": {
+          "messageArea": {
+            "summary": {
+              "pulls": 11601,
+              "impressions": 2095,
+              "exposureRate": 18.06,
+              "clicks": 20,
+              "ctr": 0.95,
+              "ecpm": 4.39,
+              "revenue": 9.19
+            },
+            "dailyRevenueTotal": 9.18,
+            "daily": [
+              {
+                "date": "2026-08-18",
+                "pulls": 1151,
+                "impressions": 150,
+                "exposureRate": 13.03,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 3.93,
+                "revenue": 0.59
+              },
+              {
+                "date": "2026-08-17",
+                "pulls": 2611,
+                "impressions": 526,
+                "exposureRate": 20.15,
+                "clicks": 4,
+                "ctr": 0.76,
+                "ecpm": 3.19,
+                "revenue": 1.68
+              },
+              {
+                "date": "2026-08-16",
+                "pulls": 3152,
+                "impressions": 627,
+                "exposureRate": 19.89,
+                "clicks": 9,
+                "ctr": 1.44,
+                "ecpm": 5.07,
+                "revenue": 3.18
+              },
+              {
+                "date": "2026-08-15",
+                "pulls": 2216,
+                "impressions": 405,
+                "exposureRate": 18.28,
+                "clicks": 4,
+                "ctr": 0.99,
+                "ecpm": 3.83,
+                "revenue": 1.55
+              },
+              {
+                "date": "2026-08-14",
+                "pulls": 1310,
+                "impressions": 217,
+                "exposureRate": 16.56,
+                "clicks": 2,
+                "ctr": 0.92,
+                "ecpm": 6.91,
+                "revenue": 1.5
+              },
+              {
+                "date": "2026-08-13",
+                "pulls": 1161,
+                "impressions": 170,
+                "exposureRate": 14.64,
+                "clicks": 1,
+                "ctr": 0.59,
+                "ecpm": 4.0,
+                "revenue": 0.68
+              }
+            ]
+          },
+          "bottom": {
+            "summary": {
+              "pulls": 3821,
+              "impressions": 739,
+              "exposureRate": 19.34,
+              "clicks": 2,
+              "ctr": 0.27,
+              "ecpm": 3.69,
+              "revenue": 2.73
+            },
+            "dailyRevenueTotal": 2.73,
+            "daily": [
+              {
+                "date": "2026-08-18",
+                "pulls": 545,
+                "impressions": 114,
+                "exposureRate": 20.92,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 3.6,
+                "revenue": 0.41
+              },
+              {
+                "date": "2026-08-17",
+                "pulls": 611,
+                "impressions": 120,
+                "exposureRate": 19.64,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 3.75,
+                "revenue": 0.45
+              },
+              {
+                "date": "2026-08-16",
+                "pulls": 607,
+                "impressions": 93,
+                "exposureRate": 15.32,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 3.66,
+                "revenue": 0.34
+              },
+              {
+                "date": "2026-08-15",
+                "pulls": 745,
+                "impressions": 127,
+                "exposureRate": 17.05,
+                "clicks": 1,
+                "ctr": 0.79,
+                "ecpm": 5.59,
+                "revenue": 0.71
+              },
+              {
+                "date": "2026-08-14",
+                "pulls": 701,
+                "impressions": 158,
+                "exposureRate": 22.54,
+                "clicks": 1,
+                "ctr": 0.63,
+                "ecpm": 4.11,
+                "revenue": 0.65
+              },
+              {
+                "date": "2026-08-13",
+                "pulls": 612,
+                "impressions": 127,
+                "exposureRate": 20.75,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 1.34,
+                "revenue": 0.17
+              }
+            ]
+          },
+          "inline": {
+            "summary": {
+              "pulls": 7169,
+              "impressions": 3666,
+              "exposureRate": 51.14,
+              "clicks": 11,
+              "ctr": 0.3,
+              "ecpm": 1.17,
+              "revenue": 4.28
+            },
+            "dailyRevenueTotal": 4.28,
+            "daily": [
+              {
+                "date": "2026-08-18",
+                "pulls": 998,
+                "impressions": 488,
+                "exposureRate": 48.9,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 2.75,
+                "revenue": 1.34
+              },
+              {
+                "date": "2026-08-17",
+                "pulls": 1117,
+                "impressions": 546,
+                "exposureRate": 48.88,
+                "clicks": 4,
+                "ctr": 0.73,
+                "ecpm": 0.93,
+                "revenue": 0.51
+              },
+              {
+                "date": "2026-08-16",
+                "pulls": 1154,
+                "impressions": 595,
+                "exposureRate": 51.56,
+                "clicks": 1,
+                "ctr": 0.17,
+                "ecpm": 1.38,
+                "revenue": 0.82
+              },
+              {
+                "date": "2026-08-15",
+                "pulls": 1410,
+                "impressions": 724,
+                "exposureRate": 51.35,
+                "clicks": 3,
+                "ctr": 0.41,
+                "ecpm": 1.02,
+                "revenue": 0.74
+              },
+              {
+                "date": "2026-08-14",
+                "pulls": 1322,
+                "impressions": 698,
+                "exposureRate": 52.8,
+                "clicks": 1,
+                "ctr": 0.14,
+                "ecpm": 0.86,
+                "revenue": 0.6
+              },
+              {
+                "date": "2026-08-13",
+                "pulls": 1168,
+                "impressions": 615,
+                "exposureRate": 52.65,
+                "clicks": 2,
+                "ctr": 0.33,
+                "ecpm": 0.44,
+                "revenue": 0.27
+              }
+            ]
+          },
+          "keyword": {
+            "summary": {
+              "pulls": 0,
+              "impressions": 0,
+              "exposureRate": null,
+              "clicks": 0,
+              "ctr": null,
+              "ecpm": null,
+              "revenue": 0.0
+            },
+            "dailyRevenueTotal": 0.0,
+            "daily": []
+          }
+        }
+      },
+      "notes": [
+        "Content report window 2026-07-21 to 2026-08-19: 22,354 unique readers. Scene-level source values overlap and sum to 101.7%; recommendation dominates at 84.8%, while search is 1.0%.",
+        "Yesterday card (08-19): reads 901 / likes 21 / shares 115 / favorites 16 / comments 11; the snapshot stores the required reads, shares and comments fields. Daily display is '昨日' (2026-08-19) as of 2026-08-20 06:29 CST.",
+        "The content-analysis table exposed the ten highest-read articles in the current view; it is not treated as a full 30-day article inventory. KV缓存一文从 1993 升至 2328 (+335)，高维空间从 895 升至 1179 (+284)，显示推荐长尾仍在持续。",
+        "User report window 2026-07-20 to 2026-08-19: 505 new follows in window, cumulative total 731 (08-19). The collapsed '更多' channel is stored as other (35, 6.93%). Backend showed '后台数据系统统计延迟' on 08-19 with cumulative 0; the snapshot computes 08-19 total as 676+55=731 and notes the provisional nature. Trend pagination was 4 pages; 08-19 row shows 55/0/55 with total derived.",
+        "Income overview as of 08-19: cumulative/programmatic revenue 50.21 yuan, derived yesterday increment 2.34 yuan (sum of 08-18 slot revenues 0.59+0.41+1.34; cumulative diff 50.21-47.79=2.42, 0.08 yuan rounding). Overview page redesign no longer shows explicit yesterday increment card; value is derived from daily slot data. Daily slot reports cover 08-13 to 08-18 (6 days); income lags content by ~1 day.",
+        "The 文章收入 tab matched the 广告位数据 keyword empty state, so article-level income detail was not available in this collection; articleIncomeAvailable is false. Slots checked: 留言区广告(18.06% 曝光), 底部广告(19.34%), 文中广告(51.14%), 文中关键词广告(无数据). Displayed summary revenue and summed daily revenue differ by 0.01 yuan for messageArea (9.19 vs 9.18) due to rounding.",
+        "Keyword ads had no pulls or impressions; exposureRate, ctr and ecpm are recorded as null rather than '-'."
+      ]
     }
   ]
 }

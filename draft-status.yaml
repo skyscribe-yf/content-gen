@@ -557,9 +557,9 @@ articles:
 - slug: 2026-08-18-q-learning
   title: Q-learning是什么？没有转移表怎么解
   series: 强化学习原理
-  status: drafting
-  published_date: null
-  wechat_url: null
+  status: published
+  published_date: '2026-08-18'
+  wechat_url: https://mp.weixin.qq.com/s/W9Bd--EtnidWy65Yx4Kyfw
   files:
     weixin: true
     draft: false
@@ -570,6 +570,20 @@ articles:
   notes: 强化学习原理系列第三篇。grill 日志 .grill/2026-08-18-q-learning.md。2026-08-17 已存公众号草稿箱 （remote-api --theme grace --color blue）。封面 00-cover.png 1280x548 21:9（gpt-image-2 1928x816 裁剪，标题完整）。正文 01 概念图 / 02 概念图 /
     03-04 脚本图。上篇 wechatUrl 发布后回填。 目录日期暂定 08-18，视第二篇实际发布日顺延。 2026-08-18 打磨：上篇 bellman 已发布，wechatUrl 回填（开头链接 + GRPO 段链接）；删除「多维高斯顺序改了」规划注脚（对单篇读者突兀）；TD 目标「左边/右边」改「前一项/后一项」；结尾预告明确下一篇=策略梯度。 2026-08-18 打磨后重存草稿箱（remote-api
     --theme grace --color blue，citeStatus=true）：新 media_id kOcXH4SytIYVIpYksTGfHm6NvKmf1bd-EoWteS5Y6EDkip-rnFKuEsVeUXSs0vqB（封面 kOcXH4SytIYVIpYksTGfHi6_WYVco51nueuF1mmszB9SHIOKdNGZlpmanfDDXMIR）。
+- slug: 2026-08-18-矩阵秩
+  title: 矩阵的秩：为什么低秩在 AI 里无处不在？
+  series: 数学直觉
+  status: published
+  published_date: '2026-08-18'
+  wechat_url: https://mp.weixin.qq.com/s/HIwjTG0lpcLcEjTuUw3Nzg
+  files:
+    weixin: true
+    draft: false
+    outline: false
+    cover: true
+  media_id: null
+  cover_media_id: null
+  notes: 已发布 2026-08-18。
 - slug: 2026-08-19-policy-gradient
   title: 策略梯度是什么？直接改概率行不行
   series: 强化学习原理
@@ -581,10 +595,24 @@ articles:
     draft: false
     outline: true
     cover: true
-  media_id: kOcXH4SytIYVIpYksTGfHp9XsS5xVBgs8SqmU5OFlEt4kMlG1YM0Ex2vHyWS2Xu0
-  cover_media_id: kOcXH4SytIYVIpYksTGfHvVJ_BW9ja2AgqwSG-vessIgtrFoS3tS83Kon-1PCYAn
+  media_id: kOcXH4SytIYVIpYksTGfHnq6LTSaZv-4-JfbaKm_LBBK2IHIzg9rOdJIJtznLKCB
+  cover_media_id: kOcXH4SytIYVIpYksTGfHipllF_uZFBj5kQwGECaenoWx1F4WPzV8JCFhYplvgw3
   notes: '强化学习原理系列第四篇。grill 日志 .grill/2026-08-19-policy-gradient.md。 2026-08-17 已存公众号草稿箱（remote-api --theme grace --color blue）。 封面 00-cover.png 1280x548 21:9（gpt-image-2 1915x821 裁剪，标题完整）。 正文 01 AI 概念图
     / 02-04 脚本图。上篇 wechatUrl 发布后回填开头引用。 目录日期暂定 08-19，视第二、三篇实际发布日顺延。 **media_id: kOcXH4SytIYVIpYksTGfHp9XsS5xVBgs8SqmU5OFlEt4kMlG1YM0Ex2vHyWS2Xu0** （封面 kOcXH4SytIYVIpYksTGfHvVJ_BW9ja2AgqwSG-vessIgtrFoS3tS83Kon-1PCYAn）。'
+- slug: 2026-08-20-gaussian-trust-region
+  title: 多维高斯是什么？概率不是球
+  series: 强化学习原理
+  status: drafting
+  published_date: null
+  wechat_url: null
+  files:
+    weixin: true
+    draft: false
+    outline: true
+    cover: true
+  media_id: kOcXH4SytIYVIpYksTGfHtA4yWHREhGQR796Ewg3t3W1oRRbta6CD5phDoOLVsbY
+  cover_media_id: kOcXH4SytIYVIpYksTGfHkO2SPi8NsbIqqTcYiBeDvEJDqArgZhkFd-zJtU5k2cu
+  notes: '强化学习原理系列第五篇。grill 日志 .grill/2026-08-20-gaussian-trust-region.md。 2026-08-18 大纲定案（数字例子经蒙特卡洛事实验证：同一 Δμ=0.1，窄方向 KL=0.5 vs 宽方向 KL=0.00005，差 10000 倍；δ=0.01 允许步长 0.014 vs 1.41，差 100 倍）。 封面 00-cover.png 1280x548 21:9（gpt-image-2 1915x821 缩放，标题完整）。 正文 01/02 AI 概念图 + 03/04 脚本图。 篇4 wechatUrl 发布后回填开头引用。 目录日期暂定 08-20，视第三、四篇实际发布日顺延。 2026-08-19 已存公众号草稿箱（remote-api --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHtA4yWHREhGQR796Ewg3t3W1oRRbta6CD5phDoOLVsbY（封面 kOcXH4SytIYVIpYksTGfHkO2SPi8NsbIqqTcYiBeDvEJDqArgZhkFd-zJtU5k2cu）。 2026-08-19 改版：标题「概率不是球」→「更新一步能走多大」（RL 问题驱动，与篇4 同构）；薄壳独立节压缩成第一节一句；每节回扣 RL（更新策略/策略脆弱/信任域）。旧草稿 media_id kOcXH4SytIYVIpYksTGfHhsZn8XqhDKnAIXA8a5ILUSa-PUUaao6-8t6bZ9NhTQb 作废。'
 summary:
   total: 41
   by_status:
@@ -596,6 +624,7 @@ summary:
   drafting_queue:
   - 2026-08-18-q-learning
   - 2026-08-19-policy-gradient
+  - 2026-08-20-gaussian-trust-region
   ready_queue:
   - 2026-07-25-fields-medal
   scheduled_queue:

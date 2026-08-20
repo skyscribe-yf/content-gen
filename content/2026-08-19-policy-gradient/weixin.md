@@ -6,10 +6,11 @@ type: "原理篇"
 series: "强化学习原理"
 digest: "不知道转移表，不必先解价值函数。策略梯度用回报乘回 logπ，直接改动作概率；Actor-Critic 再把分数从整段回报换成优势函数，也就是上篇那个 δ。REINFORCE 是这条路的起点。"
 cover: "00-cover.png"
+wechatUrl: "https://mp.weixin.qq.com/s/IcoJTY4b1c-p0Njrxb7isA"
 keywords: ["策略梯度", "Actor-Critic", "优势函数", "REINFORCE", "价值函数", "强化学习"]
 ---
 
-上一篇《Q-learning是什么？没有转移表怎么解》结尾写过一句：
+上一篇《[Q-learning是什么？没有转移表怎么解](https://mp.weixin.qq.com/s/W9Bd--EtnidWy65Yx4Kyfw)》结尾写过一句：
 
 > 还有一条路根本不经过 $P$，直接改策略 $\pi$。
 
@@ -232,7 +233,7 @@ $V(s)$ 在这里有个名字：基线。只跟 $s$ 有关，不跟你选了哪�
 
 **第二级。真正该乘回去的，是「这个动作比平均好多少」。**
 
-《贝尔曼方程：为什么只看下一步就够了？》里挂过一句（$Q$ 和 $V$ 的差别，讲到这里会变成主角）。
+[《贝尔曼方程：为什么只看下一步就够了？》](https://mp.weixin.qq.com/s/kHvjDKrQElvWXrA92yqAfA)里挂过一句（$Q$ 和 $V$ 的差别，讲到这里会变成主角）。
 
 现在还这笔。
 

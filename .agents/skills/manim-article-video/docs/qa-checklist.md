@@ -39,6 +39,7 @@ QA subagent 按此清单逐项核查，输出 **PASS / FAIL + 证据**（文件:
 | B5 | 无长静音 | `ffmpeg -i 成品 -af silencedetect=noise=-35dB:d=1.5 -f null -` | 最长静音段 <1.5s（段间 0.1s 缓冲、句间 <1s 正常） |
 | B6 | 时长 | ffprobe | ≈ Σ(VOICE_DUR) + N×0.1 |
 | B7 | 封面 | 检查 `<标题>-封面.png` | yairouter 1080×1920；关键内容在 3:4 安全区 y∈[240,1680] |
+| B8 | 用户报点 ASR 抽验（有反馈时必做） | 提取报点 ±1s 各 2s 音频 → MiMo ASR（`scripts/mimo_srt.py`）→ 与 subs.srt 同刻文本对比 | 语音内容 == 字幕文本；不一致 → 按 av-sync.md 精修 sentence-boundaries 后重 build |
 
 ## 常见 FAIL 模式（对应 pitfalls.md）
 

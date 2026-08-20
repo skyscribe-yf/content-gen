@@ -6,7 +6,7 @@ type: "数学篇"
 series: "数学直觉"
 digest: "矩阵只是表象，线性变换才是本质。秩是信息损失探测器：满秩保信息，低秩有水分。从秩-零化度定理讲到 MLA 和 LoRA 为什么都押注低秩。"
 cover: "00-cover.png"
-wechatUrl: ""
+wechatUrl: "https://mp.weixin.qq.com/s/HIwjTG0lpcLcEjTuUw3Nzg"
 keywords: ["矩阵的秩", "低秩", "线性变换", "满秩", "LoRA"]
 ---
 
