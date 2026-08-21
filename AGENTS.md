@@ -6,6 +6,8 @@
 
 起草大纲前**必须先调用 grill-me skill** 与作者深入讨论（`.agents/skills/grill-me/SKILL.md`）。禁止 AI 单方面生成 `.grill/<slug>.md` 日志。详见 [`docs/writing-flow.md`](docs/writing-flow.md)。
 
+启动新文章（选题/大纲阶段）**必须先读爆款经验** [`docs/viral-article-playbook.md`](docs/viral-article-playbook.md)，标题/开头/结构逐项对照揣摩后再动笔。
+
 ## 素材直出公众号草稿 Skill
 
 项目级 skill：[`.agents/skills/raw-material-to-wechat-draft/SKILL.md`](.agents/skills/raw-material-to-wechat-draft/SKILL.md)
@@ -154,7 +156,7 @@ wechatUrl: "https://mp.weixin.qq.com/s/abc123"
 
 ## 文章质量核查
 
-草稿写完后**必须执行**，全部通过才能进入发布流程。详见 [`docs/article-quality-check.md`](docs/article-quality-check.md)（含 9 项核查清单）。
+草稿写完后**必须执行**，全部通过才能进入发布流程。详见 [`docs/article-quality-check.md`](docs/article-quality-check.md)（含 13 项核查清单，第 13 项为爆款检查器，不满足必须改写）。
 
 ## 发布前检查
 

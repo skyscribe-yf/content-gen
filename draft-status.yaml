@@ -587,9 +587,9 @@ articles:
 - slug: 2026-08-19-policy-gradient
   title: 策略梯度是什么？直接改概率行不行
   series: 强化学习原理
-  status: drafting
-  published_date: null
-  wechat_url: null
+  status: published
+  published_date: '2026-08-19'
+  wechat_url: https://mp.weixin.qq.com/s/IcoJTY4b1c-p0Njrxb7isA
   files:
     weixin: true
     draft: false
@@ -597,10 +597,21 @@ articles:
     cover: true
   media_id: kOcXH4SytIYVIpYksTGfHnq6LTSaZv-4-JfbaKm_LBBK2IHIzg9rOdJIJtznLKCB
   cover_media_id: kOcXH4SytIYVIpYksTGfHipllF_uZFBj5kQwGECaenoWx1F4WPzV8JCFhYplvgw3
-  notes: '强化学习原理系列第四篇。grill 日志 .grill/2026-08-19-policy-gradient.md。 2026-08-17 已存公众号草稿箱（remote-api --theme grace --color blue）。 封面 00-cover.png 1280x548 21:9（gpt-image-2 1915x821 裁剪，标题完整）。 正文 01 AI 概念图
-    / 02-04 脚本图。上篇 wechatUrl 发布后回填开头引用。 目录日期暂定 08-19，视第二、三篇实际发布日顺延。 **media_id: kOcXH4SytIYVIpYksTGfHp9XsS5xVBgs8SqmU5OFlEt4kMlG1YM0Ex2vHyWS2Xu0** （封面 kOcXH4SytIYVIpYksTGfHvVJ_BW9ja2AgqwSG-vessIgtrFoS3tS83Kon-1PCYAn）。'
+  notes: '强化学习原理系列第四篇。已发布 2026-08-19，wechatUrl 已回填：https://mp.weixin.qq.com/s/IcoJTY4b1c-p0Njrxb7isA。grill 日志 .grill/2026-08-19-policy-gradient.md。 2026-08-17 已存公众号草稿箱（remote-api --theme grace --color blue）。 封面 00-cover.png 1280x548 21:9（gpt-image-2 1915x821 裁剪，标题完整）。 正文 01 AI 概念图
+    / 02-04 脚本图。 **media_id: kOcXH4SytIYVIpYksTGfHp9XsS5xVBgs8SqmU5OFlEt4kMlG1YM0Ex2vHyWS2Xu0** （封面 kOcXH4SytIYVIpYksTGfHvVJ_BW9ja2AgqwSG-vessIgtrFoS3tS83Kon-1PCYAn）。'
+- slug: 2026-08-19-期望与导数换序
+  title: 随机变量为什么不是变量？它其实是个函数
+  series: 数学直觉
+  status: published
+  published_date: '2026-08-19'
+  wechat_url: https://mp.weixin.qq.com/s/5BxjOUblW64DXNffHc2sxQ
+  files:
+    weixin: true
+    draft: false
+    outline: false
+    cover: true
 - slug: 2026-08-20-gaussian-trust-region
-  title: 多维高斯是什么？概率不是球
+  title: 多维高斯：为什么同一步长差1万倍？
   series: 强化学习原理
   status: drafting
   published_date: null
@@ -610,21 +621,36 @@ articles:
     draft: false
     outline: true
     cover: true
-  media_id: kOcXH4SytIYVIpYksTGfHtA4yWHREhGQR796Ewg3t3W1oRRbta6CD5phDoOLVsbY
-  cover_media_id: kOcXH4SytIYVIpYksTGfHkO2SPi8NsbIqqTcYiBeDvEJDqArgZhkFd-zJtU5k2cu
-  notes: '强化学习原理系列第五篇。grill 日志 .grill/2026-08-20-gaussian-trust-region.md。 2026-08-18 大纲定案（数字例子经蒙特卡洛事实验证：同一 Δμ=0.1，窄方向 KL=0.5 vs 宽方向 KL=0.00005，差 10000 倍；δ=0.01 允许步长 0.014 vs 1.41，差 100 倍）。 封面 00-cover.png 1280x548 21:9（gpt-image-2 1915x821 缩放，标题完整）。 正文 01/02 AI 概念图 + 03/04 脚本图。 篇4 wechatUrl 发布后回填开头引用。 目录日期暂定 08-20，视第三、四篇实际发布日顺延。 2026-08-19 已存公众号草稿箱（remote-api --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHtA4yWHREhGQR796Ewg3t3W1oRRbta6CD5phDoOLVsbY（封面 kOcXH4SytIYVIpYksTGfHkO2SPi8NsbIqqTcYiBeDvEJDqArgZhkFd-zJtU5k2cu）。 2026-08-19 改版：标题「概率不是球」→「更新一步能走多大」（RL 问题驱动，与篇4 同构）；薄壳独立节压缩成第一节一句；每节回扣 RL（更新策略/策略脆弱/信任域）。旧草稿 media_id kOcXH4SytIYVIpYksTGfHhsZn8XqhDKnAIXA8a5ILUSa-PUUaao6-8t6bZ9NhTQb 作废。'
+  media_id: kOcXH4SytIYVIpYksTGfHjEpYg-9nifxfPRPjbYKdvDxpx3IHr70vf6uKglH7xoZ
+  cover_media_id: kOcXH4SytIYVIpYksTGfHmpJRr6C7LXHbx1GgZcEtPMsN3HmuLTdFBunJ-rH32hH
+  notes: '强化学习原理系列第五篇。grill 日志 .grill/2026-08-20-gaussian-trust-region.md。 2026-08-18 大纲定案（数字例子经蒙特卡洛事实验证：同一 Δμ=0.1，窄方向 KL=0.5 vs 宽方向 KL=0.00005，差 10000 倍；δ=0.01 允许步长 0.014 vs 1.41，差 100 倍）。 封面 00-cover.png 1280x548 21:9（旧标题，待按新标题重生成）。 正文 01/02 AI 概念图 + 03/04 脚本图。 篇4 wechatUrl 已回填 https://mp.weixin.qq.com/s/IcoJTY4b1c-p0Njrxb7isA。 2026-08-20 已存公众号草稿箱（remote-api --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHjEpYg-9nifxfPRPjbYKdvDxpx3IHr70vf6uKglH7xoZ（封面 kOcXH4SytIYVIpYksTGfHmpJRr6C7LXHbx1GgZcEtPMsN3HmuLTdFBunJ-rH32hH），标题已切 B-1「为什么同一步长差1万倍？」(17字)，开头已前置1万倍钩子。旧草稿 kOcXH4SytIYVIpYksTGfHtA4yWHREhGQR796Ewg3t3W1oRRbta6CD5phDoOLVsbY / kOcXH4SytIYVIpYksTGfHhhsZn8X... 作废。'
+- slug: 2026-08-21-多维高斯注解
+  title: 协方差矩阵：1个方差怎么变9个数？拆给你看
+  series: 数学直觉
+  status: drafting
+  published_date: null
+  wechat_url: null
+  files:
+    weixin: true
+    draft: true
+    outline: true
+    cover: true
+  media_id: kOcXH4SytIYVIpYksTGfHgF06-QcXm92rKFrgOF9LNcBH7ArLnILCAd1St8TJpPs
+  cover_media_id: kOcXH4SytIYVIpYksTGfHvaffJlCCEfBUKYpLADFPRGW3lZ5jBvfPHXxDmjx4Hzr
+  notes: '「AI中的数学」注解篇，接《多维高斯》主文（2026-08-20，https://mp.weixin.qq.com/s/GjNkcQ70B3WBzaVPwqVTgg）。素材直出工作流（raw.md 作者手写段 1-10）。 2026-08-21 爆款标准检查后改稿：开头删系列导航、重写为数字反差钩子（1个数→4个数→9个数 + 非对角=0≠独立的坑）；结构瘦身（一维铺垫两节合一、删过渡节、七节）；首尾闭环补回扣句；术语首次出现处加粗高亮；长句>60字清零、半角标点全角化、错别字修正。 标题三轮定稿：初版「协方差矩阵怎么看」→「协方差矩阵为什么是矩阵？」（同义反复被打回）→ 终稿「协方差矩阵：1个方差怎么变9个数？拆给你看」（21字，数字反差+动作承诺，对标「慢50倍的硬盘反而更快」+「Adam拆给你看」两大爆款模板）。 封面按终稿标题重生成（00-cover.png 1915x821 21:9，gpt-image-2，1→9 数字反差视觉化，标题逐字核验通过）。 2026-08-21 已存公众号草稿箱（remote-api --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHgF06-QcXm92rKFrgOF9LNcBH7ArLnILCAd1St8TJpPs（封面 kOcXH4SytIYVIpYksTGfHvaffJlCCEfBUKYpLADFPRGW3lZ5jBvfPHXxDmjx4Hzr）。旧草稿（旧标题 media_id kOcXH4SytIYVIpYksTGfHtXDp1JnJm3Zn-Fpp5LZT6m6zFaaXfkG6KLOtoVutiwj）需在草稿箱删除。发布前确认：声明原创 + 定时 20:00 + 合集「AI中的数学」。'
 summary:
-  total: 41
+  total: 42
   by_status:
     published: 38
     scheduled: 1
     ready: 1
-    drafting: 2
+    drafting: 3
     planned: 0
   drafting_queue:
   - 2026-08-18-q-learning
   - 2026-08-19-policy-gradient
   - 2026-08-20-gaussian-trust-region
+  - 2026-08-21-多维高斯注解
   ready_queue:
   - 2026-07-25-fields-medal
   scheduled_queue:

@@ -6,7 +6,7 @@ type: "数学篇"
 series: "数学直觉"
 digest: "随机变量不是变量，它是个函数；数学期望是加权平均：变换 × 概率权重。从骰子手算到求和变积分，最后落到微分和期望换序——策略梯度的数学底子。"
 cover: "00-cover.png"
-wechatUrl: "https://mp.weixin.qq.com/s/5BxjoublW64DXNffHc2sxQ"
+wechatUrl: "https://mp.weixin.qq.com/s/5BxjOUblW64DXNffHc2sxQ"
 keywords: ["随机变量", "数学期望", "期望", "加权平均", "概率论", "策略梯度"]
 ---
 

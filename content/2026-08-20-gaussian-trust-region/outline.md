@@ -1,5 +1,5 @@
 ---
-title: "多维高斯是什么？更新一步能走多大"
+title: "多维高斯：为什么同一步长差1万倍？"
 author: "数解AI"
 date: "2026-08-20"
 type: "原理篇"
@@ -13,7 +13,7 @@ illustration_backend: "yairouter / gpt-image-2 + matplotlib script"
 illustration_count: 5
 ---
 
-# 多维高斯是什么？更新一步能走多大
+# 多维高斯：为什么同一步长差1万倍？
 
 ## 文章定位
 
