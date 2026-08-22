@@ -6,6 +6,7 @@ type: "数学篇"
 series: "数学直觉"
 digest: "一维的均值方差拉开复制就是多维。均值变向量，方差变矩阵——协方差矩阵每个元素都是二阶量。对角线为零只是线性不相关，唯独多维高斯时才等价于独立，这就是AI偏爱高斯的根。"
 cover: "00-cover.png"
+wechatUrl: "https://mp.weixin.qq.com/s/5TdhwQ166NRvReN2_atCVQ"
 keywords: ["协方差矩阵", "均值向量", "多维随机变量", "相关矩阵", "皮尔森相关系数"]
 ---
 

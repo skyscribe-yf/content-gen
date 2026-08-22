@@ -18,7 +18,7 @@ articles:
   wechat_url: https://mp.weixin.qq.com/s/zIWqYqYVzEaF1e8P6fcTfw
   files:
     weixin: true
-    draft: false
+    draft: true
     outline: false
     cover: false
 - slug: 2026-07-06-反向传播
@@ -66,7 +66,7 @@ articles:
   zhihu_url: https://zhuanlan.zhihu.com/p/2063286132717180758
   files:
     weixin: true
-    draft: false
+    draft: true
     outline: false
     cover: true
 - slug: 2026-07-11-deepseek-moe
@@ -77,7 +77,7 @@ articles:
   wechat_url: https://mp.weixin.qq.com/s/QdkD0CR2fD-HfY77-gX3Ug
   files:
     weixin: true
-    draft: false
+    draft: true
     outline: true
     cover: true
 - slug: 2026-07-21-MLA
@@ -100,7 +100,7 @@ articles:
   wechat_url: https://mp.weixin.qq.com/s/t4sO-zC5v1_jq8hJT_YTGA
   files:
     weixin: true
-    draft: false
+    draft: true
     outline: true
     cover: true
 - slug: 2026-08-02-rlvr
@@ -111,7 +111,7 @@ articles:
   wechat_url: https://mp.weixin.qq.com/s/NvemnDdtkinRKEbmtcckzA
   files:
     weixin: true
-    draft: false
+    draft: true
     outline: true
     cover: true
   notes: 已发布 2026-08-02。训练回路收尾篇。RLVR 用数学题/代码测试的可验证奖励替代主观偏好。
@@ -431,7 +431,7 @@ articles:
   wechat_url: https://mp.weixin.qq.com/s/6GJ2781jJh-dqYswJ07dfA
   files:
     weixin: true
-    draft: false
+    draft: true
     outline: true
     cover: true
   notes: 架构全貌篇，KDA+AttnRes+LatentMoE 三轴，含数学直觉。排期：2026-07-28 20:00（Asia/Shanghai）。已发布（frontmatter wechatUrl 已回填；2026-08-09 核查时同步修正 status/wechat_url，原为 scheduled/null 残留）。
@@ -467,7 +467,7 @@ articles:
   wechat_url: https://mp.weixin.qq.com/s/OEZtUhm8MT_En7enJo_8dw?token=2031108942&lang=zh_CN
   files:
     weixin: true
-    draft: false
+    draft: true
     outline: true
     cover: true
   notes: 已发布 2026-07-31 20:00。拆 Clip/Critic/KL 三道机关 + 奖励黑客。
@@ -503,7 +503,7 @@ articles:
   wechat_url: https://mp.weixin.qq.com/s/PLVRS0TTHXHDve1Z3r6M7Q
   files:
     weixin: true
-    draft: false
+    draft: true
     outline: false
     cover: false
 - slug: 2026-07-25-fields-medal
@@ -562,7 +562,7 @@ articles:
   wechat_url: https://mp.weixin.qq.com/s/W9Bd--EtnidWy65Yx4Kyfw
   files:
     weixin: true
-    draft: false
+    draft: true
     outline: true
     cover: true
   media_id: kOcXH4SytIYVIpYksTGfHm6NvKmf1bd-EoWteS5Y6EDkip-rnFKuEsVeUXSs0vqB
@@ -578,7 +578,7 @@ articles:
   wechat_url: https://mp.weixin.qq.com/s/HIwjTG0lpcLcEjTuUw3Nzg
   files:
     weixin: true
-    draft: false
+    draft: true
     outline: false
     cover: true
   media_id: null
@@ -592,7 +592,7 @@ articles:
   wechat_url: https://mp.weixin.qq.com/s/IcoJTY4b1c-p0Njrxb7isA
   files:
     weixin: true
-    draft: false
+    draft: true
     outline: true
     cover: true
   media_id: kOcXH4SytIYVIpYksTGfHnq6LTSaZv-4-JfbaKm_LBBK2IHIzg9rOdJIJtznLKCB
@@ -607,18 +607,18 @@ articles:
   wechat_url: https://mp.weixin.qq.com/s/5BxjOUblW64DXNffHc2sxQ
   files:
     weixin: true
-    draft: false
+    draft: true
     outline: false
     cover: true
 - slug: 2026-08-20-gaussian-trust-region
   title: 多维高斯：为什么同一步长差1万倍？
   series: 强化学习原理
-  status: drafting
-  published_date: null
-  wechat_url: null
+  status: published
+  published_date: '2026-08-20'
+  wechat_url: https://mp.weixin.qq.com/s/GjNkcQ70B3WBzaVPwqVTgg
   files:
     weixin: true
-    draft: false
+    draft: true
     outline: true
     cover: true
   media_id: kOcXH4SytIYVIpYksTGfHjEpYg-9nifxfPRPjbYKdvDxpx3IHr70vf6uKglH7xoZ
@@ -626,6 +626,48 @@ articles:
   notes: '强化学习原理系列第五篇。grill 日志 .grill/2026-08-20-gaussian-trust-region.md。 2026-08-18 大纲定案（数字例子经蒙特卡洛事实验证：同一 Δμ=0.1，窄方向 KL=0.5 vs 宽方向 KL=0.00005，差 10000 倍；δ=0.01 允许步长 0.014 vs 1.41，差 100 倍）。 封面 00-cover.png 1280x548 21:9（旧标题，待按新标题重生成）。 正文 01/02 AI 概念图 + 03/04 脚本图。 篇4 wechatUrl 已回填 https://mp.weixin.qq.com/s/IcoJTY4b1c-p0Njrxb7isA。 2026-08-20 已存公众号草稿箱（remote-api --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHjEpYg-9nifxfPRPjbYKdvDxpx3IHr70vf6uKglH7xoZ（封面 kOcXH4SytIYVIpYksTGfHmpJRr6C7LXHbx1GgZcEtPMsN3HmuLTdFBunJ-rH32hH），标题已切 B-1「为什么同一步长差1万倍？」(17字)，开头已前置1万倍钩子。旧草稿 kOcXH4SytIYVIpYksTGfHtA4yWHREhGQR796Ewg3t3W1oRRbta6CD5phDoOLVsbY / kOcXH4SytIYVIpYksTGfHhhsZn8X... 作废。'
 - slug: 2026-08-21-多维高斯注解
   title: 协方差矩阵：1个方差怎么变9个数？拆给你看
+  series: 数学直觉
+  status: published
+  published_date: '2026-08-21'
+  wechat_url: https://mp.weixin.qq.com/s/5TdhwQ166NRvReN2_atCVQ
+  files:
+    weixin: true
+    draft: true
+    outline: true
+    cover: true
+  media_id: kOcXH4SytIYVIpYksTGfHgF06-QcXm92rKFrgOF9LNcBH7ArLnILCAd1St8TJpPs
+  cover_media_id: kOcXH4SytIYVIpYksTGfHvaffJlCCEfBUKYpLADFPRGW3lZ5jBvfPHXxDmjx4Hzr
+  notes: '「AI中的数学」注解篇，接《多维高斯》主文（2026-08-20，https://mp.weixin.qq.com/s/GjNkcQ70B3WBzaVPwqVTgg）。素材直出工作流（raw.md 作者手写段 1-10）。 2026-08-21 爆款标准检查后改稿：开头删系列导航、重写为数字反差钩子（1个数→4个数→9个数 + 非对角=0≠独立的坑）；结构瘦身（一维铺垫两节合一、删过渡节、七节）；首尾闭环补回扣句；术语首次出现处加粗高亮；长句>60字清零、半角标点全角化、错别字修正。 标题三轮定稿：初版「协方差矩阵怎么看」→「协方差矩阵为什么是矩阵？」（同义反复被打回）→ 终稿「协方差矩阵：1个方差怎么变9个数？拆给你看」（21字，数字反差+动作承诺，对标「慢50倍的硬盘反而更快」+「Adam拆给你看」两大爆款模板）。 封面按终稿标题重生成（00-cover.png 1915x821 21:9，gpt-image-2，1→9 数字反差视觉化，标题逐字核验通过）。 2026-08-21 已存公众号草稿箱（remote-api --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHgF06-QcXm92rKFrgOF9LNcBH7ArLnILCAd1St8TJpPs（封面 kOcXH4SytIYVIpYksTGfHvaffJlCCEfBUKYpLADFPRGW3lZ5jBvfPHXxDmjx4Hzr）。旧草稿（旧标题 media_id kOcXH4SytIYVIpYksTGfHtXDp1JnJm3Zn-Fpp5LZT6m6zFaaXfkG6KLOtoVutiwj）需在草稿箱删除。发布前确认：声明原创 + 定时 20:00 + 合集「AI中的数学」。'
+- slug: 2026-08-21-gaussian-sequel
+  title: 高斯为什么二阶就够？非线性去哪了
+  series: 数学直觉
+  status: published
+  published_date: '2026-08-21'
+  wechat_url: https://mp.weixin.qq.com/s/gs_3y7JXuBLlzR5w6jW6fQ
+  files:
+    weixin: true
+    draft: false
+    outline: false
+    cover: true
+  media_id: null
+  cover_media_id: null
+  notes: '「AI中的数学」注解篇，素材直出流程。2026-08-21 已发布：https://mp.weixin.qq.com/s/gs_3y7JXuBLlzR5w6jW6fQ。'
+- slug: 2026-08-22-trpo
+  title: 梯度一步踩爆50倍预算，TRPO为什么敢走？
+  series: 强化学习原理
+  status: drafting
+  published_date: null
+  wechat_url: null
+  files:
+    weixin: true
+    draft: true
+    outline: true
+    cover: true
+  media_id: kOcXH4SytIYVIpYksTGfHn9uajJzAAQnZNa5yywEM7p5S6Zb0I3W4lijPNMfLDOg
+  cover_media_id: kOcXH4SytIYVIpYksTGfHu879YAahB43iTbBbUrY1-T_qdq5k6TcT4mPtdfCQ9go
+  notes: '「强化学习原理」系列第六篇 TRPO。grill 日志 .grill/2026-08-22-trpo.md（2026-08-21 逐轮追问收敛）。 数字事实验证（2026-08-21 蒙特卡洛）：KL 闭式 vs 采样对照通过；普通梯度 η=0.1 一步 KL=0.5=预算 50 倍；TRPO 闭式解一步 (0.00014, 1.414) KL 恰好 =0.01；方向 45°→89.9°；行为概率 0.954→0.840。 标题作者定稿 T1「梯度一步踩爆50倍预算，TRPO为什么敢走？」（22字，数字反差+反直觉疑问，对标「慢50倍的硬盘反而更快」）。 2026-08-21 作者 9 条意见已全部执行：删「现场教学」小标题（改「泰勒展开：坡不只有方向，还有弯度」「拉格朗日：预算超标，交罚金」）、拉格朗日交代高等数学背景说人话、第七章加高维椭球注释（引《高维空间为什么全是壳》Nrfr-90Fpu3mFDML9s0d1Q + Adam 篇 aSLVO-otvr2rxIU1kr2eAA）、共轭梯度改「镜花水月」口吻、结尾问题改「推导→计算意外感」、开头 100 字删系列预告零导航、链接回填（协方差矩阵 5TdhwQ166NRvReN2_atCVQ / 高斯二阶 gs_3y7JXuBLlzR5w6jW6fQ / 主文 GjNkcQ70B3WBzaVPwqVTgg 均验证有效）。 封面按新标题重生成（00-cover.png 1915x821 21:9，标题逐字核验通过）。 2026-08-21 已重新存公众号草稿箱（remote-api --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHn9uajJzAAQnZNa5yywEM7p5S6Zb0I3W4lijPNMfLDOg（封面 kOcXH4SytIYVIpYksTGfHu879YAahB43iTbBbUrY1-T_qdq5k6TcT4mPtdfCQ9go）。旧草稿（旧标题 media_id kOcXH4SytIYVIpYksTGfHmFfMWZhbTI9Ctqc05fhOMBoYCpslN9mKF7FKkUtXpBw）需在草稿箱删除。发布前确认：声明原创 + 定时 20:00 + 合集「强化学习原理」（如已建）。'
+- slug: 2026-08-23-kl-divergence
+  title: KL散度：为什么整个AI共用一把尺子？
   series: 数学直觉
   status: drafting
   published_date: null
@@ -635,22 +677,20 @@ articles:
     draft: true
     outline: true
     cover: true
-  media_id: kOcXH4SytIYVIpYksTGfHgF06-QcXm92rKFrgOF9LNcBH7ArLnILCAd1St8TJpPs
-  cover_media_id: kOcXH4SytIYVIpYksTGfHvaffJlCCEfBUKYpLADFPRGW3lZ5jBvfPHXxDmjx4Hzr
-  notes: '「AI中的数学」注解篇，接《多维高斯》主文（2026-08-20，https://mp.weixin.qq.com/s/GjNkcQ70B3WBzaVPwqVTgg）。素材直出工作流（raw.md 作者手写段 1-10）。 2026-08-21 爆款标准检查后改稿：开头删系列导航、重写为数字反差钩子（1个数→4个数→9个数 + 非对角=0≠独立的坑）；结构瘦身（一维铺垫两节合一、删过渡节、七节）；首尾闭环补回扣句；术语首次出现处加粗高亮；长句>60字清零、半角标点全角化、错别字修正。 标题三轮定稿：初版「协方差矩阵怎么看」→「协方差矩阵为什么是矩阵？」（同义反复被打回）→ 终稿「协方差矩阵：1个方差怎么变9个数？拆给你看」（21字，数字反差+动作承诺，对标「慢50倍的硬盘反而更快」+「Adam拆给你看」两大爆款模板）。 封面按终稿标题重生成（00-cover.png 1915x821 21:9，gpt-image-2，1→9 数字反差视觉化，标题逐字核验通过）。 2026-08-21 已存公众号草稿箱（remote-api --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHgF06-QcXm92rKFrgOF9LNcBH7ArLnILCAd1St8TJpPs（封面 kOcXH4SytIYVIpYksTGfHvaffJlCCEfBUKYpLADFPRGW3lZ5jBvfPHXxDmjx4Hzr）。旧草稿（旧标题 media_id kOcXH4SytIYVIpYksTGfHtXDp1JnJm3Zn-Fpp5LZT6m6zFaaXfkG6KLOtoVutiwj）需在草稿箱删除。发布前确认：声明原创 + 定时 20:00 + 合集「AI中的数学」。'
+  media_id: kOcXH4SytIYVIpYksTGfHk_UJkE11ltaaK80hzEICkd-ujbQfhT85zWpSAqRtnbM
+  cover_media_id: kOcXH4SytIYVIpYksTGfHoCwvFQT6P9CZPEWus1Dl3cYXZW9J08Gn8Uk2CCq6koc
+  notes: '「AI中的数学」系列 KL 散度篇。素材直出工作流：raw.md 作者口述 11 段，structure.md v2 检查点作者批准（术语修正×2、双头硬币算例、series=数学直觉、标题A）。引用源 refs.md：主引 Alemi《KL is All You Need》（图源×3：大象/VAE世界对/扩散链）+ Lilian Weng《From GAN to WGAN》（KL_JS 四联图 + 不重叠分布实验数据），参考资料 6 条带链接。数字事实验证：双头硬币 5 连正=32:1≈97%；KL(N(0,1)||N(3,1))闭式=Δμ²/2=4.5 nats（图表与理论一致）；JS=log2/W=|θ| 摘自 Lilian 原文。质量核查13项全过（长句>60字清零、禁词0、拆字合规、原声句15条逐字保留）。封面 gpt-image-2 两轮定稿（第一版自造副标题作废，第二版无多余文字，1915x821≈21:9，prompts/00-cover.md）。2026-08-22 已存公众号草稿箱（remote-api --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHk_UJkE11ltaaK80hzEICkd-ujbQfhT85zWpSAqRtnbM（封面 kOcXH4SytIYVIpYksTGfHoCwvFQT6P9CZPEWus1Dl3cYXZW9J08Gn8Uk2CCq6koc）。⚠️ 正文 TRPO 链接为「待发布」占位，TRPO 发布后必须回填微信 URL 再重存草稿。发布前确认：声明原创 + 定时 20:00 + 合集「AI中的数学」。'
 summary:
-  total: 42
+  total: 44
   by_status:
-    published: 38
+    published: 41
     scheduled: 1
     ready: 1
-    drafting: 3
+    drafting: 1
     planned: 0
   drafting_queue:
-  - 2026-08-18-q-learning
-  - 2026-08-19-policy-gradient
-  - 2026-08-20-gaussian-trust-region
-  - 2026-08-21-多维高斯注解
+  - 2026-08-23-kl-divergence
+  - 2026-08-22-trpo
   ready_queue:
   - 2026-07-25-fields-medal
   scheduled_queue:
