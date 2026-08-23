@@ -46,6 +46,11 @@
 📖 **[大模型原理合集](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=XXX&action=getalbum&album_id=YYY)**：BPE → 词嵌入 → 位置编码 → 注意力 → **KDA 长上下文** → MLA → FFN → …
 ```
 
+## 6b. 尾部「热门文章」（如有）
+
+- 用 `scripts/hot_articles.py --md --cited <本文weixin.md>` 生成：读 `docs/wechat-data-audit-log.json` 聚合历史最高阅读量 Top 6，自动过滤贴图（publish-data `item_show_type!=0` ∪ tietu-corpus-summary ∪ tietu-extra），再追加本文引用的相关公众号文章；禁止手写、禁止挑最近发布的文章
+- 链接行之间**不留空行**（空行 = 独立 `<p margin:1.5em>` = 视觉空行）；榜单变更后跑 `--self-check`
+
 ## 7. 下一篇预告
 
 - 结尾必须有系列下一篇的预告，一句话勾住读者（预告内容 = 下一篇的核心痛点/问题）

@@ -17,6 +17,7 @@ import {
 import { closeRenderer, renderMermaidToPng } from "baoyu-chrome-cdp/mermaid";
 import { execFile } from "node:child_process";
 import { normalizeWechatLists } from "./wechat-list-safety.ts";
+import { loadWechatExtendConfig } from "./wechat-extend-config.ts";
 
 interface ImageInfo {
   placeholder: string;
@@ -241,6 +242,14 @@ async function main(): Promise<void> {
   if (!fs.existsSync(markdownPath)) {
     console.error(`Error: File not found: ${markdownPath}`);
     process.exit(1);
+  }
+
+  // 读取 EXTEND.md 的默认主题/配色——CLI 未显式指定时回退到这里，
+  // 否则发布管线会一直用 mdnice "normal" 主题，丢掉 grace/scienceBlue 风格。
+  if (!theme || !color) {
+    const ext = loadWechatExtendConfig();
+    if (!theme && ext.default_theme) theme = ext.default_theme;
+    if (!color && ext.default_color) color = ext.default_color;
   }
 
   const result = await convertMarkdown(markdownPath, { title, theme, color, citeStatus });

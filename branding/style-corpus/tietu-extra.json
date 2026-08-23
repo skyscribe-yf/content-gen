@@ -1,0 +1,8 @@
+{
+  "_comment": "publish-data*.json 与 tietu-corpus-summary.json 都未收录、但已人工确认的贴图标题。hot_articles.py 会并入贴图过滤集。新增贴图时若发布数据快照滞后，把标题追加到这里。",
+  "titles": [
+    "严重过拟合的Deepseek，和魔幻的价格",
+    "DeepSeek DSH自己人开撕",
+    "Pi这波把DSH剪枝骂惨了"
+  ]
+}

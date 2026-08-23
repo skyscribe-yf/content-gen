@@ -23,6 +23,7 @@ description: "Audit WeChat Official Account article data, extract performance me
 - JSON Schema：`docs/wechat-data-audit-log.schema.json`
 - 操作脚本：`scripts/wechat_audit_log.py`
 - 人读版日志：`docs/wechat-data-audit-log.md`
+- **视频号数字事实源（独立文件，2026-08-25 新增）**：`docs/shipinhao-data-log.json` + `docs/shipinhao-data-log.schema.json`（公众号 schema 不混入视频号数据）
 
 #### 审计开始前
 
@@ -233,6 +234,46 @@ agent_browser get text body
 - 概览页「昨日 +0.94」可能 ≠ 日报表当天收入合计——口径差异是正常的，运营决策以概览页累计为准，分析用日报表分日数据
 - **2026-08-20 起**：概览页不再显示“昨日”卡片，6 日窗口（如 `08-13–08-18`）且滞后内容 1 天属正常；不要强行补 7 日或等待 08-19 收入，日明细合计与卡片合计 0.01 元舍入差需在 `notes` 保留两种口径
 
+### Phase 3.75: 采集视频号数据（可选，用户要求或做视频复盘时）
+
+> ⚠️ **视频号有独立数据源，与公众号后台不同**。公众号审计日志不包含视频号，禁止把视频号数据塞进 `wechat-data-audit-log.json`（schema 不兼容）。
+
+数据源：**视频号助手** `https://channels.weixin.qq.com/`（微信扫码登录，需视频号管理员扫码；Cookie 注入不适用）。
+
+#### 采集方式（二选一）
+
+1. **用户提供（最快）**：用户从视频号助手「数据中心 → 内容数据」看到单条视频的播放量/完播率/点赞/评论/分享/收藏，直接口头或截图提供，AI 录入（`source: "manual"`）
+2. **agent_browser 自动采**：`sessionMode=fresh` 打开视频号助手 → 让用户扫码登录（当前模型支持视觉时展示二维码）→ 数据中心 → 内容数据 → 逐条记录。⚠️ 视频号助手与公众号后台是**不同登录体系**，公众号 Cookie 不通用
+
+#### 字段（`docs/shipinhao-data-log.json`）
+
+每条视频：`publishDate` / `title` / `slug`（对应 content/ 目录）/ `mode`（`manim-tts-clone` | `manim-tts-builtin` | `manim-oral` | `gemini`）/ `durationSec` / `views` / `completionRate`（完播率 %，可空）/ `likes` / `comments` / `shares` / `favorites` / `followersGained`（可空）/ `source`（`auto` | `manual`）。schema 见 `docs/shipinhao-data-log.schema.json`。
+
+#### 写入与校验
+
+```bash
+# 校验（jsonschema）
+python3 -c "
+import json, jsonschema
+log = json.load(open('docs/shipinhao-data-log.json'))
+jsonschema.validate(log, json.load(open('docs/shipinhao-data-log.schema.json')))
+print('shipinhao log valid')"
+```
+
+**模式映射**（回填历史视频时查对应文章目录）：
+- 目录有 `shipinhao/recordings/` → `manim-oral`（口播）
+- 有 `shipinhao/scenes.py` 且无 recordings → `manim-tts-clone`（TTS 克隆；2026-08-25 起才有 builtin 选项）
+- 有 `shipinhao/` 无 `scenes.py` → `gemini`
+
+#### 视频号分析维度（Phase 4 增加）
+
+- **播放量分层**：单条播放明显分层的账号（如 2 万 vs 800-2000）优先找差异变量：选题/标题/时长/音色/封面/发布时间
+- **完播率**：完播率 < 20% 说明开场钩子或节奏问题（对应 manim skill「开场 3 秒钩子 + 时长 3-4 分钟」决策）
+- **音色对比**：同题材口播 vs TTS 克隆 vs 内置音色的播放差异（2026-08-25 用户在评估是否换 AI 内置音色）
+- **视频号对公众号涨粉贡献**：公众号审计 `users.channels` 中「视频号」渠道占比（历史 0.57-1.19%，偏低）
+
+结论写进 `docs/wechat-data-insights.md` 或独立 `docs/shipinhao-insights.md`（首次采集时创建），并在 `AGENTS.md` 引用。
+
 ### Phase 4: 分析 + 生成洞察
 
 将采集到的数据按以下维度分析：
@@ -310,10 +351,10 @@ agent_browser get text body
 
 **更新热门文章列表（每次审计必做）**：
 - 从 `docs/wechat-data-audit-log.json` 聚合各文章历史最高阅读量（跨快照取 max）
-- **过滤贴图**（`item_show_type=8`，优先参考 `branding/style-corpus/publish-data*.json`；若标题在 publish-data 中缺失（新文 08-12 后的高维、严重过拟合等），回退到 `branding/style-corpus/tietu-corpus-summary.json` 的贴图清单：命中则判 `8`，未命中则暂判 `0`（文章）。`严重过拟合的Deepseek，和魔幻的价格` 在 08-18 人读版已明确为贴图，需按 `8` 过滤）
-- 按阅读量降序取前 5 篇文章，同步更新 `content/navigation/menu-config.md` 的「热门文章」表和 `docs/wechat-menu.md`
+- **过滤贴图**（`item_show_type=8`，优先参考 `branding/style-corpus/publish-data*.json`；若标题在 publish-data 中缺失，回退到 `branding/style-corpus/tietu-corpus-summary.json` 的贴图清单，再回退 `branding/style-corpus/tietu-extra.json` 人工补录。**不再手动判断**——发尾部热门块时直接跑 `scripts/hot_articles.py`，过滤逻辑已固化在脚本里）
+- 按阅读量降序取前 6 篇文章，同步更新 `content/navigation/menu-config.md` 的「热门文章」表和 `docs/wechat-menu.md`（文章尾部「🔥 热门文章」块由 `scripts/hot_articles.py --md --cited <weixin.md>` 生成，同样取前 6 + 本文引用）
 - 文章链接缺失时从 `branding/style-corpus/publish-data*.json` 的 `content_url` 提取，仍缺失则从 `branding/style-corpus/wechat-published-index.json` 提取，再缺失则向作者索要
-- 账号菜单子菜单数受限时（当前仅支持 2 个），文档维护完整前 5，实际配置取前 N 篇
+- 账号菜单子菜单数受限时（当前仅支持 2 个），文档维护完整前 6，实际配置取前 N 篇
 
 ---
 

@@ -6,6 +6,7 @@ type: "原理篇"
 series: "强化学习原理"
 digest: "梯度只说往哪走，不说走多大。TRPO 把「走多大」交给 KL 预算：surrogate 用旧轨迹给新策略预打分，拉格朗日把约束折成罚金，二阶泰勒交出曲率，最后一步闭式解自动按云的形状分步——窄方向小步、宽方向大步。"
 cover: "00-cover.png"
+wechatUrl: "https://mp.weixin.qq.com/s/Y3dk7CHMNgWBitxnoDNljA"
 keywords: ["TRPO", "信任域", "KL散度", "自然梯度", "策略梯度", "强化学习"]
 ---
 

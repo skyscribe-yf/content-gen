@@ -164,12 +164,13 @@ export async function convertMarkdown(
   const mathHtml = injectMath(renderedHtml, mathSnippets);
 
   // Fix table header rendering for WeChat: thead color:#fff + th background:rgba(0,0,0,0.05) causes white-on-near-white
-  // Replace th headers with visible purple bg + white text (grace theme accent color #92617E)
+  // 表头背景跟随主色（--color），不再写死紫色 #92617E，否则换主题/换色会脱节。
+  const tableHeaderColor = options?.primaryColor ?? "#92617E";
   const fixedHtml = mathHtml
     .replace(/(<thead[^>]*style="[^"]*?)color: #fff;?\s*/g, '$1')
     .replace(
       /<th class="th" style="[^"]*">/g,
-      '<th class="th" style="border: 1px solid #dfdfdf; padding: 0.25em 0.5em; color: #fff; word-break: keep-all; background: #92617E;">'
+      `<th class="th" style="border: 1px solid #dfdfdf; padding: 0.25em 0.5em; color: #fff; word-break: keep-all; background: ${tableHeaderColor};">`
     );
 
   fs.writeFileSync(finalHtmlPath, fixedHtml, "utf-8");

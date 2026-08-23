@@ -20,21 +20,22 @@
 
 ## 各菜单详细配置
 
-### 🔥 热门文章（手动维护，账号当前仅支持 2 篇，文档维护前 5）
+### 🔥 热门文章（手动维护，账号当前仅支持 2 篇，文档维护前 6）
 
 所有子菜单类型选「跳转网页」。按当前阅读量从高到低排列（**只统计「文章」类型，贴图不计入**）：
 
 | 排序 | 子菜单名 | 链接 | 阅读量 |
 |-----|---------|------|--------|
-| 1 | KV缓存SSD | `https://mp.weixin.qq.com/s/40BQ06eDTv4-2r8FmQ_rMA` | 2,328 |
-| 2 | 高维空间全是壳 | `https://mp.weixin.qq.com/s/Nrfr-90Fpu3mFDML9s0d1Q` | 1,179 |
+| 1 | KV缓存SSD | `https://mp.weixin.qq.com/s/40BQ06eDTv4-2r8FmQ_rMA` | 2,604 |
+| 2 | 高维空间全是壳 | `https://mp.weixin.qq.com/s/Nrfr-90Fpu3mFDML9s0d1Q` | 1,356 |
 | 3 | Adam优化器 | `https://mp.weixin.qq.com/s/aSLVO-otvr2rxIU1kr2eAA` | 1,109 |
-| 4 | DeepSeek-V4为何不用MLA | `https://mp.weixin.qq.com/s/MQEgbY16mLs-N7g2xKW1HQ` | 995 |
+| 4 | DeepSeek-V4为何不用MLA | `https://mp.weixin.qq.com/s/MQEgbY16mLs-N7g2xKW1HQ` | 1,040 |
 | 5 | Softmax不直接取最大值 | `https://mp.weixin.qq.com/s/5wMquh_v3oon2-NEDeQLEw` | 566 |
+| 6 | SFT微调1万条数据 | `https://mp.weixin.qq.com/s/vwXGbjm9Ai1GPvQi5O3UyQ` | 566 |
 
-**2026-08-20 更新**：按 08-20 审计快照（数据截至 08-19，20,997→22,354 +6.5%）重排。贴图（opencode 杀疯了 5,431、opencode 峰谷价 1,710、pi agent 1,347、DeepSeek 过拟合 1,305、第三方 1,072、QWen 1,048 等）不计入热门文章；KV缓存存进SSD 升至第 1（2,328 读，+335），高维空间升至第 2（1,179 读，+284），Adam 保持第 3（1,109 读），DeepSeek-V4 升至第 4（995 读，+73），Softmax新进第 5（566 读）挤掉 SFT（564）。账号菜单仅支持 2 个子菜单，实际配置取前 2 篇（KV、高维）。
+**2026-08-22 更新**：按 08-22 审计快照（数据截至 08-21，23,427 读）重排。贴图（opencode 杀疯了 5,433、opencode 峰谷价 1,759、pi agent 1,373、DeepSeek 过拟合 1,312、QWen 1,152、第三方 1,072 等）不计入热门文章；KV缓存存进SSD 保持第 1（2,604 读，+276），高维空间第 2（1,356 读，+177），Adam 第 3（1,109），DeepSeek-V4 第 4（1,040 读，+45），Softmax 第 5（566，与 SFT 并列 566，按先达标保留），SFT 第 6（566，并列后取）。账号菜单仅支持 2 个子菜单，实际配置取前 2 篇（KV、高维）。
 
-**维护规则**：每次跑 wechat-data-audit 后，从审计日志聚合各文章最高阅读量、过滤贴图、重排前 5。被替下的文章通过合集页仍可访问。更新频率：约每月一次或推荐窗口出现明显变化时。
+**维护规则**：每次跑 wechat-data-audit 后，从审计日志聚合各文章最高阅读量、过滤贴图、重排前 6。被替下的文章通过合集页仍可访问。更新频率：约每月一次或推荐窗口出现明显变化时。
 
 ### 📚 系列合集（一次配置，永远不动）
 
@@ -45,6 +46,7 @@
 | 训练回路（6篇·已完结） | `https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzkyMzQyODExNQ==&action=getalbum&album_id=4594958081087864833#wechat_redirect` | 不需维护 |
 | 大模型原理（6篇·更新中） | `https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzkyMzQyODExNQ==&action=getalbum&album_id=4597831652025925632#wechat_redirect` | 不需维护 |
 | DeepSeek解密（更新中） | `TODO_DEEPSEEK_COLLECTION_URL` | 不需维护 |
+| Agent前线（贴图·更新中） | `TODO_AGENT_FRONT_COLLECTION_URL` | 不需维护 |
 
 > **为什么不用维护**：发新文章时在编辑页勾选对应合集 → 合集页自动收纳。URL 不变，菜单不变。
 
@@ -53,6 +55,15 @@
 ## 合集索引（权威归属，生成文尾导航前必查）
 
 > **规则**：本表是合集归属的唯一权威记录。**同一篇文章只能属于一个合集**；写任何文章的文尾导航链时，逐篇对照本表，禁止跨合集重复列。生成依据：各篇 frontmatter 的 `series` 字段（发布后如归属变化，先改 frontmatter 再改本表）。
+
+### Agent 前线（贴图 · album URL 待补）
+
+| 日期 | 文章 | slug |
+|------|------|------|
+| 2026-08-24 | DeepSeek DSH自己人开撕 | `2026-08-24-dsh-harness` |
+| 2026-08-24 | Pi这波把DSH剪枝骂惨了 | `2026-08-24-pi-dsh-pruner` |
+
+> 微信后台建合集后，把 `mp/appmsgalbum?...album_id=...` 补到上方菜单表。发贴图时勾选「Agent 前线」。已有 pi agent 那篇（突飞猛进的pi agent和友善的openai，你选谁）可事后补进本合集。
 
 ### DeepSeek 解密（7篇 · album URL 待补）
 

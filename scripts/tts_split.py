@@ -6,9 +6,9 @@
       --full tts/full.wav --subtitle tts/full.subtitle.json
 
 流程（2026-08-12 定稿，替代逐段 TTS）:
-  1. full.txt = tts.txt 8 段合并（含段尾过渡句），minimax_tts.py --subtitle 一次生成
+  1. full.txt = tts.txt 5-6 段合并（含段尾过渡句），minimax_tts.py --subtitle 一次生成
   2. 本脚本: 每段台词开头 10 字在时间戳文本中定位 → 段边界 = 前后句时间戳中点
-  3. 切出 tts/s1..s8.wav（覆盖旧文件），打印 VOICE_DUR 供 scenes.py 更新
+  3. 切出 tts/s1..s6.wav（覆盖旧文件），打印 VOICE_DUR 供 scenes.py 更新
 
 注意:
   - 时间戳 time_begin/time_end 单位毫秒；segment 的 text 为句子级

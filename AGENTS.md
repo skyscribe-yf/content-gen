@@ -64,10 +64,12 @@
 
 ## 微信文章链接规则
 
+- **默认主题 grace**（对应发布管线 mdnice `scienceBlue`，主色蓝 `#0F4C81`）：项目已配置 `.baoyu-skills/baoyu-markdown-to-html/EXTEND.md`（预览）与 `.baoyu-skills/baoyu-post-to-wechat/EXTEND.md`（发布）双线 `default_theme: grace`、`default_color: blue`，渲染无需显式传 `--theme`/`--color`。改主题在这里改，两处同改。
 - 系列导航链接**必须**是微信 URL（`https://mp.weixin.qq.com/s/...`），禁止相对路径
 - 未发布用 `（待发布）` 标注，发布后补 URL
 - 发布后**必须**把微信 URL 记入 frontmatter `wechatUrl` 字段，供后续文章引用
 - **尾部惯例**：尾部只用合集链接收纳逐篇链接，不用单篇链接堆叠
+- **尾部「🔥 热门文章」**：链接**必须**由 `scripts/hot_articles.py --md --cited <本文weixin.md>` 生成（数据源：最近审计 `docs/wechat-data-audit-log.json` 聚合历史最高阅读量 Top 6，自动过滤贴图，再追加本文引用到的相关公众号文章），**禁止**手写或凭记忆挑最近发布的文章；生成的链接行间**不留空行**（空行会被渲染成独立段落 `<p margin:1.5em>`，微信端视觉上多出一条空行），**每行行尾带两个空格**（Markdown 硬换行→`<br>`，否则 mdnice 软换行渲染成裸 `\n`→微信编辑器拼成一行或拆成带 padding 的独立段）；发布前跑一遍 `--self-check` 确认榜单未漂移
 
 ```yaml
 ---
@@ -112,6 +114,8 @@ wechatUrl: "https://mp.weixin.qq.com/s/abc123"
 
 详见 [`docs/wechat-ops.md`](docs/wechat-ops.md)。
 
+⚠️ **推荐权重恢复期（2026-08-22 起，临时 1–2 周）**：见 `docs/wechat-ops.md`「推荐权重恢复期规则」。恢复期内**「合格才发」优先于日更**（允许断更）、执行质量门禁加严 6 条（见该节 B，任何一条不过不发）、禁同日双发同题材、发布后不改标题/摘要、恢复期互动增量（可回答问题 + 作者 1 小时内回复前 3 条 + 一句话总结卡）。退出条件：每日推荐绝对量连续 3 天 >800。
+
 ## 公众号运营数据验证
 
 内容策略决策的实证基础。账号日新增关注不能直接归因到单篇文章。详见 [`docs/wechat-data-insights.md`](docs/wechat-data-insights.md)。
@@ -123,12 +127,13 @@ wechatUrl: "https://mp.weixin.qq.com/s/abc123"
 封装了「Cookie 注入 → 采集内容/用户数据 → 分析 → 写入项目文档」的完整工作流。AI 在接到数据复盘或运营分析类请求时应优先加载此 skill。
 
 关键规则：
-- 每天最多 1 篇，日更节奏（2026-07-25 起试行），固定 20:00 发布
+- 每天最多 1 篇，日更节奏（2026-07-25 起试行；推荐权重恢复期豁免，见「公众号运营」节），固定 20:00 发布
 - 末尾含关注引导（价值承诺 + 系列结构）
 - 结尾含 1 个开放式问题引导留言
 - 摘要须含 2-3 个搜索关键词
-- 最新审计：2026-08-20（数据截至 2026-08-19，累计关注 731、累计收入 50.21 元），详见 [`docs/wechat-data-insights.md`](docs/wechat-data-insights.md)
+- 最新审计：2026-08-22（数据截至 2026-08-21，累计关注 792、累计收入 55.39 元），详见 [`docs/wechat-data-insights.md`](docs/wechat-data-insights.md)
 - 数字事实源：[`docs/wechat-data-audit-log.json`](docs/wechat-data-audit-log.json)，结构见同名 `.schema.json`，操作脚本为 `scripts/wechat_audit_log.py`，报告生成脚本为 `scripts/wechat_audit_report.py`，产物为 `docs/wechat-data-audit-report.html`
+- **视频号数字事实源（2026-08-25 新增）**：[`docs/shipinhao-data-log.json`](docs/shipinhao-data-log.json)，结构见同名 `.schema.json`——视频号播放/完播/点赞/评论数据，与公众号日志分离（后台登录体系不同，公众号 Cookie 不通用）
 
 ## 视频号视频加工 Skill
 
@@ -148,7 +153,7 @@ wechatUrl: "https://mp.weixin.qq.com/s/abc123"
 封装了「公众号文章 → Manim 动画视频号成品」全流程：分镜脚本 → MiMo 逐段配音 → Manim 竖屏场景 → 渲染 → `scripts/manim_video_build.py` 一键构建（mux 配音 + 无缝拼接 + 黄色字幕 + 品牌尾卡）→ 验证归档。关键规则：
 
 - **用户用文章标题指代文章**，先 grep 定位 `content/<日期>-<主题>/`，再读 `weixin.md`
-- **语速定稿 speed 1.15 + pitch +2**（2026-08-10 试听定稿，勿擅自改）；段间停顿是红线，段尾缓冲 0.1s
+- **语速定稿 speed 1.0 + pitch +2**（2026-08-25 用户拍板「节奏非常快」后降速，勿擅自改）；段间停顿是红线，段尾缓冲 0.1s；默认时长 3-4 分钟（软上限 5 分钟）、5-6 段分镜、动画降噪（每页 1 个主视觉动效，v2 动效每片 ≤3 处）
 - **配音默认用作者克隆音色**（`--clone-audio branding/my-voice-denoised.wav`，MiniMax speech-2.8-turbo 默认、hd 可选；2026-08-11 起 MiMo → MiniMax，用户反馈 MiMo 声音不真实、感情不足）；录音参考 `branding/my-voice-original.m4a`
 - 场景 `construct` 末尾必须 `pad_to_voice()` 补齐到配音时长；ASS 时间戳是**厘秒** `h:mm:ss.cc` 不是毫秒
 - 结尾品牌尾卡：`avatar-sjai.png` 圆角透明化 + 图下黄色「关注「数解AI」」引导

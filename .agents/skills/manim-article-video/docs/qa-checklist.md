@@ -27,6 +27,7 @@ QA subagent 按此清单逐项核查，输出 **PASS / FAIL + 证据**（文件:
 | A19 | 动效库 v2 合规 | grep `trace_dot`/`breathe`/`emphasize`/`morph_to` 每个 Scene | trace_dot 的 dot 换页被 FadeOut 带走；breathe 幅度 ≤3%（scale ≤1.03）；动效时长计入 at() 排布（不超台词）；emphasize 不遮挡关键文字 |
 | A20 | 整页稳定 box（闪烁元素） | 读 scenes.py 每页 `page_stack(...)` 参数清单 | 红叉/circumscribe/indicate/breathe/数字滚动过程**不参与** `layout_page` box；数字用终值占位（`Rectangle` 占位 + `_cnt/move_to`），整页 box 按稳定后几何计算 |
 | A21 | 卡片样式（实心+圆角） | grep `_card(`/`boxed(`；抽帧目测卡片填充 | 文本方框全部实心 `CARD_FILL=#2C3F60`、`fill_opacity=1.0`、`RoundedRectangle(corner_radius=0.18)`；无文本方框用普通 `Rectangle`；默认卡底不与黄/青/绿/红高亮色混淆；`play_scroll_unroll()` 为圆角拉幕 |
+| A22 | 动画密度（2026-08-25 拍板） | grep `camera_zoom_to`/`morph_to`/`trace_dot`/`breathe` + 统计 `emphasize` 次数 | 全片 v2 动效（camera_zoom/morph/trace_dot/breathe）合计 ≤3 处、emphasize ≤5 次；每页仅 1 个主视觉动效（其余元素静态 FadeIn）；同一 2s 窗口内无多动效叠加 |
 
 ## B 组：构建后检查（对成品 `<标题>-成品.mp4`）
 

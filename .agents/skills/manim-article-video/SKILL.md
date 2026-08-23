@@ -39,7 +39,7 @@ metadata:
 
 **配音/录音未完成并确认前，禁止开始设计动画**（scenes.py 的 at() 排布、元素出现时间、滞留时间）。动画时间轴必须完全挂在实际语音时间线上，与切分出的字幕时间线**完全对应**：
 
-- **声音就绪标志**：TTS 模式 = `tts/s1..s8.wav` 切分验证通过 + `VOICE_DUR` 实测值；口播模式 = `voice_process.py` 完成 + 门禁 4/5 通过 + `tts/pauses.json` 生成。禁止用预估时长设计动画（音画错位返工的直接根因）
+- **声音就绪标志**：TTS 模式 = `tts/s1..s6.wav` 切分验证通过 + `VOICE_DUR` 实测值；口播模式 = `voice_process.py` 完成 + 门禁 4/5 通过 + `tts/pauses.json` 生成。禁止用预估时长设计动画（音画错位返工的直接根因）
 - **出现时间** = 对应台词字幕的起始时间戳（`at(t)` 精确挂接）；**滞留时间** = 到本句字幕结束 / 下一句字幕开始（FadeOut 不得晚于下一句字幕出现）
 - 时间轴锚点来源：`tts/pauses.json`（口播，静音结束点 = 下一句起点）或 `full.subtitle.json`（TTS 句子时间戳）
 - 详情见 [docs/step5-scenes.md](docs/step5-scenes.md) 时序门禁；QA 清单 A14 核查
@@ -51,7 +51,7 @@ metadata:
 | Step 1 | 定位文章 + 读素材 | [docs/step1-2-input.md](docs/step1-2-input.md) |
 | Step 2 | 规格确认 + 配音方式门禁（仅首次，问一次） | [docs/step1-2-input.md](docs/step1-2-input.md) |
 | Step 3 | 分镜脚本 storyboard.md + 台词爆点节奏（硬性）+ **插图位规划**（比喻/场景配概念图、数字/结构配脚本画图，见 [docs/vividness.md](docs/vividness.md)） | [docs/step3-storyboard.md](docs/step3-storyboard.md) |
-| Step 4A | TTS 克隆整段配音 + 时间戳切分（门禁 1-2） | [docs/step4a-tts.md](docs/step4a-tts.md) |
+| Step 4A | TTS 克隆整段配音 + 时间戳切分（门禁 1-2，**5-6 段**） | [docs/step4a-tts.md](docs/step4a-tts.md) |
 | Step 4B | 口播录音 + 修音 + 停顿分析（门禁 1-5，替代 4A） | [docs/step4b-recording.md](docs/step4b-recording.md) |
 | Step 5 | 写 Manim 场景 scenes.py（工具在 `scripts/manim_helpers.py`（含 `layout_page`/`page_stack`），模板 `scripts/manim_scene_template.py`；**整页规划** + 布局规范 0-28 硬性；**生动化三件套**：counter_value/transition_out/概念图嵌入，见 [docs/vividness.md](docs/vividness.md)；**≥6 场景新写可多 agent 并行**，见 [docs/multi-agent-scenes.md](docs/multi-agent-scenes.md)） | [docs/step5-scenes.md](docs/step5-scenes.md) |
 | Step 6 | 渲染验证：`-ql` 冒烟 → `-qm` 成品 → **派 QA** | [docs/step6-render.md](docs/step6-render.md) |
@@ -79,7 +79,7 @@ QA subagent 为 review-only（不改文件），发现的问题由主 agent 修�
 - **字幕同步**（2026-08-16 用户反馈）：字幕与声音不同步而声音与画面同步时，先查 build 是否用了 `tts/sentence-boundaries.json` 逐句 start/end（优先级：manual > sentence-boundaries > pauses 兜底 > full.subtitle）；用户报「XX:XX 声音滞后」时的诊断/精修/复验全套方法见 [docs/av-sync.md](docs/av-sync.md)（MiMo ASR 内容验证 + silencedetect 局限 + validate_sentence_ts 防线）；详情 [docs/step7-build.md](docs/step7-build.md)、[docs/pitfalls.md](docs/pitfalls.md) #42
 - **整页规划**（2026-08-16 用户拍板）：每次换页都按该页全部元素的稳定状态组装整页 box → `page_stack()` → `layout_page()` 垂直居中；上下留白相等且各 ≤ 显示带 30%（内容高度 ≥40%，不足会 ValueError）；闪烁/强调装饰不参与整页 box——详见 [docs/step5-scenes.md](docs/step5-scenes.md)「整页规划」
 - **生动化三件套**（2026-08-15 新增）：AI 概念图嵌入（yairouter+make_round_logo，禁数字）+ 数据动效（counter_value/grow_bar/轨迹 Create，数字台词必配动效）+ 场景转场（transition_out）——详见 [docs/vividness.md](docs/vividness.md)
-- **动效库 v2**（2026-08-18 新增）：镜头推拉（camera_zoom_to，必须成对）+ 形变（morph_to）+ 轨迹追踪点（trace_dot）+ 关键词强调（emphasize）+ 呼吸微动（breathe，≤3%）——详见 [docs/vividness.md](docs/vividness.md) 第四节
+- **动效库 v2**（2026-08-18 新增；**2026-08-25 起限量**）：镜头推拉（camera_zoom_to，必须成对）+ 形变（morph_to）+ 轨迹追踪点（trace_dot）+ 关键词强调（emphasize）+ 呼吸微动（breathe，≤3%）——每片 **≤3 处**（emphasize ≤5 次），只给爆点/公式；每页仅 1 个主视觉动效，详见 [docs/vividness.md](docs/vividness.md) 第四节 + 决策 #51
 - **多 agent 并行写 scenes**（2026-08-15 新增）：≥6 场景新写时，≤4 并行 writer 只写不渲染、合并后渲染、review-fix 循环——详见 [docs/multi-agent-scenes.md](docs/multi-agent-scenes.md)
 - **生效决策表**（用户拍板 49 条，勿再返工）：[docs/decisions.md](docs/decisions.md)
 - **常见坑**（43 条快速自查）：[docs/pitfalls.md](docs/pitfalls.md)

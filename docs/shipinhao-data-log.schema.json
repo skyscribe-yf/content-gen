@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-gen.local/schemas/shipinhao-data-log.schema.json",
+  "title": "Shipinhao Data Log",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "account", "videos"],
+  "properties": {
+    "schemaVersion": {"const": 1},
+    "account": {"type": "string", "minLength": 1},
+    "videos": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/video"}
+    }
+  },
+  "$defs": {
+    "date": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "dateTime": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:Z|[+-]\\d{2}:\\d{2})$"
+    },
+    "nonNegativeInteger": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "nullableNumber": {
+      "type": ["number", "null"],
+      "minimum": 0
+    },
+    "video": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["publishDate", "title", "mode"],
+      "properties": {
+        "publishDate": {"$ref": "#/$defs/date"},
+        "title": {"type": "string", "minLength": 1},
+        "slug": {"type": "string"},
+        "mode": {
+          "type": "string",
+          "enum": ["manim-tts-clone", "manim-tts-builtin", "manim-oral", "gemini", "other"]
+        },
+        "durationSec": {"$ref": "#/$defs/nullableNumber"},
+        "views": {"$ref": "#/$defs/nullableNumber"},
+        "completionRate": {"$ref": "#/$defs/nullableNumber"},
+        "likes": {"$ref": "#/$defs/nullableNumber"},
+        "comments": {"$ref": "#/$defs/nullableNumber"},
+        "shares": {"$ref": "#/$defs/nullableNumber"},
+        "favorites": {"$ref": "#/$defs/nullableNumber"},
+        "followersGained": {"$ref": "#/$defs/nullableNumber"},
+        "source": {"type": "string", "enum": ["auto", "manual"]}
+      }
+    }
+  }
+}

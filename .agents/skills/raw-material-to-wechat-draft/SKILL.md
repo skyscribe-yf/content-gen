@@ -28,7 +28,7 @@ description: Use when 作者要新建话题并把想表达的内容以原始文�
    - 配图清单（每张图一句话说明用途，标注 AI 概念图 / 脚本数据图）
    - 素材缺口（哪些点缺论据/数据，建议作者补充）
 4. **STOP —— 请作者确认 `structure.md`**。作者改完或批准后才继续；不得以「先出图看看」绕开。
-5. **写 `weixin.md`**：原声句原文进稿；AI 只补结构过渡、标题（≤22 字、关键词前置、痛点驱动）、开头钩子、结尾引导与话题标签（3-5 个，含 `#数解AI`）。`weixin.md` 是唯一发布基准。
+5. **写 `weixin.md`**：原声句原文进稿；AI 只补结构过渡、标题（≤22 字、关键词前置、痛点驱动）、开头钩子、结尾引导与话题标签（3-5 个，含 `#数解AI`）。`weixin.md` 是唯一发布基准。结尾若有「🔥 热门文章」，必须运行 `scripts/hot_articles.py --md --cited <本文weixin.md>` 现查现填（读最近审计 `docs/wechat-data-audit-log.json`，自动过滤贴图、追加本文引用的相关文章），禁止凭记忆挑最近文章；每个链接一行、行间不留空行（空行会被渲染成「段间距空行」）。
 6. **出图**：按批准的配图清单生成；AI 概念图逐张检查文字/数字/年份与正文一致。
 7. **渲染**：markdown → 微信兼容 HTML（`baoyu-markdown-to-html` 或 `baoyu-post-to-wechat` 内部渲染），图片与 `weixin.md` 同级、无 `images/` 前缀。
 8. **存草稿**：调用 `baoyu-post-to-wechat` 以 `--submit` 保存草稿；回填草稿 URL 到 frontmatter，不发布。
