@@ -1,5 +1,129 @@
 [
   {
+    "title": "Pi 的新架构，答案早就在数据库论文里了",
+    "url": "https://mp.weixin.qq.com/s/QB_nJbrDU0G2vipZk8m1YQ"
+  },
+  {
+    "title": "PPO只用0.2的clip，凭什么顶替0.01的KL预算？ 原创",
+    "url": "https://mp.weixin.qq.com/s/AjxvcBFTJkWeRRPDr5YAjA"
+  },
+  {
+    "title": "Pi这波把DSH剪枝骂惨了",
+    "url": "https://mp.weixin.qq.com/s/vx-rHnzgJzH-oqriNM555A"
+  },
+  {
+    "title": "DeepSeek Harness社区自己人开撕：创新何在",
+    "url": "https://mp.weixin.qq.com/s/NRFSTBlxNwOa7p69D92g_A"
+  },
+  {
+    "title": "KL散度：为什么整个AI共用一把尺子？ 原创",
+    "url": "https://mp.weixin.qq.com/s/G1PUOuwxURoo1Dp1pDfQMg"
+  },
+  {
+    "title": "免费模型轮番上阵，DeepSeek凭啥继续爽用？",
+    "url": "https://mp.weixin.qq.com/s/xxnwNv7QOn92YitIoAwZ0w"
+  },
+  {
+    "title": "梯度一步踩爆50倍预算，TRPO为什么敢走？ 原创",
+    "url": "https://mp.weixin.qq.com/s/Y3dk7CHMNgWBitxnoDNljA"
+  },
+  {
+    "title": "协方差矩阵：1个方差怎么变9个数？拆给你看 原创",
+    "url": "https://mp.weixin.qq.com/s/5TdhwQ166NRvReN2_atCVQ"
+  },
+  {
+    "title": "高斯为什么二阶就够？非线性去哪了 原创",
+    "url": "https://mp.weixin.qq.com/s/gs_3y7JXuBLlzR5w6jW6fQ"
+  },
+  {
+    "title": "opencode背刺用户涨价17倍的原因揭晓了 已修改",
+    "url": "https://mp.weixin.qq.com/s/rovbA4sdGPFCpQqlkvWENg"
+  },
+  {
+    "title": "多维高斯：为什么同一步长差1万倍？ 原创",
+    "url": "https://mp.weixin.qq.com/s/GjNkcQ70B3WBzaVPwqVTgg"
+  },
+  {
+    "title": "大模型价格战风云再起，META舍我其谁 已修改",
+    "url": "https://mp.weixin.qq.com/s/icAv9XbK0wxru_n689FmDg"
+  },
+  {
+    "title": "不涨价的DeepSeek v4 flash套餐，夯爆了 已修改",
+    "url": "https://mp.weixin.qq.com/s/wdFXHCgGydRO0PnNglelTQ"
+  },
+  {
+    "title": "策略梯度是什么？直接改概率行不行 原创",
+    "url": "https://mp.weixin.qq.com/s/IcoJTY4b1c-p0Njrxb7isA"
+  },
+  {
+    "title": "随机变量为什么不是变量？它其实是个函数 原创",
+    "url": "https://mp.weixin.qq.com/s/5BxjOUblW64DXNffHc2sxQ"
+  },
+  {
+    "title": "Q-learning是什么？没有转移表怎么解 原创",
+    "url": "https://mp.weixin.qq.com/s/W9Bd--EtnidWy65Yx4Kyfw"
+  },
+  {
+    "title": "矩阵的秩：为什么低秩在 AI 里无处不在？ 原创",
+    "url": "https://mp.weixin.qq.com/s/HIwjTG0lpcLcEjTuUw3Nzg"
+  },
+  {
+    "title": "加上Jspace，DeepSeek v4直接封神？ 已修改",
+    "url": "https://mp.weixin.qq.com/s/IK25YK_UlrsN2tB-q2MNjA"
+  },
+  {
+    "title": "DeepSeek涨价风波更新: \"新扛旗人\"出现了",
+    "url": "https://mp.weixin.qq.com/s/xnVRXS_I-4O4XP4SI3tP1w"
+  },
+  {
+    "title": "贝尔曼方程：为什么只看下一步就够了？ 原创",
+    "url": "https://mp.weixin.qq.com/s/kHvjDKrQElvWXrA92yqAfA"
+  },
+  {
+    "title": "便宜好用的Deepseek flash终究一夜烟消云散 已修改",
+    "url": "https://mp.weixin.qq.com/s/isxG-msESU679Lw_6t3srQ"
+  },
+  {
+    "title": "马尔可夫决策过程：AI 怎么在不确定里做选择 原创",
+    "url": "https://mp.weixin.qq.com/s/SJ8_CpSyp8onm8HLiF3TXA"
+  },
+  {
+    "title": "严重过拟合的Deepseek，和魔幻的价格 已修改",
+    "url": "https://mp.weixin.qq.com/s/yHeXX9o5zlNgwrfa73c0-w"
+  },
+  {
+    "title": "DeepEP：训练时GPU的空等怎么藏起来 原创",
+    "url": "https://mp.weixin.qq.com/s/8WS2AjSkac7CstjToJclxA"
+  },
+  {
+    "title": "上下文并行：1M序列为什么切了会坏？ 原创",
+    "url": "https://mp.weixin.qq.com/s/UB_ILj-62K3VBUY4_AopSw"
+  },
+  {
+    "title": "DeepSeek v4 PRO长任务实测:好马还得配好鞍 已修改",
+    "url": "https://mp.weixin.qq.com/s/AyXgJ7FTEfrJOlu2D_VsAg"
+  },
+  {
+    "title": "1.6T参数怎么塞进GPU？V4五维并行策略 原创",
+    "url": "https://mp.weixin.qq.com/s/ae1iwvau14gFCnyfg4hVIw"
+  },
+  {
+    "title": "DeepSeek v4 pro正式版: RLVR的胜利✌️",
+    "url": "https://mp.weixin.qq.com/s/YbeeMy0V9Gs1mKqcsenuFA"
+  },
+  {
+    "title": "高维空间为什么全是壳？内积才是那把尺子 原创",
+    "url": "https://mp.weixin.qq.com/s/Nrfr-90Fpu3mFDML9s0d1Q"
+  },
+  {
+    "title": "多Token预测：一次猜两个词，快1.8倍 原创",
+    "url": "https://mp.weixin.qq.com/s/EmjgFu5C6bkpltYidQhLRQ"
+  },
+  {
+    "title": "闭源模型思维链被提取? 这下有乐子了",
+    "url": "https://mp.weixin.qq.com/s/2Ij8ba2ahAXQaTjYeMV_yg"
+  },
+  {
     "title": "稀疏注意力怎么挑重点？DeepSeek-V4 只算 1/64 原创",
     "url": "https://mp.weixin.qq.com/s/QcZUcxYZUw27_J2ykESUHA"
   },
@@ -104,7 +228,7 @@
     "url": "https://mp.weixin.qq.com/s/6GJ2781jJh-dqYswJ07dfA"
   },
   {
-    "title": "一个简单的创作复盘",
+    "title": "一个简单的创作复盘 已修改",
     "url": "https://mp.weixin.qq.com/s/vssjIj3m8k3bvpw3RE0QHA"
   },
   {

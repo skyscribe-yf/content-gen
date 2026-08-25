@@ -680,6 +680,110 @@ articles:
   media_id: kOcXH4SytIYVIpYksTGfHtvsKCFs3go8FzOj3pi00K_xopK7m1VE7wzXtMonGdQV
   cover_media_id: kOcXH4SytIYVIpYksTGfHjK3ztL7oCakVr-lss3sKMRhIiRg5XAiqvhZY3gGz3d5
   notes: '「AI中的数学」系列 KL 散度篇。素材直出工作流：raw.md 作者口述 11 段，structure.md v2 检查点作者批准（术语修正×2、双头硬币算例、series=数学直觉、标题A）。引用源 refs.md：主引 Alemi《KL is All You Need》（图源×3：大象/VAE世界对/扩散链）+ Lilian Weng《From GAN to WGAN》（KL_JS 四联图 + 不重叠分布实验数据），参考资料 6 条带链接。数字事实验证：双头硬币 5 连正=32:1≈97%；KL(N(0,1)||N(3,1))闭式=Δμ²/2=4.5 nats（图表与理论一致）；JS=log2/W=|θ| 摘自 Lilian 原文。质量核查13项全过（长句>60字清零、禁词0、拆字合规、原声句15条逐字保留）。封面 gpt-image-2 两轮定稿（第一版自造副标题作废，第二版无多余文字，1915x821≈21:9，prompts/00-cover.md）。2026-08-22 已存公众号草稿箱（remote-api --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHk_UJkE11ltaaK80hzEICkd-ujbQfhT85zWpSAqRtnbM（封面 kOcXH4SytIYVIpYksTGfHoCwvFQT6P9CZPEWus1Dl3cYXZW9J08Gn8Uk2CCq6koc）。⚠️ 正文 TRPO 链接为「待发布」占位，TRPO 发布后必须回填微信 URL 再重存草稿。发布前确认：声明原创 + 定时 20:00 + 合集「AI中的数学」。 2026-08-22 TRPO 发布后正文回填链接并完成打磨（长句/长段拆分、补内链×3、修口误×4），重存草稿：media_id kOcXH4SytIYVIpYksTGfHtvsKCFs3go8FzOj3pi00K_xopK7m1VE7wzXtMonGdQV（封面 kOcXH4SytIYVIpYksTGfHjK3ztL7oCakVr-lss3sKMRhIiRg5XAiqvhZY3gGz3d5）。旧草稿 media_id kOcXH4SytIYVIpYksTGfHk_UJkE11ltaaK80hzEICkd-ujbQfhT85zWpSAqRtnbM 需在草稿箱删除。'
+- slug: 2026-08-24-ppo-math
+  title: PPO只用0.2的clip，凭什么顶替0.01预算？
+  series: 强化学习原理
+  status: published
+  published_date: '2026-08-24'
+  wechat_url: https://mp.weixin.qq.com/s/AjxvcBFTJkWeRRPDr5YAjA
+  files:
+    weixin: true
+    draft: false
+    outline: true
+    cover: false
+  media_id: kOcXH4SytIYVIpYksTGfHm_I24lKipql05OQetSem3kBAIRQbgOWsIsv2aiK2WbA
+  cover_media_id: kOcXH4SytIYVIpYksTGfHt5F3SyBtjzs61oRCDNhMtg0WBgG6JxloMXgY1RQ-fdM
+  notes: '「强化学习原理」系列第七篇 PPO 数学（路标⑦）。grill 日志 .grill/2026-08-24-ppo-math.md（2026-08-23 七轮追问收敛），outline.md 作者检查点通过 + 三维定稿标题（作者亲拟「PPO只用0.2的clip，凭什么顶替0.01预算？」24字 破例，保留英文 clip 防歧义）。数字事实验证（2026-08-23 蒙特卡洛，K=500 分类策略）：KL≈½E[(log r)²] 三尺度误差 <2%；log 域不对称 0.8 头 0.2231；ε=0.2 → KL 上界 0.0249=δ 的 2.5 倍；ε 扫描 0.006/0.025/0.064；KL=0.022 步长下 ε=0.2 截断 32.0% 样本；一阶近似误差 ε=0.2 低估 19.7%（二成）/ε=0.3 低估 29.3%（近三成）。2026-08-23 初稿完成 + 作者要求人格化改写（情绪/立场/说人话/去 AI 味）+ 完整质量检查 13 项与恢复期 B 六条全过（长句 0、禁词 0、开头零导航、4838 可视字符在 3.5-5k 口径内）。2026-08-23 出图完成：脚本图 3 张（01/02/04 数字与正文逐字一致，截断比例统一为采样加权 32.0%，等权口径 32.4% 备注在 outline）+ AI 图 03-two-rulers（双尺子，无文字）+ 封面 00-cover.png（1916x821=21:9，标题逐字核验：仅逗号/问号为半角）。2026-08-23 已存公众号草稿箱（baoyu remote-api，theme=grace color=blue）：media_id kOcXH4SytIYVIpYksTGfHm_I24lKipql05OQetSem3kBAIRQbgOWsIsv2aiK2WbA（封面 kOcXH4SytIYVIpYksTGfHt5F3SyBtjzs61oRCDNhMtg0WBgG6JxloMXgY1RQ-fdM），正文图 4 张已上传。2026-08-24 审查补「下一篇预告」（GAE，路标⑧，按 outline 既定文案）后重存草稿（remote-api --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHm_I24lKipql05OQetSem3kBAIRQbgOWsIsv2aiK2WbA（封面 kOcXH4SytIYVIpYksTGfHt5F3SyBtjzs61oRCDNhMtg0WBgG6JxloMXgY1RQ-fdM）。旧草稿（…HpUltpU…）作废需在草稿箱删除。 2026-08-24 作者在微信后台手动编辑（措辞×2、加不对称展开、拆/并段×5、结尾问题改「评论区说出理由」、引导段加转发、热门区 KL 死链换 PPO基础篇/高维空间/KV缓存 3 篇已发布链接、正文黑天鹅 KL 引用去链接化）+ 手动设置文中广告位。已用 draft/get 拉取远端全文逐段比对，全部同步回 weixin.md（本地=远端，待发布残留 0）。⚠️ 广告位是后台 UI 设置，API 无字段、重存草稿（draft/add 新建）后必须重新手动设置广告位。2026-08-24 已发布：https://mp.weixin.qq.com/s/AjxvcBFTJkWeRRPDr5YAjA。'
+- slug: 2026-08-25-gae
+  title: GAE：100步的功劳，为什么只认最近17步？
+  series: 强化学习原理
+  status: drafting
+  published_date: null
+  wechat_url: null
+  files:
+    weixin: true
+    draft: true
+    outline: true
+    cover: true
+  media_id: kOcXH4SytIYVIpYksTGfHrAQIFf1UA1IFk8ytwFYPA8-ERzGU710lfICxkrm_hWv
+  cover_media_id: kOcXH4SytIYVIpYksTGfHrwu_c4xeRsjVdfURv1Lbes0-wBSZFpx19IcoW8d91rf
+  notes: '「强化学习原理」系列第八篇 GAE（路标⑤，策略梯度篇立约「完整式子放到后面」+ PPO 篇预告兑现）。grill 日志 .grill/2026-08-25-gae.md（2026-08-23 八轮追问收敛：认知交付=功劳分摊器、数学=全链轻推、叙事=agent 连续剧、验证=λ 扫描、标题=λ 方差反差、开头=连续剧场景、文末=功劳分法站队）。outline.md 作者检查点 T1 通过（标题「GAE：100步的功劳，为什么只认最近17步？」21字）。数字事实验证（2026-08-24 蒙特卡洛，线性走廊随机游走 + 噪声奖励 + 带误差 critic，60 万轨迹）：λ=1 方差是 λ=0.95 的 8.5 倍、λ=0.5 的 91 倍、λ=0 的 124 倍；有效视野 16.8 vs 100 步；critic 误差进账 λ=1 偏差 −0.39 vs λ=0.95 −0.09 vs λ=0 +0.003。2026-08-23 初稿完成 + 质量检查 13 项与恢复期 B 六条全过（长句 0、禁词 0、开头零导航、3827 可视字符在 3.5-5k 口径内）。2026-08-23 出图完成：脚本图 2 张（01-eff-horizon 29%/82%/16.8、02-lambda-sweep 1.03/1.40/6.95/15.0/60.9/128.1 + 8.5×/91× 标注，数字与正文逐字一致）+ AI 图 2 张（03-td-error 意外称重、04-credit-book 折扣链，无文字）+ 封面 00-cover.png（1915x821=21:9，标题逐字核验：GAE 大写、100/17 完整）。2026-08-23 已存公众号草稿箱（baoyu remote-api，theme=grace color=blue）：media_id kOcXH4SytIYVIpYksTGfHhpwtqBjlXi2V8TkAzNsKzdLfe_IOT3iG1DLG_Nayhuh（封面 kOcXH4SytIYVIpYksTGfHj-pM4J2wICkJjm86ZnmvfuXwLagG5U0t6RcwJ_75fq8）。⚠️ 旧草稿 kOcXH4SytIYVIpYksTGfHhpwtqBjlXi2V8TkAzNsKzdLfe_IOT3iG1DLG_Nayhuh（封面 kOcXH4SytIYVIpYksTGfHj-pM4J2wICkJjm86ZnmvfuXwLagG5U0t6RcwJ_75fq8）待删。 2026-08-24 核查：正文已无「待发布后回填」残留；尾部「近期热门」按新规则（AGENTS.md 微信文章链接规则）改为实际热门榜 Top 5（取自 content/navigation/menu-config.md，贴图不计入、不含当前篇）：KV缓存SSD/高维空间/Adam/DeepSeek-V4为何不用MLA/Softmax，链接行不留空行（修复公众号端列表空行）。重存草稿（remote-api，theme=grace color=blue）：media_id kOcXH4SytIYVIpYksTGfHrAQIFf1UA1IFk8ytwFYPA8-ERzGU710lfICxkrm_hWv（封面 kOcXH4SytIYVIpYksTGfHrwu_c4xeRsjVdfURv1Lbes0-wBSZFpx19IcoW8d91rf）。⚠️ 待办：发布前确认声明原创 + 定时 20:00 + 合集「强化学习原理」；若此前有后台手动设置（如广告位），重存后需重设。 2026-08-24 按新规则（scripts/hot_articles.py 固化脚本）改尾部为脚本生成：audit Top 6（KV/高维/Adam/DeepSeek-V4/Softmax/SFT，贴图自动过滤）+ 本文引用文章（策略梯度、MDP），链接行间无空行；重存草稿（remote-api）：media_id kOcXH4SytIYVIpYksTGfHrAQIFf1UA1IFk8ytwFYPA8-ERzGU710lfICxkrm_hWv（封面 kOcXH4SytIYVIpYksTGfHrwu_c4xeRsjVdfURv1Lbes0-wBSZFpx19IcoW8d91rf）。中间版本草稿 …HjL74w… 与 …HtHoRH… 均待删。脚本自检：python3 scripts/hot_articles.py --self-check 通过。'
+- slug: 2026-08-24-dsh-harness
+  title: DeepSeek Harness社区自己人开撕：创新何在
+  series: Agent前线
+  status: published
+  published_date: '2026-08-24'
+  wechat_url: https://mp.weixin.qq.com/s/NRFSTBlxNwOa7p69D92g_A
+  files:
+    weixin: true
+    draft: false
+    outline: false
+    cover: false
+  notes: '贴图（图片消息），合集 Agent 前线。素材 /home/skyscribe/图片/贴图 三张：崔添翼给 Yifan Xu 炮轰帖点赞截图、炮轰原文、DSH 架构图。标题「DeepSeek DSH自己人开撕」17字。公众号后台发表记录确认：2026-08-24 07:00 已发表。合集页 URL 待补。'
+- slug: 2026-08-24-pi-dsh-pruner
+  title: Pi这波把DSH剪枝骂惨了
+  series: Agent前线
+  status: published
+  published_date: '2026-08-24'
+  wechat_url: https://mp.weixin.qq.com/s/vx-rHnzgJzH-oqriNM555A
+  files:
+    weixin: true
+    draft: false
+    outline: false
+    cover: false
+  notes: '贴图（图片消息），合集 Agent 前线。素材 /home/skyscribe/图片/贴图/0824 四张：Pi 锐评 DSH permanently-lossy pruner、Claude 绑定自家 Schema、Harness 像操作系统、Cordis Effect/Coeffect。标题 13 字，贴图公式（当期热点+强立场）。数字 26%～35% / 72%～88% / 19 Session 照截图。公众号后台发表记录确认：2026-08-24 08:00 已发表。合集页 URL 待补。'
+- slug: 2026-08-25-pi-maka-harness
+  title: Pi 的新架构，答案早就在数据库论文里了
+  series: Agent前线
+  status: published
+  published_date: '2026-08-25'
+  wechat_url: https://mp.weixin.qq.com/s/QB_nJbrDU0G2vipZk8m1YQ
+  files:
+    weixin: true
+    draft: false
+    outline: false
+    cover: false
+  notes: '贴图（图片消息），合集 Agent 前线。素材 /home/skyscribe/图片/贴图/0825 三张：kabikabi 推特（Pi harness v2 与 Maka 架构撞车、答案在数据库论文里）、小墨同学推特（Mario Zechner 其人）、Pi v3 vs Harness v2 对比表。标题 20 字「Pi 的新架构，答案早就在数据库论文里了」。2026-08-25 检查点作者已确认（纯行业观察版、3 图、照截图口径）；正文 758 字、禁词 0、话题标签 4 个；图 01/02/03 为素材原图直用。公众号后台发表记录确认：2026-08-25 07:05 已发表。Earendil 收购 Mario 入股仅截图口径未联网核实。合集页 URL 待补。'
+- slug: 2026-08-26-knowledge-distillation
+  title: 蒸馏是抄袭？为什么越抄越学不会？
+  series: 数学直觉
+  status: drafting
+  published_date: null
+  wechat_url: null
+  files:
+    weixin: true
+    draft: false
+    outline: true
+    cover: true
+  media_id: kOcXH4SytIYVIpYksTGfHgP-ZbeSteFkCagnwwxlTZHY0R5_ETSJQvdP9DWuwfHB
+  cover_media_id: kOcXH4SytIYVIpYksTGfHl4u-bPxO7d5iv6DNWHT69XlAWAudEdg2QeVsa7ePnnA
+  notes: '恢复期数学番外（规划番外 A）。2026-08-24 已存公众号草稿箱（remote-api，theme=grace color=blue），正文图 4 张已上传。未定时、未群发。发布前确认：声明原创 + 定时 20:00 + 合集「AI中的数学」。2026-08-26 作者审查后修改：开头换作者版（含孔乙己等）、梯度节补 1/T 因子（数字改 +0.097/−0.048，图 02 同步）、新增「RL 冷启动」节（R1 冷启动数千条长 CoT；AIME 2024 蒸馏版 32B 72.6 vs R1 本体 79.8）、每段≤2 句、角注分段、去说书词、合集行加 SFT 链接。重存草稿（remote-api --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHgP-ZbeSteFkCagnwwxlTZHY0R5_ETSJQvdP9DWuwfHB（封面 kOcXH4SytIYVIpYksTGfHl4u-bPxO7d5iv6DNWHT69XlAWAudEdg2QeVsa7ePnnA）。⚠️ 45166 踩坑（2026-08-26）：合集行 KL 链接丢一个字符（G1PUOuwURoo… 缺 x，应为 G1PUOuwxURoo…）导致 invalid content hint，微信会对 content 内 mp.weixin.qq.com/s/ 链接做文章存在性校验，链接错即 45166 且 hint 每次随机；二分定位：旧版成功稿逐块回填新版锁定。发布前检查：mp 链接与旧版全量比对。'
+- slug: 2026-08-28-information-entropy
+  title: 信息熵：压缩率差1000倍，谁的信息更多？
+  series: 数学直觉
+  status: drafting
+  published_date: null
+  wechat_url: null
+  files:
+    weixin: true
+    draft: false
+    outline: true
+    cover: false
+  notes: '恢复期数学篇（8-28 档，原 AlphaGo 顺延 8-30；8-28 由作者排期调整拍板：RL 热度低，配比回 RL:数学≈1:1）。grill 日志 .grill/2026-08-28-information-entropy.md（2026-08-25 七轮收敛）。标题 T1「信息熵：压缩率差1000倍，谁的信息更多？」21字（实测 1006× 锁定，正文逐字一致）。认知交付：意外=信息（1.000 vs 0.469 bit）+ 困惑度=AI的没把握（perp=e^H，0.9/0.1→1.38）。数字事实验证（2026-08-25 闭式）：zip 1MB 循环→994B（1006×）/随机→1,000,316B（+0.03%）；熵表 1.000/0.469/2.000/3.322；困惑度表 1.38/2.00/1.12/4.00/10.00/40.00；随机字节 perp 256。原声槽 5 条逐字进稿（xz 压缩/胡说八道/玄学好奇/确定性度量/掷骰子+爱因斯坦）。2026-08-25 作者补边界节「zip 和 AI 的压缩不是一回事」（无损/有损/AI 三种机制 + Ilya 压缩即智能从信息论读）+ 骰子 AI 图 04-dice.png。质量自查：正文口径 3599/全文 5203（含尾部链接；对照 GAE 5926 同口径）、禁词 0（钩子/伏笔/AI腔/说人话就是）、原声 5 条逐字在场、长句拆至 60 字内仅余参考资料行（豁免）、图片 4 张全在、热门区脚本生成且 --self-check 通过。2026-08-25 图全部出齐（00-cover 21:9 标题逐字核验 / 01 熵曲线 / 03 zip 对比 / 04 骰子 AI 图），15 项核查机检全过。⚠️ 标题二轮改定为 T2 后封面已按 T2 重新生成（旧 T1 封面弃用）。2026-08-25 已存公众号草稿箱（remote-api --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHqGMhNOG8CGOkczBGtcwPh3oKw9UP9AKciR4h9S6ty3s（封面 kOcXH4SytIYVIpYksTGfHnMtyfKUFZx6YqZHWR_aRftozBspSolsf3Rcmb3pScbN），正文图 3 张已上传（01/03 脚本图 + 04 骰子）。未定时、未群发。⚠️ 发布前确认：声明原创 + 定时 20:00 + 合集「AI中的数学」；发布后补 wechatUrl。'
+- slug: 2026-08-30-alphago
+  title: AlphaGo 十年：那只狗到底是靠什么赢的？
+  series: 强化学习原理（番外）
+  status: drafting
+  published_date: null
+  wechat_url: null
+  files:
+    weixin: true
+    draft: false
+    outline: true
+    cover: true
+  media_id: kOcXH4SytIYVIpYksTGfHgnafCJ-imSBYryr1qHgcYlRr66NNL_giFAZ14qMolcF
+  cover_media_id: kOcXH4SytIYVIpYksTGfHnqfK31noHUZ-nEc9ajr8Yt1_eJiaMiXwtUMcnSAJGit
+  notes: '「强化学习原理」系列番外 B（8-30 档；8-28 信息熵文末预告兑现）。grill 日志 .grill/2026-08-30-alphago.md（2026-08-25 十四轮收敛：认知交付=反直觉「算得少反而赢」+ R1 变奏；标题沿用 08-22 候选；结构=两函数→组装→重演六节；AlphaGo 80% + R1 20%；R1 类比=「变奏」非「重演」；数学边界=3 骨架公式（π(a|s)/V(s)/搜索人话）；比喻=老棋手+形势判断师+实习生；名场面=黑37进组装节+白78结尾注脚；文末问题=站队+最难忘一手）。事实核验（2026-08-25，Nature 摘要+英文/中文维基+arXiv 2501.12948）：2016 五番（3-09 白186/3-10 黑211/3-12 白176/3-13 李180胜/3-15 白280）、4:1、黑37=Redmond 评「creative/unique」「大多数职业棋手不会考虑」、黑167=An Younggil「胜利宣言」、白78=神之一手（黄士杰披露价值网络没估为最可能）、74场唯一败、两函数架构（Nature）、获胜概率最大化（80%赢20目 vs 99%赢1.5目）、KGS 16万盘/3000万步+自我对弈数千万盘、DeepSeek-R1 推理弃神经网络奖励模型改规则奖励（GRPO 16输出/KL 0.001/T=1/AIME 15.6%→77.9%）、李开复89%、1920 CPU/280 GPU、深蓝1997、马斯克「还差10年」、AlphaZero 24h超人类（chess/shogi/go）、围棋局面≈2×10^170（Tromp 2016）。⚠️ 未核验不收：13层CNN（不写层数）、「DeepSeek 试过 MCTS 未落地」（论文正文无原句，第6节改用规则奖励对比）。原声槽 6 条逐字进稿（满屏新闻闪电击/人类千年前没下过/直觉模糊柯洁马晓春/多试几次更笨方法/三个臭皮匠螺旋上升/AlphaZero碾压后话）。质量自查：正文口径 4879（3.5-5k 内）、禁词 0（钩子/伏笔/AI腔/说人话就是）、原声 6 条逐字在场、AI 长句 0（仅原声豁免）、图片 5 张引用全在+封面 21:9 标题逐字核验（1915x821）、热门区脚本生成（Top 6 无引用追加）、系列箭头链（待更新）、合集 URL 按 RL 篇惯例不硬编码（GAE 同款）、白78/180手/74场补回。15 项核查+B 门禁 6 条全过。未存草稿箱、未发布。⚠️ 发布前确认：声明原创 + 定时 20:00 + 合集「强化学习原理」；2026-08-25 已存公众号草稿箱（remote-api --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHgnafCJ-imSBYryr1qHgcYlRr66NNL_giFAZ14qMolcF（封面 kOcXH4SytIYVIpYksTGfHnqfK31noHUZ-nEc9ajr8Yt1_eJiaMiXwtUMcnSAJGit），正文图 5 张已上传（01/02 脚本图 + 03/04/05 AI 图，3 张大图自动压缩 JPEG 82）。未定时、未群发。⚠️ 发布前确认：声明原创 + 定时 20:00 + 合集「强化学习原理」；发布后补 wechatUrl。'
 summary:
   total: 44
   by_status:
@@ -696,55 +800,3 @@ summary:
   scheduled_queue:
   - 2026-08-15-deepseek-dualpipe-deepep
   next_publish_date: '2026-08-15'
-- slug: 2026-08-24-ppo-math
-  title: PPO只用0.2的clip，凭什么顶替0.01预算？
-  series: 强化学习原理
-  status: drafting
-  published_date: null
-  wechat_url: null
-  files:
-    weixin: true
-    draft: false
-    outline: true
-    cover: false
-  media_id: kOcXH4SytIYVIpYksTGfHm_I24lKipql05OQetSem3kBAIRQbgOWsIsv2aiK2WbA
-  cover_media_id: kOcXH4SytIYVIpYksTGfHt5F3SyBtjzs61oRCDNhMtg0WBgG6JxloMXgY1RQ-fdM
-  notes: '「强化学习原理」系列第七篇 PPO 数学（路标⑦）。grill 日志 .grill/2026-08-24-ppo-math.md（2026-08-23 七轮追问收敛），outline.md 作者检查点通过 + 三维定稿标题（作者亲拟「PPO只用0.2的clip，凭什么顶替0.01预算？」24字 破例，保留英文 clip 防歧义）。数字事实验证（2026-08-23 蒙特卡洛，K=500 分类策略）：KL≈½E[(log r)²] 三尺度误差 <2%；log 域不对称 0.8 头 0.2231；ε=0.2 → KL 上界 0.0249=δ 的 2.5 倍；ε 扫描 0.006/0.025/0.064；KL=0.022 步长下 ε=0.2 截断 32.0% 样本；一阶近似误差 ε=0.2 低估 19.7%（二成）/ε=0.3 低估 29.3%（近三成）。2026-08-23 初稿完成 + 作者要求人格化改写（情绪/立场/说人话/去 AI 味）+ 完整质量检查 13 项与恢复期 B 六条全过（长句 0、禁词 0、开头零导航、4838 可视字符在 3.5-5k 口径内）。2026-08-23 出图完成：脚本图 3 张（01/02/04 数字与正文逐字一致，截断比例统一为采样加权 32.0%，等权口径 32.4% 备注在 outline）+ AI 图 03-two-rulers（双尺子，无文字）+ 封面 00-cover.png（1916x821=21:9，标题逐字核验：仅逗号/问号为半角）。2026-08-23 已存公众号草稿箱（baoyu remote-api，theme=grace color=blue）：media_id kOcXH4SytIYVIpYksTGfHm_I24lKipql05OQetSem3kBAIRQbgOWsIsv2aiK2WbA（封面 kOcXH4SytIYVIpYksTGfHt5F3SyBtjzs61oRCDNhMtg0WBgG6JxloMXgY1RQ-fdM），正文图 4 张已上传。2026-08-24 审查补「下一篇预告」（GAE，路标⑧，按 outline 既定文案）后重存草稿（remote-api --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHm_I24lKipql05OQetSem3kBAIRQbgOWsIsv2aiK2WbA（封面 kOcXH4SytIYVIpYksTGfHt5F3SyBtjzs61oRCDNhMtg0WBgG6JxloMXgY1RQ-fdM）。旧草稿（…HpUltpU…）作废需在草稿箱删除。 2026-08-24 作者在微信后台手动编辑（措辞×2、加不对称展开、拆/并段×5、结尾问题改「评论区说出理由」、引导段加转发、热门区 KL 死链换 PPO基础篇/高维空间/KV缓存 3 篇已发布链接、正文黑天鹅 KL 引用去链接化）+ 手动设置文中广告位。已用 draft/get 拉取远端全文逐段比对，全部同步回 weixin.md（本地=远端，待发布残留 0）。⚠️ 广告位是后台 UI 设置，API 无字段、重存草稿（draft/add 新建）后必须重新手动设置广告位。⚠️ 待办：① KL 篇未发布，2 处「待发布后回填」占位仍在，KL 发布后回填并重存 ② 发布前确认：声明原创 + 定时 20:00 + 合集「强化学习原理」。：声明原创 + 定时 20:00 + 合集「强化学习原理」。'
-- slug: 2026-08-25-gae
-  title: GAE：100步的功劳，为什么只认最近17步？
-  series: 强化学习原理
-  status: drafting
-  published_date: null
-  wechat_url: null
-  files:
-    weixin: true
-    draft: true
-    outline: true
-    cover: true
-  media_id: kOcXH4SytIYVIpYksTGfHrAQIFf1UA1IFk8ytwFYPA8-ERzGU710lfICxkrm_hWv
-  cover_media_id: kOcXH4SytIYVIpYksTGfHrwu_c4xeRsjVdfURv1Lbes0-wBSZFpx19IcoW8d91rf
-  notes: '「强化学习原理」系列第八篇 GAE（路标⑤，策略梯度篇立约「完整式子放到后面」+ PPO 篇预告兑现）。grill 日志 .grill/2026-08-25-gae.md（2026-08-23 八轮追问收敛：认知交付=功劳分摊器、数学=全链轻推、叙事=agent 连续剧、验证=λ 扫描、标题=λ 方差反差、开头=连续剧场景、文末=功劳分法站队）。outline.md 作者检查点 T1 通过（标题「GAE：100步的功劳，为什么只认最近17步？」21字）。数字事实验证（2026-08-24 蒙特卡洛，线性走廊随机游走 + 噪声奖励 + 带误差 critic，60 万轨迹）：λ=1 方差是 λ=0.95 的 8.5 倍、λ=0.5 的 91 倍、λ=0 的 124 倍；有效视野 16.8 vs 100 步；critic 误差进账 λ=1 偏差 −0.39 vs λ=0.95 −0.09 vs λ=0 +0.003。2026-08-23 初稿完成 + 质量检查 13 项与恢复期 B 六条全过（长句 0、禁词 0、开头零导航、3827 可视字符在 3.5-5k 口径内）。2026-08-23 出图完成：脚本图 2 张（01-eff-horizon 29%/82%/16.8、02-lambda-sweep 1.03/1.40/6.95/15.0/60.9/128.1 + 8.5×/91× 标注，数字与正文逐字一致）+ AI 图 2 张（03-td-error 意外称重、04-credit-book 折扣链，无文字）+ 封面 00-cover.png（1915x821=21:9，标题逐字核验：GAE 大写、100/17 完整）。2026-08-23 已存公众号草稿箱（baoyu remote-api，theme=grace color=blue）：media_id kOcXH4SytIYVIpYksTGfHhpwtqBjlXi2V8TkAzNsKzdLfe_IOT3iG1DLG_Nayhuh（封面 kOcXH4SytIYVIpYksTGfHj-pM4J2wICkJjm86ZnmvfuXwLagG5U0t6RcwJ_75fq8）。⚠️ 旧草稿 kOcXH4SytIYVIpYksTGfHhpwtqBjlXi2V8TkAzNsKzdLfe_IOT3iG1DLG_Nayhuh（封面 kOcXH4SytIYVIpYksTGfHj-pM4J2wICkJjm86ZnmvfuXwLagG5U0t6RcwJ_75fq8）待删。 2026-08-24 核查：正文已无「待发布后回填」残留；尾部「近期热门」按新规则（AGENTS.md 微信文章链接规则）改为实际热门榜 Top 5（取自 content/navigation/menu-config.md，贴图不计入、不含当前篇）：KV缓存SSD/高维空间/Adam/DeepSeek-V4为何不用MLA/Softmax，链接行不留空行（修复公众号端列表空行）。重存草稿（remote-api，theme=grace color=blue）：media_id kOcXH4SytIYVIpYksTGfHrAQIFf1UA1IFk8ytwFYPA8-ERzGU710lfICxkrm_hWv（封面 kOcXH4SytIYVIpYksTGfHrwu_c4xeRsjVdfURv1Lbes0-wBSZFpx19IcoW8d91rf）。⚠️ 待办：发布前确认声明原创 + 定时 20:00 + 合集「强化学习原理」；若此前有后台手动设置（如广告位），重存后需重设。 2026-08-24 按新规则（scripts/hot_articles.py 固化脚本）改尾部为脚本生成：audit Top 6（KV/高维/Adam/DeepSeek-V4/Softmax/SFT，贴图自动过滤）+ 本文引用文章（策略梯度、MDP），链接行间无空行；重存草稿（remote-api）：media_id kOcXH4SytIYVIpYksTGfHrAQIFf1UA1IFk8ytwFYPA8-ERzGU710lfICxkrm_hWv（封面 kOcXH4SytIYVIpYksTGfHrwu_c4xeRsjVdfURv1Lbes0-wBSZFpx19IcoW8d91rf）。中间版本草稿 …HjL74w… 与 …HtHoRH… 均待删。脚本自检：python3 scripts/hot_articles.py --self-check 通过。
-- slug: 2026-08-24-dsh-harness
-  title: DeepSeek DSH自己人开撕
-  series: Agent前线
-  status: drafting
-  published_date: null
-  wechat_url: null
-  files:
-    weixin: true
-    draft: false
-    outline: false
-    cover: false
-  notes: '贴图（图片消息），合集 Agent 前线。素材 /home/skyscribe/图片/贴图 三张：崔添翼给 Yifan Xu 炮轰帖点赞截图、炮轰原文、DSH 架构图。标题「DeepSeek DSH自己人开撕」17字。未存草稿箱、未发布。若发必须开群发通知。合集页 URL 待补。'
-- slug: 2026-08-24-pi-dsh-pruner
-  title: Pi这波把DSH剪枝骂惨了
-  series: Agent前线
-  status: drafting
-  published_date: null
-  wechat_url: null
-  files:
-    weixin: true
-    draft: false
-    outline: false
-    cover: false
-  notes: '贴图（图片消息），合集 Agent 前线。素材 /home/skyscribe/图片/贴图/0824 四张：Pi 锐评 DSH permanently-lossy pruner、Claude 绑定自家 Schema、Harness 像操作系统、Cordis Effect/Coeffect。标题 13 字，贴图公式（当期热点+强立场）。数字 26%～35% / 72%～88% / 19 Session 照截图。未存草稿箱、未发布。与 DSH 开撕同题材，不宜同日双发；若发必须开群发通知。合集页 URL 待补。'

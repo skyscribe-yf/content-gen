@@ -26,14 +26,14 @@
 
 | 排序 | 子菜单名 | 链接 | 阅读量 |
 |-----|---------|------|--------|
-| 1 | KV缓存SSD | `https://mp.weixin.qq.com/s/40BQ06eDTv4-2r8FmQ_rMA` | 2,604 |
-| 2 | 高维空间全是壳 | `https://mp.weixin.qq.com/s/Nrfr-90Fpu3mFDML9s0d1Q` | 1,356 |
+| 1 | KV缓存SSD | `https://mp.weixin.qq.com/s/40BQ06eDTv4-2r8FmQ_rMA` | 2,867 |
+| 2 | 高维空间全是壳 | `https://mp.weixin.qq.com/s/Nrfr-90Fpu3mFDML9s0d1Q` | 1,539 |
 | 3 | Adam优化器 | `https://mp.weixin.qq.com/s/aSLVO-otvr2rxIU1kr2eAA` | 1,109 |
-| 4 | DeepSeek-V4为何不用MLA | `https://mp.weixin.qq.com/s/MQEgbY16mLs-N7g2xKW1HQ` | 1,040 |
-| 5 | Softmax不直接取最大值 | `https://mp.weixin.qq.com/s/5wMquh_v3oon2-NEDeQLEw` | 566 |
-| 6 | SFT微调1万条数据 | `https://mp.weixin.qq.com/s/vwXGbjm9Ai1GPvQi5O3UyQ` | 566 |
+| 4 | DeepSeek-V4为何不用MLA | `https://mp.weixin.qq.com/s/MQEgbY16mLs-N7g2xKW1HQ` | 1,072 |
+| 5 | 高斯为什么二阶就够 | `https://mp.weixin.qq.com/s/gs_3y7JXuBLlzR5w6jW6fQ` | 708 |
+| 6 | SFT微调1万条数据 | `https://mp.weixin.qq.com/s/vwXGbjm9Ai1GPvQi5O3UyQ` | 569 |
 
-**2026-08-22 更新**：按 08-22 审计快照（数据截至 08-21，23,427 读）重排。贴图（opencode 杀疯了 5,433、opencode 峰谷价 1,759、pi agent 1,373、DeepSeek 过拟合 1,312、QWen 1,152、第三方 1,072 等）不计入热门文章；KV缓存存进SSD 保持第 1（2,604 读，+276），高维空间第 2（1,356 读，+177），Adam 第 3（1,109），DeepSeek-V4 第 4（1,040 读，+45），Softmax 第 5（566，与 SFT 并列 566，按先达标保留），SFT 第 6（566，并列后取）。账号菜单仅支持 2 个子菜单，实际配置取前 2 篇（KV、高维）。
+**2026-08-26 更新**：按 08-26 审计快照（数据截至 08-25，25,815 读）重排。贴图（opencode 杀疯了 5,434、opencode 峰谷价 1,843、pi agent 1,422、DeepSeek 过拟合 1,321、QWen 1,252、第三方 1,072 等）不计入热门文章；KV缓存存进SSD 保持第 1（2,867 读，+57），高维空间第 2（1,539 读，+26），Adam 第 3（1,109），DeepSeek-V4 第 4（1,072 读，+8），高斯为什么二阶就够新进第 5（708 读，08-21 发布 5 天长尾），SFT 第 6（569），Softmax（566）出局。账号菜单仅支持 2 个子菜单，实际配置取前 2 篇（KV、高维）。
 
 **维护规则**：每次跑 wechat-data-audit 后，从审计日志聚合各文章最高阅读量、过滤贴图、重排前 6。被替下的文章通过合集页仍可访问。更新频率：约每月一次或推荐窗口出现明显变化时。
 

@@ -61,7 +61,7 @@ states:
 checklist:
   weixin:
     - "驱动问题是否同时涉及数学和模型表现"
-    - "有没有AI味表达（对照style-guide.md禁用词表扫一遍）"
+    - "说人话/去AI味是否过 article-quality-check.md 第 15 项（对照 style-features.md，禁止只扫 style-guide 禁词）"
     - "代码是否对应公式"
     - "回扣段是否回答了开头问题"
     - "总字数是否在1500-2000"
