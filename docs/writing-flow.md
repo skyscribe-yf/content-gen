@@ -87,7 +87,7 @@ Skill 位置：[`.agents/skills/grill-me/SKILL.md`](.agents/skills/grill-me/SKIL
 
 1. **成稿前**：`outline.md` 中状态为「已填」或「沿用」的条目 < 5，禁止创建或覆写 `weixin.md`。
 2. **代拟**：AI 不得写出可进稿的原声句。唯一允许的改动是错别字。
-3. **成稿后**：见 [`docs/article-quality-check.md`](article-quality-check.md) 第 14 项。
+3. **成稿后**：见 [`docs/article-quality-check.md`](article-quality-check.md) 第 14 项（原声逐字在场）和第 15 项（说人话 / 去 AI 味）。
 
 ## 禁止行为
 

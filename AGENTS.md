@@ -15,7 +15,7 @@
 封装了「作者扔原始素材 → AI 归纳整理（原声句逐字保留）→ 作者检查点确认 → 双轨配图 → 渲染 → 存公众号草稿箱」流程。关键规则：
 
 - 素材入口：`scripts/new-raw-topic.sh` 创建 `content/<日期>-<slug>/raw.md`，作者把想表达的一切贴进去
-- 动笔前必须读风格语料 `branding/style-corpus/style-features.md`（13 篇作者手敲贴图，2026-08-12 确认）
+- 动笔前必须读风格语料 `branding/style-corpus/style-features.md`（手敲贴图 + 长文 raw.md 金标准；2026-08-23 及之后贴图不当风格样本）
 - 原声句逐字保留，AI 只补结构、过渡和公众号惯例
 - 整理后必须停在检查点（结构 + 原声句清单 + 配图清单），作者确认前禁止出图
 - 双轨配图：AI 概念图 4-6 张（封面 21:9），数字/结构用脚本画图，AI 图禁止承载数字
@@ -131,7 +131,7 @@ wechatUrl: "https://mp.weixin.qq.com/s/abc123"
 - 末尾含关注引导（价值承诺 + 系列结构）
 - 结尾含 1 个开放式问题引导留言
 - 摘要须含 2-3 个搜索关键词
-- 最新审计：2026-08-22（数据截至 2026-08-21，累计关注 792、累计收入 55.39 元），详见 [`docs/wechat-data-insights.md`](docs/wechat-data-insights.md)
+- 最新审计：2026-08-26（数据截至 2026-08-25，累计关注 879、累计收入 59.07 元），详见 [`docs/wechat-data-insights.md`](docs/wechat-data-insights.md)
 - 数字事实源：[`docs/wechat-data-audit-log.json`](docs/wechat-data-audit-log.json)，结构见同名 `.schema.json`，操作脚本为 `scripts/wechat_audit_log.py`，报告生成脚本为 `scripts/wechat_audit_report.py`，产物为 `docs/wechat-data-audit-report.html`
 - **视频号数字事实源（2026-08-25 新增）**：[`docs/shipinhao-data-log.json`](docs/shipinhao-data-log.json)，结构见同名 `.schema.json`——视频号播放/完播/点赞/评论数据，与公众号日志分离（后台登录体系不同，公众号 Cookie 不通用）
 
@@ -161,7 +161,7 @@ wechatUrl: "https://mp.weixin.qq.com/s/abc123"
 
 ## 文章质量核查
 
-草稿写完后**必须执行**，全部通过才能进入发布流程。详见 [`docs/article-quality-check.md`](docs/article-quality-check.md)（含 14 项核查清单，第 13 项为爆款检查器，第 14 项为自动成稿原声槽，不满足必须改写）。
+草稿写完后**必须执行**，全部通过才能进入发布流程。详见 [`docs/article-quality-check.md`](docs/article-quality-check.md)（含 15 项核查清单，第 13 项为爆款检查器，第 14 项为自动成稿原声槽，第 15 项为说人话/去 AI 味，不满足必须改写）。
 
 ## 发布前检查
 

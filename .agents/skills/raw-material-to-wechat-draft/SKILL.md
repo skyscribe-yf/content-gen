@@ -11,8 +11,8 @@ description: Use when 作者要新建话题并把想表达的内容以原始文�
 
 ## 硬性门禁（无例外）
 
-1. **动笔前必读风格语料**：`branding/style-corpus/style-features.md` + `branding/style-corpus/tietu-raw/` 全部手敲原文，识别作者原声后再整理。
-2. **原声句逐字保留**：个人经验句、类比句、情绪吐槽句、数字实测句、结尾互动问句一律不改写；允许的唯一改动是修正明显错别字。禁止把口语改成书面语，禁止加总结句和「专家口吻」。
+1. **动笔前必读风格语料**：`branding/style-corpus/style-features.md`（先认语料分层）。长文再读一篇金标准 `raw.md`（矩阵秩 / 期望与导数换序 / 多维高斯注解 / KL 散度等）；贴图读 `tietu-raw/` 手敲原文。**不要**拿 2026-08-23 及之后的贴图轨道当文风样本。识别作者原声后再整理。
+2. **原声句逐字保留**：`style-features.md` 列出的类型一律不改写（含学习过程句、划边界句）；允许的唯一改动是修正明显错别字。禁止把口语改成书面语，禁止加总结句和「专家口吻」。
 3. **必须停在检查点**：归纳整理后输出 `structure.md`（结构大纲 + 原声句清单 + 配图清单 + 素材缺口），**等待作者确认**。作者未批准前禁止写正文、禁止生成任何图片。
 4. **双轨配图**：概念图用 AI 生成（默认 `scripts/yairouter_img.py`），数字/对比/结构/公式用脚本画图。**AI 生图禁止承载具体数字**（AI 会编数字）。封面 AI 画，21:9，正文概念图 4-6 张，每节至少一张、重点段最多两张，概念密度低时 3 张可接受但须在配图清单标注原因。
 5. **事实必须联网核实**：价格、版本号、模型发布时间等素材中的数字，一律实时搜索验证后再进稿，禁止沿用作者口头「大概」。
@@ -21,7 +21,7 @@ description: Use when 作者要新建话题并把想表达的内容以原始文�
 ## 工作流
 
 1. **建话题**：运行 `scripts/new-raw-topic.sh <slug>` 创建 `content/<日期>-<slug>/raw.md`；作者把想表达的一切贴进去，不要求结构。
-2. **读素材与语料**：读 `raw.md`、`style-features.md`、`tietu-raw/*.md`。
+2. **读素材与语料**：读 `raw.md`、`style-features.md`；长文对照一篇金标准 raw，贴图对照 `tietu-raw/`。跳过 2026-08-23 及之后贴图混稿。
 3. **归纳整理**：标注原声句 → 排结构 → 写 `structure.md`，包含：
    - 结构大纲（章节 + 一句话要点）
    - 原声句清单（逐条引用原文，注明将原样进稿）
@@ -45,7 +45,7 @@ description: Use when 作者要新建话题并把想表达的内容以原始文�
 - 标题：关键词前置 + 痛点驱动 + ≤22 字（`docs/article-title-seo.md`）
 - 文末话题标签 3-5 个（`docs/wechat-topic-tags.md`）
 - 数据时效实时搜索（`docs/data-freshness.md`）
-- 定稿前过 `docs/article-quality-check.md` 9 项；发布前过 `docs/pre-publish-final-check.md` 7 项
+- 定稿前过 `docs/article-quality-check.md` 全项（含第 15 项说人话/去 AI 味）；发布前过 `docs/pre-publish-final-check.md`
 - `weixin.md` 未定稿时，禁止生成任何衍生内容（小红书/知乎/视频等）
 
 ## 常见错误（禁止）
@@ -58,7 +58,7 @@ description: Use when 作者要新建话题并把想表达的内容以原始文�
 
 ## 相关资源
 
-- 风格语料：`branding/style-corpus/style-features.md`、`branding/style-corpus/tietu-raw/`
+- 风格语料：`branding/style-corpus/style-features.md`（金标准列表在该文件；含长文 raw.md + `tietu-raw/`）
 - 话题脚手架：`scripts/new-raw-topic.sh`
 - 配图：`scripts/yairouter_img.py`（AI 概念图）、`docs/image-generation.md`
 - 发布/草稿：`baoyu-post-to-wechat` skill（`--submit` / `draft/add`）
