@@ -20,6 +20,7 @@
 from __future__ import annotations
 
 import inspect
+import math
 import os
 import re
 import sys
@@ -99,6 +100,107 @@ def page_stack(*mobs, buff: float = 0.55):
     return grp
 
 
+# ---- 矮页自动排版（2026-08-26 用户拍板：1-3 行文字页禁止大 buff 撑高）----
+# 解决「两句/三句各挂上下两端、中间巨大留空」：长句按语义标点（逗号/分号/顿号/箭头→）
+# 自动拆多行占空间 + 字号放大 + 紧凑行距 + 整组垂直居中（上下留白均分）。
+# 多元素/图表/数字页继续用 page_stack+layout_page 全屏模式，两者按页选择。
+PAGE_AUTO_FILL = 0.70           # 矮页目标内容高度（显示带 70%，上下留白各 15% → 不再有中间空洞）
+PAGE_AUTO_MAX_SCALE = 1.5      # 元素最大放大倍率（字号视觉上限）
+PAGE_AUTO_BUFF = 0.42          # 矮页行距（紧凑，不靠行距撑高）
+PAGE_AUTO_LINE_W = 0.58        # 行宽上限（画布比例，超过则拆行）
+
+
+def layout_center(block: Group):
+    """矮页版整页规划：行组垂直居中、上下留白严格相等，不强制 80% 高度门禁。
+    用于 1-4 行文字页（page_auto）；信息密集页仍用 layout_page。
+    """
+    block.move_to(ORIGIN)
+    block.set_x(0.0)
+    if block.height > PAGE_BAND:
+        block.scale_to_fit_height(PAGE_BAND)
+    if block.width > FW:
+        block.scale_to_fit_width(FW)
+    block.set_y((PAGE_TOP + PAGE_BOTTOM) / 2.0)
+    return block
+
+
+def _wrap_text_mob(mob: Mobject, max_w: float) -> Mobject:
+    """超宽 Text 按语义标点拆成多行（\n 重建，同字号/颜色/字重）。
+    断行符（用户拍板 2026-07-26）：逗号、分号、顿号、冒号、箭头 →（含「→」两侧）。
+    每行 ≤ max_w；无标点的长行按字数硬拆；短行不拆。非 Text 原样返回。
+    """
+    if not isinstance(mob, Text) or mob.width <= max_w:
+        return mob
+    text = getattr(mob, "original_text", mob.text)  # .text 会丢空格，用 original_text
+    fs = float(mob.font_size)
+    # 文字色存在 glyph submobject 上（顶层 .color 是 stroke 黑色）
+    color = mob.submobjects[0].get_color() if mob.submobjects else WHITE
+    weight = getattr(mob, "weight", "NORMAL")
+    per_char = fs * 0.0109  # 中文全角字近似宽度（u/px 系数，实测 44px≈0.48u）
+    limit = max(4, int(max_w / per_char))
+    # 断行符（用户拍板 2026-08-26）：逗号、分号、箭头 →（箭头后断）；顿号/冒号/句号不拆。
+    # 「」引号对整体原子化：在「前断开，保证引号内容不拆断。
+    parts = re.split(r"(?<=[，；])|(?=「)", text)
+    pieces: list[str] = []
+    for part in parts:
+        if "→" in part:
+            seg = re.split(r"(?<=→)", part)  # 箭头挂行尾，不独立成行
+            for s in seg:
+                pieces.extend(_hard_split(s, limit))
+        else:
+            pieces.extend(_hard_split(part, limit))
+    # 相邻的极短块（≤2 字）并回上一行，避免碎片化
+    lines: list[str] = []
+    for p in pieces:
+        p = p.strip()
+        if not p:
+            continue
+        if lines and len(p) <= 2 and len(lines[-1]) + len(p) <= limit:
+            lines[-1] += p
+        else:
+            lines.append(p)
+    if len(lines) <= 1:
+        return mob
+    new = t("\n".join(lines), fs, color, weight, line_spacing=0.6)
+    mob.become(new)  # 就地替换：调用方持有的原引用变成多行文本（位置/颜色/字形同步）
+    return mob
+
+
+def _hard_split(text: str, limit: int) -> list[str]:
+    """超限段按目标行数**均衡**拆行（复用 _balanced_lines 行均分算法）：
+    先算目标行数 n = 权重/上限，再均分行宽 —— 避免贪心填满首行造成的 2-3 字悬尾行。
+    断行不拆断英文 token 与「」引号对（_balanced_lines 已原子化）。"""
+    if len(text) <= limit:
+        return [text]
+    weight = sum(1 if ch.isascii() else 2 for ch in text)
+    n = max(2, math.ceil(weight / (limit * 2)))
+    lines = [ln for ln in _balanced_lines(text, n) if ln]
+    return lines or [text]
+
+
+def page_auto(*mobs, buff: float = PAGE_AUTO_BUFF, fill: float = PAGE_AUTO_FILL,
+              max_scale: float = PAGE_AUTO_MAX_SCALE, max_line_w: float = PAGE_AUTO_LINE_W):
+    """矮页自动排版（1-4 行文字/元素页首选，替代 _page 传大 buff 撑高）：
+    1. 超宽行按逗号/分号/箭头等语义标点拆成多行（占满空间）；
+    2. 整组高度不足显示带 fill 比例 → 元素等比放大（字号视觉变大）；
+    3. 行距保持紧凑（buff），垂直居中，上下留白均分 —— 无中间空洞。
+    返回排好位置的 Group（元素仍按惯例逐个 type_in/scroll_unroll 入场）。
+    """
+    items = [_wrap_text_mob(m, FW * max_line_w) for m in mobs]
+    grp = Group(*items).arrange(DOWN, buff=buff)
+    target = PAGE_BAND * fill
+    scale = min(max_scale, target / grp.height) if grp.height < target else 1.0
+    wmax = max((m.width for m in items), default=0.0)
+    if wmax * scale > FW * 0.9:
+        scale = min(scale, FW * 0.9 / wmax)
+    if scale > 1.01:
+        for m in items:
+            m.scale(scale)
+        grp = Group(*items).arrange(DOWN, buff=buff)
+    layout_center(grp)
+    return grp
+
+
 
 def t(text: str, size: float = 34, color: str = WHITE, weight: str = "NORMAL",
       line_spacing: float = -1) -> Text:
@@ -119,11 +221,14 @@ def _balanced_lines(label: str, line_count: int) -> list[str]:
     # vertical space character by character.  This avoids both "DeepSeek"
     # being split and a mixed label such as "256 个路由专家" being forced into
     # one tiny line merely because it contains a space.
-    tokens = re.findall(r"[A-Za-z0-9.%+/_-]+|[\u3400-\u9fff]|[^\s]", label)
+    tokens = re.findall(r"「[^」]*」|[A-Za-z0-9.%+/_-]+|[\u3400-\u9fff]|[^\s]", label)
     if not tokens:
         return [label]
 
     def token_weight(token: str) -> int:
+        # 「」引号对按内容字符数计权重（视觉宽度），不按整串 2 计
+        if len(token) > 1 and (token.startswith("「") or token.endswith("」")):
+            return sum(1 if c.isascii() else 2 for c in token)
         return len(token) if token.isascii() else 2
 
     def join_tokens(items: list[str]) -> str:
@@ -668,14 +773,17 @@ class _Base(MovingCameraScene):
             self.add(grp)
         return VGroup(*groups)
 
-    def grow_bar(self, rect, tracker, target, run_time=0.7, extra_anims=None, **kw):
+    def grow_bar(self, rect, tracker, target, run_time=0.7, extra_anims=None, anchor="left", **kw):
         """用 ValueTracker 驱动矩形条从底部生长到 target 宽/高。
         ⚠️ 锚点必须用左下角（get_corner(DL)）并只捕获一次——get_left() 返回左缘中心
         （垂直中点），每帧 become 后参考点抬高半条高 → 条累积上移（2026-08-16 S3 事故）。
+        anchor="center" 时以初始水平中心为锚向两侧生长（2026-08-25 修 S1/S2 KV 条左缘
+        锚定导致条偏右 215px 的 QA 问题）。
         extra_anims：可选动画列表，与条生长并行播放（如柱子标签 type_in），
         避免「先条后标签」的顺序漂移（2026-08-19 打磨）。
         内部自动 self.add(rect)——调用方不再需要先 add（2026-08-19 修复遗漏 add 导致柱子不显示）。"""
         left_bottom = rect.get_corner(DL)
+        center_x = rect.get_center()[0]
         self.add(rect)
 
         def upd(m):
@@ -684,7 +792,10 @@ class _Base(MovingCameraScene):
                             color=rect.get_stroke_color(),
                             fill_color=rect.get_fill_color(),
                             fill_opacity=rect.get_fill_opacity())
-            new.move_to(left_bottom + RIGHT * w / 2, aligned_edge=DOWN)
+            if anchor == "center":
+                new.move_to(np.array([center_x, left_bottom[1] + rect.height / 2, 0]))
+            else:
+                new.move_to(left_bottom + RIGHT * w / 2, aligned_edge=DOWN)
             m.become(new)
         rect.add_updater(upd)
         anims = [tracker.animate.set_value(target)]
@@ -833,7 +944,11 @@ class _Base(MovingCameraScene):
         if mode == "circumscribe":
             self.play(Circumscribe(target, color=color, run_time=run_time))
         elif mode == "wiggle":
-            self.play(Wiggle(target, run_time=run_time))
+            # 2026-08-25 修正：Wiggle 默认 scale_value=1.1 会把近边元素放大推超画布
+            # （Kimi K3 S1 三轴卡实测 1.1× 裁切 0.27s）；纯旋转不放大，
+            # rotation_angle 1.08°（0.003TAU）角点扫掠 ≈10px < 11px 边距余量
+            self.play(Wiggle(target, scale_value=1.0, rotation_angle=0.003 * TAU,
+                             run_time=run_time))
         else:
             self.play(Indicate(target, color=color, run_time=run_time))
         return target

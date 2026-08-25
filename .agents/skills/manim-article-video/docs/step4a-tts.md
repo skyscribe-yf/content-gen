@@ -1,4 +1,4 @@
-# Step 4A 整段配音 + 时间戳切分（TTS 克隆流程，2026-08-12 定稿）
+# Step 4A 整段配音 + 时间戳切分（TTS 流程，2026-08-12 定稿；默认音色改精英男声 2026-08-26）
 
 **⛔ 门禁 1 配音稿确认（硬性）**：跑 TTS 前必须把逐段配音稿（含过渡句、拟声标签）展示给用户确认，回「go/haole」后再批量生成；配音稿有改动时同样先确认。
 
@@ -8,15 +8,18 @@
 - 教训（2026-08-11）：按纯汉字数预估低估 20%+（位置编码按汉字 1198 字估 ~3:50，实际 wc -m 1548 字符 × 0.195 = 5:01）
 
 **配音参数（定稿，勿擅自改）**：
-- 模型 **speech-2.8-turbo**（2026-08-12 定稿：便宜且克隆+时间戳兼容，句间停顿略多；hd 仅用户明确要求时用）
+- **音色：MiniMax 预设精英男声 `male-qn-jingying`（默认，2026-08-26 用户拍板，替代克隆音色；不传 `--voice-id`/`--clone-audio` 即用它）**；克隆作者音色仅用户明确要求时用（`--clone-audio branding/my-voice-denoised.wav`，需先走下方克隆参考音频预处理）
+- 模型 **speech-2.8-turbo**（2026-08-12 定稿：便宜且时间戳兼容，句间停顿略多；hd 仅用户明确要求时用）
 - **speed 1.0 + pitch +2**（2026-08-25 用户拍板：降速控节奏，pitch 保留提亮；曾 1.15/+2 被嫌「节奏非常快」）。**仅当用户要求调参时才重出试听**（用 2-3 句台词合成 3 组 speed×pitch，ffplay 播放给用户选）
 - **整段生成，不逐段 TTS**（逐段生成段间话题跳跃、收尾生硬）：段尾过渡句（见 step3 第 6 条）+ 一次生成 + 官方句子级时间戳切分
 
 ```bash
 # ① 整段文本 full.txt = tts.txt 5-6 段合并（含过渡句、拟声标签），一次生成
+# 默认精英男声（2026-08-26 定稿），不传音色参数
 python3 scripts/minimax_tts.py --text-file shipinhao/full.txt \
-    --clone-audio branding/my-voice-denoised.wav \
     --speed 1.0 --pitch 2 --subtitle --out shipinhao/tts/full.wav
+# → tts/full.wav + tts/full.subtitle.json（句子级时间戳，免费）
+# 克隆作者音色（仅明确要求时）：加 --clone-audio branding/my-voice-denoised.wav
 # → tts/full.wav + tts/full.subtitle.json（句子级时间戳，免费）
 
 # ② 按台词时间戳切分 5-6 段（scripts/tts_split.py，2026-08-12 固化）

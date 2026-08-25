@@ -100,7 +100,7 @@ def split_long(text: str, limit: int = 26) -> list[str]:
         for p in out:
             # 纯标点段，或 ≤8 字且不以句号结尾的短段（"而是："、"等显存、"等连接碎片）
             # → 并入前一条，避免 0.4s 级闪字幕（2026-08-18 修复）
-            if merged and (all(ch in "。！？；，、：…—" for ch in p)
+            if merged and (all(ch in "。！？；，、：…—「」" for ch in p)
                            or (len(p) <= 8 and not p.endswith(("。", "！", "？", "；")))):
                 if len(merged[-1]) + len(p) <= limit:
                     merged[-1] += p
@@ -126,6 +126,7 @@ def split_long(text: str, limit: int = 26) -> list[str]:
 _TAG_RE = __import__("re").compile(
     r"\((?:laughs|chuckle|coughs|clear-throat|groans|breath|pant|inhale|exhale|gasps|sniffs|"
     r"sighs|snorts|burps|lip-smacking|humming|hissing|emm|whistles|sneezes|crying|applause)\)\s?"
+    r"|<#\d+(?:\.\d+)?#>\s?"
 )
 
 
@@ -266,7 +267,7 @@ def _merge_pure_punct_entries(entries: list[tuple[float, float, str]]) -> list[t
     out: list[tuple[float, float, str]] = []
     for begin, end, text in entries:
         stripped = text.strip()
-        if out and stripped and all(ch in "。！？；，、：…—" for ch in stripped):
+        if out and stripped and all(ch in "。！？；，、：…—「」" for ch in stripped):
             prev_begin, _, prev_text = out[-1]
             out[-1] = (prev_begin, end, prev_text + stripped)
         else:
@@ -495,7 +496,7 @@ def build_srt(segments: dict[str, str], seg_dur: dict[str, float], tail: float,
                 for (vb, ve, txt) in final_slots:
                     # 纯标点槽（孤立「。」等）或 <0.5s 槽 → 并入前一条（前提：不超 26 字）；
                     # 超限时重平衡：从尾部切出「尾词+标点」成条，避免孤立标点
-                    punct_only = bool(txt) and all(ch in "。！？；，、：…—" for ch in txt)
+                    punct_only = bool(txt) and all(ch in "。！？；，、：…—「」" for ch in txt)
                     too_short = (not txt or ve - vb < 0.5 or punct_only)
                     if too_short and merged:
                         prev_text = merged[-1][2]
@@ -665,12 +666,12 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
             # 在 [mid-3, mid+3] 范围内找中文标点或空格
             best = -1
             for i in range(mid, -1, -1):
-                if txt[i] in "，。！？；、： ":
+                if txt[i] in "，。！？；、：—– ":
                     best = i
                     break
             if best < 0:
                 for i in range(mid, len(txt)):
-                    if txt[i] in "，。！？；、： ":
+                    if txt[i] in "，。！？；、：—– ":
                         best = i
                         break
             if best < 0:
@@ -689,7 +690,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
             if len(cur) >= per_line:
                 break_at = -1
                 for i in range(len(cur) - 1, -1, -1):
-                    if cur[i] in "，。！？；、： ":
+                    if cur[i] in "，。！？；、：—– ":
                         break_at = i
                         break
                 if break_at >= 0:

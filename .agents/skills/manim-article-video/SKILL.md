@@ -32,7 +32,7 @@ metadata:
 2. **Manim**：`pip3 install manim`；系统依赖 `libpango1.0-dev libcairo2-dev`（sudo 装，交给用户执行）。⚠️ **版本坑（2026-08-15）**：v0.21 起 `DecimalNumber` 默认 `mob_class=MathTex`（需 latex）；本机已装 `texlive-latex-extra/latex-recommended/science + dvisvgm`，`MathTex` 可渲染复杂公式，但 `scripts/manim_helpers.py` 的 `counter_value` 仍显式 `mob_class=Text` 规避依赖（数字用 Text 足够）；升级后先单场景 -ql 冒烟确认兼容再大规模渲染（见 [pitfalls.md](docs/pitfalls.md)）
 3. **中文字体**：Noto Sans CJK SC（`/usr/share/fonts/opentype/noto/`），Manim `Text(..., font="Noto Sans CJK SC")`
 4. **API Key**：`MINIMAX_API_KEY`（`scripts/minimax_tts.py`，默认 **speech-2.8-turbo**，hd 用 `--model speech-2.8-hd`）；MiMo 旧脚本 `scripts/xiaomi_mimo_tts.py` 弃用（无时间戳，切分需收费 ASR，不用于视频配音）
-5. **克隆音色**：`branding/my-voice-denoised.wav`（作者声音，MiniMax 克隆参考；原始录音 `branding/my-voice-original.m4a`，旧版备份 `my-voice-old-20260810.wav`）。voice_id 缓存于 `branding/.minimax_voice_id`（7 天内用过即永久保留，删除后重新克隆即可）。**默认配音用克隆音色，不用内置音色**
+5. **默认音色 = MiniMax 预设精英男声** `male-qn-jingying`（2026-08-26 用户拍板为默认，`minimax_tts.py` 不传音色参数即用它；克隆音色仍可用：`branding/my-voice-denoised.wav` 作者声音，voice_id 缓存于 `branding/.minimax_voice_id`（7 天内用过即永久保留，删除后重新克隆即可））
 6. **工具**：ffmpeg、`scripts/manim_video_build.py`、`scripts/tts_split.py`、`scripts/add_tts_tags.py`、`scripts/voice_process.py`（口播模式用）、`scripts/voice_studio.py`（口播录音室，agent 后台编排，见 [docs/step4b-recording.md](docs/step4b-recording.md)）、品牌图 `avatar-sjai.png`（项目根目录）
 
 ## ⛔ 硬性门禁：先声音，后动画（用户拍板 2026-08-17）

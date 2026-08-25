@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
-"""MiniMax TTS client for 视频号口播 (voice clone 模式).
+"""MiniMax TTS 用于视频号口播（TTS 模式）。
 
 Uses shell env MINIMAX_API_KEY.
 API (国内版): https://api.minimaxi.com
 
-流程:
+默认音色：MiniMax 预设精英男声 male-qn-jingying（2026-08-26 用户拍板为默认，
+不再默认克隆作者音色）。克隆模式仍可用：
   1. 上传参考音频  POST /v1/files/upload   (mp3/m4a/wav, 10s~5min, ≤20MB)
   2. 音色克隆      POST /v1/voice_clone    → 生成 voice_id（¥9.9 在首次合成时收取）
-  3. 逐段合成      POST /v1/t2a_v2         → speech-2.8-hd 克隆音色朗读
+  3. 逐段合成      POST /v1/t2a_v2         → speech-2.8-turbo 克隆音色朗读
 
 voice_id 缓存在参考音频旁 (.minimax_voice_id)，重复运行跳过克隆。
 克隆音色 7 天内使用过即永久保留；7 天未用会被删除（需重新克隆）。
@@ -16,14 +17,18 @@ voice_id 缓存在参考音频旁 (.minimax_voice_id)，重复运行跳过克隆
   - 文本内插拟声标签: (laughs) (sighs) (breath) (gasps) (pause) 等，2.8 系列支持
   - --emotion 参数: calm / happy / sad / angry / fearful / surprised / fluent 等
 
-用法（与 xiaomi_mimo_tts.py 相同接口）:
+用法:
+  # 默认：精英男声（不传音色参数）
   python scripts/minimax_tts.py \\
-    --text-file shipinhao/tts.txt --out shipinhao/tts/s1.wav \\
-    --clone-audio branding/my-voice-denoised.wav
+    --text-file shipinhao/tts.txt --out shipinhao/tts/full.wav --subtitle
 
-  # 短句试音色
+  # 显式指定预设音色
   python scripts/minimax_tts.py \\
-    --text "学习率调了一整天，loss还是抖？" --out trial.wav \\
+    --text "大家好" --out trial.wav --voice-id male-qn-jingying
+
+  # 克隆作者音色（旧默认，仅当明确要求时）
+  python scripts/minimax_tts.py \\
+    --text-file shipinhao/tts.txt --out shipinhao/tts/full.wav \\
     --clone-audio branding/my-voice-denoised.wav
 """
 from __future__ import annotations
@@ -183,8 +188,12 @@ def main() -> None:
     )
     p.add_argument(
         "--clone-audio",
-        required=True,
         help="Reference audio for voice clone (10s~5min, mp3/m4a/wav, ≤20MB)",
+    )
+    p.add_argument(
+        "--voice-id",
+        default="male-qn-jingying",
+        help="MiniMax 预设音色 voice_id（默认 male-qn-jingying 精英男声，2026-08-26 用户拍板）；与 --clone-audio 互斥",
     )
     p.add_argument(
         "--emotion",
@@ -212,11 +221,15 @@ def main() -> None:
     else:
         raise SystemExit("Provide --text or --text-file")
 
-    clone_path = Path(args.clone_audio)
-    if not clone_path.is_file():
-        raise SystemExit(f"--clone-audio not found: {clone_path}")
-
-    voice_id = _get_voice_id(clone_path)
+    if args.voice_id and args.clone_audio:
+        raise SystemExit("--voice-id 与 --clone-audio 互斥，二选一")
+    if args.clone_audio:
+        clone_path = Path(args.clone_audio)
+        if not clone_path.is_file():
+            raise SystemExit(f"--clone-audio not found: {clone_path}")
+        voice_id = _get_voice_id(clone_path)
+    else:
+        voice_id = args.voice_id  # 默认 male-qn-jingying 精英男声
     print(
         f"model={args.model} voice={voice_id} chars={len(text)} speed={args.speed} "
         f"pitch={args.pitch} → {args.out}",
