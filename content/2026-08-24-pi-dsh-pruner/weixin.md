@@ -2,7 +2,7 @@
 title: "Pi这波把DSH剪枝骂惨了"
 keywords: ["Pi", "DSH", "DeepSeek Harness", "harness"]
 series: Agent前线
-wechatUrl: ""
+wechatUrl: "https://mp.weixin.qq.com/s/vx-rHnzgJzH-oqriNM555A"
 subtitle: ""
 ---
 

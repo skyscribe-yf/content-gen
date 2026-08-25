@@ -1,8 +1,8 @@
 ---
-title: "DeepSeek DSH自己人开撕"
+title: "DeepSeek Harness社区自己人开撕：创新何在"
 keywords: ["DeepSeek Harness", "DSH", "崔添翼", "agent harness"]
 series: Agent前线
-wechatUrl: ""
+wechatUrl: "https://mp.weixin.qq.com/s/NRFSTBlxNwOa7p69D92g_A"
 subtitle: ""
 ---
 

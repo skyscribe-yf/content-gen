@@ -128,9 +128,12 @@ async function exportCookies() {
   const r = await send('Network.getAllCookies');
   ws.close();
   const keep = r.cookies.filter(c => c.domain.includes('weixin') || c.domain.includes('qq.com'));
-  // 去重：同名保留最后一个
+  // 去重：同名可能有多份（旧会话残留 vs 新会话），保留最晚过期的一份
   const map = new Map();
-  for (const c of keep) map.set(c.name, c);
+  for (const c of keep) {
+    const old = map.get(c.name);
+    if (!old || (c.expires || 0) >= (old.expires || 0)) map.set(c.name, c);
+  }
   const cookieStr = writeEnvCookie([...map.values()]);
   console.log(JSON.stringify({ saved: cookieStr.length, cookieCount: map.size, names: [...map.keys()] }));
   console.log(`[export] 已写回 ${ENV_PATH}`);

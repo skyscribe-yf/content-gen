@@ -7,6 +7,7 @@ series: "强化学习原理"
 digest: "PPO 的 clip 和 TRPO 的 KL 预算到底什么关系？ε=0.2 的截断区间在 log 域里把 |log r| 夹在 0.223 以内，一步步推出每步更新隐含的 KL 上界约 0.025 nats——和 TRPO 的 0.01 预算同数量级。蒙特卡洛实测验证，限速牌比喻拆解 PPO 的信任域平替。"
 cover: "00-cover.png"
 keywords: ["PPO", "clip", "KL散度", "信任域", "PPO目标函数"]
+wechatUrl: "https://mp.weixin.qq.com/s/AjxvcBFTJkWeRRPDr5YAjA"
 ---
 
 深夜，两个 coding agent 在同一份代码上训练。
