@@ -58,7 +58,9 @@ def _hard_cut_text(s: str, limit: int = 26) -> list[str]:
         a, b = s[i - 1], s[i]
         a_word = a.isascii() and (a.isalnum() or a in ".%+-/")
         b_word = b.isascii() and (b.isalnum() or b in ".%+-/")
-        if not (a_word and b_word):
+        if not (a_word and b_word) and len(s[i:].strip()) >= 3:
+            # 尾条 <3 字（如「64 维？」切出孤立「维？」）继续向前找更早边界，
+            # 避免 0.3s 级闪现碎片（2026-08-27 B4 修复）
             cut = i
             break
     # 中文长句刚好超过上限时，按上限切可能留下 3～7 字的闪现尾条。
@@ -229,7 +231,9 @@ def manual_alignment_slots(
             return []
         slots.append((start, end, strip_tts_tags(item["text"])))
         previous_end = end
-    if not slots or "".join(slot[2] for slot in slots) != text:
+    if not slots or "".join(slot[2] for slot in slots).replace(" ", "") != text.replace(" ", ""):
+        # 空格不参与匹配（strip_tts_tags 会剥掉 clip 首尾空格，导致跨 clip 拼接与
+        # 配音稿差一个空格；validate_sentence_ts 同用去空格比较，保持一致）
         return []
     scale = audio_duration / source_duration
     scaled = [(start * scale, min(audio_duration, end * scale), slot_text) for start, end, slot_text in slots]
