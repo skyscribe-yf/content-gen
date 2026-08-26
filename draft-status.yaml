@@ -784,15 +784,30 @@ articles:
   media_id: kOcXH4SytIYVIpYksTGfHgnafCJ-imSBYryr1qHgcYlRr66NNL_giFAZ14qMolcF
   cover_media_id: kOcXH4SytIYVIpYksTGfHnqfK31noHUZ-nEc9ajr8Yt1_eJiaMiXwtUMcnSAJGit
   notes: '「强化学习原理」系列番外 B（8-28 档，原 8-30 档；2026-08-26 作者排期调整：8-27 信息熵文末预告次日兑现）。grill 日志 .grill/2026-08-30-alphago.md（2026-08-25 十四轮收敛：认知交付=反直觉「算得少反而赢」+ R1 变奏；标题沿用 08-22 候选；结构=两函数→组装→重演六节；AlphaGo 80% + R1 20%；R1 类比=「变奏」非「重演」；数学边界=3 骨架公式（π(a|s)/V(s)/搜索人话）；比喻=老棋手+形势判断师+实习生；名场面=黑37进组装节+白78结尾注脚；文末问题=站队+最难忘一手）。事实核验（2026-08-25，Nature 摘要+英文/中文维基+arXiv 2501.12948）：2016 五番（3-09 白186/3-10 黑211/3-12 白176/3-13 李180胜/3-15 白280）、4:1、黑37=Redmond 评「creative/unique」「大多数职业棋手不会考虑」、黑167=An Younggil「胜利宣言」、白78=神之一手（黄士杰披露价值网络没估为最可能）、74场唯一败、两函数架构（Nature）、获胜概率最大化（80%赢20目 vs 99%赢1.5目）、KGS 16万盘/3000万步+自我对弈数千万盘、DeepSeek-R1 推理弃神经网络奖励模型改规则奖励（GRPO 16输出/KL 0.001/T=1/AIME 15.6%→77.9%）、李开复89%、1920 CPU/280 GPU、深蓝1997、马斯克「还差10年」、AlphaZero 24h超人类（chess/shogi/go）、围棋局面≈2×10^170（Tromp 2016）。⚠️ 未核验不收：13层CNN（不写层数）、「DeepSeek 试过 MCTS 未落地」（论文正文无原句，第6节改用规则奖励对比）。原声槽 6 条逐字进稿（满屏新闻闪电击/人类千年前没下过/直觉模糊柯洁马晓春/多试几次更笨方法/三个臭皮匠螺旋上升/AlphaZero碾压后话）。质量自查：正文口径 4879（3.5-5k 内）、禁词 0（钩子/伏笔/AI腔/说人话就是）、原声 6 条逐字在场、AI 长句 0（仅原声豁免）、图片 5 张引用全在+封面 21:9 标题逐字核验（1915x821）、热门区脚本生成（Top 6 无引用追加）、系列箭头链（待更新）、合集 URL 按 RL 篇惯例不硬编码（GAE 同款）、白78/180手/74场补回。15 项核查+B 门禁 6 条全过。未存草稿箱、未发布。⚠️ 发布前确认：声明原创 + 定时 20:00 + 合集「强化学习原理」；2026-08-25 已存公众号草稿箱（remote-api --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHgnafCJ-imSBYryr1qHgcYlRr66NNL_giFAZ14qMolcF（封面 kOcXH4SytIYVIpYksTGfHnqfK31noHUZ-nEc9ajr8Yt1_eJiaMiXwtUMcnSAJGit），正文图 5 张已上传（01/02 脚本图 + 03/04/05 AI 图，3 张大图自动压缩 JPEG 82）。未定时、未群发。⚠️ 发布前确认：声明原创 + 定时 20:00 + 合集「强化学习原理」；发布后补 wechatUrl。'
+- slug: 2026-08-27-multimodal-split
+  title: AI都能生视频了，DeepSeek为何连图都读不懂
+  series: 开源大模型技术揭秘
+  status: drafting
+  published_date: null
+  wechat_url: null
+  files:
+    weixin: true
+    draft: false
+    outline: true
+    cover: true
+  media_id: kOcXH4SytIYVIpYksTGfHiZk2n5AO6MmCSOPgoue-G6LPuJyoqxUD9C_aQIvNX0s
+  cover_media_id: kOcXH4SytIYVIpYksTGfHixMHR0E0JQik7LDudHqmFLmVIb_gT-ljaCIHlvzJLoV
+  notes: '视觉/多模态机动篇（G 组试水，2026-08-27 立项）。grill 日志 .grill/2026-08-27-multimodal-split.md（三轮收敛：先写不发；切口=三巨头观点对照；标题定稿）。素材核验：DeepSeek V4-Flash-Vision-Exp 2026-08-21 上线（图片 384 token 上限、Agent 基准跑分、社区实测认不出梁文锋照片）；Kimi K3 2.8T 总参 / MoonViT-V2 从零训；K2.5 早期融合 15T 混合 token + 零视觉 SFT；DeepSeek-VL 消融 100% 图文 MMLU -10.3 / 70:30 -0.3；百度 Unlimited OCR 作者疑似 DeepSeek OCR 核心魏浩然（36氪 2026-06-22）；Janus-Pro 2025-01-27 支撑「2025 年初多模态」原声。原声槽 7 条逐字进稿（opencode issue 场景/曲线救国/组件论一家之言/学艺不精+研究员出走/技术有争议用户需求实在/有条件选带视觉/OCR 偏差）。2026-08-27 已存公众号草稿箱（remote-api --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHpLphu8HdCumcS675Omkg6jJeXnj4DcI16-_hQlsJNQz（封面 kOcXH4SytIYVIpYksTGfHixMHR0E0JQik7LDudHqmFLmVIb_gT-ljaCIHlvzJLoV），正文图 4 张已上传（01/02/03 脚本图 + 04 AI 图）。深度补强后重存（新增「一张图，是怎么被翻译进大脑的」节，正文 4068 字）；旧草稿 kOcXH4SytIYVIpYksTGfHpLphu8HdCumcS675Omkg6jJeXnj4DcI16-_hQlsJNQz 作废可删。未定时、未群发。⚠️ 发布前确认：声明原创 + 定时 20:00 + 合集「开源大模型技术揭秘」；尾部热门文章区需 hot_articles.py 生成；发布后补 wechatUrl。'
 summary:
-  total: 44
+  total: 45
   by_status:
     published: 41
     scheduled: 1
     ready: 1
-    drafting: 1
+    drafting: 2
     planned: 0
   drafting_queue:
+  - 2026-08-27-multimodal-split
   - 2026-08-23-kl-divergence
   - 2026-08-22-trpo
   ready_queue:
