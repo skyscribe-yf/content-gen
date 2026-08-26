@@ -7,6 +7,13 @@
 窗口内节奏用 wait() 控制（wait 不要求边界对齐）。
 通用工具在 scripts/manim_helpers.py；本文件只放 VOICE_DUR / TAIL / 场景类。
 
+2026-08-26 重优化（helper 布局版）：
+- 矮页（1-4 行文字/结论页）改 page_auto：S1p1、S2p4、S6p2、S6p3a（语义标点拆行 + 字号放大 + 垂直居中，无中间空洞）
+- 所有 grow_bar 改 anchor="center"（柱底/标签居中对齐，2026-08-25 左缘锚定偏右修复）
+- S5p1 柱状图重做：柱宽统一 1.5，高度按分值 3.0/3.35/3.7 编码，柱底对齐（原目标 2.8/3.1/3.4 宽度会柱体重叠）
+- S6p2 下期预告改为 DeepSeek CSA（V4 为何不用 MLA？）——声音/音轨未动，字幕文本经 tts/manual-boundaries.json 覆盖
+  （tts.txt 第 6 行改写为预告+互动句；句子 17 仍由 S5 跨段分支烧录，防重复；全片时长/at() 锚点不变）
+
 渲染：
   python3 -m manim render -ql --disable_caching scenes.py S1 S2 S3 S4 S5 S6
   python3 -m manim render -qm --disable_caching scenes.py S1 S2 S3 S4 S5 S6
@@ -57,7 +64,7 @@ class S1(_Base):
         fit(lineA, 0.9)
         cnt_ph = Rectangle(width=3.6, height=1.7, fill_opacity=0.0, stroke_opacity=0.0)
         cardB = _card("第 37 轮 · 支付接口，绝对不能改", 5.8, 2.6, CYAN, WHITE, 30, CARD_FILL, "BOLD")
-        layout_page(page_stack(lineA, cnt_ph, cardB, buff=1.5))
+        page_auto(lineA, cnt_ph, cardB)  # 矮页：紧凑行距 + 垂直居中（无上下空洞）
 
         self.play(type_in(head, run_time=1.1), type_in(hint, run_time=0.5),
                   run_time=1.6, lag_ratio=1.0)          # 0.0-1.6（标题+小字，串行）
@@ -141,7 +148,8 @@ class S2(_Base):
         self.play(*[Create(ln) for ln in conns], run_time=1.6, lag_ratio=0.15)  # 3.5-5.1 主视觉
         self.wait(0.4)
         cnt = self.counter_value(0, 100, suffix=" 万次", size=52, color=YELL,
-                                 anchor=cnt_ph, run_time=1.8)    # 5.5-7.3
+                                 anchor=cnt_ph, run_time=1.8,
+                                 extra_anims=[type_in(lab_cnt, 0.5)])    # 5.5-7.3
         self.wait(1.0)
         self.play(FadeOut(Group(page1, cnt, conns), shift=UP * 0.03), run_time=1.0)  # 8.3-9.3
         self.wait(0.4)
@@ -198,13 +206,14 @@ class S2(_Base):
         self.play(type_in(lab93, run_time=0.8))          # 21.96-22.76
         self.wait(0.4)
         tr69 = ValueTracker(0)
-        self.grow_bar(bar69, tr69, 4.4, run_time=1.2, extra_anims=[type_in(lab69, 0.5)])  # 23.16-24.36
+        self.grow_bar(bar69, tr69, 4.4, run_time=1.2, anchor="center", extra_anims=[type_in(lab69, 0.5)])  # 23.16-24.36
         self.wait(0.2)
         tr24 = ValueTracker(0)
-        self.grow_bar(bar24, tr24, 1.6, run_time=1.1, extra_anims=[type_in(lab24, 0.5)])  # 24.56-25.66
+        self.grow_bar(bar24, tr24, 1.6, run_time=1.1, anchor="center", extra_anims=[type_in(lab24, 0.5)])  # 24.56-25.66
         self.wait(0.3)
         cnt93 = self.counter_value(0, 93, suffix=" 层", size=56, color=YELL,
-                                   anchor=tot_ph, run_time=1.5)   # 25.96-27.46
+                                   anchor=tot_ph, run_time=1.5,
+                                   extra_anims=[type_in(tot_lab, 0.5)])   # 25.96-27.46
         self.wait(0.3)
         self.emphasize(cnt93, mode="indicate", run_time=0.9)      # 27.76-28.66
         self.wait(0.17)
@@ -217,8 +226,7 @@ class S2(_Base):
         card4 = _card("信号传着传着，就走样了", 5.8, 2.0, MUTED, WHITE, 28, CARD_FILL, "BOLD")
         q4 = t("这个坑，怎么填？", 52, YELL, "BOLD")
         fit(q4, 0.92)
-        page4 = page_stack(big, card4, q4, buff=1.8)
-        layout_page(page4)
+        page_auto(big, card4, q4)  # 矮页：放大 + 居中（无中间空洞）
 
         self.play(type_in(big, run_time=1.1))            # 29.83-30.93
         self.wait(0.4)
@@ -297,7 +305,8 @@ class S3(_Base):
         blab = t("块间才做注意力检索", 22, MUTED)
         fit(blab, 0.9)
         s_ph = Rectangle(width=2.2, height=1.2, fill_opacity=0.0, stroke_opacity=0.0)
-        s_row = VGroup(t("存储：93 份 → ", 24, WHITE), s_ph).arrange(RIGHT, buff=0.2)
+        lab_s = t("存储：93 份 → ", 24, WHITE)
+        s_row = VGroup(lab_s, s_ph).arrange(RIGHT, buff=0.2)
         cQ = _card("还剩最后一轴：唤醒多少参数？", 5.8, 1.5, YELL, WHITE, 24, CARD_FILL, "BOLD")
         page3 = page_stack(cMem, cBlock, blocks, blab, s_row, cQ, buff=0.6)
         layout_page(page3)
@@ -313,7 +322,8 @@ class S3(_Base):
         self.play(type_in(blab, run_time=0.8))           # 28.31-29.11
         self.wait(0.5)
         cnt8 = self.counter_value(0, 8, suffix=" 份", size=52, color=YELL,
-                                  anchor=s_ph, run_time=1.5)    # 29.61-31.11
+                                  anchor=s_ph, run_time=1.5,
+                                  extra_anims=[type_in(lab_s, 0.5)])    # 29.61-31.11
         self.wait(0.6)
         self.play_scroll_unroll(cQ, run_time=1.3)        # 31.71-33.01
         self.wait(0.5)
@@ -360,12 +370,14 @@ class S4(_Base):
         self.play_scroll_unroll(c16, run_time=1.0)       # 4.4-5.4
         self.wait(0.6)
         cnt18 = self.counter_value(0, 1.8, suffix="%", decimals=1, size=48, color=YELL,
-                                    anchor=pct_ph, run_time=1.6)  # 6.0-7.6
+                                    anchor=pct_ph, run_time=1.6,
+                                    extra_anims=[type_in(pct_lab, 0.5)])  # 6.0-7.6
         self.wait(0.6)
         self.play_scroll_unroll(cShared, run_time=1.2)   # 8.2-9.4
         self.wait(0.6)
         cnt1040 = self.counter_value(0, 1040, suffix=" 亿", size=50, color=YELL,
-                                     anchor=tot_ph, run_time=1.8)  # 10.0-11.8
+                                     anchor=tot_ph, run_time=1.8,
+                                     extra_anims=[type_in(tot_lab2, 0.5)])  # 10.0-11.8
         self.wait(0.6)
         self.play(FadeOut(Group(page1, cnt1040, cnt18), shift=UP * 0.03), run_time=1.0)  # 12.4-13.4
         self.wait(1.24)                                  # -> 14.64
@@ -391,10 +403,10 @@ class S4(_Base):
         self.play(type_in(cap, run_time=1.0))            # 16.44-17.44
         self.wait(0.7)
         tr7 = ValueTracker(0)
-        self.grow_bar(bar7, tr7, 4.4, run_time=1.3, extra_anims=[type_in(lab7, 0.5)])  # 18.14-19.44
+        self.grow_bar(bar7, tr7, 4.4, run_time=1.3, anchor="center", extra_anims=[type_in(lab7, 0.5)])  # 18.14-19.44
         self.wait(0.5)
         tr3 = ValueTracker(0)
-        self.grow_bar(bar3, tr3, 2.2, run_time=1.1, extra_anims=[type_in(lab3, 0.5)])  # 19.94-21.04
+        self.grow_bar(bar3, tr3, 2.2, run_time=1.1, anchor="center", extra_anims=[type_in(lab3, 0.5)])  # 19.94-21.04
         self.wait(0.9)
         self.play_scroll_unroll(cHalf, run_time=1.3)     # 21.94-23.24
         self.wait(0.7)
@@ -407,8 +419,10 @@ class S4(_Base):
         fit(lab3p, 0.92)
         b_hi = Rectangle(width=1.2, height=3.4, color=RED, fill_color=RED, fill_opacity=0.85)
         b_lo = Rectangle(width=1.2, height=0.9, color=MUTED, fill_color=MUTED, fill_opacity=0.85)
-        bars2 = VGroup(VGroup(b_hi, t("过载", 22, RED, "BOLD")).arrange(DOWN, buff=0.25),
-                       VGroup(b_lo, t("闲置", 22, MUTED, "BOLD")).arrange(DOWN, buff=0.25)
+        lab_hi = t("过载", 22, RED, "BOLD")
+        lab_lo = t("闲置", 22, MUTED, "BOLD")
+        bars2 = VGroup(VGroup(b_hi, lab_hi).arrange(DOWN, buff=0.25),
+                       VGroup(b_lo, lab_lo).arrange(DOWN, buff=0.25)
                        ).arrange(RIGHT, buff=1.6)
         for m in bars2:
             m.align_to(ORIGIN, DOWN)
@@ -419,10 +433,12 @@ class S4(_Base):
         self.play(type_in(lab3p, run_time=0.9))          # 26.21-27.11
         self.wait(0.4)
         trH = ValueTracker(0)
-        self.grow_bar(b_hi, trH, 3.4, run_time=1.0)      # 27.51-28.51
+        self.grow_bar(b_hi, trH, 3.4, run_time=1.0, anchor="center",
+                      extra_anims=[type_in(lab_hi, 0.5)])      # 27.51-28.51
         self.wait(0.3)
         trL = ValueTracker(0)
-        self.grow_bar(b_lo, trL, 0.9, run_time=0.9)      # 28.81-29.71
+        self.grow_bar(b_lo, trL, 0.9, run_time=0.9, anchor="center",
+                      extra_anims=[type_in(lab_lo, 0.5)])      # 28.81-29.71
         self.wait(0.4)
         self.play_scroll_unroll(card3p, run_time=1.1)    # 30.11-31.21
         self.wait(0.3)
@@ -469,22 +485,24 @@ class S5(_Base):
         # ---- 页1：SWE Marathon 三柱对比（0-11.4）----
         lab1 = t("SWE Marathon · 长程编程", 30, WHITE)
         fit(lab1, 0.92)
-        b_f = Rectangle(width=1.0, height=3.1, color=MUTED, fill_color=MUTED, fill_opacity=0.85)
+        b_f = Rectangle(width=1.5, height=3.0, color=MUTED, fill_color=MUTED, fill_opacity=0.85)
         v_f = t("35", 28, MUTED, "BOLD")
-        b_g = Rectangle(width=1.0, height=3.4, color=CYAN, fill_color=CYAN, fill_opacity=0.85)
+        b_g = Rectangle(width=1.5, height=3.35, color=CYAN, fill_color=CYAN, fill_opacity=0.85)
         v_g = t("39", 28, CYAN, "BOLD")
-        b_k = Rectangle(width=1.0, height=3.8, color=YELL, fill_color=YELL, fill_opacity=0.85)
+        b_k = Rectangle(width=1.5, height=3.7, color=YELL, fill_color=YELL, fill_opacity=0.85)
         v_k = t("42", 28, YELL, "BOLD")
-        rows = VGroup(VGroup(b_f, v_f).arrange(DOWN, buff=0.3),
-                      VGroup(b_g, v_g).arrange(DOWN, buff=0.3),
-                      VGroup(b_k, v_k).arrange(DOWN, buff=0.3)).arrange(RIGHT, buff=0.6)
-        for m in rows:
-            m.align_to(ORIGIN, DOWN)
         n_f = t("Fable 5", 24, MUTED)
         n_g = t("GPT-5.6 Sol", 24, CYAN)
         n_k = t("K3", 24, YELL, "BOLD")
-        names = VGroup(n_f, n_g, n_k).arrange(RIGHT, buff=0.6)
-        page1 = page_stack(lab1, rows, names, buff=1.3)
+        # 柱高按分值编码 3.0/3.35/3.7（35/39/42 线性），柱宽统一 1.5，柱底对齐——不重叠
+        c_f = VGroup(b_f, v_f, n_f).arrange(DOWN, buff=0.3)
+        c_g = VGroup(b_g, v_g, n_g).arrange(DOWN, buff=0.3)
+        c_k = VGroup(b_k, v_k, n_k).arrange(DOWN, buff=0.3)
+        rows = VGroup(c_f, c_g, c_k).arrange(RIGHT, buff=0.5)
+        for m in rows:
+            m.align_to(ORIGIN, DOWN)   # 柱底对齐（名字同字号，柱底等高）
+        names = VGroup(n_f, n_g, n_k)
+        page1 = page_stack(lab1, rows, buff=1.8)
         layout_page(page1)
 
         self.play(type_in(head, run_time=0.9))           # 0.0-0.9
@@ -492,16 +510,16 @@ class S5(_Base):
         self.play(type_in(lab1, run_time=0.9))           # 1.4-2.3
         self.wait(0.4)
         trF = ValueTracker(0)
-        self.grow_bar(b_f, trF, 2.8, run_time=1.2, extra_anims=[type_in(v_f, 0.5)])  # 2.7-3.9
+        self.grow_bar(b_f, trF, 1.5, run_time=1.2, anchor="center", extra_anims=[type_in(v_f, 0.5)])  # 2.7-3.9
         self.wait(0.4)
         trG = ValueTracker(0)
-        self.grow_bar(b_g, trG, 3.1, run_time=1.2, extra_anims=[type_in(v_g, 0.5)])  # 4.3-5.5
+        self.grow_bar(b_g, trG, 1.5, run_time=1.2, anchor="center", extra_anims=[type_in(v_g, 0.5)])  # 4.3-5.5
         self.wait(0.6)
         trK = ValueTracker(0)
-        self.grow_bar(b_k, trK, 3.4, run_time=1.4, extra_anims=[type_in(v_k, 0.6)])  # 6.1-7.5
+        self.grow_bar(b_k, trK, 1.5, run_time=1.4, anchor="center", extra_anims=[type_in(v_k, 0.6)])  # 6.1-7.5
         self.wait(0.5)
-        self.play(type_in(names, run_time=1.0))          # 8.0-9.0
-        self.wait(0.5)
+        self.play(FadeIn(names, shift=DOWN * 0.05), run_time=0.7)   # 8.0-8.7
+        self.wait(0.8)
         self.emphasize(v_k, mode="indicate", run_time=0.8)      # 9.5-10.3
         self.wait(0.4)
         self.play(FadeOut(Group(lab1, rows, names), shift=UP * 0.03), run_time=0.7)  # 10.7-11.4
@@ -556,10 +574,10 @@ class S5(_Base):
         self.play(type_in(lab3, run_time=0.8))           # 19.77-20.57
         self.wait(0.5)
         trV = ValueTracker(0)
-        self.grow_bar(b_v, trV, 1.7, run_time=1.3, extra_anims=[type_in(v_v, 0.5)])  # 21.07-22.37
+        self.grow_bar(b_v, trV, 1.7, run_time=1.3, anchor="center", extra_anims=[type_in(v_v, 0.5)])  # 21.07-22.37
         self.wait(0.5)
         trK = ValueTracker(0)
-        self.grow_bar(b_k3, trK, 3.0, run_time=1.5, extra_anims=[type_in(v_k3, 0.6)])  # 22.87-24.37
+        self.grow_bar(b_k3, trK, 3.0, run_time=1.5, anchor="center", extra_anims=[type_in(v_k3, 0.6)])  # 22.87-24.37
         self.wait(0.5)
         self.play(type_in(nrow, run_time=1.0))           # 24.87-25.87
         self.wait(0.6)
@@ -638,22 +656,22 @@ class S6(_Base):
         self.wait(0.2)                                   # -> 12.75
         self.at(12.75)
 
-        # ---- 页2：SFT 预告（12.75-20.17）----
-        lab = t("下一篇", 30, MUTED)
+        # ---- 页2：DeepSeek CSA 预告（12.75-20.17）----
+        # 2026-08-27 用户拍板：预告改为 DeepSeek CSA（音轨未改，字幕经 manual-boundaries.json 覆盖）
+        lab = t("下期预告", 30, MUTED)
         fit(lab, 0.9)
-        cSft = _card("SFT 监督微调", 5.8, 3.4, YELL, WHITE, 44, CARD_FILL, "BOLD")
-        sub2 = t("把能力调教成听话助手", 32, WHITE)
+        cCsa = _card("DeepSeek CSA", 5.8, 2.6, YELL, WHITE, 44, CARD_FILL, "BOLD")
+        sub2 = t("V4 为何不用 MLA？", 32, WHITE)
         fit(sub2, 0.92)
-        page2 = page_stack(lab, cSft, sub2, buff=1.6)
-        layout_page(page2)
+        page_auto(lab, cCsa, sub2)  # 矮页：紧凑 + 放大 + 居中
 
         self.play(type_in(lab, run_time=0.7))            # 12.75-13.45
         self.wait(0.5)
-        self.play_scroll_unroll(cSft, run_time=1.6)      # 13.95-15.55
+        self.play_scroll_unroll(cCsa, run_time=1.6)      # 13.95-15.55
         self.wait(0.6)
         self.play(type_in(sub2, run_time=1.0))           # 16.15-17.15
         self.wait(0.6)
-        self.play(FadeOut(Group(lab, cSft, sub2), shift=UP * 0.03), run_time=0.8)  # 17.75-18.55
+        self.play(FadeOut(Group(lab, cCsa, sub2), shift=UP * 0.03), run_time=0.8)  # 17.75-18.55
         self.wait(1.62)                                  # -> 20.17
         self.at(20.17)
 
@@ -662,8 +680,7 @@ class S6(_Base):
         fit(q1, 0.92)
         cQ = _card("更多层给 KDA，还是 Gated MLA？", 6.0, 2.6, YELL, WHITE, 28, CARD_FILL, "BOLD")
         q2 = t("评论区聊聊", 30, MUTED)
-        page3 = page_stack(q1, cQ, q2, buff=1.8)
-        layout_page(page3)
+        page_auto(q1, cQ, q2)  # 矮页：紧凑 + 居中
 
         self.play(type_in(q1, run_time=0.9))             # 20.17-21.07
         self.wait(0.5)
