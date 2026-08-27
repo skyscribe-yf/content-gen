@@ -14,6 +14,8 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_LOG = ROOT / "docs" / "wechat-data-audit-log.json"
+DEFAULT_SOURCES_LOG = ROOT / "docs" / "wechat-daily-sources-log.json"
+DEFAULT_ACCOUNT = "数解AI"
 
 
 def _required(mapping: Any, keys: tuple[str, ...], path: str, errors: list[str]) -> bool:
@@ -215,6 +217,80 @@ def _income(value: Any, path: str, errors: list[str]) -> None:
             _income_slot(slot, f"{path}.slots.{key}", errors)
 
 
+def _validate_days(days: Any, path: str, errors: list[str]) -> None:
+    if not isinstance(days, list):
+        errors.append(f"{path} must be an array")
+        return
+    for index, day in enumerate(days):
+        day_path = f"{path}[{index}]"
+        if not _required(day, ("date", "channels"), day_path, errors):
+            continue
+        _date(day["date"], f"{day_path}.date", errors)
+        channels = day["channels"]
+        if not isinstance(channels, dict):
+            errors.append(f"{day_path}.channels must be an object")
+            continue
+        if not channels:
+            errors.append(f"{day_path}.channels must not be empty")
+        for channel, reads in channels.items():
+            _non_negative_int(reads, f"{day_path}.channels.{channel}", errors)
+
+
+def validate_sources_log(log: dict) -> list[str]:
+    errors: list[str] = []
+    if not isinstance(log, dict):
+        return ["sources log must be an object"]
+    if log.get("schemaVersion") != 1:
+        errors.append("schemaVersion must be 1")
+    if not isinstance(log.get("account"), str) or not log["account"]:
+        errors.append("account must be a non-empty string")
+    _validate_days(log.get("days"), "days", errors)
+    return errors
+
+
+def days_from_tendency_xls(xls_path: Path) -> list[dict]:
+    """Parse 内容分析-流量分析「下载数据明细」tendency_*.xls (B/C/D = 日期/渠道/阅读人数)."""
+    import xlrd  # optional dependency, only needed for xls input
+
+    sheet = xlrd.open_workbook(str(xls_path)).sheet_by_index(0)
+    days: dict[str, dict[str, int]] = {}
+    for row in range(3, sheet.nrows):
+        date, channel, reads = (sheet.cell_value(row, col) for col in (1, 2, 3))
+        if not date or not channel:
+            continue
+        days.setdefault(str(date).strip(), {})[str(channel).strip()] = int(reads)
+    if not days:
+        raise ValueError(f"no day rows found in {xls_path.name} (expected cols B/C/D)")
+    return [{"date": date, "channels": channels} for date, channels in sorted(days.items())]
+
+
+def append_sources(path: Path, days: list[dict]) -> dict:
+    errors: list[str] = []
+    _validate_days(days, "days", errors)
+    if errors:
+        raise ValueError("invalid sources input:\n" + "\n".join(errors))
+    if path.exists():
+        log = load_log(path)
+        log_errors = validate_sources_log(log)
+        if log_errors:
+            raise ValueError("invalid sources log:\n" + "\n".join(log_errors))
+    else:
+        log = {"schemaVersion": 1, "account": DEFAULT_ACCOUNT, "days": []}
+    index_by_date = {day["date"]: index for index, day in enumerate(log["days"])}
+    added = updated = 0
+    for day in days:
+        if day["date"] in index_by_date:
+            log["days"][index_by_date[day["date"]]] = day
+            updated += 1
+        else:
+            log["days"].append(day)
+            added += 1
+    log["days"].sort(key=lambda day: day["date"])
+    _atomic_write(path, log)
+    return {"added": added, "updated": updated, "totalDays": len(log["days"]),
+            "range": [log["days"][0]["date"], log["days"][-1]["date"]]}
+
+
 def validate_snapshot(snapshot: dict) -> list[str]:
     errors: list[str] = []
     required = ("collectedAt", "dataThrough", "periods", "content", "users", "income", "notes")
@@ -335,6 +411,9 @@ def _parser() -> argparse.ArgumentParser:
     commands.add_parser("validate")
     append = commands.add_parser("append")
     append.add_argument("--input", type=Path, required=True)
+    append_sources_cmd = commands.add_parser("append-sources")
+    append_sources_cmd.add_argument("--input", type=Path, required=True, help="days JSON or 后台 tendency_*.xls")
+    append_sources_cmd.add_argument("--log", type=Path, default=DEFAULT_SOURCES_LOG)
     commands.add_parser("latest")
     show = commands.add_parser("show")
     show.add_argument("--date", required=True)
@@ -351,6 +430,15 @@ def main(argv: list[str] | None = None) -> int:
             snapshot = json.loads(args.input.read_text(encoding="utf-8"))
             append_snapshot(args.log, snapshot)
             print(f"appended {snapshot['collectedAt']}")
+            return 0
+        if args.command == "append-sources":
+            if args.input.suffix.lower() in {".xls", ".xlsx"}:
+                days = days_from_tendency_xls(args.input)
+            else:
+                payload = json.loads(args.input.read_text(encoding="utf-8"))
+                days = payload["days"] if isinstance(payload, dict) else payload
+            result = append_sources(args.log, days)
+            _print_json(result)
             return 0
         log = load_log(args.log)
         errors = validate_log(log)

@@ -194,13 +194,13 @@ def main() -> int:
     rows = rows[: args.top]
 
     if args.self_check:
-        # 回归锚点：2026-08-25 审计后的文章 Top 6（贴图已过滤）。榜单结构变化时更新此断言。
+        # 回归锚点：2026-08-27 审计后的文章 Top 6（贴图已过滤）。榜单结构变化时更新此断言。
         expected = ["KV缓存存进SSD：慢50倍的硬盘，为什么反而更快？",
                     "高维空间为什么全是壳？内积才是那把尺子",
                     "学习率怎么自动调？Adam 优化器拆给你看",
                     "DeepSeek-V4为何不用MLA？",
-                    "SFT微调：1万条数据就能让模型听话？",
-                    "Softmax为什么不直接取最大值？"]
+                    "高斯为什么二阶就够？非线性去哪了",
+                    "SFT微调：1万条数据就能让模型听话？"]
         got = [t for t, _, _ in rows]
         assert got == expected, f"榜单漂移：{got}"
         assert all(u.startswith("https://mp.weixin.qq.com/s/") for _, _, u in rows)

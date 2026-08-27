@@ -24,12 +24,14 @@ description: "Audit WeChat Official Account article data, extract performance me
 - 操作脚本：`scripts/wechat_audit_log.py`
 - 人读版日志：`docs/wechat-data-audit-log.md`
 - **视频号数字事实源（独立文件，2026-08-25 新增）**：`docs/shipinhao-data-log.json` + `docs/shipinhao-data-log.schema.json`（公众号 schema 不混入视频号数据）
+- **每日流量渠道明细（独立文件，2026-08-27 新增）**：`docs/wechat-daily-sources-log.json` + `docs/wechat-daily-sources-log.schema.json`（按天 × 传播渠道的阅读人数流水账；采集内容分析后必须 `append-sources` 增量入库）
 
 #### 审计开始前
 
 1. 运行 `python scripts/wechat_audit_log.py validate`，确认本地日志未损坏。
 2. 运行 `python scripts/wechat_audit_log.py latest`，加载最近一次快照作为对照基线。
 3. 需要查看历史时，使用 `show --date YYYY-MM-DD` 或 `compare --from YYYY-MM-DD --to YYYY-MM-DD`，不要返回微信后台翻查已经不可见的旧数据。
+4. 每日渠道推荐量等逐日明细查 `docs/wechat-daily-sources-log.json`（后台页面只能看滚动窗口，历史逐日数据只有这份台账有）
 
 #### 采集完成后
 
@@ -95,6 +97,21 @@ JSON 是数字唯一事实源；Markdown 只保存人读版和分析结论。禁
 - 发表时间
 - 阅读人数
 - 阅读人数占比
+
+#### 每日流量渠道明细入库（append-sources，每次采集必做）
+
+后台「流量分析」区只有滚动窗口，逐日推荐量等渠道明细必须落台账，否则过期不可回溯：
+
+1. 内容分析页（`type=daily_v2`）找到「流量分析」区块，点「下载数据明细」（链接 `a[href*=download_summary_tendency]`，时间范围即页面选中的窗口，默认近 30 天）；文件落在 `~/下载/tendency_<begin>_<end>.xls`
+2. 入库（xls 直接解析，列 B/C/D = 日期/渠道/阅读人数；按 date upsert，重复跑幂等）：
+
+```bash
+python scripts/wechat_audit_log.py append-sources --input ~/下载/tendency_*.xls
+```
+
+3. 也可传 JSON（`{"days": [{"date": "YYYY-MM-DD", "channels": {"推荐": 518, ...}}]}`，渠道键含 `全部/推荐/公众号消息/聊天会话/公众号主页/搜一搜/朋友圈/其他`）
+4. 台账只增不删；同日期重复采集会用新值覆盖旧值（后台可能回溯修正）
+5. 查每日推荐量：`python3 -c "import json; d=json.load(open('docs/wechat-daily-sources-log.json')); [print(x['date'], x['channels'].get('推荐')) for x in d['days']]"`
 
 ### Phase 3: 采集用户分析数据
 

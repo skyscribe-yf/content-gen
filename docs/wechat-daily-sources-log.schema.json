@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://content-gen.local/schemas/wechat-daily-sources-log.schema.json",
+  "title": "WeChat Daily Traffic Sources Log",
+  "description": "按天 × 传播渠道的阅读人数流水账（内容分析-流量分析每日明细）。增量 upsert，按 date 合并。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "account", "days"],
+  "properties": {
+    "schemaVersion": {"const": 1},
+    "account": {"type": "string", "minLength": 1},
+    "days": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/day"}
+    }
+  },
+  "$defs": {
+    "date": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "day": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["date", "channels"],
+      "properties": {
+        "date": {"$ref": "#/$defs/date"},
+        "channels": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {"type": "integer", "minimum": 0}
+        }
+      }
+    }
+  }
+}

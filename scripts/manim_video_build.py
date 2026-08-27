@@ -115,7 +115,16 @@ def split_long(text: str, limit: int = 26) -> list[str]:
                             cut = i
                             break
                     if cut < 0:
+                        # 无标点可切：先按词边界切（不拆断英文/数字串，2026-08-27 修复：
+                        # HyperConnections 被切成 Hy），词边界都不行才硬切
                         cut = max(0, len(prev) - (limit - len(p)))
+                        for i in range(cut, len(prev)):
+                            a, b = prev[i - 1], prev[i]
+                            a_word = a.isascii() and (a.isalnum() or a in ".%+-/")
+                            b_word = b.isascii() and (b.isalnum() or b in ".%+-/")
+                            if not (a_word and b_word) and len(prev) - i + len(p) <= limit:
+                                cut = i - 1  # 词边界在 i 处：前段 prev[:i]，后段 prev[i:]
+                                break
                     merged[-1] = prev[:cut + 1].rstrip()
                     merged.append((prev[cut + 1:] + p).lstrip())
             else:
@@ -658,6 +667,20 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
     if typewriter:
         entries = typewriter_events(entries)
         fade = False  # 打字机已逐字出现，不再叠加淡入
+    def _word_break(txt: str, mid: int) -> int:
+        """在 mid 附近找最近的英文/数字单词边界（词首/词尾），返回下一行首字符索引。
+        修复：前段以连字符/下划线结尾时旧正则 [A-Za-z]+$ 匹配失败 → 断在词中
+        （2026-08-26 事故：Newton-Schulz 拆成 Newton-S/chulz、expertcollapse 拆成 e/xpertcollapse）。"""
+        candidates: list[tuple[int, int]] = []
+        for r in re.finditer(r"[A-Za-z0-9]+", txt):
+            if r.start() > 0:
+                candidates.append((abs(r.start() - mid), r.start()))
+            if r.end() < len(txt):
+                candidates.append((abs(r.end() - mid), r.end()))
+        if not candidates:
+            return mid
+        return min(candidates)[1]
+
     def wrap_line(txt: str, per_line: int = 13) -> str:
         # 手动按 per_line 字折行（libass 对中文不自动折行，长字幕会超出画面被裁）。
         # 最多折 2 行：若片段 ≤ 2*per_line，在中间找一个可断点（中文标点 > 英文空格 > 字符）
@@ -674,17 +697,16 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
                     best = i
                     break
             if best < 0:
-                for i in range(mid, len(txt)):
+                # 前向扫描限 [mid, mid+3]：扫到行尾会把 25 字行拆成 25+0，
+                # 首行溢出 1080 画布被裁（2026-08-26 B2 事故）
+                for i in range(mid, min(mid + 4, len(txt))):
                     if txt[i] in "，。！？；、：—– ":
                         best = i
                         break
             if best < 0:
-                # 无标点/空格：避免拆断英文单词，回退到单词边界
-                m = re.search(r'[A-Za-z]+$', txt[:mid])
-                if m and m.start() > 0:
-                    best = m.start()
-                else:
-                    best = mid
+                # 无标点/空格：在 mid 附近找英文单词边界，不拆断英文单词
+                best = _word_break(txt, mid)
+                return txt[:best] + "\\N" + txt[best:]
             return txt[:best + 1] + "\\N" + txt[best + 1:]
         # 超过 2 行容量（>26 字）：在标点/空格处拆成多行，但尽量少行
         lines = []
@@ -701,10 +723,17 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
                     lines.append(cur[:break_at + 1])
                     cur = cur[break_at + 1:]
                 else:
-                    m = re.search(r'[A-Za-z]+$', cur)
-                    if m and m.start() > 0:
-                        lines.append(cur[:m.start()])
-                        cur = cur[m.start():]
+                    # 无标点：找 cur 中最后一个单词边界（词首/词尾），不拆断英文单词
+                    cands = []
+                    for r in re.finditer(r"[A-Za-z0-9]+", cur):
+                        if r.start() > 0:
+                            cands.append(r.start())
+                        if r.end() < len(cur):
+                            cands.append(r.end())
+                    if cands:
+                        brk = max(cands)
+                        lines.append(cur[:brk])
+                        cur = cur[brk:]
                     else:
                         lines.append(cur)
                         cur = ""
@@ -725,7 +754,10 @@ def self_test() -> None:
     assert strip_tts_tags("(sighs)(breath) 连写标签") == "连写标签"
     assert strip_tts_tags("无标签文本") == "无标签文本"
     assert "DeepSeekMath" in "".join(split_long("GRPO 的起点，是 2024 年 DeepSeek 的 DeepSeekMath。"))
-    assert split_long("AIME 2024 正确率从 15.6% 冲到 77.9%，") == ["AIME 2024 正确率从 15.6% 冲到", "77.9%，"]
+    # 2026-08-27：merge 无标点分支改为词边界优先（HyperConnections 不再被切成 Hy）；
+    # AIME 用例的切点随之从「冲到」后移到空格边界，77.9% 仍完整保留
+    assert split_long("AIME 2024 正确率从 15.6% 冲到 77.9%，") == ["AIME 2024 正确率从 15.6%", "冲到77.9%，"]
+    assert all("Hy" != c and not c.startswith("perConnections") for c in split_long("2024年，HyperConnections论文给了一个激进思路：与其在一条路上调比例，"))
     merged = _merge_pure_punct_entries([(0.0, 1.0, "反思"), (1.0, 1.2, "。")])
     assert merged == [(0.0, 1.2, "反思。")]
     entries = build_srt({"S1": "(breath) 一二三四五六七八九十"}, {"S1": 10.0}, 0.1)

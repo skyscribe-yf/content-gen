@@ -133,8 +133,9 @@ wechatUrl: "https://mp.weixin.qq.com/s/abc123"
 - 末尾含关注引导（价值承诺 + 系列结构）
 - 结尾含 1 个开放式问题引导留言
 - 摘要须含 2-3 个搜索关键词
-- 最新审计：2026-08-26（数据截至 2026-08-25，累计关注 879、累计收入 59.07 元），详见 [`docs/wechat-data-insights.md`](docs/wechat-data-insights.md)
+- 最新审计：2026-08-27（数据截至 2026-08-26，累计关注 891、累计收入 62.09 元），详见 [`docs/wechat-data-insights.md`](docs/wechat-data-insights.md)
 - 数字事实源：[`docs/wechat-data-audit-log.json`](docs/wechat-data-audit-log.json)，结构见同名 `.schema.json`，操作脚本为 `scripts/wechat_audit_log.py`，报告生成脚本为 `scripts/wechat_audit_report.py`，产物为 `docs/wechat-data-audit-report.html`
+- **每日流量渠道明细事实源（2026-08-27 新增）**：[`docs/wechat-daily-sources-log.json`](docs/wechat-daily-sources-log.json)，结构见同名 `.schema.json`——按天 × 传播渠道阅读人数（含每日推荐量）；每次采内容分析后跑 `python scripts/wechat_audit_log.py append-sources --input <tendency_*.xls>` 增量入库，逐日历史只认这份台账
 - **视频号数字事实源（2026-08-25 新增）**：[`docs/shipinhao-data-log.json`](docs/shipinhao-data-log.json)，结构见同名 `.schema.json`——视频号播放/完播/点赞/评论数据，与公众号日志分离（后台登录体系不同，公众号 Cookie 不通用）
 
 ## 视频号视频加工 Skill
