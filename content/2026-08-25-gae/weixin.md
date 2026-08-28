@@ -1,4 +1,5 @@
 ---
+wechatUrl: "https://mp.weixin.qq.com/s/gIYikPG8kAAuOz6y_QVMhA"
 title: "GAE：100步的功劳，为什么只认最近17步？"
 author: "数解AI"
 date: "2026-08-25"

@@ -53,15 +53,16 @@ fig.patch.set_facecolor(BG)
 rows = [
     ("模型", "总参数", "视觉能力", "备注"),
     ("DeepSeek V4-Pro", "1.6T", "× 纯文本", "开源推理最强"),
-    ("GLM-5.2", "744B", "× 纯文本", "1M 长上下文"),
+    ("DeepSeek V4-Flash-Vision", "284B", "△ 嫁接眼", "认不出老板照片"),
+    ("GLM-5.3-Flash", "320B-A18B", "√ 原生视觉", "8/26 发布"),
     ("Kimi K3", "2.8T", "√ 原生多模态", "视觉反哺推理"),
     ("Qwen3.8-Max", "2.4T", "√ 原生视觉", "全模态"),
     ("MiniMax M3", "—", "√ 多模态融合", "性价比"),
 ]
 ncol = 4
-col_w = [0.30, 0.14, 0.26, 0.30]
+col_w = [0.30, 0.16, 0.26, 0.28]
 y = 0.92
-rh = 0.155
+rh = 0.13
 for i, row in enumerate(rows):
     x = 0.03
     for j, cell in enumerate(row):
@@ -69,7 +70,7 @@ for i, row in enumerate(rows):
             ax.text(x, y, cell, fontsize=13, fontweight="bold", color=INK,
                     ha="left", va="center")
         elif j == 2:
-            color = RED if "×" in cell else GREEN
+            color = RED if "×" in cell else (AMBER if "△" in cell else GREEN)
             ax.text(x, y, cell, fontsize=12.5, color=color, ha="left", va="center",
                     fontweight="bold")
         elif j == 0:
@@ -79,7 +80,7 @@ for i, row in enumerate(rows):
             ax.text(x, y, cell, fontsize=12, color=INK, ha="left", va="center")
         x += col_w[j]
     y -= rh
-ax.text(0.03, y - 0.06, "数据截至 2026-08：DeepSeek/GLM 旗舰纯文本，Kimi/Qwen/MiniMax 原生多模态",
+ax.text(0.03, y - 0.04, "数据截至 2026-08-28：DeepSeek 纯文本/嫁接眼，智谱 GLM-5.3-Flash 已转原生视觉，Kimi/Qwen/MiniMax 原生多模态",
         fontsize=10.5, color=MUTED, ha="left")
 plt.tight_layout()
 plt.savefig(OUT / "01-model-table.png", dpi=200, facecolor=BG)

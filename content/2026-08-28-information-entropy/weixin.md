@@ -1,10 +1,10 @@
 ---
-title: "信息熵：压缩率差1000倍，谁的信息更多？"
+title: "信息熵：压缩1000倍，为什么信息反而少？"
 author: "数解AI"
-date: "2026-08-27"
+date: "2026-08-28"
 type: "原理篇"
 series: "数学直觉"
-digest: "信息熵是什么？一样的 1MB 文件，zip 一个压到 994B、一个压完反而变大。信息量量的不是内容，是意外；AI 说 90% 把握，其实平均得从 1.38 个候选里挑——这个数叫困惑度。从 zip 到语言模型，同一个公式。"
+digest: "信息熵是什么？一样的 1MB 文件，zip 一个压到 994B、一个压完反而变大。信息量，量的不是内容，是意外；AI 说 90% 把握，其实平均得从 1.38 个候选里挑——这个数叫困惑度。从 zip 到语言模型，同一个公式。"
 cover: "00-cover.png"
 keywords: ["信息熵", "困惑度", "信息论", "香农", "压缩"]
 ---
@@ -15,15 +15,13 @@ keywords: ["信息熵", "困惑度", "信息论", "香农", "压缩"]
 
 同一台电脑、同一个压缩软件、一模一样的大小，命运差了一千倍。直觉告诉我们：压得动的文件「水份大」，压不动的「内容多」。可信息论偏偏说反了：**压不动的那个文件，每个字节都在出乎意料，信息量反而最大。**
 
-信息量到底在量什么？为什么「越猜不透」反而「越值钱」？
-
-这个东西，一开始学的时候，我是把它当玄学看的。
+信息量到底在量什么？为什么「越猜不透」反而「越值钱」？——AI 每次回答时的「没把握」，量的也是它。
 
 ## 一、一条消息值多少？看它有多「意外」
 
 「一开始学习信息论课程的时候，我一直非常好奇先贤们是怎么将这种捉摸不定的东西转化成数学上严谨的数字来描述的，甚至一度以为这是玄学而不是严谨的以数学为基础的自然科学。」
 
-先贤们用的方法，朴素得惊人：**信息量量的不是内容，是意外。**
+先贤们用的方法，朴素得惊人：**信息量，量的不是内容，是意外。**
 
 先做一道选择题：让你猜硬币，猜中了奖 100 块。
 
@@ -80,7 +78,7 @@ $$H = -\sum_i p_i \log_2 p_i$$
 
 几百 KB 压到一两 KB，压缩率几百倍——这文件一定是高度可预测的。但真正的疑问马上冒出来：
 
-**但是，这和 AI 的压缩是一回事儿吗？**
+**但是这个和 AI 的压缩是一回事儿吗？**
 
 ## 四、AI 猜下一个字，就是一台压缩机
 
@@ -136,7 +134,7 @@ AI 的「压缩」是第三种：把「下一个字是什么」的预测能力�
 
 开头那两个文件，现在可以盖棺了：zip 压不动的随机字节，每字节 8 bit 均匀，换算成困惑度是 $e^{8\ln 2}=256$。平均 256 个候选——**AI 对着这种文本也只能胡说八道，因为这个地方根本无话可编。**
 
-「但是这个和 AI 的压缩是一回事儿吗？」——尺子是同一把，机制不是。zip 和 GPT 都在量「接下来有多意外」；只是一个在查表还原，一个在学规律生成。xz 压出几百倍的那个文本，和 AI 读三秒就能接上的下文，是同一类东西。
+尺子是同一把，机制不是。zip 和 GPT 都在量「接下来有多意外」；只是一个在查表还原，一个在学规律生成。xz 压出几百倍的那个文本，和 AI 读三秒就能接上的下文，是同一类东西。
 
 信息熵这个数，一旦你开始用它看世界，处处都是：聊天机器人的「嗯嗯」，短视频的字幕自动补全，甚至你给同事回的那句「哈哈」。
 
@@ -150,7 +148,7 @@ AI 的「压缩」是第三种：把「下一个字是什么」的预测能力�
 
 **下一篇预告**：不讲数学，讲一个把「猜」玩到极致的案例——AlphaGo 当年到底靠什么赢的。
 
-> 本文收进「AI中的数学」合集。前几篇见：[矩阵的秩：为什么低秩在AI里无处不在？](https://mp.weixin.qq.com/s/HIwjTG0lpcLcEjTuUw3Nzg) · [随机变量为什么不是变量？它其实是个函数](https://mp.weixin.qq.com/s/5BxjOUblW64DXNffHc2sxQ) · [协方差矩阵：1个方差怎么变9个数？](https://mp.weixin.qq.com/s/5TdhwQ166NRvReN2_atCVQ) · [高斯为什么二阶就够？非线性去哪了](https://mp.weixin.qq.com/s/gs_3y7JXuBLlzR5w6jW6fQ) · [KL散度：为什么整个AI共用一把尺子？](https://mp.weixin.qq.com/s/G1PUOuwxURoo1Dp1pDfQMg) · 知识蒸馏：为什么越抄越学不会？（待发布）
+> 本文收进「AI中的数学」合集。前几篇见：[矩阵的秩：为什么低秩在AI里无处不在？](https://mp.weixin.qq.com/s/HIwjTG0lpcLcEjTuUw3Nzg) · [随机变量为什么不是变量？它其实是个函数](https://mp.weixin.qq.com/s/5BxjOUblW64DXNffHc2sxQ) · [协方差矩阵：1个方差怎么变9个数？](https://mp.weixin.qq.com/s/5TdhwQ166NRvReN2_atCVQ) · [高斯为什么二阶就够？非线性去哪了](https://mp.weixin.qq.com/s/gs_3y7JXuBLlzR5w6jW6fQ) · [KL散度：为什么整个AI共用一把尺子？](https://mp.weixin.qq.com/s/G1PUOuwxURoo1Dp1pDfQMg) · [蒸馏是抄袭？为什么越抄越学不会？](https://mp.weixin.qq.com/s/Xly_jfKKcf5xHcuK_e22KA)
 
 🔥 **热门文章**：
 
@@ -158,13 +156,13 @@ AI 的「压缩」是第三种：把「下一个字是什么」的预测能力�
 [高维空间为什么全是壳？内积才是那把尺子](https://mp.weixin.qq.com/s/Nrfr-90Fpu3mFDML9s0d1Q)  
 [学习率怎么自动调？Adam 优化器拆给你看](https://mp.weixin.qq.com/s/aSLVO-otvr2rxIU1kr2eAA)  
 [DeepSeek-V4为何不用MLA？](https://mp.weixin.qq.com/s/MQEgbY16mLs-N7g2xKW1HQ)  
-[Softmax为什么不直接取最大值？](https://mp.weixin.qq.com/s/5wMquh_v3oon2-NEDeQLEw)  
+[高斯为什么二阶就够？非线性去哪了](https://mp.weixin.qq.com/s/gs_3y7JXuBLlzR5w6jW6fQ)  
 [SFT微调：1万条数据就能让模型听话？](https://mp.weixin.qq.com/s/vwXGbjm9Ai1GPvQi5O3UyQ)  
+[KL散度：为什么整个AI共用一把尺子？](https://mp.weixin.qq.com/s/G1PUOuwxURoo1Dp1pDfQMg)  
 [矩阵的秩：为什么低秩在 AI 里无处不在？](https://mp.weixin.qq.com/s/HIwjTG0lpcLcEjTuUw3Nzg)  
 [随机变量为什么不是变量？它其实是个函数](https://mp.weixin.qq.com/s/5BxjOUblW64DXNffHc2sxQ)  
 [协方差矩阵：1个方差怎么变9个数？拆给你看](https://mp.weixin.qq.com/s/5TdhwQ166NRvReN2_atCVQ)  
-[高斯为什么二阶就够？非线性去哪了](https://mp.weixin.qq.com/s/gs_3y7JXuBLlzR5w6jW6fQ)  
-[KL散度：为什么整个AI共用一把尺子？](https://mp.weixin.qq.com/s/G1PUOuwxURoo1Dp1pDfQMg)  
+[Softmax为什么不直接取最大值？](https://mp.weixin.qq.com/s/5wMquh_v3oon2-NEDeQLEw)
 
 ## 参考资料
 

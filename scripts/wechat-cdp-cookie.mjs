@@ -27,17 +27,24 @@ const PROJECT_ROOT = path.resolve(__dirname, '..');
 const ENV_PATH = path.join(PROJECT_ROOT, '.env');
 
 // ── 定位 agent_browser 的 Chromium DevTools ──
-function findDevTools() {
+// DevToolsActivePort 可能是已被清理实例的残留：逐个验证 /json/list 可达才算活会话
+async function findLiveDevTools() {
   const dirs = fs.readdirSync('/tmp')
     .filter(d => d.startsWith('agent-browser-chrome-'))
     .map(d => ({ d, p: `/tmp/${d}/DevToolsActivePort`, m: 0 }))
     .filter(x => fs.existsSync(x.p));
-  if (!dirs.length) throw new Error('未找到 /tmp/agent-browser-chrome-*/DevToolsActivePort，请先 agent_browser open mp.weixin.qq.com');
-  // 取最新修改的目录
   for (const x of dirs) try { x.m = fs.statSync(x.p).mtimeMs; } catch {}
   dirs.sort((a, b) => b.m - a.m);
-  const port = fs.readFileSync(dirs[0].p, 'utf8').split('\n')[0].trim();
-  return { port, dir: dirs[0].d };
+  for (const x of dirs) {
+    try {
+      const port = fs.readFileSync(x.p, 'utf8').split('\n')[0].trim();
+      const ctl = new AbortController();
+      setTimeout(() => ctl.abort(), 2000);
+      const tabs = await (await fetch(`http://localhost:${port}/json/list`, { signal: ctl.signal })).json();
+      if (Array.isArray(tabs)) return { port, dir: x.d };
+    } catch {}
+  }
+  throw new Error('没有活的 agent_browser Chromium（目录均在但 CDP 无响应），请先 agent_browser open https://mp.weixin.qq.com/');
 }
 
 async function findWeixinTab(port) {
@@ -65,6 +72,10 @@ function connect(wsUrl) {
   const send = (method, params = {}) => new Promise((res, rej) => {
     const mid = ++id; pending.set(mid, { res, rej });
     ws.send(JSON.stringify({ id: mid, method, params }));
+    // CDP 命令 10s 无响应视为死会话（页面被杀 / target 失效），避免整条命令无限挂起
+    setTimeout(() => {
+      if (pending.has(mid)) { pending.delete(mid); rej(new Error(`CDP ${method} 10s 无响应，浏览器会话可能已失效，请 agent_browser open 重开`)); }
+    }, 10000);
   });
   return { ws, send };
 }
@@ -101,25 +112,32 @@ function writeEnvCookie(cookies) {
 // ── 子命令 ──
 async function inject() {
   const cookies = parseCookieStr(readEnvCookie());
-  const { port, dir } = findDevTools();
+  const { port, dir } = await findLiveDevTools();
   const tab = await findWeixinTab(port);
   console.log(`[inject] Chrome dir: ${dir}`);
   console.log(`[inject] page tab: ${tab.url.slice(0, 60)}`);
   const { ws, send } = connect(tab.webSocketDebuggerUrl);
   await new Promise(r => { ws.onopen = () => r(); });
   await send('Network.enable');
+  // 先清掉 qq.com/weixin 域全部旧 cookie：页面残留的 host-only 旧 sid 与注入的 .qq.com
+  // 同名双份时，浏览器把 host-only（path 更精确）排在前面，服务端拿到旧 sid →「请重新登录」。
+  const jar = await send('Network.getCookies', { urls: ['https://mp.weixin.qq.com/', 'https://qq.com/'] });
+  let cleared = 0;
+  for (const c of jar.cookies) {
+    try { await send('Network.deleteCookies', { name: c.name, domain: c.domain, path: c.path }); cleared++; } catch {}
+  }
   let ok = 0, fail = 0;
   for (const c of cookies) {
     try { const r = await send('Network.setCookie', c); (r && r.success) ? ok++ : fail++; }
     catch { fail++; }
   }
   ws.close();
-  console.log(JSON.stringify({ injected: ok, failed: fail, total: cookies.length }));
-  console.log('[inject] 接下来 agent_browser navigate https://mp.weixin.qq.com/cgi-bin/home?t=home/index&lang=zh_CN 验证');
+  console.log(JSON.stringify({ injected: ok, failed: fail, total: cookies.length, clearedOld: cleared }));
+  console.log('[inject] 直接跑 status 验证（内部会导航到后台首页做真实服务端验证）');
 }
 
 async function exportCookies() {
-  const { port, dir } = findDevTools();
+  const { port, dir } = await findLiveDevTools();
   const tab = await findWeixinTab(port);
   console.log(`[export] Chrome dir: ${dir}`);
   console.log(`[export] page tab: ${tab.url.slice(0, 60)}`);
@@ -140,17 +158,39 @@ async function exportCookies() {
 }
 
 async function status() {
-  const { port, dir } = findDevTools();
+  const { port, dir } = await findLiveDevTools();
   const tab = await findWeixinTab(port);
   const { ws, send } = connect(tab.webSocketDebuggerUrl);
-  await new Promise(r => { ws.onopen = () => r(); });
-  const res = await send('Runtime.evaluate', {
-    expression: `JSON.stringify({ uin: window.wx && window.wx.uin, url: location.href, hasMenu: !!document.querySelector('.weui-desktop-menu'), bodyStart: document.body.innerText.slice(0,60) })`,
-    returnByValue: true,
+  await new Promise((r, rej) => {
+    ws.onopen = () => r();
+    setTimeout(() => rej(new Error('CDP ws 连接超时，浏览器会话可能已失效，请 agent_browser open 重开')), 5000);
   });
+  // 主动导航到后台首页再读登录态：只读当前 DOM 会把注入前停留的
+  // 「请重新登录」页误报成未登录（假阴性 → 误判 cookie 过期）。
+  await send('Page.enable');
+  await send('Page.navigate', { url: 'https://mp.weixin.qq.com/cgi-bin/home?t=home/index&lang=zh_CN' });
+  const sendT = (method, params, ms = 3000) => Promise.race([
+    send(method, params),
+    new Promise((_, rej) => setTimeout(() => rej(new Error('timeout: ' + method)), ms)),
+  ]);
+  let uin = null, url = tab.url, hasMenu = false, bodyStart = '';
+  let completeStreak = 0;
+  for (let i = 0; i < 20; i++) {
+    await new Promise(r => setTimeout(r, 500));
+    try {
+      const res = await sendT('Runtime.evaluate', {
+        expression: `JSON.stringify({ uin: window.wx && window.wx.uin, url: location.href, hasMenu: !!document.querySelector('.weui-desktop-menu'), ready: document.readyState, bodyStart: document.body ? document.body.innerText.slice(0,60) : '' })`,
+        returnByValue: true,
+      }, 2000);
+      const v = JSON.parse(res.result.value);
+      uin = v.uin; url = v.url; hasMenu = v.hasMenu; bodyStart = v.bodyStart;
+      // 已登录，或确认被踢到登录/错误页，即可提前结束
+      if (Number(v.uin) > 0 || /scanlogin|newlogin|action=login|请重新登录/.test(v.url + v.bodyStart)) break;
+      if (v.ready === 'complete') { if (++completeStreak >= 2) break; } else completeStreak = 0;
+    } catch {}
+  }
   ws.close();
-  const v = JSON.parse(res.result.value);
-  console.log(JSON.stringify({ ...v, loggedIn: Number(v.uin) > 0, dir }, null, 2));
+  console.log(JSON.stringify({ uin: String(uin ?? '0'), url, hasMenu, bodyStart, loggedIn: Number(uin) > 0, dir }, null, 2));
 }
 
 const cmd = process.argv[2];

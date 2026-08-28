@@ -1,4 +1,5 @@
 ---
+wechatUrl: "https://mp.weixin.qq.com/s/Xly_jfKKcf5xHcuK_e22KA"
 title: "蒸馏是抄袭？为什么越抄越学不会？"
 author: "数解AI"
 date: "2026-08-26"

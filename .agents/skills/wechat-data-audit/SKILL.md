@@ -54,9 +54,11 @@ JSON 是数字唯一事实源；Markdown 只保存人读版和分析结论。禁
 1. 读取 `.env` 确认有 `WECHAT_COOKIE`
 2. **前置时效检查**（2026-07-14 复盘新增）：Cookie 实测有效期 **≤ 2 天**（远短于 wechat-stats 文档所述 7–30 天）。若上次注入距本次审计 ≥ 2 天，直接按过期处理，跳到扫码降级流程，避免注入后仍在登录页打转浪费时间。注入后导航 `https://mp.weixin.qq.com/cgi-bin/home?t=home/index&lang=zh_CN`，用 `window.wx.uin > 0` 判定；uin=0 即过期。
 2. 用 `agent_browser` `sessionMode=fresh` 打开 `https://mp.weixin.qq.com/`
-3. 通过 CDP 注入 Cookie：`node scripts/wechat-cdp-cookie.mjs inject`（自动定位 `/tmp/agent-browser-chrome-*/DevToolsActivePort`，读 `.env` 的 `WECHAT_COOKIE`，在 weixin page tab 上调 `Network.setCookie`，domain `.qq.com`）
-4. 导航到 `https://mp.weixin.qq.com/cgi-bin/home?t=home/index&lang=zh_CN` 验证登录：`node scripts/wechat-cdp-cookie.mjs status`（`uin > 0` 即成功；uin=0 → Cookie 过期）
+3. 通过 CDP 注入 Cookie：`node scripts/wechat-cdp-cookie.mjs inject`（自动定位活的 `/tmp/agent-browser-chrome-*/DevToolsActivePort`，读 `.env` 的 `WECHAT_COOKIE`，**注入前自动清空 qq.com/weixin 域全部旧 cookie**——残留的 host-only 旧 sid 会和注入的 `.qq.com` 新 cookie 同名冲突，服务端拿旧 sid → 「请重新登录」）
+4. 验证登录：`node scripts/wechat-cdp-cookie.mjs status`（**内部自动导航到后台首页做真实服务端验证**，10-15 秒出确定性结论；`uin > 0` 即成功；`loggedIn: false` = Cookie 真实过期，直接请用户扫码重登，**禁止重复 inject 或盲试**）
 5. 登录成功后**立即导出新 Cookie**：`node scripts/wechat-cdp-cookie.mjs export`（写回 `.env`，下次免扫码）
+
+> ⚠️ `inject && status` 一条命令即可闭环。历史教训：旧版 status 只读当前页面 DOM，会把注入前停留的「请重新登录」页误报成未登录（假阴性），导致 agent 误判「key 过期」反复盲试烧 token。新版已修复，`false` 即真实过期，无需人工排查。
 
 #### ⚠️ Cookie 过期时的处理
 
