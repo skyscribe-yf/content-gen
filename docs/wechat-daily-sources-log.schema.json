@@ -9,6 +9,11 @@
   "properties": {
     "schemaVersion": {"const": 1},
     "account": {"type": "string", "minLength": 1},
+    "notes": {
+      "description": "口径说明（2026-08-29 起）：channels 为账号级指标，文章+贴图混合。其中「推荐」含贴图推荐流（贴图有独立推荐机制，历史热点贴图如 opencode 5,435 读占推荐大头），不能用于判断文章策略；文章策略只看 wechat-data-audit-log.json 中 type=article 的单篇数据。",
+      "type": "array",
+      "items": {"type": "string"}
+    },
     "days": {
       "type": "array",
       "items": {"$ref": "#/$defs/day"}

@@ -2,6 +2,7 @@
 title: "信息熵：压缩1000倍，为什么信息反而少？"
 author: "数解AI"
 date: "2026-08-28"
+wechatUrl: "https://mp.weixin.qq.com/s/BkGWzKxiJE2mlPMlZgb7ag"
 type: "原理篇"
 series: "数学直觉"
 digest: "信息熵是什么？一样的 1MB 文件，zip 一个压到 994B、一个压完反而变大。信息量，量的不是内容，是意外；AI 说 90% 把握，其实平均得从 1.38 个候选里挑——这个数叫困惑度。从 zip 到语言模型，同一个公式。"

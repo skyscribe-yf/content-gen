@@ -126,7 +126,8 @@ articles:
     draft: true
     outline: true
     cover: true
-  notes: '正文、提纲、封面、5 张正文图和 mini 机制实验已完成。2026-08-03 质量核查：重排短段落格式、修正尾部系列导航、复现 mini 实验与 CSA/HCA 测试；已用 markdown 直传管线重新保存至公众号草稿箱（media_id: kOcXH4SytIYVIpYksTGfHl8x4BSChP1d_LqXXH88AXC6HzDFikjbcu_QTmqUbCSf）。'
+  notes: '正文、提纲、封面、5 张正文图和 mini 机制实验已完成。2026-08-03 质量核查：重排短段落格式、修正尾部系列导航、复现 mini 实验与
+    CSA/HCA 测试；已用 markdown 直传管线重新保存至公众号草稿箱（media_id: kOcXH4SytIYVIpYksTGfHl8x4BSChP1d_LqXXH88AXC6HzDFikjbcu_QTmqUbCSf）。'
 - slug: 2026-08-05-deepseek-kv
   title: K=V：一份KV缓存怎么干两份活？
   series: DeepSeek 技术解密
@@ -138,7 +139,8 @@ articles:
     draft: true
     outline: true
     cover: true
-  notes: 已发布 2026-08-05 20:00。CSA 续篇，K=V 主线 + Partial RoPE + de-RoPE（加大篇幅）+ Kimi K3 去 RoPE 延伸。
+  notes: 已发布 2026-08-05 20:00。CSA 续篇，K=V 主线 + Partial RoPE + de-RoPE（加大篇幅）+ Kimi K3
+    去 RoPE 延伸。
 - slug: 2026-08-06-muon
   title: Muon 怎么省一半显存？优化器只记一份账
   series: DeepSeek 技术解密
@@ -150,7 +152,15 @@ articles:
     draft: true
     outline: true
     cover: true
-  notes: '已发布 2026-08-06 20:00，wechatUrl 已回填。排期 2026-08-06 20:00。主线：AdamW 显存账（m/v 两份状态 → 状态减半）。数学深度：Newton-Schulz 迭代完整推导 + 二阶收敛 + 条件数 + 预条件三层表。双实验：NS 收敛性（κ 扫描）+ 更新方向特性（experiment.py 已跑且复跑数字一致）。兑现 07-10 篇 Muon/MuonClip 双伏笔；延伸 Kimi K2 MuonClip（QK-Clip 与 logit 爆炸分析，已核验 arXiv:2507.20534）。K=V 已发布（2026-08-05），关联链接已回填。排篇说明：K=V 预告的 mHC 顺延下篇。配图 6 张已生成（封面 21:9 + 5 张正文图，prompt 与正文一致）。已保存至公众号草稿箱（remote-api，media_id: kOcXH4SytIYVIpYksTGfHv8Z2MMKO6qNR7O1fZ7GMBoMo1OI7aBUo953IZ2k11aj，封面 00-cover.png）。⚠️ 草稿箱中另有两份旧稿需删除：①旧内容（media_id …HrnYJAV…）②正确内容但封面误用梯度下降旧图（media_id …Hnz8MNHa…）。发布前在网页确认声明原创。2026-08-06 打磨：去说书腔（「先交代排篇」），注入人味八法（①埋我 2 处 / ②卡住 1 / ③调音师比喻 / ④闲笔 2 / ⑤自嘲 0.18 / ⑥读论文 BF16 稳定性 / ⑦窄谷 callback / ⑧实验诚实说明 / ⑨拉读者算 3TB 账）；删禁词「伏笔」2 处；拆超长句 10 余处；CTA 补点赞收藏。质量门禁全部通过。'
+  notes: '已发布 2026-08-06 20:00，wechatUrl 已回填。排期 2026-08-06 20:00。主线：AdamW 显存账（m/v
+    两份状态 → 状态减半）。数学深度：Newton-Schulz 迭代完整推导 + 二阶收敛 + 条件数 + 预条件三层表。双实验：NS 收敛性（κ 扫描）+
+    更新方向特性（experiment.py 已跑且复跑数字一致）。兑现 07-10 篇 Muon/MuonClip 双伏笔；延伸 Kimi K2 MuonClip（QK-Clip
+    与 logit 爆炸分析，已核验 arXiv:2507.20534）。K=V 已发布（2026-08-05），关联链接已回填。排篇说明：K=V 预告的 mHC
+    顺延下篇。配图 6 张已生成（封面 21:9 + 5 张正文图，prompt 与正文一致）。已保存至公众号草稿箱（remote-api，media_id:
+    kOcXH4SytIYVIpYksTGfHv8Z2MMKO6qNR7O1fZ7GMBoMo1OI7aBUo953IZ2k11aj，封面 00-cover.png）。⚠️
+    草稿箱中另有两份旧稿需删除：①旧内容（media_id …HrnYJAV…）②正确内容但封面误用梯度下降旧图（media_id …Hnz8MNHa…）。发布前在网页确认声明原创。2026-08-06
+    打磨：去说书腔（「先交代排篇」），注入人味八法（①埋我 2 处 / ②卡住 1 / ③调音师比喻 / ④闲笔 2 / ⑤自嘲 0.18 / ⑥读论文 BF16
+    稳定性 / ⑦窄谷 callback / ⑧实验诚实说明 / ⑨拉读者算 3TB 账）；删禁词「伏笔」2 处；拆超长句 10 余处；CTA 补点赞收藏。质量门禁全部通过。'
 - slug: 2026-08-07-mhc
   title: mHC 怎么让 DeepSeek-V4 稳定训练 61 层？
   series: DeepSeek 技术解密
@@ -162,7 +172,18 @@ articles:
     draft: true
     outline: true
     cover: true
-  notes: '已发布 2026-08-07，wechatUrl 已回填。2026-08-07 打磨：标题改「mHC 怎么让 DeepSeek-V4 稳定训练 61 层？」（关键词前置 + 怎么句式，封面已按新标题重新生成）；修正「~0.03% 额外参数」→ ≈8400 万/~0.005%（按 d=7168 数学估算，论文无此数字）；删无出处的初始化括号细节（保留 HC 论文 §2.3 Pre-Norm 等价初始化 + α=0.01）；删说书腔「先交代排篇」；拆长句 5 处（含修「2019 年 ResNet」事实错误 → ResNet 为 2015/2016）；删禁词「伏笔」；arXiv 2512.24880 全部数字（3000→1.6、12k 步、消融 −0.022/−0.025/−0.027、−0.021、benchmark 表、6.7%、t_max=20）逐项核对原文一致；config.json 核验 hc_mult=4 / hc_sinkhorn_iters=20 / 61 层。质量门禁全部通过。排期 2026-08-07。兑现 K=V/Muon/CSA 三篇文末预告 + 07-09 残差篇 MHC 预告（校准：V3 未用，V4 首代全量）。数学双深潜：谱半径不次乘 vs 谱范数次乘 + Kronecker 结构。正文 4244 字、9 节、8 组公式；27B 实验数据逐项核对 mHC 论文（arXiv:2512.24880）。双实验：Sinkhorn 收敛 + 60 层连乘谱范数（8597×，复现 3000 vs 1.6 机制）。配图 6 张已生成（封面 21:9 + 5 张正文图，中文标注与正文一致）。已保存至公众号草稿箱（remote-api，media_id: kOcXH4SytIYVIpYksTGfHqSIWk5_pLL3_ACxi1DhG5B1nzccyKWI3GXUvi_iIhLb，2026-08-07 按 review 意见改完后第三次保存；旧草稿 media_id: kOcXH4SytIYVIpYksTGfHjAW_kjFEnl25TEfLAeBNRJSvxtdQpycYvgl93GCCocY / kOcXH4SytIYVIpYksTGfHsWD10_ocvLzrwcCFvjBHsskidUWN1oNdTMIc5GqpoC6 / kOcXH4SytIYVIpYksTGfHjVc_U3kiPI8rsnUENPl3DwdZI2tDYQkSOyMI2CNQprh 需在草稿箱删除）。发布前在网页确认声明原创。grill 日志：.grill/mhc.md。'
+  notes: '已发布 2026-08-07，wechatUrl 已回填。2026-08-07 打磨：标题改「mHC 怎么让 DeepSeek-V4 稳定训练
+    61 层？」（关键词前置 + 怎么句式，封面已按新标题重新生成）；修正「~0.03% 额外参数」→ ≈8400 万/~0.005%（按 d=7168 数学估算，论文无此数字）；删无出处的初始化括号细节（保留
+    HC 论文 §2.3 Pre-Norm 等价初始化 + α=0.01）；删说书腔「先交代排篇」；拆长句 5 处（含修「2019 年 ResNet」事实错误
+    → ResNet 为 2015/2016）；删禁词「伏笔」；arXiv 2512.24880 全部数字（3000→1.6、12k 步、消融 −0.022/−0.025/−0.027、−0.021、benchmark
+    表、6.7%、t_max=20）逐项核对原文一致；config.json 核验 hc_mult=4 / hc_sinkhorn_iters=20 / 61
+    层。质量门禁全部通过。排期 2026-08-07。兑现 K=V/Muon/CSA 三篇文末预告 + 07-09 残差篇 MHC 预告（校准：V3 未用，V4
+    首代全量）。数学双深潜：谱半径不次乘 vs 谱范数次乘 + Kronecker 结构。正文 4244 字、9 节、8 组公式；27B 实验数据逐项核对 mHC
+    论文（arXiv:2512.24880）。双实验：Sinkhorn 收敛 + 60 层连乘谱范数（8597×，复现 3000 vs 1.6 机制）。配图 6
+    张已生成（封面 21:9 + 5 张正文图，中文标注与正文一致）。已保存至公众号草稿箱（remote-api，media_id: kOcXH4SytIYVIpYksTGfHqSIWk5_pLL3_ACxi1DhG5B1nzccyKWI3GXUvi_iIhLb，2026-08-07
+    按 review 意见改完后第三次保存；旧草稿 media_id: kOcXH4SytIYVIpYksTGfHjAW_kjFEnl25TEfLAeBNRJSvxtdQpycYvgl93GCCocY
+    / kOcXH4SytIYVIpYksTGfHsWD10_ocvLzrwcCFvjBHsskidUWN1oNdTMIc5GqpoC6 / kOcXH4SytIYVIpYksTGfHjVc_U3kiPI8rsnUENPl3DwdZI2tDYQkSOyMI2CNQprh
+    需在草稿箱删除）。发布前在网页确认声明原创。grill 日志：.grill/mhc.md。'
 - slug: 2026-08-09-deepseek-fp8
   title: FP8训练：残缺数字怎么练出顶级模型
   series: DeepSeek 技术解密
@@ -174,7 +195,30 @@ articles:
     draft: true
     outline: true
     cover: true
-  notes: '排期 2026-08-08。主线：残缺数字的工程美学（V3 FP8 工程探索，V4 继承）。双深潜：per-tensor vs per-group 量化误差 + online quantization。实验：outlier 量化误差对比（per-tensor 普通行 62.0% vs per-group 2.6%，改善 24 倍；权重场景揭示 128×128 粗粒度缘由）。结构 9 节、正文 3574 字、7 组公式（§2 补浮点范围具体例子）。关键校准（vs 第 9 课笔记）：全链路只用 E4M3（非 forward/backward 分流）；激活 1×128 tile / 权重 128×128 block；Online Quantization 非 Loss Scaling；H800 14-bit 累加陷阱 N_C=128；FP8 vs BF16 相对误差 < 0.25%（V3 附录 B）。标题 17 字。衔接 Muon 篇两处 FP8 线索；末尾预告 FP4 QAT。配图 5 张已生成（封面 21:9 + 4 正文图）。2026-08-08 打磨后已重新保存至公众号草稿箱（remote-api，新 media_id: kOcXH4SytIYVIpYksTGfHoiTJo_aAdd-rvREQ7gYHgDUx5T7oDXtSA6mT77JiVZH，封面 media_id: kOcXH4SytIYVIpYksTGfHi6GOjiGK_57l9eD6-SwzCHskRyKRpeAulAisA8uvfxd，citeStatus: true）。⚠️ 旧草稿（media_id: kOcXH4SytIYVIpYksTGfHqPqaakzpx18vk0YeklGLkeYVQZ_UFUYs5-PHzdfwhxx）作废，发布前请在草稿箱删除。发布前在网页确认声明原创。grill 日志：.grill/deepseek-fp8.md。2026-08-08 打磨：去说书腔（删「先交代排篇」「今天拆三件事」，标题改「mHC 篇的承诺，今天兑现」）；注入人味十处（①埋我×2：8 个台阶愣了 + 62% 以为是 bug 排查三遍 / ②卡住合并 ① / ③记账比喻开头 / ④闲笔×2：试出来的 128 间隔 + 结尾好系统直觉 / ⑤自嘲：以为 FP8 是 BF16 砍一半 / ⑥读论文：附录 B 专门找大尺度数字 / ⑦callback 带记忆：Muon 留了两个尾巴 / ⑧承认不知道：非第三方复现，不当 FP8 无敌证据 / ⑨拉读者算账：1.6T 权重 BF16 3.2TB vs FP8 1.6TB）；结尾补 💬 开放留言问题（FP8 微调/推理经验）+ 点赞收藏 CTA；改「读者可能会想」→「你可能会想」、「我们一笔带过」→「这里就不展开了」；拆超长句 2 处。实验数字已复现（62.0%/2.6%/23.9 倍）。长句 0 超标、无禁词、话题标签 5 个。 2026-08-11 重存草稿（尾部改为「🔥 近期热门」Top 6 每篇一行，去掉合集箭头链），新 media_id: kOcXH4SytIYVIpYksTGfHh4KOLCgSt7o4vsqxZ5yQnt0IXorv36ekwp3IJRzW_dm（封面 media_id: kOcXH4SytIYVIpYksTGfHqKs0VEt4CL8sTSHY-SIAKKaMDNHb7-uIzEeDtm508gl）。旧草稿 kOcXH4SytIYVIpYksTGfHoiTJo_aAdd-rvREQ7gYHgDUx5T7oDXtSA6mT77JiVZH 及作废稿 kOcXH4SytIYVIpYksTGfHqPqaakzpx18vk0YeklGLkeYVQZ_UFUYs5-PHzdfwhxx 需在草稿箱删除。 2026-08-11 第三轮重存（--theme grace 蓝色主题 + 热门链接每行独立段落），**最终 media_id: kOcXH4SytIYVIpYksTGfHms_8-gF1LkrflPq5GC8Kz1DubJDFs80WtjQWB2MIO1P**。前两轮草稿（…Hh4KOLCg… 与 …HvAmfbsp…）均作废需删除。⚠️ wechat-api.ts 不读 EXTEND.md 的 default_theme，保存草稿必须显式加 --theme grace，否则渲染成 normal 黑白主题。 2026-08-09 发布前终检：wechatUrl 回填（去 query string）；Muon 正文首提处补内联链接（§1）；修复 §2「下一篇深潜」→「下一节深潜」（粒度深潜在本篇 §3）；拆分 §9 两处超长句（61/63 字 → 破折号改句号）；尾部在近期热门基础上补齐系列合集导航（DeepSeek 技术解密列表 + 大模型原理合集，本篇加粗、FP4 待发布）。实验复现 62.0%/2.6%/23.9×。质量门禁 10 项全部通过。published_date 按实际发布日 08-09。'
+  notes: '排期 2026-08-08。主线：残缺数字的工程美学（V3 FP8 工程探索，V4 继承）。双深潜：per-tensor vs per-group
+    量化误差 + online quantization。实验：outlier 量化误差对比（per-tensor 普通行 62.0% vs per-group
+    2.6%，改善 24 倍；权重场景揭示 128×128 粗粒度缘由）。结构 9 节、正文 3574 字、7 组公式（§2 补浮点范围具体例子）。关键校准（vs
+    第 9 课笔记）：全链路只用 E4M3（非 forward/backward 分流）；激活 1×128 tile / 权重 128×128 block；Online
+    Quantization 非 Loss Scaling；H800 14-bit 累加陷阱 N_C=128；FP8 vs BF16 相对误差 < 0.25%（V3
+    附录 B）。标题 17 字。衔接 Muon 篇两处 FP8 线索；末尾预告 FP4 QAT。配图 5 张已生成（封面 21:9 + 4 正文图）。2026-08-08
+    打磨后已重新保存至公众号草稿箱（remote-api，新 media_id: kOcXH4SytIYVIpYksTGfHoiTJo_aAdd-rvREQ7gYHgDUx5T7oDXtSA6mT77JiVZH，封面
+    media_id: kOcXH4SytIYVIpYksTGfHi6GOjiGK_57l9eD6-SwzCHskRyKRpeAulAisA8uvfxd，citeStatus:
+    true）。⚠️ 旧草稿（media_id: kOcXH4SytIYVIpYksTGfHqPqaakzpx18vk0YeklGLkeYVQZ_UFUYs5-PHzdfwhxx）作废，发布前请在草稿箱删除。发布前在网页确认声明原创。grill
+    日志：.grill/deepseek-fp8.md。2026-08-08 打磨：去说书腔（删「先交代排篇」「今天拆三件事」，标题改「mHC 篇的承诺，今天兑现」）；注入人味十处（①埋我×2：8
+    个台阶愣了 + 62% 以为是 bug 排查三遍 / ②卡住合并 ① / ③记账比喻开头 / ④闲笔×2：试出来的 128 间隔 + 结尾好系统直觉 / ⑤自嘲：以为
+    FP8 是 BF16 砍一半 / ⑥读论文：附录 B 专门找大尺度数字 / ⑦callback 带记忆：Muon 留了两个尾巴 / ⑧承认不知道：非第三方复现，不当
+    FP8 无敌证据 / ⑨拉读者算账：1.6T 权重 BF16 3.2TB vs FP8 1.6TB）；结尾补 💬 开放留言问题（FP8 微调/推理经验）+
+    点赞收藏 CTA；改「读者可能会想」→「你可能会想」、「我们一笔带过」→「这里就不展开了」；拆超长句 2 处。实验数字已复现（62.0%/2.6%/23.9
+    倍）。长句 0 超标、无禁词、话题标签 5 个。 2026-08-11 重存草稿（尾部改为「🔥 近期热门」Top 6 每篇一行，去掉合集箭头链），新 media_id:
+    kOcXH4SytIYVIpYksTGfHh4KOLCgSt7o4vsqxZ5yQnt0IXorv36ekwp3IJRzW_dm（封面 media_id:
+    kOcXH4SytIYVIpYksTGfHqKs0VEt4CL8sTSHY-SIAKKaMDNHb7-uIzEeDtm508gl）。旧草稿 kOcXH4SytIYVIpYksTGfHoiTJo_aAdd-rvREQ7gYHgDUx5T7oDXtSA6mT77JiVZH
+    及作废稿 kOcXH4SytIYVIpYksTGfHqPqaakzpx18vk0YeklGLkeYVQZ_UFUYs5-PHzdfwhxx 需在草稿箱删除。
+    2026-08-11 第三轮重存（--theme grace 蓝色主题 + 热门链接每行独立段落），**最终 media_id: kOcXH4SytIYVIpYksTGfHms_8-gF1LkrflPq5GC8Kz1DubJDFs80WtjQWB2MIO1P**。前两轮草稿（…Hh4KOLCg…
+    与 …HvAmfbsp…）均作废需删除。⚠️ wechat-api.ts 不读 EXTEND.md 的 default_theme，保存草稿必须显式加 --theme
+    grace，否则渲染成 normal 黑白主题。 2026-08-09 发布前终检：wechatUrl 回填（去 query string）；Muon 正文首提处补内联链接（§1）；修复
+    §2「下一篇深潜」→「下一节深潜」（粒度深潜在本篇 §3）；拆分 §9 两处超长句（61/63 字 → 破折号改句号）；尾部在近期热门基础上补齐系列合集导航（DeepSeek
+    技术解密列表 + 大模型原理合集，本篇加粗、FP4 待发布）。实验复现 62.0%/2.6%/23.9×。质量门禁 10 项全部通过。published_date
+    按实际发布日 08-09。'
 - slug: 2026-08-09-deepseek-fp4-qat
   title: FP4量化：4位数字怎么做到无损
   series: DeepSeek 技术解密
@@ -186,7 +230,35 @@ articles:
     draft: true
     outline: true
     cover: true
-  notes: '排期 2026-08-09。主线：无损压缩的算术（FP4→FP8 反量化无损）。双深潜：STE 直通梯度 + FP4→FP8 无损反量化（E4M3 多 2 个指数位、1×32 子块 / 128×128 块、scale 比值 ≤ 约 2×10³ 条件）。双实验（experiment.py 已跑通）：STE vs 截断收敛对比（截断 6.866 恒 / STE 0.993 / 基线 0.951）+ 无损性验证（≤2000× 误差 0，3000× 开始有损）。indexer 节正文兑现 99.7% recall（QK path FP4 + 分数 BF16 化 2× 加速）。结尾预告 KV 磁盘（08-10）。grill 日志：.grill/deepseek-fp4-qat.md。配图 5 张已生成（封面 21:9 + 4 张正文图，prompt 与正文一致，已逐张核验文字）。已保存至公众号草稿箱（remote-api，media_id: kOcXH4SytIYVIpYksTGfHvKPZ0WgbusGvIzWqLs_Lf2AoqOL1b7tGQhvAxunOZG-，封面 media_id: kOcXH4SytIYVIpYksTGfHtO54PEFEAWn0ck2htE6XzJXro4KKCu2PrAE48G0LNpS）。⚠️ 旧稿（media_id 以 …fHjLeOeRu 开头）作废，发布前请在草稿箱删除。发布前在网页确认声明原创。 文风迭代：2026-08-09 二稿按 style-guide.md 重写，去除说书腔（「先交代排篇」「今天拆三件事」等），注入人味八法（①埋我 7 处 / ②卡住 2 / ③比喻故事 / ⑤自嘲 / ⑥读论文时刻 / ⑦callback 带记忆 / ⑧承认不知道 / ⑨拉读者算账：专家权重 1.55T 占 97%，FP4 省 776GB≈再装一个 700B 模型），结尾改开放式显存话题。质量自检：无禁词、无超 60 字句、口语词 0。 2026-08-11 重存草稿（尾部改为「🔥 近期热门」Top 6 每篇一行，去掉合集箭头链），新 media_id: kOcXH4SytIYVIpYksTGfHo7bVdfJvHyYxQlSjJIcKxUZFlkHLuka3oPr6zaCsvs6（封面 media_id: kOcXH4SytIYVIpYksTGfHmBJIcBwiNeUxcAyE5Gd9d_FnS2j6SmGwx38L2vWyL8J）。旧草稿 kOcXH4SytIYVIpYksTGfHvKPZ0WgbusGvIzWqLs_Lf2AoqOL1b7tGQhvAxunOZG- 及旧稿（…fHjLeOeRu 开头）需在草稿箱删除。 2026-08-11 第三轮重存（--theme grace 蓝色主题 + 热门链接每行独立段落），**最终 media_id: kOcXH4SytIYVIpYksTGfHmcT0J8RzBShBC2WaRw8gXizUh84aUrI79FBQgL32H2D**。前两轮草稿（…Ho7bVdfJ… 与 …）均作废需删除。保存草稿必须显式加 --theme grace（wechat-api.ts 不读 EXTEND.md default_theme）。 2026-08-09 发布日质量核查（9 项清单）：发现并修复 4 处——①§4.3 scale 比值公式指数符号反了（(448×2⁻⁶)/(6×0.5)=2.33 ≠ 2.4×10³，改为 (448×0.5)/(6×2⁻⁶)=2389，与实验表 2000×✓/3000×✗ 吻合）；②H800 张数 19→20（1550/80=19.4 需进位）；③超长句拆分（STE 段 74 字 → 2 句）；④专家数 385→384 路由专家（对照 V4 报告 §4.2.1 原文「1 shared + 384 routed」与官方 config.json n_routed_experts:384，1.55T/97% 不变）；另补 FP8 篇内链（08-08 已发布 yxrkmxPSZ8CnsFhWZ1bCPA）+ 点赞/收藏引导。实验数据重跑全部吻合（STE 0.993/截断 6.866/基线 0.951；≤2000× 无损）。**核查后重存草稿 media_id: kOcXH4SytIYVIpYksTGfHmq6BKQGNvzG9wxzSnV6rntsu6Kf6rwwSI9w43vu8II1**（封面 media_id: kOcXH4SytIYVIpYksTGfHjVysmZkv2kbMp2C4he0XYcvikdduuzEACLBsyOH40bu）。旧草稿 …HmcT0J8Rz…（第三轮）、…Ho7bVdfJ…、…HvKPZ0Wg… 及 …fHjLeOeRu 开头旧稿均需在草稿箱删除，保留最新一版即可。发布前在网页确认声明原创。 2026-08-09 按作者反馈补 STE 机制解释（§3.2）：公式后新增两段——「:= 念作定义不念作等于，是人为规定」+「拆计算图：W_q 之后全可微，∂L/∂W_q 早已算出，卡住的只有量化器这一环（导数 0），STE 直接取用不再过量化器」，衔接原有「当恒等映射求导」句与 3.3 V4 等价写法。长句/禁词扫描通过。**重存草稿 media_id: kOcXH4SytIYVIpYksTGfHhcEVOGlu-2lyBQ8DQZj59GHUEVioHGN0NWbzbjBiHs4**（封面 media_id: kOcXH4SytIYVIpYksTGfHmEEookobfQdWQLq2eK1I477q6OQ9La79utsMEJg547V）。旧草稿 …Hmq6BKQG… 及更早版本均作废需删除。发布前在网页确认声明原创。 2026-08-09 已发布，wechatUrl 已回填：https://mp.weixin.qq.com/s/Bra0y-wCSeYEW5ABxa3slw（同步回填 KV 磁盘篇正文「FP4 量化篇（待发布）」为内链）。'
+  notes: '排期 2026-08-09。主线：无损压缩的算术（FP4→FP8 反量化无损）。双深潜：STE 直通梯度 + FP4→FP8 无损反量化（E4M3
+    多 2 个指数位、1×32 子块 / 128×128 块、scale 比值 ≤ 约 2×10³ 条件）。双实验（experiment.py 已跑通）：STE
+    vs 截断收敛对比（截断 6.866 恒 / STE 0.993 / 基线 0.951）+ 无损性验证（≤2000× 误差 0，3000× 开始有损）。indexer
+    节正文兑现 99.7% recall（QK path FP4 + 分数 BF16 化 2× 加速）。结尾预告 KV 磁盘（08-10）。grill 日志：.grill/deepseek-fp4-qat.md。配图
+    5 张已生成（封面 21:9 + 4 张正文图，prompt 与正文一致，已逐张核验文字）。已保存至公众号草稿箱（remote-api，media_id:
+    kOcXH4SytIYVIpYksTGfHvKPZ0WgbusGvIzWqLs_Lf2AoqOL1b7tGQhvAxunOZG-，封面 media_id:
+    kOcXH4SytIYVIpYksTGfHtO54PEFEAWn0ck2htE6XzJXro4KKCu2PrAE48G0LNpS）。⚠️ 旧稿（media_id
+    以 …fHjLeOeRu 开头）作废，发布前请在草稿箱删除。发布前在网页确认声明原创。 文风迭代：2026-08-09 二稿按 style-guide.md
+    重写，去除说书腔（「先交代排篇」「今天拆三件事」等），注入人味八法（①埋我 7 处 / ②卡住 2 / ③比喻故事 / ⑤自嘲 / ⑥读论文时刻 / ⑦callback
+    带记忆 / ⑧承认不知道 / ⑨拉读者算账：专家权重 1.55T 占 97%，FP4 省 776GB≈再装一个 700B 模型），结尾改开放式显存话题。质量自检：无禁词、无超
+    60 字句、口语词 0。 2026-08-11 重存草稿（尾部改为「🔥 近期热门」Top 6 每篇一行，去掉合集箭头链），新 media_id: kOcXH4SytIYVIpYksTGfHo7bVdfJvHyYxQlSjJIcKxUZFlkHLuka3oPr6zaCsvs6（封面
+    media_id: kOcXH4SytIYVIpYksTGfHmBJIcBwiNeUxcAyE5Gd9d_FnS2j6SmGwx38L2vWyL8J）。旧草稿
+    kOcXH4SytIYVIpYksTGfHvKPZ0WgbusGvIzWqLs_Lf2AoqOL1b7tGQhvAxunOZG- 及旧稿（…fHjLeOeRu
+    开头）需在草稿箱删除。 2026-08-11 第三轮重存（--theme grace 蓝色主题 + 热门链接每行独立段落），**最终 media_id: kOcXH4SytIYVIpYksTGfHmcT0J8RzBShBC2WaRw8gXizUh84aUrI79FBQgL32H2D**。前两轮草稿（…Ho7bVdfJ…
+    与 …）均作废需删除。保存草稿必须显式加 --theme grace（wechat-api.ts 不读 EXTEND.md default_theme）。
+    2026-08-09 发布日质量核查（9 项清单）：发现并修复 4 处——①§4.3 scale 比值公式指数符号反了（(448×2⁻⁶)/(6×0.5)=2.33
+    ≠ 2.4×10³，改为 (448×0.5)/(6×2⁻⁶)=2389，与实验表 2000×✓/3000×✗ 吻合）；②H800 张数 19→20（1550/80=19.4
+    需进位）；③超长句拆分（STE 段 74 字 → 2 句）；④专家数 385→384 路由专家（对照 V4 报告 §4.2.1 原文「1 shared +
+    384 routed」与官方 config.json n_routed_experts:384，1.55T/97% 不变）；另补 FP8 篇内链（08-08
+    已发布 yxrkmxPSZ8CnsFhWZ1bCPA）+ 点赞/收藏引导。实验数据重跑全部吻合（STE 0.993/截断 6.866/基线 0.951；≤2000×
+    无损）。**核查后重存草稿 media_id: kOcXH4SytIYVIpYksTGfHmq6BKQGNvzG9wxzSnV6rntsu6Kf6rwwSI9w43vu8II1**（封面
+    media_id: kOcXH4SytIYVIpYksTGfHjVysmZkv2kbMp2C4he0XYcvikdduuzEACLBsyOH40bu）。旧草稿
+    …HmcT0J8Rz…（第三轮）、…Ho7bVdfJ…、…HvKPZ0Wg… 及 …fHjLeOeRu 开头旧稿均需在草稿箱删除，保留最新一版即可。发布前在网页确认声明原创。
+    2026-08-09 按作者反馈补 STE 机制解释（§3.2）：公式后新增两段——「:= 念作定义不念作等于，是人为规定」+「拆计算图：W_q 之后全可微，∂L/∂W_q
+    早已算出，卡住的只有量化器这一环（导数 0），STE 直接取用不再过量化器」，衔接原有「当恒等映射求导」句与 3.3 V4 等价写法。长句/禁词扫描通过。**重存草稿
+    media_id: kOcXH4SytIYVIpYksTGfHhcEVOGlu-2lyBQ8DQZj59GHUEVioHGN0NWbzbjBiHs4**（封面
+    media_id: kOcXH4SytIYVIpYksTGfHmEEookobfQdWQLq2eK1I477q6OQ9La79utsMEJg547V）。旧草稿
+    …Hmq6BKQG… 及更早版本均作废需删除。发布前在网页确认声明原创。 2026-08-09 已发布，wechatUrl 已回填：https://mp.weixin.qq.com/s/Bra0y-wCSeYEW5ABxa3slw（同步回填
+    KV 磁盘篇正文「FP4 量化篇（待发布）」为内链）。'
 - slug: 2026-08-10-deepseek-kv-disk
   title: KV缓存存进SSD：慢50倍的硬盘，为什么反而更快？
   series: DeepSeek 技术解密
@@ -198,7 +270,33 @@ articles:
     draft: true
     outline: true
     cover: true
-  notes: '排期 2026-08-10。主线：秒回之谜 → 档案/状态分层。双深潜：磁盘 vs 重算权衡 + lcm(m,m'') 对齐。三实验（experiment.py 已跑通：交叉点 36K token、1M 读盘 2s vs 重算 61s 快 30 倍；SWA 三策略存储 81.9/1.28/0 GB；lcm 对齐 2667 块 vs 单分支 8000+ 块）。V4 报告 §3.6.2 原文核验（注意是 §3.6 不是 §3.5）：m=4/m''=128（V4-Flash）、SWA 8×、n_win=128、三策略原文、尾部不完整块重算。K=V 与异构分层维度澄清（entry 内部 vs entry 之间）已写入。第 8 节 K3 同题不同解（KDA 固定状态 + vLLM 32K 检查点 + Mooncake >90% 命中率，来源已核验）。标题 B''：KV缓存存进SSD：慢50倍的硬盘，为什么反而更快？（21 字）。grill 日志：.grill/deepseek-kv-disk.md。2026-08-10 定稿：补数学细节（prefill FLOPs 公式、交叉点推导 n*=kG/(BLc)、lcm 最小性两理由、SWA Zero 有界重算推导 ≤n_win×L、半块不存盘 m 倍算术账、K3 O(n) vs O(1)），正文 3769 字、6 组公式、无禁词无长句；加量级估算说明。封面 00-cover.png 已生成（21:9，标题与正文一致）。已保存至公众号草稿箱（remote-api，media_id: kOcXH4SytIYVIpYksTGfHrXgWrSQm5OzIt4Owpwu0znPz_Nk2jvELH3eC1Rksz9d，2026-08-10 人味终版：埋我×3（§3 疯了吗 / §5 犯嘀咕 / §7 愣住了）、闲笔×2（§7 丑但够用 / 结尾 放哪儿）、回扣节改名「第二次问，为什么秒回？」与开头对仗；旧草稿 …HqRdFMPV… / …HoRLI_SV… / …Higdi-Ws… 需删除）。发布前在网页确认声明原创。待办：FP4 发布后回填其链接；发布时勾选合集。 2026-08-11 重存草稿（尾部改为「🔥 近期热门」Top 6 每篇一行，去掉合集箭头链），新 media_id: kOcXH4SytIYVIpYksTGfHm00F-Pd96tPCMx2AzENXw7wA_bFb2IpJFXM69Kq7PjK（封面 media_id: kOcXH4SytIYVIpYksTGfHhGCP63LQD0TC006V8vf1q1wdDm8bJSPGpmFCcHNJUpo）。旧草稿 kOcXH4SytIYVIpYksTGfHrXgWrSQm5OzIt4Owpwu0znPz_Nk2jvELH3eC1Rksz9d 及 …HqRdFMPV…/…HoRLI_SV…/…Higdi-Ws… 开头旧稿需在草稿箱删除。 2026-08-11 第三轮重存（--theme grace 蓝色主题 + 热门链接每行独立段落），**最终 media_id: kOcXH4SytIYVIpYksTGfHvrQvkVkBYuseTTmlZGkL07mZ-AsmLQSymnWt13WZSyj**。前两轮草稿（…Hm00F-Pd… 与 …Hh4KOLCg… 无关，第二轮 …HvAmfbsp… 系 FP8）均作废需删除。保存草稿必须显式加 --theme grace（wechat-api.ts 不读 EXTEND.md default_theme）。 2026-08-10 打磨后重存草稿（remote-api --theme grace）：**新 media_id: kOcXH4SytIYVIpYksTGfHrPuKBxoPomaY1PeGu6CCEmwJG2QkaOt6N2SFHuI5r_H**（封面 media_id: kOcXH4SytIYVIpYksTGfHgstv9NSTNzLW009i__Jb1mFR3LLsV1JxMMNuATuvosY）。旧草稿 …HvrQvkVkBY…（第三轮）作废需在草稿箱删除，保留最新一版即可。 2026-08-10 已发布，wechatUrl 已回填：https://mp.weixin.qq.com/s/40BQ06eDTv4-2r8FmQ_rMA（同步回填 Indexer 篇正文「KV 落盘篇（待发布）」为内链）。 2026-08-10 发布前打磨（quality check 11 项全过）：修复 6 处——①「上上篇」×3 →「V4 注意力篇」（V4 注意力篇为 08-04，隔 K=V/mHC/FP8/FP4 四篇，原指称不准）；②开头「上一篇 K=V」→「K=V 篇」（上一篇实为 FP4）；③带宽口径自洽：HBM 1-3 TB/s vs NVMe 3-7 GB/s 实为 140~1000 倍，补「按保守口径：显存 1 TB/s、阵列 20 GB/s」使 50 倍成立；④「V4-Flash 的配置 n_win=128、L=61」→「V4-Pro」（Flash 43 层，61 层是 Pro，硬伤）；⑤「130 token 文档问第三章/第五章」逻辑矛盾 →「同一份长文档…最后一个完整块」；⑥长句拆分 1 处（61 汉字→2 句）。实验复现全过（36K 交叉点、2s/61s/30 倍、81.9/1.28/0 GB、2667 vs 8000/13334 块）；图片 6 张文字与正文一致；尾部近期热门 6 链接全部有效。'
+  notes: '排期 2026-08-10。主线：秒回之谜 → 档案/状态分层。双深潜：磁盘 vs 重算权衡 + lcm(m,m'') 对齐。三实验（experiment.py
+    已跑通：交叉点 36K token、1M 读盘 2s vs 重算 61s 快 30 倍；SWA 三策略存储 81.9/1.28/0 GB；lcm 对齐 2667
+    块 vs 单分支 8000+ 块）。V4 报告 §3.6.2 原文核验（注意是 §3.6 不是 §3.5）：m=4/m''=128（V4-Flash）、SWA
+    8×、n_win=128、三策略原文、尾部不完整块重算。K=V 与异构分层维度澄清（entry 内部 vs entry 之间）已写入。第 8 节 K3 同题不同解（KDA
+    固定状态 + vLLM 32K 检查点 + Mooncake >90% 命中率，来源已核验）。标题 B''：KV缓存存进SSD：慢50倍的硬盘，为什么反而更快？（21
+    字）。grill 日志：.grill/deepseek-kv-disk.md。2026-08-10 定稿：补数学细节（prefill FLOPs 公式、交叉点推导
+    n*=kG/(BLc)、lcm 最小性两理由、SWA Zero 有界重算推导 ≤n_win×L、半块不存盘 m 倍算术账、K3 O(n) vs O(1)），正文
+    3769 字、6 组公式、无禁词无长句；加量级估算说明。封面 00-cover.png 已生成（21:9，标题与正文一致）。已保存至公众号草稿箱（remote-api，media_id:
+    kOcXH4SytIYVIpYksTGfHrXgWrSQm5OzIt4Owpwu0znPz_Nk2jvELH3eC1Rksz9d，2026-08-10 人味终版：埋我×3（§3
+    疯了吗 / §5 犯嘀咕 / §7 愣住了）、闲笔×2（§7 丑但够用 / 结尾 放哪儿）、回扣节改名「第二次问，为什么秒回？」与开头对仗；旧草稿 …HqRdFMPV…
+    / …HoRLI_SV… / …Higdi-Ws… 需删除）。发布前在网页确认声明原创。待办：FP4 发布后回填其链接；发布时勾选合集。 2026-08-11
+    重存草稿（尾部改为「🔥 近期热门」Top 6 每篇一行，去掉合集箭头链），新 media_id: kOcXH4SytIYVIpYksTGfHm00F-Pd96tPCMx2AzENXw7wA_bFb2IpJFXM69Kq7PjK（封面
+    media_id: kOcXH4SytIYVIpYksTGfHhGCP63LQD0TC006V8vf1q1wdDm8bJSPGpmFCcHNJUpo）。旧草稿
+    kOcXH4SytIYVIpYksTGfHrXgWrSQm5OzIt4Owpwu0znPz_Nk2jvELH3eC1Rksz9d 及 …HqRdFMPV…/…HoRLI_SV…/…Higdi-Ws…
+    开头旧稿需在草稿箱删除。 2026-08-11 第三轮重存（--theme grace 蓝色主题 + 热门链接每行独立段落），**最终 media_id:
+    kOcXH4SytIYVIpYksTGfHvrQvkVkBYuseTTmlZGkL07mZ-AsmLQSymnWt13WZSyj**。前两轮草稿（…Hm00F-Pd…
+    与 …Hh4KOLCg… 无关，第二轮 …HvAmfbsp… 系 FP8）均作废需删除。保存草稿必须显式加 --theme grace（wechat-api.ts
+    不读 EXTEND.md default_theme）。 2026-08-10 打磨后重存草稿（remote-api --theme grace）：**新
+    media_id: kOcXH4SytIYVIpYksTGfHrPuKBxoPomaY1PeGu6CCEmwJG2QkaOt6N2SFHuI5r_H**（封面
+    media_id: kOcXH4SytIYVIpYksTGfHgstv9NSTNzLW009i__Jb1mFR3LLsV1JxMMNuATuvosY）。旧草稿
+    …HvrQvkVkBY…（第三轮）作废需在草稿箱删除，保留最新一版即可。 2026-08-10 已发布，wechatUrl 已回填：https://mp.weixin.qq.com/s/40BQ06eDTv4-2r8FmQ_rMA（同步回填
+    Indexer 篇正文「KV 落盘篇（待发布）」为内链）。 2026-08-10 发布前打磨（quality check 11 项全过）：修复 6 处——①「上上篇」×3
+    →「V4 注意力篇」（V4 注意力篇为 08-04，隔 K=V/mHC/FP8/FP4 四篇，原指称不准）；②开头「上一篇 K=V」→「K=V 篇」（上一篇实为
+    FP4）；③带宽口径自洽：HBM 1-3 TB/s vs NVMe 3-7 GB/s 实为 140~1000 倍，补「按保守口径：显存 1 TB/s、阵列
+    20 GB/s」使 50 倍成立；④「V4-Flash 的配置 n_win=128、L=61」→「V4-Pro」（Flash 43 层，61 层是 Pro，硬伤）；⑤「130
+    token 文档问第三章/第五章」逻辑矛盾 →「同一份长文档…最后一个完整块」；⑥长句拆分 1 处（61 汉字→2 句）。实验复现全过（36K 交叉点、2s/61s/30
+    倍、81.9/1.28/0 GB、2667 vs 8000/13334 块）；图片 6 张文字与正文一致；尾部近期热门 6 链接全部有效。'
 - slug: 2026-08-11-deepseek-indexer
   title: 几万块挑几百块：Lightning Indexer 凭什么敢这么挑
   series: DeepSeek 技术解密
@@ -210,7 +308,14 @@ articles:
     draft: true
     outline: false
     cover: false
-  notes: '排期 2026-08-11（Obsidian 第3.1+3.3课优先）。KV 落盘篇链接已回填（08-10 已发布）。V4 技术报告 §2.3.1：indexer 低秩双投影（W_DQ 降维 + W_IUQ 升维）、逐头 ReLU 打分加权求和、top-k 选择；V3.2 DSA 桥接；indexer 显存/算力账。CSA 篇（08-04）只略提 DSA，本篇深化选块机制。 2026-08-11 重存草稿（尾部改为「🔥 近期热门」Top 6 每篇一行，去掉合集箭头链），新 media_id: kOcXH4SytIYVIpYksTGfHpQTReGi2L28I4hIHTCoD_sWMCXZnD3tWx5rVgG_ady_（封面 media_id: kOcXH4SytIYVIpYksTGfHhKrrAsHQHadwSN-fXJoaQ9q6BVUgj6YwAF5MULhnUui）。 2026-08-11 第三轮重存（--theme grace 蓝色主题 + 热门链接每行独立段落），**最终 media_id: kOcXH4SytIYVIpYksTGfHjvQPbPGS2DF64v59UrOuiD0sNdQRMeEu4r1Dyk6nHdc**。第二轮草稿（…HpQTReGi…）作废需删除。保存草稿必须显式加 --theme grace（wechat-api.ts 不读 EXTEND.md default_theme）。 2026-08-12 已发布，wechatUrl 已回填：https://mp.weixin.qq.com/s/QcZUcxYZUw27_J2ykESUHA（同步回填 MTP 篇正文「Indexer 篇（待发布）」为内链）。'
+  notes: '排期 2026-08-11（Obsidian 第3.1+3.3课优先）。KV 落盘篇链接已回填（08-10 已发布）。V4 技术报告 §2.3.1：indexer
+    低秩双投影（W_DQ 降维 + W_IUQ 升维）、逐头 ReLU 打分加权求和、top-k 选择；V3.2 DSA 桥接；indexer 显存/算力账。CSA
+    篇（08-04）只略提 DSA，本篇深化选块机制。 2026-08-11 重存草稿（尾部改为「🔥 近期热门」Top 6 每篇一行，去掉合集箭头链），新 media_id:
+    kOcXH4SytIYVIpYksTGfHpQTReGi2L28I4hIHTCoD_sWMCXZnD3tWx5rVgG_ady_（封面 media_id:
+    kOcXH4SytIYVIpYksTGfHhKrrAsHQHadwSN-fXJoaQ9q6BVUgj6YwAF5MULhnUui）。 2026-08-11
+    第三轮重存（--theme grace 蓝色主题 + 热门链接每行独立段落），**最终 media_id: kOcXH4SytIYVIpYksTGfHjvQPbPGS2DF64v59UrOuiD0sNdQRMeEu4r1Dyk6nHdc**。第二轮草稿（…HpQTReGi…）作废需删除。保存草稿必须显式加
+    --theme grace（wechat-api.ts 不读 EXTEND.md default_theme）。 2026-08-12 已发布，wechatUrl
+    已回填：https://mp.weixin.qq.com/s/QcZUcxYZUw27_J2ykESUHA（同步回填 MTP 篇正文「Indexer 篇（待发布）」为内链）。'
 - slug: 2026-08-12-deepseek-mtp
   title: 多Token预测：一次猜两个词，快1.8倍
   series: DeepSeek 技术解密
@@ -219,7 +324,28 @@ articles:
   wechat_url: https://mp.weixin.qq.com/s/EmjgFu5C6bkpltYidQhLRQ
   media_id: kOcXH4SytIYVIpYksTGfHoCMVjp5B7OnAn4ipjHqyitEI_Vbg3ZSxBLL9TIgEETM
   cover_media_id: kOcXH4SytIYVIpYksTGfHr_q_sSLIa-e_IE2HN9jsbjTFL1uE6RPCVxbsXwg4suY
-  notes: '2026-08-15 用户确认已发布（排期 2026-08-12），wechatUrl 已回填：https://mp.weixin.qq.com/s/EmjgFu5C6bkpltYidQhLRQ。状态从 drafting 更正为 published（此前状态过时）。 2026-08-12 按 SEO 洞察改标题（多Token预测：一次猜两个词，快1.8倍）+ 重写开头后重存草稿（remote-api --theme grace --color blue）：**新 media_id: kOcXH4SytIYVIpYksTGfHoCMVjp5B7OnAn4ipjHqyitEI_Vbg3ZSxBLL9TIgEETM**（封面 media_id: kOcXH4SytIYVIpYksTGfHr_q_sSLIa-e_IE2HN9jsbjTFL1uE6RPCVxbsXwg4suY）。标题 21 字，中文搜索词「多Token预测」前置；开头改为痛点先行（陌生人可读），摘要补「多 Token 预测」。封面未重生成，仍为旧标题图（用户确认不管）。旧草稿 …pL9OBJDj… 需在草稿箱删除。发布前在网页确认声明原创。 2026-08-12 用户看卡后二改重存草稿（remote-api --theme grace --color blue）：**新 media_id: kOcXH4SytIYVIpYksTGfHpL9OBJDjBhBIuXviDLPZsf1qLUrYy-t6AaBBuID3nRY**（封面 media_id: kOcXH4SytIYVIpYksTGfHpKnLA1TdiIuEpUbb8zKRunfO-cczGFWedXtyPxp6cDI）。修改：删除正文开头大标题（保留 frontmatter 标题作为推送标题）；「一个词一个词往外蹦」改为「一个 token 一个 token 往外蹦」（开头 + §一 + 摘要同步，§一 内「第 1/2 个词」改 token，§三「第 2 个词还没生成」改 token）。质量复查：长句 0、禁词 0、待发布 0。作废草稿需在草稿箱删除：…h4ABDQJ…（首轮终检版）与 …moamT…（08-09 初版）。 2026-08-12 发布前终检打磨后重存草稿（remote-api --theme grace --color blue）：**新 media_id: kOcXH4SytIYVIpYksTGfHh4ABDQJ_pGjXVE2M34GHEttLhM1ptGiIsuYo-gU_C3N**（封面 media_id: kOcXH4SytIYVIpYksTGfHgAq8WQ3cXOq5GyYV0x-KUZ_TNJ1lb3PLecBHkHCPPp3）。修复：长句拆分 10 处归零（含列表块断句）；CTA 补「收藏 ⭐」；GLM-5.2 消融口径补注（接受长度 4.56→5.47 的消融里 MTP 步数设 7，vLLM 服务配置为 5）；候选词示例改「的地得」。事实全部对源核验：V3 报告 §5.4.3（接受率 85-90%、1.8× TPS）、Table 4（39.0→41.4/20.7→26.8/67.5→66.6/44.5→53.7）、V4-Pro HF config（num_nextn_predict_layers=1）与 V4 报告（MTP 配置同 V3、1.6T）、GLM-5.2 blog/config（IndexShare+KVShare、index_share_for_mtp_iteration=True）、vLLM recipe（num_speculative_tokens 5）。质量门禁全过（长句 0、禁词 0、待发布 0、图片路径/话题标签/尾部链接核对）。旧草稿 …moamT… 及旧封面 …iswi… 需在草稿箱删除。 草稿已入草稿箱（2026-08-09，remote-api）。6 图齐（封面 21:9 + 5 正文 1:1，文字已与正文核对）。正文引用 Indexer 篇已替换为真实链接（2026-08-12：https://mp.weixin.qq.com/s/QcZUcxYZUw27_J2ykESUHA）；尾部近期热门 Top 6 发布前核对。标题/主线经事实核查修正：1.8× 为推理 TPS（V3 §5.4.3），非训练加速。 排期 2026-08-12（Obsidian 第5课后半）。V3 继承设计：Multi-Token Prediction 并行预测下一 token + 侧头链；训练加速 ~1.8×、推理投机解码两用；V4 保持 MTP 深度 1。小篇幅架构篇。'
+  notes: '2026-08-15 用户确认已发布（排期 2026-08-12），wechatUrl 已回填：https://mp.weixin.qq.com/s/EmjgFu5C6bkpltYidQhLRQ。状态从
+    drafting 更正为 published（此前状态过时）。 2026-08-12 按 SEO 洞察改标题（多Token预测：一次猜两个词，快1.8倍）+
+    重写开头后重存草稿（remote-api --theme grace --color blue）：**新 media_id: kOcXH4SytIYVIpYksTGfHoCMVjp5B7OnAn4ipjHqyitEI_Vbg3ZSxBLL9TIgEETM**（封面
+    media_id: kOcXH4SytIYVIpYksTGfHr_q_sSLIa-e_IE2HN9jsbjTFL1uE6RPCVxbsXwg4suY）。标题
+    21 字，中文搜索词「多Token预测」前置；开头改为痛点先行（陌生人可读），摘要补「多 Token 预测」。封面未重生成，仍为旧标题图（用户确认不管）。旧草稿
+    …pL9OBJDj… 需在草稿箱删除。发布前在网页确认声明原创。 2026-08-12 用户看卡后二改重存草稿（remote-api --theme grace
+    --color blue）：**新 media_id: kOcXH4SytIYVIpYksTGfHpL9OBJDjBhBIuXviDLPZsf1qLUrYy-t6AaBBuID3nRY**（封面
+    media_id: kOcXH4SytIYVIpYksTGfHpKnLA1TdiIuEpUbb8zKRunfO-cczGFWedXtyPxp6cDI）。修改：删除正文开头大标题（保留
+    frontmatter 标题作为推送标题）；「一个词一个词往外蹦」改为「一个 token 一个 token 往外蹦」（开头 + §一 + 摘要同步，§一 内「第
+    1/2 个词」改 token，§三「第 2 个词还没生成」改 token）。质量复查：长句 0、禁词 0、待发布 0。作废草稿需在草稿箱删除：…h4ABDQJ…（首轮终检版）与
+    …moamT…（08-09 初版）。 2026-08-12 发布前终检打磨后重存草稿（remote-api --theme grace --color blue）：**新
+    media_id: kOcXH4SytIYVIpYksTGfHh4ABDQJ_pGjXVE2M34GHEttLhM1ptGiIsuYo-gU_C3N**（封面
+    media_id: kOcXH4SytIYVIpYksTGfHgAq8WQ3cXOq5GyYV0x-KUZ_TNJ1lb3PLecBHkHCPPp3）。修复：长句拆分
+    10 处归零（含列表块断句）；CTA 补「收藏 ⭐」；GLM-5.2 消融口径补注（接受长度 4.56→5.47 的消融里 MTP 步数设 7，vLLM 服务配置为
+    5）；候选词示例改「的地得」。事实全部对源核验：V3 报告 §5.4.3（接受率 85-90%、1.8× TPS）、Table 4（39.0→41.4/20.7→26.8/67.5→66.6/44.5→53.7）、V4-Pro
+    HF config（num_nextn_predict_layers=1）与 V4 报告（MTP 配置同 V3、1.6T）、GLM-5.2 blog/config（IndexShare+KVShare、index_share_for_mtp_iteration=True）、vLLM
+    recipe（num_speculative_tokens 5）。质量门禁全过（长句 0、禁词 0、待发布 0、图片路径/话题标签/尾部链接核对）。旧草稿
+    …moamT… 及旧封面 …iswi… 需在草稿箱删除。 草稿已入草稿箱（2026-08-09，remote-api）。6 图齐（封面 21:9 + 5 正文
+    1:1，文字已与正文核对）。正文引用 Indexer 篇已替换为真实链接（2026-08-12：https://mp.weixin.qq.com/s/QcZUcxYZUw27_J2ykESUHA）；尾部近期热门
+    Top 6 发布前核对。标题/主线经事实核查修正：1.8× 为推理 TPS（V3 §5.4.3），非训练加速。 排期 2026-08-12（Obsidian
+    第5课后半）。V3 继承设计：Multi-Token Prediction 并行预测下一 token + 侧头链；训练加速 ~1.8×、推理投机解码两用；V4
+    保持 MTP 深度 1。小篇幅架构篇。'
   files:
     weixin: true
     draft: true
@@ -236,7 +362,31 @@ articles:
     draft: true
     outline: true
     cover: true
-  notes: '排期 2026-08-13（Obsidian 第16课优先）。DP+TP+PP+CP+EP 五维各切什么、一块 GPU 的多重身份、通信量汇总（V4 配置）、DualPipe/CP 协同。训练系统线入口，后接 CP 与 DualPipe/DeepEP。 排期 2026-08-13。五维并行（DP/TP/PP/CP/EP）训练系统线入口，接 MTP 预告。grill 日志：.grill/v4-five-dim-parallel.md（谜题式主线 + 并行账本计算器实验）。experiment.py 已跑通：推理 FP8 20 卡 / FP4 部署 10 卡 / 训练分片后每卡 ~16GB；EP 16GB/层 vs CP 9MB/层（近千倍）；EP 61 层 ≈1TB/step、@IB 50GB/s 约 20s。正文 2618 汉字、超长句 0、禁词 0、算术 10 项全对。配图 6 张（yairouter，1254²）文字与正文一致；封面 00-cover.png 已生成（21:9 请求、实际 1930x815，标题完整）。已保存至公众号草稿箱（remote-api --theme grace，media_id: kOcXH4SytIYVIpYksTGfHk-wzRPQTjjw-wnpy4iAAFZ1QJ-cSm_ZvTZ59TtBkgJU，封面 media_id: kOcXH4SytIYVIpYksTGfHm5NV16--wi1bPZcVijiyUwjZ1-s3BTvg64pTOo0PSIa）。发布前在网页确认声明原创 + 勾选合集。待办：发布后回填 wechatUrl。 2026-08-13 发布前打磨（数字硬伤 + 长句 + 配图）：①「参数的 12 倍」→「4 倍」（10B FP16 例子 80/20）；「省掉 12 倍显存」→「省掉一整份优化器状态」；②FP4 部署 826GB/80 = 10.3 → 「11 块卡」（10 卡 800GB 装不下，experiment.py 同步修 ceil）；③EP/CP「近千倍」→「近 1800 倍」（1738，digest 同步）；④「EP 一层抵得上 CP 全模型」→「是 CP 全模型（61 层）的近 30 倍」（16.1GB vs 61×9MB）；⑤「横跨几十个节点」→「横跨 8 个节点（64 张卡）」（V3 报告 64 GPUs/8 nodes）；⑥「十年前」→「七八年前」（Megatron 2019/3D 2021）；⑦digest+§二「MLA/CSA」→「CSA/HCA」（V4 无 MLA，硬伤）；⑧长句拆分 12 处归零；⑨03-pp-bubble.png 从 §五 移到 §二 PP 段（图位错位）；⑩CTA 补收藏 ⭐；⑪02/04 两张 AI 图承载错误数字已用 yairouter 重新生成并逐字核验（02 底部改「≈ CP 全模型的 30 倍」、04 塔改「4 倍」3橙+1青），prompts/cards.json 同步更新。 2026-08-13 打磨后重存草稿（remote-api --theme grace --color blue）：**新 media_id: kOcXH4SytIYVIpYksTGfHo6-TQ2C8C1iB3t1qphDxsHP5bya9hcpHHSAKv9qYQCQ**（封面 media_id: kOcXH4SytIYVIpYksTGfHl14C6Qjjgl6Z4soSOVWqqfjTDYYzPCACRDpb9ggq7zM）。旧草稿 kOcXH4SytIYVIpYksTGfHk-wzRPQTjjw-wnpy4iAAFZ1QJ-cSm_ZvTZ59TtBkgJU 及旧封面需在草稿箱删除。发布前在网页确认声明原创 + 勾选合集。待办：发布后回填 wechatUrl。 2026-08-13 二改重存草稿：删正文开头大标题（保留 frontmatter 推送标题）；小标题改「四、通信主角」（呼应正文“它是整场戏的主角”）与「结尾：五把刀，各切一刀」；三张尾部堆叠图分散到对应章节（04-ZeRO-1→§三、05-CP→§五、06 留§六，每节一图）。**最终 media_id: kOcXH4SytIYVIpYksTGfHhT1aBInvGvXvFX05BgSzjQSpr4PniSDoqiRdhqWK0mn**（封面同前）。作废草稿需删：…Hk-wzRPQT…（首轮）、…Ho6-TQ2C…（上版）、…HhT1aBInv…（二改）。 2026-08-13 三改重存草稿：小标题「算快」→「算得快」；§六开头代码块（```）改四行加粗段落（微信渲染不保留代码块换行，挤成一行）。**最终 media_id: kOcXH4SytIYVIpYksTGfHrJSEKhpzj60Fr49MD4jx4k5-cpQSARMSz49ePIYM-f3**（封面同前）。 2026-08-14 已发布（2026-08-13 20:00），wechatUrl 已回填：https://mp.weixin.qq.com/s/ae1iwvau14gFCnyfg4hVIw。同步回填：CP 篇（08-14）尾部上篇链接、DualPipe 篇（08-15）「五维并行篇（待发布）」→ 真实内链。'
+  notes: '排期 2026-08-13（Obsidian 第16课优先）。DP+TP+PP+CP+EP 五维各切什么、一块 GPU 的多重身份、通信量汇总（V4
+    配置）、DualPipe/CP 协同。训练系统线入口，后接 CP 与 DualPipe/DeepEP。 排期 2026-08-13。五维并行（DP/TP/PP/CP/EP）训练系统线入口，接
+    MTP 预告。grill 日志：.grill/v4-five-dim-parallel.md（谜题式主线 + 并行账本计算器实验）。experiment.py
+    已跑通：推理 FP8 20 卡 / FP4 部署 10 卡 / 训练分片后每卡 ~16GB；EP 16GB/层 vs CP 9MB/层（近千倍）；EP 61
+    层 ≈1TB/step、@IB 50GB/s 约 20s。正文 2618 汉字、超长句 0、禁词 0、算术 10 项全对。配图 6 张（yairouter，1254²）文字与正文一致；封面
+    00-cover.png 已生成（21:9 请求、实际 1930x815，标题完整）。已保存至公众号草稿箱（remote-api --theme grace，media_id:
+    kOcXH4SytIYVIpYksTGfHk-wzRPQTjjw-wnpy4iAAFZ1QJ-cSm_ZvTZ59TtBkgJU，封面 media_id:
+    kOcXH4SytIYVIpYksTGfHm5NV16--wi1bPZcVijiyUwjZ1-s3BTvg64pTOo0PSIa）。发布前在网页确认声明原创
+    + 勾选合集。待办：发布后回填 wechatUrl。 2026-08-13 发布前打磨（数字硬伤 + 长句 + 配图）：①「参数的 12 倍」→「4 倍」（10B
+    FP16 例子 80/20）；「省掉 12 倍显存」→「省掉一整份优化器状态」；②FP4 部署 826GB/80 = 10.3 → 「11 块卡」（10 卡
+    800GB 装不下，experiment.py 同步修 ceil）；③EP/CP「近千倍」→「近 1800 倍」（1738，digest 同步）；④「EP
+    一层抵得上 CP 全模型」→「是 CP 全模型（61 层）的近 30 倍」（16.1GB vs 61×9MB）；⑤「横跨几十个节点」→「横跨 8 个节点（64
+    张卡）」（V3 报告 64 GPUs/8 nodes）；⑥「十年前」→「七八年前」（Megatron 2019/3D 2021）；⑦digest+§二「MLA/CSA」→「CSA/HCA」（V4
+    无 MLA，硬伤）；⑧长句拆分 12 处归零；⑨03-pp-bubble.png 从 §五 移到 §二 PP 段（图位错位）；⑩CTA 补收藏 ⭐；⑪02/04
+    两张 AI 图承载错误数字已用 yairouter 重新生成并逐字核验（02 底部改「≈ CP 全模型的 30 倍」、04 塔改「4 倍」3橙+1青），prompts/cards.json
+    同步更新。 2026-08-13 打磨后重存草稿（remote-api --theme grace --color blue）：**新 media_id:
+    kOcXH4SytIYVIpYksTGfHo6-TQ2C8C1iB3t1qphDxsHP5bya9hcpHHSAKv9qYQCQ**（封面 media_id:
+    kOcXH4SytIYVIpYksTGfHl14C6Qjjgl6Z4soSOVWqqfjTDYYzPCACRDpb9ggq7zM）。旧草稿 kOcXH4SytIYVIpYksTGfHk-wzRPQTjjw-wnpy4iAAFZ1QJ-cSm_ZvTZ59TtBkgJU
+    及旧封面需在草稿箱删除。发布前在网页确认声明原创 + 勾选合集。待办：发布后回填 wechatUrl。 2026-08-13 二改重存草稿：删正文开头大标题（保留
+    frontmatter 推送标题）；小标题改「四、通信主角」（呼应正文“它是整场戏的主角”）与「结尾：五把刀，各切一刀」；三张尾部堆叠图分散到对应章节（04-ZeRO-1→§三、05-CP→§五、06
+    留§六，每节一图）。**最终 media_id: kOcXH4SytIYVIpYksTGfHhT1aBInvGvXvFX05BgSzjQSpr4PniSDoqiRdhqWK0mn**（封面同前）。作废草稿需删：…Hk-wzRPQT…（首轮）、…Ho6-TQ2C…（上版）、…HhT1aBInv…（二改）。
+    2026-08-13 三改重存草稿：小标题「算快」→「算得快」；§六开头代码块（```）改四行加粗段落（微信渲染不保留代码块换行，挤成一行）。**最终 media_id:
+    kOcXH4SytIYVIpYksTGfHrJSEKhpzj60Fr49MD4jx4k5-cpQSARMSz49ePIYM-f3**（封面同前）。 2026-08-14
+    已发布（2026-08-13 20:00），wechatUrl 已回填：https://mp.weixin.qq.com/s/ae1iwvau14gFCnyfg4hVIw。同步回填：CP
+    篇（08-14）尾部上篇链接、DualPipe 篇（08-15）「五维并行篇（待发布）」→ 真实内链。'
 - slug: 2026-08-14-deepseek-cp
   title: 上下文并行：1M序列为什么切了会坏？
   series: DeepSeek 技术解密
@@ -248,7 +398,17 @@ articles:
     draft: true
     outline: true
     cover: true
-  notes: '排期 2026-08-14（Obsidian 第15课优先，558行最厚笔记）。V4 技术报告 §3.5.3（注意非 §3.4.3）：为什么长序列必须 CP；两阶段通信（跨 rank 传 m 个未压缩 KV → all-gather 压缩 KV）；每 rank 压缩长度 s/m+1；对比 Ring-Attention 为什么不适用压缩稀疏注意力。grill 日志：.grill/contextual-parallelism.md（谜题式主线「切了会坏」+ 切了会坏模拟器实验）。关键校准：V4-Pro 真实压缩比 CSA m=4/HCA m''=128（config.json compress_ratios，弃用笔记 m=64 演示值）；CP 通信沿用 parallel 篇口径 9MB/层（KV entry 576B）；阶段1 发 m 个未压缩 KV、产出 s/m+1 个 entry、select-and-pad 后总长 cp_size·s/m；CP=8 为长上下文训练配置口径（报告未披露数值）。experiment.py 已跑通：朴素 CP 缺/错块 vs 两阶段 CP 与单卡基准逐一比对一致（CSA 277/276/277、HCA 4/2/4），10 个随机种子全过。正文 2714 汉字、超长句 0、禁词 0。配图 6 张已生成（yairouter，1254²）文字与正文一致；封面 00-cover.png 已生成（21:9 请求、实际 1928x816，标题完整）。已保存至公众号草稿箱（remote-api --theme grace，media_id: kOcXH4SytIYVIpYksTGfHrvOeVGcn6GYlHEcOwro-DBgSYs2KVknHY6ntsowjqaP，封面 media_id: kOcXH4SytIYVIpYksTGfHgQDI7PsmMMs7pFaDikEtUje41-bXE11-CehAo3VVqZ0）。发布前在网页确认声明原创 + 勾选合集。待办：发布后回填 wechatUrl + 上篇 parallel 链接。 2026-08-15 已发布，wechatUrl 已回填：https://mp.weixin.qq.com/s/UB_ILj-62K3VBUY4_AopSw。同步回填：DualPipe 篇（08-15）「上下文并行篇（待发布）」→ 真实内链。'
+  notes: '排期 2026-08-14（Obsidian 第15课优先，558行最厚笔记）。V4 技术报告 §3.5.3（注意非 §3.4.3）：为什么长序列必须
+    CP；两阶段通信（跨 rank 传 m 个未压缩 KV → all-gather 压缩 KV）；每 rank 压缩长度 s/m+1；对比 Ring-Attention
+    为什么不适用压缩稀疏注意力。grill 日志：.grill/contextual-parallelism.md（谜题式主线「切了会坏」+ 切了会坏模拟器实验）。关键校准：V4-Pro
+    真实压缩比 CSA m=4/HCA m''=128（config.json compress_ratios，弃用笔记 m=64 演示值）；CP 通信沿用 parallel
+    篇口径 9MB/层（KV entry 576B）；阶段1 发 m 个未压缩 KV、产出 s/m+1 个 entry、select-and-pad 后总长 cp_size·s/m；CP=8
+    为长上下文训练配置口径（报告未披露数值）。experiment.py 已跑通：朴素 CP 缺/错块 vs 两阶段 CP 与单卡基准逐一比对一致（CSA 277/276/277、HCA
+    4/2/4），10 个随机种子全过。正文 2714 汉字、超长句 0、禁词 0。配图 6 张已生成（yairouter，1254²）文字与正文一致；封面 00-cover.png
+    已生成（21:9 请求、实际 1928x816，标题完整）。已保存至公众号草稿箱（remote-api --theme grace，media_id: kOcXH4SytIYVIpYksTGfHrvOeVGcn6GYlHEcOwro-DBgSYs2KVknHY6ntsowjqaP，封面
+    media_id: kOcXH4SytIYVIpYksTGfHgQDI7PsmMMs7pFaDikEtUje41-bXE11-CehAo3VVqZ0）。发布前在网页确认声明原创
+    + 勾选合集。待办：发布后回填 wechatUrl + 上篇 parallel 链接。 2026-08-15 已发布，wechatUrl 已回填：https://mp.weixin.qq.com/s/UB_ILj-62K3VBUY4_AopSw。同步回填：DualPipe
+    篇（08-15）「上下文并行篇（待发布）」→ 真实内链。'
 - slug: 2026-08-15-deepseek-dualpipe-deepep
   title: 训练时GPU在等什么？DualPipe与DeepEP通信解密
   series: DeepSeek 技术解密
@@ -262,7 +422,14 @@ articles:
     draft: true
     outline: true
     cover: true
-  notes: '2026-08-15 打磨后存草稿（remote-api --theme grace --color blue）：删正文 H1 重复标题；长句 23→0 拆分；「只剩 1/4」→「不到原来的 1/3」（45→12.6 实际 28%）；§五去重（MegaMoE 数字出现两次）+「预告/核验」写作词清零。配图 7 张齐：AI 图 4 张（01/02/03/05，grok-imagine-image-quality——上游 gpt-image-2 对该 key 已无权限、zairouter key 失效，改用 grok 模型，中文渲染可靠）+ 脚本图 2 张（04/06，08-12 已生成）+ 封面 00-cover.png（21:9 裁剪自 1280x720，1280x548）。**media_id: kOcXH4SytIYVIpYksTGfHgr8RCMccirTzoR45TM7Jt8c6mAtt49hTERLGQdSvtjY**（封面 media_id: kOcXH4SytIYVIpYksTGfHv0Erz0aQpnBrRkD8yHlKYk8Y0KZ4ms2e87IPzPTDRoF）。2026-08-15 已设置定时发布（20:00）。待办：发布后回填 wechatUrl。 排期 2026-08-15（Obsidian 第10+11课优先）。DualPipe 双向管道把 bubble 压到理论下限 + DeepEP 树形聚合/低秩压缩/Hook 异步 overlap；MoE all-to-all 成本账。可拆两篇（若单篇过长）。'
+  notes: '2026-08-15 打磨后存草稿（remote-api --theme grace --color blue）：删正文 H1 重复标题；长句
+    23→0 拆分；「只剩 1/4」→「不到原来的 1/3」（45→12.6 实际 28%）；§五去重（MegaMoE 数字出现两次）+「预告/核验」写作词清零。配图
+    7 张齐：AI 图 4 张（01/02/03/05，grok-imagine-image-quality——上游 gpt-image-2 对该 key 已无权限、zairouter
+    key 失效，改用 grok 模型，中文渲染可靠）+ 脚本图 2 张（04/06，08-12 已生成）+ 封面 00-cover.png（21:9 裁剪自
+    1280x720，1280x548）。**media_id: kOcXH4SytIYVIpYksTGfHgr8RCMccirTzoR45TM7Jt8c6mAtt49hTERLGQdSvtjY**（封面
+    media_id: kOcXH4SytIYVIpYksTGfHv0Erz0aQpnBrRkD8yHlKYk8Y0KZ4ms2e87IPzPTDRoF）。2026-08-15
+    已设置定时发布（20:00）。待办：发布后回填 wechatUrl。 排期 2026-08-15（Obsidian 第10+11课优先）。DualPipe
+    双向管道把 bubble 压到理论下限 + DeepEP 树形聚合/低秩压缩/Hook 异步 overlap；MoE all-to-all 成本账。可拆两篇（若单篇过长）。'
 - slug: 2026-07-13-BPE
   title: BPE分词：AI为什么把文字切成碎片？
   series: 大模型原理
@@ -331,7 +498,8 @@ articles:
     draft: true
     outline: true
     cover: true
-  notes: '公众号稿、大纲、21:9 封面与 5 张文内图已完成；草稿已保存至公众号草稿箱（media_id: kOcXH4SytIYVIpYksTGfHk6Z-UIezI7D9Ld208I-_GNmBFb62_Gr8y3DfIwypxax）。发布前已核验图片路径、公式格式和 DeepSeek-V4-Pro 配置。排期：7月24日19:30。'
+  notes: '公众号稿、大纲、21:9 封面与 5 张文内图已完成；草稿已保存至公众号草稿箱（media_id: kOcXH4SytIYVIpYksTGfHk6Z-UIezI7D9Ld208I-_GNmBFb62_Gr8y3DfIwypxax）。发布前已核验图片路径、公式格式和
+    DeepSeek-V4-Pro 配置。排期：7月24日19:30。'
 - slug: 2026-07-26-Transformer全景
   title: 注意力找人，FFN存知识：跟一句话走完Transformer
   series: 大模型原理
@@ -367,7 +535,8 @@ articles:
     draft: true
     outline: true
     cover: true
-  notes: 架构全貌篇，KDA+AttnRes+LatentMoE 三轴，含数学直觉。排期：2026-07-28 20:00（Asia/Shanghai）。已发布（frontmatter wechatUrl 已回填；2026-08-09 核查时同步修正 status/wechat_url，原为 scheduled/null 残留）。
+  notes: 架构全貌篇，KDA+AttnRes+LatentMoE 三轴，含数学直觉。排期：2026-07-28 20:00（Asia/Shanghai）。已发布（frontmatter
+    wechatUrl 已回填；2026-08-09 核查时同步修正 status/wechat_url，原为 scheduled/null 残留）。
 - slug: 2026-07-29-SFT
   title: SFT微调：为什么同一个模型，突然就听懂指令了？
   series: 大模型原理
@@ -464,7 +633,14 @@ articles:
     cover: true
   media_id: kOcXH4SytIYVIpYksTGfHrIOnYWBVTLb9t8itZ5vLK2bbMNhIb6k7SP4YRXsqOsV
   cover_media_id: kOcXH4SytIYVIpYksTGfHhN3qXj9pYxPaX0OfccobquAUM3SlrJ41SNp3MaEkzmn
-  notes: '2026-08-16 已存草稿箱（remote-api --theme grace --color blue，md-to-wechat 渲染）。封面 00-cover.png 1280x548 21:9（gpt-image-2 实际 1928x816 裁剪）；4 张正文图 1254²（01 序列决策/02 马尔可夫健忘/03 窗口高阶马尔可夫/04 折扣回报，已逐张目检文字与正文一致、无数字）。⚠️ 旧草稿（media_id: kOcXH4SytIYVIpYksTGfHpNAuGGVxE3BAumMcTkpwgfM2bT4uV2m_Ego2ok7ftDg，暗色图版）作废需在草稿箱删除。配图按 MTP/GRPO 风格重生成（封面深炭灰+暖金，正文米白亮底+琥珀橙，已逐张目检）。发布前在网页确认声明原创 + 定时 20:00 + 创建「强化学习原理」合集。排期 2026-08-16 20:00。强化学习原理系列第一篇（地基篇①）。兑现 PPO 篇（07-31）「TRPO 数学留到强化学习系列」预告的起点。主线：序列决策需要数学语言——随机过程/马尔可夫性质（健忘）/MDP 五元组/折扣回报收敛。反常识爆点：大模型=上下文窗口内的高阶马尔可夫（128K 阶），agent 长任务崩溃根源。已发布： https://mp.weixin.qq.com/s/SJ8_CpSyp8onm8HLiF3TXA。grill 日志：.grill/reinforcement-learning-series.md + .grill/2026-08-16-mdp.md。素材：作者笔记《强化学习及主要算法简介》(一)(二) + Barto Ch3 + HDP。'
+  notes: '2026-08-16 已存草稿箱（remote-api --theme grace --color blue，md-to-wechat 渲染）。封面
+    00-cover.png 1280x548 21:9（gpt-image-2 实际 1928x816 裁剪）；4 张正文图 1254²（01 序列决策/02
+    马尔可夫健忘/03 窗口高阶马尔可夫/04 折扣回报，已逐张目检文字与正文一致、无数字）。⚠️ 旧草稿（media_id: kOcXH4SytIYVIpYksTGfHpNAuGGVxE3BAumMcTkpwgfM2bT4uV2m_Ego2ok7ftDg，暗色图版）作废需在草稿箱删除。配图按
+    MTP/GRPO 风格重生成（封面深炭灰+暖金，正文米白亮底+琥珀橙，已逐张目检）。发布前在网页确认声明原创 + 定时 20:00 + 创建「强化学习原理」合集。排期
+    2026-08-16 20:00。强化学习原理系列第一篇（地基篇①）。兑现 PPO 篇（07-31）「TRPO 数学留到强化学习系列」预告的起点。主线：序列决策需要数学语言——随机过程/马尔可夫性质（健忘）/MDP
+    五元组/折扣回报收敛。反常识爆点：大模型=上下文窗口内的高阶马尔可夫（128K 阶），agent 长任务崩溃根源。已发布： https://mp.weixin.qq.com/s/SJ8_CpSyp8onm8HLiF3TXA。grill
+    日志：.grill/reinforcement-learning-series.md + .grill/2026-08-16-mdp.md。素材：作者笔记《强化学习及主要算法简介》(一)(二)
+    + Barto Ch3 + HDP。'
 - slug: 2026-08-17-bellman
   title: 贝尔曼方程：为什么只看下一步就够了？
   series: 强化学习原理
@@ -478,7 +654,20 @@ articles:
     cover: true
   media_id: kOcXH4SytIYVIpYksTGfHha6FwZyEfHwuQGNYoONUEyXntUUHrk73LF8lFh6NuDF
   cover_media_id: kOcXH4SytIYVIpYksTGfHqDa-VMGRObVnsfmtIFrS9jBahMrdwJ7b0KD9_BxhPks
-  notes: '强化学习原理系列第二篇（地基篇②）。grill 日志：.grill/2026-08-17-bellman.md（作者逐问收敛：核心承诺=价值函数把未来压成一个数；动机=未来未知+指数爆炸；完整推导只到 V 方程，Q 挂招牌、最优方程露脸；符号卡先教+大小写铁律；确定性三态例子 0.81 呼应首篇；结尾公开修正首篇「同一方程」预告）。草稿 weixin.md 已完成。配图计划 5 张（封面 + 01 一口价 + 02 复式记账 + 03 三态倒推脚本图 + 04 三条路线脚本图）。 2026-08-16 18:00 配图完成：封面 00-cover.png 1280x548 21:9（grok 1568x672 裁剪，标题完整）；正文图 01/02 AI 概念图（vision_glance 逐字核验：简体正确、无数字无英文、无裁切重叠）、03 三态倒推 / 04 三条路线 matplotlib 脚本图（OCR 核验数字与正文一致）。2026-08-16 已存公众号草稿箱（remote-api --theme grace --color blue）；已补上一篇已发布文章链接并重新存新版草稿。 旧版 media_id 为 kOcXH4SytIYVIpYksTGfHpzSvB1r05vvCz2T2b0VobgEWcbIM9O95OSHZsy3eZBb。 2026-08-16 终稿核查：配图5张齐全（封面 gpt-image-2 1915x821 裁 1280x548；01/02 AI 图、03/04 脚本图 vision/OCR 核验通过）；质量门禁：标题18字、禁词0、无待发布、图片路径同级、标签5个、长句仅尾部导航豁免项。尾部合集 URL 待作者提供。 2026-08-17 打磨后重存草稿（remote-api --theme grace --color blue）：修符号表 | 渲染、补 π/策略解释、第四节点出期望线性性、文末改近期热门、公式段补直觉例子。 **新 media_id: kOcXH4SytIYVIpYksTGfHha6FwZyEfHwuQGNYoONUEyXntUUHrk73LF8lFh6NuDF**（封面 kOcXH4SytIYVIpYksTGfHqDa-VMGRObVnsfmtIFrS9jBahMrdwJ7b0KD9_BxhPks）。旧草稿 kOcXH4SytIYVIpYksTGfHmW1zi7CMrfrkKB4-WIJEySEJDbdQ7xc6ToIrqDllA3T 与更早的 …eZBb 需在草稿箱删除。 2026-08-17 系列地图改口：文末预告由多维高斯改为 TD / Q-learning；CTA 去掉「十篇」硬承诺。草稿箱需重存后旧 media_id 作废。 2026-08-18 已发布：https://mp.weixin.qq.com/s/kHvjDKrQElvWXrA92yqAfA'
+  notes: '强化学习原理系列第二篇（地基篇②）。grill 日志：.grill/2026-08-17-bellman.md（作者逐问收敛：核心承诺=价值函数把未来压成一个数；动机=未来未知+指数爆炸；完整推导只到
+    V 方程，Q 挂招牌、最优方程露脸；符号卡先教+大小写铁律；确定性三态例子 0.81 呼应首篇；结尾公开修正首篇「同一方程」预告）。草稿 weixin.md
+    已完成。配图计划 5 张（封面 + 01 一口价 + 02 复式记账 + 03 三态倒推脚本图 + 04 三条路线脚本图）。 2026-08-16 18:00
+    配图完成：封面 00-cover.png 1280x548 21:9（grok 1568x672 裁剪，标题完整）；正文图 01/02 AI 概念图（vision_glance
+    逐字核验：简体正确、无数字无英文、无裁切重叠）、03 三态倒推 / 04 三条路线 matplotlib 脚本图（OCR 核验数字与正文一致）。2026-08-16
+    已存公众号草稿箱（remote-api --theme grace --color blue）；已补上一篇已发布文章链接并重新存新版草稿。 旧版 media_id
+    为 kOcXH4SytIYVIpYksTGfHpzSvB1r05vvCz2T2b0VobgEWcbIM9O95OSHZsy3eZBb。 2026-08-16
+    终稿核查：配图5张齐全（封面 gpt-image-2 1915x821 裁 1280x548；01/02 AI 图、03/04 脚本图 vision/OCR
+    核验通过）；质量门禁：标题18字、禁词0、无待发布、图片路径同级、标签5个、长句仅尾部导航豁免项。尾部合集 URL 待作者提供。 2026-08-17 打磨后重存草稿（remote-api
+    --theme grace --color blue）：修符号表 | 渲染、补 π/策略解释、第四节点出期望线性性、文末改近期热门、公式段补直觉例子。 **新
+    media_id: kOcXH4SytIYVIpYksTGfHha6FwZyEfHwuQGNYoONUEyXntUUHrk73LF8lFh6NuDF**（封面
+    kOcXH4SytIYVIpYksTGfHqDa-VMGRObVnsfmtIFrS9jBahMrdwJ7b0KD9_BxhPks）。旧草稿 kOcXH4SytIYVIpYksTGfHmW1zi7CMrfrkKB4-WIJEySEJDbdQ7xc6ToIrqDllA3T
+    与更早的 …eZBb 需在草稿箱删除。 2026-08-17 系列地图改口：文末预告由多维高斯改为 TD / Q-learning；CTA 去掉「十篇」硬承诺。草稿箱需重存后旧
+    media_id 作废。 2026-08-18 已发布：https://mp.weixin.qq.com/s/kHvjDKrQElvWXrA92yqAfA'
 - slug: 2026-08-18-q-learning
   title: Q-learning是什么？没有转移表怎么解
   series: 强化学习原理
@@ -492,7 +681,13 @@ articles:
     cover: true
   media_id: kOcXH4SytIYVIpYksTGfHm6NvKmf1bd-EoWteS5Y6EDkip-rnFKuEsVeUXSs0vqB
   cover_media_id: kOcXH4SytIYVIpYksTGfHi6_WYVco51nueuF1mmszB9SHIOKdNGZlpmanfDDXMIR
-  notes: 强化学习原理系列第三篇。grill 日志 .grill/2026-08-18-q-learning.md。2026-08-17 已存公众号草稿箱 （remote-api --theme grace --color blue）。封面 00-cover.png 1280x548 21:9（gpt-image-2 1928x816 裁剪，标题完整）。正文 01 概念图 / 02 概念图 / 03-04 脚本图。上篇 wechatUrl 发布后回填。 目录日期暂定 08-18，视第二篇实际发布日顺延。 2026-08-18 打磨：上篇 bellman 已发布，wechatUrl 回填（开头链接 + GRPO 段链接）；删除「多维高斯顺序改了」规划注脚（对单篇读者突兀）；TD 目标「左边/右边」改「前一项/后一项」；结尾预告明确下一篇=策略梯度。 2026-08-18 打磨后重存草稿箱（remote-api --theme grace --color blue，citeStatus=true）：新 media_id kOcXH4SytIYVIpYksTGfHm6NvKmf1bd-EoWteS5Y6EDkip-rnFKuEsVeUXSs0vqB（封面 kOcXH4SytIYVIpYksTGfHi6_WYVco51nueuF1mmszB9SHIOKdNGZlpmanfDDXMIR）。
+  notes: 强化学习原理系列第三篇。grill 日志 .grill/2026-08-18-q-learning.md。2026-08-17 已存公众号草稿箱
+    （remote-api --theme grace --color blue）。封面 00-cover.png 1280x548 21:9（gpt-image-2
+    1928x816 裁剪，标题完整）。正文 01 概念图 / 02 概念图 / 03-04 脚本图。上篇 wechatUrl 发布后回填。 目录日期暂定 08-18，视第二篇实际发布日顺延。
+    2026-08-18 打磨：上篇 bellman 已发布，wechatUrl 回填（开头链接 + GRPO 段链接）；删除「多维高斯顺序改了」规划注脚（对单篇读者突兀）；TD
+    目标「左边/右边」改「前一项/后一项」；结尾预告明确下一篇=策略梯度。 2026-08-18 打磨后重存草稿箱（remote-api --theme grace
+    --color blue，citeStatus=true）：新 media_id kOcXH4SytIYVIpYksTGfHm6NvKmf1bd-EoWteS5Y6EDkip-rnFKuEsVeUXSs0vqB（封面
+    kOcXH4SytIYVIpYksTGfHi6_WYVco51nueuF1mmszB9SHIOKdNGZlpmanfDDXMIR）。
 - slug: 2026-08-18-矩阵秩
   title: 矩阵的秩：为什么低秩在 AI 里无处不在？
   series: 数学直觉
@@ -520,7 +715,11 @@ articles:
     cover: true
   media_id: kOcXH4SytIYVIpYksTGfHnq6LTSaZv-4-JfbaKm_LBBK2IHIzg9rOdJIJtznLKCB
   cover_media_id: kOcXH4SytIYVIpYksTGfHipllF_uZFBj5kQwGECaenoWx1F4WPzV8JCFhYplvgw3
-  notes: '强化学习原理系列第四篇。已发布 2026-08-19，wechatUrl 已回填：https://mp.weixin.qq.com/s/IcoJTY4b1c-p0Njrxb7isA。grill 日志 .grill/2026-08-19-policy-gradient.md。 2026-08-17 已存公众号草稿箱（remote-api --theme grace --color blue）。 封面 00-cover.png 1280x548 21:9（gpt-image-2 1915x821 裁剪，标题完整）。 正文 01 AI 概念图 / 02-04 脚本图。 **media_id: kOcXH4SytIYVIpYksTGfHp9XsS5xVBgs8SqmU5OFlEt4kMlG1YM0Ex2vHyWS2Xu0** （封面 kOcXH4SytIYVIpYksTGfHvVJ_BW9ja2AgqwSG-vessIgtrFoS3tS83Kon-1PCYAn）。'
+  notes: '强化学习原理系列第四篇。已发布 2026-08-19，wechatUrl 已回填：https://mp.weixin.qq.com/s/IcoJTY4b1c-p0Njrxb7isA。grill
+    日志 .grill/2026-08-19-policy-gradient.md。 2026-08-17 已存公众号草稿箱（remote-api --theme
+    grace --color blue）。 封面 00-cover.png 1280x548 21:9（gpt-image-2 1915x821 裁剪，标题完整）。
+    正文 01 AI 概念图 / 02-04 脚本图。 **media_id: kOcXH4SytIYVIpYksTGfHp9XsS5xVBgs8SqmU5OFlEt4kMlG1YM0Ex2vHyWS2Xu0**
+    （封面 kOcXH4SytIYVIpYksTGfHvVJ_BW9ja2AgqwSG-vessIgtrFoS3tS83Kon-1PCYAn）。'
 - slug: 2026-08-19-期望与导数换序
   title: 随机变量为什么不是变量？它其实是个函数
   series: 数学直觉
@@ -545,7 +744,14 @@ articles:
     cover: true
   media_id: kOcXH4SytIYVIpYksTGfHjEpYg-9nifxfPRPjbYKdvDxpx3IHr70vf6uKglH7xoZ
   cover_media_id: kOcXH4SytIYVIpYksTGfHmpJRr6C7LXHbx1GgZcEtPMsN3HmuLTdFBunJ-rH32hH
-  notes: 强化学习原理系列第五篇。grill 日志 .grill/2026-08-20-gaussian-trust-region.md。 2026-08-18 大纲定案（数字例子经蒙特卡洛事实验证：同一 Δμ=0.1，窄方向 KL=0.5 vs 宽方向 KL=0.00005，差 10000 倍；δ=0.01 允许步长 0.014 vs 1.41，差 100 倍）。 封面 00-cover.png 1280x548 21:9（旧标题，待按新标题重生成）。 正文 01/02 AI 概念图 + 03/04 脚本图。 篇4 wechatUrl 已回填 https://mp.weixin.qq.com/s/IcoJTY4b1c-p0Njrxb7isA。 2026-08-20 已存公众号草稿箱（remote-api --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHjEpYg-9nifxfPRPjbYKdvDxpx3IHr70vf6uKglH7xoZ（封面 kOcXH4SytIYVIpYksTGfHmpJRr6C7LXHbx1GgZcEtPMsN3HmuLTdFBunJ-rH32hH），标题已切 B-1「为什么同一步长差1万倍？」(17字)，开头已前置1万倍钩子。旧草稿 kOcXH4SytIYVIpYksTGfHtA4yWHREhGQR796Ewg3t3W1oRRbta6CD5phDoOLVsbY / kOcXH4SytIYVIpYksTGfHhhsZn8X... 作废。
+  notes: 强化学习原理系列第五篇。grill 日志 .grill/2026-08-20-gaussian-trust-region.md。 2026-08-18
+    大纲定案（数字例子经蒙特卡洛事实验证：同一 Δμ=0.1，窄方向 KL=0.5 vs 宽方向 KL=0.00005，差 10000 倍；δ=0.01 允许步长
+    0.014 vs 1.41，差 100 倍）。 封面 00-cover.png 1280x548 21:9（旧标题，待按新标题重生成）。 正文 01/02
+    AI 概念图 + 03/04 脚本图。 篇4 wechatUrl 已回填 https://mp.weixin.qq.com/s/IcoJTY4b1c-p0Njrxb7isA。
+    2026-08-20 已存公众号草稿箱（remote-api --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHjEpYg-9nifxfPRPjbYKdvDxpx3IHr70vf6uKglH7xoZ（封面
+    kOcXH4SytIYVIpYksTGfHmpJRr6C7LXHbx1GgZcEtPMsN3HmuLTdFBunJ-rH32hH），标题已切 B-1「为什么同一步长差1万倍？」(17字)，开头已前置1万倍钩子。旧草稿
+    kOcXH4SytIYVIpYksTGfHtA4yWHREhGQR796Ewg3t3W1oRRbta6CD5phDoOLVsbY / kOcXH4SytIYVIpYksTGfHhhsZn8X...
+    作废。
 - slug: 2026-08-21-多维高斯注解
   title: 协方差矩阵：1个方差怎么变9个数？拆给你看
   series: 数学直觉
@@ -559,7 +765,16 @@ articles:
     cover: true
   media_id: kOcXH4SytIYVIpYksTGfHgF06-QcXm92rKFrgOF9LNcBH7ArLnILCAd1St8TJpPs
   cover_media_id: kOcXH4SytIYVIpYksTGfHvaffJlCCEfBUKYpLADFPRGW3lZ5jBvfPHXxDmjx4Hzr
-  notes: 「AI中的数学」注解篇，接《多维高斯》主文（2026-08-20，https://mp.weixin.qq.com/s/GjNkcQ70B3WBzaVPwqVTgg）。素材直出工作流（raw.md 作者手写段 1-10）。 2026-08-21 爆款标准检查后改稿：开头删系列导航、重写为数字反差钩子（1个数→4个数→9个数 + 非对角=0≠独立的坑）；结构瘦身（一维铺垫两节合一、删过渡节、七节）；首尾闭环补回扣句；术语首次出现处加粗高亮；长句>60字清零、半角标点全角化、错别字修正。 标题三轮定稿：初版「协方差矩阵怎么看」→「协方差矩阵为什么是矩阵？」（同义反复被打回）→ 终稿「协方差矩阵：1个方差怎么变9个数？拆给你看」（21字，数字反差+动作承诺，对标「慢50倍的硬盘反而更快」+「Adam拆给你看」两大爆款模板）。 封面按终稿标题重生成（00-cover.png 1915x821 21:9，gpt-image-2，1→9 数字反差视觉化，标题逐字核验通过）。 2026-08-21 已存公众号草稿箱（remote-api --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHgF06-QcXm92rKFrgOF9LNcBH7ArLnILCAd1St8TJpPs（封面 kOcXH4SytIYVIpYksTGfHvaffJlCCEfBUKYpLADFPRGW3lZ5jBvfPHXxDmjx4Hzr）。旧草稿（旧标题 media_id kOcXH4SytIYVIpYksTGfHtXDp1JnJm3Zn-Fpp5LZT6m6zFaaXfkG6KLOtoVutiwj）需在草稿箱删除。发布前确认：声明原创 + 定时 20:00 + 合集「AI中的数学」。 2026-08-22 TRPO 发布后正文回填链接并完成打磨（长句/长段拆分、补内链×3、修口误×4），重存草稿：media_id kOcXH4SytIYVIpYksTGfHtvsKCFs3go8FzOj3pi00K_xopK7m1VE7wzXtMonGdQV（封面 kOcXH4SytIYVIpYksTGfHjK3ztL7oCakVr-lss3sKMRhIiRg5XAiqvhZY3gGz3d5）。旧草稿 media_id kOcXH4SytIYVIpYksTGfHk_UJkE11ltaaK80hzEICkd-ujbQfhT85zWpSAqRtnbM 需在草稿箱删除。
+  notes: 「AI中的数学」注解篇，接《多维高斯》主文（2026-08-20，https://mp.weixin.qq.com/s/GjNkcQ70B3WBzaVPwqVTgg）。素材直出工作流（raw.md
+    作者手写段 1-10）。 2026-08-21 爆款标准检查后改稿：开头删系列导航、重写为数字反差钩子（1个数→4个数→9个数 + 非对角=0≠独立的坑）；结构瘦身（一维铺垫两节合一、删过渡节、七节）；首尾闭环补回扣句；术语首次出现处加粗高亮；长句>60字清零、半角标点全角化、错别字修正。
+    标题三轮定稿：初版「协方差矩阵怎么看」→「协方差矩阵为什么是矩阵？」（同义反复被打回）→ 终稿「协方差矩阵：1个方差怎么变9个数？拆给你看」（21字，数字反差+动作承诺，对标「慢50倍的硬盘反而更快」+「Adam拆给你看」两大爆款模板）。
+    封面按终稿标题重生成（00-cover.png 1915x821 21:9，gpt-image-2，1→9 数字反差视觉化，标题逐字核验通过）。 2026-08-21
+    已存公众号草稿箱（remote-api --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHgF06-QcXm92rKFrgOF9LNcBH7ArLnILCAd1St8TJpPs（封面
+    kOcXH4SytIYVIpYksTGfHvaffJlCCEfBUKYpLADFPRGW3lZ5jBvfPHXxDmjx4Hzr）。旧草稿（旧标题 media_id
+    kOcXH4SytIYVIpYksTGfHtXDp1JnJm3Zn-Fpp5LZT6m6zFaaXfkG6KLOtoVutiwj）需在草稿箱删除。发布前确认：声明原创
+    + 定时 20:00 + 合集「AI中的数学」。 2026-08-22 TRPO 发布后正文回填链接并完成打磨（长句/长段拆分、补内链×3、修口误×4），重存草稿：media_id
+    kOcXH4SytIYVIpYksTGfHtvsKCFs3go8FzOj3pi00K_xopK7m1VE7wzXtMonGdQV（封面 kOcXH4SytIYVIpYksTGfHjK3ztL7oCakVr-lss3sKMRhIiRg5XAiqvhZY3gGz3d5）。旧草稿
+    media_id kOcXH4SytIYVIpYksTGfHk_UJkE11ltaaK80hzEICkd-ujbQfhT85zWpSAqRtnbM 需在草稿箱删除。
 - slug: 2026-08-21-gaussian-sequel
   title: 高斯为什么二阶就够？非线性去哪了
   series: 数学直觉
@@ -587,7 +802,17 @@ articles:
     cover: true
   media_id: kOcXH4SytIYVIpYksTGfHn9uajJzAAQnZNa5yywEM7p5S6Zb0I3W4lijPNMfLDOg
   cover_media_id: kOcXH4SytIYVIpYksTGfHu879YAahB43iTbBbUrY1-T_qdq5k6TcT4mPtdfCQ9go
-  notes: 「强化学习原理」系列第六篇 TRPO。grill 日志 .grill/2026-08-22-trpo.md（2026-08-21 逐轮追问收敛）。 数字事实验证（2026-08-21 蒙特卡洛）：KL 闭式 vs 采样对照通过；普通梯度 η=0.1 一步 KL=0.5=预算 50 倍；TRPO 闭式解一步 (0.00014, 1.414) KL 恰好 =0.01；方向 45°→89.9°；行为概率 0.954→0.840。 标题作者定稿 T1「梯度一步踩爆50倍预算，TRPO为什么敢走？」（22字，数字反差+反直觉疑问，对标「慢50倍的硬盘反而更快」）。 2026-08-21 作者 9 条意见已全部执行：删「现场教学」小标题（改「泰勒展开：坡不只有方向，还有弯度」「拉格朗日：预算超标，交罚金」）、拉格朗日交代高等数学背景说人话、第七章加高维椭球注释（引《高维空间为什么全是壳》Nrfr-90Fpu3mFDML9s0d1Q + Adam 篇 aSLVO-otvr2rxIU1kr2eAA）、共轭梯度改「镜花水月」口吻、结尾问题改「推导→计算意外感」、开头 100 字删系列预告零导航、链接回填（协方差矩阵 5TdhwQ166NRvReN2_atCVQ / 高斯二阶 gs_3y7JXuBLlzR5w6jW6fQ / 主文 GjNkcQ70B3WBzaVPwqVTgg 均验证有效）。 封面按新标题重生成（00-cover.png 1915x821 21:9，标题逐字核验通过）。 2026-08-21 已重新存公众号草稿箱（remote-api --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHn9uajJzAAQnZNa5yywEM7p5S6Zb0I3W4lijPNMfLDOg（封面 kOcXH4SytIYVIpYksTGfHu879YAahB43iTbBbUrY1-T_qdq5k6TcT4mPtdfCQ9go）。旧草稿（旧标题 media_id kOcXH4SytIYVIpYksTGfHmFfMWZhbTI9Ctqc05fhOMBoYCpslN9mKF7FKkUtXpBw）需在草稿箱删除。发布前确认：声明原创 + 定时 20:00 + 合集「强化学习原理」（如已建）。
+  notes: 「强化学习原理」系列第六篇 TRPO。grill 日志 .grill/2026-08-22-trpo.md（2026-08-21 逐轮追问收敛）。
+    数字事实验证（2026-08-21 蒙特卡洛）：KL 闭式 vs 采样对照通过；普通梯度 η=0.1 一步 KL=0.5=预算 50 倍；TRPO 闭式解一步
+    (0.00014, 1.414) KL 恰好 =0.01；方向 45°→89.9°；行为概率 0.954→0.840。 标题作者定稿 T1「梯度一步踩爆50倍预算，TRPO为什么敢走？」（22字，数字反差+反直觉疑问，对标「慢50倍的硬盘反而更快」）。
+    2026-08-21 作者 9 条意见已全部执行：删「现场教学」小标题（改「泰勒展开：坡不只有方向，还有弯度」「拉格朗日：预算超标，交罚金」）、拉格朗日交代高等数学背景说人话、第七章加高维椭球注释（引《高维空间为什么全是壳》Nrfr-90Fpu3mFDML9s0d1Q
+    + Adam 篇 aSLVO-otvr2rxIU1kr2eAA）、共轭梯度改「镜花水月」口吻、结尾问题改「推导→计算意外感」、开头 100 字删系列预告零导航、链接回填（协方差矩阵
+    5TdhwQ166NRvReN2_atCVQ / 高斯二阶 gs_3y7JXuBLlzR5w6jW6fQ / 主文 GjNkcQ70B3WBzaVPwqVTgg
+    均验证有效）。 封面按新标题重生成（00-cover.png 1915x821 21:9，标题逐字核验通过）。 2026-08-21 已重新存公众号草稿箱（remote-api
+    --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHn9uajJzAAQnZNa5yywEM7p5S6Zb0I3W4lijPNMfLDOg（封面
+    kOcXH4SytIYVIpYksTGfHu879YAahB43iTbBbUrY1-T_qdq5k6TcT4mPtdfCQ9go）。旧草稿（旧标题 media_id
+    kOcXH4SytIYVIpYksTGfHmFfMWZhbTI9Ctqc05fhOMBoYCpslN9mKF7FKkUtXpBw）需在草稿箱删除。发布前确认：声明原创
+    + 定时 20:00 + 合集「强化学习原理」（如已建）。
 - slug: 2026-08-23-kl-divergence
   title: KL散度：为什么整个AI共用一把尺子？
   series: 数学直觉
@@ -601,7 +826,16 @@ articles:
     cover: true
   media_id: kOcXH4SytIYVIpYksTGfHtvsKCFs3go8FzOj3pi00K_xopK7m1VE7wzXtMonGdQV
   cover_media_id: kOcXH4SytIYVIpYksTGfHjK3ztL7oCakVr-lss3sKMRhIiRg5XAiqvhZY3gGz3d5
-  notes: 「AI中的数学」系列 KL 散度篇。素材直出工作流：raw.md 作者口述 11 段，structure.md v2 检查点作者批准（术语修正×2、双头硬币算例、series=数学直觉、标题A）。引用源 refs.md：主引 Alemi《KL is All You Need》（图源×3：大象/VAE世界对/扩散链）+ Lilian Weng《From GAN to WGAN》（KL_JS 四联图 + 不重叠分布实验数据），参考资料 6 条带链接。数字事实验证：双头硬币 5 连正=32:1≈97%；KL(N(0,1)||N(3,1))闭式=Δμ²/2=4.5 nats（图表与理论一致）；JS=log2/W=|θ| 摘自 Lilian 原文。质量核查13项全过（长句>60字清零、禁词0、拆字合规、原声句15条逐字保留）。封面 gpt-image-2 两轮定稿（第一版自造副标题作废，第二版无多余文字，1915x821≈21:9，prompts/00-cover.md）。2026-08-22 已存公众号草稿箱（remote-api --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHk_UJkE11ltaaK80hzEICkd-ujbQfhT85zWpSAqRtnbM（封面 kOcXH4SytIYVIpYksTGfHoCwvFQT6P9CZPEWus1Dl3cYXZW9J08Gn8Uk2CCq6koc）。⚠️ 正文 TRPO 链接为「待发布」占位，TRPO 发布后必须回填微信 URL 再重存草稿。发布前确认：声明原创 + 定时 20:00 + 合集「AI中的数学」。 2026-08-22 TRPO 发布后正文回填链接并完成打磨（长句/长段拆分、补内链×3、修口误×4），重存草稿：media_id kOcXH4SytIYVIpYksTGfHtvsKCFs3go8FzOj3pi00K_xopK7m1VE7wzXtMonGdQV（封面 kOcXH4SytIYVIpYksTGfHjK3ztL7oCakVr-lss3sKMRhIiRg5XAiqvhZY3gGz3d5）。旧草稿 media_id kOcXH4SytIYVIpYksTGfHk_UJkE11ltaaK80hzEICkd-ujbQfhT85zWpSAqRtnbM 需在草稿箱删除。
+  notes: 「AI中的数学」系列 KL 散度篇。素材直出工作流：raw.md 作者口述 11 段，structure.md v2 检查点作者批准（术语修正×2、双头硬币算例、series=数学直觉、标题A）。引用源
+    refs.md：主引 Alemi《KL is All You Need》（图源×3：大象/VAE世界对/扩散链）+ Lilian Weng《From GAN
+    to WGAN》（KL_JS 四联图 + 不重叠分布实验数据），参考资料 6 条带链接。数字事实验证：双头硬币 5 连正=32:1≈97%；KL(N(0,1)||N(3,1))闭式=Δμ²/2=4.5
+    nats（图表与理论一致）；JS=log2/W=|θ| 摘自 Lilian 原文。质量核查13项全过（长句>60字清零、禁词0、拆字合规、原声句15条逐字保留）。封面
+    gpt-image-2 两轮定稿（第一版自造副标题作废，第二版无多余文字，1915x821≈21:9，prompts/00-cover.md）。2026-08-22
+    已存公众号草稿箱（remote-api --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHk_UJkE11ltaaK80hzEICkd-ujbQfhT85zWpSAqRtnbM（封面
+    kOcXH4SytIYVIpYksTGfHoCwvFQT6P9CZPEWus1Dl3cYXZW9J08Gn8Uk2CCq6koc）。⚠️ 正文 TRPO 链接为「待发布」占位，TRPO
+    发布后必须回填微信 URL 再重存草稿。发布前确认：声明原创 + 定时 20:00 + 合集「AI中的数学」。 2026-08-22 TRPO 发布后正文回填链接并完成打磨（长句/长段拆分、补内链×3、修口误×4），重存草稿：media_id
+    kOcXH4SytIYVIpYksTGfHtvsKCFs3go8FzOj3pi00K_xopK7m1VE7wzXtMonGdQV（封面 kOcXH4SytIYVIpYksTGfHjK3ztL7oCakVr-lss3sKMRhIiRg5XAiqvhZY3gGz3d5）。旧草稿
+    media_id kOcXH4SytIYVIpYksTGfHk_UJkE11ltaaK80hzEICkd-ujbQfhT85zWpSAqRtnbM 需在草稿箱删除。
 - slug: 2026-08-24-ppo-math
   title: PPO只用0.2的clip，凭什么顶替0.01预算？
   series: 强化学习原理
@@ -615,7 +849,21 @@ articles:
     cover: false
   media_id: kOcXH4SytIYVIpYksTGfHm_I24lKipql05OQetSem3kBAIRQbgOWsIsv2aiK2WbA
   cover_media_id: kOcXH4SytIYVIpYksTGfHt5F3SyBtjzs61oRCDNhMtg0WBgG6JxloMXgY1RQ-fdM
-  notes: 「强化学习原理」系列第七篇 PPO 数学（路标⑦）。grill 日志 .grill/2026-08-24-ppo-math.md（2026-08-23 七轮追问收敛），outline.md 作者检查点通过 + 三维定稿标题（作者亲拟「PPO只用0.2的clip，凭什么顶替0.01预算？」24字 破例，保留英文 clip 防歧义）。数字事实验证（2026-08-23 蒙特卡洛，K=500 分类策略）：KL≈½E[(log r)²] 三尺度误差 <2%；log 域不对称 0.8 头 0.2231；ε=0.2 → KL 上界 0.0249=δ 的 2.5 倍；ε 扫描 0.006/0.025/0.064；KL=0.022 步长下 ε=0.2 截断 32.0% 样本；一阶近似误差 ε=0.2 低估 19.7%（二成）/ε=0.3 低估 29.3%（近三成）。2026-08-23 初稿完成 + 作者要求人格化改写（情绪/立场/说人话/去 AI 味）+ 完整质量检查 13 项与恢复期 B 六条全过（长句 0、禁词 0、开头零导航、4838 可视字符在 3.5-5k 口径内）。2026-08-23 出图完成：脚本图 3 张（01/02/04 数字与正文逐字一致，截断比例统一为采样加权 32.0%，等权口径 32.4% 备注在 outline）+ AI 图 03-two-rulers（双尺子，无文字）+ 封面 00-cover.png（1916x821=21:9，标题逐字核验：仅逗号/问号为半角）。2026-08-23 已存公众号草稿箱（baoyu remote-api，theme=grace color=blue）：media_id kOcXH4SytIYVIpYksTGfHm_I24lKipql05OQetSem3kBAIRQbgOWsIsv2aiK2WbA（封面 kOcXH4SytIYVIpYksTGfHt5F3SyBtjzs61oRCDNhMtg0WBgG6JxloMXgY1RQ-fdM），正文图 4 张已上传。2026-08-24 审查补「下一篇预告」（GAE，路标⑧，按 outline 既定文案）后重存草稿（remote-api --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHm_I24lKipql05OQetSem3kBAIRQbgOWsIsv2aiK2WbA（封面 kOcXH4SytIYVIpYksTGfHt5F3SyBtjzs61oRCDNhMtg0WBgG6JxloMXgY1RQ-fdM）。旧草稿（…HpUltpU…）作废需在草稿箱删除。 2026-08-24 作者在微信后台手动编辑（措辞×2、加不对称展开、拆/并段×5、结尾问题改「评论区说出理由」、引导段加转发、热门区 KL 死链换 PPO基础篇/高维空间/KV缓存 3 篇已发布链接、正文黑天鹅 KL 引用去链接化）+ 手动设置文中广告位。已用 draft/get 拉取远端全文逐段比对，全部同步回 weixin.md（本地=远端，待发布残留 0）。⚠️ 广告位是后台 UI 设置，API 无字段、重存草稿（draft/add 新建）后必须重新手动设置广告位。2026-08-24 已发布：https://mp.weixin.qq.com/s/AjxvcBFTJkWeRRPDr5YAjA。
+  notes: 「强化学习原理」系列第七篇 PPO 数学（路标⑦）。grill 日志 .grill/2026-08-24-ppo-math.md（2026-08-23
+    七轮追问收敛），outline.md 作者检查点通过 + 三维定稿标题（作者亲拟「PPO只用0.2的clip，凭什么顶替0.01预算？」24字 破例，保留英文
+    clip 防歧义）。数字事实验证（2026-08-23 蒙特卡洛，K=500 分类策略）：KL≈½E[(log r)²] 三尺度误差 <2%；log 域不对称
+    0.8 头 0.2231；ε=0.2 → KL 上界 0.0249=δ 的 2.5 倍；ε 扫描 0.006/0.025/0.064；KL=0.022 步长下
+    ε=0.2 截断 32.0% 样本；一阶近似误差 ε=0.2 低估 19.7%（二成）/ε=0.3 低估 29.3%（近三成）。2026-08-23 初稿完成
+    + 作者要求人格化改写（情绪/立场/说人话/去 AI 味）+ 完整质量检查 13 项与恢复期 B 六条全过（长句 0、禁词 0、开头零导航、4838 可视字符在
+    3.5-5k 口径内）。2026-08-23 出图完成：脚本图 3 张（01/02/04 数字与正文逐字一致，截断比例统一为采样加权 32.0%，等权口径
+    32.4% 备注在 outline）+ AI 图 03-two-rulers（双尺子，无文字）+ 封面 00-cover.png（1916x821=21:9，标题逐字核验：仅逗号/问号为半角）。2026-08-23
+    已存公众号草稿箱（baoyu remote-api，theme=grace color=blue）：media_id kOcXH4SytIYVIpYksTGfHm_I24lKipql05OQetSem3kBAIRQbgOWsIsv2aiK2WbA（封面
+    kOcXH4SytIYVIpYksTGfHt5F3SyBtjzs61oRCDNhMtg0WBgG6JxloMXgY1RQ-fdM），正文图 4 张已上传。2026-08-24
+    审查补「下一篇预告」（GAE，路标⑧，按 outline 既定文案）后重存草稿（remote-api --theme grace --color blue）：media_id
+    kOcXH4SytIYVIpYksTGfHm_I24lKipql05OQetSem3kBAIRQbgOWsIsv2aiK2WbA（封面 kOcXH4SytIYVIpYksTGfHt5F3SyBtjzs61oRCDNhMtg0WBgG6JxloMXgY1RQ-fdM）。旧草稿（…HpUltpU…）作废需在草稿箱删除。
+    2026-08-24 作者在微信后台手动编辑（措辞×2、加不对称展开、拆/并段×5、结尾问题改「评论区说出理由」、引导段加转发、热门区 KL 死链换 PPO基础篇/高维空间/KV缓存
+    3 篇已发布链接、正文黑天鹅 KL 引用去链接化）+ 手动设置文中广告位。已用 draft/get 拉取远端全文逐段比对，全部同步回 weixin.md（本地=远端，待发布残留
+    0）。⚠️ 广告位是后台 UI 设置，API 无字段、重存草稿（draft/add 新建）后必须重新手动设置广告位。2026-08-24 已发布：https://mp.weixin.qq.com/s/AjxvcBFTJkWeRRPDr5YAjA。
 - slug: 2026-08-25-gae
   title: GAE：100步的功劳，为什么只认最近17步？
   series: 强化学习原理
@@ -629,7 +877,25 @@ articles:
     cover: true
   media_id: kOcXH4SytIYVIpYksTGfHrAQIFf1UA1IFk8ytwFYPA8-ERzGU710lfICxkrm_hWv
   cover_media_id: kOcXH4SytIYVIpYksTGfHrwu_c4xeRsjVdfURv1Lbes0-wBSZFpx19IcoW8d91rf
-  notes: 「强化学习原理」系列第八篇 GAE（路标⑤，策略梯度篇立约「完整式子放到后面」+ PPO 篇预告兑现）。grill 日志 .grill/2026-08-25-gae.md（2026-08-23 八轮追问收敛：认知交付=功劳分摊器、数学=全链轻推、叙事=agent 连续剧、验证=λ 扫描、标题=λ 方差反差、开头=连续剧场景、文末=功劳分法站队）。outline.md 作者检查点 T1 通过（标题「GAE：100步的功劳，为什么只认最近17步？」21字）。数字事实验证（2026-08-24 蒙特卡洛，线性走廊随机游走 + 噪声奖励 + 带误差 critic，60 万轨迹）：λ=1 方差是 λ=0.95 的 8.5 倍、λ=0.5 的 91 倍、λ=0 的 124 倍；有效视野 16.8 vs 100 步；critic 误差进账 λ=1 偏差 −0.39 vs λ=0.95 −0.09 vs λ=0 +0.003。2026-08-23 初稿完成 + 质量检查 13 项与恢复期 B 六条全过（长句 0、禁词 0、开头零导航、3827 可视字符在 3.5-5k 口径内）。2026-08-23 出图完成：脚本图 2 张（01-eff-horizon 29%/82%/16.8、02-lambda-sweep 1.03/1.40/6.95/15.0/60.9/128.1 + 8.5×/91× 标注，数字与正文逐字一致）+ AI 图 2 张（03-td-error 意外称重、04-credit-book 折扣链，无文字）+ 封面 00-cover.png（1915x821=21:9，标题逐字核验：GAE 大写、100/17 完整）。2026-08-23 已存公众号草稿箱（baoyu remote-api，theme=grace color=blue）：media_id kOcXH4SytIYVIpYksTGfHhpwtqBjlXi2V8TkAzNsKzdLfe_IOT3iG1DLG_Nayhuh（封面 kOcXH4SytIYVIpYksTGfHj-pM4J2wICkJjm86ZnmvfuXwLagG5U0t6RcwJ_75fq8）。⚠️ 旧草稿 kOcXH4SytIYVIpYksTGfHhpwtqBjlXi2V8TkAzNsKzdLfe_IOT3iG1DLG_Nayhuh（封面 kOcXH4SytIYVIpYksTGfHj-pM4J2wICkJjm86ZnmvfuXwLagG5U0t6RcwJ_75fq8）待删。 2026-08-24 核查：正文已无「待发布后回填」残留；尾部「近期热门」按新规则（AGENTS.md 微信文章链接规则）改为实际热门榜 Top 5（取自 content/navigation/menu-config.md，贴图不计入、不含当前篇）：KV缓存SSD/高维空间/Adam/DeepSeek-V4为何不用MLA/Softmax，链接行不留空行（修复公众号端列表空行）。重存草稿（remote-api，theme=grace color=blue）：media_id kOcXH4SytIYVIpYksTGfHrAQIFf1UA1IFk8ytwFYPA8-ERzGU710lfICxkrm_hWv（封面 kOcXH4SytIYVIpYksTGfHrwu_c4xeRsjVdfURv1Lbes0-wBSZFpx19IcoW8d91rf）。⚠️ 待办：发布前确认声明原创 + 定时 20:00 + 合集「强化学习原理」；若此前有后台手动设置（如广告位），重存后需重设。 2026-08-24 按新规则（scripts/hot_articles.py 固化脚本）改尾部为脚本生成：audit Top 6（KV/高维/Adam/DeepSeek-V4/Softmax/SFT，贴图自动过滤）+ 本文引用文章（策略梯度、MDP），链接行间无空行；重存草稿（remote-api）：media_id kOcXH4SytIYVIpYksTGfHrAQIFf1UA1IFk8ytwFYPA8-ERzGU710lfICxkrm_hWv（封面 kOcXH4SytIYVIpYksTGfHrwu_c4xeRsjVdfURv1Lbes0-wBSZFpx19IcoW8d91rf）。中间版本草稿 …HjL74w… 与 …HtHoRH… 均待删。脚本自检：python3 scripts/hot_articles.py --self-check 通过。
+  notes: 「强化学习原理」系列第八篇 GAE（路标⑤，策略梯度篇立约「完整式子放到后面」+ PPO 篇预告兑现）。grill 日志 .grill/2026-08-25-gae.md（2026-08-23
+    八轮追问收敛：认知交付=功劳分摊器、数学=全链轻推、叙事=agent 连续剧、验证=λ 扫描、标题=λ 方差反差、开头=连续剧场景、文末=功劳分法站队）。outline.md
+    作者检查点 T1 通过（标题「GAE：100步的功劳，为什么只认最近17步？」21字）。数字事实验证（2026-08-24 蒙特卡洛，线性走廊随机游走 +
+    噪声奖励 + 带误差 critic，60 万轨迹）：λ=1 方差是 λ=0.95 的 8.5 倍、λ=0.5 的 91 倍、λ=0 的 124 倍；有效视野
+    16.8 vs 100 步；critic 误差进账 λ=1 偏差 −0.39 vs λ=0.95 −0.09 vs λ=0 +0.003。2026-08-23
+    初稿完成 + 质量检查 13 项与恢复期 B 六条全过（长句 0、禁词 0、开头零导航、3827 可视字符在 3.5-5k 口径内）。2026-08-23
+    出图完成：脚本图 2 张（01-eff-horizon 29%/82%/16.8、02-lambda-sweep 1.03/1.40/6.95/15.0/60.9/128.1
+    + 8.5×/91× 标注，数字与正文逐字一致）+ AI 图 2 张（03-td-error 意外称重、04-credit-book 折扣链，无文字）+ 封面
+    00-cover.png（1915x821=21:9，标题逐字核验：GAE 大写、100/17 完整）。2026-08-23 已存公众号草稿箱（baoyu
+    remote-api，theme=grace color=blue）：media_id kOcXH4SytIYVIpYksTGfHhpwtqBjlXi2V8TkAzNsKzdLfe_IOT3iG1DLG_Nayhuh（封面
+    kOcXH4SytIYVIpYksTGfHj-pM4J2wICkJjm86ZnmvfuXwLagG5U0t6RcwJ_75fq8）。⚠️ 旧草稿 kOcXH4SytIYVIpYksTGfHhpwtqBjlXi2V8TkAzNsKzdLfe_IOT3iG1DLG_Nayhuh（封面
+    kOcXH4SytIYVIpYksTGfHj-pM4J2wICkJjm86ZnmvfuXwLagG5U0t6RcwJ_75fq8）待删。 2026-08-24
+    核查：正文已无「待发布后回填」残留；尾部「近期热门」按新规则（AGENTS.md 微信文章链接规则）改为实际热门榜 Top 5（取自 content/navigation/menu-config.md，贴图不计入、不含当前篇）：KV缓存SSD/高维空间/Adam/DeepSeek-V4为何不用MLA/Softmax，链接行不留空行（修复公众号端列表空行）。重存草稿（remote-api，theme=grace
+    color=blue）：media_id kOcXH4SytIYVIpYksTGfHrAQIFf1UA1IFk8ytwFYPA8-ERzGU710lfICxkrm_hWv（封面
+    kOcXH4SytIYVIpYksTGfHrwu_c4xeRsjVdfURv1Lbes0-wBSZFpx19IcoW8d91rf）。⚠️ 待办：发布前确认声明原创
+    + 定时 20:00 + 合集「强化学习原理」；若此前有后台手动设置（如广告位），重存后需重设。 2026-08-24 按新规则（scripts/hot_articles.py
+    固化脚本）改尾部为脚本生成：audit Top 6（KV/高维/Adam/DeepSeek-V4/Softmax/SFT，贴图自动过滤）+ 本文引用文章（策略梯度、MDP），链接行间无空行；重存草稿（remote-api）：media_id
+    kOcXH4SytIYVIpYksTGfHrAQIFf1UA1IFk8ytwFYPA8-ERzGU710lfICxkrm_hWv（封面 kOcXH4SytIYVIpYksTGfHrwu_c4xeRsjVdfURv1Lbes0-wBSZFpx19IcoW8d91rf）。中间版本草稿
+    …HjL74w… 与 …HtHoRH… 均待删。脚本自检：python3 scripts/hot_articles.py --self-check 通过。
 - slug: 2026-08-24-dsh-harness
   title: DeepSeek Harness社区自己人开撕：创新何在
   series: Agent前线
@@ -641,7 +907,8 @@ articles:
     draft: false
     outline: false
     cover: false
-  notes: 贴图（图片消息），合集 Agent 前线。素材 /home/skyscribe/图片/贴图 三张：崔添翼给 Yifan Xu 炮轰帖点赞截图、炮轰原文、DSH 架构图。标题「DeepSeek DSH自己人开撕」17字。公众号后台发表记录确认：2026-08-24 07:00 已发表。合集页 URL 待补。
+  notes: 贴图（图片消息），合集 Agent 前线。素材 /home/skyscribe/图片/贴图 三张：崔添翼给 Yifan Xu 炮轰帖点赞截图、炮轰原文、DSH
+    架构图。标题「DeepSeek DSH自己人开撕」17字。公众号后台发表记录确认：2026-08-24 07:00 已发表。合集页 URL 待补。
 - slug: 2026-08-24-pi-dsh-pruner
   title: Pi这波把DSH剪枝骂惨了
   series: Agent前线
@@ -653,7 +920,9 @@ articles:
     draft: false
     outline: false
     cover: false
-  notes: 贴图（图片消息），合集 Agent 前线。素材 /home/skyscribe/图片/贴图/0824 四张：Pi 锐评 DSH permanently-lossy pruner、Claude 绑定自家 Schema、Harness 像操作系统、Cordis Effect/Coeffect。标题 13 字，贴图公式（当期热点+强立场）。数字 26%～35% / 72%～88% / 19 Session 照截图。公众号后台发表记录确认：2026-08-24 08:00 已发表。合集页 URL 待补。
+  notes: 贴图（图片消息），合集 Agent 前线。素材 /home/skyscribe/图片/贴图/0824 四张：Pi 锐评 DSH permanently-lossy
+    pruner、Claude 绑定自家 Schema、Harness 像操作系统、Cordis Effect/Coeffect。标题 13 字，贴图公式（当期热点+强立场）。数字
+    26%～35% / 72%～88% / 19 Session 照截图。公众号后台发表记录确认：2026-08-24 08:00 已发表。合集页 URL 待补。
 - slug: 2026-08-25-pi-maka-harness
   title: Pi 的新架构，答案早就在数据库论文里了
   series: Agent前线
@@ -665,7 +934,11 @@ articles:
     draft: false
     outline: false
     cover: false
-  notes: 贴图（图片消息），合集 Agent 前线。素材 /home/skyscribe/图片/贴图/0825 三张：kabikabi 推特（Pi harness v2 与 Maka 架构撞车、答案在数据库论文里）、小墨同学推特（Mario Zechner 其人）、Pi v3 vs Harness v2 对比表。标题 20 字「Pi 的新架构，答案早就在数据库论文里了」。2026-08-25 检查点作者已确认（纯行业观察版、3 图、照截图口径）；正文 758 字、禁词 0、话题标签 4 个；图 01/02/03 为素材原图直用。公众号后台发表记录确认：2026-08-25 07:05 已发表。Earendil 收购 Mario 入股仅截图口径未联网核实。合集页 URL 待补。
+  notes: 贴图（图片消息），合集 Agent 前线。素材 /home/skyscribe/图片/贴图/0825 三张：kabikabi 推特（Pi harness
+    v2 与 Maka 架构撞车、答案在数据库论文里）、小墨同学推特（Mario Zechner 其人）、Pi v3 vs Harness v2 对比表。标题
+    20 字「Pi 的新架构，答案早就在数据库论文里了」。2026-08-25 检查点作者已确认（纯行业观察版、3 图、照截图口径）；正文 758 字、禁词 0、话题标签
+    4 个；图 01/02/03 为素材原图直用。公众号后台发表记录确认：2026-08-25 07:05 已发表。Earendil 收购 Mario 入股仅截图口径未联网核实。合集页
+    URL 待补。
 - slug: 2026-08-26-knowledge-distillation
   title: 蒸馏是抄袭？为什么越抄越学不会？
   series: 数学直觉
@@ -679,7 +952,15 @@ articles:
     cover: true
   media_id: kOcXH4SytIYVIpYksTGfHgP-ZbeSteFkCagnwwxlTZHY0R5_ETSJQvdP9DWuwfHB
   cover_media_id: kOcXH4SytIYVIpYksTGfHl4u-bPxO7d5iv6DNWHT69XlAWAudEdg2QeVsa7ePnnA
-  notes: 恢复期数学番外（规划番外 A）。2026-08-24 已存公众号草稿箱（remote-api，theme=grace color=blue），正文图 4 张已上传。未定时、未群发。发布前确认：声明原创 + 定时 20:00 + 合集「AI中的数学」。2026-08-26 作者审查后修改：开头换作者版（含孔乙己等）、梯度节补 1/T 因子（数字改 +0.097/−0.048，图 02 同步）、新增「RL 冷启动」节（R1 冷启动数千条长 CoT；AIME 2024 蒸馏版 32B 72.6 vs R1 本体 79.8）、每段≤2 句、角注分段、去说书词、合集行加 SFT 链接。重存草稿（remote-api --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHgP-ZbeSteFkCagnwwxlTZHY0R5_ETSJQvdP9DWuwfHB（封面 kOcXH4SytIYVIpYksTGfHl4u-bPxO7d5iv6DNWHT69XlAWAudEdg2QeVsa7ePnnA）。⚠️ 45166 踩坑（2026-08-26）：合集行 KL 链接丢一个字符（G1PUOuwURoo… 缺 x，应为 G1PUOuwxURoo…）导致 invalid content hint，微信会对 content 内 mp.weixin.qq.com/s/ 链接做文章存在性校验，链接错即 45166 且 hint 每次随机；二分定位：旧版成功稿逐块回填新版锁定。发布前检查：mp 链接与旧版全量比对。
+  notes: 恢复期数学番外（规划番外 A）。2026-08-24 已存公众号草稿箱（remote-api，theme=grace color=blue），正文图
+    4 张已上传。未定时、未群发。发布前确认：声明原创 + 定时 20:00 + 合集「AI中的数学」。2026-08-26 作者审查后修改：开头换作者版（含孔乙己等）、梯度节补
+    1/T 因子（数字改 +0.097/−0.048，图 02 同步）、新增「RL 冷启动」节（R1 冷启动数千条长 CoT；AIME 2024 蒸馏版 32B
+    72.6 vs R1 本体 79.8）、每段≤2 句、角注分段、去说书词、合集行加 SFT 链接。重存草稿（remote-api --theme grace
+    --color blue）：media_id kOcXH4SytIYVIpYksTGfHgP-ZbeSteFkCagnwwxlTZHY0R5_ETSJQvdP9DWuwfHB（封面
+    kOcXH4SytIYVIpYksTGfHl4u-bPxO7d5iv6DNWHT69XlAWAudEdg2QeVsa7ePnnA）。⚠️ 45166 踩坑（2026-08-26）：合集行
+    KL 链接丢一个字符（G1PUOuwURoo… 缺 x，应为 G1PUOuwxURoo…）导致 invalid content hint，微信会对 content
+    内 mp.weixin.qq.com/s/ 链接做文章存在性校验，链接错即 45166 且 hint 每次随机；二分定位：旧版成功稿逐块回填新版锁定。发布前检查：mp
+    链接与旧版全量比对。
 - slug: 2026-08-28-information-entropy
   title: 信息熵：压缩1000倍，为什么信息反而少？
   series: 数学直觉
@@ -691,7 +972,27 @@ articles:
     draft: false
     outline: true
     cover: false
-  notes: 恢复期数学篇（8-28 档；2026-08-27 作者排期调整：原 8-27 档顺延至 8-28，8-27 改发 GLM+Qwen 架构热点文；AlphaGo 顺延至 8-29）。grill 日志 .grill/2026-08-28-information-entropy.md（2026-08-25 七轮收敛）。标题 T1「信息熵：压缩率差1000倍，谁的信息更多？」21字（实测 1006× 锁定，正文逐字一致）。认知交付：意外=信息（1.000 vs 0.469 bit）+ 困惑度=AI的没把握（perp=e^H，0.9/0.1→1.38）。数字事实验证（2026-08-25 闭式）：zip 1MB 循环→994B（1006×）/随机→1,000,316B（+0.03%）；熵表 1.000/0.469/2.000/3.322；困惑度表 1.38/2.00/1.12/4.00/10.00/40.00；随机字节 perp 256。原声槽 5 条逐字进稿（xz 压缩/胡说八道/玄学好奇/确定性度量/掷骰子+爱因斯坦）。2026-08-25 作者补边界节「zip 和 AI 的压缩不是一回事」（无损/有损/AI 三种机制 + Ilya 压缩即智能从信息论读）+ 骰子 AI 图 04-dice.png。质量自查：正文口径 3599/全文 5203（含尾部链接；对照 GAE 5926 同口径）、禁词 0（钩子/伏笔/AI腔/说人话就是）、原声 5 条逐字在场、长句拆至 60 字内仅余参考资料行（豁免）、图片 4 张全在、热门区脚本生成且 --self-check 通过。2026-08-25 图全部出齐（00-cover 21:9 标题逐字核验 / 01 熵曲线 / 03 zip 对比 / 04 骰子 AI 图），15 项核查机检全过。⚠️ 标题二轮改定为 T2 后封面已按 T2 重新生成（旧 T1 封面弃用）。2026-08-25 已存公众号草稿箱（remote-api --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHqGMhNOG8CGOkczBGtcwPh3oKw9UP9AKciR4h9S6ty3s（封面 kOcXH4SytIYVIpYksTGfHnMtyfKUFZx6YqZHWR_aRftozBspSolsf3Rcmb3pScbN），正文图 3 张已上传（01/03 脚本图 + 04 骰子）。未定时、未群发。⚠️ 发布前确认：声明原创 + 定时 20:00 + 合集「AI中的数学」；发布后补 wechatUrl。 2026-08-28 爆款规律复盘后三轮改定标题 T3「信息熵：压缩1000倍，为什么信息反而少？」（为什么+反而句式对标 KV缓存爆款；避开 T1 主语歧义；T2 选择疑问句留档弃用）：开头删与第一节引文重复的玄学短句、AI 钩子前移到驱动问题段（留存优先）；第三节末悬念句改用原声逐字、第六节去重复；系列导航改「蒸馏是抄袭？为什么越抄越学不会？（待发布）」；「信息量量的」加逗号消歧；热门区已重跑 hot_articles.py 替换；封面已按 T3 重新生成并读图逐字验证（1915x821）。⚠️ 标题/封面已变，草稿箱旧 media_id 作废，发布前须重存草稿。 2026-08-28 已按 T3 标题+新封面重存草稿箱（remote-api，theme=grace color=blue）：media_id kOcXH4SytIYVIpYksTGfHvrPIei21nCYOmLnamlzjAcWssGOlkc6Aw8BjjV6wltu（封面 kOcXH4SytIYVIpYksTGfHkTvhtukUVzX5OyYohskbfkcF7xoa-CI_2heG11gzj5s），正文图 3 张已上传（04-dice 自动压 <1MB JPEG）。11 个 mp 链接全量校验通过（45166 预检）。旧 T2 media_id kOcXH4SytIYVIpYksTGfHqGMhNOG8CGOkczBGtcwPh3oKw9UP9AKciR4h9S6ty3s 作废（旧封面 kOcXH4SytIYVIpYksTGfHnMtyfKUFZx6YqZHWR_aRftozBspSolsf3Rcmb3pScbN）。未定时、未群发。发布前：声明原创 + 定时 20:00 + 勾合集「AI中的数学」。
+  notes: 恢复期数学篇（8-28 档；2026-08-27 作者排期调整：原 8-27 档顺延至 8-28，8-27 改发 GLM+Qwen 架构热点文；AlphaGo
+    顺延至 8-29）。grill 日志 .grill/2026-08-28-information-entropy.md（2026-08-25 七轮收敛）。标题
+    T1「信息熵：压缩率差1000倍，谁的信息更多？」21字（实测 1006× 锁定，正文逐字一致）。认知交付：意外=信息（1.000 vs 0.469 bit）+
+    困惑度=AI的没把握（perp=e^H，0.9/0.1→1.38）。数字事实验证（2026-08-25 闭式）：zip 1MB 循环→994B（1006×）/随机→1,000,316B（+0.03%）；熵表
+    1.000/0.469/2.000/3.322；困惑度表 1.38/2.00/1.12/4.00/10.00/40.00；随机字节 perp 256。原声槽
+    5 条逐字进稿（xz 压缩/胡说八道/玄学好奇/确定性度量/掷骰子+爱因斯坦）。2026-08-25 作者补边界节「zip 和 AI 的压缩不是一回事」（无损/有损/AI
+    三种机制 + Ilya 压缩即智能从信息论读）+ 骰子 AI 图 04-dice.png。质量自查：正文口径 3599/全文 5203（含尾部链接；对照 GAE
+    5926 同口径）、禁词 0（钩子/伏笔/AI腔/说人话就是）、原声 5 条逐字在场、长句拆至 60 字内仅余参考资料行（豁免）、图片 4 张全在、热门区脚本生成且
+    --self-check 通过。2026-08-25 图全部出齐（00-cover 21:9 标题逐字核验 / 01 熵曲线 / 03 zip 对比 / 04
+    骰子 AI 图），15 项核查机检全过。⚠️ 标题二轮改定为 T2 后封面已按 T2 重新生成（旧 T1 封面弃用）。2026-08-25 已存公众号草稿箱（remote-api
+    --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHqGMhNOG8CGOkczBGtcwPh3oKw9UP9AKciR4h9S6ty3s（封面
+    kOcXH4SytIYVIpYksTGfHnMtyfKUFZx6YqZHWR_aRftozBspSolsf3Rcmb3pScbN），正文图 3 张已上传（01/03
+    脚本图 + 04 骰子）。未定时、未群发。⚠️ 发布前确认：声明原创 + 定时 20:00 + 合集「AI中的数学」；发布后补 wechatUrl。 2026-08-28
+    爆款规律复盘后三轮改定标题 T3「信息熵：压缩1000倍，为什么信息反而少？」（为什么+反而句式对标 KV缓存爆款；避开 T1 主语歧义；T2 选择疑问句留档弃用）：开头删与第一节引文重复的玄学短句、AI
+    钩子前移到驱动问题段（留存优先）；第三节末悬念句改用原声逐字、第六节去重复；系列导航改「蒸馏是抄袭？为什么越抄越学不会？（待发布）」；「信息量量的」加逗号消歧；热门区已重跑
+    hot_articles.py 替换；封面已按 T3 重新生成并读图逐字验证（1915x821）。⚠️ 标题/封面已变，草稿箱旧 media_id 作废，发布前须重存草稿。
+    2026-08-28 已按 T3 标题+新封面重存草稿箱（remote-api，theme=grace color=blue）：media_id kOcXH4SytIYVIpYksTGfHvrPIei21nCYOmLnamlzjAcWssGOlkc6Aw8BjjV6wltu（封面
+    kOcXH4SytIYVIpYksTGfHkTvhtukUVzX5OyYohskbfkcF7xoa-CI_2heG11gzj5s），正文图 3 张已上传（04-dice
+    自动压 <1MB JPEG）。11 个 mp 链接全量校验通过（45166 预检）。旧 T2 media_id kOcXH4SytIYVIpYksTGfHqGMhNOG8CGOkczBGtcwPh3oKw9UP9AKciR4h9S6ty3s
+    作废（旧封面 kOcXH4SytIYVIpYksTGfHnMtyfKUFZx6YqZHWR_aRftozBspSolsf3Rcmb3pScbN）。未定时、未群发。发布前：声明原创
+    + 定时 20:00 + 勾合集「AI中的数学」。
 - slug: 2026-08-29-alphago
   title: AlphaGo 十年：那只狗到底是靠什么赢的？
   series: 强化学习原理（番外）
@@ -705,7 +1006,23 @@ articles:
     cover: true
   media_id: kOcXH4SytIYVIpYksTGfHgnafCJ-imSBYryr1qHgcYlRr66NNL_giFAZ14qMolcF
   cover_media_id: kOcXH4SytIYVIpYksTGfHnqfK31noHUZ-nEc9ajr8Yt1_eJiaMiXwtUMcnSAJGit
-  notes: 「强化学习原理」系列番外 B（8-29 档，原 8-28 档；2026-08-27 作者排期调整：8-27 改发 GLM+Qwen 架构热点文，信息熵顺延 8-28，AlphaGo 顺延 8-29）。grill 日志 .grill/2026-08-30-alphago.md（2026-08-25 十四轮收敛：认知交付=反直觉「算得少反而赢」+ R1 变奏；标题沿用 08-22 候选；结构=两函数→组装→重演六节；AlphaGo 80% + R1 20%；R1 类比=「变奏」非「重演」；数学边界=3 骨架公式（π(a|s)/V(s)/搜索人话）；比喻=老棋手+形势判断师+实习生；名场面=黑37进组装节+白78结尾注脚；文末问题=站队+最难忘一手）。事实核验（2026-08-25，Nature 摘要+英文/中文维基+arXiv 2501.12948）：2016 五番（3-09 白186/3-10 黑211/3-12 白176/3-13 李180胜/3-15 白280）、4:1、黑37=Redmond 评「creative/unique」「大多数职业棋手不会考虑」、黑167=An Younggil「胜利宣言」、白78=神之一手（黄士杰披露价值网络没估为最可能）、74场唯一败、两函数架构（Nature）、获胜概率最大化（80%赢20目 vs 99%赢1.5目）、KGS 16万盘/3000万步+自我对弈数千万盘、DeepSeek-R1 推理弃神经网络奖励模型改规则奖励（GRPO 16输出/KL 0.001/T=1/AIME 15.6%→77.9%）、李开复89%、1920 CPU/280 GPU、深蓝1997、马斯克「还差10年」、AlphaZero 24h超人类（chess/shogi/go）、围棋局面≈2×10^170（Tromp 2016）。⚠️ 未核验不收：13层CNN（不写层数）、「DeepSeek 试过 MCTS 未落地」（论文正文无原句，第6节改用规则奖励对比）。原声槽 6 条逐字进稿（满屏新闻闪电击/人类千年前没下过/直觉模糊柯洁马晓春/多试几次更笨方法/三个臭皮匠螺旋上升/AlphaZero碾压后话）。质量自查：正文口径 4879（3.5-5k 内）、禁词 0（钩子/伏笔/AI腔/说人话就是）、原声 6 条逐字在场、AI 长句 0（仅原声豁免）、图片 5 张引用全在+封面 21:9 标题逐字核验（1915x821）、热门区脚本生成（Top 6 无引用追加）、系列箭头链（待更新）、合集 URL 按 RL 篇惯例不硬编码（GAE 同款）、白78/180手/74场补回。15 项核查+B 门禁 6 条全过。未存草稿箱、未发布。⚠️ 发布前确认：声明原创 + 定时 20:00 + 合集「强化学习原理」；2026-08-25 已存公众号草稿箱（remote-api --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHgnafCJ-imSBYryr1qHgcYlRr66NNL_giFAZ14qMolcF（封面 kOcXH4SytIYVIpYksTGfHnqfK31noHUZ-nEc9ajr8Yt1_eJiaMiXwtUMcnSAJGit），正文图 5 张已上传（01/02 脚本图 + 03/04/05 AI 图，3 张大图自动压缩 JPEG 82）。未定时、未群发。⚠️ 发布前确认：声明原创 + 定时 20:00 + 合集「强化学习原理」；发布后补 wechatUrl。
+  notes: 「强化学习原理」系列番外 B（8-29 档，原 8-28 档；2026-08-27 作者排期调整：8-27 改发 GLM+Qwen 架构热点文，信息熵顺延
+    8-28，AlphaGo 顺延 8-29）。grill 日志 .grill/2026-08-30-alphago.md（2026-08-25 十四轮收敛：认知交付=反直觉「算得少反而赢」+
+    R1 变奏；标题沿用 08-22 候选；结构=两函数→组装→重演六节；AlphaGo 80% + R1 20%；R1 类比=「变奏」非「重演」；数学边界=3
+    骨架公式（π(a|s)/V(s)/搜索人话）；比喻=老棋手+形势判断师+实习生；名场面=黑37进组装节+白78结尾注脚；文末问题=站队+最难忘一手）。事实核验（2026-08-25，Nature
+    摘要+英文/中文维基+arXiv 2501.12948）：2016 五番（3-09 白186/3-10 黑211/3-12 白176/3-13 李180胜/3-15
+    白280）、4:1、黑37=Redmond 评「creative/unique」「大多数职业棋手不会考虑」、黑167=An Younggil「胜利宣言」、白78=神之一手（黄士杰披露价值网络没估为最可能）、74场唯一败、两函数架构（Nature）、获胜概率最大化（80%赢20目
+    vs 99%赢1.5目）、KGS 16万盘/3000万步+自我对弈数千万盘、DeepSeek-R1 推理弃神经网络奖励模型改规则奖励（GRPO 16输出/KL
+    0.001/T=1/AIME 15.6%→77.9%）、李开复89%、1920 CPU/280 GPU、深蓝1997、马斯克「还差10年」、AlphaZero
+    24h超人类（chess/shogi/go）、围棋局面≈2×10^170（Tromp 2016）。⚠️ 未核验不收：13层CNN（不写层数）、「DeepSeek
+    试过 MCTS 未落地」（论文正文无原句，第6节改用规则奖励对比）。原声槽 6 条逐字进稿（满屏新闻闪电击/人类千年前没下过/直觉模糊柯洁马晓春/多试几次更笨方法/三个臭皮匠螺旋上升/AlphaZero碾压后话）。质量自查：正文口径
+    4879（3.5-5k 内）、禁词 0（钩子/伏笔/AI腔/说人话就是）、原声 6 条逐字在场、AI 长句 0（仅原声豁免）、图片 5 张引用全在+封面 21:9
+    标题逐字核验（1915x821）、热门区脚本生成（Top 6 无引用追加）、系列箭头链（待更新）、合集 URL 按 RL 篇惯例不硬编码（GAE 同款）、白78/180手/74场补回。15
+    项核查+B 门禁 6 条全过。未存草稿箱、未发布。⚠️ 发布前确认：声明原创 + 定时 20:00 + 合集「强化学习原理」；2026-08-25 已存公众号草稿箱（remote-api
+    --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHgnafCJ-imSBYryr1qHgcYlRr66NNL_giFAZ14qMolcF（封面
+    kOcXH4SytIYVIpYksTGfHnqfK31noHUZ-nEc9ajr8Yt1_eJiaMiXwtUMcnSAJGit），正文图 5 张已上传（01/02
+    脚本图 + 03/04/05 AI 图，3 张大图自动压缩 JPEG 82）。未定时、未群发。⚠️ 发布前确认：声明原创 + 定时 20:00 + 合集「强化学习原理」；发布后补
+    wechatUrl。
 - slug: 2026-08-30-multimodal-split
   title: GLM-5.3 说视觉没用，转头带上原生视觉
   series: 开源大模型技术揭秘
@@ -717,21 +1034,51 @@ articles:
     draft: false
     outline: true
     cover: true
-  media_id: kOcXH4SytIYVIpYksTGfHjAKJcw_-Brtm4yduFE2TPkPWPeC0DvTHRfZdQYaWYWp
+  media_id: kOcXH4SytIYVIpYksTGfHigJXhVYv_vjhBYV5qFFzEfywHoy8dUzKHRaSVao3KgC
   cover_media_id: kOcXH4SytIYVIpYksTGfHnHP0z8qN7oab3TuxO2jyMUlSyoZAcZW9geVilVqQSzH
-  notes: 视觉/多模态机动篇（G 组试水，2026-08-27 立项）。grill 日志 .grill/2026-08-27-multimodal-split.md（三轮收敛：先写不发；切口=三巨头观点对照；标题定稿）。素材核验：DeepSeek V4-Flash-Vision-Exp 2026-08-21 上线（图片 384 token 上限、Agent 基准跑分、社区实测认不出梁文锋照片）；Kimi K3 2.8T 总参 / MoonViT-V2 从零训；K2.5 早期融合 15T 混合 token + 零视觉 SFT；DeepSeek-VL 消融 100% 图文 MMLU -10.3 / 70:30 -0.3；百度 Unlimited OCR 作者疑似 DeepSeek OCR 核心魏浩然（36氪 2026-06-22）；Janus-Pro 2025-01-27 支撑「2025 年初多模态」原声。原声槽 7 条逐字进稿（opencode issue 场景/曲线救国/组件论一家之言/学艺不精+研究员出走/技术有争议用户需求实在/有条件选带视觉/OCR 偏差）。2026-08-27 已存公众号草稿箱（remote-api --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHpLphu8HdCumcS675Omkg6jJeXnj4DcI16-_hQlsJNQz（封面 kOcXH4SytIYVIpYksTGfHixMHR0E0JQik7LDudHqmFLmVIb_gT-ljaCIHlvzJLoV），正文图 4 张已上传（01/02/03 脚本图 + 04 AI 图）。深度补强后重存（新增「一张图，是怎么被翻译进大脑的」节，正文 4068 字）；旧草稿 kOcXH4SytIYVIpYksTGfHpLphu8HdCumcS675Omkg6jJeXnj4DcI16-_hQlsJNQz 作废可删。2026-08-28 爆款规律复盘后改定标题「GLM-5.3 说视觉没用，转头带上原生视觉」+ digest/关键词/开头/正文多处重写（01/02/03 图重画、封面 prompt 重写）：封面已按新标题重新生成并读图逐字验证（1915x821），热门区 hot_articles.py 重跑一致、--self-check 通过；2026-08-28 已按新标题+新封面重存草稿箱（remote-api --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHjAKJcw_-Brtm4yduFE2TPkPWPeC0DvTHRfZdQYaWYWp（封面 kOcXH4SytIYVIpYksTGfHnHP0z8qN7oab3TuxO2jyMUlSyoZAcZW9geVilVqQSzH），正文图 5 张已上传（01/02/03 脚本图 + 05/04 AI 图，04 自动压 <1MB JPEG 82）。旧 media_id kOcXH4SytIYVIpYksTGfHiZk2n5AO6MmCSOPgoue-G6LPuJyoqxUD9C_aQIvNX0s 作废可删。未定时、未群发。⚠️ 发布前确认：声明原创 + 定时 20:00 + 合集「开源大模型技术揭秘」；尾部热门文章区需 hot_articles.py 生成；发布后补 wechatUrl。
+  notes: 视觉/多模态机动篇（G 组试水，2026-08-27 立项）。grill 日志 .grill/2026-08-27-multimodal-split.md（三轮收敛：先写不发；切口=三巨头观点对照；标题定稿）。素材核验：DeepSeek
+    V4-Flash-Vision-Exp 2026-08-21 上线（图片 384 token 上限、Agent 基准跑分、社区实测认不出梁文锋照片）；Kimi
+    K3 2.8T 总参 / MoonViT-V2 从零训；K2.5 早期融合 15T 混合 token + 零视觉 SFT；DeepSeek-VL 消融 100%
+    图文 MMLU -10.3 / 70:30 -0.3；百度 Unlimited OCR 作者疑似 DeepSeek OCR 核心魏浩然（36氪 2026-06-22）；Janus-Pro
+    2025-01-27 支撑「2025 年初多模态」原声。原声槽 7 条逐字进稿（opencode issue 场景/曲线救国/组件论一家之言/学艺不精+研究员出走/技术有争议用户需求实在/有条件选带视觉/OCR
+    偏差）。2026-08-27 已存公众号草稿箱（remote-api --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHpLphu8HdCumcS675Omkg6jJeXnj4DcI16-_hQlsJNQz（封面
+    kOcXH4SytIYVIpYksTGfHixMHR0E0JQik7LDudHqmFLmVIb_gT-ljaCIHlvzJLoV），正文图 4 张已上传（01/02/03
+    脚本图 + 04 AI 图）。深度补强后重存（新增「一张图，是怎么被翻译进大脑的」节，正文 4068 字）；旧草稿 kOcXH4SytIYVIpYksTGfHpLphu8HdCumcS675Omkg6jJeXnj4DcI16-_hQlsJNQz
+    作废可删。2026-08-28 爆款规律复盘后改定标题「GLM-5.3 说视觉没用，转头带上原生视觉」+ digest/关键词/开头/正文多处重写（01/02/03
+    图重画、封面 prompt 重写）：封面已按新标题重新生成并读图逐字验证（1915x821），热门区 hot_articles.py 重跑一致、--self-check
+    通过；2026-08-28 已按新标题+新封面重存草稿箱（remote-api --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHjAKJcw_-Brtm4yduFE2TPkPWPeC0DvTHRfZdQYaWYWp（封面
+    kOcXH4SytIYVIpYksTGfHnHP0z8qN7oab3TuxO2jyMUlSyoZAcZW9geVilVqQSzH），正文图 5 张已上传（01/02/03
+    脚本图 + 05/04 AI 图，04 自动压 <1MB JPEG 82）。旧 media_id kOcXH4SytIYVIpYksTGfHiZk2n5AO6MmCSOPgoue-G6LPuJyoqxUD9C_aQIvNX0s
+    作废可删。2026-08-30 质量检测（15 项全过）+ 改期 08-30 发（大数定律已提前 08-29 发，08-30 空档）：frontmatter 标题同步为「GLM-5.3 说视觉没用，转头带上原生视觉」（此前本地文件仍是旧标题）、弯引号 9 处统一「」、错别字「赛→塞」、「后面会拆→拆解」、「我在开头说的 proxy 和 MCP 曲线救国」改「社区常说的」（开头重写后引用失效）、长句拆 10 处（原声/引用豁免）、数字实时核验（Hy4 08-28 发布 770B/49B 纯文本无视觉 ✓、AA V4 Flash Vision 51 vs V4 Flash 0731 52 低 1 分 ✓）。目录名改 2026-08-30-multimodal-split。已按新标题重存草稿箱（remote-api --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHigJXhVYv_vjhBYV5qFFzEfywHoy8dUzKHRaSVao3KgC。未定时、未群发。⚠️ 发布前确认：声明原创 + 定时 20:00 + 合集「开源大模型技术揭秘」；发布后补 wechatUrl。
 - slug: 2026-08-27-glm-qwen-architecture
   title: GLM-5.3-Flash 和 Qwen4 架构：注意力为什么都不够用了？
   series: 开源大模型技术揭秘
-  status: drafting
-  published_date: null
-  wechat_url: null
+  status: published
+  published_date: '2026-08-27'
+  wechat_url: https://mp.weixin.qq.com/s/5w1mEVLW5igvJ28Dn6pe9A
   files:
     weixin: false
     draft: false
     outline: false
     cover: false
-  notes: 2026-08-27 立项（热点机动，替换原 8-27 信息熵档；信息熵顺延 8-28，AlphaGo 顺延 8-29）。背景：GLM-5.3-Flash（08-26 发布，Ox Alpha 揭晓）与 Qwen3.8-Flash-Next（08-26 23:00 开源，Qwen4 架构预览）同一天亮出下一代架构，均为「混合注意力 + 稀疏」路线。GLM：320B-A18B、45 层 3:1（34 KDA + 11 MLA/DSA）、注意力计算 -3.01×/KV cache -4.44×、mHC 残差、IndexPool、MIT 开源、1M 上下文、原生多模态、100T tokens/天全中国芯片。Qwen：125B-A6B + 51B n-gram 嵌入、48 层 12×(3 GDN + 1 QSA)、四分支 Gated Residual、Muon+AdamW、训练成本 1/9、Qwen4 架构预览。⚠️ 写稿前必须实时核验全部数字（docs/data-freshness.md）。grill 日志 .grill/2026-08-27-glm-qwen-architecture.md（三轮收敛：认知交付=注意力正在被拆掉+稀疏化大方向；标题定稿「智谱阿里为什么拆注意力？KV缓存砍4.4倍」21 字符，对标 DeepSeek-V4为何不用MLA 同构；开头=场景对比；结构=六节弧线：为什么拆→GLM怎么拆→Qwen怎么拆→殊途同归→稠密还没死→回扣）。原声槽 7 条逐字进稿（token-stats 实测/牛来揭晓/100T中国芯片/别听自媒体瞎吹/稀疏化10年共识/稠密判死刑为时尚早/tradeoff哲学）。事实核验（2026-08-27 实时搜索）：GLM-5.3-Flash 320B-A18B/45层3:1/注意力-3.01×/KV-4.44×/MIT/1M/原生多模态/100T中国芯片；Qwen3.8-Flash-Next 125B-A6B+51B n-gram/48层12×(3GDN+1QSA)/训练成本1/9/262K原生；Qwen3.8-27B 27B稠密/AA Index 52追平V4 Flash 50/Agentic 51超V4 Pro 50/LiveCodeBench 90.3超Opus 4.6 Max 88.8/SWE-bench Pro 61.7/开源两天下载破百万。质量自查：正文 3622 字（3.5-5k 内）、禁词 0、原声 7 条逐字在场、开头 100 字场景对比无系列导航、引用旧文 8 处微信 URL 全在、热门区 hot_articles.py 生成（Top 6 + 引用 6 篇）、话题标签 5 个、长句仅剩原声槽/表格（豁免）、「拆过」改「拆解过」、15 项核查全过。图 5 张全出齐（00-cover 21:9 标题逐字核验两行完整/01 成本曲线脚本图/02 架构对照脚本图/03 拆注意力概念图/04 稀疏化共识概念图）。2026-08-27 已存公众号草稿箱（remote-api --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHuol0AdlisFBG6X74yqTZKx8hfhR0lMb5HQ8Le-xoJhC（封面 kOcXH4SytIYVIpYksTGfHvWw5MsIAUjzbsE0MGfQiTwDEp53zHOD1_H84ORdlvBM），正文图 4 张已上传（01/02 脚本图 + 03/04 AI 图，2 张大图自动压缩 JPEG 82）。未定时、未群发。⚠️ 发布前确认：声明原创 + 定时 20:00 + 合集「开源大模型技术揭秘」；发布后补 wechatUrl。
+  notes: 2026-08-27 立项（热点机动，替换原 8-27 信息熵档；信息熵顺延 8-28，AlphaGo 顺延 8-29）。背景：GLM-5.3-Flash（08-26
+    发布，Ox Alpha 揭晓）与 Qwen3.8-Flash-Next（08-26 23:00 开源，Qwen4 架构预览）同一天亮出下一代架构，均为「混合注意力
+    + 稀疏」路线。GLM：320B-A18B、45 层 3:1（34 KDA + 11 MLA/DSA）、注意力计算 -3.01×/KV cache -4.44×、mHC
+    残差、IndexPool、MIT 开源、1M 上下文、原生多模态、100T tokens/天全中国芯片。Qwen：125B-A6B + 51B n-gram
+    嵌入、48 层 12×(3 GDN + 1 QSA)、四分支 Gated Residual、Muon+AdamW、训练成本 1/9、Qwen4 架构预览。⚠️
+    写稿前必须实时核验全部数字（docs/data-freshness.md）。grill 日志 .grill/2026-08-27-glm-qwen-architecture.md（三轮收敛：认知交付=注意力正在被拆掉+稀疏化大方向；标题定稿「智谱阿里为什么拆注意力？KV缓存砍4.4倍」21
+    字符，对标 DeepSeek-V4为何不用MLA 同构；开头=场景对比；结构=六节弧线：为什么拆→GLM怎么拆→Qwen怎么拆→殊途同归→稠密还没死→回扣）。原声槽
+    7 条逐字进稿（token-stats 实测/牛来揭晓/100T中国芯片/别听自媒体瞎吹/稀疏化10年共识/稠密判死刑为时尚早/tradeoff哲学）。事实核验（2026-08-27
+    实时搜索）：GLM-5.3-Flash 320B-A18B/45层3:1/注意力-3.01×/KV-4.44×/MIT/1M/原生多模态/100T中国芯片；Qwen3.8-Flash-Next
+    125B-A6B+51B n-gram/48层12×(3GDN+1QSA)/训练成本1/9/262K原生；Qwen3.8-27B 27B稠密/AA Index
+    52追平V4 Flash 50/Agentic 51超V4 Pro 50/LiveCodeBench 90.3超Opus 4.6 Max 88.8/SWE-bench
+    Pro 61.7/开源两天下载破百万。质量自查：正文 3622 字（3.5-5k 内）、禁词 0、原声 7 条逐字在场、开头 100 字场景对比无系列导航、引用旧文
+    8 处微信 URL 全在、热门区 hot_articles.py 生成（Top 6 + 引用 6 篇）、话题标签 5 个、长句仅剩原声槽/表格（豁免）、「拆过」改「拆解过」、15
+    项核查全过。图 5 张全出齐（00-cover 21:9 标题逐字核验两行完整/01 成本曲线脚本图/02 架构对照脚本图/03 拆注意力概念图/04 稀疏化共识概念图）。2026-08-27
+    已存公众号草稿箱（remote-api --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHuol0AdlisFBG6X74yqTZKx8hfhR0lMb5HQ8Le-xoJhC（封面
+    kOcXH4SytIYVIpYksTGfHvWw5MsIAUjzbsE0MGfQiTwDEp53zHOD1_H84ORdlvBM），正文图 4 张已上传（01/02
+    脚本图 + 03/04 AI 图，2 张大图自动压缩 JPEG 82）。未定时、未群发。⚠️ 发布前确认：声明原创 + 定时 20:00 + 合集「开源大模型技术揭秘」；发布后补
+    wechatUrl。
 - slug: 2026-07-30-RLHF
   title: RLHF怎么让模型选出好回答？
   series: 训练回路
@@ -744,21 +1091,54 @@ articles:
   status: published
   published_date: '2026-08-12'
   wechat_url: https://mp.weixin.qq.com/s/Nrfr-90Fpu3mFDML9s0d1Q
+- slug: 2026-08-29-大数定律
+  title: 每步都靠猜，上百万Token的长任务怎么不跑偏
+  series: AI中的数学
+  status: published
+  published_date: '2026-08-29'
+  wechat_url: https://mp.weixin.qq.com/s/pbIQrUsChnNuFotkayFtiw
+  files:
+    weixin: true
+    draft: true
+    outline: false
+    cover: true
+  notes: M2 08-30定档（AMEND 15:58：钩子改为opencode 100万token实测“每步采样却长任务准”，骰子放脚注，条件大数定律边界脚注用“条件期望”一句带过，正文只讲平均会收敛，陌生人独立可读）。grill
+    .grill/2026-08-30-M2-大数定律.md 已二次收敛。
+  draft_media_id: kOcXH4SytIYVIpYksTGfHgE7Q4JlXar6NIcyhEf5uruUYgLXL4nItA9EyMjo8lJt
+- slug: 2026-08-31-SVD
+  title: 微调70B模型为什么只需要改0.026%的参数
+  series: AI中的数学
+  status: draft_saved
+  published_date: null
+  wechat_url: null
+  files:
+    weixin: true
+    draft: true
+    outline: true
+    cover: true
+  media_id: kOcXH4SytIYVIpYksTGfHgO-hlkU1WLGutxMhNK3k1cYVDzSN5x91Xl6XmmXIJ77
+  cover_media_id: kOcXH4SytIYVIpYksTGfHkTgdgmVtKZ_Ge7Dk9TKI51iczv_SpNJvD00CMcinMbt
+  notes: B1 SVD 08-31 档。grill .grill/2026-08-31-SVD.md 已完成。标题改为「微调70B模型为什么只需要改0.026%的参数」（22字）。配图5张（yairouter gpt-image-2）。已存公众号草稿箱（remote-api --theme grace --color blue）。2026-08-30 质量检查后重存草稿：SVD 年代改 1870s、参数账改 8192/83.9MB/0.06% 并注明 DeployBase 来源、截断误差数字修正、rank=1 限定 WikiSQL/MNLI、开头改「几年前初学」、原声句 9 处、尾部补合集+热门文章、frontmatter 补 digest/keywords、内联公式全部转 LaTeX、删正文重复标题行。2026-08-30 二次重存：新增 3 张概念图（06 参数点亮/07 应用全景/08 定理点亮 AI，yairouter gpt-image-2），共 8 图。
 summary:
   total: 61
   by_status:
-    published: 56
-    drafting: 5
+    published: 58
+    drafting: 3
   drafting_queue:
   - 2026-08-26-knowledge-distillation
   - 2026-08-28-information-entropy
   - 2026-08-29-alphago
   - 2026-08-30-multimodal-split
-  - 2026-08-27-glm-qwen-architecture
   ready_queue: []
   scheduled_queue: []
   planned_queue: []
   next_publish_date: '2026-08-28'
 plan_notes:
-- 2026-08-28 对齐：信息熵 8-28（今日）→ AlphaGo 8-29 → 多模态 8-30（作者确认）。目录名已同步重命名（git mv），frontmatter date 同步。
-- 2026-08-28 二次对齐：fp8 目录名改发布日期 2026-08-09；补 RLHF(7-30)/维度诅咒(高维空间,8-12) 两条已发布缺漏条目；price-war 两目录为贴图轨道，不入文章台账。
+- 2026-08-28 对齐：信息熵 8-28（今日）→ AlphaGo 8-29 → 多模态 8-30（作者确认）。目录名已同步重命名（git mv），frontmatter
+  date 同步。
+- 2026-08-28 二次对齐：fp8 目录名改发布日期 2026-08-09；补 RLHF(7-30)/维度诅咒(高维空间,8-12) 两条已发布缺漏条目；price-war
+  两目录为贴图轨道，不入文章台账。
+- 2026-08-28 三次对齐：多模态 08-30→09-02 顺延；大数定律 08-30 定档（M2，上接AlphaGo蒙特卡洛，Top2）、SVD 08-31
+  定档（B1，接D1矩阵压缩，Top1）；RL 原理系列整体延后5天（下一RL不早于09-03，AlphaGo 08-29 为番外例外）。
+- 2026-08-30 四次对齐：大数定律已提前 08-29 发布（台账已修正），08-30 空档；多模态回 08-30 发（热点时效性，GLM-5.3-Flash 08-26 热点已过 4 天），SVD 08-31 照旧；GLM 架构文（智谱阿里）台账修正为 08-27 已发布（此前误记 drafting）。
+next_publish_date: '2026-08-30'

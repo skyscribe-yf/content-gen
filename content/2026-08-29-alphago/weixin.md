@@ -1,5 +1,5 @@
 ---
-title: "AlphaGo 十年：那只狗到底是靠什么赢的？"
+title: "十年了，AlphaGo到底靠什么赢了李世石？"
 author: "数解AI"
 date: "2026-08-29"
 type: "案例回望"

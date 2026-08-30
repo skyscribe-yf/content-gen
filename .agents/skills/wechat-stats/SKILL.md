@@ -102,22 +102,16 @@ sessionMode: fresh (或 auto)
 args: open https://mp.weixin.qq.com/
 ```
 
-### Step 2: 检查模型 + 展示二维码
+### Step 2: 截图二维码（不依赖模型视觉能力，2026-08-29 修正）
 
-**先读取 `~/.pi/agent/models.json`，检查当前模型的 `input` 是否包含 `"image"`。**
-
-**若支持视觉**（如 `gpt-5.6-luna`、`xopkimik26`）：
+二维码是给用户扫的，模型不需要「看」它——**截图保存到文件即可，任何模型都能走此流程**：
 
 ```
 agent_browser: screenshot /tmp/wechat-qr.png
-read /tmp/wechat-qr.png
 ```
 
-Pi TUI 会内联渲染二维码。告知用户用微信扫码确认。
-
-**若不支持视觉**（如 `deepseek-v4-pro`、`xopglm51`）：
-
-> 🚫 **直接退出。** 告诉用户切换到视觉模型（`gpt-5.6-luna`、`xopkimik26` 等）或手动刷新 `.env` 中的 Cookie 后重试。
+- 若模型支持视觉（`input` 含 `"image"`）：`read /tmp/wechat-qr.png` → Pi TUI 内联渲染，用户直接扫码
+- 若模型不支持视觉：把截图路径 `/tmp/wechat-qr.png` 告诉用户，**用户自己打开文件扫码**（无需换模型、无需手动刷 Cookie）
 
 **注意**：TLS 指纹绑定意味着用户必须在同一个 VPS 浏览器环境扫码。你从本地浏览器拷贝的 cookie 在 VPS 上无效。
 

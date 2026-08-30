@@ -21,7 +21,7 @@ description: "Audit WeChat Official Account article data, extract performance me
 
 - 数字事实源：`docs/wechat-data-audit-log.json`
 - JSON Schema：`docs/wechat-data-audit-log.schema.json`
-- 操作脚本：`scripts/wechat_audit_log.py`
+- 操作脚本：`scripts/wechat_audit_log.py`（含 `backfill-types` 命令：按贴图标题集三源合并回填 `articles[].type`，新增贴图后跑 `--force` 重刷）
 - 人读版日志：`docs/wechat-data-audit-log.md`
 - **视频号数字事实源（独立文件，2026-08-25 新增）**：`docs/shipinhao-data-log.json` + `docs/shipinhao-data-log.schema.json`（公众号 schema 不混入视频号数据）
 - **每日流量渠道明细（独立文件，2026-08-27 新增）**：`docs/wechat-daily-sources-log.json` + `docs/wechat-daily-sources-log.schema.json`（按天 × 传播渠道的阅读人数流水账；采集内容分析后必须 `append-sources` 增量入库）
@@ -62,23 +62,12 @@ JSON 是数字唯一事实源；Markdown 只保存人读版和分析结论。禁
 
 #### ⚠️ Cookie 过期时的处理
 
-**第一步：检查当前模型是否支持视觉。** 读取 `~/.pi/agent/models.json`，检查当前模型的 `input` 数组是否包含 `"image"`。
+**截图二维码即可，不依赖模型视觉能力**（2026-08-29 修正）：二维码是给用户扫的，模型不需要「看」它。任何模型都走同一流程：
 
-**若模型支持视觉**（如 `gpt-5.6-luna`、`xopkimik26`）：
-
-1. `agent_browser screenshot /tmp/wechat-qr.png`
-2. `read /tmp/wechat-qr.png` → Pi TUI 会内联渲染二维码
-3. 告知用户扫码，等待确认后用 `eval` 验证登录态
-
-**若模型不支持视觉**（如 `deepseek-v4-pro`、`xopglm51`）：
-
-> 🚫 **直接退出，不要继续。** 告诉用户：
->
-> "Cookie 已过期，当前模型不支持视觉，无法展示二维码。请执行以下任一操作后重试：
-> 1. 切换到支持图片的模型（如 `gpt-5.6-luna`、`xopkimik26`），然后重新运行
-> 2. 或手动刷新 `.env` 中的 `WECHAT_COOKIE`（在浏览器中登录 mp.weixin.qq.com 后导出 cookie）"
-
-**禁止**尝试任何 workaround（`open file://`、base64、`read` 代理描述等）——它们要么不可靠，要么会触发截图→读取的死循环。
+1. `agent_browser screenshot /tmp/wechat-qr.png`（截图保存到文件）
+2. 若模型支持视觉（`~/.pi/agent/models.json` 中当前模型 `input` 含 `"image"`）：`read /tmp/wechat-qr.png` → Pi TUI 内联渲染，用户直接扫码
+3. 若模型不支持视觉：把截图路径 `/tmp/wechat-qr.png` 告诉用户，**用户自己打开文件扫码**（无需换模型、无需手动刷 Cookie）
+4. 告知用户扫码后回复确认，然后用 `eval` 验证登录态
 
 ### Phase 2: 采集内容分析数据
 
@@ -99,6 +88,24 @@ JSON 是数字唯一事实源；Markdown 只保存人读版和分析结论。禁
 - 发表时间
 - 阅读人数
 - 阅读人数占比
+- **内容类型（必填，2026-08-29 起）**：后台单篇列表区分文章/贴图（`item_show_type` 0=文章、8=贴图），每条记录 `type: "article" | "tietu"`。贴图有独立推荐机制，与文章推荐互不影响（2026-08-29 联网核实）；审计日志的 `articles` 列表是文章+贴图混合，**分析文章策略时必须过滤 `type=article`**，账号级每日推荐量（`wechat-daily-sources-log.json`）含贴图推荐流，不能用于判断文章策略。
+
+#### 单篇饼图采集（2026-08-30 新增，每次必做）
+
+总表面的“流量来源”是账号级汇总，不能回答“昨天的3篇各拿多少推荐”。**必须逐篇点“详情”抓单篇饼图**，否则下次复盘又只能靠估。
+
+1. 在内容分析 Top10 列表，对**最近 6 篇（或 Top10 全部，取多者）**逐一点击 `详情`（`a:text=="详情"`，按发布日期倒序，最新一篇在最上）。
+2. 等待详情页加载（URL 含 `action=view&idx=` 或 `appmsganalysis?action=report&...&detail=1`），用 `agent_browser get text body` 抓全文。
+3. 从文本解析单篇渠道饼图（若页面用 Highcharts，文本里会展开为 `推荐 x% / 公众号消息 x% / 聊天会话 x% / 公众号主页 x% / 其它 x% / 搜一搜 x% / 朋友圈 x%`），**按文章标题记录**，存 ` /tmp/article-channel-breakdown.json`：
+```json
+[
+  {"date":"2026-08-29","title":"每步都靠猜，上百万Token的长任务怎么不跑偏","type":"article","reads":52,"channels":{"推荐":68.2,"公众号消息":12.1,"聊天会话":8.3,"公众号主页":4.1,"其它":3.2,"搜一搜":2.1,"朋友圈":2.0}},
+  {"date":"2026-08-29","title":"GLM5.3flash:一旦去掉免费光环马上均值回归","type":"tietu","reads":166,"channels":{...}}
+]
+```
+4. 若某篇详情页饼图未渲染（“暂无数据”或 0 曝光），记 `channels: null` 并在 `notes` 说明“该篇发布<24h 渠道未回填”。
+5. **入库**：把该 JSON 的精简摘要写入本次快照 `notes`（如“单篇饼图 6篇：GLM 166读 推荐71% / hy4 78读 推荐68% / 每步52读 推荐34% …”），完整文件随快照一起归档（`cp /tmp/article-channel-breakdown.json docs/wechat-data-article-channels-YYYY-MM-DD.json` 或直接贴进 `wechat-data-insights.md` 的 0x.1 表）。
+6. **失败回退**：若详情页点击无反应，先 `snapshot -i` 刷新 refs 再试；仍失败则改用 `wx.cgiData` 的 `appmsg_info` 兜底（`read_num` 已有，但渠道饼图只能靠 UI，直接标 null 并在 insights 里写“未采到单篇饼图”）。
 
 #### 每日流量渠道明细入库（append-sources，每次采集必做）
 
@@ -262,7 +269,7 @@ agent_browser get text body
 #### 采集方式（二选一）
 
 1. **用户提供（最快）**：用户从视频号助手「数据中心 → 内容数据」看到单条视频的播放量/完播率/点赞/评论/分享/收藏，直接口头或截图提供，AI 录入（`source: "manual"`）
-2. **agent_browser 自动采**：`sessionMode=fresh` 打开视频号助手 → 让用户扫码登录（当前模型支持视觉时展示二维码）→ 数据中心 → 内容数据 → 逐条记录。⚠️ 视频号助手与公众号后台是**不同登录体系**，公众号 Cookie 不通用
+2. **agent_browser 自动采**：`sessionMode=fresh` 打开视频号助手 → 截图二维码保存到文件让用户扫码（不依赖模型视觉能力，同公众号扫码流程）→ 数据中心 → 内容数据 → 逐条记录。⚠️ 视频号助手与公众号后台是**不同登录体系**，公众号 Cookie 不通用
 
 #### 字段（`docs/shipinhao-data-log.json`）
 

@@ -1,0 +1,119 @@
+[
+  {
+    "date": "2026-08-29",
+    "title": "每步都靠猜，上百万Token的长任务怎么不跑偏",
+    "type": "article",
+    "appmsgid": 2247485712,
+    "reads_detail": 32,
+    "reads_publish": 55,
+    "channels": {
+      "公众号消息": 96.9,
+      "公众号主页": 6.3,
+      "其它": 3.1,
+      "聊天会话": 0.0,
+      "朋友圈": 0.0,
+      "推荐": 0.0,
+      "搜一搜": 0.0
+    },
+    "avgReadDurationMin": 1.75,
+    "finishRate": 25,
+    "isNotified": false,
+    "collectedAt": "2026-08-30T17:00:00+08:00"
+  },
+  {
+    "date": "2026-08-29",
+    "title": "GLM5.3flash:一旦去掉免费光环马上均值回归",
+    "type": "tietu",
+    "appmsgid": 2247485676,
+    "reads_detail": 156,
+    "reads_publish": 166,
+    "channels": {
+      "推荐": 64.1,
+      "聊天会话": 22.4,
+      "公众号消息": 13.5,
+      "其它": 1.9,
+      "搜一搜": 1.9,
+      "公众号主页": 1.3,
+      "朋友圈": 0.0
+    },
+    "avgReadDurationMin": 0.87,
+    "finishRate": null,
+    "isNotified": true,
+    "collectedAt": "2026-08-30T17:00:00+08:00"
+  },
+  {
+    "date": "2026-08-29",
+    "title": "腾讯hy4和codebuddy这次善待国人了抓紧蹬",
+    "type": "tietu",
+    "appmsgid": 2247485706,
+    "reads_detail": 58,
+    "reads_publish": 78,
+    "channels": {
+      "推荐": 77.6,
+      "公众号消息": 19.0,
+      "公众号主页": 3.4,
+      "其它": 1.7,
+      "聊天会话": 0.0,
+      "朋友圈": 0.0,
+      "搜一搜": 0.0
+    },
+    "avgReadDurationMin": 0.58,
+    "finishRate": null,
+    "isNotified": false,
+    "collectedAt": "2026-08-30T17:00:00+08:00"
+  },
+  {
+    "date": "2026-08-28",
+    "title": "信息熵：压缩1000倍，为什么信息反而少？",
+    "type": "article",
+    "appmsgid": 2247485658,
+    "reads_detail": 45,
+    "reads_publish": 45,
+    "channels": {
+      "公众号消息": 55.6,
+      "推荐": 26.7,
+      "公众号主页": 15.6,
+      "其它": 6.7,
+      "聊天会话": 0.0,
+      "朋友圈": 0.0,
+      "搜一搜": 0.0
+    },
+    "avgReadDurationMin": 0.83,
+    "finishRate": 27,
+    "isNotified": true,
+    "collectedAt": "2026-08-30T17:00:00+08:00"
+  },
+  {
+    "date": "2026-08-27",
+    "title": "智谱阿里为什么要改注意力？KV缓存竟砍4.4倍",
+    "type": "article",
+    "appmsgid": 2247485645,
+    "reads_detail": 65,
+    "reads_publish": 70,
+    "channels": {
+      "公众号消息": 56.9,
+      "推荐": 21.5,
+      "公众号主页": 15.4,
+      "其它": 6.2,
+      "聊天会话": 3.1,
+      "搜一搜": 1.5,
+      "朋友圈": 0.0
+    },
+    "avgReadDurationMin": 1.42,
+    "finishRate": 23,
+    "isNotified": true,
+    "collectedAt": "2026-08-30T17:00:00+08:00"
+  },
+  {
+    "date": "2026-08-30",
+    "title": "opencode举起的价格屠刀，这次竟砍向了自己",
+    "type": "tietu",
+    "appmsgid": 2247485725,
+    "reads_detail": 0,
+    "reads_publish": 117,
+    "channels": null,
+    "note": "发布<24h，渠道饼图显示“暂无数据”，需明日复查（页面更新至2026/08/29）",
+    "isNotified": true,
+    "collectedAt": "2026-08-30T17:00:00+08:00"
+  }
+]

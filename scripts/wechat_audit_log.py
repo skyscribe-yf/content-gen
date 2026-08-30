@@ -95,6 +95,8 @@ def _article(value: Any, path: str, errors: list[str]) -> None:
             errors.append(f"{path}.title must be a non-empty string")
         _non_negative_int(value["reads"], f"{path}.reads", errors)
         _percentage(value["share"], f"{path}.share", errors)
+    if "type" in value and value["type"] not in ("article", "tietu"):
+        errors.append(f"{path}.type must be 'article' or 'tietu' when present")
 
 
 def _content(value: Any, path: str, errors: list[str]) -> None:
@@ -404,6 +406,55 @@ def _print_json(value: Any) -> None:
     print(json.dumps(value, ensure_ascii=False, indent=2))
 
 
+def _tietu_titles() -> set[str]:
+    """贴图标题集：publish-data*.json 中 item_show_type != 0 + tietu-corpus-summary + tietu-extra。"""
+    titles: set[str] = set()
+    for path in sorted((ROOT / "branding/style-corpus").glob("publish-data*.json")):
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        for item in data.get("publish_list", []):
+            info = item.get("publish_info", "")
+            try:
+                parsed = json.loads(info) if isinstance(info, str) else info
+            except json.JSONDecodeError:
+                continue
+            for app in parsed.get("appmsg_info", []):
+                if app.get("title") and app.get("item_show_type") not in (None, 0):
+                    titles.add(app["title"])
+    for name in ("tietu-corpus-summary.json", "tietu-extra.json"):
+        path = ROOT / "branding/style-corpus" / name
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        if isinstance(data, dict):
+            items = data.get("titles", data.get("items", []))
+        else:
+            items = data
+        for item in items:
+            if isinstance(item, str):
+                titles.add(item)
+            elif isinstance(item, dict) and item.get("title"):
+                titles.add(item["title"])
+    return titles
+
+
+def backfill_types(log: dict[str, Any], force: bool = False) -> dict[str, Any]:
+    """按贴图标题集回填 content.articles[].type（article/tietu），已填且非 force 时跳过。"""
+    tietu = _tietu_titles()
+    tagged = skipped = 0
+    for audit in log["audits"]:
+        for article in audit.get("content", {}).get("articles", []):
+            if article.get("type") and not force:
+                skipped += 1
+                continue
+            article["type"] = "tietu" if article["title"] in tietu else "article"
+            tagged += 1
+    return {"tagged": tagged, "skipped": skipped, "tietu_titles": len(tietu)}
+
+
 def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--log", type=Path, default=DEFAULT_LOG)
@@ -415,6 +466,8 @@ def _parser() -> argparse.ArgumentParser:
     append_sources_cmd.add_argument("--input", type=Path, required=True, help="days JSON or 后台 tendency_*.xls")
     append_sources_cmd.add_argument("--log", type=Path, default=DEFAULT_SOURCES_LOG)
     commands.add_parser("latest")
+    backfill = commands.add_parser("backfill-types")
+    backfill.add_argument("--force", action="store_true", help="覆盖已填的 type")
     show = commands.add_parser("show")
     show.add_argument("--date", required=True)
     compare = commands.add_parser("compare")
@@ -446,6 +499,10 @@ def main(argv: list[str] | None = None) -> int:
             raise ValueError("invalid log:\n" + "\n".join(errors))
         if args.command == "validate":
             print("valid")
+        elif args.command == "backfill-types":
+            result = backfill_types(log, force=args.force)
+            _atomic_write(args.log, log)
+            _print_json(result)
         elif args.command == "latest":
             snapshot = latest_snapshot(log)
             if snapshot is None:

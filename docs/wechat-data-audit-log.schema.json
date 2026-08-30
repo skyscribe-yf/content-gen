@@ -66,6 +66,10 @@
       "properties": {
         "date": {"$ref": "#/$defs/date"},
         "title": {"type": "string", "minLength": 1},
+        "type": {
+          "description": "内容类型：article=文章，tietu=贴图。后台 item_show_type 0=文章 8=贴图。2026-08-29 起必填，历史已回填。",
+          "enum": ["article", "tietu"]
+        },
         "reads": {"$ref": "#/$defs/nonNegativeInteger"},
         "share": {"$ref": "#/$defs/percentage"}
       }
