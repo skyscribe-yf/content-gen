@@ -5,3 +5,4 @@
 - When an article gets published, immediately update its URL link everywhere it is referenced (later drafts, series collections, docs). Confidence: 0.9
 - Prefers QR-code scanning login for WeChat operations; agent should display the QR code in the chat window. Confidence: 0.7
 - Works across sessions: expects the agent to load session state (e.g., from the ollama profile) and continue seamlessly. Confidence: 0.6
+- Article-drafting workflow enforces a hard "原声槽" (author-voice) gate before writing the body: agent presents numbered candidate slots for the author's first-hand anecdotes, author approves by number or says "跳过", and ≥5 are required before drafting. Confidence: 0.6

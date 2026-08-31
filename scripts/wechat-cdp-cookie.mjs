@@ -167,15 +167,19 @@ async function status() {
   });
   // 主动导航到后台首页再读登录态：只读当前 DOM 会把注入前停留的
   // 「请重新登录」页误报成未登录（假阴性 → 误判 cookie 过期）。
+  // ⚠️ 2026-08-31 实测：必须导航根路径 https://mp.weixin.qq.com/（服务端 302 到带
+  // token 的首页），不能导航 home?t=home/index（无 token 路径会渲染「请重新登录」
+  // 占位页，JS 用 cookie 换 token 后才跳转；此时 bodyStart 是「请重新登录」但 cookie
+  // 完全有效——曾因此误报 loggedIn:false 导致误判 cookie 过期）。
   await send('Page.enable');
-  await send('Page.navigate', { url: 'https://mp.weixin.qq.com/cgi-bin/home?t=home/index&lang=zh_CN' });
+  await send('Page.navigate', { url: 'https://mp.weixin.qq.com/' });
   const sendT = (method, params, ms = 3000) => Promise.race([
     send(method, params),
     new Promise((_, rej) => setTimeout(() => rej(new Error('timeout: ' + method)), ms)),
   ]);
   let uin = null, url = tab.url, hasMenu = false, bodyStart = '';
   let completeStreak = 0;
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 30; i++) {
     await new Promise(r => setTimeout(r, 500));
     try {
       const res = await sendT('Runtime.evaluate', {
@@ -184,13 +188,17 @@ async function status() {
       }, 2000);
       const v = JSON.parse(res.result.value);
       uin = v.uin; url = v.url; hasMenu = v.hasMenu; bodyStart = v.bodyStart;
-      // 已登录，或确认被踢到登录/错误页，即可提前结束
-      if (Number(v.uin) > 0 || /scanlogin|newlogin|action=login|请重新登录/.test(v.url + v.bodyStart)) break;
-      if (v.ready === 'complete') { if (++completeStreak >= 2) break; } else completeStreak = 0;
+      // 登录成功三信号：uin>0 / URL 带 token= / 出现后台菜单。任一命中即真登录。
+      // ⚠️ 不要把「请重新登录」当提前 break 条件：它是页面加载中间态（JS 鉴权未完成
+      // 时也显示），2026-08-31 实测 cookie 有效时也会短暂出现，提前 break 会误报。
+      if (Number(v.uin) > 0 || /[?&]token=/.test(v.url) || v.hasMenu) break;
+      // 页面完全加载且连续 3 次稳定（无跳转）才结束，避免抓到中间态
+      if (v.ready === 'complete') { if (++completeStreak >= 3) break; } else completeStreak = 0;
     } catch {}
   }
   ws.close();
-  console.log(JSON.stringify({ uin: String(uin ?? '0'), url, hasMenu, bodyStart, loggedIn: Number(uin) > 0, dir }, null, 2));
+  const loggedIn = Number(uin) > 0 || /[?&]token=/.test(url) || hasMenu;
+  console.log(JSON.stringify({ uin: String(uin ?? '0'), url, hasMenu, bodyStart, loggedIn, dir }, null, 2));
 }
 
 const cmd = process.argv[2];

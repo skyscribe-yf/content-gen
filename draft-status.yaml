@@ -1026,9 +1026,9 @@ articles:
 - slug: 2026-08-30-multimodal-split
   title: GLM-5.3 说视觉没用，转头带上原生视觉
   series: 开源大模型技术揭秘
-  status: drafting
-  published_date: null
-  wechat_url: null
+  status: published
+  published_date: '2026-08-30'
+  wechat_url: https://mp.weixin.qq.com/s/HqabnvOdMbq2gX0-V87N6w
   files:
     weixin: true
     draft: false
@@ -1049,7 +1049,13 @@ articles:
     通过；2026-08-28 已按新标题+新封面重存草稿箱（remote-api --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHjAKJcw_-Brtm4yduFE2TPkPWPeC0DvTHRfZdQYaWYWp（封面
     kOcXH4SytIYVIpYksTGfHnHP0z8qN7oab3TuxO2jyMUlSyoZAcZW9geVilVqQSzH），正文图 5 张已上传（01/02/03
     脚本图 + 05/04 AI 图，04 自动压 <1MB JPEG 82）。旧 media_id kOcXH4SytIYVIpYksTGfHiZk2n5AO6MmCSOPgoue-G6LPuJyoqxUD9C_aQIvNX0s
-    作废可删。2026-08-30 质量检测（15 项全过）+ 改期 08-30 发（大数定律已提前 08-29 发，08-30 空档）：frontmatter 标题同步为「GLM-5.3 说视觉没用，转头带上原生视觉」（此前本地文件仍是旧标题）、弯引号 9 处统一「」、错别字「赛→塞」、「后面会拆→拆解」、「我在开头说的 proxy 和 MCP 曲线救国」改「社区常说的」（开头重写后引用失效）、长句拆 10 处（原声/引用豁免）、数字实时核验（Hy4 08-28 发布 770B/49B 纯文本无视觉 ✓、AA V4 Flash Vision 51 vs V4 Flash 0731 52 低 1 分 ✓）。目录名改 2026-08-30-multimodal-split。已按新标题重存草稿箱（remote-api --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHigJXhVYv_vjhBYV5qFFzEfywHoy8dUzKHRaSVao3KgC。未定时、未群发。⚠️ 发布前确认：声明原创 + 定时 20:00 + 合集「开源大模型技术揭秘」；发布后补 wechatUrl。
+    作废可删。2026-08-30 质量检测（15 项全过）+ 改期 08-30 发（大数定律已提前 08-29 发，08-30 空档）：frontmatter
+    标题同步为「GLM-5.3 说视觉没用，转头带上原生视觉」（此前本地文件仍是旧标题）、弯引号 9 处统一「」、错别字「赛→塞」、「后面会拆→拆解」、「我在开头说的
+    proxy 和 MCP 曲线救国」改「社区常说的」（开头重写后引用失效）、长句拆 10 处（原声/引用豁免）、数字实时核验（Hy4 08-28 发布 770B/49B
+    纯文本无视觉 ✓、AA V4 Flash Vision 51 vs V4 Flash 0731 52 低 1 分 ✓）。目录名改 2026-08-30-multimodal-split。已按新标题重存草稿箱（remote-api
+    --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHigJXhVYv_vjhBYV5qFFzEfywHoy8dUzKHRaSVao3KgC。未定时、未群发。⚠️
+    发布前确认：声明原创 + 定时 20:00 + 合集「开源大模型技术揭秘」；发布后补 wechatUrl。 2026-08-30 已发布：https://mp.weixin.qq.com/s/HqabnvOdMbq2gX0-V87N6w（wechatUrl
+    已回填）。
 - slug: 2026-08-27-glm-qwen-architecture
   title: GLM-5.3-Flash 和 Qwen4 架构：注意力为什么都不够用了？
   series: 开源大模型技术揭秘
@@ -1118,17 +1124,62 @@ articles:
     cover: true
   media_id: kOcXH4SytIYVIpYksTGfHgO-hlkU1WLGutxMhNK3k1cYVDzSN5x91Xl6XmmXIJ77
   cover_media_id: kOcXH4SytIYVIpYksTGfHkTgdgmVtKZ_Ge7Dk9TKI51iczv_SpNJvD00CMcinMbt
-  notes: B1 SVD 08-31 档。grill .grill/2026-08-31-SVD.md 已完成。标题改为「微调70B模型为什么只需要改0.026%的参数」（22字）。配图5张（yairouter gpt-image-2）。已存公众号草稿箱（remote-api --theme grace --color blue）。2026-08-30 质量检查后重存草稿：SVD 年代改 1870s、参数账改 8192/83.9MB/0.06% 并注明 DeployBase 来源、截断误差数字修正、rank=1 限定 WikiSQL/MNLI、开头改「几年前初学」、原声句 9 处、尾部补合集+热门文章、frontmatter 补 digest/keywords、内联公式全部转 LaTeX、删正文重复标题行。2026-08-30 二次重存：新增 3 张概念图（06 参数点亮/07 应用全景/08 定理点亮 AI，yairouter gpt-image-2），共 8 图。
+  notes: B1 SVD 08-31 档。grill .grill/2026-08-31-SVD.md 已完成。标题改为「微调70B模型为什么只需要改0.026%的参数」（22字）。配图5张（yairouter
+    gpt-image-2）。已存公众号草稿箱（remote-api --theme grace --color blue）。2026-08-30 质量检查后重存草稿：SVD
+    年代改 1870s、参数账改 8192/83.9MB/0.06% 并注明 DeployBase 来源、截断误差数字修正、rank=1 限定 WikiSQL/MNLI、开头改「几年前初学」、原声句
+    9 处、尾部补合集+热门文章、frontmatter 补 digest/keywords、内联公式全部转 LaTeX、删正文重复标题行。2026-08-30
+    二次重存：新增 3 张概念图（06 参数点亮/07 应用全景/08 定理点亮 AI，yairouter gpt-image-2），共 8 图。
+- slug: 2026-09-01-kv-1p5bit
+  title: KV缓存压到1.5bit：省90%显存，凭什么不掉点？
+  series: 开源大模型技术揭秘
+  status: draft_saved
+  published_date: null
+  wechat_url: null
+  files:
+    weixin: true
+    draft: true
+    outline: true
+    cover: true
+  media_id: kOcXH4SytIYVIpYksTGfHi4msAqwj6D-QvLcXYwy-T0RfxEIariJkJA18S20iQLu
+  cover_media_id: kOcXH4SytIYVIpYksTGfHjr_oZCbCCZTMPhXal3ftnsSvF2hS65Q1cgOTw5vbTaw
+  notes: D1 KV压1.5bit 09-01 档。grill .grill/2026-09-01-kv-1p5bit.md 完成。主线 softmax 指数放大（AsymKV
+    K2bit/V1bit 等效1.5bit），副线 DeepSeek V4 CSA/HCA（KV 10%），antirez ds4 2bit 案例嵌入 §六。原声句
+    5 处逐字进稿。质量核查 15 项已过（禁词0/长句已拆/无假人味/爆款检查器过）。配图 7 张：AI 概念图 4（封面21:9 便签压缩）+ 脚本图 3。已存公众号草稿箱（remote-api
+    --theme grace --color blue）。 发布前审核（2026-08-31 07:20）：硬件数字修正——删除不可靠的「60GB/80层128头128维」估算，改用
+    antirez 实测 1M 上下文压缩 KV 约 26GB（22GB 索引器）口径；开头/回扣删除「8 卡 vs 1 卡」overclaim，改为「81GB
+    2bit 权重 + 26GB KV = 128GB Mac 精打细算」真实场景；其余 9 项检查全过，重渲染重入箱。 二轮深度审核（2026-08-31 07:35）：digest
+    删除「比权重还重」（与正文 26GB 口径不一致的残留）；开头补「平均」（等效位宽精确口径）；§六 router 精度更正为 Q8/F16（原「全是 Q8」与
+    antirez 配方 F16 不符）；§七小标题同步删「1 张卡」情节。重渲染重入箱。 三轮深度审核（2026-08-31 08:43）：核心口径修正——AsymKV
+    实为层间非对称（前 lk 层 K 2bit、其余层 K 与全部层 V 1bit），非「K 2bit V 1bit」；常规长度 16/0 配置平均 1.25bit（12.8x/92.2%），长上下文
+    32/0 配置 K 全 2bit V 全 1bit（10.7x/90.6%）。标题/digest 改「1bit/92%」（内容矩阵 D1 模板），任务表拆两配置（16/0
+    与 32/0）并补列「配置」；9.0GB 标注为相对 KIVI-2bit（batch48/36、4096 token）；开头 26GB 注明是 antirez
+    实测 V4 Flash（索引器 22GB）且属架构压缩产物，§七回扣改为「数值压缩」不再称 26GB 压到 1/10；antirez「一模一样」改「同一个思路」，Q8/F16
+    改「全保精度不量化」；「1600 万色」改「6.5 万色（16bit）」，CQ 差「100 倍」改「60~110 倍」；下一篇预告改 D2 NSA 稀疏注意力（原「特征值分解」与
+    08-31 SVD 文撞车）；补信息熵内链（热门文章随之重生成，含信息熵）；删草稿箱旧草稿 …H59cgdL。17 长句超 60 字已全部拆分，禁词 0。重渲染重入箱（media_id
+    更新）。
+- slug: 2026-09-02-nsa-sparse-attention
+  title: DeepSeek 注意力只算 8.6%，为什么 V4 反而不用？
+  series: 开源大模型技术揭秘
+  status: draft_saved
+  published_date: null
+  wechat_url: null
+  files:
+    weixin: true
+    draft: true
+    outline: true
+    cover: true
+  media_id: kOcXH4SytIYVIpYksTGfHv04MR68mic135Kfw5ThGcYRHjq6ac9yW3CdbthgyUEf
+  cover_media_id: kOcXH4SytIYVIpYksTGfHjfrNBcWwIEYHNaaZURdY_qzayqWUTNh2XejhggCsWT6
+  notes: D2 NSA 稀疏注意力 09-02 档。质量审查 16/16 通过：2015→2025 硬错误修正、正文「拆→拆解」2 处、超长句拆分（原声槽/公式/参考文献豁免）、禁词 0、假人味 0、爆款检查器过（个人故事开头/悬念链/首尾闭环）、原声槽 8/8 逐字在场、GLM 45 层 34KDA+11MLA 复核通过、热门文章 self-check 通过。配图 6 张：封面 21:9 标题逐字验收（gpt-image-2 连续 4 版半角逗号，第 5 版字符级强约束通过）+ 脚本图 3 + AI 概念图 2。已存公众号草稿箱（remote-api --theme grace --color blue）。
 summary:
-  total: 61
+  total: 63
   by_status:
-    published: 58
+    published: 59
     drafting: 3
   drafting_queue:
   - 2026-08-26-knowledge-distillation
   - 2026-08-28-information-entropy
   - 2026-08-29-alphago
-  - 2026-08-30-multimodal-split
   ready_queue: []
   scheduled_queue: []
   planned_queue: []
@@ -1140,5 +1191,9 @@ plan_notes:
   两目录为贴图轨道，不入文章台账。
 - 2026-08-28 三次对齐：多模态 08-30→09-02 顺延；大数定律 08-30 定档（M2，上接AlphaGo蒙特卡洛，Top2）、SVD 08-31
   定档（B1，接D1矩阵压缩，Top1）；RL 原理系列整体延后5天（下一RL不早于09-03，AlphaGo 08-29 为番外例外）。
-- 2026-08-30 四次对齐：大数定律已提前 08-29 发布（台账已修正），08-30 空档；多模态回 08-30 发（热点时效性，GLM-5.3-Flash 08-26 热点已过 4 天），SVD 08-31 照旧；GLM 架构文（智谱阿里）台账修正为 08-27 已发布（此前误记 drafting）。
-next_publish_date: '2026-08-30'
+- 2026-08-30 四次对齐：大数定律已提前 08-29 发布（台账已修正），08-30 空档；多模态回 08-30 发（热点时效性，GLM-5.3-Flash
+  08-26 热点已过 4 天），SVD 08-31 照旧；GLM 架构文（智谱阿里）台账修正为 08-27 已发布（此前误记 drafting）。
+- 2026-08-30 多模态（GLM-5.3 视觉文）已发布：https://mp.weixin.qq.com/s/HqabnvOdMbq2gX0-V87N6w，台账/status/frontmatter
+  wechatUrl 已回填。
+- 2026-08-31 06:20：09-01 KV 1.5bit 草稿入箱（D1，软max指数放大主线；08-31 SVD 发布后接档）。
+next_publish_date: '2026-08-31'

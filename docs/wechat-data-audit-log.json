@@ -15811,6 +15811,1507 @@
         "收入：概览累计 66.64 元（+0.84 vs 65.80，页面显示昨日+0.85，0.01为舍入差），与 08-29 当日四广告位合计 0.85 交叉验证：留言区0.35+底部0.13+中部0.21+贴图0.16=0.85。滞后1天消除，收入周期已追平内容（至08-29）。曝光率：中部44.66%健康、底部18.64%临界、留言区10.29%关注、贴图10.68%关注；eCPM 中部0.96/底部3.65/留言区5.59/贴图3.43均正常；<200曝光/日不判CTR。文章收入明细页（publisher_article）显示：07:10后 信息熵新增 0.15（08-28）、GLM均值回归0.25、腾讯hy40.08、每步0.06；智谱阿里由0.05→0.14(+0.09)；蒸馏新增镜像0.00；Pi新架构0.10→0.12(+0.02)。",
         "本次采集增量：内容Top10未变（30d 27369同07:10）；用户+0 净增7同07:10；收入 +08-29新日（+0.85）；渠道明细复核无新增日（07:10已含08-29）。"
       ]
+    },
+    {
+      "collectedAt": "2026-08-31T06:45:00+08:00",
+      "dataThrough": "2026-08-30",
+      "periods": {
+        "content": {
+          "from": "2026-08-01",
+          "to": "2026-08-30"
+        },
+        "users": {
+          "from": "2026-07-31",
+          "to": "2026-08-30"
+        },
+        "income": {
+          "from": "2026-08-24",
+          "to": "2026-08-29"
+        }
+      },
+      "content": {
+        "readers30d": 27614,
+        "daily": {
+          "date": "2026-08-30",
+          "reads": 394,
+          "shares": 28,
+          "comments": 11
+        },
+        "sources": {
+          "recommendation": 82.2,
+          "officialMessage": 6.8,
+          "chatSession": 4.3,
+          "accountHome": 3.6,
+          "other": 3.4,
+          "search": 1.1,
+          "moments": 0.5
+        },
+        "articles": [
+          {
+            "date": "2026-08-07",
+            "title": "opencode这波真要杀疯了",
+            "type": "tietu",
+            "reads": 5435,
+            "share": 19.68
+          },
+          {
+            "date": "2026-08-10",
+            "title": "KV缓存存进SSD：慢50倍的硬盘，为什么反而更快？",
+            "type": "article",
+            "reads": 2985,
+            "share": 10.81
+          },
+          {
+            "date": "2026-08-09",
+            "title": "即将反转！opencode go也要搞峰谷价",
+            "type": "tietu",
+            "reads": 1899,
+            "share": 6.88
+          },
+          {
+            "date": "2026-08-12",
+            "title": "高维空间为什么全是壳？内积才是那把尺子",
+            "type": "article",
+            "reads": 1613,
+            "share": 5.84
+          },
+          {
+            "date": "2026-08-11",
+            "title": "突飞猛进的pi agent和友善的openai，你选谁",
+            "type": "tietu",
+            "reads": 1475,
+            "share": 5.34
+          },
+          {
+            "date": "2026-08-16",
+            "title": "严重过拟合的Deepseek，和魔幻的价格",
+            "type": "tietu",
+            "reads": 1332,
+            "share": 4.82
+          },
+          {
+            "date": "2026-08-07",
+            "title": "QWen3.8 Max评分接近Kimi k3",
+            "type": "tietu",
+            "reads": 1327,
+            "share": 4.81
+          },
+          {
+            "date": "2026-08-21",
+            "title": "高斯为什么二阶就够？非线性去哪了",
+            "type": "article",
+            "reads": 1321,
+            "share": 4.78
+          },
+          {
+            "date": "2026-08-04",
+            "title": "DeepSeek-V4为何不用MLA？",
+            "type": "article",
+            "reads": 1095,
+            "share": 3.97
+          },
+          {
+            "date": "2026-08-07",
+            "title": "第三方DeepSeek0731还是有希望",
+            "type": "tietu",
+            "reads": 1073,
+            "share": 3.89
+          }
+        ]
+      },
+      "users": {
+        "daily": {
+          "date": "2026-08-30",
+          "new": 7,
+          "cancelled": 0,
+          "net": 7,
+          "total": 925
+        },
+        "channelTotal": 631,
+        "channels": {
+          "articlePage": {
+            "count": 514,
+            "share": 81.46
+          },
+          "search": {
+            "count": 71,
+            "share": 11.25
+          },
+          "qrCode": {
+            "count": 2,
+            "share": 0.32
+          },
+          "video": {
+            "count": 7,
+            "share": 1.11
+          },
+          "other": {
+            "count": 37,
+            "share": 5.86
+          }
+        },
+        "trend": [
+          {
+            "date": "2026-08-20",
+            "new": 38,
+            "cancelled": 0,
+            "net": 38,
+            "total": 769
+          },
+          {
+            "date": "2026-08-21",
+            "new": 23,
+            "cancelled": 0,
+            "net": 23,
+            "total": 792
+          },
+          {
+            "date": "2026-08-22",
+            "new": 21,
+            "cancelled": 1,
+            "net": 20,
+            "total": 812
+          },
+          {
+            "date": "2026-08-23",
+            "new": 22,
+            "cancelled": 1,
+            "net": 21,
+            "total": 833
+          },
+          {
+            "date": "2026-08-24",
+            "new": 20,
+            "cancelled": 0,
+            "net": 20,
+            "total": 853
+          },
+          {
+            "date": "2026-08-25",
+            "new": 27,
+            "cancelled": 1,
+            "net": 26,
+            "total": 879
+          },
+          {
+            "date": "2026-08-26",
+            "new": 12,
+            "cancelled": 0,
+            "net": 12,
+            "total": 891
+          },
+          {
+            "date": "2026-08-27",
+            "new": 12,
+            "cancelled": 0,
+            "net": 12,
+            "total": 903
+          },
+          {
+            "date": "2026-08-28",
+            "new": 8,
+            "cancelled": 0,
+            "net": 8,
+            "total": 911
+          },
+          {
+            "date": "2026-08-29",
+            "new": 8,
+            "cancelled": 1,
+            "net": 7,
+            "total": 918
+          },
+          {
+            "date": "2026-08-30",
+            "new": 7,
+            "cancelled": 0,
+            "net": 7,
+            "total": 925
+          }
+        ]
+      },
+      "income": {
+        "overview": {
+          "cumulativeRevenue": 66.64,
+          "programmaticRevenue": 66.64,
+          "yesterdayIncrement": 0,
+          "mutualSelectionRevenue": 0,
+          "commerceRevenue": 0
+        },
+        "articleIncomeAvailable": true,
+        "articleIncome": {
+          "scope": "发布后7日内累计，不含返佣商品与互选广告；本快照窗口 2026-08-24~08-29（08-23 两篇已出7日窗口未采集）",
+          "articles": [
+            {
+              "date": "2026-08-24",
+              "title": "DeepSeek Harness社区自己人开撕：创新何在",
+              "original": false,
+              "revenue": 0.08,
+              "slots": {}
+            },
+            {
+              "date": "2026-08-24",
+              "title": "Pi这波把DSH剪枝骂惨了",
+              "original": false,
+              "revenue": 0.09,
+              "slots": {}
+            },
+            {
+              "date": "2026-08-24",
+              "title": "PPO只用0.2的clip，凭什么顶替0.01的KL预算？",
+              "original": true,
+              "revenue": 0.68,
+              "slots": {}
+            },
+            {
+              "date": "2026-08-25",
+              "title": "Pi 的新架构，答案早就在数据库论文里了",
+              "original": false,
+              "revenue": 0.12,
+              "slots": {}
+            },
+            {
+              "date": "2026-08-25",
+              "title": "GAE：100步的功劳，为什么只认最近17步？",
+              "original": true,
+              "revenue": 0.18,
+              "slots": {}
+            },
+            {
+              "date": "2026-08-25",
+              "title": "GAE：100步的功劳，为什么只认最近17步？",
+              "original": false,
+              "revenue": 0.01,
+              "slots": {}
+            },
+            {
+              "date": "2026-08-26",
+              "title": "强大而免费的神秘牛来模型学会自我迭代了？",
+              "original": false,
+              "revenue": 0.26,
+              "slots": {}
+            },
+            {
+              "date": "2026-08-26",
+              "title": "蒸馏是抄袭？为什么越抄越学不会？",
+              "original": true,
+              "revenue": 0.14,
+              "slots": {}
+            },
+            {
+              "date": "2026-08-26",
+              "title": "牛来，多模态，300B，智谱家的",
+              "original": false,
+              "revenue": 0.28,
+              "slots": {}
+            },
+            {
+              "date": "2026-08-27",
+              "title": "GLM-5.3-Flash 半价是假象？实测竟贵 3 倍",
+              "original": false,
+              "revenue": 0.31,
+              "slots": {}
+            },
+            {
+              "date": "2026-08-27",
+              "title": "蒸馏是抄袭？为什么越抄越学不会？",
+              "original": false,
+              "revenue": 0.0,
+              "slots": {}
+            },
+            {
+              "date": "2026-08-27",
+              "title": "智谱阿里为什么要改注意力？KV缓存竟砍4.4倍",
+              "original": true,
+              "revenue": 0.14,
+              "slots": {}
+            },
+            {
+              "date": "2026-08-27",
+              "title": "智谱阿里为什么要改注意力？KV缓存竟砍4.4",
+              "original": false,
+              "revenue": 0.01,
+              "slots": {}
+            },
+            {
+              "date": "2026-08-28",
+              "title": "信息熵：压缩1000倍，为什么信息反而少？",
+              "original": true,
+              "revenue": 0.15,
+              "slots": {}
+            },
+            {
+              "date": "2026-08-29",
+              "title": "GLM5.3flash:一旦去掉免费光环马上均值回归",
+              "original": false,
+              "revenue": 0.25,
+              "slots": {}
+            },
+            {
+              "date": "2026-08-29",
+              "title": "腾讯hy4和codebuddy这次善待国人了抓紧蹬",
+              "original": false,
+              "revenue": 0.08,
+              "slots": {}
+            },
+            {
+              "date": "2026-08-29",
+              "title": "每步都靠猜，上百万Token的长任务怎么不跑偏",
+              "original": true,
+              "revenue": 0.06,
+              "slots": {}
+            }
+          ]
+        },
+        "slots": {
+          "messageArea": {
+            "summary": {
+              "pulls": 6136,
+              "impressions": 635,
+              "exposureRate": 10.35,
+              "clicks": 1,
+              "ctr": 0.16,
+              "ecpm": 5.75,
+              "revenue": 3.65
+            },
+            "dailyRevenueTotal": 3.65,
+            "daily": [
+              {
+                "date": "2026-08-24",
+                "pulls": 964,
+                "impressions": 89,
+                "exposureRate": 9.23,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 3.15,
+                "revenue": 0.28
+              },
+              {
+                "date": "2026-08-25",
+                "pulls": 1557,
+                "impressions": 149,
+                "exposureRate": 9.57,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 9.19,
+                "revenue": 1.37
+              },
+              {
+                "date": "2026-08-26",
+                "pulls": 1059,
+                "impressions": 123,
+                "exposureRate": 11.61,
+                "clicks": 1,
+                "ctr": 0.81,
+                "ecpm": 7.48,
+                "revenue": 0.92
+              },
+              {
+                "date": "2026-08-27",
+                "pulls": 976,
+                "impressions": 110,
+                "exposureRate": 11.27,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 4.36,
+                "revenue": 0.48
+              },
+              {
+                "date": "2026-08-28",
+                "pulls": 881,
+                "impressions": 83,
+                "exposureRate": 9.42,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 3.01,
+                "revenue": 0.25
+              },
+              {
+                "date": "2026-08-29",
+                "pulls": 699,
+                "impressions": 81,
+                "exposureRate": 11.59,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 4.32,
+                "revenue": 0.35
+              }
+            ]
+          },
+          "bottom": {
+            "summary": {
+              "pulls": 2869,
+              "impressions": 541,
+              "exposureRate": 18.86,
+              "clicks": 2,
+              "ctr": 0.37,
+              "ecpm": 3.46,
+              "revenue": 1.87
+            },
+            "dailyRevenueTotal": 1.87,
+            "daily": [
+              {
+                "date": "2026-08-24",
+                "pulls": 506,
+                "impressions": 101,
+                "exposureRate": 19.96,
+                "clicks": 1,
+                "ctr": 0.99,
+                "ecpm": 2.67,
+                "revenue": 0.27
+              },
+              {
+                "date": "2026-08-25",
+                "pulls": 778,
+                "impressions": 164,
+                "exposureRate": 21.08,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 4.63,
+                "revenue": 0.76
+              },
+              {
+                "date": "2026-08-26",
+                "pulls": 510,
+                "impressions": 99,
+                "exposureRate": 19.41,
+                "clicks": 1,
+                "ctr": 1.01,
+                "ecpm": 4.04,
+                "revenue": 0.4
+              },
+              {
+                "date": "2026-08-27",
+                "pulls": 372,
+                "impressions": 57,
+                "exposureRate": 15.32,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 2.11,
+                "revenue": 0.12
+              },
+              {
+                "date": "2026-08-28",
+                "pulls": 425,
+                "impressions": 69,
+                "exposureRate": 16.24,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 2.61,
+                "revenue": 0.18
+              },
+              {
+                "date": "2026-08-29",
+                "pulls": 278,
+                "impressions": 51,
+                "exposureRate": 18.35,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 2.55,
+                "revenue": 0.13
+              }
+            ]
+          },
+          "inline": {
+            "summary": {
+              "pulls": 5549,
+              "impressions": 2503,
+              "exposureRate": 45.11,
+              "clicks": 4,
+              "ctr": 0.16,
+              "ecpm": 0.88,
+              "revenue": 2.21
+            },
+            "dailyRevenueTotal": 2.21,
+            "daily": [
+              {
+                "date": "2026-08-24",
+                "pulls": 958,
+                "impressions": 443,
+                "exposureRate": 46.24,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 0.72,
+                "revenue": 0.32
+              },
+              {
+                "date": "2026-08-25",
+                "pulls": 1481,
+                "impressions": 697,
+                "exposureRate": 47.06,
+                "clicks": 1,
+                "ctr": 0.14,
+                "ecpm": 1.05,
+                "revenue": 0.73
+              },
+              {
+                "date": "2026-08-26",
+                "pulls": 996,
+                "impressions": 425,
+                "exposureRate": 42.67,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 0.82,
+                "revenue": 0.35
+              },
+              {
+                "date": "2026-08-27",
+                "pulls": 740,
+                "impressions": 292,
+                "exposureRate": 39.46,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 0.72,
+                "revenue": 0.21
+              },
+              {
+                "date": "2026-08-28",
+                "pulls": 820,
+                "impressions": 387,
+                "exposureRate": 47.2,
+                "clicks": 1,
+                "ctr": 0.26,
+                "ecpm": 1.03,
+                "revenue": 0.4
+              },
+              {
+                "date": "2026-08-29",
+                "pulls": 554,
+                "impressions": 259,
+                "exposureRate": 46.75,
+                "clicks": 2,
+                "ctr": 0.77,
+                "ecpm": 0.81,
+                "revenue": 0.21
+              }
+            ]
+          },
+          "keyword": {
+            "summary": {
+              "pulls": 0,
+              "impressions": 0,
+              "exposureRate": null,
+              "clicks": 0,
+              "ctr": null,
+              "ecpm": null,
+              "revenue": 0
+            },
+            "dailyRevenueTotal": 0,
+            "daily": []
+          },
+          "tietuBottom": {
+            "summary": {
+              "pulls": 2226,
+              "impressions": 230,
+              "exposureRate": 10.33,
+              "clicks": 2,
+              "ctr": 0.87,
+              "ecpm": 3.7,
+              "revenue": 0.85
+            },
+            "dailyRevenueTotal": 0.85,
+            "daily": [
+              {
+                "date": "2026-08-24",
+                "pulls": 563,
+                "impressions": 73,
+                "exposureRate": 12.97,
+                "clicks": 1,
+                "ctr": 1.37,
+                "ecpm": 1.92,
+                "revenue": 0.14
+              },
+              {
+                "date": "2026-08-25",
+                "pulls": 282,
+                "impressions": 24,
+                "exposureRate": 8.51,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 6.67,
+                "revenue": 0.16
+              },
+              {
+                "date": "2026-08-26",
+                "pulls": 426,
+                "impressions": 38,
+                "exposureRate": 8.92,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 8.16,
+                "revenue": 0.31
+              },
+              {
+                "date": "2026-08-27",
+                "pulls": 424,
+                "impressions": 36,
+                "exposureRate": 8.49,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 2.22,
+                "revenue": 0.08
+              },
+              {
+                "date": "2026-08-28",
+                "pulls": 90,
+                "impressions": 7,
+                "exposureRate": 7.78,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 1.43,
+                "revenue": 0.01
+              },
+              {
+                "date": "2026-08-29",
+                "pulls": 441,
+                "impressions": 52,
+                "exposureRate": 11.79,
+                "clicks": 1,
+                "ctr": 1.92,
+                "ecpm": 3.08,
+                "revenue": 0.16
+              }
+            ]
+          }
+        }
+      },
+      "notes": [
+        "2026-08-31 06:45 CST 采集。Cookie 08-30 15:57 注入经 status 报 uin=0（页面时序误报），导航首页后真实 uin=3923428115 登录成功，已 export 写回 .env。内容/用户截至 08-30，收入日报表窗口 08-24~08-29（08-30 收入滞后未回填）。",
+        "单篇饼图 10 篇（详情页，页面数据更新至 08-30）：opencode杀疯了 5435读 推荐98.5% / opencode go 1899读 推荐96.7% / QWen3.8 1327读 97.8% / 第三方DS0731 1073读 96.6% / pi agent 1475读 95.1% / 高斯 1321读 93.9% / 过拟合 1332读 88.6% / KV-SSD 2985读 86.6% / 高维 1613读 85.2% / MLA 1095读 84.0%。文章型（高斯/高维/KV/MLA）推荐占比 84-94% 低于贴图型 96-98%，聊天会话占比高 2-4pct。",
+        "发表记录单篇明细（wx.cgiData publish_list，截至 08-31 06:40）：GLM-5.3视觉 21读/分享2/赞1/留言2（文章 08-30 20:00 新发）；opencode价格屠刀 127读/分享4/赞1/留言3（贴图 08-30 11:21 新发）；每步都靠猜 59读/分享12/赞3/留言4（08-29 文章，较08-30 16:15的52读 +7）；腾讯hy4 78读/分享1/赞1/留言3（贴图，持平）；GLM5.3flash均值回归 168读/分享1/赞4/留言4（+2）；信息熵 48读/分享4/赞3/留言4（+3）；智谱阿里 73读/分享14/赞4/留言2（+3）；蒸馏 53读/分享6/赞2/留言3（文章版持平，贴图镜像 5读 不计）；GLM半价 166读/分享2/赞1/留言6。",
+        "文章级指标更新（滚动5篇 type=article，08-29/28/27/26/25）：每步59、信息熵48、智谱阿里73、蒸馏53、GAE61 — 平均58.8读，0/5达150线，连续第7篇 <150。分享率：每步20.3%（12/59）、信息熵8.3%（4/48）、智谱19.2%（14/73）、蒸馏11.3%（6/53）、GAE6.6%（4/61）。留言≥5：0/5（每步4、信息熵4、智谱2、蒸馏3、GAE2，均不达标，较上次退步）。",
+        "每日流量渠道（tendency.xls 07-28~08-30 入库，30天窗口）：08-30 全部394/推荐250/公众号消息77/聊天23/主页17/其他29/搜一搜5/朋友圈1；推荐池 662(08-25)→518→424→343→337(08-29)→250(08-30) 连续6日萎缩未止跌，08-30 阅读 394 = 推荐新低。",
+        "收入：概览累计 66.64 元（与 08-30 16:15 持平，08-30 收入未回填无法推算昨日增量，yesterdayIncrement 存 null）。日报表近6日（08-24~08-29）：留言区 3.65（eCPM5.75 最高）+ 底部 1.87 + 中部 2.21 + 贴图 0.85 + 关键词 0 = 8.58。日明细合计与卡片有 0.01 舍入差（如底部 1.86 vs 1.87、中部 2.22 vs 2.21、贴图 0.86 vs 0.85）。曝光率：中部 45.11% 健康、底部 18.86% 临界、留言区 10.35% 关注、贴图 10.33% 关注；eCPM 中部 0.88 垫底。<200 曝光/日不判 CTR。文章收入明细与 08-30 16:15 完全一致（无新增文章收入日）。",
+        "用户：累计 925（+7），净增连续 5 日下滑 26→12→12→8→8→7，周环比 +65% 但日环比 -12.5%。渠道构成（31天窗口 631人）：文章页 81.46%（514）、搜一搜 11.25%（71）、视频号 1.11%（7）、扫码 0.32%。搜一搜占比 11.25% 维持健康区。"
+      ]
+    },
+    {
+      "collectedAt": "2026-08-31T17:30:00+08:00",
+      "dataThrough": "2026-08-31",
+      "periods": {
+        "content": {
+          "from": "2026-08-01",
+          "to": "2026-08-31"
+        },
+        "users": {
+          "from": "2026-07-31",
+          "to": "2026-08-31"
+        },
+        "income": {
+          "from": "2026-08-24",
+          "to": "2026-08-30"
+        }
+      },
+      "content": {
+        "readers30d": 27614,
+        "daily": {
+          "date": "2026-08-30",
+          "reads": 394,
+          "likes": 23,
+          "favorites": 5,
+          "shares": 28,
+          "comments": 11
+        },
+        "sources": {
+          "recommendation": 82.2,
+          "officialMessage": 6.8,
+          "chatSession": 4.3,
+          "accountHome": 3.6,
+          "other": 3.4,
+          "search": 1.1,
+          "moments": 0.5
+        },
+        "articles": [
+          {
+            "date": "2026-08-07",
+            "title": "opencode这波真要杀疯了",
+            "type": "tietu",
+            "reads": 5435,
+            "share": 19.68
+          },
+          {
+            "date": "2026-08-10",
+            "title": "KV缓存存进SSD：慢50倍的硬盘，为什么反而更快？",
+            "type": "article",
+            "reads": 2985,
+            "share": 10.81
+          },
+          {
+            "date": "2026-08-09",
+            "title": "即将反转！opencode go也要搞峰谷价",
+            "type": "tietu",
+            "reads": 1899,
+            "share": 6.88
+          },
+          {
+            "date": "2026-08-12",
+            "title": "高维空间为什么全是壳？内积才是那把尺子",
+            "type": "article",
+            "reads": 1613,
+            "share": 5.84
+          },
+          {
+            "date": "2026-08-11",
+            "title": "突飞猛进的pi agent和友善的openai，你选谁",
+            "type": "tietu",
+            "reads": 1475,
+            "share": 5.34
+          },
+          {
+            "date": "2026-08-16",
+            "title": "严重过拟合的Deepseek，和魔幻的价格",
+            "type": "tietu",
+            "reads": 1332,
+            "share": 4.82
+          },
+          {
+            "date": "2026-08-07",
+            "title": "QWen3.8 Max评分接近Kimi k3",
+            "type": "tietu",
+            "reads": 1327,
+            "share": 4.81
+          },
+          {
+            "date": "2026-08-21",
+            "title": "高斯为什么二阶就够？非线性去哪了",
+            "type": "article",
+            "reads": 1321,
+            "share": 4.78
+          },
+          {
+            "date": "2026-08-04",
+            "title": "DeepSeek-V4为何不用MLA？",
+            "type": "article",
+            "reads": 1095,
+            "share": 3.97
+          },
+          {
+            "date": "2026-08-07",
+            "title": "第三方DeepSeek0731还是有希望",
+            "type": "tietu",
+            "reads": 1073,
+            "share": 3.89
+          }
+        ],
+        "articleDetails": [
+          {
+            "date": "2026-08-10",
+            "title": "KV缓存存进SSD：慢50倍的硬盘，为什么反而更快？",
+            "type": "article",
+            "reads": 2985,
+            "likes": 30,
+            "favorites": 166,
+            "shares": 435,
+            "comments": 29,
+            "newFollowers": 136,
+            "avgReadMin": 1.73,
+            "completionRate": 17,
+            "channels": {
+              "推荐": 86.6,
+              "聊天会话": 7.7,
+              "其它": 3.0,
+              "朋友圈": 2.4,
+              "公众号主页": 1.5,
+              "公众号消息": 1.3,
+              "搜一搜": 0.2
+            }
+          },
+          {
+            "date": "2026-08-12",
+            "title": "高维空间为什么全是壳？内积才是那把尺子",
+            "type": "article",
+            "reads": 1613,
+            "likes": 31,
+            "favorites": 154,
+            "shares": 315,
+            "comments": 7,
+            "newFollowers": 128,
+            "avgReadMin": 2.52,
+            "completionRate": 22,
+            "channels": {
+              "推荐": 85.2,
+              "聊天会话": 7.0,
+              "其它": 4.6,
+              "朋友圈": 3.0,
+              "公众号主页": 2.5,
+              "公众号消息": 2.4,
+              "搜一搜": 0.2
+            }
+          },
+          {
+            "date": "2026-08-21",
+            "title": "高斯为什么二阶就够？非线性去哪了",
+            "type": "article",
+            "reads": 1321,
+            "likes": 23,
+            "favorites": 10,
+            "shares": 144,
+            "comments": 8,
+            "newFollowers": 30,
+            "avgReadMin": 0.92,
+            "completionRate": 22,
+            "channels": {
+              "推荐": 93.9,
+              "公众号消息": 2.7,
+              "聊天会话": 2.6,
+              "其它": 2.0,
+              "公众号主页": 0.6,
+              "朋友圈": 0.2,
+              "搜一搜": 0.0
+            }
+          },
+          {
+            "date": "2026-08-04",
+            "title": "DeepSeek-V4为何不用MLA？",
+            "type": "article",
+            "reads": 1095,
+            "likes": 19,
+            "favorites": 59,
+            "shares": 117,
+            "comments": 16,
+            "newFollowers": 49,
+            "avgReadMin": 1.32,
+            "completionRate": 17,
+            "channels": {
+              "推荐": 84.0,
+              "聊天会话": 6.8,
+              "公众号消息": 4.1,
+              "公众号主页": 4.1,
+              "其它": 3.9,
+              "搜一搜": 1.1,
+              "朋友圈": 0.0
+            }
+          },
+          {
+            "date": "2026-08-24",
+            "title": "PPO只用0.2的clip，凭什么顶替0.01的KL预算？",
+            "type": "article",
+            "reads": 59,
+            "likes": 14,
+            "favorites": 8,
+            "shares": 5,
+            "comments": 11,
+            "newFollowers": 0,
+            "avgReadMin": 0.88,
+            "completionRate": 37,
+            "channels": {
+              "聊天会话": 37.3,
+              "公众号消息": 30.5,
+              "公众号主页": 18.6,
+              "其它": 16.9,
+              "推荐": 8.5,
+              "朋友圈": 0.0,
+              "搜一搜": 0.0
+            }
+          },
+          {
+            "date": "2026-08-27",
+            "title": "智谱阿里为什么要改注意力？KV缓存竟砍4.4倍",
+            "type": "article",
+            "reads": 77,
+            "likes": 8,
+            "favorites": 4,
+            "shares": 16,
+            "comments": 3,
+            "newFollowers": 2,
+            "avgReadMin": 1.47,
+            "completionRate": 29,
+            "channels": {
+              "公众号消息": 49.4,
+              "推荐": 31.2,
+              "公众号主页": 13.0,
+              "其它": 6.5,
+              "聊天会话": 2.6,
+              "搜一搜": 1.3,
+              "朋友圈": 0.0
+            }
+          },
+          {
+            "date": "2026-08-26",
+            "title": "蒸馏是抄袭？为什么越抄越学不会？",
+            "type": "article",
+            "reads": 62,
+            "likes": 6,
+            "favorites": 2,
+            "shares": 6,
+            "comments": 5,
+            "newFollowers": 0,
+            "avgReadMin": 1.4,
+            "completionRate": 26,
+            "channels": {
+              "公众号消息": 43.5,
+              "聊天会话": 19.4,
+              "公众号主页": 14.5,
+              "其它": 14.5,
+              "推荐": 11.3,
+              "朋友圈": 0.0,
+              "搜一搜": 0.0
+            }
+          },
+          {
+            "date": "2026-08-25",
+            "title": "GAE：100步的功劳，为什么只认最近17步？",
+            "type": "article",
+            "reads": 68,
+            "likes": 5,
+            "favorites": 4,
+            "shares": 5,
+            "comments": 3,
+            "newFollowers": 0,
+            "avgReadMin": 0.88,
+            "completionRate": 21,
+            "channels": {
+              "公众号消息": 47.1,
+              "推荐": 39.7,
+              "其它": 10.3,
+              "公众号主页": 7.4,
+              "聊天会话": 0.0,
+              "朋友圈": 0.0,
+              "搜一搜": 0.0
+            }
+          },
+          {
+            "date": "2026-08-28",
+            "title": "信息熵：压缩1000倍，为什么信息反而少？",
+            "type": "article",
+            "reads": 52,
+            "likes": 4,
+            "favorites": 3,
+            "shares": 6,
+            "comments": 7,
+            "newFollowers": 0,
+            "avgReadMin": 0.83,
+            "completionRate": 29,
+            "channels": {
+              "公众号消息": 53.8,
+              "推荐": 26.9,
+              "公众号主页": 13.5,
+              "其它": 9.6,
+              "聊天会话": 0.0,
+              "朋友圈": 0.0,
+              "搜一搜": 0.0
+            }
+          },
+          {
+            "date": "2026-08-29",
+            "title": "每步都靠猜，上百万Token的长任务怎么不跑偏",
+            "type": "article",
+            "reads": 61,
+            "likes": 9,
+            "favorites": 3,
+            "shares": 13,
+            "comments": 6,
+            "newFollowers": 0,
+            "avgReadMin": 1.78,
+            "completionRate": 30,
+            "channels": {
+              "公众号消息": 77.0,
+              "公众号主页": 9.8,
+              "聊天会话": 8.2,
+              "其它": 6.6,
+              "推荐": 4.9,
+              "朋友圈": 0.0,
+              "搜一搜": 0.0
+            }
+          },
+          {
+            "date": "2026-08-30",
+            "title": "GLM-5.3 说视觉没用，转头带上原生视觉",
+            "type": "article",
+            "reads": 19,
+            "likes": 2,
+            "favorites": 1,
+            "shares": 1,
+            "comments": 3,
+            "newFollowers": 0,
+            "avgReadMin": 2.65,
+            "completionRate": 21,
+            "channels": {
+              "公众号消息": 84.2,
+              "公众号主页": 10.5,
+              "推荐": 10.5,
+              "其它": 5.3,
+              "聊天会话": 0.0,
+              "朋友圈": 0.0,
+              "搜一搜": 0.0
+            }
+          }
+        ]
+      },
+      "users": {
+        "daily": {
+          "date": "2026-08-31",
+          "new": 7,
+          "cancelled": 0,
+          "net": 7,
+          "total": 925
+        },
+        "channelTotal": 631,
+        "channels": {
+          "articlePage": {
+            "count": 514,
+            "share": 81.46
+          },
+          "search": {
+            "count": 71,
+            "share": 11.25
+          },
+          "qrCode": {
+            "count": 2,
+            "share": 0.32
+          },
+          "video": {
+            "count": 7,
+            "share": 1.11
+          },
+          "other": {
+            "count": 37,
+            "share": 5.86
+          }
+        },
+        "trend": [
+          {
+            "date": "2026-08-21",
+            "new": 23,
+            "cancelled": 0,
+            "net": 23,
+            "total": 792
+          },
+          {
+            "date": "2026-08-22",
+            "new": 21,
+            "cancelled": 1,
+            "net": 20,
+            "total": 812
+          },
+          {
+            "date": "2026-08-23",
+            "new": 22,
+            "cancelled": 1,
+            "net": 21,
+            "total": 833
+          },
+          {
+            "date": "2026-08-24",
+            "new": 20,
+            "cancelled": 0,
+            "net": 20,
+            "total": 853
+          },
+          {
+            "date": "2026-08-25",
+            "new": 27,
+            "cancelled": 1,
+            "net": 26,
+            "total": 879
+          },
+          {
+            "date": "2026-08-26",
+            "new": 12,
+            "cancelled": 0,
+            "net": 12,
+            "total": 891
+          },
+          {
+            "date": "2026-08-27",
+            "new": 12,
+            "cancelled": 0,
+            "net": 12,
+            "total": 903
+          },
+          {
+            "date": "2026-08-28",
+            "new": 8,
+            "cancelled": 0,
+            "net": 8,
+            "total": 911
+          },
+          {
+            "date": "2026-08-29",
+            "new": 8,
+            "cancelled": 1,
+            "net": 7,
+            "total": 918
+          },
+          {
+            "date": "2026-08-30",
+            "new": 7,
+            "cancelled": 0,
+            "net": 7,
+            "total": 925
+          }
+        ]
+      },
+      "income": {
+        "overview": {
+          "cumulativeRevenue": 67.51,
+          "programmaticRevenue": 67.51,
+          "yesterdayIncrement": 0.88,
+          "mutualSelectionRevenue": 0,
+          "commerceRevenue": 0
+        },
+        "articleIncomeAvailable": true,
+        "slots": {
+          "messageArea": {
+            "summary": {
+              "pulls": 6832,
+              "impressions": 743,
+              "exposureRate": 10.88,
+              "clicks": 1,
+              "ctr": 0.13,
+              "ecpm": 5.44,
+              "revenue": 4.04
+            },
+            "dailyRevenueTotal": 4.04,
+            "daily": [
+              {
+                "date": "2026-08-30",
+                "pulls": 696,
+                "impressions": 108,
+                "exposureRate": 15.52,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 3.61,
+                "revenue": 0.39
+              },
+              {
+                "date": "2026-08-29",
+                "pulls": 699,
+                "impressions": 81,
+                "exposureRate": 11.59,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 4.32,
+                "revenue": 0.35
+              },
+              {
+                "date": "2026-08-28",
+                "pulls": 881,
+                "impressions": 83,
+                "exposureRate": 9.42,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 3.01,
+                "revenue": 0.25
+              },
+              {
+                "date": "2026-08-27",
+                "pulls": 976,
+                "impressions": 110,
+                "exposureRate": 11.27,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 4.36,
+                "revenue": 0.48
+              },
+              {
+                "date": "2026-08-26",
+                "pulls": 1059,
+                "impressions": 123,
+                "exposureRate": 11.61,
+                "clicks": 1,
+                "ctr": 0.81,
+                "ecpm": 7.48,
+                "revenue": 0.92
+              },
+              {
+                "date": "2026-08-25",
+                "pulls": 1557,
+                "impressions": 149,
+                "exposureRate": 9.57,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 9.19,
+                "revenue": 1.37
+              },
+              {
+                "date": "2026-08-24",
+                "pulls": 964,
+                "impressions": 89,
+                "exposureRate": 9.23,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 3.15,
+                "revenue": 0.28
+              }
+            ]
+          },
+          "bottom": {
+            "summary": {
+              "pulls": 3125,
+              "impressions": 592,
+              "exposureRate": 18.94,
+              "clicks": 2,
+              "ctr": 0.34,
+              "ecpm": 3.48,
+              "revenue": 2.06
+            },
+            "dailyRevenueTotal": 2.06,
+            "daily": [
+              {
+                "date": "2026-08-30",
+                "pulls": 256,
+                "impressions": 51,
+                "exposureRate": 19.92,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 3.92,
+                "revenue": 0.2
+              },
+              {
+                "date": "2026-08-29",
+                "pulls": 278,
+                "impressions": 51,
+                "exposureRate": 18.35,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 2.55,
+                "revenue": 0.13
+              },
+              {
+                "date": "2026-08-28",
+                "pulls": 425,
+                "impressions": 69,
+                "exposureRate": 16.24,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 2.61,
+                "revenue": 0.18
+              },
+              {
+                "date": "2026-08-27",
+                "pulls": 372,
+                "impressions": 57,
+                "exposureRate": 15.32,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 2.11,
+                "revenue": 0.12
+              },
+              {
+                "date": "2026-08-26",
+                "pulls": 510,
+                "impressions": 99,
+                "exposureRate": 19.41,
+                "clicks": 1,
+                "ctr": 1.01,
+                "ecpm": 4.04,
+                "revenue": 0.4
+              },
+              {
+                "date": "2026-08-25",
+                "pulls": 778,
+                "impressions": 164,
+                "exposureRate": 21.08,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 4.63,
+                "revenue": 0.76
+              },
+              {
+                "date": "2026-08-24",
+                "pulls": 506,
+                "impressions": 101,
+                "exposureRate": 19.96,
+                "clicks": 1,
+                "ctr": 0.99,
+                "ecpm": 2.67,
+                "revenue": 0.27
+              }
+            ]
+          },
+          "inline": {
+            "summary": {
+              "pulls": 6047,
+              "impressions": 2739,
+              "exposureRate": 45.3,
+              "clicks": 4,
+              "ctr": 0.15,
+              "ecpm": 0.9,
+              "revenue": 2.47
+            },
+            "dailyRevenueTotal": 2.47,
+            "daily": [
+              {
+                "date": "2026-08-30",
+                "pulls": 498,
+                "impressions": 236,
+                "exposureRate": 47.39,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 1.1,
+                "revenue": 0.26
+              },
+              {
+                "date": "2026-08-29",
+                "pulls": 554,
+                "impressions": 259,
+                "exposureRate": 46.75,
+                "clicks": 2,
+                "ctr": 0.77,
+                "ecpm": 0.81,
+                "revenue": 0.21
+              },
+              {
+                "date": "2026-08-28",
+                "pulls": 820,
+                "impressions": 387,
+                "exposureRate": 47.2,
+                "clicks": 1,
+                "ctr": 0.26,
+                "ecpm": 1.03,
+                "revenue": 0.4
+              },
+              {
+                "date": "2026-08-27",
+                "pulls": 740,
+                "impressions": 292,
+                "exposureRate": 39.46,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 0.72,
+                "revenue": 0.21
+              },
+              {
+                "date": "2026-08-26",
+                "pulls": 996,
+                "impressions": 425,
+                "exposureRate": 42.67,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 0.82,
+                "revenue": 0.35
+              },
+              {
+                "date": "2026-08-25",
+                "pulls": 1481,
+                "impressions": 697,
+                "exposureRate": 47.06,
+                "clicks": 1,
+                "ctr": 0.14,
+                "ecpm": 1.05,
+                "revenue": 0.73
+              },
+              {
+                "date": "2026-08-24",
+                "pulls": 958,
+                "impressions": 443,
+                "exposureRate": 46.24,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 0.72,
+                "revenue": 0.32
+              }
+            ]
+          },
+          "keyword": {
+            "summary": {
+              "pulls": 0,
+              "impressions": 0,
+              "exposureRate": null,
+              "clicks": 0,
+              "ctr": null,
+              "ecpm": null,
+              "revenue": 0
+            },
+            "dailyRevenueTotal": 0,
+            "daily": []
+          },
+          "tietuBottom": {
+            "summary": {
+              "pulls": 2538,
+              "impressions": 256,
+              "exposureRate": 10.09,
+              "clicks": 2,
+              "ctr": 0.78,
+              "ecpm": 3.44,
+              "revenue": 0.88
+            },
+            "dailyRevenueTotal": 0.88,
+            "daily": [
+              {
+                "date": "2026-08-30",
+                "pulls": 312,
+                "impressions": 26,
+                "exposureRate": 8.33,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 1.15,
+                "revenue": 0.03
+              },
+              {
+                "date": "2026-08-29",
+                "pulls": 441,
+                "impressions": 52,
+                "exposureRate": 11.79,
+                "clicks": 1,
+                "ctr": 1.92,
+                "ecpm": 3.08,
+                "revenue": 0.16
+              },
+              {
+                "date": "2026-08-28",
+                "pulls": 90,
+                "impressions": 7,
+                "exposureRate": 7.78,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 1.43,
+                "revenue": 0.01
+              },
+              {
+                "date": "2026-08-27",
+                "pulls": 424,
+                "impressions": 36,
+                "exposureRate": 8.49,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 2.22,
+                "revenue": 0.08
+              },
+              {
+                "date": "2026-08-26",
+                "pulls": 426,
+                "impressions": 38,
+                "exposureRate": 8.92,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 8.16,
+                "revenue": 0.31
+              },
+              {
+                "date": "2026-08-25",
+                "pulls": 282,
+                "impressions": 24,
+                "exposureRate": 8.51,
+                "clicks": 0,
+                "ctr": 0,
+                "ecpm": 6.67,
+                "revenue": 0.16
+              },
+              {
+                "date": "2026-08-24",
+                "pulls": 563,
+                "impressions": 73,
+                "exposureRate": 12.97,
+                "clicks": 1,
+                "ctr": 1.37,
+                "ecpm": 1.92,
+                "revenue": 0.14
+              }
+            ]
+          }
+        }
+      },
+      "notes": [
+        "2026-08-31 17:30 CST 采集。Cookie 08-30 15:57 注入，实测有效期内（25h < 2d）。status 脚本曾因把「请重新登录」中间态当提前 break 条件误报 loggedIn:false（教训：页面加载先渲染占位页，JS 换 token 后跳转；登录成功三信号 uin>0 / URL 带 token= / hasMenu），已修脚本并更新 SKILL。内容/用户截至 08-31，收入日报表窗口 08-24~08-30（08-30 收入已回填）。",
+        "单篇详情 11 篇文章（含收藏/点赞/分享/留言/时长/完读率/渠道）：KV-SSD 2985读/赞30/藏166/享435/留言29/新增关注136/时长1.73/完读17%/推荐86.6%；高维 1613/31/154/315/7/128/2.52/22%/85.2%；高斯 1321/23/藏10/144/8/30/0.92/22%/93.9%；MLA 1095/19/59/117/16/49/1.32/17%/84%；PPO 59/14/藏8/享5/留言11/0.88min/37%/聊天会话37.3%最高；智谱阿里 77/8/4/16/3/2/1.47/29%/消息49.4%+推荐31.2%；蒸馏 62/6/2/6/5/0/1.40/26%/聊天19.4%；GAE 68/5/4/5/3/0/0.88/21%/消息47.1%；信息熵 52/4/3/6/7/0/0.83/29%/消息53.8%；每步 61/9/3/13/6/0/1.78/30%/消息77%+推荐4.9%；GLM视觉 19/2/1/1/3/0/2.65/21%/消息84%。",
+        "互动率矩阵（核心复盘）：近期8篇（08-24后）赞率均值12.1%（PPO 23.7%最高/每步14.8%/GLM视觉10.5%）、藏率6.3%、享率13.1%（每步21.3%/智谱阿里20.8%最高）；对照旧4篇（流量期）赞率仅1.5%、藏率5.5%、享率14.4%。结论：近期文章互动率实际是旧文4-8倍，『点赞/转发/收藏不理想』是绝对数量问题（阅读19-77 vs 旧文1000-3000），根因是推荐池枯竭（662→250 连续7日萎缩），非内容质量下降。",
+        "利他价值规律（12篇实证）：收藏=可复用价值（PPO RL参数13.6%、高维数学直觉9.5%、KV缓存5.6%、MLA 5.4%；高斯纯认知解释藏率仅0.8%垫底）；分享=可传递价值（每步长任务方法21.3%、智谱阿里新情报20.8%、高维可引用19.5%）；点赞=观点表态（PPO『凭什么』立场鲜明23.7%、智谱阿里/每步10%+；高斯1.7%说明看完没被打动）；聊天会话占比高=读者转发进私聊讨论（PPO 37.3%、蒸馏19.4%）。",
+        "渠道洞察：08-24 后推荐池枯竭，新文章 44-84% 流量来自公众号消息（粉丝），推荐占比暴跌（每步4.9% vs 旧文84-94%）。贴图型 opencode 5435读仅赞1/藏1/享24/留言37——热点看热闹无利他价值，互动极低（对照）。",
+        "收入：概览累计 67.51 元（昨日 +0.88 = 底部0.20+中部0.26+留言区0.39+贴图0.03，精确对上）。日报表 08-24~08-30 窗口：留言区 4.04（eCPM 5.44 最高）/ 底部 2.06 / 中部 2.47 / 贴图 0.88 / 关键词 0 = 9.45。曝光率：中部 45.30% 健康、底部 18.94% 临界、留言区 10.88% 关注、贴图 10.09% 关注。eCPM 中部 0.90 垫底。<200 曝光/日不判 CTR。",
+        "用户：累计 925（+7，08-30），净增连续下滑 23→20→21→26→12→12→8→7（08-21→08-30）。渠道构成（31天窗口 631人）：文章页 81.46%、搜一搜 11.25%、视频号 1.11%、扫码 0.32%。首页显示总用户 929（含今日+1/或口径差异），审计以用户分析页 925 为准。"
+      ]
     }
   ]
 }

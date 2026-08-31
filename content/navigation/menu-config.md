@@ -26,14 +26,14 @@
 
 | 排序 | 子菜单名 | 链接 | 阅读量 |
 |-----|---------|------|--------|
-| 1 | KV缓存SSD | `https://mp.weixin.qq.com/s/40BQ06eDTv4-2r8FmQ_rMA` | 2,916 |
-| 2 | 高维空间全是壳 | `https://mp.weixin.qq.com/s/Nrfr-90Fpu3mFDML9s0d1Q` | 1,563 |
-| 3 | Adam优化器 | `https://mp.weixin.qq.com/s/aSLVO-otvr2rxIU1kr2eAA` | 1,109 |
-| 4 | DeepSeek-V4为何不用MLA | `https://mp.weixin.qq.com/s/MQEgbY16mLs-N7g2xKW1HQ` | 1,078 |
-| 5 | 高斯为什么二阶就够 | `https://mp.weixin.qq.com/s/gs_3y7JXuBLlzR5w6jW6fQ` | 852 |
+| 1 | KV缓存SSD | `https://mp.weixin.qq.com/s/40BQ06eDTv4-2r8FmQ_rMA` | 2,985 |
+| 2 | 高维空间全是壳 | `https://mp.weixin.qq.com/s/Nrfr-90Fpu3mFDML9s0d1Q` | 1,613 |
+| 3 | 高斯为什么二阶就够 | `https://mp.weixin.qq.com/s/gs_3y7JXuBLlzR5w6jW6fQ` | 1,321 |
+| 4 | Adam优化器 | `https://mp.weixin.qq.com/s/aSLVO-otvr2rxIU1kr2eAA` | 1,109 |
+| 5 | DeepSeek-V4为何不用MLA | `https://mp.weixin.qq.com/s/MQEgbY16mLs-N7g2xKW1HQ` | 1,095 |
 | 6 | SFT微调1万条数据 | `https://mp.weixin.qq.com/s/vwXGbjm9Ai1GPvQi5O3UyQ` | 569 |
 
-**2026-08-27 更新**：按 08-27 审计快照（数据截至 08-26，26,317 读）重排。贴图（opencode 杀疯了 5,435、opencode 峰谷价 1,853、pi agent 1,436、DeepSeek 过拟合 1,322、QWen 1,275、第三方 1,073 等）不计入热门文章；KV缓存存进SSD 保持第 1（2,916 读，+49），高维空间第 2（1,563 读，+24），Adam 第 3（1,109），DeepSeek-V4 第 4（1,078 读，+6），高斯为什么二阶就够第 5（852 读，+144 放量最猛），SFT 第 6（569），Softmax（566）出局。账号菜单仅支持 2 个子菜单，实际配置取前 2 篇（KV、高维）。
+**2026-08-31 更新**：按 08-31 审计快照（数据截至 08-30，27,614 读）重排。贴图不计入热门文章；KV缓存存进SSD 保持第 1（2,985 读，+69），高维空间第 2（1,613 读，+50），高斯为什么二阶就够升至第 3（1,321 读，+469 长尾放量），Adam 第 4（1,109），DeepSeek-V4 第 5（1,095 读，+17），SFT 第 6（569）。账号菜单仅支持 2 个子菜单，实际配置取前 2 篇（KV、高维）。
 
 **维护规则**：每次跑 wechat-data-audit 后，从审计日志聚合各文章最高阅读量、过滤贴图、重排前 6。被替下的文章通过合集页仍可访问。更新频率：约每月一次或推荐窗口出现明显变化时。
 
@@ -86,7 +86,8 @@
 | 2026-07-28 | Kimi K3 架构怎么撑住 2.8T 参数？三轴拆给你看 | `2026-07-28-kimi-k3-architecture` |
 | 2026-08-04 | DeepSeek-V4为何不用MLA？ | `2026-08-04-deepseek-csa` |
 | 2026-08-05 | K=V：一份KV缓存怎么干两份活？ | `2026-08-05-deepseek-kv` |
-| 2026-08-27 | GLM-5.3-Flash 和 Qwen4 架构：注意力为什么都不够用了？（待准备） | `2026-08-27-glm-qwen-architecture` |
+| 2026-08-27 | GLM-5.3-Flash 和 Qwen4 架构：注意力为什么都不够用了？ | `2026-08-27-glm-qwen-architecture` |
+| 2026-08-30 | GLM-5.3 说视觉没用，转头带上原生视觉 | `2026-08-30-multimodal-split` |
 
 ### 大模型原理（14篇 · album 4597831652025925632）
 

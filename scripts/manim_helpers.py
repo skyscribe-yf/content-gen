@@ -868,7 +868,7 @@ class _Base(MovingCameraScene):
         """
         if not mobs:
             raise ValueError("transition_out 必须传入当前场景全部可见元素（含 head/footer）")
-        grp = VGroup(*mobs)
+        grp = Group(*mobs)  # Group 兼容 ImageMobject（VGroup 不接受）
         self.play(grp.animate.shift(RIGHT * 0.9 + DOWN * 0.5).set_opacity(0),
                   run_time=run_time, rate_func=smooth)
         self.remove(grp)

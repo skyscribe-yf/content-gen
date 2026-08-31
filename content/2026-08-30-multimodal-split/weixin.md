@@ -6,6 +6,7 @@ type: "机动篇"
 series: "开源大模型技术揭秘"
 digest: "GLM-5.3-Flash刚带上原生视觉，Hy4发布却仍是纯文本，DeepSeek的嫁接眼还认不出老板照片。嘴上都说视觉对智能上限帮助有限，三家走了三条路：谁在撒谎，谁在补课？"
 cover: "00-cover.png"
+wechatUrl: "https://mp.weixin.qq.com/s/HqabnvOdMbq2gX0-V87N6w"
 keywords: ["GLM-5.3-Flash", "Hy4", "原生视觉", "多模态", "DeepSeek", "视觉模型"]
 ---
 
