@@ -26,8 +26,11 @@ MUTED = "#AAB4C8"
 WHITE = "#F0F3F8"
 
 # 每个场景的配音时长（ffprobe 实测），渲染时长 = 配音 + 缓冲
-VOICE_DUR = {"S1": 16.64, "S2": 27.36, "S3": 22.08, "S4": 22.56,
-             "S5": 25.76, "S6": 22.24, "S7": 27.36, "S8": 27.36}
+VOICE_DUR = {"S1": 15.01, "S2": 23.81, "S3": 21.07, "S4": 19.37,
+             "S5": 21.23, "S6": 20.5, "S7": 23.85, "S8": 27.23}
+# 旧配音（MiMo 克隆音色）时长，用于动画时间轴等比缩放（2026-09-02 换精英男声）
+OLD_DUR = {"S1": 16.64, "S2": 27.36, "S3": 22.08, "S4": 22.56,
+           "S5": 25.76, "S6": 22.24, "S7": 27.36, "S8": 27.36}
 TAIL = 2.5  # 段尾缓冲（build 会截到 0.1s）
 
 # 安全区（画布比例坐标）：上避标题、下避 footer/字幕、左右避边
@@ -42,16 +45,33 @@ def t(text: str, size: float = 34, color: str = WHITE, weight: str = "NORMAL") -
 
 class _Base(Scene):
     scene_dur = 12.0
+    _k = 1.0
 
     def setup(self):
         self.scene_dur = VOICE_DUR[self.__class__.__name__] + TAIL
+        # 动画时间轴按新/旧配音时长等比缩放（2026-09-02 换精英男声）
+        self._k = VOICE_DUR[self.__class__.__name__] / OLD_DUR[self.__class__.__name__]
+
+    def play(self, *args, run_time=None, **kwargs):
+        if run_time is None:
+            anims = [a for a in args if isinstance(a, Animation)]
+            if anims and all(isinstance(a, Wait) for a in anims):
+                # Scene.wait 内部走 self.play(Wait(...))，Wait 自带时长，直接取
+                run_time = max(a.run_time for a in anims)
+            else:
+                run_time = 1.0
+        return super().play(*args, run_time=run_time * self._k, **kwargs)
+
+    def wait(self, duration=1.0, **kwargs):
+        # 不在此缩放：wait 内部经 play(Wait)，由 play 统一缩放
+        return super().wait(duration, **kwargs)
 
     def pad_to_voice(self):
-        """末尾补齐等待，使场景总时长 = 配音时长 + TAIL 缓冲。"""
+        """末尾补齐等待，使场景总时长 = 配音时长 + TAIL 缓冲（不缩放）。"""
         elapsed = self.time
         target = self.scene_dur
         if target > elapsed:
-            self.wait(target - elapsed)
+            Scene.play(self, Wait(run_time=target - elapsed))
 
     def footer(self, text: str = "数解AI · DeepSeek 技术解密"):
         f = t(text, 20, MUTED).to_edge(DOWN, buff=1.15)
@@ -233,9 +253,9 @@ class S5(_Base):
         grp_l = t("一个压缩块：m=4 个连续 KV", 24, YELL).next_to(block_grp, DOWN, buff=0.4)
         self.play(FadeIn(grp_l))
 
-        # rank 边界竖线（缩短到画布内，避免穿出顶部）
-        bl = DashedLine(UP * 1.0, DOWN * 2.0, color=RED, dash_length=0.15)
-        bl.move_to(blocks[1].get_center() + UP * 1.0)
+        # rank 边界竖线（k1/k2 间隙，不穿块不穿标题）
+        bl = DashedLine(blocks[1].get_right() + UP * 0.4, blocks[1].get_right() + DOWN * 0.4,
+                        color=RED, dash_length=0.15)
         self.play(Create(bl), run_time=0.6)
         self.wait(0.3)
 

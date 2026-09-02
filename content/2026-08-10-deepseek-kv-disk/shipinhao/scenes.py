@@ -68,6 +68,8 @@ class S1(_Base):
         self.at_clip("S1-c03")
         self.play_scroll_unroll_many(c1, c2, run_time=1.2)  # 主视觉
         self.at_clip("S1-c05")
+        # 页1 保留到 c05 台词讲完，c06 换页（避免清屏早于台词结束的空窗）
+        self.at_clip("S1-c06")
         self.play(FadeOut(head), FadeOut(note0), FadeOut(page1), run_time=0.5)
 
         # 页2：答案在硬盘里（矮页）
@@ -75,13 +77,11 @@ class S1(_Base):
         q = t("KV 缓存怎么进硬盘？", 44, YELL, "BOLD")
         q2 = t("进了硬盘，为什么反而快？", 30, MUTED)
         page_auto(card, q, q2)
-
-        self.at_clip("S1-c06")
         self.play_scroll_unroll(card, run_time=1.2)
         self.at_clip("S1-c07")
         self.play_parallel(type_in(q, run_time=0.9), type_in(q2, run_time=0.8),
                            run_time=0.9)
-        self.wait(0.3)
+        self.wait(4.3)  # 补到 c07 台词讲完（约 27.6），台词结束再转场
         self.transition_out(f, card, q, q2)
         self.pad_to_voice()
 
@@ -110,8 +110,6 @@ class S2(_Base):
         self.play(type_in(lab, run_time=0.8))
         self.at_clip("S2-c06")
         self.play_scroll_unroll(c1, run_time=1.2)
-        self.at_clip("S2-c08")
-        self.play(FadeOut(head), FadeOut(page1), run_time=0.5)
 
         # 页2：KV 复用 + 存哪？→ SSD
         head2 = t("算过的结果，存起来复用", 34, YELL, "BOLD").to_edge(UP, buff=1.2)
@@ -122,8 +120,11 @@ class S2(_Base):
         page2 = page_stack(c1, c2, c3, c4, buff=0.6)
         layout_page(page2)
 
+        # 页1 保留到 c08 台词讲完（25.96），c09 换页并直接进入页2 标题
+        self.at_clip("S2-c08")
         self.at_clip("S2-c09")
-        self.play(type_in(head2, run_time=1.1))
+        self.play(FadeOut(head), FadeOut(page1), type_in(head2, run_time=1.1),
+                  run_time=1.1)
         self.at_clip("S2-c11")
         self.play_scroll_unroll_many(c1, c2, run_time=1.2)  # 主视觉
         self.at_clip("S2-c12")
@@ -131,7 +132,7 @@ class S2(_Base):
         self.at_clip("S2-c15")
         self.play_scroll_unroll(c4, run_time=1.2)
         self.emphasize(c4, run_time=0.6)  # 1/5
-        self.wait(0.3)
+        self.wait(5.3)  # 页面驻留到台词结束（c15 至 50.0），transition 占用尾部缓冲
         self.transition_out(head2, f, c1, c2, c3, c4)
         self.pad_to_voice()
 
@@ -144,31 +145,38 @@ class S3(_Base):
 
         # 页1：带宽对比 + 反直觉
         head = t("慢 50 倍的硬盘，为什么划算？", 34, YELL, "BOLD").to_edge(UP, buff=1.2)
-        r1_lab = t("显存带宽", 32, WHITE, "BOLD")
-        bar1 = Rectangle(width=5.4, height=1.6, color=CYAN, fill_color=CYAN, fill_opacity=0.7)
-        slot1 = dynamic_slot(2.6, 0.8)
-        row1 = stable_row(r1_lab, bar1, slot1, buff=0.5)
-        num1 = t("1-3 TB/s", 40, CYAN, "BOLD").move_to(slot1.get_center())
-        r2_lab = t("SSD 顺序读", 32, WHITE, "BOLD")
-        bar2 = Rectangle(width=1.1, height=1.6, color=GREEN, fill_color=GREEN, fill_opacity=0.7)
-        slot2 = dynamic_slot(2.6, 0.8)
-        row2 = stable_row(r2_lab, bar2, slot2, buff=0.5)
-        num2 = t("3-7 GB/s", 40, GREEN, "BOLD").move_to(slot2.get_center())
+        # 行宽设计值 ≤7.2（标签+条+槽），确保 layout_page 不触发整页缩放（缩放到 FW 会导致文字贴边被裁）
+        r1_lab = t("显存带宽", 30, WHITE, "BOLD")
+        bar1 = Rectangle(width=2.9, height=1.5, color=CYAN, fill_color=CYAN, fill_opacity=0.7)
+        slot1 = dynamic_slot(1.9, 0.8)
+        row1 = stable_row(r1_lab, bar1, slot1, buff=0.45)
+        r2_lab = t("SSD 顺序读", 30, WHITE, "BOLD")
+        bar2 = Rectangle(width=0.6, height=1.5, color=GREEN, fill_color=GREEN, fill_opacity=0.7)
+        slot2 = dynamic_slot(1.9, 0.8)
+        row2 = stable_row(r2_lab, bar2, slot2, buff=0.45)
         c1 = _card("反直觉：prefill 的瓶颈不是带宽，是计算", 6.8, 2.2, YELL, WHITE, 34, CARD_FILL, "BOLD")
         page1 = page_stack(row1, row2, c1, buff=1.2)
         layout_page(page1)
+        # 数字锚点与条生长目标必须在 layout_page 之后取值（2026-09-02 修 01:29 堆叠事故）：
+        # 整页布局会等比缩放，提前锚定的数字错位残留、提前写死的条宽会压过行标签
+        bar1_w = bar1.get_width()
+        bar2_w = bar2.get_width()
+        num1 = t("1-3 TB/s", 38, CYAN, "BOLD").move_to(slot1.get_center())
+        num2 = t("3-7 GB/s", 38, GREEN, "BOLD").move_to(slot2.get_center())
+        for _n, _s in ((num1, slot1), (num2, slot2)):  # 数字不得宽于保留槽
+            if _n.width > _s.width * 0.95:
+                _n.set_width(_s.width * 0.95)
 
         self.at_clip("S3-c01")
-        self.grow_bar(bar1, ValueTracker(0), 5.4, run_time=1.0, anchor="center",
+        self.grow_bar(bar1, ValueTracker(0), bar1_w, run_time=1.0, anchor="center",
                       extra_anims=[type_in(head, run_time=0.8), type_in(r1_lab, run_time=0.6),
                                    type_in(num1, run_time=0.6)])  # 主视觉
         self.at_clip("S3-c04")
-        self.grow_bar(bar2, ValueTracker(0), 1.1, run_time=1.0, anchor="center",
+        self.grow_bar(bar2, ValueTracker(0), bar2_w, run_time=1.0, anchor="center",
                       extra_anims=[type_in(r2_lab, run_time=0.6), type_in(num2, run_time=0.6)])
         self.at_clip("S3-c06")
         self.play_scroll_unroll(c1, run_time=1.2)
-        self.at_clip("S3-c07")
-        self.play(FadeOut(head), FadeOut(page1), run_time=0.5)
+        self.at_clip("S3-c07")  # 页1 驻留：c07-c11 台词期间不清屏，到 c12 随页2 标题一起换页
 
         # 页2：读盘 vs 重算账
         head2 = t("算一笔账", 36, YELL, "BOLD").to_edge(UP, buff=1.2)
@@ -180,7 +188,8 @@ class S3(_Base):
         layout_page(page2)
 
         self.at_clip("S3-c12")
-        self.play(type_in(head2, run_time=1.1))
+        self.play(FadeOut(head), FadeOut(page1), FadeOut(num1), FadeOut(num2),
+                  type_in(head2, run_time=1.1), run_time=1.1)
         self.at_clip("S3-c13")
         self.play_scroll_unroll(c1, run_time=1.0)
         self.at_clip("S3-c14")
@@ -208,7 +217,8 @@ class S3(_Base):
 
         self.play(FadeOut(head2), FadeOut(page2), type_in(head3, run_time=0.8),
                   run_time=0.8)
-        self.play_parallel(Create(lin), Create(quad), run_time=1.0)  # 主视觉
+        # 坐标轴必须显式 Create（2026-09-02 修 02:06 无坐标轴：只画了曲线没画轴）
+        self.play_parallel(Create(axes), Create(lin), Create(quad), run_time=1.0)  # 主视觉
         self.play_parallel(type_in(lab1, run_time=0.5), type_in(lab2, run_time=0.5),
                            run_time=0.5)
         self.at_clip("S3-c19")
@@ -216,7 +226,7 @@ class S3(_Base):
         self.at_clip("S3-c23")
         self.play_scroll_unroll(c2, run_time=1.2)
         self.emphasize(c2, run_time=0.6)  # 3/5
-        self.wait(0.3)
+        self.wait(3.4)  # 页面驻留到台词结束（c24 至 68.4），transition 占用尾部缓冲
         self.transition_out(head3, f, chart, c1, c2)
         self.pad_to_voice()
 
@@ -244,8 +254,7 @@ class S4(_Base):
         self.play_scroll_unroll(c2, run_time=1.0)
         self.at_clip("S4-c06")
         self.play_scroll_unroll(c3, run_time=1.0)
-        self.at_clip("S4-c07")
-        self.play(FadeOut(head), FadeOut(page1), run_time=0.5)
+        self.at_clip("S4-c07")  # 页1 驻留：c07-c08 台词期间不清屏，到 c09 随页2 标题一起换页
 
         # 页2：两套缓存 + 结论
         head2 = t("两套缓存系统", 36, YELL, "BOLD").to_edge(UP, buff=1.2)
@@ -256,7 +265,8 @@ class S4(_Base):
         layout_page(page2)
 
         self.at_clip("S4-c09")
-        self.play(type_in(head2, run_time=1.1))
+        self.play(FadeOut(head), FadeOut(page1), type_in(head2, run_time=1.1),
+                  run_time=1.1)
         self.at_clip("S4-c10")
         self.play_scroll_unroll(c1, run_time=1.2)  # 主视觉
         self.at_clip("S4-c11")
@@ -265,7 +275,7 @@ class S4(_Base):
         self.play(type_in(concl, run_time=0.9))
         self.emphasize(concl, run_time=0.6)  # 4/5
         self.at_clip("S4-c14")
-        self.wait(0.3)
+        self.wait(1.9)  # 页面驻留到台词结束（c14 至 50.7），transition 占用尾部缓冲
         self.transition_out(head2, f, c1, c2, concl)
         self.pad_to_voice()
 
@@ -314,9 +324,8 @@ class S5(_Base):
         self.play_scroll_unroll(c2, run_time=1.2)  # 主视觉
         self.at_clip("S5-c15")
         self.play_scroll_unroll(c3, run_time=1.2)
-        self.wait(0.3)
-        self.play(FadeOut(img), run_time=0.6)
-        self.transition_out(head2, f, c1, c2, c3)
+        self.wait(4.9)  # 页面驻留到台词结束（c16 至 56.5），img 随转场一起撤
+        self.transition_out(head2, f, img, c1, c2, c3)
         self.pad_to_voice()
 
 
@@ -345,8 +354,7 @@ class S6(_Base):
         self.play_scroll_unroll(c3, run_time=1.0)
         self.at_clip("S6-c08")
         self.play_scroll_unroll(c4, run_time=1.2)
-        self.at_clip("S6-c10")
-        self.play(FadeOut(head), FadeOut(page1), run_time=0.5)
+        self.at_clip("S6-c10")  # 页1 驻留：c10 台词期间不清屏，到 c11 随页2 标题一起换页
 
         # 页2：秒回链路
         head2 = t("同事的秒回 = 一条链路", 34, YELL, "BOLD").to_edge(UP, buff=1.2)
@@ -358,7 +366,8 @@ class S6(_Base):
         layout_page(page2)
 
         self.at_clip("S6-c11")
-        self.play(type_in(head2, run_time=1.1))
+        self.play(FadeOut(head), FadeOut(page1), type_in(head2, run_time=1.1),
+                  run_time=1.1)
         self.at_clip("S6-c12")
         self.play_scroll_unroll_many(c1, c2, run_time=1.2)  # 主视觉
         self.at_clip("S6-c13")

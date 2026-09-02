@@ -34,8 +34,8 @@ HERE = pathlib.Path(__file__).resolve().parent
 IMG = HERE / "img"
 AVATAR = HERE / "avatar-sjai-round.png"
 
-# 每段配音时长（tts_split.py 实测 2026-09-03），渲染时长 = 配音 + TAIL
-VOICE_DUR = {"S1": 24.01, "S2": 44.81, "S3": 64.84, "S4": 51.31, "S5": 51.16, "S6": 42.07}
+# 每段配音时长（tts_split.py 实测 2026-09-02 精英男声），渲染时长 = 配音 + TAIL
+VOICE_DUR = {"S1": 17.77, "S2": 35.67, "S3": 53.48, "S4": 43.81, "S5": 47.48, "S6": 34.43}
 TAIL = 2.5
 
 
@@ -95,7 +95,7 @@ class S1(_Base):
         self.play_scroll_unroll_many(c1, c2, run_time=1.2)  # 主视觉：拉幕
         self.at_clip("S1-c06")
         self.play(type_in(big, run_time=0.8), type_in(sub, run_time=0.8), run_time=0.9)
-        self.wait(2.03)  # 补到 c06 结束（24.06），台词讲完再转场
+        self.wait(1.93)  # 补到 c06 结束（17.84），台词讲完再转场
         self.transition_out(head2, f, c1, c2, big, sub)
         self.pad_to_voice()
 
@@ -233,7 +233,7 @@ class S2(_Base):
         self.play_scroll_unroll_many(c1, c2, run_time=1.2)  # 主视觉：拉幕
         self.at_clip("S2-c12")
         self.play(type_in(concl, run_time=0.9))
-        self.wait(2.58)  # 补到 c12 结束（44.88），台词讲完再转场
+        self.wait(1.69)  # 补到 c12 结束（35.67），台词讲完再转场
         self.transition_out(head4, f, c1, c2, concl)
         self.pad_to_voice()
 
@@ -302,7 +302,7 @@ class S3(_Base):
         self.play_scroll_unroll(deep_card, run_time=1.0)  # 主视觉：拉幕
         self.at_clip("S3-c06")
         self.play(type_in(twist, run_time=0.5))
-        self.emphasize(twist, run_time=0.5)  # 3/5
+        self.emphasize(twist, run_time=0.4)  # 3/5
         self.at_clip("S3-c07")
         self.play_scroll_unroll(c1, run_time=1.2)
         self.at_clip("S3-c08")
@@ -484,7 +484,7 @@ class S5(_Base):
         self.at_clip("S5-c15")
         self.play(type_in(twist2, run_time=0.9))
         self.emphasize(twist2, run_time=0.6)  # 5/5
-        self.wait(1.91)  # 补到 c15 结束（51.20），台词讲完再转场
+        self.wait(1.09)  # 补到 c15 结束（47.53），台词讲完再转场
         self.transition_out(head2, f, sps, mega, twist1, twist2, n1, n2, n3, x1, x2, x3)
         self.pad_to_voice()
 

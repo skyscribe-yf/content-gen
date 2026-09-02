@@ -672,7 +672,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         修复：前段以连字符/下划线结尾时旧正则 [A-Za-z]+$ 匹配失败 → 断在词中
         （2026-08-26 事故：Newton-Schulz 拆成 Newton-S/chulz、expertcollapse 拆成 e/xpertcollapse）。"""
         candidates: list[tuple[int, int]] = []
-        for r in re.finditer(r"[A-Za-z0-9]+", txt):
+        for r in re.finditer(r"[A-Za-z0-9]+(?:-[A-Za-z0-9]+)+|[A-Za-z0-9]+", txt):
             if r.start() > 0:
                 candidates.append((abs(r.start() - mid), r.start()))
             if r.end() < len(txt):
