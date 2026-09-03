@@ -1,6 +1,6 @@
 default_theme: grace
 default_color: blue
-default_publish_method: remote-api
+default_publish_method: api
 default_author: 数解AI
 need_open_comment: 1
 only_fans_can_comment: 0
