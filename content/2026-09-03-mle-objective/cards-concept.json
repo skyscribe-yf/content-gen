@@ -1,0 +1,22 @@
+{
+  "output_dir": "content/2026-09-03-mle-objective",
+  "size": "1:1",
+  "quality": "high",
+  "cards": [
+    {
+      "title": "锯齿智能",
+      "filename": "01-jagged-intelligence.png",
+      "prompt": "Square conceptual illustration with one visual focus: a bright jagged mountain ridge or roller-coaster path representing uneven intelligence. Several peaks glow with precise geometric structures, while nearby valleys dissolve into soft noise and broken puzzle pieces. The path feels continuous but uneven, with a strong diagonal movement from lower left to upper right. Clean warm-white background, deep blue primary shapes, saturated golden yellow peaks, small vermilion warning accents, restrained cyan glow. High contrast and a clear silhouette at thumbnail size. Editorial flat-vector technology illustration, refined geometric shapes, subtle grain, generous whitespace, visually simple but emotionally surprising. No literal human faces. No text, no numbers, no letters, no logos, no formulas. 1:1 square composition, keep important shapes away from edges."
+    },
+    {
+      "title": "预训练与后训练",
+      "filename": "04-pretrain-posttrain.png",
+      "prompt": "Square conceptual illustration showing a broad foundation built from a flowing sea of abstract pages and token tiles. A second, smaller set of training rails gently guides only a few behavior paths into stable tracks, symbolizing post-training. The foundation remains broad and large; the guided tracks look like behavioral shaping rather than creation from nothing. Warm white background, deep blue foundation, indigo and cyan data streams, warm yellow rails and orange points of emphasis. Premium editorial flat-vector illustration, clean geometry, subtle paper grain, calm but dynamic movement, no literal classroom or human instructor. No text, no numbers, no letters, no logos, no formulas, no specific company or model brand. 1:1 square, safe margins."
+    },
+    {
+      "title": "概率化生成",
+      "filename": "05-probabilistic-generation.png",
+      "prompt": "Square illustration of an autoregressive generation path. At the lower left, a compact sequence of glowing abstract tiles enters a branching path. One path becomes bright and coherent as it extends, while nearby paths fade, loop, or break apart. Each step feels like a local choice that gradually becomes a long output. Deep blue background with white and cyan path lines, one warm yellow high-probability path, small orange low-confidence fragments. Strong focal direction, high contrast, clean editorial technology illustration, semi-flat vector with subtle depth, elegant negative space. No literal robot, no chat bubbles, no busy UI. No text, no numbers, no letters, no logos, no formulas. 1:1 square composition, main path centered and protected from edge cropping."
+    }
+  ]
+}

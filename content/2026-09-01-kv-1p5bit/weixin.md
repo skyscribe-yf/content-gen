@@ -7,6 +7,7 @@ series: "开源大模型技术揭秘"
 digest: "KV缓存是模型读文档时写的便签，1M上下文时就要吃掉26GB显存。压薄它有个反直觉发现：K的误差进softmax指数被放大，V的误差是线性平均——K要精、V能糙。平均1.25bit，省92%显存，代价是少数任务掉点。"
 cover: "00-cover.png"
 keywords: ["KV缓存", "量化", "softmax", "AsymKV", "DeepSeek-V4", "显存"]
+wechatUrl: "https://mp.weixin.qq.com/s/Oy-GyqEB8IP4_0nmvZ7EDQ"
 ---
 
 同一个 100 万 token 的大文档，模型每看一个词，都要在便签上记一笔 K 和一笔 V。DeepSeek V4 Flash 上（antirez 实测），记满 100 万，这份便签就要吃掉 **26GB** 显存——还只是便签自己，不算模型权重。在 128GB 的 Mac 上配合 81GB 的 2bit 权重，这 26GB 就是压垮骆驼的最后一根稻草。
