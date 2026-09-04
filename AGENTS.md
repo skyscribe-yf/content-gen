@@ -96,7 +96,9 @@ wechatUrl: "https://mp.weixin.qq.com/s/abc123"
 
 详见 [`docs/article-title-seo.md`](docs/article-title-seo.md)。
 
-核心原则：**关键词前置** + **痛点驱动点击** + **搜一搜 SEO**。标题 ≤22 字，含 1 个专业关键词，套标题公式生成，过 6 条自检清单。
+核心原则：**关键词前置** + **痛点驱动点击** + **搜一搜 SEO**。关键信息须落在前 22 字内（微信信息流截断窗口），**全标题长度可适度放宽**，以自然通顺优先；含 1 个专业关键词，套标题公式生成，过 9 条自检清单。
+
+**封面标题规格（写入封面 prompt 的硬性要求）**：封面文字 = 文章标题**一字不差**；版式=金色发光标题横贯全幅（无左右分栏）、字号约画面高度 1/8、两行居中、数字准确、背景压暗退后、画面禁止任何其他文字。详见 [`docs/image-generation.md`](docs/image-generation.md)「封面标题显眼度规格」。
 
 ## 理论与实践结合
 
@@ -133,7 +135,7 @@ wechatUrl: "https://mp.weixin.qq.com/s/abc123"
 - 末尾含关注引导（价值承诺 + 系列结构）
 - 结尾含 1 个开放式问题引导留言
 - 摘要须含 2-3 个搜索关键词
-- 最新审计：2026-09-02 晚场（数据截至 2026-09-01，用户分析累计关注 940、首页卡片 946 存在 6 人口径差异，累计广告收入 68.43 元；最新分轨复盘见 [`docs/wechat-data-insights.md`](docs/wechat-data-insights.md) 0z 节），详见 [`docs/wechat-data-insights.md`](docs/wechat-data-insights.md)
+- 最新审计：2026-09-04 早场（数据截至 2026-09-03，用户分析累计关注 950、首页卡片 951 存在 1 人口径差异，累计广告收入 69.73 元；最新分轨复盘见 [`docs/wechat-data-insights.md`](docs/wechat-data-insights.md) 0aa 节），详见 [`docs/wechat-data-insights.md`](docs/wechat-data-insights.md)
 - 数字事实源：[`docs/wechat-data-audit-log.json`](docs/wechat-data-audit-log.json)，结构见同名 `.schema.json`，操作脚本为 `scripts/wechat_audit_log.py`，报告生成脚本为 `scripts/wechat_audit_report.py`，产物为 `docs/wechat-data-audit-report.html`
 - **每日流量渠道明细事实源（2026-08-27 新增）**：[`docs/wechat-daily-sources-log.json`](docs/wechat-daily-sources-log.json)，结构见同名 `.schema.json`——按天 × 传播渠道阅读人数（含每日推荐量）；每次采内容分析后跑 `python scripts/wechat_audit_log.py append-sources --input <tendency_*.xls>` 增量入库，逐日历史只认这份台账
 - **视频号数字事实源（2026-08-25 新增）**：[`docs/shipinhao-data-log.json`](docs/shipinhao-data-log.json)，结构见同名 `.schema.json`——视频号播放/完播/点赞/评论数据，与公众号日志分离（后台登录体系不同，公众号 Cookie 不通用）

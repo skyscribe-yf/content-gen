@@ -564,7 +564,7 @@ function parseArgs(argv: string[]): CliArgs {
     filePath: "",
     isHtml: false,
     articleType: "news",
-    theme: "default",
+    theme: "",
     citeStatus: true,
     dryRun: false,
     remote: false,
@@ -705,6 +705,7 @@ async function main(): Promise<void> {
   let frontmatter: Record<string, string> = {};
   let contentImages: ImageInfo[] = [];
 
+  const extConfig = loadWechatExtendConfig();
   if (args.isHtml) {
     htmlPath = filePath;
     htmlContent = extractHtmlContent(htmlPath);
@@ -737,6 +738,8 @@ async function main(): Promise<void> {
     if (!digest) digest = frontmatter.digest || frontmatter.summary || frontmatter.description || "";
     if (!sourceUrl) sourceUrl = frontmatter.sourceUrl || frontmatter.contentSourceUrl || frontmatter.content_source_url || "";
 
+    if (!args.theme && extConfig.default_theme) args.theme = extConfig.default_theme;
+    if (!args.color && extConfig.default_color) args.color = extConfig.default_color;
     console.error(`[wechat-api] Theme: ${args.theme}${args.color ? `, color: ${args.color}` : ""}, citeStatus: ${args.citeStatus}`);
     const rendered = renderMarkdownWithPlaceholders(filePath, args.theme, args.color, args.citeStatus, args.title);
     htmlPath = rendered.htmlPath;
@@ -767,7 +770,6 @@ async function main(): Promise<void> {
   if (sourceUrl) console.error(`[wechat-api] Source URL: ${sourceUrl}`);
   console.error(`[wechat-api] Type: ${args.articleType}`);
 
-  const extConfig = loadWechatExtendConfig();
   const resolved = resolveAccount(extConfig, args.account);
   if (resolved.name) console.error(`[wechat-api] Account: ${resolved.name} (${resolved.alias})`);
 

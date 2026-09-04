@@ -993,12 +993,12 @@ articles:
     自动压 <1MB JPEG）。11 个 mp 链接全量校验通过（45166 预检）。旧 T2 media_id kOcXH4SytIYVIpYksTGfHqGMhNOG8CGOkczBGtcwPh3oKw9UP9AKciR4h9S6ty3s
     作废（旧封面 kOcXH4SytIYVIpYksTGfHnMtyfKUFZx6YqZHWR_aRftozBspSolsf3Rcmb3pScbN）。未定时、未群发。发布前：声明原创
     + 定时 20:00 + 勾合集「AI中的数学」。
-- slug: 2026-08-29-alphago
+- slug: 2026-09-03-alphago
   title: AlphaGo 十年：那只狗到底是靠什么赢的？
   series: 强化学习原理（番外）
-  status: drafting
-  published_date: null
-  wechat_url: null
+  status: published
+  published_date: '2026-09-03'
+  wechat_url: https://mp.weixin.qq.com/s/420EHNlLpfKksNy30sgEsg
   files:
     weixin: true
     draft: false
@@ -1114,12 +1114,12 @@ articles:
 - slug: 2026-08-31-SVD
   title: 微调70B模型为什么只需要改0.026%的参数
   series: AI中的数学
-  status: draft_saved
-  published_date: null
-  wechat_url: null
+  status: published
+  published_date: '2026-08-31'
+  wechat_url: https://mp.weixin.qq.com/s/sl0jZTNLPps5l6qvoeyTHw
   files:
     weixin: true
-    draft: true
+    draft: false
     outline: true
     cover: true
   media_id: kOcXH4SytIYVIpYksTGfHgO-hlkU1WLGutxMhNK3k1cYVDzSN5x91Xl6XmmXIJ77
@@ -1130,14 +1130,14 @@ articles:
     9 处、尾部补合集+热门文章、frontmatter 补 digest/keywords、内联公式全部转 LaTeX、删正文重复标题行。2026-08-30
     二次重存：新增 3 张概念图（06 参数点亮/07 应用全景/08 定理点亮 AI，yairouter gpt-image-2），共 8 图。
 - slug: 2026-09-01-kv-1p5bit
-  title: KV缓存压到1.5bit：省90%显存，凭什么不掉点？
+  title: KV缓存压到1bit：省92%显存，凭什么不掉点？
   series: 开源大模型技术揭秘
-  status: draft_saved
-  published_date: null
-  wechat_url: null
+  status: published
+  published_date: '2026-09-01'
+  wechat_url: https://mp.weixin.qq.com/s/Oy-GyqEB8IP4_0nmvZ7EDQ
   files:
     weixin: true
-    draft: true
+    draft: false
     outline: true
     cover: true
   media_id: kOcXH4SytIYVIpYksTGfHi4msAqwj6D-QvLcXYwy-T0RfxEIariJkJA18S20iQLu
@@ -1160,30 +1160,69 @@ articles:
 - slug: 2026-09-02-nsa-sparse-attention
   title: DeepSeek 注意力只算 8.6%，为什么 V4 反而不用？
   series: 开源大模型技术揭秘
-  status: draft_saved
-  published_date: null
-  wechat_url: null
+  status: published
+  published_date: '2026-09-02'
+  wechat_url: https://mp.weixin.qq.com/s/HIBJliEXWtVyJqvH_Ocbog
   files:
     weixin: true
-    draft: true
+    draft: false
     outline: true
     cover: true
   media_id: kOcXH4SytIYVIpYksTGfHv04MR68mic135Kfw5ThGcYRHjq6ac9yW3CdbthgyUEf
   cover_media_id: kOcXH4SytIYVIpYksTGfHjfrNBcWwIEYHNaaZURdY_qzayqWUTNh2XejhggCsWT6
   notes: D2 NSA 稀疏注意力 09-02 档。质量审查 16/16 通过：2015→2025 硬错误修正、正文「拆→拆解」2 处、超长句拆分（原声槽/公式/参考文献豁免）、禁词 0、假人味 0、爆款检查器过（个人故事开头/悬念链/首尾闭环）、原声槽 8/8 逐字在场、GLM 45 层 34KDA+11MLA 复核通过、热门文章 self-check 通过。配图 6 张：封面 21:9 标题逐字验收（gpt-image-2 连续 4 版半角逗号，第 5 版字符级强约束通过）+ 脚本图 3 + AI 概念图 2。已存公众号草稿箱（remote-api --theme grace --color blue）。
+- slug: 2026-09-03-mle-objective
+  title: MLE为何让大模型一会儿像博士一会儿像小学生？
+  series: 数学直觉
+  status: published
+  published_date: '2026-09-03'
+  wechat_url: https://mp.weixin.qq.com/s/lyB9eA4qKIMWW_3i1PypDw
+  files:
+    weixin: true
+    draft: false
+    outline: false
+    cover: true
+- slug: 2026-09-05-r1-zero-training
+  title: 没人教它做一道题，DeepSeek 正确率凭什么从 15.6% 涨到 71%
+  series: 开源大模型技术揭秘
+  status: draft_saved
+  files:
+    weixin: true
+    draft: true
+    outline: true
+    cover: true
+  media_id: kOcXH4SytIYVIpYksTGfHj21Cp_iq9Z9_JujO7K-edPOvPzTAZaFpAEGIUnP8JN1
+  notes: R1 两篇拆解上篇（训练：R1-Zero 纯 RL 学会搜索，流形/子流形理论）。与 2026-09-06-test-time-compute
+    姊妹篇，09-05 20:00 定档。grill 日志 .grill/2026-09-05-r1-zero-training.md；两篇均 ≤2000 字；
+    原声无引号融入正文（2026-09-05 作者确立，已入 style-features 红线）。2026-09-05 第五次重存（作者要求
+    「草稿箱再次生成」，grace 主题 + 无开头 H1）。发布后回填 wechatUrl。
+- slug: 2026-09-06-test-time-compute
+  title: AI 多想 3 秒，正确率为什么从 71% 涨到 86.7%？
+  series: 开源大模型技术揭秘
+  status: draft_saved
+  files:
+    weixin: true
+    draft: true
+    outline: true
+    cover: true
+  media_id: kOcXH4SytIYVIpYksTGfHoW3ahYO3JbDDWA-SJ6grdzXIwIFhdLs_vdqR3Piz99E
+  notes: R1 两篇拆解下篇（推理：test-time compute，自一致性 71→86.7）。上篇 09-05 发布后回填其
+    wechatUrl 到本文尾部导航。2026-09-05 第五次重存（作者要求「草稿箱再次生成」，grace 主题 + 无开头 H1）。
+    09-06 20:00 定档。
+
 summary:
-  total: 63
+  total: 68
   by_status:
-    published: 59
-    drafting: 3
+    published: 61
+    drafting: 2
+    draft_saved: 5
   drafting_queue:
   - 2026-08-26-knowledge-distillation
   - 2026-08-28-information-entropy
-  - 2026-08-29-alphago
   ready_queue: []
   scheduled_queue: []
   planned_queue: []
-  next_publish_date: '2026-08-28'
+  next_publish_date: '2026-09-05'
 plan_notes:
 - 2026-08-28 对齐：信息熵 8-28（今日）→ AlphaGo 8-29 → 多模态 8-30（作者确认）。目录名已同步重命名（git mv），frontmatter
   date 同步。
@@ -1196,4 +1235,18 @@ plan_notes:
 - 2026-08-30 多模态（GLM-5.3 视觉文）已发布：https://mp.weixin.qq.com/s/HqabnvOdMbq2gX0-V87N6w，台账/status/frontmatter
   wechatUrl 已回填。
 - 2026-08-31 06:20：09-01 KV 1.5bit 草稿入箱（D1，软max指数放大主线；08-31 SVD 发布后接档）。
-next_publish_date: '2026-08-31'
+- 2026-09-05：R1 两篇拆解定档——D3 推理时计算拆为上下篇（内容矩阵 D3 已兑现）：09-05 训练篇「没人教它思考，数学分从 15.6 涨到 71」（R1-Zero
+  纯 RL，流形/子流形理论，grill 日志 .grill/2026-09-05-r1-zero-training.md）、09-06 推理篇「同一个模型，多想 3 秒，数学分从 71 涨到 86.7」（test-time
+  compute 自一致性）。两篇均 ≤2000 字硬约束；作者确立「原声无引号融入正文」风格红线（已入 style-features.md）。恢复期：禁同日双发同题材，隔天各一篇。
+- 2026-09-05 草稿入箱（remote-api）：训练篇 media_id kOcXH4SytIYVIpYksTGfHmEKCuc1nmoEyEbxIRWA-rBXcDByUAsCoQ8Ldo5bVF74、推理篇
+  media_id kOcXH4SytIYVIpYksTGfHo8Vf1u3ge8z_M54GsuS0GgAwNhTZxpdhL-1s-PPPHYx；状态→draft_saved。发布前检查：封面/话题标签/数字一致已过，
+  待发布时在公众号后台确认合集勾选 + 声明原创 + 定时 20:00。
+- 2026-09-05 标题打磨 + 封面重制：训练篇→「没人教它做一道题，DeepSeek 正确率凭什么从 15.6% 涨到 71%」、推理篇→「AI 多想 3 秒，正确率为什么从 71% 涨到 86.7%？」
+  （对照自检清单：此前缺关键词/非疑问句/单位残缺——已修正为品牌+数字反差+凭什么/为什么）。封面版式定稿：21:9、金色发光标题横贯全幅、字号≈画面高 1/8、
+  背景轨迹网络压暗退后（prompt 规格已写入 docs/image-generation.md 封面标题显眼度节）。重存草稿（api 直连，新 media_id；旧两稿需后台删除）。
+- 2026-09-05 发布通道发现：本机 IP (81.31.232.134) 直连微信 API 已验证可用（白名单内）；remote 隧道（wap.ac VPS）连接 api.weixin.qq.com 持续 TLS 断
+  （curl 隧道 000 / Bun TLS disconnected），EXTEND.md default_publish_method 保持 api 直连为优先，remote 仅作备用。
+- 2026-09-05 mdnice 主题修复：wechat-api.ts 的 theme 默认写死 "default" 且不读 EXTEND（md-to-wechat.ts 有
+  default_theme fallback 但被写死值堵住）→ 作者发现草稿箱渲染非 grace 主题。补丁：theme/color 从 EXTEND 读取
+  （loadWechatExtendConfig 提前到顶层作用域，CLI --theme/--color 仍优先）。干跑验证 grace+blue 主题生效。
+  两篇于 grace 主题下第三次重存（media_id 见上）。03-rl-loop.png 重画（回环改盒子下方椭圆环，箭头不再与方框交叉）。
