@@ -1,457 +1,581 @@
 #!/usr/bin/env python3
 """《上下文并行：1M序列为什么切了会坏？》视频号 Manim 动画（竖屏 1080×1920）
 
-8 个场景 S1-S8，与 storyboard.md 一一对应。
-布局规范（硬性）：VGroup 原子化 + 锚点链 + 安全区 + 比例坐标，禁止裸魔法数字定位。
-用法：
-  python3 -m manim -qm scenes.py S1 S2 S3 S4 S5 S6 S7 S8
+6 个场景 S1-S6，与 storyboard-v2.md 一一对应（2026-09-03 重做）。
+- 配音：MiniMax 预设精英男声（male-qn-jingying，speech-2.8-turbo，speed 1.0 pitch +2；S6 结尾降速 0.85）
+- 时间轴：at_clip("S1-c01") 挂 tts/sentence-boundaries.json 的 clip 起点（先声音后动画门禁）
+- 布局：整页规划（page_stack + layout_page / page_auto），上下留白各 ≤10%
+- 动画降噪：每页 1 个主视觉动效；emphasize 全片 5 次；v2 动效 0 处
+- 段末统一 transition_out（S6 尾卡除外，终幕驻屏）
+用法（项目根目录执行）：
+  python3 -m manim render -ql --disable_caching scenes.py S1 S2 S3 S4 S5 S6
+  python3 -m manim render -qm --disable_caching scenes.py S1 S2 S3 S4 S5 S6
 """
 from __future__ import annotations
 
-from manim import *
-
-# 竖屏 9:16 画布
-config.pixel_width = 1080
-config.pixel_height = 1920
-config.frame_width = 8.0
-config.frame_height = 14.2222
-config.background_color = "#16213E"
-
-FONT = "Noto Sans CJK SC"
-YELL = "#FFD54A"      # 主强调（与字幕黄一致）
-CYAN = "#58C4DD"
-GREEN = "#7ED7A0"
-RED = "#FF8A80"
-MUTED = "#AAB4C8"
-WHITE = "#F0F3F8"
-
-# 每个场景的配音时长（ffprobe 实测），渲染时长 = 配音 + 缓冲
-VOICE_DUR = {"S1": 15.01, "S2": 23.81, "S3": 21.07, "S4": 19.37,
-             "S5": 21.23, "S6": 20.5, "S7": 23.85, "S8": 27.23}
-# 旧配音（MiMo 克隆音色）时长，用于动画时间轴等比缩放（2026-09-02 换精英男声）
-OLD_DUR = {"S1": 16.64, "S2": 27.36, "S3": 22.08, "S4": 22.56,
-           "S5": 25.76, "S6": 22.24, "S7": 27.36, "S8": 27.36}
-TAIL = 2.5  # 段尾缓冲（build 会截到 0.1s）
-
-# 安全区（画布比例坐标）：上避标题、下避 footer/字幕、左右避边
-SAFE_TOP = config.frame_height / 2 - 1.5
-SAFE_BOTTOM = -config.frame_height / 2 + 1.6
-SAFE_X = config.frame_width / 2 - 0.4
+import pathlib
+import sys
 
 
-def t(text: str, size: float = 34, color: str = WHITE, weight: str = "NORMAL") -> Text:
-    return Text(text, font=FONT, font_size=size, color=color, weight=weight)
+def _scripts_dir() -> str:
+    p = pathlib.Path(__file__).resolve().parent
+    for _ in range(6):
+        cand = p / "scripts"
+        if (cand / "manim_helpers.py").exists():
+            return str(cand)
+        p = p.parent
+    raise RuntimeError("找不到 scripts/manim_helpers.py")
 
 
-class _Base(Scene):
-    scene_dur = 12.0
-    _k = 1.0
+sys.path.insert(0, _scripts_dir())
+from manim_helpers import *
 
-    def setup(self):
-        self.scene_dur = VOICE_DUR[self.__class__.__name__] + TAIL
-        # 动画时间轴按新/旧配音时长等比缩放（2026-09-02 换精英男声）
-        self._k = VOICE_DUR[self.__class__.__name__] / OLD_DUR[self.__class__.__name__]
+HERE = pathlib.Path(__file__).resolve().parent
+IMG = HERE / "img"
+AVATAR = HERE / "avatar-sjai-round.png"
 
-    def play(self, *args, run_time=None, **kwargs):
-        if run_time is None:
-            anims = [a for a in args if isinstance(a, Animation)]
-            if anims and all(isinstance(a, Wait) for a in anims):
-                # Scene.wait 内部走 self.play(Wait(...))，Wait 自带时长，直接取
-                run_time = max(a.run_time for a in anims)
-            else:
-                run_time = 1.0
-        return super().play(*args, run_time=run_time * self._k, **kwargs)
-
-    def wait(self, duration=1.0, **kwargs):
-        # 不在此缩放：wait 内部经 play(Wait)，由 play 统一缩放
-        return super().wait(duration, **kwargs)
-
-    def pad_to_voice(self):
-        """末尾补齐等待，使场景总时长 = 配音时长 + TAIL 缓冲（不缩放）。"""
-        elapsed = self.time
-        target = self.scene_dur
-        if target > elapsed:
-            Scene.play(self, Wait(run_time=target - elapsed))
-
-    def footer(self, text: str = "数解AI · DeepSeek 技术解密"):
-        f = t(text, 20, MUTED).to_edge(DOWN, buff=1.15)
-        self.add(f)
-
-    def fit_width(self, mob, frac: float = 0.8):
-        """长内容限宽：不超过画布宽的 frac，防越界截断。"""
-        return mob.set_width(config.frame_width * frac)
+# 每段配音时长（tts_split.py 实测），渲染时长 = 配音 + TAIL
+VOICE_DUR = {"S1": 17.34, "S2": 33.22, "S3": 30.66, "S4": 43.1, "S5": 57.61, "S6": 58.74}
+TAIL = 2.5
 
 
-def seq_bar(n_seg: int = 8, color: str = CYAN) -> VGroup:
-    """一条序列长条，切成 n_seg 段。返回 VGroup（seg0..segN-1）。"""
-    segs = VGroup()
-    for _ in range(n_seg):
-        segs.add(Rectangle(height=0.6, width=1.0, color=color,
-                           fill_color=color, fill_opacity=0.18))
-    segs.arrange(RIGHT, buff=0)
-    return segs
+def _footer(self) -> Text:
+    f = t("数解AI · DeepSeek 技术解密", 20, MUTED).to_edge(DOWN, buff=1.15)
+    self.add(f)
+    return f
 
 
-def gpu_rack(n: int = 8) -> VGroup:
-    """一排 GPU 方块（网格）。"""
-    gpus = VGroup(*[Rectangle(height=0.8, width=0.66, color=GREEN,
-                              fill_color=GREEN, fill_opacity=0.15) for _ in range(n)])
-    gpus.arrange(RIGHT, buff=0.1)
-    return gpus
+def _head(text: str, size: float = 38) -> Text:
+    return t(text, size, YELL, "BOLD").to_edge(UP, buff=1.2)
 
 
-# ---------------- S1 开场钩子 ----------------
+# ---------------- S1 开场钩子：切蛋糕 → 一切就坏 ----------------
 class S1(_Base):
     def construct(self):
-        self.footer()
-        title = t("上下文并行 · CP", 42, YELL, "BOLD").to_edge(UP, buff=1.2)
-        sub = t("1M token 的序列，切给 8 张 GPU", 28, WHITE).next_to(title, DOWN, buff=0.35)
-        self.play(FadeIn(title, shift=DOWN * 0.3), FadeIn(sub))
+        self.bg()
+        f = _footer(self)
 
-        # 序列条 + 指向 GPU 的箭头 + GPU 排：整体组一个 stage
-        bar = seq_bar().set_width(config.frame_width * 0.75)
-        gpus = gpu_rack().set_width(config.frame_width * 0.75)
-        gpus.next_to(bar, DOWN, buff=0.5)
-        arrows = VGroup(*[Arrow(bar[i].get_bottom(), gpus[i].get_top(),
-                                color=MUTED, buff=0.08, stroke_width=3) for i in range(8)])
-        stage = VGroup(bar, gpus, arrows)
-        stage.next_to(sub, DOWN, buff=0.8)
-        self.play(Create(bar), run_time=1.0)
-        self.play(FadeIn(gpus, shift=UP * 0.3), run_time=0.9)
-        self.play(*[Create(a) for a in arrows], run_time=0.8)
+        # 页1：概念图 + 8 段序列条 + 问句
+        head = _head("1M 序列，切成 8 段", 36)
+        img = ImageMobject(str(IMG / "s1-cake-round.png"))
+        img.scale_to_fit_width(5.0)
+        seq = VGroup(*[Rectangle(width=0.72, height=1.5, color=CYAN,
+                                 fill_color=CYAN, fill_opacity=0.2) for _ in range(8)])
+        seq.arrange(RIGHT, buff=0.08)
+        q = t("每人一块，有什么难的？", 36, WHITE, "BOLD")
+        page1 = page_stack(img, seq, q, buff=0.9)
+        layout_page(page1)
 
-        # 切蛋糕隐喻 → 回答
-        cake = t("听起来像切蛋糕：切 8 块，每人一块", 30, WHITE).next_to(stage, DOWN, buff=0.7)
-        ans = t("V4 技术报告：一切就坏", 40, RED, "BOLD").next_to(cake, DOWN, buff=0.6)
-        self.play(FadeIn(cake, shift=UP * 0.2))
-        self.play(FadeIn(ans, scale=0.9), run_time=0.9)
-        self.wait(1.0)
+        self.at_clip("S1-c01")
+        self.play_parallel(type_in(head, run_time=1.0),
+                           FadeIn(img, shift=DOWN * 0.05), run_time=1.0)  # 主视觉：概念图
+        self.at_clip("S1-c02")
+        self.play(*[Create(s) for s in seq], run_time=1.2, lag_ratio=0.15)
+        self.at_clip("S1-c03")
+        self.play(type_in(q, run_time=0.8))
+
+        # 页2：转折爆点
+        head2 = _head("DeepSeek-V4 的回答", 36)
+        punch = t("一切就坏", 88, YELL, "BOLD")
+        line = t("为什么切了会坏？两阶段通信怎么修好？", 34, WHITE, "BOLD")
+        page2 = page_auto(punch, line)
+
+        self.at_clip("S1-c04")
+        self.play(FadeOut(head), FadeOut(page1), type_in(head2, run_time=0.8), run_time=0.8)
+        self.play(type_in(punch, run_time=0.9))
+        self.emphasize(punch, run_time=0.5)  # 1/5
+        self.at_clip("S1-c05")
+        self.play(type_in(line, run_time=1.3))
+        self.wait(3.45)  # 补到 c05 结束（17.41），台词讲完再转场
+        self.transition_out(head2, f, page2)
         self.pad_to_voice()
 
 
-# ---------------- S2 显存账 ----------------
+# ---------------- S2 为什么必须切：1.3TB 显存账 ----------------
 class S2(_Base):
     def construct(self):
-        self.footer()
-        head = t("为什么必须切：3.5TB 的显存账", 36, YELL, "BOLD").to_edge(UP, buff=1.2)
-        self.play(FadeIn(head, shift=DOWN * 0.3))
+        self.bg()
+        f = _footer(self)
 
-        # 公式三行
-        f1 = t("Q = 10⁶ × 7168 × 2B ≈ 14.3 GB", 30, WHITE)
-        f2 = t("单层注意力留 Q、K、V：≈ 57 GB", 30, WHITE)
-        f3 = t("V4 共 61 层：57 × 61 ≈ 3.5 TB", 34, RED, "BOLD")
-        block = VGroup(f1, f2, f3).arrange(DOWN, buff=0.5).next_to(head, DOWN, buff=0.9)
-        for f in block:
-            self.play(FadeIn(f, shift=UP * 0.2), run_time=0.8)
+        # 页1：显存账
+        head = _head("先看为什么要切", 36)
+        card1 = _card("单层注意力：Q、K、V 三份张量", 6.6, 1.7, CYAN, WHITE, 32, CARD_FILL, "BOLD")
+        lab1 = t("约", 34, WHITE, "BOLD")
+        slot1 = dynamic_slot(2.6, 1.2)
+        row1 = stable_row(lab1, slot1, buff=0.35)
+        lab2 = t("61 层 × 单层", 30, WHITE)
+        slot2 = dynamic_slot(2.6, 1.2)
+        row2 = stable_row(lab2, slot2, buff=0.35)
+        lab3 = t("一块 H800 只有", 30, WHITE)
+        slot3 = dynamic_slot(2.6, 1.2)
+        row3 = stable_row(lab3, slot3, buff=0.35)
+        lab4 = t("差距", 34, WHITE, "BOLD")
+        slot4 = dynamic_slot(2.2, 1.0)
+        row4 = stable_row(lab4, slot4, buff=0.35)
+        page1 = page_stack(card1, row1, row2, row3, row4, buff=0.75)
+        layout_page(page1)
 
-        # H800 对比
-        gpu = Rectangle(height=0.7, width=3.2, color=GREEN, fill_color=GREEN, fill_opacity=0.15)
-        gl = t("一块 H800：80 GB", 28, GREEN)
-        ggroup = VGroup(gpu, gl).next_to(block, DOWN, buff=0.8)
-        self.play(FadeIn(ggroup))
+        self.at_clip("S2-c01")
+        self.play(type_in(head, run_time=0.8))
+        self.at_clip("S2-c02")
+        self.play_scroll_unroll(card1, run_time=1.0)  # 主视觉：拉幕
+        self.at_clip("S2-c03")
+        n1 = self.counter_value(0, 21.5, suffix=" GB", decimals=1, size=64, color=YELL,
+                                run_time=1.0, anchor=slot1,
+                                extra_anims=[type_in(lab1, run_time=0.5)])
+        self.at_clip("S2-c04")
+        n2 = self.counter_value(0, 1.3, suffix=" TB", decimals=1, size=64, color=YELL,
+                                run_time=1.0, anchor=slot2,
+                                extra_anims=[type_in(lab2, run_time=0.5)])
+        self.at_clip("S2-c05")
+        n3 = self.counter_value(0, 80, suffix=" GB", size=64, color=YELL,
+                                run_time=1.0, anchor=slot3,
+                                extra_anims=[type_in(lab3, run_time=0.5)])
+        self.wait(0.2)
+        n4 = self.counter_value(0, 16, suffix=" 倍", size=72, color=YELL,
+                                run_time=1.0, anchor=slot4,
+                                extra_anims=[type_in(lab4, run_time=0.5)])  # 主视觉：数字滚动
+        self.emphasize(n4, run_time=0.5)  # 2/5
 
-        vs = t("差了约 44 倍", 40, RED, "BOLD").next_to(ggroup, DOWN, buff=0.7)
-        self.play(FadeIn(vs, scale=0.9), run_time=0.8)
+        # 页2：Flash Attention 转折
+        head2 = _head("Flash Attention 不是解决了吗？", 34)
+        card2 = _card("只压掉了分数矩阵", 5.6, 3.0, GREEN, WHITE, 34, CARD_FILL, "BOLD")
+        card3 = _card("Q、K、V 一分没少", 5.6, 3.0, CYAN, WHITE, 34, CARD_FILL, "BOLD")
+        page2 = page_stack(card2, card3, buff=1.2)
+        layout_page(page2)
 
-        # Flash Attention 澄清
-        fa1 = t("Flash Attention 只压 T×T 分数矩阵", 26, MUTED)
-        fa2 = t("Q、K、V 本身是 O(T)，一分没少", 26, MUTED)
-        fa = VGroup(fa1, fa2).arrange(DOWN, buff=0.3).next_to(vs, DOWN, buff=0.7)
-        self.play(FadeIn(fa))
+        self.play(FadeOut(head), FadeOut(page1), FadeOut(n1), FadeOut(n2),
+                  FadeOut(n3), FadeOut(n4), type_in(head2, run_time=0.8), run_time=0.8)
+        self.at_clip("S2-c06")
+        self.play(type_in(head2, run_time=0.6))
+        self.at_clip("S2-c07")
+        self.play_scroll_unroll_many(card2, card3, run_time=1.0)  # 主视觉：拉幕
 
-        concl = t("CP 不是优化，是必须", 40, YELL, "BOLD").next_to(fa, DOWN, buff=0.8)
-        self.play(FadeIn(concl, shift=UP * 0.2), run_time=0.8)
-        self.wait(1.2)
+        # 页3：结论
+        head3 = _head("结论", 36)
+        concl = t("CP 不是优化，是必须", 52, YELL, "BOLD")
+        line = t("1M 上下文训练，没有 CP 根本跑不起来", 34, WHITE, "BOLD")
+        page3 = page_auto(concl, line)
+
+        self.play(FadeOut(head2), FadeOut(page2),
+                  type_in(head3, run_time=0.8), run_time=0.8)
+        self.at_clip("S2-c08")
+        self.play(type_in(concl, run_time=0.9))
+        self.at_clip("S2-c09")
+        self.play(type_in(line, run_time=0.9))
+        self.wait(2.92)  # 补到 c09 结束（33.28），台词讲完再转场
+        self.transition_out(head3, f, page3)
         self.pad_to_voice()
 
 
-# ---------------- S3 普通 CP 的两个假设 ----------------
+# ---------------- S3 普通 CP 两个假设 + Ring-Attention ----------------
 class S3(_Base):
     def construct(self):
-        self.footer()
-        head = t("普通 CP 的切法：朴素成立", 36, YELL, "BOLD").to_edge(UP, buff=1.2)
-        self.play(FadeIn(head, shift=DOWN * 0.3))
+        self.bg()
+        f = _footer(self)
 
-        bar = seq_bar(n_seg=4).set_width(config.frame_width * 0.6)
-        bar.next_to(head, DOWN, buff=0.9)
-        self.play(Create(bar))
+        # 页1：普通 CP + 两个假设
+        head = _head("普通 CP 怎么切？", 36)
+        seq = VGroup(*[Rectangle(width=1.5, height=1.4, color=CYAN,
+                                 fill_color=CYAN, fill_opacity=0.2) for _ in range(4)])
+        seq.arrange(RIGHT, buff=0.15)
+        lab = t("每张卡持有一段连续 token", 28, WHITE)
+        h1 = _card("假设 1：本地 token 数 ≈ 本地 KV 数", 6.8, 1.6, CYAN, WHITE, 30, CARD_FILL, "BOLD")
+        h2 = _card("假设 2：边界好处理，跨段补一补就行", 6.8, 1.6, GREEN, WHITE, 30, CARD_FILL, "BOLD")
+        page1 = page_stack(seq, lab, h1, h2, buff=0.7)
+        layout_page(page1)
 
-        h1 = VGroup(
-            t("假设 1", 26, CYAN, "BOLD"),
-            t("本地 token 数 ≈ 本地 KV 数", 28, WHITE),
-        ).arrange(RIGHT, buff=0.5)
-        h2 = VGroup(
-            t("假设 2", 26, CYAN, "BOLD"),
-            t("边界好处理，补一补就行", 28, WHITE),
-        ).arrange(RIGHT, buff=0.5)
-        ring = t("Ring-Attention：KV 块击鼓传花", 28, GREEN)
-        brk = t("但 V4 的压缩注意力：两个假设同时打破", 30, RED, "BOLD")
-        content = VGroup(h1, h2, ring, brk).arrange(DOWN, buff=0.6).next_to(bar, DOWN, buff=0.8)
-        for mob in (h1, h2):
-            self.play(FadeIn(mob, shift=UP * 0.2))
-        self.play(FadeIn(ring, shift=UP * 0.2))
-        self.wait(0.4)
-        self.play(FadeIn(brk, scale=0.9), run_time=0.9)
-        self.wait(1.0)
+        self.at_clip("S3-c01")
+        self.play(type_in(head, run_time=0.8))
+        self.at_clip("S3-c02")
+        self.play(*[Create(s) for s in seq], run_time=1.0, lag_ratio=0.2)  # 主视觉：轨迹
+        self.at_clip("S3-c03")
+        self.play(type_in(lab, run_time=0.6))
+        self.at_clip("S3-c04")
+        self.play_scroll_unroll(h1, run_time=1.0)  # 主视觉：拉幕
+        self.at_clip("S3-c05")
+        self.play_scroll_unroll(h2, run_time=1.0)
+
+        # 页2：Ring-Attention
+        head2 = _head("Ring-Attention", 36)
+        img = ImageMobject(str(IMG / "s3-relay-round.png"))
+        img.scale_to_fit_width(5.5)
+        cap = t("KV 块击鼓传花，轮流传着算", 34, WHITE, "BOLD")
+        page2 = page_stack(img, cap, buff=1.1)
+        layout_page(page2)
+
+        self.play(FadeOut(head), FadeOut(page1), type_in(head2, run_time=0.8), run_time=0.8)
+        self.at_clip("S3-c06")
+        self.play(FadeIn(img, shift=DOWN * 0.05), run_time=0.8)  # 主视觉：概念图
+        self.at_clip("S3-c07")
+        self.play(type_in(cap, run_time=0.7))
+
+        # 页3：转折
+        head3 = _head("但 V4 的压缩注意力", 36)
+        punch = t("两个假设，同时打破", 52, YELL, "BOLD")
+        q = t("怎么破的？", 40, WHITE, "BOLD")
+        page3 = page_auto(punch, q)
+
+        self.play(FadeOut(head2), FadeOut(page2), type_in(head3, run_time=0.8), run_time=0.8)
+        self.at_clip("S3-c08")
+        self.play(type_in(punch, run_time=0.9))
+        self.emphasize(punch, run_time=0.5)  # 3/5
+        self.at_clip("S3-c09")
+        self.play(type_in(q, run_time=0.7))
+        self.wait(0.35)  # 补到 c09 结束（30.72），台词讲完再转场
+        self.transition_out(head3, f, page3)
         self.pad_to_voice()
 
 
-# ---------------- S4 坏因 1：压缩后长度不齐 ----------------
+# ---------------- S4 两个坏因：长度不齐 + 窗口跨边界 ----------------
 class S4(_Base):
     def construct(self):
-        self.footer()
-        head = t("坏因 1：压缩后 KV 长度不齐", 36, RED, "BOLD").to_edge(UP, buff=1.2)
-        self.play(FadeIn(head, shift=DOWN * 0.3))
+        self.bg()
+        f = _footer(self)
 
-        # packed 序列 A + B
-        sa = Rectangle(height=0.6, width=4.6, color=CYAN, fill_color=CYAN, fill_opacity=0.18)
-        sa_g = VGroup(sa, t("序列 A：1000 token", 22, CYAN)).arrange(DOWN, buff=0.15)
-        sb = Rectangle(height=0.6, width=0.55, color=GREEN, fill_color=GREEN, fill_opacity=0.18)
-        sb_g = VGroup(sb, t("序列 B：7 token", 22, GREEN)).arrange(DOWN, buff=0.15)
-        seqs = VGroup(sa_g, sb_g).arrange(RIGHT, buff=1.0).next_to(head, DOWN, buff=0.8)
-        self.fit_width(seqs, 0.8)  # 限宽防溢出
-        self.play(FadeIn(seqs))
+        # 页1：坏因一 长度不齐
+        head = _head("坏因一：压缩后 KV 长度不齐", 34)
+        long_bar = Rectangle(width=6.4, height=0.9, color=CYAN, fill_color=CYAN, fill_opacity=0.25)
+        short_bar = Rectangle(width=0.9, height=0.9, color=GREEN, fill_color=GREEN, fill_opacity=0.25)
+        bars = VGroup(long_bar, short_bar).arrange(RIGHT, buff=0.3)
+        card0 = _card("packed 序列，按序列边界独立压缩", 6.4, 1.8, CYAN, WHITE, 30, CARD_FILL, "BOLD")
+        lab1 = t("两条序列打包：1000 token + 7 token", 28, WHITE)
+        blocks = VGroup(*[Rectangle(width=1.2, height=1.3, color=YELL, fill_color=YELL, fill_opacity=0.2) for _ in range(4)])
+        blocks.arrange(RIGHT, buff=0.1)
+        drop = VGroup(*[Rectangle(width=0.28, height=1.3, color=MUTED, fill_color=MUTED, fill_opacity=0.3) for _ in range(3)])
+        drop.arrange(RIGHT, buff=0.05)
+        row2 = stable_row(blocks, drop, buff=0.3)
+        lab2 = t("7 个凑不出 2 个完整块，尾部 3 个被丢弃", 28, WHITE)
+        page1 = page_stack(card0, lab1, bars, lab2, row2, buff=0.7)
+        layout_page(page1)
 
-        note = t("每个序列按自己的边界独立压缩（m=4）", 26, WHITE).next_to(seqs, DOWN, buff=0.6)
-        drop = self.fit_width(t("7 个凑不出 2 个完整块，尾部 3 个丢弃 → 只出 1 个压缩 KV", 26, RED))
-        drop.next_to(note, DOWN, buff=0.5)
-        self.play(FadeIn(note))
-        self.play(FadeIn(drop, shift=UP * 0.2))
+        self.at_clip("S4-c01")
+        self.play(type_in(head, run_time=0.8))
+        self.at_clip("S4-c02")
+        self.play(FadeIn(bars, shift=DOWN * 0.05), type_in(lab1, run_time=0.7), run_time=0.9)  # 主视觉：序列条
+        self.at_clip("S4-c03")
+        self.play(type_in(lab2, run_time=0.7))
+        self.at_clip("S4-c04")
+        self.play(*[Create(b) for b in blocks], run_time=1.0, lag_ratio=0.2)
+        self.at_clip("S4-c05")
+        self.play(*[Create(d) for d in drop], run_time=0.8, lag_ratio=0.2)
+        self.wait(0.2)
+        cross = self.play_red_cross(drop)
+        self.wait(0.2)
 
-        # 8 个 rank 产出不齐
-        heights = [0.9, 0.9, 0.55, 0.9, 0.7, 0.9, 0.45, 0.9]
-        ranks = VGroup(*[Rectangle(height=h, width=0.42, color=YELL,
-                                   fill_color=YELL, fill_opacity=0.55) for h in heights])
-        ranks.arrange(RIGHT, buff=0.22).next_to(drop, DOWN, buff=0.6)
-        cap = t("8 张卡产出的压缩 KV 数，彼此不等", 28, YELL, "BOLD").next_to(ranks, DOWN, buff=0.45)
-        self.play(*[GrowFromEdge(b, DOWN) for b in ranks], run_time=1.2)
-        self.play(FadeIn(cap))
+        # 页2：rank 产出不等
+        head2 = _head("每个 rank 产出数量不等", 34)
+        r1 = _card("rank A：全是完整块", 4.6, 2.2, CYAN, WHITE, 30, CARD_FILL, "BOLD")
+        r2 = _card("rank B：段尾正好是残块", 4.6, 2.2, RED, WHITE, 30, CARD_FILL, "BOLD")
+        punch = t("all-gather 第一步就卡住", 44, YELL, "BOLD")
+        page2 = page_stack(r1, r2, punch, buff=1.0)
+        layout_page(page2)
 
-        stuck = t("形状不齐 → all-gather 第一步就卡住", 30, RED, "BOLD").next_to(cap, DOWN, buff=0.6)
-        self.play(FadeIn(stuck, scale=0.9))
-        self.wait(1.0)
+        self.play(FadeOut(head), FadeOut(page1), FadeOut(cross),
+                  type_in(head2, run_time=0.8), run_time=0.8)
+        self.at_clip("S4-c06")
+        self.play_scroll_unroll_many(r1, r2, run_time=1.0)  # 主视觉：拉幕
+        self.at_clip("S4-c07")
+        self.play(type_in(punch, run_time=0.8))
+        self.wait(0.2)
+
+        # 页3：坏因二 窗口跨边界
+        head3 = _head("坏因二：压缩窗口跨边界", 34)
+        left = Rectangle(width=2.6, height=2.2, color=CYAN, fill_color=CYAN, fill_opacity=0.2)
+        right = Rectangle(width=2.6, height=2.2, color=GREEN, fill_color=GREEN, fill_opacity=0.2)
+        pair = VGroup(left, right).arrange(RIGHT, buff=0.0)
+        div = Line(pair.get_center() + UP * 0.8, pair.get_center() + DOWN * 0.8, color=RED, stroke_width=5)
+        half_l = Rectangle(width=0.6, height=0.9, color=YELL, fill_color=YELL, fill_opacity=0.35)
+        half_r = Rectangle(width=0.6, height=0.9, color=YELL, fill_color=YELL, fill_opacity=0.35)
+        half_l.move_to(left.get_right() + LEFT * 0.3)
+        half_r.move_to(right.get_left() + RIGHT * 0.3)
+        card3a = _card("压缩要 m 个连续的 KV entry", 6.4, 1.6, CYAN, WHITE, 30, CARD_FILL, "BOLD")
+        lab3 = t("m 个 token 横跨分界线：左半块 + 右半块", 28, WHITE)
+        punch2 = t("谁都没法压", 44, YELL, "BOLD")
+        page3 = page_stack(card3a, lab3, pair, punch2, buff=0.8)
+        layout_page(page3)
+
+        self.play(FadeOut(head2), FadeOut(page2), type_in(head3, run_time=0.8), run_time=0.8)
+        self.at_clip("S4-c08")
+        self.play(type_in(head3, run_time=0.6))
+        self.at_clip("S4-c09")
+        self.play(FadeIn(pair, shift=DOWN * 0.05), type_in(lab3, run_time=0.7), run_time=0.9)  # 主视觉：跨边界块
+        self.at_clip("S4-c10")
+        self.play(FadeIn(half_l), FadeIn(half_r), run_time=0.6)
+        self.at_clip("S4-c11")
+        self.play(Create(div), run_time=0.5)
+        self.at_clip("S4-c12")
+        self.play(type_in(punch2, run_time=0.4))
+        self.wait(0.1)
+        cross2 = self.play_red_cross(pair, run_time=0.5)
+
+        # 页4：照片比喻
+        head4 = _head("照片 4 张一组", 34)
+        img = ImageMobject(str(IMG / "s4-album-round.png"))
+        img.scale_to_fit_width(5.0)
+        cap = t("相册切给两个人，边界切在两张照片中间", 28, WHITE)
+        punch3 = t("这组照片，丢了。", 48, YELL, "BOLD")
+        page4 = page_stack(img, cap, punch3, buff=0.7)
+        layout_page(page4)
+
+        self.at_clip("S4-c13")
+        self.play(FadeOut(head3), FadeOut(page3), FadeOut(cross2),
+                  type_in(head4, run_time=0.8), FadeIn(img, shift=DOWN * 0.05), run_time=0.9)  # 主视觉：概念图
+        self.at_clip("S4-c14")
+        self.play(type_in(cap, run_time=0.7))
+        self.at_clip("S4-c15")
+        self.play(type_in(punch3, run_time=0.8))
+        self.emphasize(punch3, run_time=0.5)  # 4/5
+        self.wait(0.32)  # 补到 c15 结束（43.18），台词讲完再转场
+        self.transition_out(head4, f, page4)
         self.pad_to_voice()
 
 
-# ---------------- S5 坏因 2：窗口跨边界 ----------------
+# ---------------- S5 两阶段修复：原料交换 + select-and-pad ----------------
 class S5(_Base):
     def construct(self):
-        self.footer()
-        head = t("坏因 2：压缩窗口跨边界", 36, RED, "BOLD").to_edge(UP, buff=1.2)
-        self.play(FadeIn(head, shift=DOWN * 0.3))
+        self.bg()
+        f = _footer(self)
 
-        # m=4 的压缩块（k0..k3），红色虚线穿过
-        blocks = VGroup(*[VGroup(Rectangle(height=0.55, width=0.7, color=WHITE,
-                                           fill_color=WHITE, fill_opacity=0.15),
-                                 t(f"k{i}", 20, WHITE)) for i in range(4)])
-        blocks.arrange(RIGHT, buff=0.12)
-        grp = Rectangle(height=1.0, width=blocks.width + 0.5, color=YELL,
-                        fill_color=YELL, fill_opacity=0.05)
-        block_grp = VGroup(grp, blocks)
-        block_grp.next_to(head, DOWN, buff=0.9)
-        self.play(FadeIn(grp), FadeIn(blocks))
-        grp_l = t("一个压缩块：m=4 个连续 KV", 24, YELL).next_to(block_grp, DOWN, buff=0.4)
-        self.play(FadeIn(grp_l))
+        # 页1：阶段一 边界原料交换
+        head = _head("V4 的修法分两步", 36)
+        card0 = _card("阶段 1：交换边界原料", 6.4, 1.6, CYAN, WHITE, 30, CARD_FILL, "BOLD")
+        r0 = _card("rank r", 2.4, 2.4, CYAN, WHITE, 34, CARD_FILL, "BOLD")
+        r1 = _card("rank r+1", 2.4, 2.4, GREEN, WHITE, 34, CARD_FILL, "BOLD")
+        pair = VGroup(r0, r1).arrange(RIGHT, buff=2.2)
+        arrow = Arrow(pair[0].get_right(), pair[1].get_left(), color=YELL, stroke_width=6)
+        lab = t("末尾 m 个未压缩 KV → 右邻居拼完整块", 28, WHITE)
+        page1 = page_stack(card0, pair, arrow, lab, buff=0.8)
+        layout_page(page1)
 
-        # rank 边界竖线（k1/k2 间隙，不穿块不穿标题）
-        bl = DashedLine(blocks[1].get_right() + UP * 0.4, blocks[1].get_right() + DOWN * 0.4,
-                        color=RED, dash_length=0.15)
-        self.play(Create(bl), run_time=0.6)
-        self.wait(0.3)
+        self.at_clip("S5-c01")
+        self.play(type_in(head, run_time=0.8))
+        self.at_clip("S5-c02")
+        self.play_scroll_unroll_many(r0, r1, run_time=1.0)  # 主视觉：拉幕
+        self.wait(0.2)
+        self.play(Create(arrow), run_time=0.7)
+        self.at_clip("S5-c03")
+        self.play(type_in(lab, run_time=0.7))
 
-        sides = VGroup(
-            t("左 rank：只有前半块", 24, CYAN),
-            t("右 rank：只有后半块", 24, GREEN),
-        ).arrange(RIGHT, buff=0.8)
-        sides.next_to(grp_l, DOWN, buff=0.7)
-        self.fit_width(sides, 0.75)  # 总宽 6.9→6.0 单位，防溢出画布被裁
-        self.play(FadeIn(sides))
-        none = t("任何一边都无法完成压缩", 30, RED, "BOLD").next_to(sides, DOWN, buff=0.7)
-        self.play(FadeIn(none, scale=0.9))
+        # 页2：传原料不是半成品
+        head2 = _head("传的是原料，不是半成品", 34)
+        raw = _card("原料：未压缩 KV", 4.8, 3.0, GREEN, WHITE, 32, CARD_FILL, "BOLD")
+        semi = _card("半成品：不存在的中间表示", 4.8, 3.0, RED, WHITE, 32, CARD_FILL, "BOLD")
+        page2 = page_stack(raw, semi, buff=1.2)
+        layout_page(page2)
 
-        # 照片比喻
-        photo = VGroup(
-            t("照片 4 张一组进相册，边界切在两张中间", 24, WHITE),
-            t("——谁都没拿到完整的一组", 24, WHITE),
-        ).arrange(DOWN, buff=0.15).next_to(none, DOWN, buff=0.7)
-        self.play(FadeIn(photo))
-        self.wait(1.0)
+        self.play(FadeOut(head), FadeOut(page1), type_in(head2, run_time=0.8), run_time=0.8)
+        self.at_clip("S5-c04")
+        self.play_scroll_unroll(raw, run_time=1.0)  # 主视觉：拉幕
+        self.at_clip("S5-c05")
+        self.play_scroll_unroll(semi, run_time=1.0)
+        self.wait(0.2)
+        cross = self.play_red_cross(semi)
+        self.wait(0.2)
+
+        # 页3：通信量 2KB
+        head3 = _head("通信量与序列长度无关", 34)
+        lab3 = t("CSA 层每 rank 每层只要", 30, WHITE)
+        slot = dynamic_slot(2.4, 1.2)
+        row = stable_row(lab3, slot, buff=0.35)
+        note = t("几乎可以忽略", 34, WHITE, "BOLD")
+        page3 = page_auto(row, note)
+
+        self.play(FadeOut(head2), FadeOut(page2), FadeOut(cross),
+                  type_in(head3, run_time=0.8), run_time=0.8)
+        self.at_clip("S5-c06")
+        n = self.counter_value(0, 2.3, suffix=" KB", decimals=1, size=72, color=YELL,
+                               run_time=1.0, anchor=slot,
+                               extra_anims=[type_in(lab3, run_time=0.5)])  # 主视觉：数字滚动
+        self.at_clip("S5-c07")
+        self.play(type_in(note, run_time=0.6))
+        self.wait(0.2)
+
+        # 页4：阶段二 all-gather
+        head4 = _head("第二步：all-gather + select-and-pad", 32)
+        c0 = _card("Rank 0: [C0, PAD, PAD, PAD]", 5.4, 2.4, CYAN, WHITE, 28, CARD_FILL, "BOLD")
+        c1 = _card("Rank 1: [C1, C2, C3, PAD]", 5.4, 2.4, GREEN, WHITE, 28, CARD_FILL, "BOLD")
+        lab4 = t("先 pad 到统一上界，再 all-gather", 28, WHITE)
+        page4 = page_stack(c0, c1, lab4, buff=0.9)
+        layout_page(page4)
+
+        self.play(FadeOut(head3), FadeOut(page3), FadeOut(n), FadeOut(note),
+                  type_in(head4, run_time=0.7), run_time=0.7)
+        self.at_clip("S5-c08")
+        self.play(type_in(head4, run_time=0.6))
+        self.at_clip("S5-c09")
+        self.play_scroll_unroll_many(c0, c1, run_time=1.0)  # 主视觉：拉幕
+        self.at_clip("S5-c10")
+        self.play(type_in(lab4, run_time=0.7))
+        self.at_clip("S5-c11")
+        self.play(type_in(lab4, run_time=0.5))
+
+        # 页5：blob 有洞
+        head5 = _head("gather 出来的数据里有洞", 34)
+        blob = _card("blob: [C0, PAD, PAD, PAD, C1, C2, C3, PAD]", 6.6, 1.8, YELL, WHITE, 28, CARD_FILL, "BOLD")
+        punch = t("padding 会污染注意力", 40, YELL, "BOLD")
+        page5 = page_auto(blob, punch)
+
+        self.play(FadeOut(head4), FadeOut(page4), type_in(head5, run_time=0.8), run_time=0.8)
+        self.at_clip("S5-c12")
+        self.play_scroll_unroll(blob, run_time=1.0)  # 主视觉：拉幕
+        self.at_clip("S5-c13")
+        self.play(type_in(punch, run_time=0.8))
+        self.emphasize(punch, run_time=0.5)  # 5/5
+
+        # 页6：select-and-pad 三步
+        head6 = _head("select-and-pad：一个 kernel 三步合一", 30)
+        s1 = _card("① 去 padding", 2.4, 2.6, CYAN, WHITE, 26, CARD_FILL, "BOLD")
+        s2 = _card("② 尾对齐", 2.4, 2.6, GREEN, WHITE, 26, CARD_FILL, "BOLD")
+        s3 = _card("③ 稀疏重排", 2.4, 2.6, YELL, WHITE, 26, CARD_FILL, "BOLD")
+        grid = VGroup(s1, s2, s3).arrange_in_grid(1, 3, buff=0.3)
+        line6 = t("合并成一个 kernel，把 padding 全部滤掉", 30, WHITE)
+        result = _card("结果: [C0, C1, C2, C3]", 5.4, 2.2, GREEN, WHITE, 30, CARD_FILL, "BOLD")
+        page6 = page_stack(grid, line6, result, buff=0.9)
+        layout_page(page6)
+
+        self.play(FadeOut(head5), FadeOut(page5), type_in(head6, run_time=0.8), run_time=0.8)
+        self.at_clip("S5-c14")
+        self.play_scroll_unroll_many(s1, s2, s3, run_time=1.0)  # 主视觉：拉幕
+        self.at_clip("S5-c15")
+        self.play(type_in(head6, run_time=0.6))
+        self.at_clip("S5-c16")
+        self.play_scroll_unroll(result, run_time=1.0)  # 主视觉：拉幕
+
+        # 页7：悬念
+        head7 = _head("那这笔账", 36)
+        q = t("到底省了多少？", 48, YELL, "BOLD")
+        page7 = page_auto(q)
+        self.play(FadeOut(head6), FadeOut(page6), type_in(head7, run_time=0.8), run_time=0.8)
+        self.at_clip("S5-c17")
+        self.play(type_in(q, run_time=0.8))
+        self.wait(1.36)  # 补到 c17 结束（57.69），台词讲完再转场
+        self.transition_out(head7, f, page7)
         self.pad_to_voice()
 
 
-# ---------------- S6 阶段 1：边界原料交换 ----------------
+# ---------------- S6 账 + 实验 + 总结 + 尾卡 ----------------
 class S6(_Base):
     def construct(self):
-        self.footer()
-        head = t("阶段 1：先交换边界原料", 38, YELL, "BOLD").to_edge(UP, buff=1.2)
-        self.play(FadeIn(head, shift=DOWN * 0.3))
+        self.bg()
+        f = _footer(self)
 
-        # rank r 与 rank r+1，r 末尾 m 个原料传给右邻居
-        r0 = Rectangle(height=1.6, width=2.2, color=CYAN, fill_color=CYAN, fill_opacity=0.10)
-        r0l = t("rank r", 26, CYAN, "BOLD")
-        r0g = VGroup(r0, r0l).arrange(DOWN, buff=0.2)
-        r1 = Rectangle(height=1.6, width=2.2, color=GREEN, fill_color=GREEN, fill_opacity=0.10)
-        r1l = t("rank r+1", 26, GREEN, "BOLD")
-        r1g = VGroup(r1, r1l).arrange(DOWN, buff=0.2)
-        diagram = VGroup(r0g, r1g).arrange(RIGHT, buff=3.4)
-        diagram.next_to(head, DOWN, buff=0.9)
-        self.fit_width(diagram, 0.9)  # 限宽防溢出
-        self.play(FadeIn(r0g), FadeIn(r1g))
+        # 页1：通信账 9MB vs 72MB
+        head = _head("算笔账", 36)
+        lab1 = t("压缩后每层平均", 30, WHITE)
+        slot1 = dynamic_slot(2.4, 1.2)
+        row1 = stable_row(lab1, slot1, buff=0.35)
+        lab2 = t("NVLink 上只要", 30, WHITE)
+        slot2 = dynamic_slot(2.4, 1.2)
+        row2 = stable_row(lab2, slot2, buff=0.35)
+        lab3 = t("不压缩直接 gather", 30, WHITE)
+        slot3 = dynamic_slot(2.4, 1.2)
+        row3 = stable_row(lab3, slot3, buff=0.35)
+        lab4 = t("省了", 34, WHITE, "BOLD")
+        slot4 = dynamic_slot(2.2, 1.0)
+        row4 = stable_row(lab4, slot4, buff=0.35)
+        page1 = page_stack(row1, row2, row3, row4, buff=0.8)
+        layout_page(page1)
 
-        # 原料块：r0 右下角 → 箭头 → r1
-        mat = VGroup(*[Rectangle(height=0.32, width=0.3, color=YELL,
-                                 fill_color=YELL, fill_opacity=0.8) for _ in range(4)])
-        mat.arrange(RIGHT, buff=0.06)
-        mat.move_to(r0.get_bottom() + UP * 0.45)
-        a = Arrow(r0.get_right() + DOWN * 0.4, r1.get_left() + DOWN * 0.4,
-                  color=YELL, buff=0.15, stroke_width=5)
-        self.play(FadeIn(mat, shift=DOWN * 0.2))
-        self.play(Create(a), run_time=0.6)
-        p1 = t("发原料", 24, YELL, "BOLD").next_to(a, UP, buff=0.3)
-        self.play(FadeIn(p1))
-        self.wait(0.4)
+        self.at_clip("S6-c01")
+        self.play(type_in(head, run_time=0.8))
+        self.at_clip("S6-c02")
+        n1 = self.counter_value(0, 9, suffix=" MB", size=64, color=YELL,
+                                run_time=1.0, anchor=slot1,
+                                extra_anims=[type_in(lab1, run_time=0.5)])  # 主视觉：数字滚动
+        self.wait(0.2)
+        n2 = self.counter_value(0, 0.02, suffix=" 毫秒", decimals=2, size=64, color=YELL,
+                                run_time=1.0, anchor=slot2,
+                                extra_anims=[type_in(lab2, run_time=0.5)])
+        self.at_clip("S6-c03")
+        n3 = self.counter_value(0, 72, suffix=" MB", size=64, color=YELL,
+                                run_time=1.0, anchor=slot3,
+                                extra_anims=[type_in(lab3, run_time=0.5)])
+        self.wait(0.2)
+        n4 = self.counter_value(0, 8, suffix=" 倍", size=72, color=YELL,
+                                run_time=1.0, anchor=slot4,
+                                extra_anims=[type_in(lab4, run_time=0.5)])  # 主视觉：数字滚动
 
-        p2 = t("右邻居拼成完整块 → 压一次", 28, WHITE).next_to(diagram, DOWN, buff=0.7)
-        why = t("不传半成品：跨边界块在左边压不出合法输出", 26, MUTED).next_to(p2, DOWN, buff=0.5)
-        kb = t("通信量：与序列长度无关，CSA 层仅约 2 KB", 28, GREEN, "BOLD").next_to(why, DOWN, buff=0.5)
-        self.fit_width(kb, 0.9)  # 限宽防溢出
-        self.play(FadeIn(p2))
-        self.play(FadeIn(why))
-        self.play(FadeIn(kb, shift=UP * 0.2), run_time=0.8)
-        self.wait(1.0)
+        # 页2：实验 277/276/277
+        head2 = _head("模拟器跑出来", 36)
+        b1 = _card("单卡基准", 2.4, 3.4, CYAN, WHITE, 28, CARD_FILL, "BOLD")
+        b2 = _card("朴素 CP", 2.4, 3.4, RED, WHITE, 28, CARD_FILL, "BOLD")
+        b3 = _card("两阶段 CP", 2.4, 3.4, GREEN, WHITE, 28, CARD_FILL, "BOLD")
+        grid = VGroup(b1, b2, b3).arrange(RIGHT, buff=0.3)
+        lab2b = t("压缩 KV 数", 30, WHITE)
+        slot_a = dynamic_slot(1.8, 1.4)
+        slot_b = dynamic_slot(1.8, 1.4)
+        slot_c = dynamic_slot(1.8, 1.4)
+        nums = VGroup(slot_a, slot_b, slot_c).arrange(RIGHT, buff=0.35)
+        page2 = page_stack(grid, lab2b, nums, buff=1.0)
+        layout_page(page2)
+
+        self.play(FadeOut(head), FadeOut(page1), FadeOut(n1), FadeOut(n2),
+                  FadeOut(n3), FadeOut(n4), type_in(head2, run_time=0.8), run_time=0.8)
+        self.at_clip("S6-c04")
+        self.play_scroll_unroll_many(b1, b2, b3, run_time=1.0)  # 主视觉：拉幕
+        self.wait(0.2)
+        na = self.counter_value(0, 277, size=64, color=YELL, run_time=1.0, anchor=slot_a)
+        self.at_clip("S6-c05")
+        nb = self.counter_value(0, 276, size=64, color=YELL, run_time=1.0, anchor=slot_b)
+        self.wait(0.2)
+        cross = self.play_red_cross(b2)
+        self.at_clip("S6-c06")
+        nc = self.counter_value(0, 277, size=64, color=YELL, run_time=1.0, anchor=slot_c)
+        self.wait(0.2)
+        mk = self.play_mark("✔", b3)
+
+        # 页3：总结
+        head3 = _head("结论", 36)
+        concl = t("注意力公式变了，并行策略不能原封不动", 40, YELL, "BOLD")
+        c1 = _card("rank 间怎么通信", 2.4, 3.6, CYAN, WHITE, 24, CARD_FILL, "BOLD")
+        c2 = _card("张量怎么对齐", 2.4, 3.6, GREEN, WHITE, 24, CARD_FILL, "BOLD")
+        c3 = _card("kernel 要什么布局", 2.4, 3.6, YELL, WHITE, 24, CARD_FILL, "BOLD")
+        grid2 = VGroup(c1, c2, c3).arrange_in_grid(1, 3, buff=0.3)
+        line3 = t("全都改了", 40, YELL, "BOLD")
+        page3 = page_stack(concl, grid2, line3, buff=1.2)
+        layout_page(page3)
+
+        self.play(FadeOut(head2), FadeOut(page2), FadeOut(na), FadeOut(nb),
+                  FadeOut(nc), FadeOut(cross), FadeOut(mk),
+                  type_in(head3, run_time=0.8), run_time=0.8)
+        self.at_clip("S6-c07")
+        self.play(type_in(concl, run_time=0.9))
+        self.at_clip("S6-c08")
+        self.play_scroll_unroll_many(c1, c2, c3, run_time=1.0)  # 主视觉：拉幕
+        self.at_clip("S6-c09")
+        self.play(type_in(line3, run_time=0.7))
+
+        # 页4：预告 + 问题
+        head4 = _head("下一篇", 36)
+        nxt = t("DualPipe 与 DeepEP：训练时 GPU 在等什么", 36, YELL, "BOLD")
+        q1 = t("一个问题留给你", 32, WHITE)
+        q2 = t("压缩省通信 vs 流水线藏通信，", 32, WHITE)
+        q3 = t("你更看好哪条路？", 32, WHITE)
+        page4 = page_auto(nxt, q1, q2, q3)
+
+        self.at_clip("S6-c10")
+        self.play(FadeOut(head3), FadeOut(page3), type_in(head4, run_time=0.8), run_time=0.8)
+        self.at_clip("S6-c11")
+        self.play(type_in(nxt, run_time=0.9))
+        self.at_clip("S6-c12")
+        self.play(type_in(q1, run_time=0.6), type_in(q2, run_time=0.7), run_time=0.8)
+        self.at_clip("S6-c13")
+        self.play(type_in(q3, run_time=0.7))
+
+        # 页5：品牌尾卡（终幕驻屏，不 transition_out）
+        # 2026-09-03 用户反馈：前两期结尾太短 → 尾卡提前到 c14 组装，
+        # 全部元素露出后驻屏 ≥1.5s（S6 配音已降速 0.85 拉长结尾）
+        avatar = ImageMobject(str(AVATAR))
+        avatar.scale_to_fit_width(3.6)
+        follow = t("关注「数解AI」", 44, YELL, "BOLD")
+        title = t("《上下文并行：1M序列为什么切了会坏？》", 28, WHITE, "BOLD")
+        guide = t("查看公众号文章", 32, GREEN, "BOLD")
+        page5 = page_stack(avatar, follow, title, guide, buff=0.7)
+        layout_page(page5)
+
+        self.at_clip("S6-c14")
+        self.play(FadeOut(head4), FadeOut(page4), FadeIn(avatar, shift=DOWN * 0.05), run_time=0.6)  # 主视觉：品牌图
+        self.play(type_in(follow, run_time=0.5), type_in(title, run_time=0.5),
+                  type_in(guide, run_time=0.5), run_time=0.6)
         self.pad_to_voice()
-
-
-# ---------------- S7 阶段 2：all-gather + select-and-pad ----------------
-class S7(_Base):
-    def construct(self):
-        self.footer()
-        head = t("阶段 2：all-gather + select-and-pad", 34, YELL, "BOLD").to_edge(UP, buff=1.2)
-        self.fit_width(head, 0.85)  # 标题含长英文，限宽防溢出
-        self.play(FadeIn(head, shift=DOWN * 0.3))
-
-        def row(entries, col):
-            boxes = VGroup()
-            for e in entries:
-                is_pad = e == "PAD"
-                color = col if not is_pad else MUTED
-                b = Rectangle(height=0.62, width=0.72, color=color, fill_color=color,
-                              fill_opacity=0.75 if not is_pad else 0.35)
-                lab = t(e, 20, "#16213E" if not is_pad else WHITE, "BOLD")
-                boxes.add(VGroup(b, lab))
-            boxes.arrange(RIGHT, buff=0.12)
-            return boxes
-
-        r0row = row(["C0", "PAD", "PAD", "PAD"], YELL)
-        r0g = VGroup(t("rank 0：valid_count = 1", 22, YELL), r0row).arrange(RIGHT, buff=0.5)
-        r1row = row(["C1", "C2", "C3", "PAD"], GREEN)
-        r1g = VGroup(t("rank 1：valid_count = 3", 22, GREEN), r1row).arrange(RIGHT, buff=0.5)
-        diagram = VGroup(r0g, r1g).arrange(DOWN, buff=0.55).next_to(head, DOWN, buff=0.8)
-        self.fit_width(diagram, 0.9)  # 限宽防溢出
-        self.play(FadeIn(r0g, shift=UP * 0.2), FadeIn(r1g, shift=UP * 0.2))
-        self.wait(0.3)
-
-        pad_note = t("每卡先 pad 到统一上界，再 all-gather", 28, WHITE).next_to(diagram, DOWN, buff=0.6)
-        hole = t("gather 出来的 blob 有洞——padding 会污染注意力", 26, RED).next_to(pad_note, DOWN, buff=0.5)
-        self.fit_width(hole, 0.9)  # 限宽防溢出
-        self.play(FadeIn(pad_note))
-        self.wait(0.4)
-        self.play(FadeIn(hole, shift=UP * 0.2))
-
-        steps = VGroup(
-            t("① 去 padding（按 valid_count）", 26, CYAN),
-            t("② 尾对齐（padding 集中到尾部）", 26, GREEN),
-            t("③ 稀疏重排（CSA sparse 按 top-k）", 26, MUTED),
-        ).arrange(DOWN, buff=0.35).next_to(hole, DOWN, buff=0.6)
-        for s in steps:
-            self.play(FadeIn(s, shift=UP * 0.15), run_time=0.5)
-
-        outrow = row(["C0", "C1", "C2", "C3"], YELL)
-        outg = VGroup(t("select-and-pad 后", 22, WHITE), outrow).arrange(RIGHT, buff=0.5)
-        outg.next_to(steps, DOWN, buff=0.6)
-        self.fit_width(outg, 0.9)  # 限宽防溢出
-        self.play(FadeOut(r0g, r1g, shift=DOWN * 0.2), FadeIn(outg, shift=UP * 0.2))
-        ok = t("一个 kernel 合并，数据只过一次内存总线", 24, GREEN).next_to(outg, DOWN, buff=0.45)
-        self.play(FadeIn(ok))
-        self.wait(1.0)
-        self.pad_to_voice()
-
-
-# ---------------- S8 通信账 + 实验 + 品牌尾卡 ----------------
-class S8(_Base):
-    def construct(self):
-        self.footer("数解AI · DeepSeek 技术解密")
-        head = t("压缩比直接兑换成通信节省", 34, YELL, "BOLD").to_edge(UP, buff=1.2)
-        self.play(FadeIn(head, shift=DOWN * 0.3))
-
-        # 9MB vs 72MB 条形
-        bars = VGroup()
-        for lab, v, col in [("压缩后 9 MB", 9, GREEN), ("不压缩 72 MB", 72, RED)]:
-            b = Rectangle(height=v / 72 * 4.0, width=0.9, color=col,
-                          fill_color=col, fill_opacity=0.6)
-            bars.add(VGroup(b, t(lab, 24, col, "BOLD").next_to(b, UP, buff=0.15)))
-        bars.arrange(RIGHT, buff=1.6).next_to(head, DOWN, buff=1.1)
-        self.play(*[GrowFromEdge(b[0], DOWN) for b in bars], run_time=1.2)
-        self.play(*[FadeIn(b[1]) for b in bars])
-        save = t("省约 8 倍 · NVLink 上仅 0.02 ms，可被计算藏住", 26, WHITE).next_to(bars, DOWN, buff=0.7)
-        self.play(FadeIn(save))
-
-        # 实验结论
-        exp = VGroup(
-            t("模拟器（8 ranks × packed 序列）：", 26, MUTED),
-            t("单卡基准 277 · 朴素 CP 276（缺 1）· 两阶段 277 ✅", 28, GREEN, "BOLD"),
-        ).arrange(DOWN, buff=0.3).next_to(save, DOWN, buff=0.6)
-        self.play(FadeIn(exp, shift=UP * 0.2))
-        self.wait(0.4)
-
-        concl = t("注意力公式变了，并行策略不能原封不动", 30, YELL, "BOLD").next_to(exp, DOWN, buff=0.6)
-        self.play(FadeIn(concl, scale=0.9), run_time=0.8)
-        self.wait(0.6)
-
-        # 切品牌卡：建议淡出
-        self.play(*[FadeOut(m, shift=DOWN * 0.25) for m in (head, bars, save, exp, concl)], run_time=0.7)
-
-        logo = ImageMobject("avatar-sjai-round.png")
-        logo.scale_to_fit_width(3.6)
-        logo.move_to(UP * config.frame_height * 0.06)  # 画布比例坐标（锚点）
-        follow = VGroup(
-            t("关注「数解AI」", 44, YELL, "BOLD"),
-            t("《上下文并行：1M序列为什么切了会坏？》", 26, WHITE, "BOLD"),
-            t("查看公众号文章 · 图文全解", 24, GREEN),
-            t("下一篇拆 DualPipe 与 DeepEP", 22, MUTED),
-        ).arrange(DOWN, buff=0.4)
-        follow.next_to(logo, DOWN, buff=0.8)  # 锚点链：跟随 logo
-        self.play(FadeIn(logo, scale=0.9), run_time=0.9)
-        self.play(FadeIn(follow, scale=0.85), run_time=0.8)
-        self.wait(1.0)
-        self.pad_to_voice()
-
-
-# ---------------- 封面（视频号竖屏封面，-s 渲染单帧） ----------------
-class Cover(Scene):
-    """封面帧：品牌条 + 系列标签 + 主/副标题 + 关键视觉。
-    渲染：python3 -m manim render -qm -s scenes.py Cover
-    输出：media/images/scenes/Cover.png（1080×1920）
-    """
-    def construct(self):
-        # 底部品牌条（锚点）
-        brand = t("数解AI · DeepSeek 技术解密", 20, MUTED).to_edge(DOWN, buff=1.15)
-
-        # 系列标签 → 主标题 → 副标题（锚点链）
-        series = t("DeepSeek 技术解密 · 解密篇", 26, CYAN).to_edge(UP, buff=1.4)
-        title = t("上下文并行", 54, YELL, "BOLD").next_to(series, DOWN, buff=0.55)
-        subtitle = t("1M 序列为什么切了会坏？", 34, WHITE).next_to(title, DOWN, buff=0.35)
-
-        # 关键视觉：1M 序列切 8 段 → 8 张 GPU
-        bar = seq_bar().set_width(config.frame_width * 0.75)
-        gpus = gpu_rack().set_width(config.frame_width * 0.75)
-        gpus.next_to(bar, DOWN, buff=0.5)
-        arrows = VGroup(*[Arrow(bar[i].get_bottom(), gpus[i].get_top(),
-                                color=MUTED, buff=0.08, stroke_width=3) for i in range(8)])
-        stage = VGroup(bar, gpus, arrows).next_to(subtitle, DOWN, buff=1.3)
-
-        self.add(brand, series, title, subtitle, stage)
-
-
-if __name__ == "__main__":
-    pass

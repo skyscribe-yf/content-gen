@@ -1,11 +1,12 @@
 ---
-title: "MLE为何让模型一会儿像博士一会儿像小学生？"
+title: "MLE为何让大模型一会儿像博士一会儿像小学生？"
 author: "数解AI"
 date: "2026-09-03"
 type: "原理篇"
 series: "数学直觉"
 digest: "大语言模型看起来只是在预测下一个 token，为什么却能写代码、调工具、写文章？答案藏在 MLE：它优化的不是“标准答案”，而是训练文本中每个真实 token 的条件概率。logit、NLL、似然和贝叶斯估计，一次拆开。"
 cover: "00-cover.png"
+wechatUrl: "https://mp.weixin.qq.com/s/lyB9eA4qKIMWW_3i1PypDw"
 keywords: ["MLE", "最大似然估计", "NLL", "logit", "大语言模型"]
 ---
 

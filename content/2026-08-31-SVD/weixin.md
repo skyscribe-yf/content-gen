@@ -1,4 +1,5 @@
 ---
+wechatUrl: "https://mp.weixin.qq.com/s/sl0jZTNLPps5l6qvoeyTHw"
 title: "微调70B模型为什么只需要改0.026%的参数"
 author: "数解AI"
 date: "2026-08-31"

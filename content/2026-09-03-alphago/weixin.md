@@ -1,11 +1,12 @@
 ---
-title: "十年了，AlphaGo到底靠什么赢了李世石？"
+title: "AlphaGo 十年：那只狗到底是靠什么赢的？"
 author: "数解AI"
-date: "2026-08-29"
+date: "2026-09-03"
 type: "案例回望"
 series: "强化学习原理（番外）"
 digest: "AlphaGo 每步只随机模拟几千手，却赢过穷举不完的围棋。神不在算力，在两个函数：策略网络报候选、价值网络报胜率，搜索只是实习生。十年后 DeepSeek-R1 用同一套 RL 思想，在 token 空间里多想几步。"
 cover: "00-cover.png"
+wechatUrl: "https://mp.weixin.qq.com/s/420EHNlLpfKksNy30sgEsg"
 keywords: ["AlphaGo", "强化学习", "蒙特卡洛树搜索", "策略网络", "围棋AI"]
 ---
 

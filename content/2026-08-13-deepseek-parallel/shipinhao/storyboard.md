@@ -47,3 +47,9 @@
 4. 构建：`scripts/manim_video_build.py` mux 配音 + 无缝拼接 + 黄色字幕烧录 + 品牌尾卡
 5. 封面：yairouter 1080×1920，标题文字强指令模板 + 读图验收
 6. 归档：`content/2026-08-13-deepseek-parallel/shipinhao/`
+
+## 2026-09-03 修订（用户反馈）
+
+- 前两期视频结尾太短 → 本版 S6 尾卡提前到 S6-c14（「评论区聊聊」处）开始组装：avatar FadeIn 0.6s + 关注/标题/引导 type_in 0.6s，全部元素露出后驻屏 ≥1.5s（实测成片尾卡完整露出 ≈2.0s）
+- 结尾声音减速：S6 整段用 MiniMax speed 0.85 重新生成（精英男声 male-qn-jingying，pitch +2），S6 时长 51.23s → 57.47s；tts/sentence-boundaries.json 与 full.subtitle.json 的 S6 时间戳按实际比例缩放
+- S6 页4「评论区聊聊」与「还是给 TP 留位置？」同拍出现（c13），尾卡在 c14 接管

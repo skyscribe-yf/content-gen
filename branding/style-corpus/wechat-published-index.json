@@ -1,5 +1,105 @@
 [
   {
+    "title": "MLE为何让大模型一会儿像博士一会儿像小学生？ 原创",
+    "url": "https://mp.weixin.qq.com/s/lyB9eA4qKIMWW_3i1PypDw"
+  },
+  {
+    "title": "AlphaGo 十年：那只狗到底是靠什么赢的？ 原创",
+    "url": "https://mp.weixin.qq.com/s/420EHNlLpfKksNy30sgEsg"
+  },
+  {
+    "title": "前沿harness评测集，cc=土豪？codex呢",
+    "url": "https://mp.weixin.qq.com/s/W6RpJryrIn5oBSglhCH-jg"
+  },
+  {
+    "title": "好家伙，花期4个月的deepSWE也是要沦陷了",
+    "url": "https://mp.weixin.qq.com/s/M09VmB8vM3e-vIAxcz6eiw"
+  },
+  {
+    "title": "线性注意力机制全是弯路吗？",
+    "url": "https://mp.weixin.qq.com/s/blwd2MuVgBQGoa-1ygPGaA"
+  },
+  {
+    "title": "DeepSeek 注意力只算 8.6%，为什么 V4 反而不用？ 原创",
+    "url": "https://mp.weixin.qq.com/s/HIBJliEXWtVyJqvH_Ocbog"
+  },
+  {
+    "title": "KV缓存压到1bit：省92%显存，凭什么不掉点？ 原创",
+    "url": "https://mp.weixin.qq.com/s/Oy-GyqEB8IP4_0nmvZ7EDQ"
+  },
+  {
+    "title": "信仰崩了！Ollama 不再量大管饱，十倍缩量",
+    "url": "https://mp.weixin.qq.com/s/x7-ZzBr2cdpyU1VhnXK3dw"
+  },
+  {
+    "title": "微调70B模型为什么只需要改0.026%的参数 原创",
+    "url": "https://mp.weixin.qq.com/s/sl0jZTNLPps5l6qvoeyTHw"
+  },
+  {
+    "title": "感动了，AI公司CEO亲自回复每一个反馈帖子",
+    "url": "https://mp.weixin.qq.com/s/HLF80FkgGcQV-ZFDKfCHeg"
+  },
+  {
+    "title": "GLM-5.3 说视觉没用，转头带上原生视觉 原创",
+    "url": "https://mp.weixin.qq.com/s/HqabnvOdMbq2gX0-V87N6w"
+  },
+  {
+    "title": "opencode举起的价格屠刀，这次竟砍向了自己",
+    "url": "https://mp.weixin.qq.com/s/kiU37bmYA2ZtcA5Tbf4s1A"
+  },
+  {
+    "title": "每步都靠猜，上百万Token的长任务怎么不跑偏 原创",
+    "url": "https://mp.weixin.qq.com/s/pbIQrUsChnNuFotkayFtiw"
+  },
+  {
+    "title": "腾讯hy4和codebuddy这次善待国人了抓紧蹬",
+    "url": "https://mp.weixin.qq.com/s/PxP1KZ9kISDaKy9bYwVYnA"
+  },
+  {
+    "title": "GLM5.3flash:一旦去掉免费光环马上均值回归",
+    "url": "https://mp.weixin.qq.com/s/nZRc3i3HrszRz5_cBeEMqA"
+  },
+  {
+    "title": "信息熵：压缩1000倍，为什么信息反而少？ 原创",
+    "url": "https://mp.weixin.qq.com/s/BkGWzKxiJE2mlPMlZgb7ag"
+  },
+  {
+    "title": "智谱阿里为什么要改注意力？KV缓存竟砍4.4",
+    "url": "https://mp.weixin.qq.com/s/thUC60QIe-gtCzjwddeg7w"
+  },
+  {
+    "title": "智谱阿里为什么要改注意力？KV缓存竟砍4.4倍 原创",
+    "url": "https://mp.weixin.qq.com/s/5w1mEVLW5igvJ28Dn6pe9A"
+  },
+  {
+    "title": "蒸馏是抄袭？为什么越抄越学不会？",
+    "url": "https://mp.weixin.qq.com/s/3jjgvTDfgTZm41vPjgyvNg"
+  },
+  {
+    "title": "GLM-5.3-Flash 半价是假象？实测竟贵 3 倍",
+    "url": "https://mp.weixin.qq.com/s/LXYvwQ4kTNLlkMIS-Ex-EQ"
+  },
+  {
+    "title": "牛来，多模态，300B，智谱家的",
+    "url": "https://mp.weixin.qq.com/s/3l2bbqBpBSwQFmw2MmgQ9Q"
+  },
+  {
+    "title": "蒸馏是抄袭？为什么越抄越学不会？ 原创",
+    "url": "https://mp.weixin.qq.com/s/Xly_jfKKcf5xHcuK_e22KA"
+  },
+  {
+    "title": "强大而免费的神秘牛来模型学会自我迭代了？",
+    "url": "https://mp.weixin.qq.com/s/eoGEjH9ZtN20pCcmMdXkCQ"
+  },
+  {
+    "title": "GAE：100步的功劳，为什么只认最近17步？",
+    "url": "https://mp.weixin.qq.com/s/bX-hwQ6k8eePbQgVEfL73A"
+  },
+  {
+    "title": "GAE：100步的功劳，为什么只认最近17步？ 原创",
+    "url": "https://mp.weixin.qq.com/s/gIYikPG8kAAuOz6y_QVMhA"
+  },
+  {
     "title": "Pi 的新架构，答案早就在数据库论文里了",
     "url": "https://mp.weixin.qq.com/s/QB_nJbrDU0G2vipZk8m1YQ"
   },

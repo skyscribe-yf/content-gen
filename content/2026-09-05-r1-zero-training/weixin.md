@@ -8,7 +8,7 @@ digest: "DeepSeek 做了一个极端实验：模型不背例题、不看标准�
 cover: "00-cover.png"
 keywords: ["DeepSeek", "R1-Zero", "强化学习", "GRPO", "长思维链", "AIME", "R1"]
 scheduledPublish: "2026-09-05T20:00:00+08:00"
-wechatUrl: ""
+wechatUrl: "https://mp.weixin.qq.com/s/PQj1EFBotvBTzwU7lVG9Ug"
 ---
 
 一场数学竞赛，它只答对了 15.6%，连及格线都摸不到。更怪的是，没有人教过它怎么解题：没有例题，没有标准答案，没有任何「应该这样做」的提示。它只被告知了一件事——答对了加分，答错了扣分。训练结束后它再回来考同一场试：71 分。

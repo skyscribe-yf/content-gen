@@ -1,4 +1,5 @@
 ---
+wechatUrl: "https://mp.weixin.qq.com/s/HIBJliEXWtVyJqvH_Ocbog"
 title: "DeepSeek 注意力只算 8.6%，为什么 V4 反而不用？"
 author: "数解AI"
 date: "2026-09-02"

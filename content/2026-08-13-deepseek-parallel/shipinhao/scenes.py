@@ -2,7 +2,7 @@
 """《1.6T参数怎么塞进GPU？V4五维并行策略》视频号 Manim 动画（竖屏 1080×1920）
 
 6 个场景 S1-S6，与 storyboard.md 一一对应。
-- 配音：MiniMax 预设精英男声（male-qn-jingying，speech-2.8-turbo，speed 1.0 pitch +2）
+- 配音：MiniMax 预设精英男声（male-qn-jingying，speech-2.8-turbo，speed 1.0 pitch +2；S6 结尾降速 0.85，2026-09-03 用户拍板）
 - 时间轴：at_clip("S1-c01") 挂 tts/sentence-boundaries.json 的 clip 起点（先声音后动画门禁）
 - 布局：整页规划（page_stack + layout_page / page_auto），上下留白各 ≤10%
 - 动画降噪：每页 1 个主视觉动效；emphasize 全片 5 次；v2 动效 0 处
@@ -35,7 +35,7 @@ IMG = HERE / "img"
 AVATAR = HERE / "avatar-sjai-round.png"
 
 # 每段配音时长（tts_split.py 实测），渲染时长 = 配音 + TAIL
-VOICE_DUR = {"S1": 20.65, "S2": 34.99, "S3": 45.55, "S4": 45.22, "S5": 49.11, "S6": 51.23}
+VOICE_DUR = {"S1": 20.65, "S2": 34.99, "S3": 45.55, "S4": 45.22, "S5": 49.11, "S6": 57.47}
 TAIL = 2.5
 
 
@@ -553,11 +553,10 @@ class S6(_Base):
         self.at_clip("S6-c12")
         self.play(type_in(q2, run_time=0.7), type_in(q3, run_time=0.8), run_time=0.9)
         self.at_clip("S6-c13")
-        self.play(type_in(q4, run_time=0.8))
-        self.at_clip("S6-c14")
-        self.play(type_in(cm, run_time=0.7))
-
+        self.play(type_in(q4, run_time=0.8), type_in(cm, run_time=0.5), run_time=0.8)
         # 页5：品牌尾卡（终幕驻屏，不 transition_out）
+        # 2026-09-03 用户反馈：前两期结尾太短 → 尾卡提前到 c14 组装，
+        # 全部元素露出后驻屏 ≥1.5s（S6 配音已降速 0.85 拉长结尾）
         avatar = ImageMobject(str(AVATAR))
         avatar.scale_to_fit_width(3.6)
         follow = t("关注「数解AI」", 44, YELL, "BOLD")
@@ -566,8 +565,8 @@ class S6(_Base):
         page5 = page_stack(avatar, follow, title, guide, buff=0.7)
         layout_page(page5)
 
-        self.at_clip("S6-c15")
-        self.play(FadeOut(head4), FadeOut(page4), FadeIn(avatar, shift=DOWN * 0.05), run_time=0.8)  # 主视觉：品牌图
-        self.play(type_in(follow, run_time=0.7), type_in(title, run_time=0.7),
-                  type_in(guide, run_time=0.6), run_time=0.8)
+        self.at_clip("S6-c14")
+        self.play(FadeOut(head4), FadeOut(page4), FadeIn(avatar, shift=DOWN * 0.05), run_time=0.6)  # 主视觉：品牌图
+        self.play(type_in(follow, run_time=0.5), type_in(title, run_time=0.5),
+                  type_in(guide, run_time=0.5), run_time=0.6)
         self.pad_to_voice()
