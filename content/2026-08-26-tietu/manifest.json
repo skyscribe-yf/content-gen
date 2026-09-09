@@ -1,0 +1,18 @@
+[
+ {
+  "dir": "牛来，多模态，300B，智谱家的",
+  "title": "牛来，多模态，300B，智谱家的",
+  "imgs": 2,
+  "prompt": true,
+  "summary": true,
+  "infographic": true
+ },
+ {
+  "dir": "神秘牛来",
+  "title": "神秘牛来",
+  "imgs": 3,
+  "prompt": true,
+  "summary": true,
+  "infographic": true
+ }
+]

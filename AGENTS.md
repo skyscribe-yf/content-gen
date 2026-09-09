@@ -33,6 +33,12 @@
 
 **API Key 规则**：若 shell 环境 / `.env` 中找不到所需 API Key（如 `YAI_API_KEY`、`MINIMAX_API_KEY` 等），**先 `source ~/.bash_env`** 再重试，不要直接报「缺 key」或擅自换后端。`~/.bash_env` 是作者维护的全局密钥文件（含 `YAI_API_KEY` 等）。
 
+## 贴图素材归档 + Infographic 生成流程
+
+需要「把某批贴图按发表时间下载归档、读图提取主要文字、再生成一张 info graphic 图片」时，**必须走固化流程**：`scripts/tietu_infographic.py`（读取公众号发表记录 `item_show_type=8` 贴图 → 按 `content/<日期>-tietu/<标题>/` 归档原始素材 → OCR 写 `summary.json` → 按 briefs 写 `prompt.md` 并生成每目录一张 `infographic.png`）。**所有产物（原始素材、识别文案、prompt、最终图）统一放在 `content/` 下，按发布日期 + 标题组织**，禁止放项目外目录。详细步骤、目录约定、依赖与坑（PNG-as-jpg、size 参数被忽略、CDN URL 需带 query 否则 400、ConnectionError 重跑）见 [`docs/tietu-infographic-flow.md`](docs/tietu-infographic-flow.md)。
+
+触发词示例：「把最近的贴图归档并生成信息图」「贴图原图下载 + infographic」。执行前先 `source ~/.bash_env` 取 `YAI_API_KEY`；贴图清单以 `branding/style-corpus/publish-data*.json` 的 `item_show_type=8` 为准，发布时间缺失时从贴图页 `send_time` 回填。
+
 ## 多平台内容一致性
 
 衍生内容（小红书卡片/文案等）**必须以 `weixin.md` 为准**，禁止参照 `draft.md`。weixin.md 不存在则暂停生成。
@@ -135,7 +141,7 @@ wechatUrl: "https://mp.weixin.qq.com/s/abc123"
 - 末尾含关注引导（价值承诺 + 系列结构）
 - 结尾含 1 个开放式问题引导留言
 - 摘要须含 2-3 个搜索关键词
-- 最新审计：2026-09-04 早场（数据截至 2026-09-03，用户分析累计关注 950、首页卡片 951 存在 1 人口径差异，累计广告收入 69.73 元；最新分轨复盘见 [`docs/wechat-data-insights.md`](docs/wechat-data-insights.md) 0aa 节），详见 [`docs/wechat-data-insights.md`](docs/wechat-data-insights.md)
+- 最新审计：2026-09-09 早场（数据截至 2026-09-08，用户分析累计关注 985，累计广告收入 82.18 元；**双爆款费马大定理 4670 + ollama 贴图 4263 均属贴图轨；⚠️ 修正：费马是贴图不是文章，文章轨 8 连 <70 读、推荐池零接入**，最新分轨复盘见 [`docs/wechat-data-insights.md`](docs/wechat-data-insights.md) 0ac 节），详见 [`docs/wechat-data-insights.md`](docs/wechat-data-insights.md)
 - 数字事实源：[`docs/wechat-data-audit-log.json`](docs/wechat-data-audit-log.json)，结构见同名 `.schema.json`，操作脚本为 `scripts/wechat_audit_log.py`，报告生成脚本为 `scripts/wechat_audit_report.py`，产物为 `docs/wechat-data-audit-report.html`
 - **每日流量渠道明细事实源（2026-08-27 新增）**：[`docs/wechat-daily-sources-log.json`](docs/wechat-daily-sources-log.json)，结构见同名 `.schema.json`——按天 × 传播渠道阅读人数（含每日推荐量）；每次采内容分析后跑 `python scripts/wechat_audit_log.py append-sources --input <tendency_*.xls>` 增量入库，逐日历史只认这份台账
 - **视频号数字事实源（2026-08-25 新增）**：[`docs/shipinhao-data-log.json`](docs/shipinhao-data-log.json)，结构见同名 `.schema.json`——视频号播放/完播/点赞/评论数据，与公众号日志分离（后台登录体系不同，公众号 Cookie 不通用）
