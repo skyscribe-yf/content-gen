@@ -8,7 +8,7 @@ QA subagent 按此清单逐项核查，输出 **PASS / FAIL + 证据**（文件:
 |---|---|---|---|
 | A1 | 每场景 `pad_to_voice()` | grep `pad_to_voice` 每个 Scene | 每个 `class S\d+` 的 construct 末尾有调用 |
 | A2 | 入场方式合规 | grep `FadeIn(.*boxed\|FadeIn(l[0-9]\|FadeIn(.*txt\|FadeIn(.*_card` | 卡片无 FadeIn（应用 play_scroll_unroll）；裸文字无整段 FadeIn（应用 type_in） |
-| A3 | FadeOut 对账（含段内换页） | 读 scenes.py 每个 Scene，列 FadeOut 引用的 mobject vs 该页 play/add 过的 | 无遗漏（含 Arrow/Axes/装饰/上段残留） |
+| A3 | FadeOut 对账（含段内换页） | 读 scenes.py 每个 Scene，列 FadeOut 引用的 mobject vs 该页 play/add 过的；**反向也要查：每个进 page_stack/page_auto 的元素必须有 play/add 入场**（可用 AST 反查「只出现在 FadeOut」的名字） | 无遗漏（含 Arrow/Axes/装饰/上段残留）；**无「只在 FadeOut 出现」的元素**——未入场元素被 FadeOut 内部的 `interpolate(0)` 置为完全不透明，表现为 0.5s 无卡底纯白字残影（2026-09-12 事故） |
 | A4 | 裸魔法数字定位 | grep `move_to(UP\|move_to(DOWN\|\.shift(UP \* [0-9]` 等 | 无硬编码绝对坐标（比例坐标 `* FH/FW` 除外） |
 | A5 | 像素贴边扫描 | 每场景抽 70% 时间点帧，PIL 找非背景像素到画布边缘距离 | ≤2px 即 FAIL（超界） |
 | A6 | 框内文字溢出 | 每场景 30%/60%/90% 抽帧，逐个框目测 | 无文字压/出边框（badge 首字母、长英文、9 字中文） |
@@ -45,8 +45,13 @@ QA subagent 按此清单逐项核查，输出 **PASS / FAIL + 证据**（文件:
 ## 常见 FAIL 模式（对应 pitfalls.md）
 
 - A3 漏元素：FadeOut 缺本页元素 → 残影叠压（RLHF S7 lab、预训练 prefix、归一化箭头）
+- A3 反向漏：元素只在 FadeOut 出现、从未入场 → 0.5s 无卡底纯白字残影（策略梯度 S3 d_red，2026-09-12）
 - A5 超界：宽组未 fit → 边字被裁（BPE「左」/「块」）
+- A10 超宽页：整页宽度 >8.0u 被 `layout_page` 静默 `scale_to_fit_width` 收进画布 → **整组元素贴边裁切**（策略梯度 6 页，2026-09-12）。渲染时用 `MANIM_STRICT_WIDTH=1` 把静默缩放变成报错
+- A10 卡片显式换行被丢弃：`fit_text_in_box` 曾把作者写的 `\n` 重新切分（两行变三行）→ 文字横向溢出卡片（策略梯度 S4 Actor/Critic，2026-09-12）
 - A6 溢出：框内长文字未限宽 → 压出边框（Transformer/WordPiece）
 - A10 接龙布局/留白不等：`next_to(head, DOWN)` 从标题往下铺 → 整页 box 未用 `layout_page` 居中、上下留白不等或 >30%（GRPO 第三轮）
 - A8 穿圆：CurvedArrow → 弧线进圆（RLHF v7 3009 像素）；用 arc_curve()
 - B4 不同步：字幕时间戳按字数比例 → 早 2-3s；pauses.json 停顿驱动
+- B4 段内均匀后移：末段 `TAIL` > build `--tail` 时，`vd=max(ad+tail, 动画时长)` 使 build 按 `scale=(动画时长-0.1)/source_duration` 拉伸逐句字幕 → 段末累积后移（策略梯度 S6 +2.37s，2026-09-12）。修法：`TAIL` 必须等于 build `--tail`（0.1），尾卡停留用显式 `self.wait()`
+- B3 小数点被当断点：`wrap_line` 在 `0.50`/`0.70` 的整数位与小数点之间折行，上屏成「跑测试从0」/「.70掉到0.68。」（策略梯度，2026-09-12）。修法：`_keep_decimal_together` 护栏 + 数字串正则含小数

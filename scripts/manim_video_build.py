@@ -667,12 +667,23 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
     if typewriter:
         entries = typewriter_events(entries)
         fade = False  # 打字机已逐字出现，不再叠加淡入
+    def _keep_decimal_together(txt: str, cut: int) -> int:
+        """兜底护栏：断点 cut 不得落在小数点两侧（`0.50`/`0.70` 被拆成「0」+「.50」）。
+        2026-09-12 B3 事故：上屏出现「跑测试从0」/「.70掉到0.68。」。"""
+        if 0 < cut < len(txt) and txt[cut - 1].isdigit() and txt[cut] == ".":
+            cut += 1
+        elif 0 < cut < len(txt) and txt[cut - 1] == "." and txt[cut].isdigit():
+            cut -= 1
+        return cut
+
     def _word_break(txt: str, mid: int) -> int:
         """在 mid 附近找最近的英文/数字单词边界（词首/词尾），返回下一行首字符索引。
         修复：前段以连字符/下划线结尾时旧正则 [A-Za-z]+$ 匹配失败 → 断在词中
-        （2026-08-26 事故：Newton-Schulz 拆成 Newton-S/chulz、expertcollapse 拆成 e/xpertcollapse）。"""
+        （2026-08-26 事故：Newton-Schulz 拆成 Newton-S/chulz、expertcollapse 拆成 e/xpertcollapse）。
+        修复（2026-09-12 B3 事故）：小数点不能当断点——`0.50`/`0.70` 被拆成
+        「0」+「.50」，故把小数点并入数字串后再取边界。"""
         candidates: list[tuple[int, int]] = []
-        for r in re.finditer(r"[A-Za-z0-9]+(?:-[A-Za-z0-9]+)+|[A-Za-z0-9]+", txt):
+        for r in re.finditer(r"[A-Za-z0-9]+(?:\.[0-9]+)?(?:-[A-Za-z0-9]+)*|[A-Za-z0-9]+", txt):
             if r.start() > 0:
                 candidates.append((abs(r.start() - mid), r.start()))
             if r.end() < len(txt):
@@ -706,8 +717,10 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
             if best < 0:
                 # 无标点/空格：在 mid 附近找英文单词边界，不拆断英文单词
                 best = _word_break(txt, mid)
+                best = _keep_decimal_together(txt, best)
                 return txt[:best] + "\\N" + txt[best:]
-            return txt[:best + 1] + "\\N" + txt[best + 1:]
+            best = _keep_decimal_together(txt, best + 1)
+            return txt[:best] + "\\N" + txt[best:]
         # 超过 2 行容量（>26 字）：在标点/空格处拆成多行，但尽量少行
         lines = []
         cur = ""
@@ -732,6 +745,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
                             cands.append(r.end())
                     if cands:
                         brk = max(cands)
+                        brk = _keep_decimal_together(cur, brk)
                         lines.append(cur[:brk])
                         cur = cur[brk:]
                     else:
@@ -780,6 +794,8 @@ def main():
     ap.add_argument("workdir", nargs="?", help="shipinhao 工作目录（含 scenes.py / tts.txt / tts/）")
     ap.add_argument("--speed", type=float, default=1.0, help="配音语速（atempo 后处理，默认 1.0 原速）")
     ap.add_argument("--tail", type=float, default=0.1, help="段尾缓冲秒数（默认 0.1，段间无缝）")
+    ap.add_argument("--last-tail", type=float, default=0.0,
+                    help="末段额外画面停留秒数（尾卡停留，默认 0；末段 mux 时长取 max(配音+tail+last_tail, 动画实际时长)）")
     ap.add_argument("--out", default="成品.mp4", help="输出文件名")
     ap.add_argument("--video-dir", default=None,
                     help="Manim 渲染输出目录（默认自动探测 media/videos/scenes/ 下含 S1.mp4 的目录）")
@@ -833,6 +849,12 @@ def main():
              "-filter:a", f"atempo={args.speed}", "-ar", "44100", "-ac", "2", str(a_src)])
         ad = dur_of(a_src)
         vd = ad + args.tail
+        if i == n:
+            # 末段：尾卡额外停留（last_tail）——画面比配音长，mux 时长取画面实际时长+停留，
+            # 音频 apad 静音垫底；否则 build -t 会把加长的尾卡画面裁掉
+            vdur = dur_of(vdir / f"{seg}.mp4")
+            vd = max(vd, vdur) + args.last_tail
+            print(f"末段 {seg}: 动画 {vdur:.2f}s + 尾卡停留 {args.last_tail:.2f}s → 视频 {vd:.2f}s")
         seg_dur[seg] = vd
         run(["ffmpeg", "-y", "-v", "error", "-i", str(vdir / f"{seg}.mp4"), "-i", str(a_src),
              "-filter_complex", "[1:a]apad[a]", "-map", "0:v", "-map", "[a]",

@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
+import html
 import json
 import os
 import tempfile
@@ -417,7 +418,10 @@ def _tietu_titles() -> set[str]:
         for item in data.get("publish_list", []):
             info = item.get("publish_info", "")
             try:
-                parsed = json.loads(info) if isinstance(info, str) else info
+                # publish-data*.json 里的 publish_info 是 HTML 转义过的 JSON 字符串
+                # （&quot; 而非 "），必须先 unescape 再 json.loads，否则解析必失败 →
+                # 贴图标题集为空 → 所有内容被误判为 article。2026-09-09 修复。
+                parsed = json.loads(html.unescape(info)) if isinstance(info, str) else info
             except json.JSONDecodeError:
                 continue
             for app in parsed.get("appmsg_info", []):

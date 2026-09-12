@@ -41,7 +41,7 @@ export interface StartSshTunnelOptions {
 
 const DEFAULT_USER = "root";
 const DEFAULT_PORT = 22;
-const DEFAULT_READY_TIMEOUT_MS = 10_000;
+const DEFAULT_READY_TIMEOUT_MS = 30_000;
 const DEFAULT_KILL_TIMEOUT_MS = 3_000;
 const SSH_LOOPBACK_HOST = "127.0.0.1";
 
@@ -94,6 +94,7 @@ export function buildSshArgs(config: NormalizedRemotePublishConfig, socksPort: n
     "-o", "ExitOnForwardFailure=yes",
     "-o", "ServerAliveInterval=30",
     "-o", "ServerAliveCountMax=3",
+    "-o", "ControlMaster=no",
     "-p", String(config.port),
   ];
 

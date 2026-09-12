@@ -49,6 +49,20 @@ def _head(text: str, size: float = 38) -> Text:
     return t(text, size, YELL, "BOLD").to_edge(UP, buff=1.2)
 
 
+def _step_card(label: str, value: str, border: str, vcolor: str = WHITE) -> VGroup:
+    """步数账卡片：标签小字在上、数字大字在下，间距拉开。
+    修复「第0步0」视觉连读成「第00步」/「第10步」（2026-09-06 用户反馈）。
+    结构保持 VGroup(box, txt) 以兼容 scroll_unroll（txt 为 VGroup(lab, val)）。"""
+    box = RoundedRectangle(corner_radius=0.18, width=2.0, height=2.6,
+                           color=border, stroke_width=2.5,
+                           fill_color=CARD_FILL, fill_opacity=1.0)
+    lab = t(label, 24, MUTED, "BOLD")
+    val = t(value, 60, vcolor, "BOLD")
+    inner = VGroup(lab, val).arrange(DOWN, buff=0.4)
+    inner.move_to(box.get_center())
+    return VGroup(box, inner)
+
+
 # ---------------- S1 开场钩子：agent 修 bug ----------------
 class S1(_Base):
     def construct(self):
@@ -67,15 +81,15 @@ class S1(_Base):
         layout_page(page1)
 
         self.at_clip("S1-c01")
-        self.play_parallel(type_in(head, run_time=1.1), FadeIn(img, shift=DOWN * 0.05),
-                           type_in(note0, run_time=0.6), run_time=1.1)
+        self.play(type_in(head, run_time=1.1))  # c01 标题先出
+        self.play(FadeIn(img, shift=DOWN * 0.05), run_time=0.8)  # c01 概念图
+        self.play(type_in(note0, run_time=0.6))  # c01 说明
         self.at_clip("S1-c02")
         n = self.counter_value(0, 30, suffix=" 次", size=64, color=YELL,
                                 run_time=1.2, anchor=slot,
                                 extra_anims=[type_in(lab, run_time=0.6)])  # 主视觉：数字滚动
-        self.at_clip("S1-c04")
 
-        # 页2：轨迹链 + 第 3 步红叉（c04-c05）
+        # 页2：轨迹链 + 第 3 步红叉（c02-c05）
         head2 = _head("第 3 步，方向偏了一点", 38)
         segs = VGroup(*[Rectangle(width=0.55, height=1.1, color=CYAN,
                                   fill_color=CYAN, fill_opacity=0.35) for _ in range(10)])
@@ -88,11 +102,16 @@ class S1(_Base):
 
         self.play(FadeOut(head), FadeOut(img), FadeOut(n), FadeOut(crow), FadeOut(note0),
                   type_in(head2, run_time=0.9), run_time=0.9)
-        self.play(*[Create(s) for s in segs], run_time=1.2, lag_ratio=0.2)  # 主视觉：轨迹逐段
+        # c02：轨迹链逐段 Create（10 段，随台词推进）
+        self.play(*[Create(s) for s in segs[:3]], run_time=1.0, lag_ratio=0.15)  # 主视觉：前 3 步
         self.wait(0.1)
         cross = self.play_red_cross(segs[2])
+        self.at_clip("S1-c03")
+        self.play(*[Create(s) for s in segs[3:]], run_time=1.2, lag_ratio=0.1)  # 剩余 7 段
+        self.at_clip("S1-c04")
+        self.play_scroll_unroll(c1, run_time=1.2)
         self.at_clip("S1-c05")
-        self.play_scroll_unroll_many(c1, c2, run_time=1.3)
+        self.play_scroll_unroll(c2, run_time=1.2)
         self.wait(0.1)
         self.play(type_in(note, run_time=0.9))
         self.at_clip("S1-c06")
@@ -171,9 +190,11 @@ class S2(_Base):
         self.play(FadeOut(head), FadeOut(c1), FadeOut(c2), FadeOut(note),
                   type_in(head2, run_time=0.9), run_time=0.9)
         self.play_scroll_unroll_many(r1, r2, r3, run_time=1.4)  # 主视觉：三卡拉幕
+        self.at_clip("S2-c06")
+        self.play(FadeIn(s1), FadeIn(s2), Create(sa1), run_time=0.9)  # S₁→S₂
         self.at_clip("S2-c07")
-        self.play(FadeIn(s1), FadeIn(s2), FadeIn(s3), FadeIn(sd),
-                  Create(sa1), Create(sa2), Create(sa3), run_time=1.2)
+        self.play(FadeIn(s3), Create(sa2), run_time=0.9)  # S₂→S₃
+        self.play(FadeIn(sd), Create(sa3), run_time=0.7)  # →…
         self.at_clip("S2-c08")
         self.play(type_in(note2, run_time=0.9))
         self.at_clip("S2-c09")
@@ -219,9 +240,11 @@ class S3(_Base):
 
         # 页2：公式（c05-c07）
         head2 = _head("写成公式", 40)
-        formula = MathTex(
-            r"P(s_{t+1}\mid s_t) = P(s_{t+1}\mid s_t, s_{t-1}, s_{t-2}, \ldots)",
-            tex_to_color_map={r"P(s_{t+1}\mid s_t)": YELL})
+        f_l = MathTex(r"P(s_{t+1}\mid s_t)", tex_to_color_map={r"P(s_{t+1}\mid s_t)": YELL})
+        f_r = MathTex(r"= P(s_{t+1}\mid s_t, s_{t-1}, s_{t-2}, \ldots)")
+        f_l.set_width(2.6)
+        f_r.set_width(4.2)
+        formula = VGroup(f_l, f_r).arrange(RIGHT, buff=0.15)
         formula.set_width(6.4)
         c3 = _card("只看当前状态 = 看完整个历史", 5.6, 1.8, CYAN, WHITE, 32, CARD_FILL, "BOLD")
         c4 = _card("该记的，都已经记在当前状态里了", 5.6, 1.8, GREEN, WHITE, 32, CARD_FILL, "BOLD")
@@ -230,8 +253,9 @@ class S3(_Base):
 
         self.play(FadeOut(head), FadeOut(big), FadeOut(c1), FadeOut(c2),
                   type_in(head2, run_time=0.9), run_time=0.9)
-        self.play(FadeIn(formula), run_time=0.9)  # 主视觉：公式
+        self.play(FadeIn(f_l), run_time=0.8)  # 主视觉：公式左半（只看当前状态）
         self.at_clip("S3-c06")
+        self.play(FadeIn(f_r), run_time=0.8)  # 公式右半（= 看完整个历史）
         self.play_scroll_unroll(c3, run_time=1.2)
         self.at_clip("S3-c07")
         self.play_scroll_unroll(c4, run_time=1.2)
@@ -257,10 +281,12 @@ class S3(_Base):
 
         self.play(FadeOut(head2), FadeOut(formula), FadeOut(c3), FadeOut(c4),
                   type_in(head3, run_time=0.9), run_time=0.9)
-        self.play(*[FadeIn(g, scale=0.7) for g in cells], run_time=1.2)  # 主视觉：矩阵点亮
+        # 矩阵逐行点亮（3 行，c08 台词「每一行加起来必须等于 1」期间）
+        self.play(*[FadeIn(g, scale=0.7) for g in cells[0]], run_time=0.7)  # 第 1 行
+        self.play(*[FadeIn(g, scale=0.7) for g in cells[1]], run_time=0.7)  # 第 2 行
+        self.play(*[FadeIn(g, scale=0.7) for g in cells[2]], run_time=0.7)  # 第 3 行
+        self.play(type_in(lab, run_time=0.8))
         self.at_clip("S3-c09")
-        self.play(type_in(lab, run_time=0.9))
-        self.wait(0.1)
         self.play_scroll_unroll(c5, run_time=1.2)
         self.at_clip("S3-c10")
 
@@ -329,7 +355,10 @@ class S4(_Base):
         self.at_clip("S4-c02")
         self.play(type_in(head, run_time=1.0))
         self.play(FadeIn(win), FadeIn(winlab), run_time=0.7)
-        self.play(*[FadeIn(tk, scale=0.5) for tk in toks], run_time=1.0)  # 主视觉：窗口点亮
+        # 窗口 token 分两批点亮（c03 台词「窗口里装的那些 token」）
+        self.play(*[FadeIn(tk, scale=0.5) for tk in toks[:4]], run_time=0.8)  # 主视觉：窗口点亮
+        self.at_clip("S4-c03")
+        self.play(*[FadeIn(tk, scale=0.5) for tk in toks[4:]], run_time=0.8)
         self.at_clip("S4-c04")
         self.play(FadeIn(out1), FadeIn(out2), run_time=0.4)
         c1 = Line(outg.get_corner(UL) + RIGHT * 0.15 + DOWN * 0.15,
@@ -363,18 +392,21 @@ class S4(_Base):
         page2 = page_stack(g1, g2, wrow, krow, note2, buff=0.7)
         layout_page(page2)
 
-        self.play(FadeOut(head), FadeOut(win), FadeOut(toks), FadeOut(winlab),
+        self.play(FadeOut(head), FadeOut(big_ok), FadeOut(win), FadeOut(toks), FadeOut(winlab),
                   FadeOut(out1), FadeOut(out2), FadeOut(outlab), FadeOut(note),
                   FadeOut(cross),
                   type_in(head2, run_time=0.9), run_time=0.9)
-        self.play_scroll_unroll_many(g1, g2, run_time=1.3)  # 主视觉：两卡拉幕
+        self.play_scroll_unroll(g1, run_time=1.2)  # 主视觉：N-gram 卡
         self.at_clip("S4-c08")
+        self.play_scroll_unroll(g2, run_time=1.2)  # 大模型卡
         n = self.counter_value(0, 128, suffix="K", size=64, color=YELL,
                                run_time=1.4, anchor=slot,
                                extra_anims=[type_in(lab2, run_time=0.6)])
         self.at_clip("S4-c09")
-        self.play_scroll_unroll_many(k1, k2, run_time=1.3)
+        self.play_scroll_unroll(k1, run_time=1.2)  # 128K 阶
         self.emphasize(k1, run_time=0.6)  # 2/4
+        self.at_clip("S4-c10")
+        self.play_scroll_unroll(k2, run_time=1.2)  # 经典 5 阶
         self.at_clip("S4-c11")
         self.play(type_in(note2, run_time=0.9))
         self.at_clip("S4-c12")
@@ -430,11 +462,15 @@ class S5(_Base):
         self.at_clip("S5-c01")
         self.play(type_in(head, run_time=1.1), type_in(big, run_time=0.9), run_time=1.1)
         self.at_clip("S5-c02")
-        self.play_scroll_unroll_many(m1, m2, m3, run_time=1.3)  # 主视觉：三卡拉幕
+        self.play_scroll_unroll(m1, run_time=1.0)  # S 状态集合
+        self.at_clip("S5-c03")
+        self.play_scroll_unroll(m2, run_time=1.0)  # A 动作集合
+        self.play_scroll_unroll(m3, run_time=1.0)  # P 转移概率
+        self.play(type_in(note, run_time=0.9))  # note 讲的就是 P：在状态 s 做动作 a
         self.at_clip("S5-c05")
-        self.play_scroll_unroll_many(m4, m5, run_time=1.2)
+        self.play_scroll_unroll(m4, run_time=1.0)  # R 奖励函数
         self.at_clip("S5-c06")
-        self.play(type_in(note, run_time=0.9))
+        self.play_scroll_unroll(m5, run_time=1.0)  # γ 折扣因子
         self.at_clip("S5-c07")
 
         # 页2：策略（c07-c09）
@@ -475,9 +511,12 @@ class S5(_Base):
 
         self.play(FadeOut(head2), FadeOut(p1), FadeOut(p2),
                   type_in(head3, run_time=0.9), run_time=0.9)
-        self.play(FadeIn(t1), FadeIn(t2), FadeIn(t3), FadeIn(td), FadeIn(t30),
-                  Create(ta1), Create(ta2), Create(ta3), Create(ta4), run_time=1.2)  # 主视觉：轨迹链
+        # 轨迹链分步（c10 台词「一串状态」）
+        self.play(FadeIn(t1), FadeIn(t2), Create(ta1), run_time=0.9)  # S₁→S₂
         self.at_clip("S5-c11")
+        self.play(FadeIn(t3), Create(ta2), run_time=0.8)  # S₂→S₃
+        self.play(FadeIn(td), Create(ta3), run_time=0.6)  # →…
+        self.play(FadeIn(t30), Create(ta4), run_time=0.8)  # →S₃₀
         self.play_scroll_unroll_many(q1, q2, q3, run_time=1.4)
         self.at_clip("S5-c13")
 
@@ -501,9 +540,11 @@ class S6(_Base):
 
         # 页1：回报公式（c01-c03）
         head = _head("折扣回报", 40)
-        formula = MathTex(
-            r"G_t = \sum_{k=t+1}^{T} \gamma^{\,k-t-1} R_k",
-            tex_to_color_map={r"\gamma^{\,k-t-1}": YELL})
+        f_l = MathTex(r"G_t = \sum_{k=t+1}^{T}", tex_to_color_map={r"G_t": YELL})
+        f_r = MathTex(r"\gamma^{\,k-t-1} R_k", tex_to_color_map={r"\gamma^{\,k-t-1}": YELL})
+        f_l.set_width(3.4)
+        f_r.set_width(2.6)
+        formula = VGroup(f_l, f_r).arrange(RIGHT, buff=0.1)
         formula.set_width(6.0)
         c1 = _card("目标不是眼前这一步，而是整条轨迹的回报", 6.4, 2.6, CYAN, WHITE, 32, CARD_FILL, "BOLD")
         note = t("离现在越远的奖励，折得越狠", 28, WHITE)
@@ -513,18 +554,19 @@ class S6(_Base):
         self.at_clip("S6-c01")
         self.play(type_in(head, run_time=1.0))
         self.at_clip("S6-c02")
-        self.play(FadeIn(formula), run_time=0.9)  # 主视觉：公式
+        self.play(FadeIn(f_l), run_time=0.8)  # 主视觉：公式左半（求和）
+        self.play(FadeIn(f_r), run_time=0.8)  # 公式右半（γ 次方）
         self.wait(0.1)
         self.play_scroll_unroll(c1, run_time=1.2)
-        self.wait(0.1)
+        self.at_clip("S6-c03")
         self.play(type_in(note, run_time=0.9))
         self.at_clip("S6-c04")
 
         # 页2：3 步账（c04-c07）
         head2 = _head("算一笔账：3 步，0、0、+1，γ = 0.9", 28)
-        r0 = _card("第 0 步\n0", 2.0, 2.6, MUTED, WHITE, 34, CARD_FILL, "BOLD")
-        r1 = _card("第 1 步\n0", 2.0, 2.6, MUTED, WHITE, 34, CARD_FILL, "BOLD")
-        r2 = _card("第 2 步\n+1", 2.0, 2.6, GREEN, WHITE, 34, CARD_FILL, "BOLD")
+        r0 = _step_card("第 0 步", "0", MUTED)
+        r1 = _step_card("第 1 步", "0", MUTED)
+        r2 = _step_card("第 2 步", "+1", GREEN, GREEN)
         rrow = VGroup(r0, r1, r2).arrange(RIGHT, buff=0.5)
         lab = t("记在第 0 步账上的回报", 32, WHITE, "BOLD")
         slot = dynamic_slot(2.6, 0.9)
@@ -535,7 +577,11 @@ class S6(_Base):
 
         self.play(FadeOut(head), FadeOut(formula), FadeOut(c1), FadeOut(note),
                   type_in(head2, run_time=0.9), run_time=0.9)
-        self.play_scroll_unroll_many(r0, r1, r2, run_time=1.3)  # 主视觉：三卡拉幕
+        # 三张步数卡随台词逐张展开（c04-c05）
+        self.play_scroll_unroll(r0, run_time=1.0)  # 第 0 步：0
+        self.at_clip("S6-c05")
+        self.play_scroll_unroll(r1, run_time=1.0)  # 第 1 步：0
+        self.play_scroll_unroll(r2, run_time=1.0)  # 第 2 步：+1
         self.at_clip("S6-c06")
         n = self.counter_value(0, 0.81, decimals=2, size=64, color=YELL,
                                run_time=1.4, anchor=slot,
@@ -559,7 +605,9 @@ class S6(_Base):
         self.play(FadeOut(head2), FadeOut(r0), FadeOut(r1), FadeOut(r2),
                   FadeOut(n), FadeOut(grow), FadeOut(big),
                   type_in(head3, run_time=0.9), run_time=0.9)
-        self.play_scroll_unroll_many(g1, g2, run_time=1.3)  # 主视觉：两卡拉幕
+        self.play_scroll_unroll(g1, run_time=1.2)  # 调小：只顾眼前
+        self.at_clip("S6-c09")
+        self.play_scroll_unroll(g2, run_time=1.2)  # 调大：愿意为远期忍耐
         self.at_clip("S6-c10")
         n3 = self.counter_value(0, 10, suffix=" 倍", size=64, color=YELL,
                                 run_time=1.2, anchor=slot3,

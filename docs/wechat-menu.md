@@ -18,17 +18,20 @@
 - 被替换的文章通过合集页和文末交叉链接仍可访问
 - 账号菜单子菜单数受限时（当前仅支持 2 个），实际配置取列表前 N 篇，文档仍维护完整前 6
 
-**2026-09-04 更新（数据截至 09-03，28,923 读；贴图已过滤）**
+**2026-09-09 更新（数据截至 09-08，33,505 读；贴图已过滤）**
 
 | 排序 | 文章 | 链接 | 阅读量 |
 |-----|------|------|--------|
-| 1 | KV缓存存进SSD | `https://mp.weixin.qq.com/s/40BQ06eDTv4-2r8FmQ_rMA` | 3,068 |
-| 2 | 高维空间全是壳 | `https://mp.weixin.qq.com/s/Nrfr-90Fpu3mFDML9s0d1Q` | 1,692 |
-| 3 | 高斯为什么二阶就够 | `https://mp.weixin.qq.com/s/gs_3y7JXuBLlzR5w6jW6fQ` | 1,462 |
+| 1 | KV缓存存进SSD | `https://mp.weixin.qq.com/s/40BQ06eDTv4-2r8FmQ_rMA` | 3,119 |
+| 2 | 高维空间全是壳 | `https://mp.weixin.qq.com/s/Nrfr-90Fpu3mFDML9s0d1Q` | 1,765 |
+| 3 | 高斯为什么二阶就够 | `https://mp.weixin.qq.com/s/gs_3y7JXuBLlzR5w6jW6fQ` | 1,504 |
 | 4 | Adam优化器 | `https://mp.weixin.qq.com/s/aSLVO-otvr2rxIU1kr2eAA` | 1,109 |
 | 5 | DeepSeek-V4为何不用MLA | `https://mp.weixin.qq.com/s/MQEgbY16mLs-N7g2xKW1HQ` | 1,107 |
+| 6 | SFT微调 | `https://mp.weixin.qq.com/s/vwXGbjm9Ai1GPvQi5O3UyQ` | 569 |
 
-> 同步自 `content/navigation/menu-config.md`，由 `scripts/hot_articles.py --md --self-check` 生成并校验；过滤 `item_show_type=8` 贴图后按历史最高阅读重排；实际菜单配前 2 篇。
+> 同步自 `content/navigation/menu-config.md`，由 `scripts/hot_articles.py --md --self-check` 生成并校验；过滤 `item_show_type=8` 贴图后按历史最高阅读重排；实际菜单配前 2 篇（KV、高维空间）。
+>
+> ⚠️ **2026-09-09 修正**：费马大定理（4,670 读）后台实为贴图（`item_show_type=8`，图片消息），已从榜单剔除；若菜单此前配了它，需改回 KV + 高维空间。
 
 ## 全部合集（合集页，一次配好永远不动）
 

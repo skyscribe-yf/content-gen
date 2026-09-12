@@ -1,8 +1,8 @@
 # 图片生成
 
-项目图片生成默认后端：**yairouter**（gpt-image-2）。
+项目图片生成默认后端：**yairouter**（gpt-image-2.5-sunburst）。
 
-> ⚠️ **已知问题（2026-08-07 实测）**：上游官方 API 忽略 `size` 参数——请求任意尺寸（21:9 / 4K / 1:1）实际输出均为 1254x1254 / 1536x1024 / 1024x1536 等固定或轮转尺寸。属官方 API 行为，暂不裁剪、不规避，工具按实际输出保存。详见 [`yairouter-gpt-image-2-experiment.md`](yairouter-gpt-image-2-experiment.md)。
+> ⚠️ **已知问题（2026-08-07 实测 gpt-image-2；2026-09-09 复验 gpt-image-2.5-*）**：上游中继 API 忽略 `size` 参数——请求任意尺寸（21:9 / 4K / 1:1）实际输出均为 1254x1254 / 1536x1024 / 1024x1536 等固定或轮转尺寸。属上游行为，暂不裁剪、不规避，工具按实际输出保存。详见 [`yairouter-gpt-image-2-experiment.md`](yairouter-gpt-image-2-experiment.md)。
 
 ---
 
@@ -91,11 +91,17 @@ im.save("00-cover.png")
 
 ---
 
-## ⭐ yairouter API — 默认后端（gpt-image-2，自动 fallback grok）
+## ⭐ yairouter API — 默认后端（gpt-image-2.5-sunburst，自动 fallback）
 
 客户端脚本：`scripts/yairouter_img.py`
 
-**模型选择（2026-08-15 起）**：默认 `gpt-image-2`；若它不可用（API 返回 404 无权限 / 400 `Argument not supported: size` 等），脚本**自动改用 `grok-imagine-image-quality`**，无需人工干预。也可用 `--model grok-imagine-image-quality` 或 cards.json 的 `model` 字段显式指定。
+**模型选择（2026-09-09 更新）**：默认 `gpt-image-2.5-sunburst`（OpenAI GPT Image 2.5 系列，最高编辑精度）；可用 `--model gpt-image-2.5-flare` 或 cards.json 的 `model` 字段换用 `gpt-image-2.5-flare`（日常快速生成）。API 失败时自动沿链降级：`gpt-image-2.5-sunburst → gpt-image-2.5-flare → grok-imagine-image-quality`。
+
+**gpt-image-2.5 系列（2026-09-09 实测）**：
+- 支持 `quality`: low / medium / high / xhigh / max / auto；`--output-format`: png（默认）/ jpeg / webp（透明输出）
+- ⚠️ 上游中继目前忽略 size（请求任意尺寸均返回约 1536x1024）；**质量档位也被降为 low**（响应 quality=low、输出约 343 image tokens），非脚本问题
+- 请求用 `output_format` 字段，不传旧的 `response_format`；响应直接带 `data[].b64_json`
+- 官方能力（XAI Router 文档，供后续验证）：最长边 ≤ 3840、两边均为 16px 倍数、长边:短边 ≤ 3:1；4K 横图 `3840x2160`、竖图 `2160x3840`；编辑走 `/v1/images/edits`
 
 **grok 模型的差异（实测 2026-08-15）**：
 - 不支持 `size` 参数（请求必 400）——输出固定 **1024x1024 JPEG**

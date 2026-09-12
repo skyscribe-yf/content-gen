@@ -35,8 +35,15 @@ REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 def load_tietu_titles() -> set[str]:
-    """三份来源合并的贴图标题集。"""
+    """三份来源合并的贴图标题集。
+
+    publish-data 快照判定规则：带 appmsgid 的完整记录优先——只有 `item_show_type=0`
+    且带 appmsgid（后台完整发表记录）才算文章。历史 `publish-data.json` 是字段残缺的
+    早期快照（appmsgid=None、read_num=None），曾把贴图误标为 0，导致费马大定理
+    （09-05，4,670 读）被误判成文章。2026-09-09 修正：以带 appmsgid 的记录为准。
+    """
     titles: set[str] = set()
+    seen_as_article: set[str] = set()
 
     for f in glob.glob(os.path.join(REPO, "branding/style-corpus/publish-data*.json")):
         try:
@@ -49,8 +56,15 @@ def load_tietu_titles() -> set[str]:
             except json.JSONDecodeError:
                 continue
             for app in info.get("appmsg_info", []):
-                if app.get("title") and app.get("item_show_type") not in (None, 0):
-                    titles.add(app["title"])
+                t = app.get("title")
+                if not t:
+                    continue
+                st = app.get("item_show_type")
+                if st == 0 and app.get("appmsgid"):
+                    seen_as_article.add(t)
+                elif st not in (None, 0):
+                    titles.add(t)
+    titles -= seen_as_article
 
     summary = os.path.join(REPO, "branding/style-corpus/tietu-corpus-summary.json")
     if os.path.exists(summary):
@@ -194,7 +208,7 @@ def main() -> int:
     rows = rows[: args.top]
 
     if args.self_check:
-        # 回归锚点：2026-08-29 更新（高斯长尾 1158 超学习率 1109 升至第 3）。榜单结构变化时更新此断言。
+        # 回归锚点：2026-09-09 更新（费马大定理修正为贴图后被剔除，SFT 回到前 6）。榜单结构变化时更新此断言。
         expected = ["KV缓存存进SSD：慢50倍的硬盘，为什么反而更快？",
                     "高维空间为什么全是壳？内积才是那把尺子",
                     "高斯为什么二阶就够？非线性去哪了",
@@ -204,6 +218,7 @@ def main() -> int:
         got = [t for t, _, _ in rows]
         assert got == expected, f"榜单漂移：{got}"
         assert all(u.startswith("https://mp.weixin.qq.com/s/") for _, _, u in rows)
+        assert "曾困扰人类358年的费马大定理终被AI证明" not in got
         assert "严重过拟合的Deepseek，和魔幻的价格" not in got
         print(f"自检通过：Top {len(rows)} 与锚点一致")
         return 0

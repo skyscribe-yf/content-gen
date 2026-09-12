@@ -39,3 +39,7 @@ media/papers/
 **/shipinhao/media/videos/
 **/shipinhao/media/Tex/
 artifacts/
+
+# ffmpeg 中间产物（MPEG-TS 视频段，非 TypeScript 代码）
+**/shipinhao/build_S*.ts
+content/**/new.tar.gz

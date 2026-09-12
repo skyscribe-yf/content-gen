@@ -1,104 +1,279 @@
 [
-  {
-    "dir": "20260824-0700-DeepSeek-Harness社区自己人开撕：创新何在",
-    "title": "DeepSeek Harness社区自己人开撕：创新何在",
-    "point": "Yifan Xu 炮轰 DSH（DeepSeek Harness）没真正原创：工具像从 Claude/Codex 拼凑，Tianyi 团队给炮轰帖点赞；DSH 官方回应用「槽位固定、插件可替换」的 Profile/Bundle/Patch 架构回应争议",
-    "keypoints": ["炮轰：DSH 没有真正原创创新", "工具设计被指从 Claude、Codex 拼凑", "崔添翼（Tianyi Cui）亲自点赞炮轰帖", "DSH 架构回应：槽位固定、插件实现可替换", "Cordis Context：Agent Loop 五大必需服务槽位"]
-  },
-  {
-    "dir": "20260824-0800-Pi这波把DSH剪枝骂惨了",
-    "title": "Pi这波把DSH剪枝骂惨了",
-    "point": "Pi 开发笔记锐评各家 Agent：核心不是比谁工具多，而是 Agent 连跑 50 小时后还记得自己干过什么；26%~35% 的内容被 permanently-lossy pruner 剪掉，72%~88% 状态靠 19 个 Session 重建",
-    "keypoints": ["Pi 官方锐评 DSH、Claude Code、OpenCode", "关键问题：连跑 50 小时还记得干过什么吗？", "被 permanently-lossy pruner 剪掉 26%~35%", "72%~88% 状态靠 19 个 Session 重建"]
-  },
-  {
-    "dir": "20260825-0705-Pi新架构",
-    "title": "Pi 的新架构，答案早就在数据库论文里了",
-    "point": "kabikabi 发现 Pi harness v2 与 Maka 架构撞车：持久化事实→派生运行状态→派生模型上下文→派生UI，边界一样：先写执行意图，再做副作用，再写结果——答案早就在数据库论文里",
-    "keypoints": ["Pi harness v2 与 Maka 架构几乎一致", "持久化事实→派生运行状态→派生上下文→派生UI", "边界一致：先写执行意图，再做副作用，再写结果", "Maka 核心作者多为 database 背景出身"]
-  },
-  {
-    "dir": "20260825-2156-GAE：100步的功劳，为什么只认最近17步？",
-    "title": "GAE：100步的功劳，为什么只认最近17步？",
-    "point": "GAE（广义优势估计）文章卡片：100 步轨迹的功劳分摊，λ 折扣后有效视野只有最近约 17 步——λ=1 方差爆炸，λ=0 只看下一步，17 步是方差与偏差的折中",
-    "keypoints": ["GAE：100 步的功劳，只认最近 17 步", "λ=1：方差爆炸；λ=0：只看下一步", "有效视野 16.8 步，λ 扫描的方差权衡"]
-  },
-  {
-    "dir": "20260826-0953-神秘牛来",
-    "title": "神秘牛来",
-    "point": "免费又给量的神秘模型「牛来」（Ox Alpha）96% 确定是智谱家的：Polymarket 上 Ox Alpha 属于 Z.ai 概率飙到 96%，用户实测「今天比昨天好 10 倍」",
-    "keypoints": ["Ox Alpha 属于 Z.ai 概率飙到 96%", "Polymarket 实锤：没人再猜 Gemini/Cursor", "用户实测：今天比昨天好 10 倍", "免费给量，大家都说好"]
-  },
-  {
-    "dir": "20260826-2059-牛来，多模态，300B，智谱家的",
-    "title": "牛来，多模态，300B，智谱家的",
-    "point": "Ox Alpha 真身官宣：就是智谱 GLM 系列新迭代（GLM-5.3-Flash），零成本高性能登顶在线用量榜，权重当晚开源",
-    "keypoints": ["Ox Alpha = Z.AI（智谱）确认", "零成本高性能，登顶在线用量榜", "GLM 系列最新迭代，300B", "权重当晚开源"]
-  },
-  {
-    "dir": "20260827-0700-GLM-5.3-Flash-半价是假象？实测竟贵-3-倍",
-    "title": "GLM-5.3-Flash 半价是假象？实测竟贵 3 倍",
-    "point": "GLM-5.3-Flash（前 Ox Alpha）官宣：每日 100T token 由中国芯片扛下、OpenRouter 登顶；但半价后缓存 $0.015 对代码场景仍是 DeepSeek 缓存价的 5 倍，作者 14 天真实负载试算贵近 3 倍（238 元 vs 82 元）",
-    "keypoints": ["Ox Alpha 揭晓为 GLM-5.3-Flash", "每日 100T tokens 处理量由中国芯片提供", "OpenRouter 请求量榜第 1", "官方 API 两周 50% off：输入 $0.075 / 输出 $0.25", "缓存价 $0.015 = DeepSeek 的 5 倍，实测贵 3 倍"]
-  },
-  {
-    "dir": "20260829-1031-GLM5.3flash-一旦去掉免费光环马上均值回归",
-    "title": "GLM5.3flash:一旦去掉免费光环马上均值回归",
-    "point": "GLM 开始付费后第一个完整日，DeepSeek 立刻夺回 OpenRouter 王座（2.8T vs 634B），Muse Spark 成黑马；范凯实测：GPT 遥遥领先，GLM-5.3-Flash 价格不错但推理速度与 DeepSeek 有差距",
-    "keypoints": ["GLM 付费首日，DeepSeek 夺回王座", "OpenRouter 日调用量：DeepSeek 2.8T vs GLM 634B", "Muse Spark 黑马紧随其后", "实测：价格香但速度差一截"]
-  },
-  {
-    "dir": "20260829-1536-腾讯hy4和codebuddy这次善待国人了抓紧蹬",
-    "title": "腾讯hy4和codebuddy这次善待国人了抓紧蹬",
-    "point": "腾讯 Hy4 预览版发布（770B 总参、49B 活跃、1M 上下文、开源）+ codebuddy 可用 GLM5.3/GPT5.6 Luna/hy4，8月28日—9月10日每天送免费额度；作者实测 codebuddy 缓存命中率 99.6%、GLM 通道 ¥2.29",
-    "keypoints": ["Hy4 预览版：770B 总参、49B 活跃、1M 上下文", "开源前沿 + 实惠价格", "8/28-9/10 每天送免费额度，白嫖窗口两周", "codebuddy 缓存命中率 99.6%", "GLM5.3 / GPT5.6 Luna / hy4 随便蹬"]
-  },
-  {
-    "dir": "20260830-1121-opencode举起的价格屠刀，这次竟砍向了自己",
-    "title": "opencode举起的价格屠刀，这次竟砍向了自己",
-    "point": "Command Code GOAT 全面压制 OpenCode Go：Coding Agent 本质是 Prefix Cache 机器，Command Code 99%+ 缓存命中率 + CEO 亲自下场；7 项对打 GOAT 7 胜，GLM-5.3-Flash 额度 GOAT +199% 约 3 倍",
-    "keypoints": ["Command GOAT vs OpenCode Go：7 胜 3 负", "GLM-5.3-Flash 额度 GOAT +199%（约3倍）", "Coding Agent 本质是 Prefix Cache 机器", "Command Code 缓存命中率 99%+", "CEO 亲自评论区补课缓存账本"]
-  },
-  {
-    "dir": "20260831-0829-感动了，AI公司CEO亲自回复每一个反馈帖子",
-    "title": "感动了，AI公司CEO亲自回复每一个反馈帖子",
-    "point": "两家美国初创 AI 公司服务天壤之别：Command Code CEO 亲力亲为回复每条反馈、火速接入支付宝/微信；nahcrof 低价但藏着猫腻（cache hit 低、量化 Q8_0 卖 $0.08/M in）",
-    "keypoints": ["Command Code CEO 亲自回复每条反馈", "火速接入支付宝和微信", "nahcrof 看似廉价背后有猫腻", "GOAT 月额度 $70 vs OpenCode Go $20", "用户：说不支持支付宝，现在已经来了"]
-  },
-  {
-    "dir": "20260901-1740-信仰崩了！Ollama-不再量大管饱，十倍缩量",
-    "title": "信仰崩了！Ollama 不再量大管饱，十倍缩量",
-    "point": "Ollama 8月31日官宣 Pro/Max/Team 改「透明按 Token 计费」：Pro $20 含 $60 额度、Max $100 含 $300、Team $500 含 $1000，Max 暂停新订阅；从「不透明但量大管饱」到数着 token 过日子",
-    "keypoints": ["Ollama 改透明按 Token 计费", "Pro $20/月 含 $60 额度", "Max $100/月 含 $300 额度，暂停新订阅", "Team $500/月 含 $1000 额度", "官方理由：云上 Token 用量每月翻倍"]
-  },
-  {
-    "dir": "20260903-0909-线性注意力机制全是弯路吗？",
-    "title": "线性注意力机制全是弯路吗？",
-    "point": "微软新论文：降低推理内存，无需训练的滑动窗口注意力（64 token 窗口 + 4 个 sink 锚点）优于大多数精心改造的线性注意力方法——先把最土的 baseline 跑满",
-    "keypoints": ["微软论文：SWA 白嫖打赢线性注意力", "64 token 滑窗 + 4 个 sink 锚点，无需训练", "线性注意力改造 + post-train 仍被白嫖走 99%", "先跑满最土的 baseline"]
-  },
-  {
-    "dir": "20260903-0944-好家伙，花期4个月的deepSWE也是要沦陷了",
-    "title": "好家伙，花期4个月的deepSWE也是要沦陷了",
-    "point": "DeepSWE 榜单要沦陷：Meta 偷偷发布 Muse Spark 1.3 拿下 DeepSWE v1.1 75.4 冲进第一梯队，Gemini 3.8 Flash 73.7（+8.2%）； Zuckerberg 称价格低到几乎无法计量",
-    "keypoints": ["Meta 偷发 Muse Spark 1.3：DeepSWE 75.4", "Gemini 3.8 Flash：DeepSWE 73.7%（+8.2%）", "「前沿性能，价格低到几乎无法计量」", "花期 4 个月的 DeepSWE 纪录要沦陷"]
-  },
-  {
-    "dir": "20260903-1758-前沿harness评测集，cc=土豪？codex呢",
-    "title": "前沿harness评测集，cc=土豪？codex呢",
-    "point": "FrontierHarness Eval v1.0：10 个 harness × 360 次运行 × 20 亿 token，同模型同任务通过率 50%~67%、每次通过成本 $1.05~$64；Codex 最佳通过率、Pi 均衡、Claude Code 同一修复花 26 倍资源（$64.36 vs Pi $2.50）",
-    "keypoints": ["10 个 harness，360 次运行，20 亿 token", "通过率 50%~67%，成本 $1.05~$64/次通过", "Codex 66.7% 质量王座，$3.47 中等成本", "Pi 均衡之选，90 轮 $2.50", "Claude Code 土豪：381 轮 $64.36 = 26 倍资源"]
-  },
-  {
-    "dir": "20260904-1345-Agent生成复杂的设计，那么真正的复杂性呢",
-    "title": "Agent生成复杂的设计，那么真正的复杂性呢",
-    "point": "Tino Wening：AI 辅助工程造成第一性原理倒置——系统产出尴尬设计时，人们质疑工程原则而不是质疑设计；架构的有用部分是为了减少耦合、约束状态、本地化变更、保持不变量",
-    "keypoints": ["AI 辅助工程：第一性原理的倒置", "该质疑的是设计，不是工程原则", "架构价值：减少耦合、约束状态、本地化变更", "衡量标准：让正确变更更容易"]
-  },
-  {
-    "dir": "20260905-0810-Harness前沿大重构-核心到底是不是♻️",
-    "title": "Harness前沿大重构:核心到底是不是♻️",
-    "point": "omp 作者 Can Bölük《Harness Playbook》：2026 年 OpenCode/Pi/OpenClaw/omp 集体重构 Harness；Harness 是系统软件不是 while 循环；核心命题「复杂性必须有人拥有」，Dijkstra 简单性被误用，Ousterhout 主张把复杂性压进模块内部",
-    "keypoints": ["《Harness Playbook》深度解读", "Harness 是系统软件，不是 while 循环", "loop vs system 两种心智模型", "复杂性必须有人拥有（embrace suffering）", "TypeScript 二十种局部风格 = 模型先做二十个决定"]
-  }
+ {
+  "dir": "20260824-0700-DeepSeek-Harness社区自己人开撕：创新何在",
+  "title": "DeepSeek Harness社区自己人开撕：创新何在",
+  "point": "Yifan Xu 炮轰 DSH（DeepSeek Harness）没真正原创：工具像从 Claude/Codex 拼凑，Tianyi 团队给炮轰帖点赞；DSH 官方回应用「槽位固定、插件可替换」的 Profile/Bundle/Patch 架构回应争议",
+  "keypoints": [
+   "炮轰：DSH 没有真正原创创新",
+   "工具设计被指从 Claude、Codex 拼凑",
+   "崔添翼（Tianyi Cui）亲自点赞炮轰帖",
+   "DSH 架构回应：槽位固定、插件实现可替换",
+   "Cordis Context：Agent Loop 五大必需服务槽位"
+  ]
+ },
+ {
+  "dir": "20260824-0800-Pi这波把DSH剪枝骂惨了",
+  "title": "Pi这波把DSH剪枝骂惨了",
+  "point": "Pi 开发笔记锐评各家 Agent：核心不是比谁工具多，而是 Agent 连跑 50 小时后还记得自己干过什么；26%~35% 的内容被 permanently-lossy pruner 剪掉，72%~88% 状态靠 19 个 Session 重建",
+  "keypoints": [
+   "Pi 官方锐评 DSH、Claude Code、OpenCode",
+   "关键问题：连跑 50 小时还记得干过什么吗？",
+   "被 permanently-lossy pruner 剪掉 26%~35%",
+   "72%~88% 状态靠 19 个 Session 重建"
+  ]
+ },
+ {
+  "dir": "20260825-0705-Pi新架构",
+  "title": "Pi 的新架构，答案早就在数据库论文里了",
+  "point": "kabikabi 发现 Pi harness v2 与 Maka 架构撞车：持久化事实→派生运行状态→派生模型上下文→派生UI，边界一样：先写执行意图，再做副作用，再写结果——答案早就在数据库论文里",
+  "keypoints": [
+   "Pi harness v2 与 Maka 架构几乎一致",
+   "持久化事实→派生运行状态→派生上下文→派生UI",
+   "边界一致：先写执行意图，再做副作用，再写结果",
+   "Maka 核心作者多为 database 背景出身"
+  ]
+ },
+ {
+  "dir": "20260825-2156-GAE：100步的功劳，为什么只认最近17步？",
+  "title": "GAE：100步的功劳，为什么只认最近17步？",
+  "point": "GAE（广义优势估计）文章卡片：100 步轨迹的功劳分摊，λ 折扣后有效视野只有最近约 17 步——λ=1 方差爆炸，λ=0 只看下一步，17 步是方差与偏差的折中",
+  "keypoints": [
+   "GAE：100 步的功劳，只认最近 17 步",
+   "λ=1：方差爆炸；λ=0：只看下一步",
+   "有效视野 16.8 步，λ 扫描的方差权衡"
+  ]
+ },
+ {
+  "dir": "20260826-0953-神秘牛来",
+  "title": "神秘牛来",
+  "point": "免费又给量的神秘模型「牛来」（Ox Alpha）96% 确定是智谱家的：Polymarket 上 Ox Alpha 属于 Z.ai 概率飙到 96%，用户实测「今天比昨天好 10 倍」",
+  "keypoints": [
+   "Ox Alpha 属于 Z.ai 概率飙到 96%",
+   "Polymarket 实锤：没人再猜 Gemini/Cursor",
+   "用户实测：今天比昨天好 10 倍",
+   "免费给量，大家都说好"
+  ]
+ },
+ {
+  "dir": "20260826-2059-牛来，多模态，300B，智谱家的",
+  "title": "牛来，多模态，300B，智谱家的",
+  "point": "Ox Alpha 真身官宣：就是智谱 GLM 系列新迭代（GLM-5.3-Flash），零成本高性能登顶在线用量榜，权重当晚开源",
+  "keypoints": [
+   "Ox Alpha = Z.AI（智谱）确认",
+   "零成本高性能，登顶在线用量榜",
+   "GLM 系列最新迭代，300B",
+   "权重当晚开源"
+  ]
+ },
+ {
+  "dir": "20260827-0700-GLM-5.3-Flash-半价是假象？实测竟贵-3-倍",
+  "title": "GLM-5.3-Flash 半价是假象？实测竟贵 3 倍",
+  "point": "GLM-5.3-Flash（前 Ox Alpha）官宣：每日 100T token 由中国芯片扛下、OpenRouter 登顶；但半价后缓存 $0.015 对代码场景仍是 DeepSeek 缓存价的 5 倍，作者 14 天真实负载试算贵近 3 倍（238 元 vs 82 元）",
+  "keypoints": [
+   "Ox Alpha 揭晓为 GLM-5.3-Flash",
+   "每日 100T tokens 处理量由中国芯片提供",
+   "OpenRouter 请求量榜第 1",
+   "官方 API 两周 50% off：输入 $0.075 / 输出 $0.25",
+   "缓存价 $0.015 = DeepSeek 的 5 倍，实测贵 3 倍"
+  ]
+ },
+ {
+  "dir": "20260829-1031-GLM5.3flash-一旦去掉免费光环马上均值回归",
+  "title": "GLM5.3flash:一旦去掉免费光环马上均值回归",
+  "point": "GLM 开始付费后第一个完整日，DeepSeek 立刻夺回 OpenRouter 王座（2.8T vs 634B），Muse Spark 成黑马；范凯实测：GPT 遥遥领先，GLM-5.3-Flash 价格不错但推理速度与 DeepSeek 有差距",
+  "keypoints": [
+   "GLM 付费首日，DeepSeek 夺回王座",
+   "OpenRouter 日调用量：DeepSeek 2.8T vs GLM 634B",
+   "Muse Spark 黑马紧随其后",
+   "实测：价格香但速度差一截"
+  ]
+ },
+ {
+  "dir": "20260829-1536-腾讯hy4和codebuddy这次善待国人了抓紧蹬",
+  "title": "腾讯hy4和codebuddy这次善待国人了抓紧蹬",
+  "point": "腾讯 Hy4 预览版发布（770B 总参、49B 活跃、1M 上下文、开源）+ codebuddy 可用 GLM5.3/GPT5.6 Luna/hy4，8月28日—9月10日每天送免费额度；作者实测 codebuddy 缓存命中率 99.6%、GLM 通道 ¥2.29",
+  "keypoints": [
+   "Hy4 预览版：770B 总参、49B 活跃、1M 上下文",
+   "开源前沿 + 实惠价格",
+   "8/28-9/10 每天送免费额度，白嫖窗口两周",
+   "codebuddy 缓存命中率 99.6%",
+   "GLM5.3 / GPT5.6 Luna / hy4 随便蹬"
+  ]
+ },
+ {
+  "dir": "20260830-1121-opencode举起的价格屠刀，这次竟砍向了自己",
+  "title": "opencode举起的价格屠刀，这次竟砍向了自己",
+  "point": "Command Code GOAT 全面压制 OpenCode Go：Coding Agent 本质是 Prefix Cache 机器，Command Code 99%+ 缓存命中率 + CEO 亲自下场；7 项对打 GOAT 7 胜，GLM-5.3-Flash 额度 GOAT +199% 约 3 倍",
+  "keypoints": [
+   "Command GOAT vs OpenCode Go：7 胜 3 负",
+   "GLM-5.3-Flash 额度 GOAT +199%（约3倍）",
+   "Coding Agent 本质是 Prefix Cache 机器",
+   "Command Code 缓存命中率 99%+",
+   "CEO 亲自评论区补课缓存账本"
+  ]
+ },
+ {
+  "dir": "20260831-0829-感动了，AI公司CEO亲自回复每一个反馈帖子",
+  "title": "感动了，AI公司CEO亲自回复每一个反馈帖子",
+  "point": "两家美国初创 AI 公司服务天壤之别：Command Code CEO 亲力亲为回复每条反馈、火速接入支付宝/微信；nahcrof 低价但藏着猫腻（cache hit 低、量化 Q8_0 卖 $0.08/M in）",
+  "keypoints": [
+   "Command Code CEO 亲自回复每条反馈",
+   "火速接入支付宝和微信",
+   "nahcrof 看似廉价背后有猫腻",
+   "GOAT 月额度 $70 vs OpenCode Go $20",
+   "用户：说不支持支付宝，现在已经来了"
+  ]
+ },
+ {
+  "dir": "20260901-1740-信仰崩了！Ollama-不再量大管饱，十倍缩量",
+  "title": "信仰崩了！Ollama 不再量大管饱，十倍缩量",
+  "point": "Ollama 8月31日官宣 Pro/Max/Team 改「透明按 Token 计费」：Pro $20 含 $60 额度、Max $100 含 $300、Team $500 含 $1000，Max 暂停新订阅；从「不透明但量大管饱」到数着 token 过日子",
+  "keypoints": [
+   "Ollama 改透明按 Token 计费",
+   "Pro $20/月 含 $60 额度",
+   "Max $100/月 含 $300 额度，暂停新订阅",
+   "Team $500/月 含 $1000 额度",
+   "官方理由：云上 Token 用量每月翻倍"
+  ]
+ },
+ {
+  "dir": "20260903-0909-线性注意力机制全是弯路吗？",
+  "title": "线性注意力机制全是弯路吗？",
+  "point": "微软新论文：降低推理内存，无需训练的滑动窗口注意力（64 token 窗口 + 4 个 sink 锚点）优于大多数精心改造的线性注意力方法——先把最土的 baseline 跑满",
+  "keypoints": [
+   "微软论文：SWA 白嫖打赢线性注意力",
+   "64 token 滑窗 + 4 个 sink 锚点，无需训练",
+   "线性注意力改造 + post-train 仍被白嫖走 99%",
+   "先跑满最土的 baseline"
+  ]
+ },
+ {
+  "dir": "20260903-0944-好家伙，花期4个月的deepSWE也是要沦陷了",
+  "title": "好家伙，花期4个月的deepSWE也是要沦陷了",
+  "point": "DeepSWE 榜单要沦陷：Meta 偷偷发布 Muse Spark 1.3 拿下 DeepSWE v1.1 75.4 冲进第一梯队，Gemini 3.8 Flash 73.7（+8.2%）； Zuckerberg 称价格低到几乎无法计量",
+  "keypoints": [
+   "Meta 偷发 Muse Spark 1.3：DeepSWE 75.4",
+   "Gemini 3.8 Flash：DeepSWE 73.7%（+8.2%）",
+   "「前沿性能，价格低到几乎无法计量」",
+   "花期 4 个月的 DeepSWE 纪录要沦陷"
+  ]
+ },
+ {
+  "dir": "20260903-1758-前沿harness评测集，cc=土豪？codex呢",
+  "title": "前沿harness评测集，cc=土豪？codex呢",
+  "point": "FrontierHarness Eval v1.0：10 个 harness × 360 次运行 × 20 亿 token，同模型同任务通过率 50%~67%、每次通过成本 $1.05~$64；Codex 最佳通过率、Pi 均衡、Claude Code 同一修复花 26 倍资源（$64.36 vs Pi $2.50）",
+  "keypoints": [
+   "10 个 harness，360 次运行，20 亿 token",
+   "通过率 50%~67%，成本 $1.05~$64/次通过",
+   "Codex 66.7% 质量王座，$3.47 中等成本",
+   "Pi 均衡之选，90 轮 $2.50",
+   "Claude Code 土豪：381 轮 $64.36 = 26 倍资源"
+  ]
+ },
+ {
+  "dir": "20260904-1345-Agent生成复杂的设计，那么真正的复杂性呢",
+  "title": "Agent生成复杂的设计，那么真正的复杂性呢",
+  "point": "Tino Wening：AI 辅助工程造成第一性原理倒置——系统产出尴尬设计时，人们质疑工程原则而不是质疑设计；架构的有用部分是为了减少耦合、约束状态、本地化变更、保持不变量",
+  "keypoints": [
+   "AI 辅助工程：第一性原理的倒置",
+   "该质疑的是设计，不是工程原则",
+   "架构价值：减少耦合、约束状态、本地化变更",
+   "衡量标准：让正确变更更容易"
+  ]
+ },
+ {
+  "dir": "20260905-0810-Harness前沿大重构-核心到底是不是♻️",
+  "title": "Harness前沿大重构:核心到底是不是♻️",
+  "point": "omp 作者 Can Bölük《Harness Playbook》：2026 年 OpenCode/Pi/OpenClaw/omp 集体重构 Harness；Harness 是系统软件不是 while 循环；核心命题「复杂性必须有人拥有」，Dijkstra 简单性被误用，Ousterhout 主张把复杂性压进模块内部",
+  "keypoints": [
+   "《Harness Playbook》深度解读",
+   "Harness 是系统软件，不是 while 循环",
+   "loop vs system 两种心智模型",
+   "复杂性必须有人拥有（embrace suffering）",
+   "TypeScript 二十种局部风格 = 模型先做二十个决定"
+  ]
+ },
+ {
+  "dir": "曾困扰人类358年的费马大定理终被AI证明",
+  "title": "曾困扰人类358年的费马大定理终被AI证明",
+  "point": "Anthropic 用 Claude 完成了费马大定理的首个端到端、计算机验证证明：1300 万行 Lean 代码、29,500 个中间定理，是有史以来最长的 Lean 证明。费马大定理 1995 年才由怀尔斯首次证明（距提出已 350 多年）；这次连「证明本身是否正确」也交给机器验证,专家原本估计要数年。",
+  "keypoints": [
+   "首个端到端机器验证证明，用 Lean 4 写就，构建于 Mathlib（Lean 4.33.1 / Mathlib v4.33.0）",
+   "规模：1300 万行代码 + 29,500 个中间定理，史上最长的 Lean 证明",
+   "论证路线：Frey–Serre–Ribet–Wiles 与 Taylor-Wiles，逐步可核验",
+   "时间线：1995 怀尔斯首次证明（提出 350 多年后）→ 2026 AI 给出机器验证证明",
+   "建立在三个世纪数学家与数百位 Lean/Mathlib 贡献者工作之上，可减轻审稿负担",
+   "⚠️ 数字白名单（只允许出现这些，禁止任何其他年份/数字）：1995、2026、358、1300万、29,500、4.33.1、4.33.0。时间线只标注两个年份：1995 怀尔斯首次证明、2026 Claude 机器验证证明；禁止出现 1637、31 等数字"
+  ]
+ },
+ {
+  "dir": "严重过拟合的Deepseek，和魔幻的价格",
+  "title": "严重过拟合的Deepseek，和魔幻的价格",
+  "point": "DeepSeek V4 Pro 0813「不是弱，是环境过拟合」：同一模型同一套题，默认给满 25 个工具只有 91 分，第一轮只暴露 2 个工具、等它动手后再解锁全部，能到 98/99 分。同样地，同一模型换 9 个 harness 跑 Terminal-Bench2.1 的 89 题，通过率从 82.0% 一路掉到 55.1%。模型没变，变的是「给多少工具、怎么编排」——性能的差距全在环境，不在模型。",
+  "keypoints": [
+   "同一模型同一套题：25 工具全开 91 分 → 先 2 工具再解锁 98/99 分，官方极简预设 99/96",
+   "反超同期：Kimi K3 92、K2.7 94、GLM-5.2 91，追平 GPT-5.6 与 Claude Fable 5",
+   "行为只有「规划」「执行」两个稳定档位，中间全是乱流：工具给太多直接懵圈",
+   "同模型 9 个 harness 头对头（89 题 pass@1）：最高 Codex 82.0%、最低 Claude Code 55.1%，首尾差 24 道题",
+   "价格魔幻：第三方 crof 上 deepseek-v4-pro-0813 输入 $0.35/M、缓存 $0.01/M、输出 $0.80/M，8/16 起不加价",
+   "⚠️ 数字白名单（只允许出现这些，禁止任何其他数字）：25、89、91、92、94、98、99、96、2、24、0.35、0.01、0.80、8/16、1/3。9 个 harness 通过率必须精确为：Codex 82.0%、Maka 77.5%、Pi 74.2%、DSH 73.0%、ZCode 70.8%、Reasonix 67.4%、OpenCode 65.2%、Kimi Code 59.6%、Claude Code 55.1%，禁止其他百分比。型号名必须写作 deepseek-v4-pro-0813（全小写字母加连字符），禁止任何乱码字符"
+  ]
+ },
+ {
+  "dir": "突飞猛进的pi agent和友善的openai，你选谁",
+  "title": "突飞猛进的pi agent和友善的openai，你选谁",
+  "point": "Composio 用 DeepSeek V4 Flash 在 30 个 agentic 任务上横向评测 8 个 agent harness：Pi Agent 通过 20/30 个任务排名第一，而且单任务成本中位数最低（$0.012）、耗时最短（132s），'又便宜又快还最能打'。同期 OpenAI 官方客服回复用户：账户处于活跃状态、没有被标记或受限——模型行为差异并不能说明账户被限。",
+  "keypoints": [
+   "8 个 harness 通过数（30 任务）：Pi 20、Oh My Pi 17、Claude Code 16、Codex 16、Deep Agents 16、Prime 15（+6 未计）、Hermes 15、OpenCode 14",
+   "通过率：Pi 66.7%、Prime 62.5%（15/24 有效）、Deep 53.3%、Hermes 50.0%",
+   "成本中位数/任务：Pi $0.012 最低，Prime $0.017、Hermes $0.018、Deep $0.045",
+   "耗时中位数/任务：Pi 132s 最快，Prime 176s、Hermes 187s、Deep 242s",
+   "OpenAI 客服：账户活跃、无账户级停用，模型行为差异不能说明账户被标记/受限",
+   "⚠️ 数字白名单（只允许出现这些，禁止任何其他数字）：30、20、17、16、15、14、24、6、8、66.7%、62.5%、53.3%、50.0%、0.012、0.017、0.018、0.045、132、176、187、242。型号名必须写 DeepSeek V4 Flash"
+  ]
+ },
+ {
+  "dir": "即将反转！opencode go也要搞峰谷价",
+  "title": "即将反转！opencode go也要搞峰谷价",
+  "point": "Chip Huyen 在 X 上问了一个大胆的问题：模型厂商为什么不学电力一样给 token 定价——高峰时段更贵、低谷时段更便宜？OpenCode 联合创始人 Dax 直接回应 'this is coming'（马上就要来了）。大模型价格战即将反转：峰谷价之后，opencode go 也要按用电思路卖算力了。",
+  "keypoints": [
+   "Chip Huyen 提议：token 定价学电力——高峰更贵、低谷更便宜",
+   "OpenCode 联创 Dax 回应：this is coming，峰谷价真的要来了",
+   "opencode go 也要推出峰谷价：对按欧洲时间定价、白天用国内算力的开发者是利好",
+   "⚠️ 数字白名单（只允许出现这些，禁止任何其他数字/价格/百分比）：8/9、13:25、5,616。禁止编造任何价格数字"
+  ]
+ },
+ {
+  "point": "OpenCode 官方宣布：OpenCode Go 上 DeepSeek Flash 用量限时翻倍。官方自己玩梗，评论区用户集体欢呼——'终于有真正能多做点事的加量了'、'最近老撞用量上限'。",
+  "keypoints": [
+   "OpenCode 官方 X：deepseek flash usage has been doubled for a limited time on OpenCode Go",
+   "发布时间：8月7日 14:59，2,958 次查看",
+   "评论区：用户好评（'真正能多做事的加量'、'最近老撞上限，来得正是时候'），联创 dax 转发玩梗 'what is u doing'",
+   "⚠️ 数字白名单（只允许出现这些，禁止其他数字）：8/7、14:59、2,958。禁止编造翻倍幅度、价格、百分比"
+  ],
+  "dir": "opencode这波真要杀疯了",
+  "title": "opencode这波真要杀疯了"
+ },
+ {
+  "point": "DeepSeek 官方邮件官宣'大幅涨价'，但 OpenCode 联创 dax 的观察给了第三方希望：租用 GPU 也能复现官方当前价格，说明涨价不是'亏钱'而是流量整形（过载疏导）。同一天网友还爆出 ICLR2026 论文用测试集标签选参数的笑话。",
+  "keypoints": [
+   "DeepSeek 官方邮件：API 即将'大幅涨价'（significant increase），具体方案待官方公告",
+   "dax（OpenCode 联创）：租的 GPU 也能复现官方价格 → 涨价不是亏钱，是 overloaded 后的流量整形（traffic shaping）",
+   "网友推测：希望是 3x-5x，而不是 pro 版 3 美元进/15 美元出",
+   "花絮：ICLR2026 论文被扒出用测试集标签选参数，'这就是顶会吗'",
+   "⚠️ 数字白名单（只允许出现这些，禁止其他数字/价格）：8/6、22:49、15.9万、8/4、10:24、42.6万、8/6、22:03。3x-5x、3 美元/15 美元仅作为'用户猜测'文字引用，禁止当作事实定价"
+  ],
+  "dir": "第三方DeepSeek0731还是有希望",
+  "title": "第三方DeepSeek0731还是有希望"
+ },
+ {
+  "point": "QWen3.8 Max 评分逼近 Kimi K3，这次能不能甩掉'刷分小王子'的外号？",
+  "keypoints": [
+   "问题抛给读者：QWen3.8 Max 真的摆脱'刷分小王子'外号了？",
+   "评分接近 Kimi K3",
+   "⚠️ 数字白名单：本图禁止出现任何具体分数/百分比/排名数字（素材中仅有'接近Kimi k3'的表述）"
+  ],
+  "dir": "QWen3.8 Max评分接近Kimi k3",
+  "title": "QWen3.8 Max评分接近Kimi k3"
+ }
 ]

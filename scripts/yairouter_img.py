@@ -1,33 +1,38 @@
 """
-yairouter 高质量图片生成客户端 — gpt-image-2（自动 fallback grok-imagine-image-quality）
+yairouter 高质量图片生成客户端 — gpt-image-2.5-sunburst（默认）/ gpt-image-2.5-flare（快速）
+gpt-image-2、grok-imagine-image-quality 保留为备选。
 
-yairouter API 配置（实测 2026-08-07）：
+yairouter API 配置（实测 2026-09-09）：
   端点: https://api.yairouter.com/v1/images/generations
-  模型: gpt-image-2（默认）/ grok-imagine-image-quality（备选）
+  模型: gpt-image-2.5-sunburst（默认，最高编辑精度）/ gpt-image-2.5-flare（日常快速）
+        gpt-image-2（旧默认）/ grok-imagine-image-quality（备选）
   认证: Authorization: Bearer $YAI_API_KEY（shell 环境变量优先，.env 兜底）
-  质量: high
+  质量: high（2.5 系列支持 low/medium/high/xhigh/max/auto，通过 --quality 可选）
 
-⚠️ 已知问题：
-  1. 上游 API 忽略 size 参数（实测请求任意 size 均返回 1254x1254 / 1536x1024 /
-     1024x1536 等随机尺寸），详见 docs/yairouter-gpt-image-2-experiment.md。
-     本工具按实际输出保存，不做裁剪。
-  2. 2026-08-15 实测：gpt-image-2 对该 team 返回 404 无权限 + size 参数被 400 拒绝
-     （"Argument not supported: size"）；grok-imagine-image-quality 可用，但要求
-     response_format=b64_json（Zero Data Retention team 无 URL 格式）、不支持 size
-     参数、输出固定 1024x1024 JPEG。脚本在 gpt-image-2 失败时自动 fallback 到
-     grok，并把 JPEG 字节转成真 PNG 保存。
+⚠️ 已知问题（2026-09-09 对 gpt-image-2.5-* 实测）：
+  1. 上游中继仍忽略 size 参数——请求任意尺寸均返回约 1536x1024；
+     旧 gpt-image-2 则是 1254x1254 / 1536x1024 / 1024x1536 轮转。详见
+     docs/yairouter-gpt-image-2-experiment.md。本工具按实际输出保存，不做裁剪。
+  2. 上游中继目前把 quality 统一降为 low（请求 high/xhigh/max 均返回 quality=low、
+     输出约 343 image tokens），非脚本问题；换 API 提供方或上游修复后可恢复。
+  3. 兼容性保留：gpt-image-2 可能返回 404 无权限 / 400 "Argument not supported: size"，
+     此时自动 fallback 到 grok-imagine-image-quality（需 response_format=b64_json、
+     不支持 size、输出固定 1024x1024 JPEG，脚本自动转真 PNG）。
+  4. gpt-image-2.5 系列要求 output_format 显式 png/jpeg/webp，不再使用旧的
+     response_format 字段；2.5 系列实测无需该字段即可返回 b64_json。
 
 ✅ 质量核查：每张生成后自动读取实际尺寸并与请求尺寸比对，不符时
 打印 ⚠️ 通知；批量模式结束时汇总不符清单。
 
 用法:
-  # 单张生成
+  # 单张生成（默认 gpt-image-2.5-sunburst）
   python yairouter_img.py --prompt "..." --size 1024x1536 --output card.png
 
-  # 显式指定 grok 模型（跳过 gpt-image-2 探测）
+  # 快速生成（gpt-image-2.5-flare）/ 显式指定任意模型
+  python yairouter_img.py --prompt "..." --model gpt-image-2.5-flare --output card.png
   python yairouter_img.py --prompt "..." --model grok-imagine-image-quality --output card.png
 
-  # 批量从 cards.json
+  # 批量从 cards.json（每张卡片可用 model 字段覆盖）
   python yairouter_img.py --config content/2026-07-03-梯度下降/xiaohongshu/cards.json
 
   # 检查 key
@@ -80,8 +85,18 @@ SIZE_MAP = {
     "2.35:1": "1792x768",
 }
 
-# 备选模型：gpt-image-2 不可用时自动 fallback
-FALLBACK_MODEL = "grok-imagine-image-quality"
+# 备选/降级模型链（从左到右自动尝试）：
+#   gpt-image-2.5-sunburst（默认）→ gpt-image-2.5-flare（快速出图）→
+#   grok-imagine-image-quality（旧备选，固定 1024x1024 JPEG）
+DEFAULT_MODEL = "gpt-image-2.5-sunburst"
+FALLBACK_MODELS = ["gpt-image-2.5-flare", "grok-imagine-image-quality"]
+# CLI 可选模型（含旧 gpt-image-2，仅供显式指定；不参与自动降级链）
+ALL_MODELS = [DEFAULT_MODEL, "gpt-image-2", *FALLBACK_MODELS]
+
+# 2.5 系列：显式 output_format（png/webp 透明输出、jpeg 可选压缩），
+# 不传旧的 response_format；grok 必须带 response_format=b64_json。
+GPT25_MODELS = {"gpt-image-2.5-sunburst", "gpt-image-2.5-flare"}
+OUTPUT_FORMATS = ["png", "jpeg", "webp"]
 # grok 模型：不支持 size 参数、要求 b64_json、输出固定 1024x1024 JPEG
 GROK_OUTPUT_SIZE = "1024x1024"
 
@@ -119,25 +134,35 @@ def generate(
     n: int = 1,
     output_dir: str = ".",
     filename: str = "",
-    model: str = "gpt-image-2",
+    model: str = DEFAULT_MODEL,
+    output_format: str = "png",
 ) -> list[str]:
-    """生成图片并保存。gpt-image-2 失败时自动 fallback 到 grok-imagine-image-quality。"""
+    """生成图片并保存。模型不可用时沿 fallback 链自动降级：
+    gpt-image-2.5-sunburst → gpt-image-2.5-flare → grok-imagine-image-quality。"""
     key = _api_key()
 
     # 解析尺寸
     if size in SIZE_MAP:
         size = SIZE_MAP[size]
 
+    if output_format not in OUTPUT_FORMATS:
+        print(f"❌ 不支持的 output_format: {output_format}（可选 {OUTPUT_FORMATS}）")
+        sys.exit(1)
+
     def _payload(m):
         p = {"model": m, "prompt": prompt, "n": n, "quality": quality}
-        if m == FALLBACK_MODEL:
+        if m in GPT25_MODELS:
+            # 2.5 系列：显式 output_format，不使用旧的 response_format
+            p["output_format"] = output_format
+        else:
             # grok：Zero Data Retention team 只能用 b64_json，不支持 size
             p["response_format"] = "b64_json"
-        else:
+        # size：2.5 系列与旧 gpt-image-2 都传；grok 不支持 size 参数
+        if m in GPT25_MODELS or m == "gpt-image-2":
             p["size"] = size
         return p
 
-    print(f"📤 提交 {model} (size={size if model != FALLBACK_MODEL else GROK_OUTPUT_SIZE}, quality={quality}, n={n})")
+    print(f"📤 提交 {model} (size={size}, quality={quality}, output_format={output_format}, n={n})")
     print(f"   Prompt: {prompt[:80]}...")
 
     resp = requests.post(
@@ -150,20 +175,26 @@ def generate(
         timeout=180,
     )
 
-    # gpt-image-2 失败（404 无权限 / 400 参数拒绝等）→ 自动 fallback grok
-    if resp.status_code != 200 and model != FALLBACK_MODEL:
-        print(f"❌ {model} 返回 {resp.status_code}: {resp.text[:200]}")
-        print(f"🔄 自动改用 {FALLBACK_MODEL} 重试...")
-        model = FALLBACK_MODEL
-        resp = requests.post(
-            API_URL,
-            headers={
-                "Authorization": f"Bearer {key}",
-                "Content-Type": "application/json",
-            },
-            json=_payload(model),
-            timeout=180,
-        )
+    # 非 200 → 沿 fallback 链自动降级重试
+    if resp.status_code != 200:
+        tried = [model]
+        while resp.status_code != 200:
+            fallback = next((m for m in FALLBACK_MODELS if m not in tried), None)
+            if fallback is None:
+                break
+            print(f"❌ {model} 返回 {resp.status_code}: {resp.text[:200]}")
+            model = fallback
+            tried.append(model)
+            print(f"🔄 自动改用 {model} 重试...")
+            resp = requests.post(
+                API_URL,
+                headers={
+                    "Authorization": f"Bearer {key}",
+                    "Content-Type": "application/json",
+                },
+                json=_payload(model),
+                timeout=180,
+            )
 
     if resp.status_code != 200:
         print(f"❌ API 返回 {resp.status_code}: {resp.text[:300]}")
@@ -197,11 +228,12 @@ def generate(
         if i == 0 and filename:
             fname = filename
         else:
-            ext = "png"
-            fname = f"yairouter-{int(time.time())}-{i+1}.{ext}"
+            fname = f"yairouter-{int(time.time())}-{i+1}.png"
 
         filepath = output_dir / fname
-        # grok 返回 JPEG 字节：扩展名是 .png 时转成真 PNG，避免微信上传格式不匹配
+        # 字节转码（微信上传需要真 PNG/JPEG 字节，禁止伪装扩展名）：
+        # - grok：返回 JPEG 字节且扩展名 .png → 转成真 PNG
+        # - 2.5 系列请求 jpeg/webp：字节与扩展名一致，无需转换
         if fname.lower().endswith(".png"):
             try:
                 from PIL import Image
@@ -217,7 +249,7 @@ def generate(
         filepath.write_bytes(img_bytes)
         saved.append(str(filepath))
         print(f"  ✅ 已保存: {filepath} ({len(img_bytes)//1024}KB)")
-        _check_size(filepath, GROK_OUTPUT_SIZE if model == FALLBACK_MODEL else size)
+        _check_size(filepath, GROK_OUTPUT_SIZE if model not in GPT25_MODELS and model != "gpt-image-2" else size)
 
     return saved
 
@@ -229,10 +261,11 @@ def generate_series(config_path: str):
 
     cards = config.get("cards", [])
     output_dir = config.get("output_dir", "output")
-    # gpt-image-2 不用 model/quality 字段，直接用默认；cards.json 可覆盖
+    # 默认 gpt-image-2.5-sunburst；cards.json 可全局/逐卡覆盖
     size = config.get("size", "1024x1536")
     quality = config.get("quality", "high")
-    default_model = config.get("model", "gpt-image-2")
+    output_format = config.get("output_format", "png")
+    default_model = config.get("model", DEFAULT_MODEL)
 
     total = len(cards)
     all_saved = []
@@ -253,6 +286,7 @@ def generate_series(config_path: str):
             output_dir=output_dir,
             filename=filename,
             model=card.get("model", default_model),
+            output_format=card.get("output_format", output_format),
         )
         all_saved.extend(saved)
 
@@ -272,11 +306,15 @@ def generate_series(config_path: str):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="yairouter 图片生成（gpt-image-2，自动 fallback grok-imagine-image-quality）")
+    parser = argparse.ArgumentParser(
+        description="yairouter 图片生成（默认 gpt-image-2.5-sunburst，自动 fallback gpt-image-2.5-flare → grok-imagine-image-quality）")
     parser.add_argument("--prompt", help="生成提示词")
-    parser.add_argument("--size", default="1024x1536", help="尺寸 (默认 1024x1536；grok 模型忽略此参数)")
-    parser.add_argument("--model", default="gpt-image-2", choices=["gpt-image-2", "grok-imagine-image-quality"], help="模型 (默认 gpt-image-2，失败自动 fallback grok)")
-    parser.add_argument("--quality", default="high", choices=["low", "medium", "high", "auto"])
+    parser.add_argument("--size", default="1024x1536", help="尺寸 (默认 1024x1536；grok 忽略此参数)")
+    parser.add_argument("--model", default=DEFAULT_MODEL, choices=ALL_MODELS,
+                        help="模型 (默认 gpt-image-2.5-sunburst；失败自动降级 flare → grok)")
+    parser.add_argument("--quality", default="high", choices=["low", "medium", "high", "xhigh", "max", "auto"])
+    parser.add_argument("--output-format", default="png", choices=OUTPUT_FORMATS,
+                        help="输出格式 (2.5 系列：png/webp 透明、jpeg；grok 忽略)")
     parser.add_argument("--n", type=int, default=1)
     parser.add_argument("--output-dir", default=".")
     parser.add_argument("--filename", default="", help="输出文件名")
@@ -298,6 +336,7 @@ if __name__ == "__main__":
             output_dir=args.output_dir,
             filename=args.filename,
             model=args.model,
+            output_format=args.output_format,
         )
     else:
         parser.print_help()

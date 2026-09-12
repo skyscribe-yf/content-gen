@@ -29,7 +29,7 @@
 
 ## 图片生成
 
-默认后端：**yairouter**，客户端 `scripts/yairouter_img.py`。默认模型 gpt-image-2；**若 gpt-image-2 不可用（404 无权限 / 400 size 拒绝），脚本自动 fallback 到 grok-imagine-image-quality**，无需换后端（grok 不支持 size 参数、输出固定 1024x1024 JPEG 需裁剪封面，脚本自动转真 PNG，详见 [`docs/image-generation.md`](docs/image-generation.md)）。默认 1K，封面图强制 **21:9**。⚠️ 上游 API 忽略 size 参数（2026-08-07 实测），输出尺寸以实际返回为准。prompt 内文字/数字/年份必须与正文一致。详细流程见 [`docs/image-generation.md`](docs/image-generation.md)。
+默认后端：**yairouter**，客户端 `scripts/yairouter_img.py`。默认模型 **gpt-image-2.5-sunburst**；快速出图可用 **gpt-image-2.5-flare**（`--model` / cards.json 的 `model` 字段）；API 失败自动沿链降级 `gpt-image-2.5-flare → grok-imagine-image-quality`（grok 不支持 size 参数、输出固定 1024x1024 JPEG 需裁剪封面，脚本自动转真 PNG，详见 [`docs/image-generation.md`](docs/image-generation.md)）。默认 1K，封面图强制 **21:9**。⚠️ 上游 API 忽略 size 参数（2026-08-07 实测；2026-09-09 复验 2.5 系列），输出尺寸以实际返回为准。prompt 内文字/数字/年份必须与正文一致。详细流程见 [`docs/image-generation.md`](docs/image-generation.md)。
 
 **API Key 规则**：若 shell 环境 / `.env` 中找不到所需 API Key（如 `YAI_API_KEY`、`MINIMAX_API_KEY` 等），**先 `source ~/.bash_env`** 再重试，不要直接报「缺 key」或擅自换后端。`~/.bash_env` 是作者维护的全局密钥文件（含 `YAI_API_KEY` 等）。
 

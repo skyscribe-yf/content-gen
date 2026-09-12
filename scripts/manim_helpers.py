@@ -86,6 +86,12 @@ def layout_page(block: Group):
     if block.height > PAGE_BAND:
         block.scale_to_fit_height(PAGE_BAND)
     if block.width > FW:
+        print(f"[width-guard] layout_page shrink {block.width:.2f} -> {FW:.2f}", file=sys.stderr)
+        if os.environ.get("MANIM_STRICT_WIDTH") == "1":
+            raise ValueError(
+                f"整页宽度 {block.width:.2f} > 画布 {FW:.2f}：请收窄元素（字号/卡片宽度/间距）"
+                "而不是依赖静默缩放（会连带把卡片和字号一起压小）"
+            )
         block.scale_to_fit_width(FW)
     block.set_y((PAGE_TOP + PAGE_BOTTOM) / 2.0)
     return block
@@ -119,6 +125,12 @@ def layout_center(block: Group):
     if block.height > PAGE_BAND:
         block.scale_to_fit_height(PAGE_BAND)
     if block.width > FW:
+        print(f"[width-guard] layout_center shrink {block.width:.2f} -> {FW:.2f}", file=sys.stderr)
+        if os.environ.get("MANIM_STRICT_WIDTH") == "1":
+            raise ValueError(
+                f"整页宽度 {block.width:.2f} > 画布 {FW:.2f}：请收窄元素（字号/卡片宽度/间距）"
+                "而不是依赖静默缩放（会连带把卡片和字号一起压小）"
+            )
         block.scale_to_fit_width(FW)
     block.set_y((PAGE_TOP + PAGE_BOTTOM) / 2.0)
     return block
@@ -294,16 +306,24 @@ def fit_text_in_box(label: str, width: float, height: float, fs: float = 28,
     max_w = max(0.1, width * width_ratio)
     max_h = max(0.1, height * height_ratio)
     min_fs = min(float(min_fs), float(fs))
+    # 显式换行是作者的排版意图（「Actor\n被梯度推的策略」），应与 _balanced_lines 的
+    # 自动候选**按同一 score 择优**，而不是提前 return：提前返回会跳过更大字号的
+    # 自动候选，把高卡压成 16-19pt 极细字（2026-09-12 QA 复核发现的回归）。
+    explicit_lines = label.split("\n") if "\n" in label else None
     if max_lines is None:
         max_lines = min(CARD_TEXT_MAX_LINES, max(1, len(label)))
     max_fs = max(min_fs, max_fs)
 
+    def measure(lines: list[str], size: float) -> Text:
+        return t("\n".join(lines), float(size), color, weight,
+                 line_spacing=line_spacing if len(lines) > 1 else -1)
+
     best: tuple[float, int, Text] | None = None
-    for line_count in range(1, max_lines + 1):
-        lines = _balanced_lines(label, line_count)
+
+    def consider(lines: list[str]) -> None:
+        nonlocal best
         for size in np.linspace(max_fs, min_fs, 31):
-            candidate = t("\n".join(lines), float(size), color, weight,
-                          line_spacing=line_spacing if len(lines) > 1 else -1)
+            candidate = measure(lines, size)
             if candidate.width <= max_w + 1e-6 and candidate.height <= max_h + 1e-6:
                 # Font size is primary, with a small fragmentation penalty so
                 # a two-line 46pt label wins over a three-line 48pt label.
@@ -312,6 +332,11 @@ def fit_text_in_box(label: str, width: float, height: float, fs: float = 28,
                 if best is None or key[:2] > best[:2]:
                     best = key
                 break
+
+    if explicit_lines is not None:
+        consider(explicit_lines)
+    for line_count in range(1, max_lines + 1):
+        consider(_balanced_lines(label, line_count))
     if best is not None:
         return best[2]
 

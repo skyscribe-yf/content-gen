@@ -1182,47 +1182,192 @@ articles:
     draft: false
     outline: false
     cover: true
-- slug: 2026-09-05-r1-zero-training
+- slug: 2026-09-04-r1-zero-training
   title: 没人教它做一道题，DeepSeek 正确率凭什么从 15.6% 涨到 71%
   series: 开源大模型技术揭秘
-  status: draft_saved
+  status: published
+  published_date: '2026-09-04'
+  wechat_url: https://mp.weixin.qq.com/s/PQj1EFBotvBTzwU7lVG9Ug
   files:
     weixin: true
-    draft: true
+    draft: false
     outline: true
     cover: true
-  media_id: kOcXH4SytIYVIpYksTGfHj21Cp_iq9Z9_JujO7K-edPOvPzTAZaFpAEGIUnP8JN1
-  notes: R1 两篇拆解上篇（训练：R1-Zero 纯 RL 学会搜索，流形/子流形理论）。与 2026-09-06-test-time-compute
-    姊妹篇，09-05 20:00 定档。grill 日志 .grill/2026-09-05-r1-zero-training.md；两篇均 ≤2000 字；
+  notes: R1 两篇拆解上篇（训练：R1-Zero 纯 RL 学会搜索，流形/子流形理论）。与 2026-09-05-test-time-compute
+    姊妹篇。grill 日志 .grill/2026-09-05-r1-zero-training.md；两篇均 ≤2000 字；
     原声无引号融入正文（2026-09-05 作者确立，已入 style-features 红线）。2026-09-05 第五次重存（作者要求
-    「草稿箱再次生成」，grace 主题 + 无开头 H1）。发布后回填 wechatUrl。
-- slug: 2026-09-06-test-time-compute
+    「草稿箱再次生成」，grace 主题 + 无开头 H1）。2026-09-06 对账：实际 09-04（周五）发布，
+    wechat_url 回填（PQj1EFBotvBTzwU7lVG9Ug）。2026-09-06 目录名已按发布日期重命名（09-05→09-04）。
+- slug: 2026-09-05-test-time-compute
   title: AI 多想 3 秒，正确率为什么从 71% 涨到 86.7%？
   series: 开源大模型技术揭秘
-  status: draft_saved
+  status: published
+  published_date: '2026-09-05'
+  wechat_url: https://mp.weixin.qq.com/s/Boh1Hb3J5_wyilid-jAUww
   files:
     weixin: true
-    draft: true
+    draft: false
     outline: true
     cover: true
-  media_id: kOcXH4SytIYVIpYksTGfHoW3ahYO3JbDDWA-SJ6grdzXIwIFhdLs_vdqR3Piz99E
-  notes: R1 两篇拆解下篇（推理：test-time compute，自一致性 71→86.7）。上篇 09-05 发布后回填其
+  notes: R1 两篇拆解下篇（推理：test-time compute，自一致性 71→86.7）。上篇 09-04 发布后回填其
     wechatUrl 到本文尾部导航。2026-09-05 第五次重存（作者要求「草稿箱再次生成」，grace 主题 + 无开头 H1）。
-    09-06 20:00 定档。
+    2026-09-06 对账：实际 09-05（周六）发布，wechat_url 回填（Boh1Hb3J5_wyilid-jAUww）。
+    2026-09-06 目录名已按发布日期重命名（09-06→09-05）。
+- slug: 2026-09-06-方差
+  title: AI 为什么时灵时不灵？跑分只有 12.8 的模型，难题却解得了
+  series: 数学直觉
+  status: draft_saved
+  published_date: null
+  wechat_url: null
+  files:
+    weixin: true
+    draft: false
+    outline: true
+    cover: true
+  notes: 数学线 M3 方差篇（grill 日志 .grill/2026-09-06-variance-grpo.md，2026-09-06 七轮收敛）。
+    AI 落点=GRPO 组内奖励归一化（减均值除标准差），与 R1 两篇题材重叠。2026-09-06 对账补录：此前完全未入台账
+    （幽灵排期）。2026-09-06 作者确认已存草稿箱、已排今晚 20:00 发布（media_id 待补录）。
+- slug: 2026-09-07-ai-video-cost
+  title: 生成 30 秒视频要画 900 张图，AI 视频为什么这么贵？
+  series: 视觉生成
+  status: draft_saved
+  published_date: null
+  wechat_url: null
+  files:
+    weixin: true
+    draft: false
+    outline: true
+    cover: true
+  media_id: kOcXH4SytIYVIpYksTGfHkVimQirRaNLwSwTLQUSzcTRR0g-IO83DSDpAKsK-GAx
+  cover_media_id: kOcXH4SytIYVIpYksTGfHrDW53MPDMWb-vYSvtBM-TVbFRntS2NNV-SyXFHr-qrb
+  notes: G 组视觉生成机动题第 1 篇（2026-09-06 grill 七轮收敛，日志 .grill/2026-09-07-ai-video-cost.md）。
+    标题「生成 30 秒视频要画 900 张图，AI 视频为什么这么贵？」（数字反差 900 vs 30 + 疑问句 + 关键词前置）。
+    开头=作者亲历（7 块钱即梦积分 15 秒视频抽卡耗光，原声逐字）。热点绑定 MiniMax H3（2026-07-31 开源，
+    2K 0.8 元/秒、768p 0.1 元/秒、2K 不到主流 1/3）。数字全部实时验证（7 款实测 0.18~1.38 元/秒、可灵
+    0.9/1.2/3.0 积分/秒、即梦 45→120 积分、H3-VAE 4x 序列长度、本地 10 秒等 20-40 分钟）。原声槽 6 处
+    逐字进稿（作者 2026-09-06 提供 5 处 + AI 拟 1 处作者确认）。16 项质量核查全过（禁词 0、长句仅剩原声豁免、
+    爆款检查器过、转发/点赞欲过）。配图 4 张：封面 21:9 标题逐字核验 + 脚本图 3（价格对比/900帧/平方增长）。
+    发布前检查全过（12 个 mp 链接与台账交叉核对无 45166 风险）。2026-09-06 已存草稿箱（api 直连，grace+blue）：
+    media_id kOcXH4SytIYVIpYksTGfHkVimQirRaNLwSwTLQUSzcTRR0g-IO83DSDpAKsK-GAx（封面
+    kOcXH4SytIYVIpYksTGfHrDW53MPDMWb-vYSvtBM-TVbFRntS2NNV-SyXFHr-qrb），正文图 3 张已上传。
+    未定时、未群发。⚠️ 发布前确认：声明原创 + 定时 20:00 + 合集「视觉生成」（如建合集）；发布后补 wechatUrl。
+    2026-09-07 作者决定顺延（今天从零写新篇占 09-07 档期），本篇排期顺延至 09-08。
+- slug: 2026-09-07-moe-load-balancing
+  title: DeepSeek 有 384 个专家，为什么不敢强迫它们平均干活？
+  series: 数学直觉
+  status: draft_saved
+  published_date: null
+  wechat_url: null
+  files:
+    weixin: true
+    draft: false
+    outline: true
+    cover: true
+  media_id: kOcXH4SytIYVIpYksTGfHkjznIiAgn2MtOJUhLKcv-F7rRdFZMrZaycIoBFx32bH
+  cover_media_id: kOcXH4SytIYVIpYksTGfHkaRkgtHfG1KwmvR1iEEhJxjPQBZUCei0BRyq31lUxwK
+  notes: C2 拉格朗日 × D7 MoE 负载均衡合并篇（grill 日志 .grill/2026-09-07-lagrange-moe.md，2026-09-07 收敛）。
+    标题「DeepSeek 有 384 个专家，为什么不敢强迫它们平均干活？」（品牌词+数字反差+反常识+为什么）。
+    作者明确要求不用 GRPO 落点（RL 系列读者太少）；AI 落点=MoE 负载均衡损失（auxiliary loss）。
+    数字实时验证：V4-Pro 1.6T/49B 激活/384 路由专家+1 共享/每 token 激活 6 个（arxiv 2606.19348 +
+    SemiAnalysis 多源确认）；Switch Transformer α=0.01；Wang 2024 α 太小坍缩/太大伤性能。
+    论文证据链 3 条（Switch Transformer 路由坍缩 / DeepSeek-V3 auxiliary-loss-free / Wang 2024）。
+    原声槽 7 处逐字进稿（作者 2026-09-07 提供）。16 项质量核查全过（禁词 0、长句仅剩原声+英文引用豁免、
+    爆款检查器过、转发/点赞欲过）。配图 5 张：封面 21:9 标题逐字核验（dim image read 确认）+ 脚本图 4
+    （路由坍缩/α权衡/384专家/拉格朗日几何/无处不在三例卡，作者反馈图少后补 2 张）。发布前检查全过
+    （hot_articles.py 生成热门文章 + self-check 通过）。2026-09-07 已存草稿箱（api 直连，grace+blue）：
+    media_id kOcXH4SytIYVIpYksTGfHkjznIiAgn2MtOJUhLKcv-F7rRdFZMrZaycIoBFx32bH（封面
+    kOcXH4SytIYVIpYksTGfHkaRkgtHfG1KwmvR1iEEhJxjPQBZUCei0BRyq31lUxwK），正文图 5 张已上传。
+    未定时、未群发。⚠️ 发布前确认：声明原创 + 定时 20:00 + 合集「AI中的数学」；发布后补 wechatUrl。
+    ⚠️ 旧版草稿（kOcXH4SytIYVIpYksTGfHoZjvOoInEiMcxPk4TH2o4dbNYuQSw2It2uIgzu_cxOd，3 图版）需后台删除。
+- slug: 2026-09-09-CLT-FP8
+  title: 误差不是会互相抵消吗？量化模型为什么还是掉点？
+  series: 数学直觉
+  status: published
+  published_date: '2026-09-09'
+  wechat_url: https://mp.weixin.qq.com/s/hYKy3dyHXEQkwoN7YmdREA
+  files:
+    weixin: true
+    draft: false
+    outline: true
+    cover: true
+  media_id: kOcXH4SytIYVIpYksTGfHpUtOerMnvXYxPjHOjqvWIQ0JbaGdR22Npa_BFY2tzOM
+  cover_media_id: kOcXH4SytIYVIpYksTGfHtOhHCDTTH8jzCXnoCGuHs03eq9Eak7_Qs1hofl9dNxB
+  notes: M4 中心极限定理 × FP8 量化误差篇（grill 日志 .grill/2026-09-09-central-limit-fp8.md，2026-09-09
+    收敛，作者选定 A 悬念主轴 + C 记账开场 + FP8 舍入误差落点 + i.i.d. 三死法 + JL/MLA/高维互链）。
+    标题「误差不是会互相抵消吗？量化模型为什么还是掉点？」（矛盾疑问 + 口语化 + 量化/掉点关键词前置，17 字）。
+    原声槽 6 处逐字进稿（作者 2026-09-09 提供：量化掉点第一反应/√n 无处不在/记账 echo/为何关心精度/
+    随机舍弃 vs 四舍五入/实际判断不梭哈）。16 项质量核查全过（禁词 0、超长句 0、爆款检查器过、转发/点赞欲过）。
+    配图 7 张：封面 21:9 标题逐字 OCR 核验（全角问号）+ 脚本图 3（骰子/√n 曲线/三死法）+ 概念图 2
+    （账本/误差叠加）+ 概念图替换骰子 1 张。hot_articles.py 生成热门文章 + self-check 通过（修复脚本贴图
+    误判：旧快照把费马/蒸馏/GAE 标记为贴图，文章优先判定已修正，费马 4670 读回到榜单）。
+    2026-09-09 已存草稿箱（remote-api 隧道，grace+blue）：media_id kOcXH4SytIYVIpYksTGfHpUtOerMnvXYxPjHOjqvWIQ0JbaGdR22Npa_BFY2tzOM
+    （封面 kOcXH4SytIYVIpYksTGfHtOhHCDTTH8jzCXnoCGuHs03eq9Eak7_Qs1hofl9dNxB），正文图 5 张已上传。
+    未定时、未群发。⚠️ 发布前确认：声明原创 + 定时 20:00 + 合集「AI中的数学」；发布后补 wechatUrl。
+    ⚠️ 旧草稿待后台删除：KaTeX 版 kOcXH4SytIYVIpYksTGfHnj_gojm8Po4oY_cU1KoYNnLFGbueGkyqEiaiX7Hz3ap、
+    mdnice 大标题封面版 kOcXH4SytIYVIpYksTGfHp0-sID4JkLUnt12-DozL0t14SC1tGmUeUZIbE7KE9Jl。
+    ⚠️ 2026-09-09 修正：① 公式管线——首次误用 baoyu markdown-to-html 的 KaTeX 渲染直接传 HTML，
+    微信端公式全错；改传 md 走 md-to-wechat → mdnice-render.py（MathJax SVG），验证 svg 8/merror 0/katex 0。
+    ② 封面标题缩小——作者反馈「标题文字太大，缩小为 1/4 不占主要内容」，重生成 v2（字号 1/8→1/32，
+    标题居中小块，钟形粒子曲线为主体），OCR 逐字核验通过。③ remote 隧道间歇失败——加入 ControlMaster=no
+    + 6 次重试循环；偶发仍是 SSH 复用问题，成功后正常。
+    ⚠️ 本机 IP 变更（81.31.232.134→112.10.196.237）已不在微信白名单，api 直连失败，remote 隧道恢复可用。
+    ⚠️ 台账缺口：09-07 MoE 篇与 09-08 ai-video-cost 篇作者反馈已发布，但 wechat_url 未回填，需对账。
+    2026-09-10 对账：09-09 CLT-FP8 篇已发布 https://mp.weixin.qq.com/s/hYKy3dyHXEQkwoN7YmdREA，
+    状态 draft_saved→published、wechat_url 回填、frontmatter wechatUrl 已补。summary 重算：total 72 /
+    published 64 / drafting 2 / draft_saved 6。⚠️ 待办：09-07 MoE 与 09-08 ai-video-cost 的
+    wechat_url 仍缺，作者需提供链接回填。
+- slug: 2026-09-10-bayes-hallucination
+  title: AI 的 90% 把握为什么不能全信？贝叶斯定理说概率不是这么用的
+  series: 数学直觉
+  status: published
+  published_date: '2026-09-10'
+  wechat_url: https://mp.weixin.qq.com/s/LEkQhNVVr9METDKkL6q5fw
+  files:
+    weixin: true
+    draft: false
+    outline: true
+    cover: true
+  notes: M1 贝叶斯 × AI 幻觉（grill 日志 .grill/2026-09-10-bayes-hallucination.md，2026-09-10
+    七轮收敛）。核心反常识=概率是信息状态的属性；AI 落点=文本概率 vs 事实概率（幻觉根源）。
+    原声槽 7 处逐字进稿。配图 4 张（封面 21:9 + 脚本图 3）。正文 3443 字。
+    2026-09-11 对账：作者确认已发布，wechat_url 回填 LEkQhNVVr9METDKkL6q5fw，frontmatter wechatUrl 已补。
+- slug: 2026-09-11-v41-kv-csa2
+  title: DeepSeek V4.1 四十层网络，为什么不给每层都记账？
+  series: 开源大模型技术揭秘
+  status: published
+  published_date: '2026-09-11'
+  wechat_url: https://mp.weixin.qq.com/s/DBI990JLYtbxQGF3LIWbhQ
+  files:
+    weixin: true
+    draft: false
+    outline: true
+    cover: true
+  media_id: kOcXH4SytIYVIpYksTGfHqd1xESP2g2X72mULpJD78NP2_ek0wqzmqs3HB6W8Ufh
+  cover_media_id: kOcXH4SytIYVIpYksTGfHoYr_QRzyWxfmwzdn7-MzHsiiWDMm46mhe78pd4rMIvQ
+  notes: V4.1 Flash 发布窗口 × KV 压缩第四层（跨层复用）。grill 日志 .grill/2026-09-11-v41-kv-csa2.md。
+    标题「DeepSeek V4.1 四十层网络，为什么不给每层都记账？」。交付句=第一层筛短名单，
+    后面的层在短名单里找。890 字节=三刀合计（CSA2 跨层复用 + FP4 主 KV + SWA Bounded Replay）。
+    正文零次 CED/8B/16B，禁价格与换壳榜。原声槽 6 处逐字进稿（槽 2/6 跳过）。配图 5 张：
+    封面 21:9 标题逐字核验 + 脚本图 4。2026-09-11 已存草稿箱（remote-api，grace+blue）：
+    media_id kOcXH4SytIYVIpYksTGfHqd1xESP2g2X72mULpJD78NP2_ek0wqzmqs3HB6W8Ufh（封面
+    kOcXH4SytIYVIpYksTGfHoYr_QRzyWxfmwzdn7-MzHsiiWDMm46mhe78pd4rMIvQ）。
+    ⚠️ 第一稿 04-replay.png 上传失败（隧道 HTTP 截断），正文可能缺第 4 张图；后续两轮隧道超时未覆盖。
+    发布前在草稿箱确认四张正文图都在；缺图则删此稿重存。未定时、未群发。
+    2026-09-12 对账：作者确认已发布，wechat_url 回填 DBI990JLYtbxQGF3LIWbhQ，frontmatter wechatUrl 已补。
 
 summary:
-  total: 68
+  total: 74
   by_status:
-    published: 61
+    published: 66
     drafting: 2
-    draft_saved: 5
+    draft_saved: 6
   drafting_queue:
   - 2026-08-26-knowledge-distillation
   - 2026-08-28-information-entropy
   ready_queue: []
   scheduled_queue: []
   planned_queue: []
-  next_publish_date: '2026-09-05'
+  next_publish_date: '2026-09-12'
 plan_notes:
 - 2026-08-28 对齐：信息熵 8-28（今日）→ AlphaGo 8-29 → 多模态 8-30（作者确认）。目录名已同步重命名（git mv），frontmatter
   date 同步。
@@ -1250,3 +1395,22 @@ plan_notes:
   default_theme fallback 但被写死值堵住）→ 作者发现草稿箱渲染非 grace 主题。补丁：theme/color 从 EXTEND 读取
   （loadWechatExtendConfig 提前到顶层作用域，CLI --theme/--color 仍优先）。干跑验证 grace+blue 主题生效。
   两篇于 grace 主题下第三次重存（media_id 见上）。03-rl-loop.png 重画（回环改盒子下方椭圆环，箭头不再与方框交叉）。
+- 2026-09-06 对账（作者提供实际发布链接）：09-04 训练篇已发布
+  https://mp.weixin.qq.com/s/PQj1EFBotvBTzwU7lVG9Ug、09-05 推理篇已发布
+  https://mp.weixin.qq.com/s/Boh1Hb3J5_wyilid-jAUww——两篇状态 draft_saved→published、wechat_url 回填、
+  draft 标志置 false。方差篇（2026-09-06-方差，数学线 M3）此前完全未入台账，补录；作者确认已存草稿箱、
+  今晚 20:00 发布，状态 draft_saved（media_id 待补录）。summary 重算：total 69 / published 63 /
+  drafting 2 / draft_saved 4；next_publish_date 09-05→09-07。⚠️ 待办：R1 两篇目录名与实际发布日期不符
+  （09-05→09-04、09-06→09-05），按目录命名规则需 git mv 重命名。
+- 2026-09-06 新篇立项：G 组视觉生成机动题第 1 篇「生成 30 秒视频要画 900 张图，AI 视频为什么这么贵？」
+  （2026-09-07-ai-video-cost，排期 09-07 20:00）。grill 七轮收敛（.grill/2026-09-07-ai-video-cost.md）；
+  原声槽 6 处逐字进稿；16 项质量核查 + 发布前检查全过；配图 4 张（封面 21:9 + 脚本图 3）；12 个 mp 链接
+  与台账交叉核对无 45166 风险。状态 drafting，待存草稿箱。summary：total 70 / published 63 /
+  drafting 3 / draft_saved 4。
+- 2026-09-07 新篇立项（作者拍板）：C2 拉格朗日 × D7 MoE 负载均衡合并篇「DeepSeek 有 384 个专家，为什么
+  不敢强迫它们平均干活？」（2026-09-07-moe-load-balancing，排期 09-07 20:00，数学直觉第 13 篇）。
+  ai-video-cost 顺延至 09-08。grill 收敛（.grill/2026-09-07-lagrange-moe.md）；作者明确要求不用 GRPO 落点；
+  原声槽 7 处逐字进稿；数字实时验证（V4-Pro 384 路由专家/6 激活、Switch α=0.01、Wang 2024）；论文证据链 3 条；
+  16 项质量核查 + 发布前检查全过；配图 4 张（封面 21:9 dim image read 验收 + 脚本图 3）；hot_articles.py
+  生成热门文章 + self-check 通过。状态 drafting，待存草稿箱。summary：total 71 / published 63 /
+  drafting 3 / draft_saved 5。
