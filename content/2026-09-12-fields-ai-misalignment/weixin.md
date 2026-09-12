@@ -7,7 +7,7 @@ digest: "25位菲尔兹奖得主联署 mathandai.org：AI公司把解题当bench
 cover: "00-cover.png"
 keywords: ["陶哲轩", "菲尔兹奖", "人工智能", "数学"]
 scheduledPublish: "2026-09-12T20:00:00+08:00"
-wechatUrl: ""
+wechatUrl: "https://mp.weixin.qq.com/s/cvsIrlB9XE4-lZaYYwFekA"
 ---
 
 两个月前王虹和邓煜同日拿菲尔兹奖的时候，我还挺激动的。这回邓煜和陶哲轩一起，在 [mathandai.org](https://mathandai.org/) 上签了一份声明，标题很劲爆：《人工智能在数学中的严重错位》。

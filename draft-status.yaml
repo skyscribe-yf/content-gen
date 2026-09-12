@@ -1354,11 +1354,26 @@ articles:
     ⚠️ 第一稿 04-replay.png 上传失败（隧道 HTTP 截断），正文可能缺第 4 张图；后续两轮隧道超时未覆盖。
     发布前在草稿箱确认四张正文图都在；缺图则删此稿重存。未定时、未群发。
     2026-09-12 对账：作者确认已发布，wechat_url 回填 DBI990JLYtbxQGF3LIWbhQ，frontmatter wechatUrl 已补。
+- slug: 2026-09-12-fields-ai-misalignment
+  title: 25个菲尔兹奖得主集体对AI开炮，这回真急了
+  series: 调剂品
+  status: published
+  published_date: '2026-09-12'
+  wechat_url: https://mp.weixin.qq.com/s/cvsIrlB9XE4-lZaYYwFekA
+  files:
+    weixin: true
+    draft: false
+    outline: false
+    cover: true
+  notes: 素材直出工作流（raw.md 作者口述 + 素材图 6 张，标题作者指定）。主线=25 位菲尔兹奖得主
+    联署 mathandai.org《人工智能在数学中的严重错位》：灯塔 vs 积分榜、生肉扔上公共餐桌、
+    评价函数被换掉（理解传承 vs 可演示断言）、Tsimerman 不签字反例。此前未入台账（幽灵排期），
+    2026-09-13 对账补录：作者提供链接回填 wechat_url，frontmatter wechatUrl 已补。
 
 summary:
-  total: 74
+  total: 75
   by_status:
-    published: 66
+    published: 67
     drafting: 2
     draft_saved: 6
   drafting_queue:
@@ -1367,7 +1382,7 @@ summary:
   ready_queue: []
   scheduled_queue: []
   planned_queue: []
-  next_publish_date: '2026-09-12'
+  next_publish_date: '2026-09-13'
 plan_notes:
 - 2026-08-28 对齐：信息熵 8-28（今日）→ AlphaGo 8-29 → 多模态 8-30（作者确认）。目录名已同步重命名（git mv），frontmatter
   date 同步。
