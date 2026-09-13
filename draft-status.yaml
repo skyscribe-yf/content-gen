@@ -1369,13 +1369,41 @@ articles:
     联署 mathandai.org《人工智能在数学中的严重错位》：灯塔 vs 积分榜、生肉扔上公共餐桌、
     评价函数被换掉（理解传承 vs 可演示断言）、Tsimerman 不签字反例。此前未入台账（幽灵排期），
     2026-09-13 对账补录：作者提供链接回填 wechat_url，frontmatter wechatUrl 已补。
+- slug: 2026-09-13-grpo-math
+  title: GRPO 省了一个 critic，长任务为什么反而崩了？
+  series: 强化学习原理
+  status: draft_saved
+  published_date: null
+  wechat_url: null
+  files:
+    weixin: true
+    draft: false
+    outline: true
+    cover: true
+  media_id: kOcXH4SytIYVIpYksTGfHh0kODHXdIIs2JmLqsfWyIj2VHVcEVgU-V04CTRiKTU-
+  notes: RL 系列路标⑨ GRPO 数学（08-22 立项排 09-03，顺延 10 天；作者 2026-09-13 拍板「回到
+    强化学习」）。grill 日志 .grill/2026-09-13-grpo-math.md：切口=崩的数学原因（与 08-01 概念版、
+    09-06 方差篇三处区隔），热点锚=变体大战三连修（DAPO 动态采样 / Dr. GRPO 长度+难度偏差 /
+    GSPO 序列级 ratio），开头=08-22 拟定 critic 老师钩子。数字全部按论文原文核实：全同分组
+    概率 p^16+(1-p)^16（0.003%/18.5%/44.0%/85.1%，gen_charts.py 复现）；DAPO 无零优势百分比
+    （定性表述）；Dr. GRPO R1-Zero 错误回答 8206 vs 正确 4965 字符（+65%）；GSPO「不可逆崩溃」。
+    ⚠️ 原声槽首次按新门禁逐槽交互采集（writing-flow.md 2026-09-13 重写），6/6 作者逐条输入；
+    同日定稿篇幅口径「正文约 2000 字」（AGENTS.md + writing-flow.md），本篇净正文约 1.9k。
+    配图 4 张：封面 21:9 标题逐字核验（gpt-image-2.5 两版，第 2 版字符级标点约束过全角逗号+
+    问号，1280x544）+ 脚本图 2（01 概率曲线/03 长度对比，数字与正文一致）+ AI 概念图 02
+    （功劳平摊，零文字）。公式 MathJax SVG ×3（katex 0/merror 0）。2026-09-13 已存草稿箱
+    （remote-api vps 隧道，grace+blue，重试 1 次成功）：media_id
+    kOcXH4SytIYVIpYksTGfHh0kODHXdIIs2JmLqsfWyIj2VHVcEVgU-V04CTRiKTU-。
+    ⚠️ 保存循环第 2 次尝试 TLS 失败、第 3 次隧道阶段即被终止，草稿箱理论上无重复草稿，
+    作者设定时时顺眼确认。发布前确认：声明原创 + 定时 20:00 + 合集「强化学习原理」；
+    发布后补 wechatUrl。
 
 summary:
-  total: 75
+  total: 76
   by_status:
     published: 67
     drafting: 2
-    draft_saved: 6
+    draft_saved: 7
   drafting_queue:
   - 2026-08-26-knowledge-distillation
   - 2026-08-28-information-entropy
