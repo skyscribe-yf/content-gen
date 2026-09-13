@@ -4,7 +4,7 @@
 
 ## 文章写作流程（硬性门禁）
 
-起草大纲前**必须先调用 grill-me skill** 与作者深入讨论（`.agents/skills/grill-me/SKILL.md`）。禁止 AI 单方面生成 `.grill/<slug>.md` 日志。自动成稿在大纲之后还必须采集作者原声槽（进稿 ≥5 处）才写 `weixin.md`。详见 [`docs/writing-flow.md`](docs/writing-flow.md)。
+起草大纲前**必须先调用 grill-me skill** 与作者深入讨论（`.agents/skills/grill-me/SKILL.md`）。禁止 AI 单方面生成 `.grill/<slug>.md` 日志。自动成稿在大纲之后还必须采集作者原声槽（进稿 ≥5 处）才写 `weixin.md`——**逐槽交互**：AI 给槽位位置+建议句，作者逐条手动输入，全部槽位走完才结束，禁止批量「过」式代填。详见 [`docs/writing-flow.md`](docs/writing-flow.md)。
 
 **正文篇幅：一般 2000 字左右**（可视字数，含尾部总计 ≤2500），紧凑优先、不拉长（2026-09-13 作者口径）。
 
