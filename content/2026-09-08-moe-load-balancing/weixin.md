@@ -1,14 +1,14 @@
 ---
 title: "DeepSeek 有 384 个专家，为什么不敢强迫它们平均干活？"
 author: "数解AI"
-date: "2026-09-07"
+date: "2026-09-08"
 type: "原理篇"
 series: "数学直觉"
 digest: "DeepSeek 的模型里有 384 个专家，为什么不敢强迫它们平均干活？因为约束不是铁律，是带价格的偏好——拉格朗日乘子法把「不均衡」标上价格加进训练目标。DeepSeek 更狠：连这个价格都不付了，直接调路由偏置。"
 cover: "00-cover.png"
 keywords: ["拉格朗日乘子法", "MoE", "混合专家", "DeepSeek", "负载均衡", "辅助损失", "路由坍缩"]
 scheduledPublish: "2026-09-07T20:00:00+08:00"
-wechatUrl: ""
+wechatUrl: "https://mp.weixin.qq.com/s/z6dUKGtDjcPQOK9GnxBnFA"
 ---
 
 如果公司规定 384 个员工必须干一模一样的活，你会觉得公平还是荒谬？DeepSeek 的模型里就有 384 个"专家"，训练时它面临同样的选择——而它选了"不公平"。

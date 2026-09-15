@@ -8,7 +8,7 @@ digest: "同一个模型，为什么时灵时不灵？难题解得漂亮，简�
 cover: "00-cover.png"
 keywords: ["方差", "标准差", "GRPO", "策略梯度", "DeepSeek-V4", "DeepSeek-R1", "数学直觉"]
 scheduledPublish: "2026-09-06T20:00:00+08:00"
-wechatUrl: ""
+wechatUrl: "https://mp.weixin.qq.com/s/99AlwmvHlBe8goeMzZIEDQ"
 ---
 
 同一个模型，为什么时灵时不灵？

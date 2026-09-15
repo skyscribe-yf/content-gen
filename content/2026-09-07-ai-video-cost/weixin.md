@@ -8,7 +8,7 @@ digest: "AI 视频为什么这么贵？7 块钱的积分，生成一条 15 秒�
 cover: "00-cover.png"
 keywords: ["AI视频", "视频生成", "MiniMax H3", "扩散模型", "时序注意力", "VAE", "价格"]
 scheduledPublish: "2026-09-07T20:00:00+08:00"
-wechatUrl: ""
+wechatUrl: "https://mp.weixin.qq.com/s/aiLaUY-T-vvWbooDGxferQ"
 ---
 
 7 块钱买的即梦积分，生成 15 秒的视频，抽了好几次卡才勉强感觉满意，还要不断调整，等到终于稍微有点手感，还想再调整一个版本的时候，才发现一转眼送的积分都耗光了。

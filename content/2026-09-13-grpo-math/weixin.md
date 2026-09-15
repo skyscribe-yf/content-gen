@@ -7,7 +7,7 @@ digest: "GRPO 用组内排名换掉 critic，省下显存，也埋下三堵墙�
 cover: "00-cover.png"
 keywords: ["GRPO", "强化学习", "DeepSeek", "DAPO", "PPO"]
 scheduledPublish: "2026-09-13T20:00:00+08:00"
-wechatUrl: ""
+wechatUrl: "https://mp.weixin.qq.com/s/8YtlqDv7vkEopHMp5pyMgA"
 ---
 
 GRPO 砍掉的那个 critic 老师，省下的不只是显存，还有长程任务里的判断力——省下的和失去的，是同一个东西。

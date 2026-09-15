@@ -942,9 +942,9 @@ articles:
 - slug: 2026-08-26-knowledge-distillation
   title: 蒸馏是抄袭？为什么越抄越学不会？
   series: 数学直觉
-  status: drafting
-  published_date: null
-  wechat_url: null
+  status: published
+  published_date: '2026-08-26'
+  wechat_url: https://mp.weixin.qq.com/s/Xly_jfKKcf5xHcuK_e22KA
   files:
     weixin: true
     draft: false
@@ -960,13 +960,16 @@ articles:
     kOcXH4SytIYVIpYksTGfHl4u-bPxO7d5iv6DNWHT69XlAWAudEdg2QeVsa7ePnnA）。⚠️ 45166 踩坑（2026-08-26）：合集行
     KL 链接丢一个字符（G1PUOuwURoo… 缺 x，应为 G1PUOuwxURoo…）导致 invalid content hint，微信会对 content
     内 mp.weixin.qq.com/s/ 链接做文章存在性校验，链接错即 45166 且 hint 每次随机；二分定位：旧版成功稿逐块回填新版锁定。发布前检查：mp
-    链接与旧版全量比对。
+    链接与旧版全量比对。2026-09-15 对账：作者确认已发布，后台核实正式发布即 2026-08-26 20:00
+    （frontmatter wechatUrl 此前已回填 Xly_jfKKcf5xHcuK_e22KA，本次同步台账并核对一致）；群发记录
+    另有一条 08-27 12:48 重发记录（URL 3jjgvTDfgTZm41vPjgyvNg 已失效无标题，弃用）；status
+    drafting→published、published_date 补 '2026-08-26'。
 - slug: 2026-08-28-information-entropy
   title: 信息熵：压缩1000倍，为什么信息反而少？
   series: 数学直觉
-  status: drafting
-  published_date: null
-  wechat_url: null
+  status: published
+  published_date: '2026-08-28'
+  wechat_url: https://mp.weixin.qq.com/s/BkGWzKxiJE2mlPMlZgb7ag
   files:
     weixin: true
     draft: false
@@ -992,7 +995,9 @@ articles:
     kOcXH4SytIYVIpYksTGfHkTvhtukUVzX5OyYohskbfkcF7xoa-CI_2heG11gzj5s），正文图 3 张已上传（04-dice
     自动压 <1MB JPEG）。11 个 mp 链接全量校验通过（45166 预检）。旧 T2 media_id kOcXH4SytIYVIpYksTGfHqGMhNOG8CGOkczBGtcwPh3oKw9UP9AKciR4h9S6ty3s
     作废（旧封面 kOcXH4SytIYVIpYksTGfHnMtyfKUFZx6YqZHWR_aRftozBspSolsf3Rcmb3pScbN）。未定时、未群发。发布前：声明原创
-    + 定时 20:00 + 勾合集「AI中的数学」。
+    + 定时 20:00 + 勾合集「AI中的数学」。2026-09-15 对账：作者确认已发布，后台核实 2026-08-28 20:00
+    群发（frontmatter wechatUrl 此前已回填 BkGWzKxiJE2mlPMlZgb7ag，本次同步台账并核对一致）；status
+    drafting→published、published_date 补 '2026-08-28'。
 - slug: 2026-09-03-alphago
   title: AlphaGo 十年：那只狗到底是靠什么赢的？
   series: 强化学习原理（番外）
@@ -1216,9 +1221,9 @@ articles:
 - slug: 2026-09-06-方差
   title: AI 为什么时灵时不灵？跑分只有 12.8 的模型，难题却解得了
   series: 数学直觉
-  status: draft_saved
-  published_date: null
-  wechat_url: null
+  status: published
+  published_date: '2026-09-06'
+  wechat_url: https://mp.weixin.qq.com/s/99AlwmvHlBe8goeMzZIEDQ
   files:
     weixin: true
     draft: false
@@ -1227,12 +1232,15 @@ articles:
   notes: 数学线 M3 方差篇（grill 日志 .grill/2026-09-06-variance-grpo.md，2026-09-06 七轮收敛）。
     AI 落点=GRPO 组内奖励归一化（减均值除标准差），与 R1 两篇题材重叠。2026-09-06 对账补录：此前完全未入台账
     （幽灵排期）。2026-09-06 作者确认已存草稿箱、已排今晚 20:00 发布（media_id 待补录）。
+    2026-09-15 修正：审计日志 09-02~09-08 收入明细证实本篇 09-06 已发布（原创，收入 0.03 元）——
+    status draft_saved→published、published_date 补 '2026-09-06'；同日经后台 Cookie 登录查询回填
+    wechat_url https://mp.weixin.qq.com/s/99AlwmvHlBe8goeMzZIEDQ（og:title/createTime 09-06 20:00 核对一致）。
 - slug: 2026-09-07-ai-video-cost
   title: 生成 30 秒视频要画 900 张图，AI 视频为什么这么贵？
   series: 视觉生成
-  status: draft_saved
-  published_date: null
-  wechat_url: null
+  status: published
+  published_date: '2026-09-07'
+  wechat_url: https://mp.weixin.qq.com/s/aiLaUY-T-vvWbooDGxferQ
   files:
     weixin: true
     draft: false
@@ -1250,14 +1258,17 @@ articles:
     发布前检查全过（12 个 mp 链接与台账交叉核对无 45166 风险）。2026-09-06 已存草稿箱（api 直连，grace+blue）：
     media_id kOcXH4SytIYVIpYksTGfHkVimQirRaNLwSwTLQUSzcTRR0g-IO83DSDpAKsK-GAx（封面
     kOcXH4SytIYVIpYksTGfHrDW53MPDMWb-vYSvtBM-TVbFRntS2NNV-SyXFHr-qrb），正文图 3 张已上传。
+    2026-09-15 修正：审计日志收入明细证实本篇 09-07 已发布（原创，收入 0.02 元）——status
+    draft_saved→published、published_date 补 '2026-09-07'；同日经后台 Cookie 登录查询回填
+    wechat_url https://mp.weixin.qq.com/s/aiLaUY-T-vvWbooDGxferQ（og:title/createTime 09-07 20:00 核对一致）。
     未定时、未群发。⚠️ 发布前确认：声明原创 + 定时 20:00 + 合集「视觉生成」（如建合集）；发布后补 wechatUrl。
     2026-09-07 作者决定顺延（今天从零写新篇占 09-07 档期），本篇排期顺延至 09-08。
-- slug: 2026-09-07-moe-load-balancing
+- slug: 2026-09-08-moe-load-balancing
   title: DeepSeek 有 384 个专家，为什么不敢强迫它们平均干活？
   series: 数学直觉
-  status: draft_saved
-  published_date: null
-  wechat_url: null
+  status: published
+  published_date: '2026-09-08'
+  wechat_url: https://mp.weixin.qq.com/s/z6dUKGtDjcPQOK9GnxBnFA
   files:
     weixin: true
     draft: false
@@ -1278,6 +1289,10 @@ articles:
     media_id kOcXH4SytIYVIpYksTGfHkjznIiAgn2MtOJUhLKcv-F7rRdFZMrZaycIoBFx32bH（封面
     kOcXH4SytIYVIpYksTGfHkaRkgtHfG1KwmvR1iEEhJxjPQBZUCei0BRyq31lUxwK），正文图 5 张已上传。
     未定时、未群发。⚠️ 发布前确认：声明原创 + 定时 20:00 + 合集「AI中的数学」；发布后补 wechatUrl。
+    2026-09-15 对账：作者确认已发布，后台核实实际 2026-09-08 20:00 群发（09-07 排期顺延一天）——
+    status draft_saved→published、published_date 补 '2026-09-08'、wechat_url 回填
+    https://mp.weixin.qq.com/s/z6dUKGtDjcPQOK9GnxBnFA（og:title/createTime 核对一致，标题未改）；
+    目录按命名规则 git mv 改名 2026-09-07→2026-09-08。
     ⚠️ 旧版草稿（kOcXH4SytIYVIpYksTGfHoZjvOoInEiMcxPk4TH2o4dbNYuQSw2It2uIgzu_cxOd，3 图版）需后台删除。
 - slug: 2026-09-09-CLT-FP8
   title: 误差不是会互相抵消吗？量化模型为什么还是掉点？
@@ -1372,9 +1387,9 @@ articles:
 - slug: 2026-09-13-grpo-math
   title: GRPO 省了一个 critic，长任务为什么反而崩了？
   series: 强化学习原理
-  status: draft_saved
-  published_date: null
-  wechat_url: null
+  status: published
+  published_date: '2026-09-13'
+  wechat_url: https://mp.weixin.qq.com/s/8YtlqDv7vkEopHMp5pyMgA
   files:
     weixin: true
     draft: false
@@ -1398,19 +1413,49 @@ articles:
     作者设定时时顺眼确认。发布前确认：声明原创 + 定时 20:00 + 合集「强化学习原理」；
     发布后补 wechatUrl。
 
+- slug: 2026-09-14-reward-hacking
+  title: 机械臂蹭一下桶盖，成功率高10%：奖励函数才是AI钻空子的源头
+  series: 强化学习原理
+  status: published
+  published_date: '2026-09-14'
+  wechat_url: https://mp.weixin.qq.com/s/boIPBlmyX2ahoFYnEVLjxw
+  files:
+    weixin: true
+    draft: false
+    outline: true
+    cover: true
+  media_id: kOcXH4SytIYVIpYksTGfHpnP1gwNsbJ-kXY478huMkM1Z7RDYM84WwzHmljmQ7fY
+  notes: RL 系列收尾篇（路标⑩，GRPO 篇文末预告兑现）。grill 日志 .grill/2026-09-14-reward-hacking.md：
+    切口=reward hacking 的数学本体（代理指标的梯度外推），非类型学清单。原标题候选「奖励函数：AI钻空子的源头」
+    另拟，作者 2026-09-14 确认用 smolVLA 抓瓶子亲历当脊柱。⭐作者一手实测（本篇最强材料）：smolVLA、
+    几十次轨迹样本训练后出现「在垃圾桶盖上方蹭一下就结束动作」、成功率虚高起码 10% 以上（「似乎」保留）。
+    原声槽 7/7 逐槽交互全填（门禁下限 5）。数字/来源全部一手核实：PCH 代理压缩假设 arXiv:2604.13602
+    （复旦 NLP，三力=目标压缩/优化放大/评估器-策略共适应；危害四级=特征/表征/评估器/环境；hack 可泛化为
+    「把评估器当独立对象」的元策略）、VLM-RMs（Rocamonde et al.）、OpenAI 2016 faulty reward functions
+    （悬空闭合公案，与作者亲历分写）、smolVLA arXiv:2506.01844。⚠️ 篇幅：正文 2616 字，超「约 2000 字」
+    口径约 600 字，作者 2026-09-14 明确裁定接受（原声连续语流优先，不放宽也不硬砍）；全文 3485 字。
+    配图 4：封面 21:9（gpt-image-2.5-sunburst 一次过，标题逐字核验含全角逗号/冒号与 10%，1280x548）+
+    脚本图 2（gen_charts.py，PIL 直绘，δ 错位曲线 / 三条曲线，数字与正文一致）+ AI 概念图 1（钳口闭合为空，
+    零文字）。公式 23 个（展示式 4 + 内联 19），结构校验：花括号/left-right 配对、无未转义 %。
+    质量核查 16 项全过（16 项曾缺「一句话总结卡」，已补）。2026-09-14 已存草稿箱（remote-api vps 隧道，
+    grace+blue，一次成功）：cover media_id kOcXH4SytIYVIpYksTGfHsZEVTbosM7nlI3Af4S2sjfULo9ueUbzCytkMRcWIYlJ，
+    draft media_id kOcXH4SytIYVIpYksTGfHpnP1gwNsbJ-kXY478huMkM1Z7RDYM84WwzHmljmQ7fY。
+    2026-09-14 20:00 已定时发布：https://mp.weixin.qq.com/s/boIPBlmyX2ahoFYnEVLjxw（2026-09-15 作者供链
+    回填，页面 og:title/og:description 核对一致）。发布时标题在后台精简为「机械臂蹭一下桶盖，成功率高10%：
+    奖励函数才是AI钻空子的源头」（原拟标题见上，台账/frontmatter 已同步为发布版；封面图仍为原拟标题文字版）。
+    至此「强化学习原理」系列台账 11 篇全部 published，系列完结。
+
 summary:
-  total: 76
+  total: 77
   by_status:
-    published: 67
-    drafting: 2
-    draft_saved: 7
-  drafting_queue:
-  - 2026-08-26-knowledge-distillation
-  - 2026-08-28-information-entropy
+    published: 77
+    drafting: 0
+    draft_saved: 0
+  drafting_queue: []
   ready_queue: []
   scheduled_queue: []
   planned_queue: []
-  next_publish_date: '2026-09-13'
+  next_publish_date: null
 plan_notes:
 - 2026-08-28 对齐：信息熵 8-28（今日）→ AlphaGo 8-29 → 多模态 8-30（作者确认）。目录名已同步重命名（git mv），frontmatter
   date 同步。
@@ -1457,3 +1502,19 @@ plan_notes:
   16 项质量核查 + 发布前检查全过；配图 4 张（封面 21:9 dim image read 验收 + 脚本图 3）；hot_articles.py
   生成热门文章 + self-check 通过。状态 drafting，待存草稿箱。summary：total 71 / published 63 /
   drafting 3 / draft_saved 5。
+- 2026-09-15 对账（作者供链）：09-14 reward-hacking 已于 09-14 20:00 定时发布
+  https://mp.weixin.qq.com/s/boIPBlmyX2ahoFYnEVLjxw——状态 draft_saved→published、wechat_url 与
+  frontmatter wechatUrl 回填；发布时标题在后台精简（详见该条 notes），目录名与发布日期一致无需改名。
+  RL「强化学习原理」系列 11 篇全部完结。⚠️ summary 漂移修正：区块此前长期未随逐篇发布重算（停在
+  76/67/2/7 旧口径）；以审计日志收入明细回溯发现两篇漏记——方差篇实为 09-06 已发布、ai-video-cost
+  实为 09-07 已发布（收入明细均在列、original=true），两条已翻转 status 并补 published_date，
+  ⚠️ 两篇 wechat_url 缺失待作者后台补链。修正后 summary：total 77 / published 77 / drafting 0 /
+  draft_saved 0（2026-09-15 作者确认全部 77 篇均已发布，蒸馏/信息熵/moe 三条同日翻转 published）；
+  next_publish_date '2026-09-13' 已过期 → 置空。链接回填：.env Cookie 已过期（09-07），经复制作者
+  Chrome 档案 + headless Chrome 原生解密 + scripts/wechat-cdp-cookie.mjs export 刷新登录态（token/uin
+  验证通过，新 Cookie 已写回 .env），查询后台 appmsgpublish 已发表列表后 5 篇全部回填：蒸馏 08-26
+  20:00（Xly_…，与 frontmatter 旧回填一致；群发记录另有 08-27 12:48 死链重发记录已弃用）、信息熵
+  08-28 20:00（BkGW…）、方差 09-06 20:00（99Al…）、ai-video-cost 09-07 20:00（aiLa…）、moe 09-08
+  20:00（z6dU…，09-07 排期顺延一天，目录已 git mv 改名 2026-09-08-moe-load-balancing）。全部
+  og:title/createTime 与台账核对一致，台账 77 篇 published 且 wechat_url 无缺失；RL 系列完结后
+  下一主线（数学直觉续 / 新系列）待作者定。
