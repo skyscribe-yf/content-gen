@@ -37,6 +37,23 @@ function normalizeWechatCodeBlocks(html: string): string {
   );
 }
 
+/**
+ * 紧凑排版（2026-09-18 作者要求）：mdnice scienceBlue 主题在正文外层 section
+ * 加了 `padding: 0 10px`，段落又各带 `margin: 10px 10px` 左右外边距——手机上
+ * 两侧合计约 20px 留白，正文偏窄（实测 390px 视口：正文区 374px，文字仅 334px）。
+ * 这里把主题自带的左右留白收掉，正文/图片铺满内容区；上下节奏（段落间距、
+ * 标题上间距）保持不动。
+ */
+function compactWechatLayout(html: string): string {
+  return html
+    // 外层容器：去掉左右 10px 内边距
+    .replace(/(<section id="nice"[^>]*style="[^"]*?)padding:\s*0 10px/, "$1padding: 0")
+    // 段落与列表外层：左右 10px 外边距归零
+    .replace(/margin:\s*10px 10px/g, "margin: 10px 0")
+    // h2：右边距归零（左边框保留）
+    .replace(/margin:\s*20px 10px 0px 0px/g, "margin: 20px 0 0 0");
+}
+
 interface ParsedResult {
   title: string;
   author: string;
@@ -113,7 +130,9 @@ export async function convertMarkdown(
   );
 
   const renderedHtml = await renderWithMdnice(rewrittenMarkdown, mdniceTheme, tempDir);
-  const html = normalizeWechatCodeBlocks(await normalizeWechatLists(renderedHtml));
+  const html = compactWechatLayout(
+    normalizeWechatCodeBlocks(await normalizeWechatLists(renderedHtml)),
+  );
 
   fs.writeFileSync(htmlPath, html, "utf-8");
 

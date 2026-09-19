@@ -1,6 +1,8 @@
 # 公众号图片路径规则
 
 > 硬性规则。违反会导致 `45166: invalid content hint` 发布失败。
+>
+> ⚠️ **2026-09-15 修正**：`45166` 有**两个**独立成因，图片路径只是其一。另一成因是**指向不存在公众号文章的 mp 链接**（见 [`wechat-ops.md`](wechat-ops.md)「链接校验」节）。排查时**先跑 `python3 scripts/check_wechat_links.py <weixin.md>`**，再查本文件的图片路径规则。
 
 ## 规则
 

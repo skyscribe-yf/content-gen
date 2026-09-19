@@ -43,3 +43,7 @@ artifacts/
 # ffmpeg 中间产物（MPEG-TS 视频段，非 TypeScript 代码）
 **/shipinhao/build_S*.ts
 content/**/new.tar.gz
+
+# 本地虚拟环境与本机权限配置，不入库
+.venv/
+.qoder/settings.local.json
