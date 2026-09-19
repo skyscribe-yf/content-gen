@@ -28,12 +28,14 @@
 |-----|---------|------|--------|
 | 1 | KV缓存SSD | `https://mp.weixin.qq.com/s/40BQ06eDTv4-2r8FmQ_rMA` | 3,119 |
 | 2 | 高维空间全是壳 | `https://mp.weixin.qq.com/s/Nrfr-90Fpu3mFDML9s0d1Q` | 1,765 |
-| 3 | 高斯为什么二阶就够 | `https://mp.weixin.qq.com/s/gs_3y7JXuBLlzR5w6jW6fQ` | 1,504 |
+| 3 | 高斯为什么二阶就够 | `https://mp.weixin.qq.com/s/gs_3y7JXuBLlzR5w6jW6fQ` | 1,512 |
 | 4 | Adam优化器 | `https://mp.weixin.qq.com/s/aSLVO-otvr2rxIU1kr2eAA` | 1,109 |
 | 5 | DeepSeek-V4为何不用MLA | `https://mp.weixin.qq.com/s/MQEgbY16mLs-N7g2xKW1HQ` | 1,107 |
-| 6 | SFT微调 | `https://mp.weixin.qq.com/s/vwXGbjm9Ai1GPvQi5O3UyQ` | 569 |
+| 6 | 随机变量为什么不是变量 | `https://mp.weixin.qq.com/s/5BxjOUblW64DXNffHc2sxQ` | 615 |
 
-**2026-09-09 更新**：按最新审计快照（数据截至 09-08，33,505 读）重排，并修正一处分类错误——**费马大定理（4,670 读）实为贴图（`item_show_type=8`），已从热门文章榜剔除**（详见 `docs/wechat-data-insights.md` 0ac 节）。KV缓存存进SSD 升到第 1（3,119 读），高维空间第 2（1,765），高斯第 3（1,504），Adam 第 4（1,109），DeepSeek-V4 第 5（1,107），SFT 微调回到第 6（569）。榜单由 `scripts/hot_articles.py` 生成；账号菜单仅支持 2 个子菜单，实际配置取前 2 篇（KV、高维空间）。**若菜单此前已按费马大定理配置，需改回 KV + 高维空间。**
+**2026-09-19 更新**：按 09-19 审计快照聚合最高阅读重排——随机变量（615 读）超过 SFT 微调（569）进入第 6；高斯微升至 1,512。榜单由 `scripts/hot_articles.py` 生成；账号菜单仅支持 2 个子菜单，实际配置不变（KV + 高维空间）。
+
+**2026-09-09 更新**：按最新审计快照（数据截至 09-08，33,505 读）重排，并修正一处分类错误——**费马大定理（4,670 读）实为贴图（`item_show_type=8`），已从热门文章榜剔除**（详见 `docs/wechat-data-insights.md` 0ac 节）。KV缓存存进SSD 升到第 1（3,119 读），高维空间第 2（1,765），高斯第 3（1,504），Adam 第 4（1,109），DeepSeek-V4 第 5（1,107），SFT 微调回到第 6（569）。**若菜单此前已按费马大定理配置，需改回 KV + 高维空间。**
 
 **维护规则**：每次跑 wechat-data-audit 后，从审计日志聚合各文章最高阅读量、过滤贴图、重排前 6。被替下的文章通过合集页仍可访问。更新频率：约每月一次或推荐窗口出现明显变化时。
 

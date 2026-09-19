@@ -208,13 +208,13 @@ def main() -> int:
     rows = rows[: args.top]
 
     if args.self_check:
-        # 回归锚点：2026-09-09 更新（费马大定理修正为贴图后被剔除，SFT 回到前 6）。榜单结构变化时更新此断言。
+        # 回归锚点：2026-09-19 更新（随机变量 615 读超过 SFT 569 进入前 6）。榜单结构变化时更新此断言。
         expected = ["KV缓存存进SSD：慢50倍的硬盘，为什么反而更快？",
                     "高维空间为什么全是壳？内积才是那把尺子",
                     "高斯为什么二阶就够？非线性去哪了",
                     "学习率怎么自动调？Adam 优化器拆给你看",
                     "DeepSeek-V4为何不用MLA？",
-                    "SFT微调：1万条数据就能让模型听话？"]
+                    "随机变量为什么不是变量？它其实是个函数"]
         got = [t for t, _, _ in rows]
         assert got == expected, f"榜单漂移：{got}"
         assert all(u.startswith("https://mp.weixin.qq.com/s/") for _, _, u in rows)

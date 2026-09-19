@@ -143,7 +143,7 @@ wechatUrl: "https://mp.weixin.qq.com/s/abc123"
 - 末尾含关注引导（价值承诺 + 系列结构）
 - 结尾含 1 个开放式问题引导留言
 - 摘要须含 2-3 个搜索关键词
-- 最新审计：2026-09-09 早场（数据截至 2026-09-08，用户分析累计关注 985，累计广告收入 82.18 元；**双爆款费马大定理 4670 + ollama 贴图 4263 均属贴图轨；⚠️ 修正：费马是贴图不是文章，文章轨 8 连 <70 读、推荐池零接入**，最新分轨复盘见 [`docs/wechat-data-insights.md`](docs/wechat-data-insights.md) 0ac 节），详见 [`docs/wechat-data-insights.md`](docs/wechat-data-insights.md)
+- 最新审计：2026-09-19 晚场（数据截至 2026-09-18，累计关注 **1,009 首破千**，累计广告收入 90.03 元；**⚠️ 误标签背景：账号曾被误打标签约两周无推荐、上周才解封，近一周文章轨 <70 读属推荐池爬坡、不作内容归因**；贴图轨推荐已回 71–72%、文章轨 0–33% 逐日观察中，最新分轨复盘见 [`docs/wechat-data-insights.md`](docs/wechat-data-insights.md) 0ad 节），详见 [`docs/wechat-data-insights.md`](docs/wechat-data-insights.md)
 - 数字事实源：[`docs/wechat-data-audit-log.json`](docs/wechat-data-audit-log.json)，结构见同名 `.schema.json`，操作脚本为 `scripts/wechat_audit_log.py`，报告生成脚本为 `scripts/wechat_audit_report.py`，产物为 `docs/wechat-data-audit-report.html`
 - **每日流量渠道明细事实源（2026-08-27 新增）**：[`docs/wechat-daily-sources-log.json`](docs/wechat-daily-sources-log.json)，结构见同名 `.schema.json`——按天 × 传播渠道阅读人数（含每日推荐量）；每次采内容分析后跑 `python scripts/wechat_audit_log.py append-sources --input <tendency_*.xls>` 增量入库，逐日历史只认这份台账
 - **视频号数字事实源（2026-08-25 新增）**：[`docs/shipinhao-data-log.json`](docs/shipinhao-data-log.json)，结构见同名 `.schema.json`——视频号播放/完播/点赞/评论数据，与公众号日志分离（后台登录体系不同，公众号 Cookie 不通用）
