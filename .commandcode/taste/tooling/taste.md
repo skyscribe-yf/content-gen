@@ -8,3 +8,4 @@
 - Save generated cover/images under the article's dated content folder (e.g., content/YYYY-MM-DD-标题/cover.png). Confidence: 0.7
 - Git workflow: edit directly on the current branch; commit and push changes when a milestone is done. Confidence: 0.7
 - Uses the user's real environment for experiments (autodl GPU, token-stats data); monitor training progress/GPU periodically and save intermediate checkpoints and evidence for article writing. Confidence: 0.7
+- The default `python3` on this machine has no numpy/matplotlib (and no torch); run analysis/plot scripts via `uv run --with numpy --with matplotlib python3 ...` instead. Confidence: 0.6

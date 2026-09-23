@@ -6,3 +6,7 @@
 - Prefers QR-code scanning login for WeChat operations; agent should display the QR code in the chat window. Confidence: 0.7
 - Works across sessions: expects the agent to load session state (e.g., from the ollama profile) and continue seamlessly. Confidence: 0.6
 - Article-drafting workflow enforces a hard "原声槽" (author-voice) gate before writing the body: agent presents numbered candidate slots for the author's first-hand anecdotes, author approves by number or says "跳过", and ≥5 are required before drafting. Confidence: 0.6
+- Comfortable with a "grill-me" convergence before outlining: expects key decisions surfaced one at a time as multiple-choice questions, each with a preview and the agent's recommended option, and the outcome recorded in a grill log. Confidence: 0.6
+- Prefers a multi-part series to ship on consecutive days, but with "合格才发" priority over daily cadence: each part must pass the quality gates or it is deferred, and a deferred part does not block the rest. Confidence: 0.6
+- Dates artifacts (grill logs, article content folders, schedule entries) by the scheduled publish date of the article/series, not by the day the work was actually done; corrects the agent when it uses the drafting date. Confidence: 0.5
+- Comfortable replying 「跳过」 to optional author-voice slots in the drafting gate even when they aren't about firsthand experience (e.g., a closing reader-interaction question or a personal-judgment landing line), expecting the agent to substitute a neutral default instead. Confidence: 0.55

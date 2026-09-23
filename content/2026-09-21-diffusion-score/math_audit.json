@@ -1,0 +1,159 @@
+{
+  "note": "解析侧审计：盆地面积 / 鞍点比 / 步长稳定界；与 results.json 交叉核对",
+  "basin": {
+    "init": "半径 5 的均匀圆盘（不分模式）",
+    "area_share": {
+      "peak_1": 0.1245,
+      "peak_2": 0.1253,
+      "peak_3": 0.1239,
+      "peak_4": 0.124,
+      "peak_5": 0.1254,
+      "peak_6": 0.1254,
+      "peak_7": 0.126,
+      "peak_8": 0.1256
+    },
+    "true_weights": {
+      "peak_1": 0.3,
+      "peak_2": 0.2,
+      "peak_3": 0.15,
+      "peak_4": 0.1,
+      "peak_5": 0.08,
+      "peak_6": 0.07,
+      "peak_7": 0.06,
+      "peak_8": 0.04
+    },
+    "area_share_L1_vs_true_weights": 0.5526,
+    "measured_single_level_prop_L1": 0.5427,
+    "note": "单级朗之万实测的比例 L1 与「出发盆地面积 vs 真权重」的 L1 接近 → 有限步内换不了盆地的直接证据"
+  },
+  "saddle": {
+    "sigma_single": 0.05,
+    "saddle_over_peak_density_ratio": "1.377e-03",
+    "sigma_max": 3.0,
+    "saddle_over_peak_density_ratio_at_sigma_max": "5.336e-01",
+    "note": "单级 σ 下鞍点密度比峰顶低若干数量级 → 翻盆地几乎不可能；大 σ 下这个比值接近 1 → 粒子可以自由重排（退火能修比例的机制）"
+  },
+  "step_size_bound": {
+    "sigma": 0.05,
+    "score_lipschitz_max": 297.58,
+    "euler_stable_eta_upper": 0.0067,
+    "empirical_flew_etas": [
+      1.0
+    ],
+    "empirical_stuck_etas": [
+      1.0
+    ],
+    "note": "Euler 离散稳定要求 η ≲ 2/L；实测飞出去的 η 与之对照"
+  },
+  "cross_check": {
+    "final_train_loss": {
+      "cond": 0.67074,
+      "fixed_single": 0.98855
+    },
+    "A_sigma0.05": {
+      "bins": [
+        {
+          "d_lo": 0.0,
+          "d_hi": 0.25,
+          "space_share_pct": 12.0,
+          "train_sample_share_pct": 51.885,
+          "median_rel_err": 0.6114,
+          "err_share_pct": 3.0
+        },
+        {
+          "d_lo": 0.25,
+          "d_hi": 0.5,
+          "space_share_pct": 11.98,
+          "train_sample_share_pct": 32.49,
+          "median_rel_err": 0.5142,
+          "err_share_pct": 3.27
+        },
+        {
+          "d_lo": 0.5,
+          "d_hi": 1.0,
+          "space_share_pct": 23.97,
+          "train_sample_share_pct": 15.155,
+          "median_rel_err": 0.4167,
+          "err_share_pct": 9.39
+        },
+        {
+          "d_lo": 1.0,
+          "d_hi": 1.5,
+          "space_share_pct": 23.7,
+          "train_sample_share_pct": 0.465,
+          "median_rel_err": 0.3889,
+          "err_share_pct": 18.36
+        },
+        {
+          "d_lo": 1.5,
+          "d_hi": 2.0,
+          "space_share_pct": 24.23,
+          "train_sample_share_pct": 0.005,
+          "median_rel_err": 0.4391,
+          "err_share_pct": 39.01
+        },
+        {
+          "d_lo": 2.0,
+          "d_hi": 5.0,
+          "space_share_pct": 4.12,
+          "train_sample_share_pct": 0.0,
+          "median_rel_err": 0.8576,
+          "err_share_pct": 26.97
+        }
+      ],
+      "median_rel_err_all": 0.4516,
+      "far_err_share_pct": 84.34,
+      "far_space_share_pct": 52.05,
+      "train_sample_far_share_pct": 0.47,
+      "far_median_rel_err": 0.4329,
+      "near_median_rel_err": 0.4745
+    },
+    "B_best": {
+      "eta": 0.0003,
+      "prop_l1": 0.5427,
+      "median_move": 1.151
+    },
+    "C_1000": {
+      "single": {
+        "prop_l1_mean": 0.6053,
+        "prop_l1_std": 0.0182,
+        "energy_dist_mean": 0.5067,
+        "energy_dist_std": 0.1143
+      },
+      "annealed": {
+        "prop_l1_mean": 0.1533,
+        "prop_l1_std": 0.0151,
+        "energy_dist_mean": 0.0427,
+        "energy_dist_std": 0.0172
+      }
+    },
+    "D_shell": [
+      {
+        "D": 2,
+        "empty_share_pct": 23.45,
+        "median_dist_to_data_over_R": 0.0485
+      },
+      {
+        "D": 4,
+        "empty_share_pct": 92.94,
+        "median_dist_to_data_over_R": 0.5541
+      },
+      {
+        "D": 8,
+        "empty_share_pct": 99.96,
+        "median_dist_to_data_over_R": 0.7969
+      },
+      {
+        "D": 16,
+        "empty_share_pct": 100.0,
+        "median_dist_to_data_over_R": 0.9204
+      },
+      {
+        "D": 64,
+        "empty_share_pct": 100.0,
+        "median_dist_to_data_over_R": 1.0306
+      }
+    ],
+    "runtime_sec": 527.1
+  }
+}

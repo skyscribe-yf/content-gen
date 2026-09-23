@@ -1,0 +1,279 @@
+{
+  "note": "R² = 1 - E||目标 - E[目标|x_t]||² / Var(目标)；损失下限 = 0.5 * E_t[Var(目标|x_t)]",
+  "r2_by_alpha": {
+    "0.99": {
+      "x0": {
+        "R2_explainable": 0.998,
+        "field_rms": 3.0393,
+        "target_rms": 3.0424,
+        "irreducible_rms": 0.1359
+      },
+      "eps": {
+        "R2_explainable": 0.0751,
+        "field_rms": 0.3853,
+        "target_rms": 1.4062,
+        "irreducible_rms": 1.3524
+      },
+      "score": {
+        "R2_explainable": 0.0751,
+        "field_rms": 3.8531,
+        "target_rms": 14.0621,
+        "irreducible_rms": 13.5239
+      }
+    },
+    "0.95": {
+      "x0": {
+        "R2_explainable": 0.9919,
+        "field_rms": 3.025,
+        "target_rms": 3.0374,
+        "irreducible_rms": 0.2741
+      },
+      "eps": {
+        "R2_explainable": 0.2825,
+        "field_rms": 0.7495,
+        "target_rms": 1.4102,
+        "irreducible_rms": 1.1946
+      },
+      "score": {
+        "R2_explainable": 0.2825,
+        "field_rms": 3.352,
+        "target_rms": 6.3068,
+        "irreducible_rms": 5.3422
+      }
+    },
+    "0.9": {
+      "x0": {
+        "R2_explainable": 0.9858,
+        "field_rms": 3.0184,
+        "target_rms": 3.0401,
+        "irreducible_rms": 0.3629
+      },
+      "eps": {
+        "R2_explainable": 0.4091,
+        "field_rms": 0.9058,
+        "target_rms": 1.4161,
+        "irreducible_rms": 1.0886
+      },
+      "score": {
+        "R2_explainable": 0.4091,
+        "field_rms": 2.8644,
+        "target_rms": 4.4782,
+        "irreducible_rms": 3.4423
+      }
+    },
+    "0.8": {
+      "x0": {
+        "R2_explainable": 0.9713,
+        "field_rms": 3.0005,
+        "target_rms": 3.0446,
+        "irreducible_rms": 0.5162
+      },
+      "eps": {
+        "R2_explainable": 0.4618,
+        "field_rms": 0.9563,
+        "target_rms": 1.4072,
+        "irreducible_rms": 1.0324
+      },
+      "score": {
+        "R2_explainable": 0.4618,
+        "field_rms": 2.1383,
+        "target_rms": 3.1467,
+        "irreducible_rms": 2.3086
+      }
+    },
+    "0.6": {
+      "x0": {
+        "R2_explainable": 0.9147,
+        "field_rms": 2.9065,
+        "target_rms": 3.0391,
+        "irreducible_rms": 0.8877
+      },
+      "eps": {
+        "R2_explainable": 0.4126,
+        "field_rms": 0.9112,
+        "target_rms": 1.4186,
+        "irreducible_rms": 1.0872
+      },
+      "score": {
+        "R2_explainable": 0.4126,
+        "field_rms": 1.4407,
+        "target_rms": 2.2429,
+        "irreducible_rms": 1.7191
+      }
+    },
+    "0.4": {
+      "x0": {
+        "R2_explainable": 0.8105,
+        "field_rms": 2.7389,
+        "target_rms": 3.0423,
+        "irreducible_rms": 1.3243
+      },
+      "eps": {
+        "R2_explainable": 0.4139,
+        "field_rms": 0.9086,
+        "target_rms": 1.4123,
+        "irreducible_rms": 1.0813
+      },
+      "score": {
+        "R2_explainable": 0.4139,
+        "field_rms": 1.173,
+        "target_rms": 1.8233,
+        "irreducible_rms": 1.3959
+      }
+    },
+    "0.2": {
+      "x0": {
+        "R2_explainable": 0.5744,
+        "field_rms": 2.3074,
+        "target_rms": 3.0444,
+        "irreducible_rms": 1.986
+      },
+      "eps": {
+        "R2_explainable": 0.498,
+        "field_rms": 0.989,
+        "target_rms": 1.4015,
+        "irreducible_rms": 0.993
+      },
+      "score": {
+        "R2_explainable": 0.498,
+        "field_rms": 1.1057,
+        "target_rms": 1.5669,
+        "irreducible_rms": 1.1102
+      }
+    },
+    "0.1": {
+      "x0": {
+        "R2_explainable": 0.3491,
+        "field_rms": 1.7954,
+        "target_rms": 3.0385,
+        "irreducible_rms": 2.4513
+      },
+      "eps": {
+        "R2_explainable": 0.6671,
+        "field_rms": 1.1567,
+        "target_rms": 1.4162,
+        "irreducible_rms": 0.8171
+      },
+      "score": {
+        "R2_explainable": 0.6671,
+        "field_rms": 1.2193,
+        "target_rms": 1.4928,
+        "irreducible_rms": 0.8613
+      }
+    },
+    "0.05": {
+      "x0": {
+        "R2_explainable": 0.2001,
+        "field_rms": 1.3594,
+        "target_rms": 3.039,
+        "irreducible_rms": 2.718
+      },
+      "eps": {
+        "R2_explainable": 0.8066,
+        "field_rms": 1.2736,
+        "target_rms": 1.418,
+        "irreducible_rms": 0.6235
+      },
+      "score": {
+        "R2_explainable": 0.8066,
+        "field_rms": 1.3066,
+        "target_rms": 1.4548,
+        "irreducible_rms": 0.6397
+      }
+    },
+    "0.02": {
+      "x0": {
+        "R2_explainable": 0.088,
+        "field_rms": 0.9014,
+        "target_rms": 3.0385,
+        "irreducible_rms": 2.9017
+      },
+      "eps": {
+        "R2_explainable": 0.9144,
+        "field_rms": 1.3548,
+        "target_rms": 1.4168,
+        "irreducible_rms": 0.4145
+      },
+      "score": {
+        "R2_explainable": 0.9144,
+        "field_rms": 1.3686,
+        "target_rms": 1.4312,
+        "irreducible_rms": 0.4187
+      }
+    },
+    "0.01": {
+      "x0": {
+        "R2_explainable": 0.0477,
+        "field_rms": 0.6648,
+        "target_rms": 3.0429,
+        "irreducible_rms": 2.9694
+      },
+      "eps": {
+        "R2_explainable": 0.955,
+        "field_rms": 1.3753,
+        "target_rms": 1.4073,
+        "irreducible_rms": 0.2984
+      },
+      "score": {
+        "R2_explainable": 0.955,
+        "field_rms": 1.3822,
+        "target_rms": 1.4144,
+        "irreducible_rms": 0.2999
+      }
+    }
+  },
+  "loss_floor_vs_achieved": {
+    "x0": {
+      "floor": 1.3647,
+      "achieved": 1.37754,
+      "floor_share_pct": 99.1
+    },
+    "eps": {
+      "floor": 0.5146,
+      "achieved": 0.53258,
+      "floor_share_pct": 96.6
+    },
+    "score": {
+      "floor": 81.6463,
+      "achieved": 83.60008,
+      "floor_share_pct": 97.7
+    }
+  },
+  "headline": {
+    "R2_clean_end": {
+      "x0": 0.998,
+      "eps": 0.0751,
+      "score": 0.0751
+    },
+    "R2_noisy_end": {
+      "x0": 0.0477,
+      "eps": 0.955,
+      "score": 0.955
+    },
+    "rel_err_eps_clean_to_noisy": [
+      0.6591,
+      0.0804
+    ],
+    "rel_err_x0_clean_to_noisy": [
+      0.0581,
+      0.2778
+    ],
+    "x0_space_rmse_clean": {
+      "x0": 0.1765,
+      "eps": 0.0254,
+      "score": 0.0248
+    },
+    "x0_space_rmse_noisy": {
+      "x0": 0.1763,
+      "eps": 1.0906,
+      "score": 3.1405
+    },
+    "identity_check": {
+      "alpha_bar": 0.5,
+      "n_points": 400,
+      "max_abs_dev_eps_vs_neg_sqrt1mab_score": "0.000e+00",
+      "max_abs_dev_xt_vs_sqrtab_x0star_plus_sqrt1mab_epsstar": "1.110e-15",
+      "note": "eps = -sqrt(1-abar) * score 与 x_t = sqrt(abar) E[x0|x_t] + sqrt(1-abar) E[eps|x_t] 的数值残差"
+    }
+  }
+}

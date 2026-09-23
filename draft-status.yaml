@@ -1057,17 +1057,101 @@ articles:
   - '2026-09-19 术语纠正（作者指出「团宽」是从未见过的自造词）：全文「团宽」→**标准差 σ**（表头第四列改 `误差 ÷ σ`、正文 3 处、`analyze_math.py` 图注「一个团自己的宽度 σ=0.35」→「团的标准差 σ=0.35」并重渲 05-convergence-order.png）。⚠️ 连带修掉两句在 σ 口径下不成立的断言（原「误差超过团宽，一个点就被推出了自己那个团」/「4 步正好一个团宽，每个点都被推出自己那个团」）：实测相邻峰心相距 2.296=6.6σ、中点 3.3σ，1.04σ 位移到不了邻团，毁的是团自身形状；改写为「画到真图上」判据（距最近峰心 2σ 内）+ 真分布自身上限 1−e⁻²=86.5%，据此 10 步 86.3% 贴上限、5 步 78.6% 才出核。重跑 analyze_math.py 后 math_audit.json 全部数字与改前一致（seed 20260919 固定，零漂移）。CJK 4481→4941。重存入箱：新 media_id kOcXH4SytIYVIpYksTGfHg6MpQYiShfwKJFdToOsops1B_ZzKFvxI-zxuIRgZFSG。⚠️ 箱内累计 3 份本篇草稿（…MI4IpO1qN 原版 / …IpO1qN 之后 …xN-DZLv 链接回填版 / 当前 …uIRgZFSG），前两版需后台删除；封面文件未改，脚本每次重传会换新 cover media_id，台账 cover_media_id 记的是链接回填版。'
   - '2026-09-19 作者供链回填：09-19 20:00 发布 https://mp.weixin.qq.com/s/WOrO8gJ0wH6XnhtJ28FRtQ，status→published、published_date/wechat_url/frontmatter wechatUrl 三处同步；「发布后待办」① 随本次关闭。'
 
+- slug: 2026-09-20-diffusion-elbo
+  title: 猜噪声怎么就学会了画猫？扩散模型的训练目标不是拍脑袋定的
+  series: 数学直觉
+  status: published
+  published_date: '2026-09-20'
+  wechat_url: https://mp.weixin.qq.com/s/IuoNCCYdsabOnkeGerOKEA
+  files:
+    weixin: true
+    draft: false
+    outline: true
+    cover: true
+  media_id: kOcXH4SytIYVIpYksTGfHjaAZAxFupY85W8W5vZL_sPe2b3dTSBe0JoynU6yihld
+  cover_media_id: kOcXH4SytIYVIpYksTGfHpS4pGp27ByfMVXdG1pHEyKz0XrZK_SuSjTfpVNRRyhF
+  notes: '扩散模型数学系列篇 1（变分视角）。2026-09-19 立项并单日完成全流程：grill 收敛（.grill/2026-09-20-diffusion-math-series.md，系列总日志：3 篇 = 变分 / 分数 / 引导，09-20/21/22 连发、逐篇过门禁）。主线：ELBO（KL 版）→ 三假设 T 层 VAE → 第二版 ELBO 三项拆分 → 配方法 → ε 损失 → Tweedie 三张脸；与 09-19 步数篇、09-15 文字篇零重叠（区隔表在大纲）。原声槽 5/5 逐字进稿（槽 1–5；槽 6/7/8 跳过，文末互动问由 AI 补中性句、不计原声）。自跑三目标对照实验（run_experiment.py：同初始化同数据、x₀/ε/score 三个小 MLP、4000 步；analyze_math.py：R² 与损失下限）：恒等式残差 0 / 1.1e-15；R² 曲线交叉（干净端 x₀ 99.8% vs ε 7.5%，噪声端 ε 95.5% vs x₀ 4.8%）；换算回 x₀ 单位两端各赢一次（0.025 vs 0.176 / 0.176 vs 1.09）；score 与 ε 的 R² 完全重合但损失量级 84 vs 0.53。数字事实源 results.json + math_audit.json。配图 9 张：封面 1916x821（两行标题逐字核验、文字块约 22%≤1/4）+ 正文 8 张（脚本图 2：02 三目标对照 / 03 恒等式；AI 概念图 6：01/04/05/06/07/08，均零文字——05–08 为作者要求「配图多一点」后追加）。门禁：16 项核查过（禁词 0、长句仅剩原声 2 处豁免、原声逐字在场、待发布残留 0、12 条链接全溯源、热门榜 self-check、mdnice 实渲 svg 100 / merror 0 / katex 0、图片路径同级）。2026-09-19 晚存草稿箱（remote-api via vps-us，grace+blue，citeStatus=true；8 张正文图上传、5 张大图自动压 JPEG q82）。发布前后台确认：声明原创 + 定时 09-20 20:00 + 勾选合集「AI中的数学」。2026-09-20 作者供链回填：09-20 20:00 发布 https://mp.weixin.qq.com/s/IuoNCCYdsabOnkeGerOKEA，status→published、published_date/wechat_url/frontmatter wechatUrl 三处同步。系列接续：篇 2 分数视角（09-21，成稿待门禁）、篇 3 引导视角（09-22）。'
+
+- slug: 2026-09-21-diffusion-score
+  title: 扩散模型为什么要几百个噪声级别？一个够吗
+  series: 数学直觉
+  status: published
+  published_date: '2026-09-21'
+  wechat_url: https://mp.weixin.qq.com/s/ieHJjnSvSEseQkR4sFQh_w
+  files:
+    weixin: true
+    draft: false
+    outline: true
+    cover: true
+  media_id: kOcXH4SytIYVIpYksTGfHsPzNRArYzeqjNLPBZZm296lGbwS1awdfoDPhkhlBck8
+  cover_media_id: kOcXH4SytIYVIpYksTGfHlhQcg129mOvlpC44Oga9_sFmHIoHvBCqoaRH_qDyP6n
+  notes:
+  - '扩散模型数学系列篇 2（分数视角）。2026-09-19 二轮 grill 定结构/实验/落点（.grill/2026-09-20-diffusion-math-series.md 篇 2 段），2026-09-20 成稿 + 作者七条打磨口径落地。主线：能量模型 → 分数（∇log p）→ 分数匹配三个死穴 → 朗之万 → 单级实战崩（位置 vs 比例两难）→ 多级噪声退火 → σ 表 + 连续极限。自跑四块实验（run_experiment.py，seed 20260921；numpy 手写 MLP）：A 分数场误差分布（空地占空间 52.05%、吃 84.34% 平方误差，训练样本落空地仅 0.47%）｜B 单级朗之万（η=1e-4 中位位移 0.63；η=1 全飞；最优 η=3e-4 比例 L1 0.5427 对解析盆地面积预测 0.5526）｜C 同预算对打（1000 次调用：单级 L1 0.6053/清晰度 0.3506，退火 0.1533/0.2397≈真数据尺度 0.2388；单级翻倍到 2000 次仍 0.6273）｜D 流形与薄壳（离开曲线中位相对误差 0.0815→0.6463、远处 38% 点误差>100%；空地占比 2D 23.45% → 4D 92.94% → 16D 100%）。数字事实源 results.json + math_audit.json（analyze_math.py 出盆地面积/鞍点比/步长界）。配图 8 张：封面 1916x821（标题逐字核验、文字块 ≈21%≤1/4）+ 脚本图 4（A/B/C/D）+ AI 概念图 3（01 地形/02 荒野坡度/03 从粗到细，零文字零数字）+ 索尔维会议 1927 原片（Benjamin Couprie，公有领域，作者指定配图）。原声槽 7/7 逐字进稿（作者 2026-09-20 追加授权：槽 1/3/5/6 四处长句可拆，只加句号与分段不动一字，outline 原句栏已同步）。门禁：16 项核查 + 恢复期 B 六条过；公式 12 条 mdnice 实渲 merror 0、最长 28.0ex（≈224px，改动前 53.3ex 会横向滚动）；失效加粗 0（CommonMark flanking 坑已修）；超 60 字长句 0；禁词 0；AI 腔 0；待发布残留 0；10 条 mp 链接全溯源；热门榜 --cited 重生成（10 行）且 --self-check 通过；正文 4620 字 / 全文 5152 字。2026-09-20 22:xx 存草稿箱（remote-api via vps-us，grace+blue；8 张正文图上传，01/02/03 三张大图自动压 JPEG q82）。发布前后台确认：声明原创 + 定时 09-21 20:00 + 勾选合集「AI中的数学」；发布后补 wechatUrl。系列接续：篇 3 引导视角（09-22）待大纲。'
+  - '2026-09-22 对账（作者供链）：09-21 20:00 已发布 https://mp.weixin.qq.com/s/ieHJjnSvSEseQkR4sFQh_w —— status draft_saved→published、published_date/wechat_url/frontmatter wechatUrl 三处同步；「发布后补 wechatUrl」待办随本次关闭。**实发标题被后台精简**：og:title =「扩散模型为什么要几百个噪声级别？一个够吗」（去掉「其实就」三字），frontmatter title 已同步改为发布版——hot_articles.py 以 frontmatter 标题为显示源，不改则热门榜继续输出拟稿口径（同 09-16 篇处置）。封面文字仍是拟稿完整句（封面已随草稿入箱、未重制），两者不一致，记录在案。发布时刻程序化核验：页面 ct=1789992000 → 2026-09-21 20:00:00+08:00；og:description 与 frontmatter digest 逐字一致；msg_link 与作者供链一致。'
+
+- slug: 2026-09-22-diffusion-guidance
+  title: AI 生图写「不要桌子」，为什么反而画了猫？引导到底在拧什么
+  series: 数学直觉
+  status: published
+  published_date: '2026-09-22'
+  wechat_url: https://mp.weixin.qq.com/s/mLoiEHvPQTDSlg6RUb6DmQ
+  files:
+    weixin: true
+    draft: false
+    outline: true
+    cover: true
+  media_id: kOcXH4SytIYVIpYksTGfHlKsYVCJ3RgNlcASD7w3Phgi-43nhreL0mlGDQxi8lna
+  cover_media_id: kOcXH4SytIYVIpYksTGfHmNybW46NlbO2QXxKErxhE5faLPGOTEJaqr1kyqu3Tq7
+  notes:
+  - '扩散模型数学系列篇 3（引导视角，系列收尾篇）。2026-09-22 当日完成全流程：grill 逐问收敛 12 轮（.grill/2026-09-22-diffusion-guidance.md）→ 大纲 → 原声槽 5/5 逐槽采集 → 两轮事实核查（子代理，全一手来源）→ 成稿 → 自跑三块实验 → 配图 8 张 → 16 项核查 → 存草稿箱。交付句 = 双转合一：转 1「条件控制不是往图里加东西，方向是贝叶斯分解给的、CFG 是不用训分类器的等价物」；转 2「γ 是两头都有代价的双刃旋钮，负向提示词就是把外推另一端的锚换掉」。六节链：一个「不」字听不懂 → 条件分数的贝叶斯分解 → 分类器引导与隐式分类器 → CFG 落地 → γ 在买什么 → 两个旋钮其实是同一根。'
+  - '🔬 实验（`run_experiment.py`，seed 20260922，复用篇 2 的 8 峰 GMM 基建 + 每峰打类别标签；numpy 手写 MLP 无条件 + 类别条件网络）：① 方向验证（恒等式 ε_∅−ε_y = σ·∇log p(y|x) 对拍）② γ 扫描 ③ 出壳面板（并入②）④ 负向推力。**解析恒等式残差 5.33e-15**（推导无错）。**立项假设被自己推翻**：原假设「空地上方向对不上」不成立——方向处处正确（余弦 0.9924–0.9996），真问题是**幅度随噪声级别漂移**（投影比 0.748@σ=0.35 → 1.385@σ=0.05），这才是 γ 必须手调的根本原因。**两个代价不同段**：多样性 γ≈0.3 就付掉（归一化熵 0.8484→0.0569），出壳要 γ>3（13.13%@γ=5 → 51.4%@γ=12）。**锚一换安全区间骤窄**：同 γ=2.0，不带负向词 99.93% 守住目标，带相邻锚 99.53% 落到第三个峰（峰 7）——「写不要桌子反而画出别的」的玩具版。数字事实源 results.json。'
+  - '⚠️ 本轮自查抓到并修掉一处**真 bug**：`analytic_eps` 条件支最初写成 `(x−μ_y)/σ`（未走单峰后验均值），致恒等式残差 11.4（应 ~0）；改为 `(σ_peak²x + σ²μ_y)/(σ_peak²+σ²)` 后降到 5.33e-15。另一处**数学修正**：负向词公式原写成 `ε(p_+) + γ(ε(c) − ε(p_−))`（锚与另一项语义混乱），改为 `ε(p_−) + γ(ε(p_+) − ε(p_−))`，并验证与论文 Eq.(5) 在 γ=1+w 下逐点等价（w = 0/1/3/7 全一致）。'
+  - '📚 事实核查（全一手来源，2026-09-22）：CFG arXiv:2207.12598（w 扫描 0–4、最佳 FID 用 w=0.1/0.3、强引导饱和原话、p_uncond 0.1/0.2/0.5）｜分类器引导 arXiv:2105.05233（缩放恒等式、scale 1→概率约 50% / scale 10→近 100%、Recall 0.52→0.32、FID 4.59→9.11）｜过曝与重缩放 arXiv:2305.08891（"when w is large … causing the image over-exposure problem"、缩放系数 0.5–0.75）｜负向词 arXiv:2406.02965（Eq.(5) 经 LaTeX 源逐字核验、延迟生效 正向 4 步/负向 8 步、中性化、反向激活「前 3 步」、最优窗口第 5–15 步、动量 99.5%）｜Qwen-Image diffusers 源码（`true_cfg_scale` 默认 4.0、`guidance_scale` 默认 None、真 CFG 需 >1 且提供负向词、组合后范数重归一化）｜Wan2.1 `sample_guide_scale` 5.0 + 1.3B 建议 6、Wan2.2 双 guidance (3.0, 4.0) boundary 0.875、`shared_config.py` 官方默认负向词（首词「过曝」）。'
+  - '🚩 事实红线（本轮新增，已写入 outline 与 grill 日志）：① 全文**不得**出现「负向提示词导致过曝」——一手依据显示因果相反，过曝归因给 w 过大；② 论文「前 3 步反向激活」必须标注为**研究干预**（只在特定步施加、之后停掉），不等于 UI 全程施加的常规行为；③ **不替 Qwen-Image 技术报告宣称用了 CFG**——报告 v1 全文 0 次提及 classifier-free/CFG/negative prompt（全文检索确认，且该文仅有 v1），可写的只是 diffusers 代码层事实。'
+  - '🖼 配图 8 张（双轨）：封面 `00-cover.png` 1916x821 原生 21:9（第 2 次生成达标；第 1 版文字块 32.8% 超标，已留 `00-cover-v1.png`）；脚本图 3（A 方向对拍 / B γ 扫描 / C 负向推力）；AI 概念图 5（01 两个角色 / 02 外推 / 03 过曝 / 04 两支锚 / 05 收尾旋钮），逐张核验零文字零数字。**新增封面核查工具** `check_cover.py`：金色像素→连通域→只留汉字尺寸块→按「横向跨度 ≥45% 画面宽」筛出标题行；用篇 1/篇 2 已发封面标定（篇 2 读数 22.7%，与台账 ≈21% 相符），本篇 20.2% 达标。'
+  - '⚠️ 公式宽度核查法**修正**：不再按 `width: Xex` 估算（会误判，篇 2 口径沿用会错杀），改用 `check_formula_fit.py`（Playwright，375px 视口实测 svg 宽 vs 容器宽）——**29 条公式全部不横向滚动**（最宽 display 323px / 容器 339px）。为可读性仍把 3 条长公式拆成 `\begin{aligned}` 多行。⚠️ 另发现编辑踩坑：用文本编辑工具改含 `$` 的公式块时，定界符可能被折叠成单 $`，本轮出现 11 处，已用脚本恢复并复核成对（6 组 display 块）。'
+  - '门禁：16 项核查过——禁词 0 / AI 腔 0 / 加粗失效 0（按 CommonMark flanking 开闭配对扫描）/ 中文入公式 0 / 「待发布」残留 0 / 原声槽 5/5 逐字在场 / 超 60 字长句仅剩槽 1 原声 1 处（第 10 项豁免）/ 图片 8 张同级路径 / 话题标签 5 个 / 封面未混入正文 / mdnice 实渲 29 SVG、merror 0、katex 0；`hot_articles.py --md --cited` 重生成（14 行，行间无空行、行尾两空格）且 `--self-check` 通过；`check_wechat_links.py` 14 条 mp 链接全溯源。正文 5.4k 字（含尾部）。'
+  - '📦 2026-09-22 存草稿箱（remote-api via vps-us，grace+blue）：draft media_id kOcXH4SytIYVIpYksTGfHlKsYVCJ3RgNlcASD7w3Phgi-43nhreL0mlGDQxi8lna、cover media_id kOcXH4SytIYVIpYksTGfHmNybW46NlbO2QXxKErxhE5faLPGOTEJaqr1kyqu3Tq7；8 张正文图上传成功（5 张大图自动压 JPEG q82）。⚠️ **首次入库时 02-outward-push.png 上传遇瞬时 TLS RESET（ECONNRESET），推送脚本无重试逻辑、未替换占位符即建草稿**——已整篇重存一次，第二次 8 图全部成功。箱内因此有两份本篇草稿（首版 media_id kOcXH4SytIYVIpYksTGfHsjlD6BHpVjL6z6huQ41lsrAn5k0aDoF64DAx6JCCjxY 含坏图，**需后台删除**）。'
+  - '后台待作者确认：声明原创 + 定时 2026-09-22 20:00 + 勾选合集「AI中的数学」（同篇 1/篇 2，单合集）。发布后补 wechatUrl 到 frontmatter + 台账 + summary 重算。'
+  - '系列收尾：三篇（变分 09-20 / 分数 09-21 / 引导 09-22）至此齐备，合集「AI中的数学」导航链已含篇 1 与篇 2 真实链接、本篇标（本篇）；结尾按作者口径做三篇回收（不预告具体新选题）。存草稿箱任务完成后需记：`content-matrix.md` G3「负向提示词」条目状态由「🔄 消化中」改为 ✅ 已消化。'
+  - '2026-09-23 对账（作者供链）：09-22 20:00 已发布 https://mp.weixin.qq.com/s/mLoiEHvPQTDSlg6RUb6DmQ —— status draft_saved→published、published_date/wechat_url/frontmatter wechatUrl 三处同步；「发布后补 wechatUrl」待办随本次关闭。**本篇实发标题未被后台精简**（与篇 1 同处置、区别于篇 2）：og:title 与 frontmatter title 逐字一致，无需回改。发布时刻程序化核验：页面 ct=1790078400 → 2026-09-22 20:00:00+08:00；og:description 与 frontmatter digest 逐字一致；msg_link 与作者供链一致。⚠️ **本地归档 weixin.md 尾部「🔥 热门文章：」标题行重复了两遍**（268/270 行，`hot_articles.py --md` 自身会打印该标题行，与正文既有标题行叠加所致），已删去重复行；**线上实发版只有一处标题**（已抓取线上 HTML 复核：转义内容中该标题块计数 1），无需后台修改。教训固化：追加 `hot_articles.py --md` 输出时，正文里不得再留同名标题行。'
+
+- slug: 2026-09-23-hand-fingers
+  title: AI 画的手指为什么总多一根？56 维评测，这项它只得 20.9 分
+  series: 视觉生成
+  status: published
+  published_date: '2026-09-23'
+  wechat_url: https://mp.weixin.qq.com/s/0fCMmqU9MdZ1feL1QBKZDA
+  files:
+    weixin: true
+    draft: false
+    outline: true
+    cover: true
+  media_id: kOcXH4SytIYVIpYksTGfHmLW-LkVMEXX2JPHeC8Dg6qnzwWwLqd7BXf7WtOQ0b_m
+  cover_media_id: kOcXH4SytIYVIpYksTGfHlGpIzLIh-bG2OLZBcWzv6wkheDV-EhqcBDLWYorssWM
+  notes:
+  - '视觉生成机动组 G1「六根手指」（非系列，独立开头）。2026-09-23 当日全流程：grill 逐问收敛 → 大纲 → 原声槽 6 处逐槽采集（作者手打；槽 1–5 为原定五槽，槽 6 为作者追加补句）→ 事实核查（子代理，全一手）→ 成稿 → 自跑两块实验 → 配图 5 张 → 16 项核查 + 恢复期 B 六条 → 存草稿箱。**两轮转向**：① 实验自测推翻原假设「像素损失看不见多一根手指」（小模型能看出多指，AUC 0.97）→ 改为「损失按面积计价 + 最优解是条件平均」；② 事实核查推翻原转 2「2026 年手画好了 + 按评测分档」（无任何一手评测覆盖 2026 旗舰手部；「手部专项数据」零依据；Qwen-Image-2.0 报告反说 2K+ 会退化）→ 改为「2026 年的最低分维度：20.9」。'
+  - '🔬 实验（`run_experiment.py`，seed 20260923；数字事实源 results.json）：① 条件平均实验（两个模态各半、间距 10.56 px；模型输出 = 解析平均，RMS 0.0005；平均解数出 **9 条手指状条纹**（正常手 5 条）；**平均解损失只有「永远选一只」的 50.0%**）；② 指缝预算（指缝 latent 宽度 <0.3 px → 深度 0–2%、**100% 样本被填平**；0.54 px → 36–41%、92% 填平；1.08–1.12 px → 67–73%；2.24 px → 89.5%）。2026 的账：分辨率 512→2048（×4）、VAE 压缩 8×→16×（÷2）→ 手部 latent 像素净 ×2；特写（手占 25%）指缝 1.12 px 尚存，远景（手占 12%）0.54 px、92% 填平。'
+  - '📚 一手证据（全为核查确认的来源）：Qwen-Image-Bench（arXiv:2605.28091v2，2026-06 修订）1000 prompt / 23 二级 / 56 可核查维度，**解剖保真度最好成绩 20.9**（物理逻辑 31.9 / 物体 41.9 / 动物 42.6 / 接触交互 43.3；总分第一 GPT Image 2 = 64.7）；HandRefiner（arXiv:2311.17957）手部级 FID 158.34→147.52、检测置信度 0.934→0.944、97/100 拓扑正确、70/100 偏好；RHanDS（arXiv:2404.13984）手部 FID 33.84→22.18、关节位置误差 12.02→9.86；HandEval（arXiv:2510.08978，2025-10-10）首个手部质量评测、24,066 对样本、坏样本用 HandRefiner 反向退化；Qwen-Image-2.1 = 2026-09-20 开源权重（7B 视觉生成组件 + Qwen3-VL 8B 文本编码器、VAE 16× 压缩），09-22 云栖视听生成分论坛介绍更新（**发布与介绍分开写**）。'
+  - '🚩 事实红线（已写入大纲，正文逐条遵守）：不写「latent 里一根手指不足 1 个像素」为普遍结论（改为指缝预算 + 构图条件）；不把 8×8 套到 Qwen-Image 2.x；Wan2.1 是 4×8×8、Wan2.2 是 16×16×4 不混用；不写「2026 手部明显改善」为事实；不写「手部专项数据/标注」归因；不写「提分辨率→手更好」；解剖数字不写「27 个关节」；20.9 分口径写清是「解剖保真度维度上最好模型的分数」。'
+  - '🖼 配图 5 张（双轨）：封面 00-cover.png 1916x821 原生 21:9（文字块 **18.8%** ≤ 1/4；标题逐字核验通过；旧标题版留 00-cover-v1.png）；脚本图 2（01 平均实验 / 02 指缝预算）；AI 概念图 2（03 鬼影手指 / 04 逐项检查，逐张核验零文字零数字）。'
+  - '门禁：16 项核查过——正文 1905 字 / 含尾部 2423 字（≤2500 口径）；禁词 0；AI 腔 0；加粗失效 0；中文入公式 0；「待发布」残留 0；原声槽 6/6 逐字在场；超 60 字长句 0（原声段落整体豁免）；超 3 句段落 0；图片 4 张同级路径、无 images/ 前缀；话题标签 5 个；公式 5 条 mdnice 实渲 svg、merror 0、katex 0、**全部不横向滚动**（最宽 251px / 容器 339px）；`hot_articles.py --md --cited` 重生成（11 行，行间无空行、行尾两空格）且 `--self-check` 通过；`check_wechat_links.py` 11 条 mp 链接全溯源。恢复期 B 六条过（独立可读：正文零系列回引；认知交付：双转；篇幅：作者 ~2k 口径；术语人话：均方误差/条件均值/latent/FID/拓扑均首现给解释；开头 100 字白盒：作者原声零导航；文末问题 30 秒可答）。'
+  - '📦 2026-09-23 存草稿箱（remote-api via vps-us，grace+blue，citeStatus=true）：draft media_id kOcXH4SytIYVIpYksTGfHmLW-LkVMEXX2JPHeC8Dg6qnzwWwLqd7BXf7WtOQ0b_m、cover media_id kOcXH4SytIYVIpYksTGfHlGpIzLIh-bG2OLZBcWzv6wkheDV-EhqcBDLWYorssWM；4 张正文图上传成功（03/04 自动压 JPEG q82）；本次无 TLS 重试、一次通过。'
+  - '后台待作者确认：声明原创 + 定时 2026-09-23 20:00 + 勾选合集「视觉生成」（同 09-07/15/16/18/19 五篇，单合集）。发布后补 wechatUrl 到 frontmatter + 台账 + summary 重算。'
+  - '选题口径落点：`content-matrix.md` G1「AI 画 6 根手指」条目状态由「🔄 消化中」改为 ✅ 已消化（2026-09-23）。'
+  - '2026-09-24 对账（作者供链）：09-23 20:00 已发布 https://mp.weixin.qq.com/s/0fCMmqU9MdZ1feL1QBKZDA —— status draft_saved→published、published_date/wechat_url/frontmatter wechatUrl 三处同步。程序化核验（本机出口可直取 mp 页面）：ct=1790164800 → 2026-09-23 20:00:00+08:00、og:title 与 frontmatter title 逐字一致（未被后台精简）、og:description 与 frontmatter digest 逐字一致、msg_link 与供链一致。全文无「（待发布）」残留、无其他篇目引用本篇待补链接。'
+
 summary:
-  total: 81
+  total: 85
   by_status:
-    published: 81
+    published: 85
     drafting: 0
     draft_saved: 0
   drafting_queue: []
   ready_queue: []
   scheduled_queue: []
   planned_queue: []
-  next_publish_date: null
+  next_publish_date: ''
 plan_notes:
 - 2026-08-28 对齐：信息熵 8-28（今日）→ AlphaGo 8-29 → 多模态 8-30（作者确认）。目录名已同步重命名（git mv），frontmatter date 同步。
 - 2026-08-28 二次对齐：fp8 目录名改发布日期 2026-08-09；补 RLHF(7-30)/维度诅咒(高维空间,8-12) 两条已发布缺漏条目；price-war 两目录为贴图轨道，不入文章台账。
@@ -1093,3 +1177,11 @@ plan_notes:
 - 2026-09-18 「视觉生成」轨两篇同日入箱（均 remote-api via vps-us）：GAN 篇（2026-09-18-gan-return）与扩散步数篇（2026-09-19-diffusion-steps）。步数篇按作者指示「可以长一些，数学内容加多，加深入」以推导密度扩写——正文 2.9k→CJK 4906 字、公式 3→9 条、配图 4→5 张，新增数字全部由 analyze_math.py 实测并落 math_audit.json；作者另拍板删除尾部「下一篇预告」（该选题矩阵无排期，属空头预告），转发卡不设。summary 重算：total 81 / published 79 / drafting 0 / draft_saved 2。⚠️ 排期提醒：两篇同系列，恢复期禁同日双发同题材——建议 GAN 篇 09-18 20:00、步数篇 09-19 20:00 各发一篇；GAN 篇尾部同一句「猜字引擎」预告是否同删仍待作者定。
 - '2026-09-19 对账 + 今日篇准备：① GAN 篇作者供链回填（09-18 20:00 发布 https://mp.weixin.qq.com/s/w-0CKrnRRjP1OL8n01U83Q），status→published、wechat_url/published_date/frontmatter wechatUrl 三处同步；该条「GAN 篇预告是否删除」待办随发布关闭（正文已无「猜字引擎」预告）。summary 重算 total 81 / published 80 / draft_saved 1，ready_queue→2026-09-19-diffusion-steps，next_publish_date→09-19。② 今日篇（扩散步数）清理 2 处「GAN（待发布）」占位（正文第 5 节引用 + 尾部系列导航）改为真实微信链接。③ 标题口径统一：09-16 篇 frontmatter title 改为发布版「最高 37%」（原「最高 0.37 分」是拟稿口径；hot_articles.py 以 frontmatter 标题为显示源，不改则热门榜继续输出旧标题）。④ ⚠️ 链接归属未能程序化核验：本机出口 112.10.197.224 不在白名单（40164）、vps-us 侧 freepublish/batchget 返回 48001 api unauthorized、mp 页面直取 403；以微信对无效 mp 链接报 45166 的机制在存稿时反向验证。'
 - '2026-09-19 扩散步数篇发布回填（作者供链 https://mp.weixin.qq.com/s/WOrO8gJ0wH6XnhtJ28FRtQ，09-19 20:00 发布）：status→published、wechat_url/published_date/frontmatter wechatUrl 三处同步；summary 重算 total 81 / published 81 / draft_saved 0，ready_queue 清空、next_publish_date 置空。'
+- '2026-09-19 晚：扩散模型数学系列篇 1（2026-09-20-diffusion-elbo）当日完成全流程并入箱（grill → 大纲 → 原声槽 5/5 → 成稿 → 自跑实验 → 配图 9 张 → 16 项核查 → 存草稿箱）。本次会话作者四条新口径：① 不限制字数篇幅（按推导密度定；与 wechat-ops.md B.3「超 5k 必砍」旧口径冲突，待系列完成后同步文档）；② 配图可以多一点（本篇追加至 9 张）；③ 槽 7 文末互动问跳过——问句由 AI 补中性句（不计原声）；④ 系列连发三天、逐篇过门禁，不过则顺延。'
+- '2026-09-20 篇 1 发布回填（作者供链 https://mp.weixin.qq.com/s/IuoNCCYdsabOnkeGerOKEA，09-20 20:00 发布）：status draft_saved→published、published_date/wechat_url/frontmatter wechatUrl 三处同步；summary 重算 total 82 / published 82 / draft_saved 0，ready_queue 清空、next_publish_date→09-21（篇 2 分数视角）。'
+- '2026-09-20 晚：扩散模型数学系列篇 2（2026-09-21-diffusion-score，《扩散模型为什么要几百个噪声级别？一个其实就够了》）打磨轮（作者七条口径，逐条落地；台账条待存草稿箱时建）。① 段落重排：全文自然段 ≤3 句（脚本核查 0 超标）；原声槽 6 处长句按门禁逐字保留（quality-check 第 10 项豁免）。② 公式拆行：9 条长公式改 `\begin{aligned}` 多行；mdnice 实渲宽度从最长 53.3ex/48.7ex（≈426px/390px，手机必横向滚动）压到**全文 12 条公式最长 28.0ex（≈224px）**——宽度用实渲 SVG 的 `width: Xex` 量，不靠目测。③ AI 过渡句全部拆到 ≤60 字（超长句仅剩 4 处，全为原声）。④ 加粗失效根因=CommonMark flanking 规则（`**……。**下一句` 这种「收尾 ** 紧跟中文标点、后接汉字」不解析成加粗，微信端显示裸 `**`），句末标点移到标记之外，全文 0 处失效。⑤ 新增 13 个 `###` 二级小标题（6 章之下）。⑥ 新概念补解释：「流形」「清晰度」首现处补定义；「分部积分」补做法与代价并新增公式 ⑩（Hyvärinen 隐式分数匹配目标）。⑦ 开头加 4 段导语（标题前），前 100 字含「扩散模型/噪声/级别/分数」四个关键词，过渡后才进第 1 节。追加口径：⑧ 第 6 节新增「从离散走到连续」，写出反向 SDE 与概率流 ODE 两条方程并连到 flow matching。连带修正：术语「3 个峰宽」→「3 倍峰的标准差（0.35）」（quality-check 15.8 自造半术语，图 A/图 D 图注同步改 + `--replot` 重渲）；SD3 logit-normal 理由原稿写反（SD3 §3.1 原话是**中间段目标速度最难预测**，故加权到中间，非「中间段容易学」）已改正；尾部 2 处「（待发布）」改为篇 1 真实链接（09-20 20:00 已发 https://mp.weixin.qq.com/s/IuoNCCYdsabOnkeGerOKEA）；热门榜 `--cited` 重生成（9→10 行）；参考资料补 Hyvärinen (2005) JMLR 6:695-709。质量审查复跑：公式 merror 0 / katex 0 / 最长 28.0ex；失效加粗 0；禁词 0；AI 腔 0；原声槽 7/7 逐字在场；23 个关键数字对回 results.json + math_audit.json；链接 10 条全溯源；热门榜 self-check 通过；配图 8 张同级路径；封面标题逐字核验、文字块 ≈21% ≤1/4。⚠️ 环境坑：本机 python3/.venv-mdnice 均无 numpy/matplotlib，实验脚本须用 `uv run --with matplotlib --with numpy python run_experiment.py`；`--replot` 在 D=64 处会因 (8000,1500,64) 全量广播吃 ~6GB 内存被 OOM 杀（静默无输出），已改分块计算（数学等价，results.json 零漂移），重跑 188s 通过。本轮末按作者指示存草稿箱：draft media_id kOcXH4SytIYVIpYksTGfHsPzNRArYzeqjNLPBZZm296lGbwS1awdfoDPhkhlBck8、cover media_id kOcXH4SytIYVIpYksTGfHlhQcg129mOvlpC44Oga9_sFmHIoHvBCqoaRH_qDyP6n（remote-api via vps-us，grace+blue，8 图上传、3 张自动压 JPEG q82）。作者 2026-09-20 另拍板：原声长句可拆（槽 1/3/5/6）、结尾加「下一篇预告」（篇 3 引导视角，09-22 排期中，非空头预告）。台账已建条，summary 重算 total 83 / published 82 / draft_saved 1。'
+- '2026-09-22 对账 + 系列收尾：扩散模型数学系列篇 2（2026-09-21-diffusion-score）作者供链回填 https://mp.weixin.qq.com/s/ieHJjnSvSEseQkR4sFQh_w（09-21 20:00 发布），status draft_saved→published、published_date/wechat_url/frontmatter wechatUrl 三处同步。summary 重算 total 83 / published 83 / draft_saved 0，ready_queue 清空，next_publish_date→09-22（篇 3 引导视角）。程序化核验（本机出口本次可直取 mp 页面，非 403）：ct=1789992000 → 20:00:00+08:00、og:description 与 frontmatter digest 逐字一致、msg_link 与供链一致。⚠️ 实发标题被后台精简为「扩散模型为什么要几百个噪声级别？一个够吗」（去掉「其实就」三字），frontmatter title 已同步改为发布版——hot_articles.py 以 frontmatter 为显示源，不改则热门榜输出拟稿口径（同 09-16 篇处置）；封面文字仍是拟稿完整句、未重制，两者不一致已记录。今日起做篇 3（引导视角，目录 2026-09-22-diffusion-guidance，待建），结构/实验/钩子/落点走 grill 与作者逐问收敛。'
+- '2026-09-23 对账：扩散模型数学系列篇 3 / 系列收尾篇（2026-09-22-diffusion-guidance）作者供链回填 https://mp.weixin.qq.com/s/mLoiEHvPQTDSlg6RUb6DmQ（09-22 20:00 发布），status draft_saved→published、published_date/wechat_url/frontmatter wechatUrl 三处同步。程序化核验：ct=1790078400 → 20:00:00+08:00、og:title 与 frontmatter 逐字一致（未被后台精简，区别于篇 2）、og:description 与 digest 逐字一致、msg_link 与供链一致。summary 重算 total 84 / published 84 / draft_saved 0，ready_queue 清空、next_publish_date 置空。**扩散模型数学系列（变分 09-20 / 分数 09-21 / 引导 09-22）三篇全部发布完毕**。附带修一处本地归档缺陷：weixin.md 尾部「🔥 热门文章：」标题行重复两遍（hot_articles.py --md 自带标题行 + 正文既有标题行叠加），本地已删重复行，线上实发版经抓取复核仅一处、无需后台改动；追加脚本输出时正文不得再留同名标题行。'
+- '2026-09-23 新篇立项：视觉生成机动组 G1「六根手指」——目录 `content/2026-09-23-hand-fingers/`，排期 09-23 20:00（门禁不过则顺延），grill 逐问收敛（`.grill/2026-09-23-hand-fingers.md`）。选题决策：视觉生成机动组（接 09-07/15/16/18/19 五篇，不做系列表述、开头零导航）。**两轮转向**：① 实验自测推翻原假设「像素损失看不见多一根手指」——在 5 指样本上训练的小模型能看出多指（AUC 0.97、损失 +86%）；站得住的是「损失按面积计价」与「MSE 最优解 = 条件平均」→ 作者拍板实验改为两块（平均实验 + 像素预算，砍掉面积账节）；② 事实核查（子代理，全一手）推翻原转 2「2026 年手画好了 + 按评测分档」——无任何一手评测给过 Qwen-Image-2.x / Seedream 5.0 / GPT-Image 2.5 的手部准确率；「手部专项数据/标注」零依据；Qwen-Image-2.0 报告反而指出 2K+ 分辨率会退化；Qwen-Image-2.x 的 VAE 是 16× 压缩（1.0 才是 8×8），Wan2.1 是 4×8×8、Wan2.2 是 16×16×4 不可混用 → 作者拍板终稿转 2 =「2026 年的最低分维度：20.9」（Qwen 自家 Qwen-Image-Bench arXiv:2605.28091v2：解剖保真度 56 维垫底、最好模型 20.9 分，总体第一 GPT Image 2 = 64.7）。**交付句**：转 1 像素损失里没有「手」——最优解是条件平均（平均解数出 9 条手指状条纹、损失只有正确解的 50%）+ 指缝预算（latent 里不足 1 像素的缝就被填平）；转 2 一打分就现原形（20.9 分垫底、三家官方能力清单无手部、行业靠外挂修手 HandRefiner/RHanDS + 手部专项评测 HandEval 2025-10 才出现）。**自跑实验**（`run_experiment.py`，seed 20260923，数字事实源 results.json）：实验①平均实验（模态间距 10.56 px，模型输出 = 解析平均，RMS 0.0005；条纹数 5 → 9；损失比 0.50）；实验②像素预算（指缝 latent 宽度 <0.3 px → 深度 0–2%、100% 填平；0.54 px → 36–41%、92% 填平；1.08–1.12 px → 67–73%；2.24 px → 89.5%）。配图 5 张（封面 + 脚本图 2 已出 + AI 概念图 2 待出）。**篇幅口径**：作者 09-23 拍板 ~2k 紧凑版，恢复期 B.3 的 3.5–5k 区间记豁免并已同步改写 `docs/wechat-ops.md` B.3 文字（AGENTS.md 本就写 2000 字左右）。今日不发贴图（禁同日同题材）。原声槽 5 处待逐槽采集。' 
+- '2026-09-23 新篇入箱：视觉生成机动组 G1「六根手指」《AI 画的手指为什么总多一根？56 维评测，这项它只得 20.9 分》当日完成全流程并入草稿箱（remote-api via vps-us，grace+blue；draft media_id kOcXH4SytIYVIpYksTGfHmLW-LkVMEXX2JPHeC8Dg6qnzwWwLqd7BXf7WtOQ0b_m、cover kOcXH4SytIYVIpYksTGfHlGpIzLIh-bG2OLZBcWzv6wkheDV-EhqcBDLWYorssWM；4 张正文图上传，03/04 自动压 JPEG q82；本次一次通过无 TLS 重试）。**篇幅口径拍板**：作者定 ~2k 紧凑版（正文 1905 字 / 含尾部 2423），恢复期 B.3 的 3.5–5k 区间记豁免并已同步改写 `docs/wechat-ops.md` B.3 文字（AGENTS.md 本就写 2000 字左右）。**今日不发贴图**（禁同日同题材），文章主锚 Qwen-Image-2.1。**两轮转向**：实验自测推翻「损失看不见多指」（AUC 0.97），改为「按面积计价 + 条件平均」；事实核查推翻「2026 年手画好了 + 分档」（无一手评测覆盖 2026 旗舰手部），改为「2026 年的最低分维度 20.9」（Qwen-Image-Bench）。**标题两改**：拟稿 T1 → 作者判「后半句把最低挂到分数上、前半句丢了手指」→ 定稿「AI 画的手指为什么总多一根？56 维评测，这项它只得 20.9 分」（封面随之重生，旧版留 00-cover-v1.png）。summary 重算 total 85 / published 84 / draft_saved 1，ready_queue→本篇，next_publish_date→09-23。后台待作者确认：声明原创 + 定时 20:00 + 勾选合集「视觉生成」；发布后补 wechatUrl。'
+- '2026-09-24 对账：视觉生成机动组 G1（2026-09-23-hand-fingers）作者供链回填 https://mp.weixin.qq.com/s/0fCMmqU9MdZ1feL1QBKZDA（09-23 20:00 发布），status draft_saved→published、published_date/wechat_url/frontmatter wechatUrl 三处同步。程序化核验：ct=1790164800 → 20:00:00+08:00、og:title 与 frontmatter 逐字一致（未被后台精简）、og:description 与 digest 逐字一致、msg_link 与供链一致。summary 重算 total 85 / published 85 / draft_saved 0，ready_queue 清空、next_publish_date 置空；G 组余 G4（视频时长）、G5（图生视频）。'

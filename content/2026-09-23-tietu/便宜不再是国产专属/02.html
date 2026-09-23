@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>三张账单</title>
+<style>
+  :root {
+    --ink: #1A1814;
+    --muted: #5E584E;
+    --blue: #0F4C81;
+    --blue-d: #0A3358;
+    --paper: #F3EEE4;
+    --card: #FFFCF7;
+    --line: #D9D0C0;
+    --amber: #8A5A12;
+    --amber-bg: #F6E7C8;
+    --red: #8C342C;
+    --red-bg: #F6E4E0;
+    --green: #1E5C40;
+    --green-bg: #E5F0E6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 1080px;
+    height: 1420px;
+    overflow: hidden;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Noto Sans CJK SC", "Noto Sans CJK TC", sans-serif;
+  }
+  .page {
+    width: 1080px;
+    height: 1420px;
+    padding: 36px 40px 28px;
+    position: relative;
+  }
+  .rail {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 10px;
+    background: #C4841D;
+  }
+  .kicker {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 20px;
+    letter-spacing: 0.12em;
+    color: var(--blue);
+    font-weight: 700;
+  }
+  .kicker span { color: var(--muted); font-weight: 500; letter-spacing: 0.04em; }
+  h1 {
+    margin-top: 8px;
+    font-family: "Noto Serif CJK SC", "Noto Serif CJK TC", serif;
+    font-size: 58px;
+    line-height: 1.12;
+    font-weight: 900;
+    color: var(--blue-d);
+  }
+  .sub {
+    margin-top: 6px;
+    font-size: 24px;
+    line-height: 1.4;
+  }
+  .panel {
+    margin-top: 16px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 16px 18px 14px;
+  }
+  .ph {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px;
+  }
+  .ph h2 { font-size: 26px; font-weight: 900; }
+  .ph span {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    background: var(--blue);
+    padding: 2px 8px;
+  }
+  .row {
+    display: grid;
+    grid-template-columns: 250px 1fr 168px;
+    gap: 10px;
+    align-items: center;
+    margin-top: 7px;
+  }
+  .row .lab { font-size: 20px; font-weight: 700; }
+  .row .lab em { font-style: normal; font-weight: 500; color: var(--muted); font-size: 16px; }
+  .track {
+    height: 18px;
+    background: #EFE8DC;
+    position: relative;
+  }
+  .bar { height: 18px; }
+  .row .num {
+    text-align: right;
+    font-size: 20px;
+    font-weight: 900;
+    font-variant-numeric: tabular-nums;
+  }
+  .call {
+    margin-top: 10px;
+    font-size: 18px;
+    line-height: 1.4;
+    color: var(--ink);
+  }
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .box {
+    padding: 12px 12px 10px;
+    min-height: 168px;
+  }
+  .box h3 { font-size: 20px; font-weight: 900; margin-bottom: 6px; }
+  .box p { font-size: 18px; line-height: 1.4; }
+  .box.l { background: #E7F0F8; color: var(--blue-d); }
+  .box.r { background: var(--amber-bg); color: #5C3B08; }
+  .warn {
+    margin-top: 10px;
+    background: var(--red-bg);
+    color: var(--red);
+    padding: 10px 12px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+  .impact {
+    margin-top: 16px;
+    background: var(--blue-d);
+    color: #F7F1E6;
+    padding: 16px 18px 14px;
+  }
+  .impact h2 { font-size: 26px; font-weight: 900; color: #F6E7C8; }
+  .nums {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .nums div { font-size: 20px; line-height: 1.35; }
+  .nums b {
+    display: block;
+    font-size: 32px;
+    font-weight: 900;
+    color: #fff;
+    font-variant-numeric: tabular-nums;
+    margin-top: 2px;
+  }
+  .impact p {
+    margin-top: 10px;
+    font-size: 20px;
+    line-height: 1.4;
+  }
+  .foot {
+    margin-top: 12px;
+    font-size: 18px;
+    line-height: 1.4;
+    color: var(--muted);
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="rail"></div>
+    <div class="kicker">数解AI · 性价比<span>冷启动 · 缓存 · 能力 · 别混成一张</span></div>
+    <h1>三张账单，别看成一张</h1>
+    <p class="sub">牌价谁便宜，和 agent 跑完谁便宜，不是同一个问题。</p>
+
+    <div class="panel">
+      <div class="ph">
+        <h2>1 · 冷启动单价</h2>
+        <span>输出 $ / 百万</span>
+      </div>
+      <div class="row">
+        <div class="lab">Flash 忙时</div>
+        <div class="track"><div class="bar" style="width:100%;background:#8C342C;"></div></div>
+        <div class="num">$1.20</div>
+      </div>
+      <div class="row">
+        <div class="lab">Flash 闲时</div>
+        <div class="track"><div class="bar" style="width:50%;background:#1E5C40;"></div></div>
+        <div class="num">$0.60</div>
+      </div>
+      <div class="row">
+        <div class="lab">GPT-6 Luna</div>
+        <div class="track"><div class="bar" style="width:41.7%;background:#C4841D;"></div></div>
+        <div class="num">$0.50</div>
+      </div>
+      <div class="row">
+        <div class="lab">GLM-5.3-Flash <em>¥2.8</em></div>
+        <div class="track"><div class="bar" style="width:32.4%;background:#0F4C81;"></div></div>
+        <div class="num">$0.39</div>
+      </div>
+      <p class="call">Luna 低于 Flash 闲时：输入低 33%，输出低 17%。GLM Flash 输出仍更低。便宜档没有被一家通吃。</p>
+    </div>
+
+    <div class="panel">
+      <div class="ph">
+        <h2>2 · 缓存命中</h2>
+        <span>agent 真账单 · 输入</span>
+      </div>
+      <div class="row">
+        <div class="lab">Kimi / GLM 命中</div>
+        <div class="track"><div class="bar" style="width:100%;background:#8C342C;"></div></div>
+        <div class="num">$0.28</div>
+      </div>
+      <div class="row">
+        <div class="lab">Sol · Opus 5.5</div>
+        <div class="track"><div class="bar" style="width:71%;background:#0F4C81;"></div></div>
+        <div class="num">$0.20</div>
+      </div>
+      <div class="row">
+        <div class="lab">Pro 闲时命中</div>
+        <div class="track"><div class="bar" style="width:8%;background:#1E5C40;"></div></div>
+        <div class="num">$0.022</div>
+      </div>
+      <div class="row">
+        <div class="lab">Luna 缓存</div>
+        <div class="track"><div class="bar" style="width:3.6%;background:#C4841D;"></div></div>
+        <div class="num">$0.01</div>
+      </div>
+      <div class="row">
+        <div class="lab">Flash 闲时命中</div>
+        <div class="track"><div class="bar" style="width:1.6%;min-width:6px;background:#1E5C40;"></div></div>
+        <div class="num">$0.003</div>
+      </div>
+      <p class="call">前缀不动时，DeepSeek 还守得住。Flash 闲时缓存大约是 Luna 的三分之一，是 Opus 5.5 的大约 1/67。Kimi、GLM 的命中价已经比新 Opus 贵。</p>
+    </div>
+
+    <div class="panel">
+      <div class="ph">
+        <h2>3 · 能力</h2>
+        <span>两张家榜</span>
+      </div>
+      <div class="split">
+        <div class="box l">
+          <h3>OpenAI 自家表</h3>
+          <p>Sol xhigh，AutomationBench 33.2%，单任务 $0.27。Opus 5 拉满，成本 11.1 倍。表里没有 Opus 5.5。</p>
+        </div>
+        <div class="box r">
+          <h3>Anthropic 自家表</h3>
+          <p>打的是 Astra 和 GPT-5.6 Sol。没有 GPT-6 Sol。网络安全请求大多路由回 Opus 4.8。</p>
+        </div>
+      </div>
+      <div class="warn">同一天发布，两边都没打到当天的对手。OpenAI 这张 33.2%，和 Anthropic 页上另一套 AutomationBench 的 54.4%，不是同一张榜。</div>
+    </div>
+
+    <div class="impact">
+      <h2>被掀的是口号，不是 Pro 的单价</h2>
+      <div class="nums">
+        <div>Astra 对 V4 Pro 闲时<b>约 15 倍 / 25 倍</b></div>
+        <div>Sol 对 V4 Pro 闲时<b>约 3 倍 / 5 倍</b></div>
+      </div>
+      <p>「便宜一个数量级」今天不好再说。免费用户桌面端已经能摸到 Luna。国产订阅得按新牌价重算包含量。</p>
+    </div>
+    <p class="foot">条形按输出或缓存输入等比，不是能力分。人民币按 7.2 粗算。能力分均为厂商自家评测，不是第三方同口径。</p>
+  </div>
+</body>
+</html>

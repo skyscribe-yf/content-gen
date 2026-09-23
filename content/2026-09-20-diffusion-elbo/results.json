@@ -1,0 +1,312 @@
+{
+  "config": {
+    "seed": 20260920,
+    "T": 1000,
+    "modes": 8,
+    "radius": 3.0,
+    "sigma": 0.35,
+    "schedule": "cosine",
+    "alpha_bar_min": 0.01,
+    "steps": 4000,
+    "batch": 512,
+    "hidden": 128,
+    "lr": 0.001,
+    "n_eval": 4000,
+    "targets": {
+      "x0": "x0",
+      "eps": "eps",
+      "score": "-eps/sqrt(1-abar)"
+    },
+    "model": "tiny numpy MLP, identical init & data order for the 3 targets"
+  },
+  "final_train_loss": {
+    "x0": 1.37754,
+    "eps": 0.53258,
+    "score": 83.60008
+  },
+  "by_alpha": {
+    "0.99": {
+      "t_over_T": 0.057,
+      "alpha_bar": 0.99,
+      "x0": {
+        "rmse": 0.1765,
+        "target_rms": 3.0389,
+        "rel_err": 0.0581,
+        "cos": 0.9991,
+        "x0_space_rmse": 0.1765
+      },
+      "eps": {
+        "rmse": 0.253,
+        "target_rms": 0.3839,
+        "rel_err": 0.6591,
+        "cos": 0.8729,
+        "x0_space_rmse": 0.0254
+      },
+      "score": {
+        "rmse": 2.4718,
+        "target_rms": 3.8393,
+        "rel_err": 0.6438,
+        "cos": 0.748,
+        "x0_space_rmse": 0.0248
+      }
+    },
+    "0.95": {
+      "t_over_T": 0.137,
+      "alpha_bar": 0.95,
+      "x0": {
+        "rmse": 0.1667,
+        "target_rms": 3.0225,
+        "rel_err": 0.0552,
+        "cos": 0.9993,
+        "x0_space_rmse": 0.1667
+      },
+      "eps": {
+        "rmse": 0.2743,
+        "target_rms": 0.7453,
+        "rel_err": 0.368,
+        "cos": 0.9209,
+        "x0_space_rmse": 0.0629
+      },
+      "score": {
+        "rmse": 1.9389,
+        "target_rms": 3.333,
+        "rel_err": 0.5817,
+        "cos": 0.8114,
+        "x0_space_rmse": 0.0995
+      }
+    },
+    "0.9": {
+      "t_over_T": 0.199,
+      "alpha_bar": 0.9,
+      "x0": {
+        "rmse": 0.1733,
+        "target_rms": 3.0151,
+        "rel_err": 0.0575,
+        "cos": 0.999,
+        "x0_space_rmse": 0.1733
+      },
+      "eps": {
+        "rmse": 0.3127,
+        "target_rms": 0.8878,
+        "rel_err": 0.3523,
+        "cos": 0.9299,
+        "x0_space_rmse": 0.1042
+      },
+      "score": {
+        "rmse": 1.4498,
+        "target_rms": 2.8074,
+        "rel_err": 0.5164,
+        "cos": 0.8242,
+        "x0_space_rmse": 0.1528
+      }
+    },
+    "0.8": {
+      "t_over_T": 0.29,
+      "alpha_bar": 0.8,
+      "x0": {
+        "rmse": 0.1985,
+        "target_rms": 2.9985,
+        "rel_err": 0.0662,
+        "cos": 0.9984,
+        "x0_space_rmse": 0.1985
+      },
+      "eps": {
+        "rmse": 0.261,
+        "target_rms": 0.9558,
+        "rel_err": 0.2731,
+        "cos": 0.9461,
+        "x0_space_rmse": 0.1305
+      },
+      "score": {
+        "rmse": 0.8192,
+        "target_rms": 2.1372,
+        "rel_err": 0.3833,
+        "cos": 0.8709,
+        "x0_space_rmse": 0.1832
+      }
+    },
+    "0.6": {
+      "t_over_T": 0.431,
+      "alpha_bar": 0.6,
+      "x0": {
+        "rmse": 0.1593,
+        "target_rms": 2.9112,
+        "rel_err": 0.0547,
+        "cos": 0.9992,
+        "x0_space_rmse": 0.1593
+      },
+      "eps": {
+        "rmse": 0.1559,
+        "target_rms": 0.9297,
+        "rel_err": 0.1677,
+        "cos": 0.9641,
+        "x0_space_rmse": 0.1273
+      },
+      "score": {
+        "rmse": 0.5897,
+        "target_rms": 1.47,
+        "rel_err": 0.4012,
+        "cos": 0.902,
+        "x0_space_rmse": 0.3045
+      }
+    },
+    "0.4": {
+      "t_over_T": 0.561,
+      "alpha_bar": 0.4,
+      "x0": {
+        "rmse": 0.1505,
+        "target_rms": 2.7402,
+        "rel_err": 0.0549,
+        "cos": 0.9995,
+        "x0_space_rmse": 0.1505
+      },
+      "eps": {
+        "rmse": 0.1643,
+        "target_rms": 0.9206,
+        "rel_err": 0.1784,
+        "cos": 0.9117,
+        "x0_space_rmse": 0.2012
+      },
+      "score": {
+        "rmse": 0.5555,
+        "target_rms": 1.1885,
+        "rel_err": 0.4674,
+        "cos": 0.7812,
+        "x0_space_rmse": 0.527
+      }
+    },
+    "0.2": {
+      "t_over_T": 0.702,
+      "alpha_bar": 0.2,
+      "x0": {
+        "rmse": 0.1175,
+        "target_rms": 2.2885,
+        "rel_err": 0.0513,
+        "cos": 0.9991,
+        "x0_space_rmse": 0.1175
+      },
+      "eps": {
+        "rmse": 0.1224,
+        "target_rms": 0.9995,
+        "rel_err": 0.1225,
+        "cos": 0.9474,
+        "x0_space_rmse": 0.2449
+      },
+      "score": {
+        "rmse": 0.3768,
+        "target_rms": 1.1175,
+        "rel_err": 0.3371,
+        "cos": 0.8017,
+        "x0_space_rmse": 0.674
+      }
+    },
+    "0.1": {
+      "t_over_T": 0.794,
+      "alpha_bar": 0.1,
+      "x0": {
+        "rmse": 0.1156,
+        "target_rms": 1.8039,
+        "rel_err": 0.0641,
+        "cos": 0.9989,
+        "x0_space_rmse": 0.1156
+      },
+      "eps": {
+        "rmse": 0.113,
+        "target_rms": 1.1587,
+        "rel_err": 0.0975,
+        "cos": 0.9953,
+        "x0_space_rmse": 0.339
+      },
+      "score": {
+        "rmse": 0.3303,
+        "target_rms": 1.2214,
+        "rel_err": 0.2704,
+        "cos": 0.9794,
+        "x0_space_rmse": 0.9401
+      }
+    },
+    "0.05": {
+      "t_over_T": 0.855,
+      "alpha_bar": 0.05,
+      "x0": {
+        "rmse": 0.1217,
+        "target_rms": 1.3631,
+        "rel_err": 0.0892,
+        "cos": 0.9979,
+        "x0_space_rmse": 0.1217
+      },
+      "eps": {
+        "rmse": 0.1075,
+        "target_rms": 1.2819,
+        "rel_err": 0.0839,
+        "cos": 0.9956,
+        "x0_space_rmse": 0.4687
+      },
+      "score": {
+        "rmse": 0.2951,
+        "target_rms": 1.3152,
+        "rel_err": 0.2243,
+        "cos": 0.9831,
+        "x0_space_rmse": 1.2536
+      }
+    },
+    "0.02": {
+      "t_over_T": 0.909,
+      "alpha_bar": 0.02,
+      "x0": {
+        "rmse": 0.1307,
+        "target_rms": 0.8916,
+        "rel_err": 0.1466,
+        "cos": 0.9792,
+        "x0_space_rmse": 0.1307
+      },
+      "eps": {
+        "rmse": 0.1083,
+        "target_rms": 1.3499,
+        "rel_err": 0.0802,
+        "cos": 0.9969,
+        "x0_space_rmse": 0.7581
+      },
+      "score": {
+        "rmse": 0.2734,
+        "target_rms": 1.3636,
+        "rel_err": 0.2005,
+        "cos": 0.982,
+        "x0_space_rmse": 1.8947
+      }
+    },
+    "0.01": {
+      "t_over_T": 0.936,
+      "alpha_bar": 0.01,
+      "x0": {
+        "rmse": 0.1763,
+        "target_rms": 0.6346,
+        "rel_err": 0.2778,
+        "cos": 0.8625,
+        "x0_space_rmse": 0.1763
+      },
+      "eps": {
+        "rmse": 0.1096,
+        "target_rms": 1.3625,
+        "rel_err": 0.0804,
+        "cos": 0.9981,
+        "x0_space_rmse": 1.0906
+      },
+      "score": {
+        "rmse": 0.3172,
+        "target_rms": 1.3694,
+        "rel_err": 0.2317,
+        "cos": 0.9591,
+        "x0_space_rmse": 3.1405
+      }
+    }
+  },
+  "identity_check": {
+    "alpha_bar": 0.5,
+    "n_points": 400,
+    "max_abs_dev_eps_vs_neg_sqrt1mab_score": "0.000e+00",
+    "max_abs_dev_xt_vs_sqrtab_x0star_plus_sqrt1mab_epsstar": "1.110e-15",
+    "note": "eps = -sqrt(1-abar) * score 与 x_t = sqrt(abar) E[x0|x_t] + sqrt(1-abar) E[eps|x_t] 的数值残差"
+  },
+  "runtime_sec": 46.8
+}
