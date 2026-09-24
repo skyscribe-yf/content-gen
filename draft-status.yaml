@@ -1174,7 +1174,7 @@ articles:
     draft: false
     outline: true
     cover: true
-  media_id: kOcXH4SytIYVIpYksTGfHhXjO0x9DNbkE-ArZ6ty0kPwVZ9sNGh0UzDx2Lsg0MFa
+  media_id: kOcXH4SytIYVIpYksTGfHuTn4ANENCqb1_BCcr0aEKLF0WAfcff5OYLMntnLOUtR
   cover_media_id: kOcXH4SytIYVIpYksTGfHseh2RkRP8YZVxsf5_rXSCqzXSl8E98Jc1uvBX6LkOhU
   notes:
   - '素材来源：上游四架构对比信息图（作者提供，arch_comparison.jpeg）+ 四家一手报告。2026-09-24 当日完成：事实核查 → 初稿纠错 → 重写正文 → 原声槽 7 处逐槽采集（作者手打，含 1 处重复词修正待确认）→ 新增脚本图 01 → 封面按新标题重出 → 16 项核查 → 存草稿箱。'
@@ -1185,7 +1185,7 @@ articles:
   - '📦 2026-09-24 存草稿箱（remote-api via vps-us，grace+blue）：draft media_id kOcXH4SytIYVIpYksTGfHhXjO0x9DNbkE-ArZ6ty0kPwVZ9sNGh0UzDx2Lsg0MFa、cover media_id kOcXH4SytIYVIpYksTGfHseh2RkRP8YZVxsf5_rXSCqzXSl8E98Jc1uvBX6LkOhU；4 张正文图上传成功（02/03/04 自动压 JPEG q82）；一次通过。'
   - '⚠️ 本轮环境修复（可复用）：.venv-mdnice 的 playwright 升到 1.61.0 后缺 chromium_headless_shell-1228，mdnice 首次尝试报「Executable doesn''t exist … chrome-headless-shell」、二次重试才报「Playwright Sync API inside the asyncio loop」——后者是余波不是真因。修复：.venv-mdnice/bin/python -m playwright install chromium（约 114 MiB）。'
   - '后台待作者确认：声明原创 + 定时 2026-09-24 20:00 + 勾选合集「开源大模型技术揭秘」。⚠️ 双发提醒：同日 20:00 已有《损失面上全是坑》（数学直觉），两篇题材不同、符合「禁同日双发同题材」，但同日双发会稀释推荐，可在后台错开 30 分钟。'
-  - '⏳ 待作者逐字确认 3 处：① 槽 2 两处错别字（别上下文→被上下文、额外开心→额外开销）；② 槽 3 事实锚点（V4.1-Flash 只在 Codeforces 3471 vs 3348、MathArena Apex 65.6 vs 65.3 反超 Pro；GPQA/HLE 落后 —— 加不加数字锚点）；③ 槽 5 重复词去重（更高质量的模型生成质量→更高的模型生成质量）。若换词需重存草稿。'
+  - '✅ 2026-09-24 作者回复「同意按照你的来」，三处待确认全部落地：① 槽 2 错别字（被上下文 / 额外开销）；② 槽 3 事实锚点收窄为「在编程评测上反超自家 Pro」（Codeforces 3471 vs 3348、Arena Apex 65.6 vs 65.3，GPQA/HLE 落后故不写全面超越）；③ 槽 5 重复词去重。因正文有改动，已重存草稿：新 media_id kOcXH4SytIYVIpYksTGfHuTn4ANENCqb1_BCcr0aEKLF0WAfcff5OYLMntnLOUtR（旧稿 kOcXH4SytIYVIpYksTGfHhXjO0x9DNbkE-ArZ6ty0kPwVZ9sNGh0UzDx2Lsg0MFa 需后台删除）；最终口径正文 2182 字 / 含尾部 2497，原声槽 7/7 逐字在场。'
 
 summary:
   total: 87
