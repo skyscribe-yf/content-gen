@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>22.1%，不是五分之一</title>
+<style>
+  :root {
+    --ink: #141414;
+    --paper: #F6F3EA;
+    --yellow: #FFE500;
+    --red: #E10600;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 1080px;
+    height: 1440px;
+    overflow: hidden;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Noto Sans CJK SC", "Noto Sans CJK TC", sans-serif;
+  }
+  .page {
+    width: 1080px;
+    height: 1440px;
+    display: flex;
+    flex-direction: column;
+    padding: 28px 32px 24px;
+    gap: 14px;
+  }
+  .kicker {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 32px;
+    font-weight: 900;
+  }
+  .kicker b { background: var(--ink); color: var(--yellow); padding: 4px 12px; }
+  h1 {
+    font-size: 72px;
+    line-height: 1.02;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+  }
+  .hero {
+    background: var(--yellow);
+    color: var(--ink);
+    padding: 18px 22px 16px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 22px;
+    align-items: end;
+  }
+  .hero .n {
+    font-size: 148px;
+    line-height: 0.84;
+    font-weight: 900;
+    letter-spacing: -0.05em;
+  }
+  .hero .l { font-size: 40px; line-height: 1.22; font-weight: 900; padding-bottom: 8px; }
+  .list { flex: 1; display: flex; flex-direction: column; gap: 12px; min-height: 0; }
+  .item {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 16px;
+    align-items: center;
+    background: #fff;
+    border: 3px solid var(--ink);
+    padding: 8px 16px;
+  }
+  .item .k {
+    font-size: 40px;
+    line-height: 1.05;
+    font-weight: 900;
+  }
+  .item .v { font-size: 36px; line-height: 1.28; font-weight: 800; }
+  .item.no { background: var(--red); color: #fff; border-color: var(--red); }
+  .item.yes { background: var(--yellow); border-color: var(--ink); }
+  .item.ink { background: var(--ink); color: var(--yellow); border-color: var(--ink); }
+  mark { background: var(--ink); color: var(--yellow); padding: 0 6px; font-weight: 900; white-space: nowrap; }
+  .item.no mark, .item.ink mark { background: var(--yellow); color: var(--ink); }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="kicker"><b>数解AI</b><span>图 3 / 3 · 另一张账单</span></div>
+    <h1>22.1%，不是五分之一</h1>
+    <div class="hero">
+      <div class="n">22.1%</div>
+      <div class="l">$0.72 ÷ $3.26<br>不到 1/4，高于 1/5<br>AA 测的，不是 OpenAI</div>
+    </div>
+    <div class="list">
+      <div class="item yes">
+        <div class="k">少 31.4%</div>
+        <div class="v">相对上一档 Sol 的 $1.05。他们写成少 31%。<br><mark>不是五分之一。</mark></div>
+      </div>
+      <div class="item no">
+        <div class="k">多 10–30%</div>
+        <div class="v">输出 token 比上一档多。输出牌价仍是 <mark>$10</mark>。没降价。</div>
+      </div>
+      <div class="item">
+        <div class="k">低 1 分</div>
+        <div class="v">AA 写比 Astra 低 1 分。绝对分没给。<br><mark>不写成 52 对 53。</mark></div>
+      </div>
+      <div class="item no">
+        <div class="k">Chat 没有</div>
+        <div class="v">在 Work 和 Codex。API 名 gpt-6.1-sol。</div>
+      </div>
+      <div class="item ink">
+        <div class="k">8 倍没价</div>
+        <div class="v">Ultrafast 价目没给。<br>Fast 是标准价的 <mark>2 倍</mark>。别混。</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>77.9% 这分，公开榜没有</title>
+<style>
+  :root {
+    --ink: #141414;
+    --paper: #F6F3EA;
+    --yellow: #FFE500;
+    --red: #E10600;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 1080px;
+    height: 1440px;
+    overflow: hidden;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Noto Sans CJK SC", "Noto Sans CJK TC", sans-serif;
+  }
+  .page {
+    width: 1080px;
+    height: 1440px;
+    display: flex;
+    flex-direction: column;
+    padding: 28px 32px 24px;
+    gap: 14px;
+  }
+  .kicker {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 32px;
+    font-weight: 900;
+  }
+  .kicker b { background: var(--ink); color: var(--yellow); padding: 4px 12px; }
+  h1 {
+    font-size: 68px;
+    line-height: 1.02;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+  }
+  .lead { font-size: 36px; line-height: 1.25; font-weight: 800; }
+  mark { background: var(--yellow); color: var(--ink); padding: 0 6px; font-weight: 900; }
+  .list { flex: 1; display: flex; flex-direction: column; gap: 12px; min-height: 0; }
+  .row {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 220px;
+    gap: 12px;
+    background: #fff;
+    border: 3px solid var(--ink);
+    padding: 12px 14px;
+    align-items: center;
+  }
+  .name { font-size: 40px; font-weight: 900; line-height: 1.05; }
+  .name span { display: block; margin-top: 6px; font-size: 30px; font-weight: 800; }
+  .stamp {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: 900;
+    line-height: 1.05;
+  }
+  .stamp.yes { background: var(--yellow); color: var(--ink); }
+  .stamp.no { background: var(--red); color: #fff; }
+  .stamp .big { font-size: 52px; letter-spacing: -0.03em; }
+  .stamp .small { margin-top: 6px; font-size: 28px; }
+  .foot {
+    background: var(--ink);
+    color: var(--yellow);
+    font-size: 32px;
+    line-height: 1.3;
+    font-weight: 900;
+    padding: 14px 16px;
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="kicker"><b>数解AI</b><span>图 1 / 4 · DeepSWE</span></div>
+    <h1>Gemini 4.0<br>77.9%，公开榜没有</h1>
+    <p class="lead">博客写新 SOTA。方法页写：<mark>这分是自己跑的。</mark></p>
+    <div class="list">
+      <div class="row">
+        <div class="name">Argon 77.9%<span>mini-swe-agent · 自评</span></div>
+        <div class="stamp no"><div class="big">不在榜</div><div class="small">9 月 22 日</div></div>
+      </div>
+      <div class="row">
+        <div class="name">Astra 74.1%<span>公开榜抄来的 · 页面是 74%±3</span></div>
+        <div class="stamp yes"><div class="big">抄榜</div><div class="small">上沿约 77%</div></div>
+      </div>
+      <div class="row">
+        <div class="name">Opus 74.2%<span>系统卡，不是这张公开榜</span></div>
+        <div class="stamp no"><div class="big">另一处</div><div class="small">Fable 67.4%</div></div>
+      </div>
+      <div class="row">
+        <div class="name">高出 3.8 个点<span>77.9 − 74.1。自己的区间没给。</span></div>
+        <div class="stamp no"><div class="big">&lt;1</div><div class="small">贴着上沿</div></div>
+      </div>
+    </div>
+    <div class="foot">X 上有人贴出这三行，接着说：听着厉害，可你还用不上。Fairwind，测试者。</div>
+  </div>
+</body>
+</html>

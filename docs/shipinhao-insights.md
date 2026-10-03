@@ -10,6 +10,12 @@
 - 生产模式分布：TTS 克隆 12 / 口播 6 / Gemini 加工 2
 - 时长：97s ~ 689s（多数 3-5 分钟）
 
+## 台账补录（2026-10-01）
+
+- `docs/shipinhao-data-log.json` 由 35 条补至 **36 条**，新增：
+  - **2026-08-20 多维高斯：为什么同一步长差1万倍？**（`gaussian-trust-region`，`manim-tts-builtin`，211.2s）——强化学习原理系列第 5 篇的视频号版；MiniMax 精英男声（`male-qn-jingying`）+ speed 1.0 / pitch +2，5 段分镜，产物归档 `content/2026-08-20-gaussian-trust-region/shipinhao/`
+- ⚠️ **台账/产线缺口**（2026-10-01 核查）：「强化学习原理」系列的 `2026-08-16-mdp` / `08-17-bellman` / `08-18-q-learning` / `08-19-policy-gradient` 有视频产物但台账只到 08-16；**`2026-08-22-trpo`、`2026-08-24-ppo-math`、`2026-08-25-gae`、`2026-09-13-grpo-math`、`2026-09-14-reward-hacking`、`2026-10-01-power-law-rl` 目录尚无 `shipinhao/`**（这几篇还没做视频，下一篇可选）
+
 ## 已知观察（待数据验证）
 
 - 用户反馈：播放量分层明显——**部分视频接近 2 万，多数在 800-2000 区间**

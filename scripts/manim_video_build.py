@@ -800,7 +800,7 @@ def main():
     ap.add_argument("--video-dir", default=None,
                     help="Manim 渲染输出目录（默认自动探测 media/videos/scenes/ 下含 S1.mp4 的目录）")
     ap.add_argument("--safe-margin", type=float, default=0.08,
-                    help="安全边距：内容缩放比例（默认 0.08 = 四周留 8% 边距，防手机圆角/播放器 UI 裁边）")
+                    help="安全边距：内容缩放比例（默认 0.08 = 四周留 8%% 边距，防手机圆角/播放器 UI 裁边）")
     ap.add_argument("--typewriter", action="store_true",
                     help="逐字打字机字幕（默认关闭：整行一次出现 + 150ms 快速淡入）")
     ap.add_argument("--no-typewriter", action="store_true",

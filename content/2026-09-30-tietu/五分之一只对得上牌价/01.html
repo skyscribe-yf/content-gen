@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>五分之一，只对得上牌价</title>
+<style>
+  :root {
+    --ink: #141414;
+    --paper: #F6F3EA;
+    --yellow: #FFE500;
+    --red: #E10600;
+    --red-ink: #FFF7F4;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 1080px;
+    height: 1440px;
+    overflow: hidden;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Noto Sans CJK SC", "Noto Sans CJK TC", sans-serif;
+  }
+  .page {
+    width: 1080px;
+    height: 1440px;
+    display: flex;
+    flex-direction: column;
+    padding: 28px 32px 24px;
+    gap: 16px;
+  }
+  .kicker {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 32px;
+    font-weight: 900;
+  }
+  .kicker b {
+    background: var(--ink);
+    color: var(--yellow);
+    padding: 4px 12px;
+  }
+  h1 {
+    font-size: 84px;
+    line-height: 1.02;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+  }
+  .lead {
+    font-size: 40px;
+    line-height: 1.25;
+    font-weight: 800;
+  }
+  mark {
+    background: var(--yellow);
+    color: var(--ink);
+    padding: 0 8px;
+    font-weight: 900;
+    white-space: nowrap;
+  }
+  .heroes {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr 1fr;
+    gap: 12px;
+    min-height: 340px;
+  }
+  .hero {
+    padding: 22px 18px 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .hero.yes { background: var(--yellow); color: var(--ink); }
+  .hero.no { background: var(--red); color: var(--red-ink); }
+  .hero .n {
+    font-size: 108px;
+    line-height: 0.88;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+  }
+  .hero .l {
+    margin-top: 12px;
+    font-size: 36px;
+    line-height: 1.25;
+    font-weight: 800;
+  }
+  .stack { display: flex; flex-direction: column; gap: 12px; flex: 1; }
+  .row {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 210px 1fr auto;
+    gap: 16px;
+    align-items: center;
+    background: #fff;
+    border: 3px solid var(--ink);
+    padding: 8px 16px;
+  }
+  .row .k { font-size: 38px; font-weight: 900; }
+  .row .v { font-size: 36px; font-weight: 800; line-height: 1.2; }
+  .tag {
+    font-size: 40px;
+    line-height: 1;
+    font-weight: 900;
+    padding: 12px 14px;
+    white-space: nowrap;
+  }
+  .tag.yes { background: var(--yellow); color: var(--ink); }
+  .tag.no { background: var(--red); color: #fff; }
+  .call {
+    font-size: 36px;
+    line-height: 1.3;
+    font-weight: 800;
+    padding: 14px 16px;
+  }
+  .call.no { background: var(--red); color: #fff; }
+  .call.yes { background: var(--ink); color: var(--yellow); }
+  .call b { font-weight: 900; }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="kicker"><b>数解AI</b><span>图 1 / 3 · 牌价</span></div>
+    <h1>五分之一，<br>只对得上牌价</h1>
+    <p class="lead">对的是 Astra 的<mark>标准输入和输出</mark>。<br>缓存和上一档，都不是。</p>
+    <div class="heroes">
+      <div class="hero yes">
+        <div class="n">1/5</div>
+        <div class="l">输入 $2 对 $10<br>输出 $10 对 $50</div>
+      </div>
+      <div class="hero no">
+        <div class="n">1/10</div>
+        <div class="l">缓存读取<br>$0.10 对 $1</div>
+      </div>
+      <div class="hero no">
+        <div class="n">没降</div>
+        <div class="l">上一档仍是<br>$2 / $10</div>
+      </div>
+    </div>
+    <div class="stack">
+      <div class="row">
+        <div class="k">缓存写入</div>
+        <div class="v">$2.50，上一档没动</div>
+        <div class="tag yes">仍是 1/5</div>
+      </div>
+      <div class="row">
+        <div class="k">少 95%</div>
+        <div class="v">$0.10 ÷ $2 = 5%</div>
+        <div class="tag yes">官方这句对</div>
+      </div>
+      <div class="row">
+        <div class="k">少 50%</div>
+        <div class="v">缓存 $0.10，上一档 $0.20</div>
+        <div class="tag no">只降了这行</div>
+      </div>
+    </div>
+    <div class="call no">超过 272K，<b>整单改价</b>。不是只给超出的部分加价。<br>输入和缓存 ×2，输出 ×1.5。</div>
+    <div class="call yes">长上下文对 Astra：输入输出仍是 1/5，缓存读取仍是 1/10。</div>
+  </div>
+</body>
+</html>

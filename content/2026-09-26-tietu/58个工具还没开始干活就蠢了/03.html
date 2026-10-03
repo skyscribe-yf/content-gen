@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>接上，不等于加载</title>
+<style>
+  :root {
+    --ink: #1A1814;
+    --muted: #5E584E;
+    --blue: #0F4C81;
+    --blue-d: #0A3358;
+    --paper: #F3EEE4;
+    --card: #FFFCF7;
+    --line: #D9D0C0;
+    --amber: #8A5A12;
+    --amber-bg: #F6E7C8;
+    --green: #1E5C40;
+    --green-bg: #E5F0E6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 1080px;
+    height: 1440px;
+    overflow: hidden;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Noto Sans CJK SC", "Noto Sans CJK TC", sans-serif;
+  }
+  .page {
+    width: 1080px;
+    height: 1440px;
+    padding: 36px 40px 28px;
+    position: relative;
+  }
+  .rail {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 12px;
+    background: var(--blue);
+  }
+  .kicker {
+    display: flex;
+    justify-content: space-between;
+    font-size: 22px;
+    letter-spacing: 0.14em;
+    color: var(--blue);
+    font-weight: 700;
+  }
+  .kicker span { color: var(--muted); font-weight: 500; letter-spacing: 0.02em; }
+  h1 {
+    margin-top: 12px;
+    font-family: "Noto Serif CJK SC", "Noto Serif CJK TC", serif;
+    font-size: 68px;
+    line-height: 1.1;
+    font-weight: 900;
+    color: var(--blue-d);
+  }
+  .sub { margin-top: 10px; font-size: 26px; line-height: 1.4; font-weight: 700; }
+  .flow {
+    margin-top: 18px;
+    display: grid;
+    grid-template-columns: 1fr 36px 1fr 36px 1fr;
+    align-items: stretch;
+    gap: 0;
+  }
+  .step {
+    background: var(--blue-d);
+    color: #F6F1E6;
+    padding: 16px 12px;
+    text-align: center;
+  }
+  .step b { display: block; font-size: 26px; line-height: 1.2; }
+  .step span { display: block; margin-top: 6px; font-size: 16px; line-height: 1.3; color: #D5DEE8; font-weight: 700; }
+  .arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--blue);
+    font-size: 28px;
+    font-weight: 900;
+  }
+  .cards { margin-top: 16px; display: grid; gap: 12px; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-left: 8px solid var(--blue);
+    padding: 14px 16px 14px 18px;
+  }
+  .card .when { font-size: 16px; color: var(--blue); font-weight: 800; letter-spacing: 0.04em; }
+  .card .t { margin-top: 2px; font-size: 26px; font-weight: 900; line-height: 1.25; }
+  .card .d { margin-top: 4px; font-size: 20px; line-height: 1.35; color: var(--muted); font-weight: 700; }
+  .caveat {
+    margin-top: 14px;
+    background: var(--amber-bg);
+    color: #5C3B08;
+    padding: 14px 16px;
+    font-size: 22px;
+    line-height: 1.4;
+    font-weight: 800;
+  }
+  .ask {
+    margin-top: 14px;
+    background: var(--green-bg);
+    color: var(--green);
+    padding: 16px 18px;
+    font-size: 28px;
+    line-height: 1.35;
+    font-weight: 900;
+  }
+  .foot { margin-top: 12px; font-size: 17px; line-height: 1.4; color: var(--muted); }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="rail"></div>
+    <div class="kicker">数解AI · AGENT<span>图 3 / 3 · 怎么藏</span></div>
+    <h1>接上，<br>不等于加载</h1>
+    <p class="sub">模型不该认识公司里的每一个工具。它该会找这次要用的那几个。</p>
+    <div class="flow">
+      <div class="step"><b>先搜</b><span>第一轮只有搜索</span></div>
+      <div class="arrow">→</div>
+      <div class="step"><b>再加载</b><span>拿到匹配的 schema</span></div>
+      <div class="arrow">→</div>
+      <div class="step"><b>才调用</b><span>下一轮才真正执行</span></div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="when">ANTHROPIC · 2025-11-24</div>
+        <div class="t">defer_loading</div>
+        <div class="d">推迟的工具开头不进上下文。只看见搜索，加上少数每次都要用的。</div>
+      </div>
+      <div class="card">
+        <div class="when">CODEX · 2026-06-22 合并</div>
+        <div class="t">以前堆到 100 个才藏</div>
+        <div class="d">现在模型和接口支持的话，MCP 工具默认全藏。不支持的旧组合仍直接露出。</div>
+      </div>
+      <div class="card">
+        <div class="when">OPENAI · 2026-09-10 AGENTS API</div>
+        <div class="t">搜到的定义贴在末尾</div>
+        <div class="d">为了保住前面的缓存。默认仍是全加载，要藏得自己打开 tool_search。</div>
+      </div>
+    </div>
+    <div class="caveat">单个函数藏不干净：名字和说明还在，藏的主要是参数。要省，收成命名空间或 MCP，一个空间别超过 10 个函数。</div>
+    <div class="ask">你的 Agent 开场看见几个工具？</div>
+    <p class="foot">流程来自 Codex PR #29486。缓存和「默认不自动全藏」来自 OpenAI tool search 文档。gpt-5.4 及以后才支持 tool_search。</p>
+  </div>
+</body>
+</html>

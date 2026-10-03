@@ -1,8 +1,34 @@
 {
-  "_comment": "publish-data*.json 与 tietu-corpus-summary.json 都未收录、但已人工确认的贴图标题。hot_articles.py 会并入贴图过滤集。新增贴图时若发布数据快照滞后，把标题追加到这里。",
+  "_comment": "publish-data*.json 与 tietu-corpus-summary.json 都未收录、但已人工确认的贴图标题。hot_articles.py 会并入贴图过滤集。新增贴图时若发布数据快照滞后，把标题追加到这里。2026-09-27 补两批：① 后台 item_show_type=10 的资讯速递类简讯（第三类，非本号长文）；② 09-19 审计之后新发的 22 条贴图——publish-data*.json 快照停在 09-19，这批标题不在集内会导致 backfill-types 把它们误判为 article（本轮实测误判 7 条）。下次审计若 publish-data 已刷新，可保留（重复不影响，脚本按集合去重）。 2026-10-01 补 09-20~09-30 新发 7 条贴图（同样因 publish-data 快照滞后不在集内，本轮 hot_articles 报「无 URL，跳过」）。",
   "titles": [
     "严重过拟合的Deepseek，和魔幻的价格",
     "DeepSeek DSH自己人开撕",
-    "Pi这波把DSH剪枝骂惨了"
+    "Pi这波把DSH剪枝骂惨了",
+    "爽翻了的大模型密集送鸡蛋活动，背后却...",
+    "DeepSeek v4.1 Flash 5项大改值得v5版本了",
+    "NS风波：数学还是人类智力的自留地吗？",
+    "deepseek v4.1 flash和MIMO来了，谁先上桌",
+    "58 个工具，Agent还没开始干活就先蠢了",
+    "一个人重构了Copilot 80万行代码到rust",
+    "SWE Pro v2新榜刚发就被打穿了？",
+    "便宜不再是国产专属，Luna6低过了DS 4.1F",
+    "AA并列第六，显然MIMO 2.6比Grok4.7更顶",
+    "72分的MIMO 2.6新模型看起来即将要发布了",
+    "vibe coding之下，你的SSD可能两年报废",
+    "我们可能很快就要见证opc的一场大危机",
+    "RL训练动态展示，MIMO 2.6新模型要发了",
+    "DeepSeek V4.1刷分没？新旧榜单差异过大",
+    "杭州社保把GLM Lite打5折是否够划算？",
+    "RL统治了AI前沿热点?RSI大🔥背后...",
+    "AI学徒新排行榜：Fabel 72分 vs Kimi 18分",
+    "DeepSeek和Harness协同进化：换个壳差9分？",
+    "DeepSeek 4.1实测安全更强，第三方都卷起来",
+    "AI解决千禧数学难题竟成连续剧",
+    "千禧年NS方程挑起来AI和数学家们的一场风波",
+    "330tps，疾如闪电的DeepSeek v4.1 flash",
+    "小米MIMO v2.6 Pro浅层专家是空的？",
+    "模型没换，Agent任务账单却能被砍掉一半？",
+    "少想四成，这一刀下去效果却层次不齐",
+    "GPT「五分之一」刷屏，其实账单不认这个数"
   ]
 }

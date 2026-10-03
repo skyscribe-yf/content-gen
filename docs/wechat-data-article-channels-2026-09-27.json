@@ -1,0 +1,265 @@
+[
+ {
+  "date": "2026-09-26",
+  "title": "DeepSeek 把 196B 参数做成字典，为什么反而更聪明？",
+  "type": "article",
+  "reads": 30,
+  "recommend": 1,
+  "recommendPct": 3.3,
+  "channels": {
+   "公众号消息": 25,
+   "公众号主页": 4,
+   "推荐": 1
+  },
+  "share": 1,
+  "like": 4,
+  "comment": 0,
+  "zaikan": 1,
+  "collection": 0,
+  "avgReadSec": 77,
+  "finishedRatePct": 23.3,
+  "dailyReads": {
+   "2026-09-26": 30
+  }
+ },
+ {
+  "date": "2026-09-26",
+  "title": "58 个工具，Agent还没开始干活就先蠢了",
+  "type": "tietu",
+  "reads": 41,
+  "recommend": 32,
+  "recommendPct": 76.2,
+  "channels": {
+   "公众号消息": 7,
+   "公众号主页": 1,
+   "搜一搜": 2,
+   "推荐": 32
+  },
+  "share": 0,
+  "like": 0,
+  "comment": 0,
+  "zaikan": 0,
+  "collection": 0,
+  "avgReadSec": 19,
+  "finishedRatePct": 22.0,
+  "dailyReads": {
+   "2026-09-26": 41
+  }
+ },
+ {
+  "date": "2026-09-24",
+  "title": "同样 1M 上下文，KV 缓存差 15 倍：四家架构差在哪一层",
+  "type": "article",
+  "reads": 144,
+  "recommend": 33,
+  "recommendPct": 68.8,
+  "channels": {
+   "公众号消息": 3,
+   "搜一搜": 1,
+   "推荐": 33,
+   "聊天会话": 9,
+   "公众号主页": 2
+  },
+  "share": 23,
+  "like": 6,
+  "comment": 5,
+  "zaikan": 5,
+  "collection": 16,
+  "avgReadSec": 72,
+  "finishedRatePct": 17.4,
+  "dailyReads": {
+   "2026-09-24": 17,
+   "2026-09-25": 88,
+   "2026-09-26": 39
+  }
+ },
+ {
+  "date": "2026-09-24",
+  "title": "损失面上全是坑，为什么梯度下降还能走到谷底？",
+  "type": "article",
+  "reads": 21,
+  "recommend": 7,
+  "recommendPct": 58.3,
+  "channels": {
+   "公众号消息": 1,
+   "搜一搜": 1,
+   "推荐": 7,
+   "公众号主页": 3
+  },
+  "share": 4,
+  "like": 3,
+  "comment": 3,
+  "zaikan": 3,
+  "collection": 0,
+  "avgReadSec": 71,
+  "finishedRatePct": 33.3,
+  "dailyReads": {
+   "2026-09-24": 8,
+   "2026-09-25": 12,
+   "2026-09-26": 1
+  }
+ },
+ {
+  "date": "2026-09-23",
+  "title": "便宜不再是国产专属，Luna6低过了DS 4.1F",
+  "type": "tietu",
+  "reads": 2,
+  "recommend": 2,
+  "recommendPct": 100.0,
+  "channels": {
+   "推荐": 2
+  },
+  "share": 0,
+  "like": 0,
+  "comment": 1,
+  "zaikan": 0,
+  "collection": 0,
+  "avgReadSec": 0,
+  "finishedRatePct": 0,
+  "dailyReads": {
+   "2026-09-26": 2
+  }
+ },
+ {
+  "date": "2026-09-23",
+  "title": "AI 画的手指为什么总多一根？56 维评测，这项它只得 20.9 分",
+  "type": "article",
+  "reads": 32,
+  "recommend": 1,
+  "recommendPct": 11.1,
+  "channels": {
+   "公众号消息": 4,
+   "公众号主页": 1,
+   "搜一搜": 1,
+   "推荐": 1,
+   "聊天会话": 2
+  },
+  "share": 2,
+  "like": 8,
+  "comment": 7,
+  "zaikan": 2,
+  "collection": 0,
+  "avgReadSec": 76,
+  "finishedRatePct": 40.6,
+  "dailyReads": {
+   "2026-09-23": 13,
+   "2026-09-24": 15,
+   "2026-09-25": 3,
+   "2026-09-26": 1
+  }
+ },
+ {
+  "date": "2026-09-22",
+  "title": "AI 生图写「不要桌子」，为什么反而画了猫？引导到底在拧什么",
+  "type": "article",
+  "reads": 33,
+  "recommend": 1,
+  "recommendPct": 25.0,
+  "channels": {
+   "公众号消息": 1,
+   "搜一搜": 1,
+   "公众号主页": 1,
+   "推荐": 1
+  },
+  "share": 1,
+  "like": 3,
+  "comment": 3,
+  "zaikan": 1,
+  "collection": 2,
+  "avgReadSec": 66,
+  "finishedRatePct": 15.2,
+  "dailyReads": {
+   "2026-09-22": 6,
+   "2026-09-23": 23,
+   "2026-09-24": 3,
+   "2026-09-25": 1
+  }
+ },
+ {
+  "date": "2026-09-21",
+  "title": "扩散模型为什么要几百个噪声级别？一个够吗",
+  "type": "article",
+  "reads": 68,
+  "recommend": 8,
+  "recommendPct": 42.1,
+  "channels": {
+   "公众号消息": 7,
+   "公众号主页": 2,
+   "搜一搜": 1,
+   "推荐": 8,
+   "聊天会话": 1
+  },
+  "share": 9,
+  "like": 5,
+  "comment": 0,
+  "zaikan": 4,
+  "collection": 7,
+  "avgReadSec": 51,
+  "finishedRatePct": 8.8,
+  "dailyReads": {
+   "2026-09-21": 24,
+   "2026-09-22": 33,
+   "2026-09-23": 2,
+   "2026-09-24": 9
+  }
+ },
+ {
+  "date": "2026-09-20",
+  "title": "猜噪声怎么就学会了画猫？扩散模型的训练目标不是拍脑袋定的",
+  "type": "article",
+  "reads": 50,
+  "recommend": 1,
+  "recommendPct": 6.7,
+  "channels": {
+   "公众号消息": 11,
+   "公众号主页": 1,
+   "搜一搜": 1,
+   "聊天会话": 1,
+   "推荐": 1
+  },
+  "share": 9,
+  "like": 2,
+  "comment": 3,
+  "zaikan": 1,
+  "collection": 6,
+  "avgReadSec": 112,
+  "finishedRatePct": 16.0,
+  "dailyReads": {
+   "2026-09-20": 17,
+   "2026-09-21": 28,
+   "2026-09-22": 2,
+   "2026-09-23": 1,
+   "2026-09-24": 1,
+   "2026-09-25": 1
+  }
+ },
+ {
+  "date": "2026-09-15",
+  "title": "DeepSeek V4.1刷分没？新旧榜单差异过大",
+  "type": "tietu",
+  "reads": 132,
+  "recommend": 66,
+  "recommendPct": 77.6,
+  "channels": {
+   "公众号消息": 1,
+   "公众号主页": 3,
+   "搜一搜": 4,
+   "推荐": 66,
+   "聊天会话": 11
+  },
+  "share": 1,
+  "like": 5,
+  "comment": 0,
+  "zaikan": 2,
+  "collection": 0,
+  "avgReadSec": 53,
+  "finishedRatePct": 68.2,
+  "dailyReads": {
+   "2026-09-15": 36,
+   "2026-09-16": 93,
+   "2026-09-20": 1,
+   "2026-09-21": 1,
+   "2026-09-22": 1
+  }
+ }
+]

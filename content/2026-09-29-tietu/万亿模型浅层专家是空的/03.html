@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>8300 亿不是这张账</title>
+<style>
+  :root {
+    --ink: #1A2421;
+    --muted: #52605A;
+    --pine: #16332E;
+    --paper: #E6EEE9;
+    --card: #F7FBF8;
+    --line: #C5D2CB;
+    --ember: #C2412D;
+    --ember-bg: #F8E6E0;
+    --amber-bg: #F6E7C8;
+    --amber: #6B4510;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 1080px;
+    height: 1440px;
+    overflow: hidden;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Noto Sans CJK SC", "Noto Sans CJK TC", sans-serif;
+  }
+  .page {
+    width: 1080px;
+    height: 1440px;
+    display: flex;
+    flex-direction: column;
+  }
+  header {
+    background: var(--pine);
+    color: #F4F1EA;
+    padding: 18px 28px 16px;
+  }
+  .kicker {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+    color: #D5E4DC;
+  }
+  .kicker span { letter-spacing: 0.02em; font-weight: 600; color: #F0C7B8; }
+  h1 {
+    margin-top: 6px;
+    font-size: 52px;
+    line-height: 1.05;
+    font-weight: 900;
+  }
+  .sub { margin-top: 6px; font-size: 22px; font-weight: 700; color: #F6D7CE; }
+  .stack {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px 16px 0;
+  }
+  .block {
+    flex: 1;
+    min-height: 0;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-left: 8px solid var(--pine);
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+  }
+  .block.bad { border-left-color: var(--ember); background: #FBF6F4; }
+  .block.warn { border-left-color: #C48A2A; background: #FBF6EA; }
+  .k {
+    font-size: 15px;
+    letter-spacing: 0.08em;
+    font-weight: 800;
+    color: var(--muted);
+  }
+  .block h2 {
+    font-size: 28px;
+    line-height: 1.2;
+    font-weight: 900;
+  }
+  .block p {
+    font-size: 20px;
+    line-height: 1.35;
+    font-weight: 700;
+  }
+  .nums {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .nums div {
+    background: var(--pine);
+    color: #F4F1EA;
+    padding: 8px 10px;
+  }
+  .nums b {
+    display: block;
+    font-size: 26px;
+    line-height: 1;
+    font-weight: 900;
+    color: #F3C7B0;
+    font-variant-numeric: tabular-nums;
+  }
+  .nums span { display: block; margin-top: 4px; font-size: 14px; font-weight: 700; color: #D5E4DC; }
+  footer {
+    margin-top: 8px;
+    background: var(--pine);
+    color: #D5E4DC;
+    padding: 10px 18px 12px;
+    font-size: 16px;
+    line-height: 1.35;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="kicker">数解AI · MIMO<span>图 3 / 3 · 还不能说的</span></div>
+      <h1>8300 亿不是这张账</h1>
+      <p class="sub">他用大约 1 万亿乘 83%。文件计数减出来是 8,502.7 亿。</p>
+    </header>
+    <div class="stack">
+      <div class="block bad">
+        <div class="k">9 月 29 日他补的一句</div>
+        <h2>不是模型坏了，也不是榜单作假</h2>
+        <p>他说这模型大约只用了 83% 的权重，可以从大约 1000B 收到 830B。长上下文还没测。830 是 1000×0.83，不是下面这个减法。</p>
+        <div class="nums">
+          <div><b>1.0242万亿</b><span>文件计数，不是 1 万亿</span></div>
+          <div><b>0.1739万亿</b><span>12 层专家，1,739.5 亿</span></div>
+          <div><b>0.8503万亿</b><span>剩下。他写的是 0.83</span></div>
+        </div>
+      </div>
+      <div class="block warn">
+        <div class="k">测的是哪一个权重</div>
+        <h2>Pro-RL，MOPD 更新之前</h2>
+        <p>他是在给 Pro 做量化时撞上的：前 13 层压到 1.5 bpw，量化误差是 0。这是入口，不是 KL 表本身。他说会复跑 Pro-MOPD，当时卡在磁盘。Flash 有人说没有，他写的是 maybe，没确认。</p>
+      </div>
+      <div class="block">
+        <div class="k">图没覆盖的层</div>
+        <h2>第 13–16 层看着也小，没进这刀</h2>
+        <p>贡献图是 WikiText，只画到第 24 层。图注写 MLP 从第 17 层才接上。所以 13–16 层的专家不在 16.98% 里。第 25–69 层，这张图没画。</p>
+      </div>
+      <div class="block">
+        <div class="k">别人怎么接</div>
+        <h2>「我们也早就怀疑」，不是证实</h2>
+        <p>静默专家死亡那篇的作者 HongyeJin 回了这句，并说很快会有新观察。有人把它接上 v2.5 的浅层专家塌缩。是不是同一机制，这条帖里没有证实。</p>
+      </div>
+      <div class="block warn">
+        <div class="k">他的另一个比喻</div>
+        <h2>「六个 Qwen」，图上不采用</h2>
+        <p>1,739.5 亿对不上某一档 Qwen 的整数倍。他没点名型号。官方模型卡写的是 1.02 万亿总参数、42B 激活，和这次用的文件计数不是同一个分母。</p>
+      </div>
+    </div>
+    <footer>文件计数来自 Hugging Face API，2026-09-29 读取 XiaomiMiMo/MiMo-V2.6-Pro-RL。U8 一项恰好等于 69 层专家公式。注意力 24.1 亿只算了 QKVO，层归一化没算，量级不变。</footer>
+  </div>
+</body>
+</html>

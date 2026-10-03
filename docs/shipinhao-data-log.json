@@ -526,6 +526,21 @@
       "favorites": null,
       "followersGained": null,
       "source": "manual"
+    },
+    {
+      "publishDate": "2026-08-20",
+      "title": "多维高斯：为什么同一步长差1万倍？",
+      "slug": "gaussian-trust-region",
+      "mode": "manim-tts-builtin",
+      "durationSec": 211.2,
+      "views": null,
+      "completionRate": null,
+      "likes": null,
+      "comments": null,
+      "shares": null,
+      "favorites": null,
+      "followersGained": null,
+      "source": "manual"
     }
   ]
 }

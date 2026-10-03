@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>新榜一发，就贴顶了</title>
+<style>
+  :root {
+    --ink: #1A1814;
+    --muted: #5E584E;
+    --blue: #0F4C81;
+    --blue-d: #0A3358;
+    --paper: #F3EEE4;
+    --card: #FFFCF7;
+    --line: #D9D0C0;
+    --amber: #8A5A12;
+    --amber-bg: #F6E7C8;
+    --red: #8C342C;
+    --red-bg: #F6E4E0;
+    --green: #1E5C40;
+    --green-bg: #E5F0E6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 1080px;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Noto Sans CJK SC", "Noto Sans CJK TC", sans-serif;
+  }
+  .page {
+    width: 1080px;
+    padding: 30px 36px 24px;
+    position: relative;
+  }
+  .rail {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 10px;
+    background: var(--blue);
+  }
+  .kicker {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 20px;
+    letter-spacing: 0.12em;
+    color: var(--blue);
+    font-weight: 700;
+  }
+  .kicker span { color: var(--muted); font-weight: 500; letter-spacing: 0.02em; }
+  h1 {
+    margin-top: 6px;
+    font-family: "Noto Serif CJK SC", "Noto Serif CJK TC", serif;
+    font-size: 64px;
+    line-height: 1.08;
+    font-weight: 900;
+    color: var(--blue-d);
+  }
+  .sub {
+    margin-top: 6px;
+    font-size: 26px;
+    line-height: 1.35;
+  }
+  .quote {
+    margin-top: 12px;
+    background: var(--blue-d);
+    color: #F6F1E6;
+    padding: 10px 16px;
+    font-size: 22px;
+    line-height: 1.35;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+  .quote b { color: #F0C14A; }
+  .quote .src { color: #D5DEE8; font-size: 18px; text-align: right; font-weight: 700; }
+  .tiles {
+    margin-top: 14px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+  }
+  .tile {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-top: 6px solid var(--blue);
+    padding: 10px 12px 12px;
+  }
+  .tile.warn { border-top-color: #C4841D; background: #FFF8EC; }
+  .tile.hot { border-top-color: var(--red); background: #FFF6F4; }
+  .tile .who { font-size: 16px; color: var(--muted); font-weight: 700; }
+  .tile .num {
+    margin-top: 2px;
+    font-size: 52px;
+    line-height: 1;
+    font-weight: 900;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.03em;
+    color: var(--blue-d);
+  }
+  .tile.warn .num { color: var(--amber); }
+  .tile.hot .num { color: var(--red); }
+  .tile .cap { margin-top: 6px; font-size: 18px; line-height: 1.3; font-weight: 700; }
+  .warnline {
+    margin-top: 10px;
+    background: var(--amber-bg);
+    color: #5C3B08;
+    padding: 9px 14px;
+    font-size: 20px;
+    line-height: 1.35;
+    font-weight: 700;
+  }
+  h2 {
+    margin-top: 18px;
+    font-size: 28px;
+    font-weight: 900;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  h2 span { font-size: 17px; color: var(--muted); font-weight: 600; }
+  .v1 {
+    margin-top: 8px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-left: 6px solid var(--amber);
+    padding: 10px 14px;
+    font-size: 20px;
+    line-height: 1.4;
+  }
+  .v1 b { color: var(--amber); }
+  .wash {
+    margin-top: 8px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .w {
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 10px 12px;
+  }
+  .w .k { font-size: 15px; color: var(--blue); font-weight: 800; letter-spacing: 0.06em; }
+  .w .t { margin-top: 2px; font-size: 22px; font-weight: 900; line-height: 1.25; }
+  .w .d { margin-top: 2px; font-size: 17px; line-height: 1.35; color: var(--muted); }
+  .note { margin-top: 8px; font-size: 18px; line-height: 1.4; color: var(--muted); }
+  .chart {
+    margin-top: 8px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 6px 14px 8px;
+  }
+  .legend {
+    display: flex;
+    gap: 16px;
+    font-size: 16px;
+    color: var(--muted);
+    font-weight: 700;
+    padding: 4px 0 2px;
+  }
+  .sw { display: inline-block; width: 14px; height: 14px; margin-right: 6px; vertical-align: -2px; }
+  .sw.pub { background: var(--blue); }
+  .sw.pri { background: #C4841D; }
+  .row { padding: 6px 0 7px; border-top: 1px solid #EFE8DC; }
+  .row:first-of-type { border-top: 0; }
+  .rh {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 20px;
+    font-weight: 800;
+  }
+  .rh .gap { color: var(--red); font-variant-numeric: tabular-nums; font-weight: 900; }
+  .rh .frac { color: var(--muted); font-weight: 600; font-size: 17px; font-variant-numeric: tabular-nums; }
+  .bars { margin-top: 4px; display: grid; gap: 3px; }
+  .barline { display: grid; grid-template-columns: 36px 1fr 58px; align-items: center; gap: 8px; }
+  .barline i { font-style: normal; font-size: 14px; color: var(--muted); font-weight: 700; }
+  .track { height: 11px; background: #EFE8DC; }
+  .fill { height: 11px; }
+  .fill.pub { background: var(--blue); }
+  .fill.pri { background: #C4841D; }
+  .barline b { font-size: 16px; font-variant-numeric: tabular-nums; text-align: right; }
+  .hard .hbar {
+    display: grid;
+    grid-template-columns: 210px 1fr 64px;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 0;
+    border-top: 1px solid #EFE8DC;
+  }
+  .hard .hbar:first-of-type { border-top: 0; }
+  .hard .nm { font-size: 18px; font-weight: 800; line-height: 1.15; }
+  .hard .nm small { display: block; font-size: 13px; color: var(--muted); font-weight: 600; }
+  .hard .track { height: 12px; }
+  .hard .fill { height: 12px; background: var(--blue); }
+  .hard .fill.mid { background: #3D6F9A; }
+  .hard .fill.low { background: var(--red); }
+  .hard .sc { font-size: 22px; font-weight: 900; text-align: right; font-variant-numeric: tabular-nums; }
+  .paths {
+    margin-top: 8px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .p { padding: 10px 12px; min-height: 92px; }
+  .p h3 { font-size: 20px; font-weight: 900; margin-bottom: 3px; }
+  .p p { font-size: 18px; line-height: 1.35; }
+  .p.a { background: var(--red-bg); color: var(--red); }
+  .p.b { background: var(--amber-bg); color: #5C3B08; }
+  .p.c { background: #E7F0F8; color: var(--blue-d); }
+  .p.d { background: var(--green-bg); color: var(--green); }
+  .foot { margin-top: 12px; font-size: 15px; line-height: 1.35; color: var(--muted); }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="rail"></div>
+    <div class="kicker">数解AI · 评测<span>2026.09.22 · Scale × Reflection</span></div>
+    <h1>新榜一发，就贴顶了</h1>
+    <p class="sub">公开集贴满天花板。Scale 原话：质量刷新，不是更难的榜。</p>
+    <div class="quote">
+      <div>X 上最响的一句：<b>新榜一发就已经饱和。</b></div>
+      <div class="src">1.8k 赞</div>
+    </div>
+
+    <div class="tiles">
+      <div class="tile">
+        <div class="who">V1 发布 · 2025-09</div>
+        <div class="num">23.3%</div>
+        <div class="cap">GPT-5 · 731 题<br>Opus 4.1 当时 23.1%</div>
+      </div>
+      <div class="tile warn">
+        <div class="who">V1 聚合 · 2026-09</div>
+        <div class="num">80%</div>
+        <div class="cap">Fable 5 聚合 80.0<br>Opus 4.8 自报 69.2%</div>
+      </div>
+      <div class="tile hot">
+        <div class="who">V2 公开 · 洗卷后</div>
+        <div class="num">99.4%</div>
+        <div class="cap">Opus 5 · 638/642<br>Kimi K3 已到 97.7%</div>
+      </div>
+    </div>
+    <div class="warnline">99.4% 不能和 23.3% 直接相减。中间换了题，也换了记忆。</div>
+
+    <h2>V1 先分家，再被判有水分</h2>
+    <div class="v1">同期 Scale 统一脚手架头部只有 <b>61.5%</b>。Claude 官方最好是 Opus 4.6 的 <b>51.9%</b>。OpenAI 7 月审计约三成题是坏的。Epoch 9 月 1 日判 Flawed。旧文里的涨分，多半涨在噪声上。</div>
+
+    <h2>V2 洗掉了什么<span>731 → 642 · 11 个仓库</span></h2>
+    <div class="wash">
+      <div class="w">
+        <div class="k">删题</div>
+        <div class="t">砍 89 道无效题</div>
+        <div class="d">69 道说明和测试打架。只改文字，盲解才过。</div>
+      </div>
+      <div class="w">
+        <div class="k">断网</div>
+        <div class="t">只通模型接口</div>
+        <div class="d">开网时 32/642 敲过代码托管，4 条拿到修复 SHA。</div>
+      </div>
+      <div class="w">
+        <div class="k">重判</div>
+        <div class="t">干净镜像再打分</div>
+        <div class="d">Opus 5 伪造 go.sum。Inkling 改缓存，3 题原地过。</div>
+      </div>
+      <div class="w">
+        <div class="k">人工</div>
+        <div class="t">23 人 · 1897 小时</div>
+        <div class="d">参考补丁必须过，空补丁必须挂。</div>
+      </div>
+    </div>
+
+    <h2>公开贴顶，私有掉一截<span>私有 272 题</span></h2>
+    <p class="note">评测时没漏题。锁网锁不住训练时见过的公开仓库。</p>
+    <div class="chart">
+      <div class="legend"><span><i class="sw pub"></i>公开</span><span><i class="sw pri"></i>私有</span></div>
+      <div class="row">
+        <div class="rh"><span>Opus 5</span><span class="frac">638/642 → 222/272</span><span class="gap">−17.8</span></div>
+        <div class="bars">
+          <div class="barline"><i>公开</i><div class="track"><div class="fill pub" style="width:99.4%"></div></div><b>99.4</b></div>
+          <div class="barline"><i>私有</i><div class="track"><div class="fill pri" style="width:81.6%"></div></div><b>81.6</b></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="rh"><span>Kimi K3</span><span class="frac">627/642 → 214/272</span></div>
+        <div class="bars">
+          <div class="barline"><i>公开</i><div class="track"><div class="fill pub" style="width:97.7%"></div></div><b>97.7</b></div>
+          <div class="barline"><i>私有</i><div class="track"><div class="fill pri" style="width:78.7%"></div></div><b>78.7</b></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="rh"><span>GLM-5.3</span><span class="frac">614/642 → 211/272</span></div>
+        <div class="bars">
+          <div class="barline"><i>公开</i><div class="track"><div class="fill pub" style="width:95.6%"></div></div><b>95.6</b></div>
+          <div class="barline"><i>私有</i><div class="track"><div class="fill pri" style="width:77.6%"></div></div><b>77.6</b></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="rh"><span>Inkling</span><span class="frac">577/642 → 184/272</span><span class="gap">−22</span></div>
+        <div class="bars">
+          <div class="barline"><i>公开</i><div class="track"><div class="fill pub" style="width:89.9%"></div></div><b>89.9</b></div>
+          <div class="barline"><i>私有</i><div class="track"><div class="fill pri" style="width:67.6%"></div></div><b>67.6</b></div>
+        </div>
+      </div>
+    </div>
+    <p class="note">−17.8 是博客写的。−22 由题数算出，对得上 Scale 说的最多约 22 个点。除 99.4 和 97.7，条上百分比都由题数算出。</p>
+
+    <h2>Hard 51 道才拉开<span>壳不同，不当纯排名</span></h2>
+    <div class="chart hard">
+      <div class="hbar"><div class="nm">Opus 5<small>Claude Code · xhigh</small></div><div class="track"><div class="fill" style="width:98%"></div></div><div class="sc">98.0</div></div>
+      <div class="hbar"><div class="nm">Fable 5.1<small>Claude Code · high</small></div><div class="track"><div class="fill" style="width:92.2%"></div></div><div class="sc">92.2</div></div>
+      <div class="hbar"><div class="nm">GPT-6 Astra<small>Codex · high</small></div><div class="track"><div class="fill" style="width:90.2%"></div></div><div class="sc">90.2</div></div>
+      <div class="hbar"><div class="nm">Kimi K3<small>mini-swe-agent · max</small></div><div class="track"><div class="fill mid" style="width:88.2%"></div></div><div class="sc">88.2</div></div>
+      <div class="hbar"><div class="nm">GLM-5.3<small>mini-swe-agent · max</small></div><div class="track"><div class="fill mid" style="width:84.3%"></div></div><div class="sc">84.3</div></div>
+      <div class="hbar"><div class="nm">Gemini 3.8 Flash<small>公开 94.9% · Hard 掉崖</small></div><div class="track"><div class="fill low" style="width:58.8%"></div></div><div class="sc">58.8</div></div>
+    </div>
+    <p class="note">挑选方法不公开。小模型仍看全量 642。Flash 公开 609/642，Hard 只剩 58.8。</p>
+
+    <h2>往哪走</h2>
+    <div class="paths">
+      <div class="p a">
+        <h3>公开通过率退休</h3>
+        <p>聚合 80 和官方 61.5 已分家。V2 又贴顶，不能再拿来排名。</p>
+      </div>
+      <div class="p b">
+        <h3>信号换地方</h3>
+        <p>私有仓库、Hard-51、解出一题烧多少 token。</p>
+      </div>
+      <div class="p c">
+        <h3>壳改账单，不改分</h3>
+        <p>换三套壳，通过率差不多。失败推理约两倍，按账单选壳。</p>
+      </div>
+      <div class="p d">
+        <h3>下一截不在公开 PR</h3>
+        <p>没见过的仓库，改不了评分器，少在死路上烧 token。</p>
+      </div>
+    </div>
+    <p class="foot">Scale Labs 博客与 V2 榜单，2026-09-22。V1 对照截至 2026-09-14，仍是 731 题。X：@synthwavedd @danielyuez @liuying04</p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>权重没开，拧低也不够</title>
+<style>
+  :root {
+    --ink: #1A1814;
+    --muted: #5E584E;
+    --blue: #0F4C81;
+    --blue-d: #0A3358;
+    --paper: #F3EEE4;
+    --card: #FFFCF7;
+    --line: #D9D0C0;
+    --red: #8C342C;
+    --red-bg: #F6E4E0;
+    --amber-bg: #F6E7C8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 1080px;
+    height: 1440px;
+    overflow: hidden;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Noto Sans CJK SC", "Noto Sans CJK TC", sans-serif;
+  }
+  .page {
+    width: 1080px;
+    height: 1440px;
+    padding: 36px 36px 28px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  .rail {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 12px;
+    background: var(--blue);
+  }
+  .kicker {
+    display: flex;
+    justify-content: space-between;
+    font-size: 22px;
+    letter-spacing: 0.14em;
+    color: var(--blue);
+    font-weight: 700;
+  }
+  .kicker span { color: var(--muted); font-weight: 500; letter-spacing: 0.02em; }
+  h1 {
+    margin-top: 10px;
+    font-family: "Noto Serif CJK SC", "Noto Serif CJK TC", serif;
+    font-size: 62px;
+    line-height: 1.08;
+    font-weight: 900;
+    color: var(--blue-d);
+  }
+  .sub { margin-top: 10px; font-size: 26px; line-height: 1.35; font-weight: 700; }
+  .hero {
+    margin-top: 16px;
+    background: var(--blue-d);
+    color: #F6F1E6;
+    padding: 18px 24px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 16px;
+  }
+  .hero .n {
+    font-size: 64px;
+    line-height: 0.95;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    color: #F0C14A;
+  }
+  .hero .n small {
+    display: block;
+    margin-top: 8px;
+    font-size: 20px;
+    letter-spacing: 0;
+    color: #D5DEE8;
+    font-weight: 700;
+  }
+  .hero .side {
+    text-align: right;
+    font-size: 26px;
+    line-height: 1.35;
+    font-weight: 800;
+    max-width: 420px;
+  }
+  .hero .side b { color: #F0C14A; }
+  .rows { margin-top: 14px; display: flex; flex-direction: column; gap: 10px; }
+  .row {
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 18px 16px 16px;
+    display: grid;
+    grid-template-columns: 168px 1fr;
+    gap: 12px;
+    align-items: center;
+  }
+  .row .k {
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--blue);
+    letter-spacing: 0.04em;
+  }
+  .row .v { font-size: 24px; line-height: 1.35; font-weight: 800; }
+  .row .v b { color: var(--blue-d); }
+  .row.bad { background: var(--red-bg); border-color: #E4C8C4; }
+  .row.bad .k { color: var(--red); }
+  .warn {
+    margin-top: 14px;
+    background: var(--amber-bg);
+    color: #5C3B08;
+    padding: 14px 16px;
+    font-size: 23px;
+    line-height: 1.4;
+    font-weight: 800;
+  }
+  .cold {
+    margin-top: 10px;
+    background: var(--red-bg);
+    color: var(--red);
+    padding: 14px 16px;
+    font-size: 23px;
+    line-height: 1.4;
+    font-weight: 800;
+  }
+  .foot {
+    margin-top: auto;
+    padding-top: 16px;
+    font-size: 16px;
+    line-height: 1.45;
+    color: var(--muted);
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="rail"></div>
+    <div class="kicker">数解AI · KIMI<span>图 3 / 3 · 别拧错的旋钮</span></div>
+    <h1>权重没开，<br>拧低也不够</h1>
+    <p class="sub">基座是开源的 Kimi K3。这一刀本身不是开放权重。</p>
+    <div class="hero">
+      <div class="n">研究预览<small>两周 serverless · 留不留看使用量</small></div>
+      <div class="side">成品是 <b>Fireworks</b><br>自己的模型</div>
+    </div>
+    <div class="rows">
+      <div class="row">
+        <div class="k">牌价</div>
+        <div class="v">对照按 K3 公开价：<b>$3 / $0.30 / $15</b>。模型页上 Ember-1 也是这三档，每百万 token。</div>
+      </div>
+      <div class="row bad">
+        <div class="k">拧到 low</div>
+        <div class="v">SWE-bench Verified 从 <b>93.2%</b> 掉到 <b>80.4%</b>。所以他们说，拧低不够，得重新训。</div>
+      </div>
+      <div class="row">
+        <div class="k">思考占比</div>
+        <div class="v">生成的 token 里，有时<b>超过 90%</b> 是内部思考，不是答案。不是测量均值。</div>
+      </div>
+      <div class="row">
+        <div class="k">多轮</div>
+        <div class="v">每一轮把此前的思考再送回去。上下文大约按轮数<b>平方</b>涨。机制说明，不是另一组测量。</div>
+      </div>
+    </div>
+    <div class="warn">训练用他们自己的数据，没用客户数据。50 多次实验、200 多次评测是规模，不是效果，不进分数。</div>
+    <div class="cold">转发里的「快 40%」是 CTO 帖子加的。博客没有这组延迟。Bedside、Astra、Opus 5、GLM-5.3 没有可抄进这张表的分数。</div>
+    <p class="foot">博客 2026-09-23，模型页创建日 2026-09-22。核对日 2026-09-28。X 的赞和「Hacker News 第一」不进图。基座开源，不等于这一刀开源。</p>
+  </div>
+</body>
+</html>

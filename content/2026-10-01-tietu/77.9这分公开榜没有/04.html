@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>指数打平，token 没打平</title>
+<style>
+  :root {
+    --ink: #141414;
+    --paper: #F6F3EA;
+    --yellow: #FFE500;
+    --red: #E10600;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 1080px;
+    height: 1440px;
+    overflow: hidden;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Noto Sans CJK SC", "Noto Sans CJK TC", sans-serif;
+  }
+  .page {
+    width: 1080px;
+    height: 1440px;
+    display: flex;
+    flex-direction: column;
+    padding: 28px 32px 24px;
+    gap: 14px;
+  }
+  .kicker {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 32px;
+    font-weight: 900;
+  }
+  .kicker b { background: var(--ink); color: var(--yellow); padding: 4px 12px; }
+  h1 {
+    font-size: 68px;
+    line-height: 1.02;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+  }
+  .lead { font-size: 34px; line-height: 1.25; font-weight: 800; }
+  mark { background: var(--yellow); color: var(--ink); padding: 0 6px; font-weight: 900; }
+  .heroes {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    min-height: 280px;
+  }
+  .hero {
+    padding: 18px 16px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .hero.yes { background: var(--yellow); color: var(--ink); }
+  .hero.no { background: var(--red); color: #fff; }
+  .hero .n { font-size: 76px; line-height: 0.9; font-weight: 900; letter-spacing: -0.04em; }
+  .hero .l { margin-top: 12px; font-size: 30px; line-height: 1.2; font-weight: 800; }
+  .stack { display: flex; flex-direction: column; gap: 12px; flex: 1; }
+  .row {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 230px 1fr;
+    gap: 12px;
+    align-items: center;
+    background: #fff;
+    border: 3px solid var(--ink);
+    padding: 8px 16px;
+  }
+  .row .k { font-size: 34px; font-weight: 900; line-height: 1.15; }
+  .row .v { font-size: 30px; line-height: 1.25; font-weight: 800; }
+  .foot {
+    background: var(--ink);
+    color: var(--yellow);
+    font-size: 32px;
+    line-height: 1.3;
+    font-weight: 900;
+    padding: 14px 16px;
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="kicker"><b>数解AI</b><span>图 4 / 4 · 指数</span></div>
+    <h1>指数打平，<br>token 没打平</h1>
+    <p class="lead">53 对 53。输出 <mark>6.2 万对 2.7 万</mark>，2.30 倍。</p>
+    <div class="heroes">
+      <div class="hero yes">
+        <div class="n">53=53</div>
+        <div class="l">智力指数<br>high 对 max</div>
+      </div>
+      <div class="hero no">
+        <div class="n">2.30×</div>
+        <div class="l">输出 token<br>不是少想</div>
+      </div>
+      <div class="hero no">
+        <div class="n">61%</div>
+        <div class="l">他们写成 60%<br>$1.99 对 $3.26</div>
+      </div>
+    </div>
+    <div class="stack">
+      <div class="row">
+        <div class="k">折扣结束</div>
+        <div class="v">$3.98，是 Astra 的 1.22 倍。他们写成大约 1.2 倍。结束日没写死。</div>
+      </div>
+      <div class="row">
+        <div class="k">少猜</div>
+        <div class="v">幻觉 15% 对 51%。正确率 50% 对 63%，还比上一代非 Flash 低 5 个点。</div>
+      </div>
+      <div class="row">
+        <div class="k">还没公开</div>
+        <div class="v">Fairwind 测试者。指数打平，先别当成你能换过去用。</div>
+      </div>
+    </div>
+    <div class="foot">你信博客那句 SOTA，还是 3.8 Flash 那次的前科？</div>
+  </div>
+</body>
+</html>

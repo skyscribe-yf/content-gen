@@ -8,6 +8,7 @@ digest: "同一个 1M token 上下文，四家前沿架构的 KV 缓存从 0.93 
 cover: "00-cover.png"
 keywords: ["KV缓存", "长上下文", "稀疏注意力", "HySparse2", "Qwen3.8"]
 scheduledPublish: "2026-09-24T20:00:00+08:00"
+wechatUrl: "https://mp.weixin.qq.com/s/7BdQlueJrRJ5f-x3v_2VqA"
 ---
 
 把同样一段 1M token 的上下文交给四家前沿模型，它们留下的 KV 缓存是：

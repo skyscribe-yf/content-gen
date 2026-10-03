@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>少想四成，这一刀并不均匀</title>
+<style>
+  :root {
+    --ink: #1A1814;
+    --muted: #5E584E;
+    --blue: #0F4C81;
+    --blue-d: #0A3358;
+    --paper: #F3EEE4;
+    --card: #FFFCF7;
+    --line: #D9D0C0;
+    --red: #8C342C;
+    --red-bg: #F6E4E0;
+    --amber-bg: #F6E7C8;
+    --green: #1E5C40;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 1080px;
+    height: 1440px;
+    overflow: hidden;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Noto Sans CJK SC", "Noto Sans CJK TC", sans-serif;
+  }
+  .page {
+    width: 1080px;
+    height: 1440px;
+    padding: 36px 36px 28px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  .rail {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 12px;
+    background: var(--blue);
+  }
+  .kicker {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 22px;
+    letter-spacing: 0.14em;
+    color: var(--blue);
+    font-weight: 700;
+  }
+  .kicker span { color: var(--muted); font-weight: 500; letter-spacing: 0.02em; }
+  h1 {
+    margin-top: 10px;
+    font-family: "Noto Serif CJK SC", "Noto Serif CJK TC", serif;
+    font-size: 64px;
+    line-height: 1.08;
+    font-weight: 900;
+    color: var(--blue-d);
+  }
+  .sub {
+    margin-top: 10px;
+    font-size: 26px;
+    line-height: 1.35;
+    font-weight: 700;
+  }
+  .hero {
+    margin-top: 16px;
+    background: var(--blue-d);
+    color: #F6F1E6;
+    padding: 16px 24px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 16px;
+  }
+  .hero .n {
+    font-size: 72px;
+    line-height: 0.9;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    font-variant-numeric: tabular-nums;
+    color: #F0C14A;
+  }
+  .hero .n small {
+    display: block;
+    margin-top: 8px;
+    font-size: 20px;
+    letter-spacing: 0;
+    color: #D5DEE8;
+    font-weight: 700;
+  }
+  .hero .side {
+    text-align: right;
+    font-size: 24px;
+    line-height: 1.35;
+    font-weight: 800;
+    max-width: 420px;
+  }
+  .hero .side b { color: #F0C14A; }
+  h2 {
+    margin-top: 16px;
+    font-size: 24px;
+    font-weight: 900;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  h2 span { font-size: 18px; color: var(--muted); font-weight: 600; }
+  table {
+    width: 100%;
+    margin-top: 8px;
+    border-collapse: collapse;
+    background: var(--card);
+    border: 1px solid var(--line);
+  }
+  th, td {
+    text-align: left;
+    padding: 14px 12px;
+    font-size: 23px;
+    border-top: 1px solid #EFE8DC;
+  }
+  th {
+    border-top: 0;
+    font-size: 15px;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    font-weight: 700;
+    background: #F7F2EA;
+  }
+  td.r, th.r { text-align: right; font-variant-numeric: tabular-nums; }
+  td b { font-weight: 900; }
+  tr.up td { background: #E7F0E4; }
+  tr.down td { background: var(--red-bg); }
+  tr.down td.score { color: var(--red); font-weight: 900; }
+  .warn {
+    margin-top: 12px;
+    background: var(--amber-bg);
+    color: #5C3B08;
+    padding: 12px 14px;
+    font-size: 22px;
+    line-height: 1.4;
+    font-weight: 800;
+  }
+  .cold {
+    margin-top: 10px;
+    background: var(--red-bg);
+    color: var(--red);
+    padding: 12px 14px;
+    font-size: 22px;
+    line-height: 1.4;
+    font-weight: 800;
+  }
+  .foot {
+    margin-top: auto;
+    padding-top: 16px;
+    font-size: 16px;
+    line-height: 1.4;
+    color: var(--muted);
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="rail"></div>
+    <div class="kicker">数解AI · KIMI<span>图 1 / 3 · 五张榜</span></div>
+    <h1>少想四成，<br>这一刀并不均匀</h1>
+    <p class="sub">标题写少 40%。相对 K3 max，五张榜从 5.9% 到 51.9%。</p>
+    <div class="hero">
+      <div class="n">5.9–51.9%<small>省幅 · 相对 K3 max</small></div>
+      <div class="side">不是每张榜都少四成<br>美元是<b>整榜差</b>，不是单题</div>
+    </div>
+    <h2>Ember-1 对 K3 max<span>Fireworks 博客 · 09-23</span></h2>
+    <table>
+      <tr>
+        <th>榜</th><th class="r">题</th><th class="r">K3 max</th><th class="r">Ember-1</th><th class="r">省幅</th>
+      </tr>
+      <tr class="up">
+        <td>Terminal Bench 2.1</td><td class="r">89</td><td class="r">80.9%</td><td class="r"><b>82.0%</b></td><td class="r">51.9%</td>
+      </tr>
+      <tr class="down">
+        <td>SWE-bench Verified</td><td class="r">500</td><td class="r">93.2%</td><td class="r score">92.2%</td><td class="r">15.5%</td>
+      </tr>
+      <tr class="down">
+        <td>SWE-Interact</td><td class="r">75</td><td class="r">21.3%</td><td class="r score">20.0%</td><td class="r">32.5%</td>
+      </tr>
+      <tr class="up">
+        <td>DeepSWE 1.1</td><td class="r">113</td><td class="r">66.4%</td><td class="r"><b>75.2%</b></td><td class="r">23.7%</td>
+      </tr>
+      <tr class="up">
+        <td>τ-2 Airline</td><td class="r">50</td><td class="r">64%</td><td class="r"><b>66%</b></td><td class="r">5.9%</td>
+      </tr>
+    </table>
+    <div class="warn">绿行分数不低于 K3 max。红行少了 1.0 和 1.3 个点，是两个通过率相减，博客没单独写这个差。「持平甚至反超」盖不住这两行。</div>
+    <div class="cold">整榜差，按表从上到下：−23.1、−68.1、−60.8、−126.9、−0.3 美元。按 K3 公开牌价算，不是单题账单。</div>
+    <p class="foot">七张榜里这张表给了五张。35%–50% 是另一句，说的是推理缩短，不要和这一列省幅混读。Airline 正好 50 题，不在「超过 50 题」那句里。分数更高，不等于刀口一样深。</p>
+  </div>
+</body>
+</html>

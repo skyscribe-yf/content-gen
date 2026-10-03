@@ -47,6 +47,51 @@ JSON 是数字唯一事实源；Markdown 只保存人读版和分析结论。禁
 
 ### Phase 1: Cookie 注入 + 登录
 
+#### ⚠️ 先做这一步：枚举所有 Chrome profile 找活会话（2026-10-01 新增，硬规则）
+
+**在断定「需要扫码」之前，必须先枚举本机所有 Chrome profile 的 cookie 创建时间**。2026-10-01 踩坑实录：`.env` 里的 `WECHAT_COOKIE` 是 2026-09-27 17:01 的导出快照，服务端早已判「登录超时」；而**真正的活会话在用户主 Chrome profile `~/.config/google-chrome/Default`（cookie 创建于 09-29 21:54）**。只看 `.env` 会**误判为需扫码，差点让作者白扫一次码**。
+
+```bash
+# 逐个 profile 查 wechat auth cookie 的创建/访问时间，找最新的
+for C in ~/.config/google-chrome/Default/Cookies /tmp/wxprofile/Default/Cookies; do
+  [ -f "$C" ] || continue
+  cp "$C" /tmp/c.db
+  python3 -c "
+import sqlite3, datetime
+tz=datetime.timezone(datetime.timedelta(hours=8))
+con=sqlite3.connect('/tmp/c.db')
+for nm,h,c,l in con.execute(\"\"\"SELECT name,host_key,creation_utc,last_access_utc FROM cookies
+  WHERE host_key LIKE '%weixin%' AND name IN ('slave_sid','slave_user','data_ticket') ORDER BY last_access_utc DESC LIMIT 4\"\"\"):
+    f=lambda v: datetime.datetime.fromtimestamp(v/1e6-11644473600,tz).strftime('%m-%d %H:%M') if v else '-'
+    print(f'  {nm:<12} {h:<20} created={f(c)} last={f(l)}')
+"
+done
+```
+
+**`last_access` 明显在最近几分钟内 = 活会话**（用户在用）。此时**不要扫码**，直接走下面的「复制 profile」方案。
+
+#### ✅ 可用方案：复制主 profile，让 Chrome 自己解密（不打扰用户正在运行的 Chrome）
+
+Chrome Linux 用 `chrome_libsecret_os_crypt_password_v2`（v11）加密 cookie。**手工解密会失败**（SHA256(domain) 前缀校验与 PBKDF2 参数都对不上，不要在这条路上耗时间）。正确做法是**让 Chrome 自己解**：
+
+```bash
+SRC=~/.config/google-chrome ; DST=/tmp/wx-live-profile
+rm -rf $DST && mkdir -p $DST/Default
+cp "$SRC/Local State" $DST/
+for f in "Preferences" "Secure Preferences" "Cookies" "Local State"; do
+  [ -f "$SRC/Default/$f" ] && cp "$SRC/Default/$f" "$DST/Default/$f"
+done
+cd /tmp && nohup /opt/google/chrome/chrome --headless=new --remote-debugging-port=9335 \
+  --user-data-dir=/tmp/wx-live-profile --no-first-run --no-default-browser-check \
+  --disable-gpu --password-store=gnome-libsecret about:blank > /tmp/chrome-live.log 2>&1 &
+```
+
+然后 `connect_over_cdp("http://127.0.0.1:9335")`，`ctx.cookies()` 返回的已是**明文**。**只复制最小集**（Local State + Preferences/Secure Preferences/Cookies 共约 0.7 MB），不要 cp 整个 2.3 GB profile。采集完用 `scripts/wx_audit_browser.py export` 把 cookie 写回 `.env`。
+
+⚠️ **同 profile 不能开两个 Chrome**（用户主 Chrome 正在跑 `~/.config/google-chrome`），所以必须复制到新目录。
+
+#### 以下是旧流程（cookie 注入 + 扫码兜底）
+
 先按 `wechat-stats` 的流程注入 Cookie，确保登录态。
 
 快速步骤：
@@ -99,7 +144,30 @@ JSON 是数字唯一事实源；Markdown 只保存人读版和分析结论。禁
 
 1. 在内容分析 Top10 列表，对**最近 6 篇（或 Top10 全部，取多者）**逐一点击 `详情`（`a:text=="详情"`，按发布日期倒序，最新一篇在最上）。
 2. 等待详情页加载（URL 含 `action=view&idx=` 或 `appmsganalysis?action=report&...&detail=1`），用 `agent_browser get text body` 抓全文。
-3. 从文本解析单篇渠道饼图（若页面用 Highcharts，文本里会展开为 `推荐 x% / 公众号消息 x% / 聊天会话 x% / 公众号主页 x% / 其它 x% / 搜一搜 x% / 朋友圈 x%`），**按文章标题记录**，存 ` /tmp/article-channel-breakdown.json`：
+3. 从文本解析单篇渠道饼图。> ⚠️ **2026-10-01 实测修正**：单篇详情页**没有 Highcharts/ECharts 全局对象**（`window.Highcharts`/`echarts`/`AmCharts` 全是 `undefined`），饼图是 **SVG aria-label** 渲染的。且文本里**百分比数组与标签数组分开出现**（先 7 个百分比，再 7 个标签名），**不能用相邻正则直接配对**——本轮先误读成「搜一搜 0.0%」才发现。正确解法：
+
+```javascript
+// 分两次抓，再 zip
+const t = document.body.innerText;
+const seg = t.slice(t.indexOf('阅读渠道构成'), t.indexOf('阅读渠道构成') + 600);
+const vals = [...seg.matchAll(/([\d.]+)%/g)].map(m => +m[1]).slice(0, 7);
+const labs = [...seg.matchAll(/(推荐|公众号消息|公众号主页|其它|聊天会话|朋友圈|搜一搜)/g)].map(m => m[1]).slice(0, 7);
+const ch = Object.fromEntries(labs.map((l, k) => [l, vals[k]]));
+```
+
+3b. 单篇详情页 URL 格式（2026-10-01 实测）：
+
+```
+https://mp.weixin.qq.com/misc/appmsganalysis?action=detailpage&msgid=<msgid>_1&publish_date=<YYYY-MM-DD>&type=int&pageVersion=1&token=<token>&lang=zh_CN
+```
+
+`msgid` 从「内容管理 → 发表记录」（`appmsgpublish`）页每个 `.weui-desktop-mass-media` 节点的 innerHTML 正则提取。⚠️ **同一次多图文发布的多篇共享 msgid**（09-24 的 KV 篇与损失面篇都是 `2247486486`），靠 `publish_date` + 标题区分。
+
+3c. ⚠️ **口径警告（2026-10-01）**：单篇**详情页的「阅读 N 人」是去重人数**，而**发表记录列表的阅读列是次数**——09-30 流形假设篇详情页 60 人 vs 发表记录 120 次，**差 2 倍，不可混用**。schema 的 `content.articles[].reads` 按日取自**发表记录**（次数口径），单篇分析指标取自**详情页**（人数口径），两者必须在 notes 写清。
+
+3d. ⚠️ **内容分析页的单篇列表固定是近 30 天 Top10、无法按日切换**（费马/ollama 爆款长期占据前二）。按日取数必须走「内容管理 → 发表记录」。
+
+3e. **按文章标题记录**，存 `/tmp/article-channel-breakdown.json`：
 ```json
 [
   {"date":"2026-08-29","title":"每步都靠猜，上百万Token的长任务怎么不跑偏","type":"article","reads":52,"channels":{"推荐":68.2,"公众号消息":12.1,"聊天会话":8.3,"公众号主页":4.1,"其它":3.2,"搜一搜":2.1,"朋友圈":2.0}},
@@ -127,6 +195,8 @@ python scripts/wechat_audit_log.py append-sources --input ~/下载/tendency_*.xl
 
 ### Phase 3: 采集用户分析数据
 
+> ⚠️ **2026-10-01 实测修正**：**用户分析页不能直接 URL 访问**（`misc/useranalysis?action=useranalysis` 返回空白页），必须从首页 **hover「数据分析」→ 点「用户分析」**（实际 href 是 `misc/useranalysis?=&token=...`，无 action 参数）。同 Phase 1 的原因：直接 URL 会触发额外鉴权。
+
 1. 从内容分析页点击「用户分析」
 2. 用 `agent_browser get text body` 获取全文
 3. 从文本中解析：
@@ -151,32 +221,30 @@ python scripts/wechat_audit_log.py append-sources --input ~/下载/tendency_*.xl
 
 #### Step 1: 导航到流量主概览页
 
-从首页侧边栏：hover「收入变现」→ 展开子菜单 → 点击「流量主」。
+> ⚠️ **2026-10-01 实测修正**：菜单项**已改名**——「收入变现 → 流量主」现在是「收入变现 → **广告收入**」（`href=/promotion/publisher/publisher_index`）。且子菜单默认收起，**`mouseenter` 事件不触发展开**，必须先移除 `.menu-fold` 类并展开 `#js_level2_title` 才能点到。
+
+从首页侧边栏：展开「收入变现」子菜单 → 点击「广告收入」。
 
 执行方式：
 
 ```javascript
-// agent_browser eval --stdin
-// 找到 收入变现 菜单并 hover 展开子菜单
+// 先强制展开子菜单，再点链接
 (() => {
-  const income = [...document.querySelectorAll('*')].find(el => 
-    el.textContent.trim() === '收入变现' && el.children.length === 0
-  );
-  if (!income) return 'INCOME_MENU_NOT_FOUND';
-  const parent = income.closest('li, [role="menuitem"], .menu-item');
-  parent.dispatchEvent(new MouseEvent('mouseenter', { bubbles: true }));
-  // 等子菜单渲染后，点击 流量主 链接
-  setTimeout(() => {
-    const ll = [...parent.querySelectorAll('a, [role="menuitem"]')]
-      .find(a => a.textContent.includes('流量主'));
-    if (ll) ll.click();
-  }, 500);
-  return 'HOVER_TRIGGERED';
+  const li = document.querySelector('.weui-desktop-menu_income');
+  if (!li) return 'INCOME_MENU_NOT_FOUND';
+  li.classList.remove('menu-fold');
+  const ul = li.querySelector('#js_level2_title');
+  if (ul) ul.style.display = 'block';
+  const a = [...li.querySelectorAll('a')].find(a => /广告收入|流量主/.test(a.innerText));
+  if (a) { a.click(); return 'CLICKED'; }
+  return 'NO_LINK';
 })()
 ```
 
 等待 2-3 秒后确认页面加载。目标 URL 形如：
 `https://mp.weixin.qq.com/cgi-bin/frame?t=ad_system%2Fcommon_frame&t1=publisher%2Fpublisher_overview&lang=zh_CN&token=...`
+
+> ⚠️ **iframe 架构读数修正（2026-10-01）**：正文渲染在**顶层文档的 `#wxadcontainer`**，**不在 iframe 的 `body.innerText`**——读 iframe 会拿到一大段注入脚本源码。正确读法：`page.evaluate(() => document.getElementById('wxadcontainer').innerText)`。
 
 #### Step 2: 导航到数据统计（日报表）
 

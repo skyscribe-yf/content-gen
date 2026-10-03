@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>模型没换，账单却被砍掉一半</title>
+<style>
+  :root {
+    --ink: #1A1814;
+    --muted: #5E584E;
+    --blue: #0F4C81;
+    --blue-d: #0A3358;
+    --paper: #F3EEE4;
+    --card: #FFFCF7;
+    --line: #D9D0C0;
+    --red: #8C342C;
+    --red-bg: #F6E4E0;
+    --amber-bg: #F6E7C8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 1080px;
+    height: 1440px;
+    overflow: hidden;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Noto Sans CJK SC", "Noto Sans CJK TC", sans-serif;
+  }
+  .page {
+    width: 1080px;
+    height: 1440px;
+    padding: 36px 40px 28px;
+    position: relative;
+  }
+  .rail {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 12px;
+    background: var(--blue);
+  }
+  .kicker {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 22px;
+    letter-spacing: 0.14em;
+    color: var(--blue);
+    font-weight: 700;
+  }
+  .kicker span { color: var(--muted); font-weight: 500; letter-spacing: 0.02em; }
+  h1 {
+    margin-top: 12px;
+    font-family: "Noto Serif CJK SC", "Noto Serif CJK TC", serif;
+    font-size: 68px;
+    line-height: 1.08;
+    font-weight: 900;
+    color: var(--blue-d);
+  }
+  .sub {
+    margin-top: 12px;
+    font-size: 28px;
+    line-height: 1.4;
+    font-weight: 700;
+  }
+  .hero {
+    margin-top: 20px;
+    background: var(--blue-d);
+    color: #F6F1E6;
+    padding: 20px 28px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 16px;
+  }
+  .hero .n {
+    font-size: 92px;
+    line-height: 0.9;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    font-variant-numeric: tabular-nums;
+    color: #F0C14A;
+  }
+  .hero .n small {
+    display: block;
+    margin-top: 8px;
+    font-size: 20px;
+    letter-spacing: 0;
+    color: #D5DEE8;
+    font-weight: 700;
+  }
+  .hero .side {
+    text-align: right;
+    font-size: 26px;
+    line-height: 1.35;
+    font-weight: 800;
+    max-width: 480px;
+  }
+  .hero .side b { color: #F0C14A; }
+  h2 {
+    margin-top: 22px;
+    font-size: 26px;
+    font-weight: 900;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  h2 span { font-size: 18px; color: var(--muted); font-weight: 600; }
+  table {
+    width: 100%;
+    margin-top: 10px;
+    border-collapse: collapse;
+    background: var(--card);
+    border: 1px solid var(--line);
+  }
+  th, td {
+    text-align: left;
+    padding: 12px 16px;
+    font-size: 24px;
+    border-top: 1px solid #EFE8DC;
+  }
+  th {
+    border-top: 0;
+    font-size: 16px;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    font-weight: 700;
+    background: #F7F2EA;
+  }
+  td.r, th.r { text-align: right; font-variant-numeric: tabular-nums; }
+  td b { font-weight: 900; }
+  tr.hi td { background: #E7F0E4; font-weight: 800; }
+  .warn {
+    margin-top: 14px;
+    background: var(--amber-bg);
+    color: #5C3B08;
+    padding: 14px 16px;
+    font-size: 23px;
+    line-height: 1.4;
+    font-weight: 800;
+  }
+  .cold {
+    margin-top: 12px;
+    background: var(--red-bg);
+    color: var(--red);
+    padding: 14px 16px;
+    font-size: 23px;
+    line-height: 1.4;
+    font-weight: 800;
+  }
+  .foot {
+    margin-top: 14px;
+    font-size: 17px;
+    line-height: 1.4;
+    color: var(--muted);
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="rail"></div>
+    <div class="kicker">数解AI · AGENT<span>图 1 / 3 · Harness</span></div>
+    <h1>模型没换，<br>账单却被砍掉一半</h1>
+    <p class="sub">不是换了更便宜的模型。另一个 Agent 改的是 Harness。</p>
+    <div class="hero">
+      <div class="n">−50%<small>API 费用 · 相对 Codex</small></div>
+      <div class="side">同一模型 <b>GPT-5.6 Sol</b><br>分数 42.0 对 34.7，更高</div>
+    </div>
+    <h2>EdgeBench 公开 51 题<span>arXiv:2609.20519 · 09-17</span></h2>
+    <table>
+      <tr><th>Harness</th><th>模型</th><th class="r">分数</th><th class="r">费用</th></tr>
+      <tr><td>Codex</td><td>GPT-5.6 Sol</td><td class="r">34.7</td><td class="r">$1,787</td></tr>
+      <tr class="hi"><td>SoL-Pi 省钱档</td><td>GPT-5.6 Sol</td><td class="r"><b>42.0</b></td><td class="r"><b>$894</b></td></tr>
+      <tr><td>Claude Code</td><td>Opus 5</td><td class="r">43.7</td><td class="r">$2,535</td></tr>
+      <tr class="hi"><td>SoL-Pi 省钱档</td><td>Opus 5</td><td class="r"><b>42.2</b></td><td class="r"><b>$1,158</b></td></tr>
+    </table>
+    <div class="warn">对它改的那套 Pi，不是砍一半。Sol 上 token 少 49.0%，费用少 33.2%，分数留 93.7%（42.0 对 44.8）。</div>
+    <div class="cold">泼冷水：Terminal-Bench 4 的 63 道 CPU 题，Codex 和 Pi 各解 18，SoL-Pi 解 15。费用少了，解开的题更少。</div>
+    <p class="foot">对 Claude Code，费用少 54.3%。分数 42.2 对 43.7，略低。费用按 2026-08-17 的 API 价。51 题里 11 题做过单向验收，不是全没见过。NVIDIA / NTU / MIT。</p>
+  </div>
+</body>
+</html>

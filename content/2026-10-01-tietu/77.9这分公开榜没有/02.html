@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>3.8 Flash，这套玩过</title>
+<style>
+  :root {
+    --ink: #141414;
+    --paper: #F6F3EA;
+    --yellow: #FFE500;
+    --red: #E10600;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 1080px;
+    height: 1440px;
+    overflow: hidden;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Noto Sans CJK SC", "Noto Sans CJK TC", sans-serif;
+  }
+  .page {
+    width: 1080px;
+    height: 1440px;
+    display: flex;
+    flex-direction: column;
+    padding: 28px 32px 24px;
+    gap: 14px;
+  }
+  .kicker {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 32px;
+    font-weight: 900;
+  }
+  .kicker b { background: var(--ink); color: var(--yellow); padding: 4px 12px; }
+  h1 {
+    font-size: 72px;
+    line-height: 1.02;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+  }
+  .lead { font-size: 34px; line-height: 1.25; font-weight: 800; }
+  mark { background: var(--yellow); color: var(--ink); padding: 0 6px; font-weight: 900; }
+  .heroes {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    min-height: 300px;
+  }
+  .hero {
+    padding: 18px 16px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .hero.yes { background: var(--yellow); color: var(--ink); }
+  .hero.no { background: var(--red); color: #fff; }
+  .hero .n { font-size: 84px; line-height: 0.9; font-weight: 900; letter-spacing: -0.04em; }
+  .hero .l { margin-top: 12px; font-size: 32px; line-height: 1.2; font-weight: 800; }
+  .stack { display: flex; flex-direction: column; gap: 12px; flex: 1; }
+  .row {
+    flex: 1;
+    background: #fff;
+    border: 3px solid var(--ink);
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .row .k { font-size: 34px; font-weight: 900; }
+  .row .v { margin-top: 6px; font-size: 30px; line-height: 1.25; font-weight: 800; }
+  .quote {
+    background: var(--ink);
+    color: var(--yellow);
+    font-size: 32px;
+    line-height: 1.3;
+    font-weight: 900;
+    padding: 16px 16px;
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="kicker"><b>数解AI</b><span>图 2 / 4 · 前科</span></div>
+    <h1>3.8 Flash，<br>这套玩过</h1>
+    <p class="lead">同一张自家表。<mark>高分自己跑，低分在公开榜。</mark></p>
+    <div class="heroes">
+      <div class="hero yes">
+        <div class="n">89.4%</div>
+        <div class="l">Terminal-bench 2.1<br>自评，压过 Opus</div>
+      </div>
+      <div class="hero no">
+        <div class="n">19.1%</div>
+        <div class="l">Terminal-bench 4.0<br>公开榜</div>
+      </div>
+      <div class="hero no">
+        <div class="n">51.8%</div>
+        <div class="l">4.0 上的 Opus 5<br>低 32.7 个点</div>
+      </div>
+    </div>
+    <div class="stack">
+      <div class="row">
+        <div class="k">不是同一套题掉了 70 分</div>
+        <div class="v">2.1 和 4.0 分开写。别收成一个跌幅。</div>
+      </div>
+      <div class="row">
+        <div class="k">AA 指数 59 → 41</div>
+        <div class="v">9 月 2 日写 59。9 月 7 日把 2.1 换成 4.0。现在这页是 41。尺子换了。</div>
+      </div>
+    </div>
+    <div class="quote">SemiAnalysis，9 月 8 日：3.8 Flash 是见过最明显的刷分之一。2.1 的题是公开的，4.0 对不上。</div>
+  </div>
+</body>
+</html>

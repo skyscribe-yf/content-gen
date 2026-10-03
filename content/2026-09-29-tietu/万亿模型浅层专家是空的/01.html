@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>万亿模型，浅层专家是空的</title>
+<style>
+  :root {
+    --ink: #1A2421;
+    --muted: #52605A;
+    --pine: #16332E;
+    --paper: #E6EEE9;
+    --card: #F7FBF8;
+    --line: #C5D2CB;
+    --ember: #C2412D;
+    --ember-bg: #F8E6E0;
+    --keep-bg: #E4F1EA;
+    --idle-bg: #F3F0E8;
+    --amber-bg: #F6E7C8;
+    --amber: #6B4510;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 1080px;
+    height: 1440px;
+    overflow: hidden;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Noto Sans CJK SC", "Noto Sans CJK TC", sans-serif;
+  }
+  .page {
+    width: 1080px;
+    height: 1440px;
+    display: flex;
+    flex-direction: column;
+  }
+  header {
+    background: var(--pine);
+    color: #F4F1EA;
+    padding: 22px 28px 18px;
+  }
+  .kicker {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+    color: #D5E4DC;
+  }
+  .kicker span { letter-spacing: 0.02em; font-weight: 600; color: #F0C7B8; }
+  h1 {
+    margin-top: 8px;
+    font-size: 58px;
+    line-height: 1.05;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+  }
+  .sub {
+    margin-top: 8px;
+    font-size: 24px;
+    line-height: 1.3;
+    font-weight: 700;
+    color: #F6D7CE;
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: 1.15fr 1.15fr 0.9fr;
+    gap: 8px;
+    padding: 12px 16px 0;
+  }
+  .stat {
+    background: var(--pine);
+    color: #F4F1EA;
+    padding: 12px 14px 10px;
+    min-height: 118px;
+  }
+  .stat .n {
+    font-size: 48px;
+    line-height: 0.95;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums;
+    color: #F3C7B0;
+  }
+  .stat .l {
+    margin-top: 6px;
+    font-size: 18px;
+    line-height: 1.3;
+    font-weight: 700;
+    color: #D5E4DC;
+  }
+  .body {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 16px 0;
+    gap: 8px;
+  }
+  .strip-wrap {
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 8px 10px 8px;
+  }
+  .strip-h {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: 800;
+    margin-bottom: 6px;
+  }
+  .strip-h span { color: var(--muted); font-weight: 600; }
+  .track {
+    display: grid;
+    grid-template-columns: repeat(70, 1fr);
+    gap: 1px;
+    height: 28px;
+  }
+  .track i { display: block; background: #D5DDD8; }
+  .track i.cut { background: var(--ember); }
+  .track i.none { background: #16332E; }
+  .labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .legend {
+    display: flex;
+    gap: 14px;
+    margin-top: 6px;
+    font-size: 15px;
+    font-weight: 700;
+  }
+  .legend b { display: inline-block; width: 14px; height: 14px; margin-right: 4px; vertical-align: -2px; }
+  table {
+    width: 100%;
+    flex: 1;
+    border-collapse: collapse;
+    background: var(--card);
+    border: 1px solid var(--line);
+  }
+  th, td {
+    text-align: left;
+    padding: 0 10px;
+    font-size: 20px;
+    line-height: 1.25;
+    border-top: 1px solid #E3EBE6;
+    vertical-align: middle;
+  }
+  th {
+    height: 36px;
+    border-top: 0;
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    font-weight: 700;
+    background: #F0F5F2;
+  }
+  tr { height: 10%; }
+  td b { font-weight: 900; }
+  tr.cut td { background: var(--ember-bg); }
+  tr.keep td { background: var(--keep-bg); }
+  tr.idle td { background: var(--idle-bg); }
+  .note {
+    background: var(--amber-bg);
+    color: var(--amber);
+    padding: 8px 12px;
+    font-size: 18px;
+    line-height: 1.35;
+    font-weight: 800;
+  }
+  footer {
+    margin-top: 8px;
+    background: var(--pine);
+    color: #D5E4DC;
+    padding: 10px 18px 12px;
+    font-size: 16px;
+    line-height: 1.35;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="kicker">数解AI · MIMO<span>图 1 / 3 · 剪掉哪一块</span></div>
+      <h1>万亿模型，浅层专家是空的</h1>
+      <p class="sub">空的是第 1–12 层专家。不是 70 层都空，注意力也不在这个比例里。</p>
+    </header>
+    <div class="stats">
+      <div class="stat">
+        <div class="n">16.98%</div>
+        <div class="l">12 层专家 ÷ 文件计数<br>他写成 17%</div>
+      </div>
+      <div class="stat">
+        <div class="n">1,739.5亿</div>
+        <div class="l">384×3×6144×2048×12<br>精确值 173,946,175,488</div>
+      </div>
+      <div class="stat">
+        <div class="n">24.1亿</div>
+        <div class="l">9 层注意力的 QKVO<br>不进左边这个比例</div>
+      </div>
+    </div>
+    <div class="body">
+      <div class="strip-wrap">
+        <div class="strip-h">70 层里，专家实际拿掉的只有前 12 个 MoE 层<span>第 0 层没有专家</span></div>
+        <div class="track" id="ex"></div>
+        <div class="labels"><span>0</span><span>12</span><span>17</span><span>24</span><span>69</span></div>
+        <div class="legend">
+          <span><b style="background:#16332E"></b>第 0 层，稠密</span>
+          <span><b style="background:#C2412D"></b>第 1–12 层专家，拿掉</span>
+          <span><b style="background:#D5DDD8"></b>第 13–69 层，这次没剪</span>
+        </div>
+      </div>
+      <table>
+        <tr>
+          <th style="width:18%">层</th>
+          <th style="width:28%">专家</th>
+          <th style="width:54%">注意力</th>
+        </tr>
+        <tr class="keep">
+          <td><b>0</b></td>
+          <td>没有。稠密 FFN</td>
+          <td>留下。这一层是全局注意力</td>
+        </tr>
+        <tr class="cut">
+          <td><b>1–4</b></td>
+          <td>拿掉</td>
+          <td>拿掉</td>
+        </tr>
+        <tr class="keep">
+          <td><b>5</b></td>
+          <td>拿掉</td>
+          <td>留下。他的删除列表里没有这一层</td>
+        </tr>
+        <tr class="cut">
+          <td><b>6</b></td>
+          <td>拿掉</td>
+          <td>拿掉</td>
+        </tr>
+        <tr class="keep">
+          <td><b>7</b></td>
+          <td>拿掉</td>
+          <td>留下。全局注意力。图上标注：第 7、12 层在干活</td>
+        </tr>
+        <tr class="cut">
+          <td><b>8–11</b></td>
+          <td>拿掉</td>
+          <td>拿掉</td>
+        </tr>
+        <tr class="keep">
+          <td><b>12</b></td>
+          <td>拿掉</td>
+          <td>留下。图上同一句标注，这一层在干活</td>
+        </tr>
+        <tr class="idle">
+          <td><b>13–16</b></td>
+          <td>没剪</td>
+          <td>没剪。贡献图上 MLP 仍很小，不在 16.98% 里</td>
+        </tr>
+        <tr class="idle">
+          <td><b>17–69</b></td>
+          <td>没剪</td>
+          <td>图注：MLP 从第 17 层接上。贡献图只画到第 24 层</td>
+        </tr>
+      </table>
+      <p class="note">他写这些层对残差的贡献在 BF16 舍入误差这个量级。图上不另算机器精度。贡献图的数据集是 WikiText，横轴第 0–24 层，共 70 层。</p>
+    </div>
+    <footer>MiMo-V2.6-Pro-RL，MOPD 更新之前。层号从 0 计，和他的图一致。config：第 0 层不是 MoE，第 1–69 层是。文件计数 1,024,216,603,392。</footer>
+  </div>
+  <script>
+    const ex = document.getElementById("ex");
+    for (let i = 0; i < 70; i++) {
+      const d = document.createElement("i");
+      d.className = i === 0 ? "none" : (i <= 12 ? "cut" : "");
+      ex.appendChild(d);
+    }
+  </script>
+</body>
+</html>

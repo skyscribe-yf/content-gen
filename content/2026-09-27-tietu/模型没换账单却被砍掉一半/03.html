@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>记忆别在收工时写</title>
+<style>
+  :root {
+    --ink: #1A1814;
+    --muted: #5E584E;
+    --blue: #0F4C81;
+    --blue-d: #0A3358;
+    --paper: #F3EEE4;
+    --card: #FFFCF7;
+    --line: #D9D0C0;
+    --amber-bg: #F6E7C8;
+    --green: #1E5C40;
+    --green-bg: #E5F0E6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 1080px;
+    height: 1440px;
+    overflow: hidden;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Noto Sans CJK SC", "Noto Sans CJK TC", sans-serif;
+  }
+  .page {
+    width: 1080px;
+    height: 1440px;
+    padding: 36px 40px 28px;
+    position: relative;
+  }
+  .rail {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 12px;
+    background: var(--blue);
+  }
+  .kicker {
+    display: flex;
+    justify-content: space-between;
+    font-size: 22px;
+    letter-spacing: 0.14em;
+    color: var(--blue);
+    font-weight: 700;
+  }
+  .kicker span { color: var(--muted); font-weight: 500; letter-spacing: 0.02em; }
+  h1 {
+    margin-top: 12px;
+    font-family: "Noto Serif CJK SC", "Noto Serif CJK TC", serif;
+    font-size: 68px;
+    line-height: 1.08;
+    font-weight: 900;
+    color: var(--blue-d);
+  }
+  .sub { margin-top: 12px; font-size: 28px; line-height: 1.4; font-weight: 700; }
+  .trio {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+  }
+  .tile {
+    background: var(--blue-d);
+    color: #F6F1E6;
+    padding: 16px 14px 14px;
+  }
+  .tile .k {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: #D5DEE8;
+  }
+  .tile .n {
+    margin-top: 8px;
+    font-size: 48px;
+    line-height: 1;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums;
+    color: #F0C14A;
+  }
+  .tile .d {
+    margin-top: 8px;
+    font-size: 18px;
+    line-height: 1.3;
+    font-weight: 700;
+  }
+  .note {
+    margin-top: 14px;
+    background: var(--amber-bg);
+    color: #5C3B08;
+    padding: 14px 16px;
+    font-size: 23px;
+    line-height: 1.4;
+    font-weight: 800;
+  }
+  .box {
+    margin-top: 14px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-left: 8px solid var(--green);
+    padding: 16px 18px;
+  }
+  .box .who {
+    font-size: 18px;
+    color: var(--muted);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+  }
+  .box .line {
+    margin-top: 6px;
+    font-size: 28px;
+    line-height: 1.35;
+    font-weight: 900;
+  }
+  .box .line b { color: var(--green); }
+  .box .d {
+    margin-top: 6px;
+    font-size: 22px;
+    line-height: 1.4;
+    font-weight: 700;
+  }
+  .jaz {
+    margin-top: 14px;
+    background: var(--green-bg);
+    color: var(--green);
+    padding: 16px 18px;
+    font-size: 24px;
+    line-height: 1.4;
+    font-weight: 800;
+  }
+  .hero-end {
+    margin-top: 16px;
+    background: var(--blue-d);
+    color: #F6F1E6;
+    padding: 18px 22px;
+    font-size: 28px;
+    line-height: 1.35;
+    font-weight: 900;
+  }
+  .foot {
+    margin-top: 14px;
+    font-size: 17px;
+    line-height: 1.4;
+    color: var(--muted);
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="rail"></div>
+    <div class="kicker">数解AI · AGENT<span>图 3 / 3 · 记忆时机</span></div>
+    <h1>记忆别在<br>收工时写</h1>
+    <p class="sub">轨迹原样留着。下一单来了，再决定抽什么。</p>
+    <div class="trio">
+      <div class="tile">
+        <div class="k">ALFWorld</div>
+        <div class="n">+16.2</div>
+        <div class="d">成功率，点</div>
+      </div>
+      <div class="tile">
+        <div class="k">WebShop</div>
+        <div class="n">+16.3</div>
+        <div class="d">成功率，点</div>
+      </div>
+      <div class="tile">
+        <div class="k">τ²-bench</div>
+        <div class="n">+3.9</div>
+        <div class="d">成功率，点</div>
+      </div>
+    </div>
+    <div class="note">比的是最强基线，不是「没记忆」。前两个对得上 Qwen3-8B 当执行器。τ² 的 3.9 是摘要数字，不另标执行器。</div>
+    <div class="box">
+      <div class="who">没训练也行 · WebShop</div>
+      <div class="line"><b>61.0</b> 对 SkillOS 的 <b>41.0</b></div>
+      <div class="d">同一套 Gemini-2.5-Pro，既当抽取器又当执行器。这组不是上面的 +16.3。</div>
+    </div>
+    <div class="jaz">JAZ 更瘦：一个能递归调用自己的 invoke，不另接记忆。StuLife 要回忆的那段，比 Letta 高 8%，成本一半。AppWorld 比 ACE 高 4%，更便宜。8% / 4% 是论文原话。</div>
+    <div class="hero-end">这周被收藏最多的，都没在加参数。<br>Harness、岔路口、记忆时机。模型一行没改。</div>
+    <p class="foot">Salesforce，arXiv:2609.27334，09-23。JAZ，arXiv:2609.26891，09-22。收藏第二的 WFM 在训模型，不进这张图。</p>
+  </div>
+</body>
+</html>

@@ -20979,6 +20979,1341 @@
         "Cookie 刷新：.env 旧 Cookie（09-15）已失效，/tmp/wxprofile 昨日快照也已失效；从作者 Chrome 本体档案（~/.config/google-chrome，21:19 更新）复制 Cookies+Local State 到新 headless 档案解密导出，注入登录成功（uin 3923428115）并已 export 写回 .env。",
         "流量渠道明细已 append-sources 入库至 2026-09-18；当日（09-19）扩散步数篇 21:30 实测 read=11（发表记录口径）。"
       ]
+    },
+    {
+      "collectedAt": "2026-09-27T18:05:32+08:00",
+      "dataThrough": "2026-09-26",
+      "periods": {
+        "content": {
+          "from": "2026-08-28",
+          "to": "2026-09-26"
+        },
+        "users": {
+          "from": "2026-08-27",
+          "to": "2026-09-26"
+        },
+        "income": {
+          "from": "2026-09-20",
+          "to": "2026-09-26"
+        }
+      },
+      "content": {
+        "readers30d": 19509,
+        "daily": {
+          "date": "2026-09-26",
+          "reads": 167,
+          "shares": 14,
+          "comments": 1
+        },
+        "sources": {
+          "推荐": 78.7,
+          "公众号消息": 11.3,
+          "聊天会话": 4.1,
+          "其它": 3.2,
+          "公众号主页": 2.9,
+          "搜一搜": 0.8,
+          "朋友圈": 0.4
+        },
+        "articles": [
+          {
+            "date": "2026-09-26",
+            "title": "DeepSeek 把 196B 参数做成字典，为什么反而更聪明？",
+            "reads": 30,
+            "type": "article",
+            "share": 0.15
+          },
+          {
+            "date": "2026-09-26",
+            "title": "58 个工具，Agent还没开始干活就先蠢了",
+            "reads": 41,
+            "type": "tietu",
+            "share": 0.21
+          },
+          {
+            "date": "2026-09-25",
+            "title": "一个人重构了Copilot 80万行代码到rust",
+            "reads": 19,
+            "type": "tietu",
+            "share": 0.1
+          },
+          {
+            "date": "2026-09-24",
+            "title": "同样 1M 上下文，KV 缓存差 15 倍：四家架构差在哪一层",
+            "reads": 144,
+            "type": "article",
+            "share": 0.74
+          },
+          {
+            "date": "2026-09-24",
+            "title": "损失面上全是坑，为什么梯度下降还能走到谷底？",
+            "reads": 21,
+            "type": "article",
+            "share": 0.11
+          },
+          {
+            "date": "2026-09-24",
+            "title": "SWE Pro v2新榜刚发就被打穿了？",
+            "reads": 40,
+            "type": "tietu",
+            "share": 0.21
+          },
+          {
+            "date": "2026-09-23",
+            "title": "便宜不再是国产专属，Luna6低过了DS 4.1F",
+            "reads": 2,
+            "type": "tietu",
+            "share": 0.01
+          },
+          {
+            "date": "2026-09-23",
+            "title": "AI 画的手指为什么总多一根？56 维评测，这项它只得 20.9 分",
+            "reads": 32,
+            "type": "article",
+            "share": 0.16
+          },
+          {
+            "date": "2026-09-22",
+            "title": "AI 生图写「不要桌子」，为什么反而画了猫？引导到底在拧什么",
+            "reads": 33,
+            "type": "article",
+            "share": 0.17
+          },
+          {
+            "date": "2026-09-22",
+            "title": "AA并列第六，显然MIMO 2.6比Grok4.7更顶",
+            "reads": 121,
+            "type": "tietu",
+            "share": 0.62
+          },
+          {
+            "date": "2026-09-21",
+            "title": "扩散模型为什么要几百个噪声级别？一个够吗",
+            "reads": 68,
+            "type": "article",
+            "share": 0.35
+          },
+          {
+            "date": "2026-09-21",
+            "title": "72分的MIMO 2.6新模型看起来即将要发布了",
+            "reads": 116,
+            "type": "tietu",
+            "share": 0.59
+          },
+          {
+            "date": "2026-09-20",
+            "title": "猜噪声怎么就学会了画猫？扩散模型的训练目标不是拍脑袋定的",
+            "reads": 50,
+            "type": "article",
+            "share": 0.26
+          },
+          {
+            "date": "2026-09-20",
+            "title": "vibe coding之下，你的SSD可能两年报废",
+            "reads": 114,
+            "type": "tietu",
+            "share": 0.58
+          },
+          {
+            "date": "2026-09-19",
+            "title": "AI 出图要跑 50 步，为什么砍到 10 步还清晰，砍到 1 步就糊了？",
+            "reads": 56,
+            "type": "article",
+            "share": 0.29
+          },
+          {
+            "date": "2026-09-19",
+            "title": "我们可能很快就要见证opc的一场大危机",
+            "reads": 28,
+            "type": "tietu",
+            "share": 0.14
+          },
+          {
+            "date": "2026-09-18",
+            "title": "GAN 一步就能出图，为什么输给了要跑 50 步的扩散？",
+            "reads": 106,
+            "type": "article",
+            "share": 0.54
+          },
+          {
+            "date": "2026-09-17",
+            "title": "RL训练动态展示，MIMO 2.6新模型要发了",
+            "reads": 90,
+            "type": "tietu",
+            "share": 0.46
+          },
+          {
+            "date": "2026-09-17",
+            "title": "AI中有趣的对抗思想居然无处不在",
+            "reads": 39,
+            "type": "article",
+            "share": 0.2
+          },
+          {
+            "date": "2026-09-16",
+            "title": "AI 视频里的字，为什么一帧一个样？10 个模型考下来最高 37%",
+            "reads": 19,
+            "type": "article",
+            "share": 0.1
+          },
+          {
+            "date": "2026-09-15",
+            "title": "DeepSeek V4.1刷分没？新旧榜单差异过大",
+            "reads": 132,
+            "type": "tietu",
+            "share": 0.68
+          },
+          {
+            "date": "2026-09-15",
+            "title": "AI 生图好看能到 91.87 分，为什么招牌上的字还是错的？",
+            "reads": 26,
+            "type": "article",
+            "share": 0.13
+          },
+          {
+            "date": "2026-09-14",
+            "title": "机械臂蹭一下桶盖，成功率高10%：奖励函数才是AI钻空子的源头",
+            "reads": 35,
+            "type": "article",
+            "share": 0.18
+          },
+          {
+            "date": "2026-09-13",
+            "title": "GRPO 省了一个 critic，长任务为什么反而崩了？",
+            "reads": 61,
+            "type": "article",
+            "share": 0.31
+          },
+          {
+            "date": "2026-09-12",
+            "title": "25个菲尔兹奖得主集体对AI开炮，这回真急了",
+            "reads": 61,
+            "type": "article",
+            "share": 0.31
+          },
+          {
+            "date": "2026-09-11",
+            "title": "杭州社保把GLM Lite打5折是否够划算？",
+            "reads": 150,
+            "type": "tietu",
+            "share": 0.77
+          },
+          {
+            "date": "2026-09-10",
+            "title": "AI 的 90% 把握为什么不能全信？贝叶斯定理说概率不是这么用的",
+            "reads": 37,
+            "type": "article",
+            "share": 0.19
+          },
+          {
+            "date": "2026-09-09",
+            "title": "误差不是会互相抵消吗？量化模型为什么还是掉点？",
+            "reads": 45,
+            "type": "article",
+            "share": 0.23
+          },
+          {
+            "date": "2026-09-08",
+            "title": "DeepSeek 有 384 个专家，为什么不敢强迫它们平均干活？",
+            "reads": 36,
+            "type": "article",
+            "share": 0.18
+          },
+          {
+            "date": "2026-09-26",
+            "title": "爽翻了的大模型密集送鸡蛋活动，背后却...",
+            "reads": 41,
+            "type": "tietu",
+            "share": 0.21
+          },
+          {
+            "date": "2026-09-26",
+            "title": "RL统治了AI前沿热点?RSI大🔥背后...",
+            "reads": 101,
+            "type": "tietu",
+            "share": 0.52
+          },
+          {
+            "date": "2026-09-26",
+            "title": "AI学徒新排行榜：Fabel 72分 vs Kimi 18分",
+            "reads": 22,
+            "type": "tietu",
+            "share": 0.11
+          },
+          {
+            "date": "2026-09-26",
+            "title": "DeepSeek V4.1 四十层网络，为什么不给每层都记账？",
+            "reads": 54,
+            "type": "article",
+            "share": 0.28
+          },
+          {
+            "date": "2026-09-26",
+            "title": "DeepSeek和Harness协同进化：换个壳差9分？",
+            "reads": 107,
+            "type": "tietu",
+            "share": 0.55
+          },
+          {
+            "date": "2026-09-26",
+            "title": "DeepSeek v4.1 Flash 5项大改值得v5版本了",
+            "reads": 106,
+            "type": "tietu",
+            "share": 0.54
+          },
+          {
+            "date": "2026-09-26",
+            "title": "DeepSeek 4.1实测安全更强，第三方都卷起来",
+            "reads": 98,
+            "type": "tietu",
+            "share": 0.5
+          },
+          {
+            "date": "2026-09-26",
+            "title": "AI解决千禧数学难题竟成连续剧",
+            "reads": 82,
+            "type": "tietu",
+            "share": 0.42
+          },
+          {
+            "date": "2026-09-26",
+            "title": "NS风波：数学还是人类智力的自留地吗？",
+            "reads": 108,
+            "type": "tietu",
+            "share": 0.55
+          },
+          {
+            "date": "2026-09-26",
+            "title": "千禧年NS方程挑起来AI和数学家们的一场风波",
+            "reads": 36,
+            "type": "tietu",
+            "share": 0.18
+          },
+          {
+            "date": "2026-09-26",
+            "title": "330tps，疾如闪电的DeepSeek v4.1 flash",
+            "reads": 160,
+            "type": "tietu",
+            "share": 0.82
+          },
+          {
+            "date": "2026-09-26",
+            "title": "deepseek v4.1 flash和MIMO来了，谁先上桌",
+            "reads": 105,
+            "type": "tietu",
+            "share": 0.54
+          }
+        ]
+      },
+      "users": {
+        "daily": {
+          "date": "2026-09-26",
+          "new": 5,
+          "cancelled": 1,
+          "net": 4,
+          "total": 1043
+        },
+        "channelTotal": 161,
+        "channels": {
+          "articlePage": {
+            "count": 131,
+            "share": 81.37
+          },
+          "video": {
+            "count": 3,
+            "share": 1.86
+          },
+          "other": {
+            "count": 27,
+            "share": 16.77
+          }
+        },
+        "trend": [
+          {
+            "date": "2026-09-20",
+            "new": 8,
+            "cancelled": 0,
+            "net": 8,
+            "total": 1027
+          },
+          {
+            "date": "2026-09-21",
+            "new": 7,
+            "cancelled": 0,
+            "net": 7,
+            "total": 1034
+          },
+          {
+            "date": "2026-09-22",
+            "new": 2,
+            "cancelled": 0,
+            "net": 2,
+            "total": 1036
+          },
+          {
+            "date": "2026-09-23",
+            "new": 0,
+            "cancelled": 0,
+            "net": 0,
+            "total": 1036
+          },
+          {
+            "date": "2026-09-24",
+            "new": 1,
+            "cancelled": 0,
+            "net": 1,
+            "total": 1037
+          },
+          {
+            "date": "2026-09-25",
+            "new": 2,
+            "cancelled": 0,
+            "net": 2,
+            "total": 1039
+          },
+          {
+            "date": "2026-09-26",
+            "new": 5,
+            "cancelled": 1,
+            "net": 4,
+            "total": 1043
+          }
+        ]
+      },
+      "income": {
+        "overview": {
+          "cumulativeRevenue": 93.07,
+          "programmaticRevenue": 93.07,
+          "yesterdayIncrement": 0.25,
+          "mutualSelectionRevenue": 0,
+          "commerceRevenue": 0
+        },
+        "articleIncomeAvailable": true,
+        "slots": {
+          "inline": {
+            "summary": {
+              "pulls": 1618,
+              "impressions": 849,
+              "exposureRate": 52.47,
+              "clicks": 1,
+              "ctr": 0.12,
+              "ecpm": 0.86,
+              "revenue": 0.73
+            },
+            "dailyRevenueTotal": 0.74,
+            "daily": [
+              {
+                "date": "2026-09-26",
+                "pulls": 216,
+                "impressions": 133,
+                "exposureRate": 61.57,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 1.13,
+                "revenue": 0.15
+              },
+              {
+                "date": "2026-09-25",
+                "pulls": 271,
+                "impressions": 150,
+                "exposureRate": 55.35,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 1.0,
+                "revenue": 0.15
+              },
+              {
+                "date": "2026-09-24",
+                "pulls": 231,
+                "impressions": 95,
+                "exposureRate": 41.13,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 0.53,
+                "revenue": 0.05
+              },
+              {
+                "date": "2026-09-23",
+                "pulls": 126,
+                "impressions": 62,
+                "exposureRate": 49.21,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 0.48,
+                "revenue": 0.03
+              },
+              {
+                "date": "2026-09-22",
+                "pulls": 184,
+                "impressions": 89,
+                "exposureRate": 48.37,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 0.67,
+                "revenue": 0.06
+              },
+              {
+                "date": "2026-09-21",
+                "pulls": 260,
+                "impressions": 139,
+                "exposureRate": 53.46,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 0.65,
+                "revenue": 0.09
+              },
+              {
+                "date": "2026-09-20",
+                "pulls": 330,
+                "impressions": 181,
+                "exposureRate": 54.85,
+                "clicks": 1,
+                "ctr": 0.55,
+                "ecpm": 1.16,
+                "revenue": 0.21
+              }
+            ]
+          },
+          "messageArea": {
+            "summary": {
+              "pulls": 1849,
+              "impressions": 262,
+              "exposureRate": 14.17,
+              "clicks": 0,
+              "ctr": 0.0,
+              "ecpm": 3.17,
+              "revenue": 0.83
+            },
+            "dailyRevenueTotal": 0.84,
+            "daily": [
+              {
+                "date": "2026-09-26",
+                "pulls": 188,
+                "impressions": 17,
+                "exposureRate": 9.04,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 3.53,
+                "revenue": 0.06
+              },
+              {
+                "date": "2026-09-25",
+                "pulls": 306,
+                "impressions": 29,
+                "exposureRate": 9.48,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 3.45,
+                "revenue": 0.1
+              },
+              {
+                "date": "2026-09-24",
+                "pulls": 208,
+                "impressions": 26,
+                "exposureRate": 12.5,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 1.92,
+                "revenue": 0.05
+              },
+              {
+                "date": "2026-09-23",
+                "pulls": 140,
+                "impressions": 30,
+                "exposureRate": 21.43,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 3.0,
+                "revenue": 0.09
+              },
+              {
+                "date": "2026-09-22",
+                "pulls": 228,
+                "impressions": 46,
+                "exposureRate": 20.18,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 4.78,
+                "revenue": 0.22
+              },
+              {
+                "date": "2026-09-21",
+                "pulls": 433,
+                "impressions": 72,
+                "exposureRate": 16.63,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 2.64,
+                "revenue": 0.19
+              },
+              {
+                "date": "2026-09-20",
+                "pulls": 346,
+                "impressions": 42,
+                "exposureRate": 12.14,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 3.1,
+                "revenue": 0.13
+              }
+            ]
+          },
+          "tietuBottom": {
+            "summary": {
+              "pulls": 1184,
+              "impressions": 128,
+              "exposureRate": 10.81,
+              "clicks": 1,
+              "ctr": 0.78,
+              "ecpm": 4.61,
+              "revenue": 0.59
+            },
+            "dailyRevenueTotal": 0.58,
+            "daily": [
+              {
+                "date": "2026-09-26",
+                "pulls": 81,
+                "impressions": 4,
+                "exposureRate": 4.94,
+                "clicks": 1,
+                "ctr": 25.0,
+                "ecpm": 0.0,
+                "revenue": 0.0
+              },
+              {
+                "date": "2026-09-25",
+                "pulls": 57,
+                "impressions": 7,
+                "exposureRate": 12.28,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 7.14,
+                "revenue": 0.05
+              },
+              {
+                "date": "2026-09-24",
+                "pulls": 233,
+                "impressions": 30,
+                "exposureRate": 12.88,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 4.67,
+                "revenue": 0.14
+              },
+              {
+                "date": "2026-09-23",
+                "pulls": 90,
+                "impressions": 9,
+                "exposureRate": 10.0,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 7.78,
+                "revenue": 0.07
+              },
+              {
+                "date": "2026-09-22",
+                "pulls": 256,
+                "impressions": 26,
+                "exposureRate": 10.16,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 1.92,
+                "revenue": 0.05
+              },
+              {
+                "date": "2026-09-21",
+                "pulls": 219,
+                "impressions": 17,
+                "exposureRate": 7.76,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 2.94,
+                "revenue": 0.05
+              },
+              {
+                "date": "2026-09-20",
+                "pulls": 248,
+                "impressions": 35,
+                "exposureRate": 14.11,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 6.29,
+                "revenue": 0.22
+              }
+            ]
+          },
+          "bottom": {
+            "summary": {
+              "pulls": 883,
+              "impressions": 189,
+              "exposureRate": 21.4,
+              "clicks": 1,
+              "ctr": 0.53,
+              "ecpm": 2.65,
+              "revenue": 0.5
+            },
+            "dailyRevenueTotal": 0.5,
+            "daily": [
+              {
+                "date": "2026-09-26",
+                "pulls": 107,
+                "impressions": 17,
+                "exposureRate": 15.89,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 2.35,
+                "revenue": 0.04
+              },
+              {
+                "date": "2026-09-25",
+                "pulls": 140,
+                "impressions": 24,
+                "exposureRate": 17.14,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 4.58,
+                "revenue": 0.11
+              },
+              {
+                "date": "2026-09-24",
+                "pulls": 116,
+                "impressions": 20,
+                "exposureRate": 17.24,
+                "clicks": 1,
+                "ctr": 5.0,
+                "ecpm": 3.0,
+                "revenue": 0.06
+              },
+              {
+                "date": "2026-09-23",
+                "pulls": 66,
+                "impressions": 13,
+                "exposureRate": 19.7,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 0.77,
+                "revenue": 0.01
+              },
+              {
+                "date": "2026-09-22",
+                "pulls": 111,
+                "impressions": 25,
+                "exposureRate": 22.52,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 1.2,
+                "revenue": 0.03
+              },
+              {
+                "date": "2026-09-21",
+                "pulls": 169,
+                "impressions": 49,
+                "exposureRate": 28.99,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 1.22,
+                "revenue": 0.06
+              },
+              {
+                "date": "2026-09-20",
+                "pulls": 174,
+                "impressions": 41,
+                "exposureRate": 23.56,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 4.63,
+                "revenue": 0.19
+              }
+            ]
+          },
+          "keyword": {
+            "summary": {
+              "pulls": 0,
+              "impressions": 0,
+              "exposureRate": null,
+              "clicks": 0,
+              "ctr": null,
+              "ecpm": null,
+              "revenue": 0.0
+            },
+            "dailyRevenueTotal": 0.0,
+            "daily": []
+          }
+        }
+      },
+      "notes": [
+        "内容概况窗口 2026-08-28~09-26（30 天）：阅读总人数 19,509（较 09-18 快照 23,711 回落，主因费马 4,687/ollama 4,364 双爆款日滚出窗口，非单篇下跌）。",
+        "昨日（09-26）卡片：阅读 167 / 分享 14 / 点赞 6 / 收藏 2 / 留言 1；近 7 天（09-20~09-26）阅读 1,574 / 分享 109 / 点赞 62 / 收藏 30 / 留言 46；近 30 天分享 638 / 点赞 446 / 收藏 184 / 留言 288。",
+        "⚠️ 口径修正（本轮发现，历史判读需改）：文章推荐不是「发布当天到账」，而是**次日集中到账**。09-24 四家架构 KV 篇当日仅 17 读（推荐 5），09-25 单日 88 读（推荐 67）、09-26 再 39 读（推荐 33）——累计 144 读里推荐占 72.9%。此前多轮复盘用「发布当日/次日读数低」推断「文章轨推荐未恢复」是错判，真实情况是文章推荐在 T+1 才放量。",
+        "单篇饼图 10 篇（item_show_type 权威判定 + 推荐占比）：09-24 四家架构KV 144读/推荐72.9%（分享23 赞6 留言5 藏5 完读17% 均读72s）｜09-22 引导 33读/63.6%｜09-21 分数 68读/52.9%｜09-24 损失面 21读/52.4%｜09-20 ELBO 50读/32.0%（均读112s 最长）｜09-23 六根手指 32读/6.2%（赞8 留言7 完读41% 互动最强）｜09-26 EnGram 30读/3.3%（发布仅 1 天，推荐未到账，同 09-24 KV 首日 3.3% 完全同型）｜贴图：09-26 58个工具 41读/78.0%｜09-15 V4.1刷分 132读/69.7%｜09-26 Luna6 2读/100%（当日新发，样本过小）。",
+        "⚠️ show_type 第三类发现：后台 item_show_type 计数为 0=84 / 8=67 / 10=6。本轮 41 条发表记录里有 4 条 show=10（「爽翻了的大模型密集送鸡蛋活动」「DeepSeek v4.1 Flash 5项大改值得v5版本了」「NS风波：数学还是人类智力的自留地吗？」「deepseek v4.1 flash和MIMO来了，谁先上桌」），内容核对为资讯速递类简讯、非本号长文，本快照按 tietu 归类。⚠️ scripts/wechat_audit_log.py 的 _tietu_titles() 判定条件是 item_show_type not in (None, 0)，已覆盖 10，无需改代码；但历史快照里这 4 条可能被误判为 article，回填时留意。",
+        "⚠️ 台账缺口（本轮发现）：09-17 09:31 短原创《AI中有趣的对抗思想居然无处不在》（https://mp.weixin.qq.com/s/mFbYxsQ290qgL-cVt1t34Q，39 读 / 赞 1 / 留言 0）后台 item_show_type=0 确认是文章，但 draft-status.yaml 的 articles: 里没有对应条目——它只作为 09-18 GAN 篇的底本记在 plan_notes 里。88 篇台账 ≠ 后台 84 篇 type=0 全集，需作者确认是否补录。",
+        "用户增长：09-26 新增 5 / 取消 1 / 净增 4 / 累计 1,043（破 1,040）。逐日净增：09-19 +10 / 09-20 +8 / 09-21 +7 / 09-22 +2 / 09-23 0 / 09-24 +1 / 09-25 +2 / 09-26 +4。09-19 以来 8 天净增 34，09-23 出现 0 净增（当日六根手指篇 32 读但 0 新增，关注转化与阅读量脱钩）。",
+        "用户渠道构成（30 天 161 人）：文章页关注 131（81.37%）/ 视频号 3（1.86%）/ 更多 27（16.77%）。视频号仍是短板。",
+        "收入：累计 93.07 元（09-18 为 90.03，+3.04），昨日 +0.25。7 日（09-20~09-26）分广告位：文章中部 0.73（曝光率 52.47% 最高、eCPM 0.86 最低）／留言区 0.83（eCPM 3.17）／贴图底部推荐流 0.59（eCPM 4.61 最高）／文章底部 0.50（曝光率 21.40%）／文中关键词 0。7 日合计 2.65 元。",
+        "日曝光量全部 <200（最高单日 181，文章中部 09-26），按 skill 判据本轮不分析 eCPM/CTR 趋势，只看曝光率与拉取量方向：文章中部曝光率稳定在 41~62%，留言区从 09-23 的 21.43% 掉到 09-26 的 9.04%（拉取量同步从 433 掉到 188，跟随阅读量）。",
+        "文章收入 tab 可用（仅发布 7 日内、不含返佣与互选）：六根手指 0.10 最高、ELBO 0.04、分数 0.05、引导 0.03；贴图侧 72分MIMO 0.26、SSD两年报废 0.18。原创标记与 item_show_type 交叉校验一致（原创=0 / 非原创=8,10）。",
+        "本轮登录方式：复用本机 Chrome 档案（~/.config/google-chrome/Default + Local State，cookies 为 v11 需 gnome-keyring 解密）→ 复制到 /tmp/wxprofile → headless Chrome --remote-debugging-port=9333 --password-store=gnome-libsecret 启动 → CDP 读 Network.getAllCookies（Chrome 自己解密，v11 明文取到）→ wechat-cdp-cookie.mjs export 写回 .env → status 验证 uin=3923428115 + token。可复用于后续审计，无需扫码。",
+        "采集接口备忘（供下次复用）：单篇列表 /misc/appmsganalysis?action=get_article_list&article_source=9999&offset&count（需带 fingerprint 参数，否则 invalid csrf token）；单篇详情 /misc/appmsganalysis?action=detailpage&msgid=<appmsgid>_<idx>&publish_date=&type=int，页面 wx.cgiData.articleData.article_data_new 内含 read_uv/share_uv/like_cnt/comment_cnt/zaikan_cnt/avg_article_read_time/finished_read_pv_ratio，articleSummaryData.list 内含逐日逐 scene 明细（scene 9999=全部 0=公众号消息 1=聊天会话 2=朋友圈 3=名片分享 4=公众号主页 5=搜一搜 6=推荐 7=其它）；发表记录 /cgi-bin/appmsgpublish?sub=list&begin=&count=20（每页最多 20，sent_info.time=发布时间戳，appmsg_info[].item_show_type=类型判据）；收入 /promotion/publisher/publisher_stat?action=biz_ads_stat&slot_id=&start_date=&end_date=。"
+      ]
+    },
+    {
+      "collectedAt": "2026-10-01T14:05:00+08:00",
+      "dataThrough": "2026-09-30",
+      "periods": {
+        "content": {
+          "from": "2026-09-01",
+          "to": "2026-09-30"
+        },
+        "users": {
+          "from": "2026-09-21",
+          "to": "2026-09-30"
+        },
+        "income": {
+          "from": "2026-09-24",
+          "to": "2026-09-30"
+        }
+      },
+      "content": {
+        "readers30d": 18829,
+        "daily": {
+          "date": "2026-09-30",
+          "reads": 364,
+          "shares": 23,
+          "comments": 9
+        },
+        "sources": {
+          "推荐": 79.6,
+          "公众号消息": 10.8,
+          "聊天会话": 3.9,
+          "其它": 3.1,
+          "公众号主页": 2.8,
+          "搜一搜": 0.7,
+          "朋友圈": 0.5
+        },
+        "articles": [
+          {
+            "date": "2026-09-30",
+            "title": "流形假设：15 万像素的图片，AI 凭什么只用 43 个数就认得？",
+            "type": "article",
+            "reads": 60,
+            "share": 0.117
+          },
+          {
+            "date": "2026-09-30",
+            "title": "GPT「五分之一」刷屏，其实账单不认这个数",
+            "type": "article",
+            "reads": 61,
+            "share": 0.016
+          },
+          {
+            "date": "2026-09-29",
+            "title": "小米MIMO v2.6 Pro浅层专家是空的？",
+            "type": "article",
+            "reads": 115,
+            "share": 0.035
+          },
+          {
+            "date": "2026-09-28",
+            "title": "少想四成，这一刀下去效果却层次不齐",
+            "type": "article",
+            "reads": 87,
+            "share": 0.046
+          },
+          {
+            "date": "2026-09-28",
+            "title": "小米花 2345 万训强化学习，评分器只分到 12.7%？",
+            "type": "article",
+            "reads": 118,
+            "share": 0.051
+          },
+          {
+            "date": "2026-09-27",
+            "title": "模型没换，Agent任务账单却能被砍掉一半？",
+            "type": "article",
+            "reads": 102,
+            "share": 0.01
+          },
+          {
+            "date": "2026-09-26",
+            "title": "DeepSeek 把 196B 参数做成字典，为什么反而更聪明？",
+            "type": "article",
+            "reads": 70,
+            "share": 0.071
+          },
+          {
+            "date": "2026-09-26",
+            "title": "58 个工具，Agent还没开始干活就先蠢了",
+            "type": "tietu",
+            "reads": 65,
+            "share": 0.0
+          },
+          {
+            "date": "2026-09-25",
+            "title": "一个人重构了Copilot 80万行代码到rust",
+            "type": "tietu",
+            "reads": 20,
+            "share": 0.2
+          },
+          {
+            "date": "2026-09-24",
+            "title": "同样 1M 上下文，KV 缓存差 15 倍：四家架构差在哪一层",
+            "type": "article",
+            "reads": 229,
+            "share": 0.175
+          },
+          {
+            "date": "2026-09-24",
+            "title": "损失面上全是坑，为什么梯度下降还能走到谷底？",
+            "type": "article",
+            "reads": 62,
+            "share": 0.048
+          },
+          {
+            "date": "2026-09-24",
+            "title": "SWE Pro v2新榜刚发就被打穿了？",
+            "type": "tietu",
+            "reads": 41,
+            "share": 0.024
+          },
+          {
+            "date": "2026-09-23",
+            "title": "便宜不再是国产专属，Luna6低过了DS 4.1F",
+            "type": "tietu",
+            "reads": 130,
+            "share": 0.023
+          },
+          {
+            "date": "2026-09-23",
+            "title": "AI 画的手指为什么总多一根？56 维评测，这项它只得 20.9 分",
+            "type": "article",
+            "reads": 37,
+            "share": 0.081
+          },
+          {
+            "date": "2026-09-22",
+            "title": "AI 生图写「不要桌子」，为什么反而画了猫？引导到底在拧什么",
+            "type": "article",
+            "reads": 30,
+            "share": 0.1
+          },
+          {
+            "date": "2026-09-22",
+            "title": "AA并列第六，显然MIMO 2.6比Grok4.7更顶",
+            "type": "tietu",
+            "reads": 121,
+            "share": 0.017
+          },
+          {
+            "date": "2026-09-21",
+            "title": "扩散模型为什么要几百个噪声级别？一个够吗",
+            "type": "article",
+            "reads": 8,
+            "share": 0.625
+          },
+          {
+            "date": "2026-09-21",
+            "title": "爽翻了的大模型密集送鸡蛋活动，背后却...",
+            "type": "tietu",
+            "reads": 41,
+            "share": 0.073
+          },
+          {
+            "date": "2026-09-20",
+            "title": "72分的MIMO 2.6新模型看起来即将要发布了",
+            "type": "tietu",
+            "reads": 117,
+            "share": 0.009
+          },
+          {
+            "date": "2026-09-19",
+            "title": "猜噪声怎么就学会了画猫？扩散模型的训练目标不是拍脑袋定的",
+            "type": "article",
+            "reads": 9,
+            "share": 0.222
+          },
+          {
+            "date": "2026-09-18",
+            "title": "vibe coding之下，你的SSD可能两年报废",
+            "type": "tietu",
+            "reads": 116,
+            "share": 0.034
+          }
+        ]
+      },
+      "users": {
+        "daily": {
+          "date": "2026-09-30",
+          "new": 6,
+          "cancelled": 1,
+          "net": 5,
+          "total": 1060
+        },
+        "channelTotal": 145,
+        "channels": {
+          "文章页关注": {
+            "count": 119,
+            "share": 82.07
+          },
+          "视频号": {
+            "count": 3,
+            "share": 2.07
+          },
+          "更多": {
+            "count": 23,
+            "share": 15.86
+          }
+        },
+        "trend": [
+          {
+            "date": "2026-09-30",
+            "new": 6,
+            "cancelled": 1,
+            "net": 5,
+            "total": 1060
+          },
+          {
+            "date": "2026-09-29",
+            "new": 7,
+            "cancelled": 0,
+            "net": 7,
+            "total": 1055
+          },
+          {
+            "date": "2026-09-28",
+            "new": 5,
+            "cancelled": 0,
+            "net": 5,
+            "total": 1048
+          },
+          {
+            "date": "2026-09-27",
+            "new": 1,
+            "cancelled": 1,
+            "net": 0,
+            "total": 1043
+          },
+          {
+            "date": "2026-09-26",
+            "new": 5,
+            "cancelled": 1,
+            "net": 4,
+            "total": 1043
+          },
+          {
+            "date": "2026-09-25",
+            "new": 2,
+            "cancelled": 0,
+            "net": 2,
+            "total": 1039
+          },
+          {
+            "date": "2026-09-24",
+            "new": 1,
+            "cancelled": 0,
+            "net": 1,
+            "total": 1037
+          },
+          {
+            "date": "2026-09-23",
+            "new": 0,
+            "cancelled": 0,
+            "net": 0,
+            "total": 1036
+          },
+          {
+            "date": "2026-09-22",
+            "new": 2,
+            "cancelled": 0,
+            "net": 2,
+            "total": 1036
+          },
+          {
+            "date": "2026-09-21",
+            "new": 7,
+            "cancelled": 0,
+            "net": 7,
+            "total": 1034
+          }
+        ]
+      },
+      "income": {
+        "articleIncomeAvailable": false,
+        "overview": {
+          "cumulativeRevenue": 95.05,
+          "programmaticRevenue": 95.05,
+          "yesterdayIncrement": 0.48,
+          "mutualSelectionRevenue": 0.0,
+          "commerceRevenue": 0.0
+        },
+        "slots": {
+          "留言区": {
+            "summary": {
+              "pulls": 1904,
+              "impressions": 233,
+              "exposureRate": 12.24,
+              "clicks": 0,
+              "ctr": 0.0,
+              "ecpm": 3.0,
+              "revenue": 0.7
+            },
+            "dailyRevenueTotal": 0.71,
+            "daily": [
+              {
+                "date": "2026-09-30",
+                "pulls": 341,
+                "impressions": 47,
+                "exposureRate": 13.78,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 2.34,
+                "revenue": 0.11
+              },
+              {
+                "date": "2026-09-29",
+                "pulls": 451,
+                "impressions": 57,
+                "exposureRate": 12.64,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 1.93,
+                "revenue": 0.11
+              },
+              {
+                "date": "2026-09-28",
+                "pulls": 302,
+                "impressions": 40,
+                "exposureRate": 13.25,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 3.5,
+                "revenue": 0.14
+              },
+              {
+                "date": "2026-09-27",
+                "pulls": 108,
+                "impressions": 17,
+                "exposureRate": 15.74,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 8.24,
+                "revenue": 0.14
+              },
+              {
+                "date": "2026-09-26",
+                "pulls": 188,
+                "impressions": 17,
+                "exposureRate": 9.04,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 3.53,
+                "revenue": 0.06
+              },
+              {
+                "date": "2026-09-25",
+                "pulls": 306,
+                "impressions": 29,
+                "exposureRate": 9.48,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 3.45,
+                "revenue": 0.1
+              },
+              {
+                "date": "2026-09-24",
+                "pulls": 208,
+                "impressions": 26,
+                "exposureRate": 12.5,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 1.92,
+                "revenue": 0.05
+              }
+            ]
+          },
+          "底部": {
+            "summary": {
+              "pulls": 869,
+              "impressions": 144,
+              "exposureRate": 16.57,
+              "clicks": 1,
+              "ctr": 0.69,
+              "ecpm": 3.89,
+              "revenue": 0.56
+            },
+            "dailyRevenueTotal": 0.55,
+            "daily": [
+              {
+                "date": "2026-09-30",
+                "pulls": 155,
+                "impressions": 18,
+                "exposureRate": 11.61,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 1.11,
+                "revenue": 0.02
+              },
+              {
+                "date": "2026-09-29",
+                "pulls": 164,
+                "impressions": 32,
+                "exposureRate": 19.51,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 1.25,
+                "revenue": 0.04
+              },
+              {
+                "date": "2026-09-28",
+                "pulls": 108,
+                "impressions": 19,
+                "exposureRate": 17.59,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 2.63,
+                "revenue": 0.05
+              },
+              {
+                "date": "2026-09-27",
+                "pulls": 79,
+                "impressions": 14,
+                "exposureRate": 17.72,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 16.43,
+                "revenue": 0.23
+              },
+              {
+                "date": "2026-09-26",
+                "pulls": 107,
+                "impressions": 17,
+                "exposureRate": 15.89,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 2.35,
+                "revenue": 0.04
+              },
+              {
+                "date": "2026-09-25",
+                "pulls": 140,
+                "impressions": 24,
+                "exposureRate": 17.14,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 4.58,
+                "revenue": 0.11
+              },
+              {
+                "date": "2026-09-24",
+                "pulls": 116,
+                "impressions": 20,
+                "exposureRate": 17.24,
+                "clicks": 1,
+                "ctr": 5.0,
+                "ecpm": 3.0,
+                "revenue": 0.06
+              }
+            ]
+          },
+          "inline": {
+            "summary": {
+              "pulls": 1724,
+              "impressions": 937,
+              "exposureRate": 54.35,
+              "clicks": 6,
+              "ctr": 0.64,
+              "ecpm": 1.07,
+              "revenue": 1.0
+            },
+            "dailyRevenueTotal": 1.0,
+            "daily": [
+              {
+                "date": "2026-09-30",
+                "pulls": 306,
+                "impressions": 150,
+                "exposureRate": 49.02,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 0.8,
+                "revenue": 0.12
+              },
+              {
+                "date": "2026-09-29",
+                "pulls": 324,
+                "impressions": 197,
+                "exposureRate": 60.8,
+                "clicks": 3,
+                "ctr": 1.52,
+                "ecpm": 0.96,
+                "revenue": 0.19
+              },
+              {
+                "date": "2026-09-28",
+                "pulls": 212,
+                "impressions": 111,
+                "exposureRate": 52.36,
+                "clicks": 1,
+                "ctr": 0.9,
+                "ecpm": 1.17,
+                "revenue": 0.13
+              },
+              {
+                "date": "2026-09-27",
+                "pulls": 164,
+                "impressions": 101,
+                "exposureRate": 61.59,
+                "clicks": 2,
+                "ctr": 1.98,
+                "ecpm": 2.08,
+                "revenue": 0.21
+              },
+              {
+                "date": "2026-09-26",
+                "pulls": 216,
+                "impressions": 133,
+                "exposureRate": 61.57,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 1.13,
+                "revenue": 0.15
+              },
+              {
+                "date": "2026-09-25",
+                "pulls": 271,
+                "impressions": 150,
+                "exposureRate": 55.35,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 1.0,
+                "revenue": 0.15
+              },
+              {
+                "date": "2026-09-24",
+                "pulls": 231,
+                "impressions": 95,
+                "exposureRate": 41.13,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 0.53,
+                "revenue": 0.05
+              }
+            ]
+          }
+        }
+      },
+      "notes": [
+        "会话来源修正（重要）：本轮登录态不在 /tmp/wxprofile（.env 旧 cookie，2026-09-27 17:01 导出，服务端已判「登录超时」），而在用户主 Chrome profile ~/.config/google-chrome/Default（cookie 创建于 2026-09-29 21:54）。v11 libsecret 手工解密失败（SHA256(domain) 前缀校验不通过），最终方案：cp 主 profile 最小集到 /tmp/wx-live-profile，用 headless chrome --user-data-dir 指向副本启动（9335 端口），由 Chrome 自身解密 cookie，避免打扰用户正在运行的 Chrome。已把 22 条 cookie 导出回 .env。",
+        "后台菜单改名：skill 文档里的「收入变现 → 流量主」已改为「收入变现 → 广告收入」（href=/promotion/publisher/publisher_index）。子菜单需先移除 .menu-fold 类并展开 #js_level2_title 才能点到，mouseenter 事件不触发。",
+        "用户分析页不能直接 URL 访问（misc/useranalysis 返回空白），必须从首页 hover「数据分析」→ 点「用户分析」进入（href=misc/useranalysis?=&token=...）。",
+        "口径差异（须留意）：首页卡片「总用户数 1,065」vs 用户分析「累计关注人数 1,060」，同日同口径不一致，差 5。本快照 users.total 采用用户分析页的 1,060。",
+        "单篇数据口径：content.articles[].reads 取自「内容管理→发表记录」列表的阅读列（= 阅读次数），单篇渠道饼图/完读率/留言/收藏取自 appmsganalysis 单篇详情页（阅读人数口径，去重）。两者不可混用，例如 09-30 流形假设发表记录 120 次 vs 详情页 60 人。",
+        "单篇饼图（5 篇，经阅读渠道构成 SVG aria 解析）：09-30 流形假设 推荐50.0/公众号消息46.7/主页3.3/其它1.7；09-28 小米MIMO RL 推荐74.6/消息15.3/主页6.8/聊天2.5/其它2.5/搜一搜0.8；09-26 DeepSeek196B 消息61.4/推荐18.6/主页14.3/其它4.3/聊天2.9/搜一搜1.4；09-24 四家KV 推荐76.4/消息11.8/聊天5.7/主页4.4/其它3.5；09-23 AI手指 消息35.1/聊天32.4/主页18.9/其它13.5/推荐5.4。",
+        "单篇详情页补充指标：流形假设 完读率18%、平均阅读时长1.12分钟、新增关注2、分享7、留言3、收藏6；四家KV 完读率14%、分享40、留言5、收藏22（分享率17.5%，本轮最高）；AI手指 完读率35%（本轮最高）、留言7。",
+        "数据概况为 5 指标卡片（阅读/点赞/分享/收藏/留言）：昨日 364/9/23/5/9。点赞、收藏卡片标题为 SVG 图标，innerText 取不到标题，按顺序对应。",
+        "收入：概览累计 95.05 元（上次审计 09-27 为 93.07，3 天 +1.98），昨日 +0.48 元。三个广告位 09-24~09-30 合计收入 0.70+0.56+1.00=2.26 元，日明细合计 2.26 元。文章收入页本轮无单独条目（articleIncomeAvailable=false）。",
+        "广告位对比（09-24~09-30）：文章中部广告曝光率 54.35% 最高、eCPM 1.07 最低；留言区 12.24% / eCPM 3.00；文章底部 16.57% / eCPM 3.89（CTR 0.69% 最高）。曝光量 937 中部 > 233 留言区 > 144 底部，瓶颈仍在曝光量而非点击率。",
+        "每日流量渠道明细已下载并入库：tendency_dl.xls → append-sources，added 4 / updated 26，days 总数 65，区间 2026-07-28 ~ 2026-09-30。",
+        "本文档连续第 2 次跳过内容分析页的「单篇列表」——该表固定为近 30 天累计 Top10（费马大定理 4687、ollama峰谷价 4368 等爆款占据），无法按日切换；改用「内容管理→发表记录」按发表日取数，口径已在 notes 标明。"
+      ]
     }
   ]
 }

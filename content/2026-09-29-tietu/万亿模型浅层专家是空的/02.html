@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>困惑度几乎没动</title>
+<style>
+  :root {
+    --ink: #1A2421;
+    --muted: #52605A;
+    --pine: #16332E;
+    --paper: #E6EEE9;
+    --card: #F7FBF8;
+    --line: #C5D2CB;
+    --ember: #C2412D;
+    --ember-bg: #F8E6E0;
+    --keep-bg: #E4F1EA;
+    --amber-bg: #F6E7C8;
+    --amber: #6B4510;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 1080px;
+    height: 1440px;
+    overflow: hidden;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Noto Sans CJK SC", "Noto Sans CJK TC", sans-serif;
+  }
+  .page {
+    width: 1080px;
+    height: 1440px;
+    display: flex;
+    flex-direction: column;
+  }
+  header {
+    background: var(--pine);
+    color: #F4F1EA;
+    padding: 16px 28px 14px;
+  }
+  .kicker {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+    color: #D5E4DC;
+  }
+  .kicker span { letter-spacing: 0.02em; font-weight: 600; color: #F0C7B8; }
+  h1 { margin-top: 4px; font-size: 48px; line-height: 1.05; font-weight: 900; }
+  .sub { margin-top: 4px; font-size: 22px; font-weight: 700; color: #F6D7CE; }
+  .body {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 16px 0;
+    gap: 8px;
+  }
+  h2 {
+    font-size: 18px;
+    font-weight: 900;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  h2 span { color: var(--muted); font-weight: 600; font-size: 15px; }
+  .panel {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  table {
+    width: 100%;
+    flex: 1;
+    border-collapse: collapse;
+    background: var(--card);
+    border: 1px solid var(--line);
+  }
+  th, td {
+    text-align: left;
+    padding: 0 10px;
+    font-size: 20px;
+    border-top: 1px solid #E3EBE6;
+    font-variant-numeric: tabular-nums;
+    vertical-align: middle;
+  }
+  th {
+    border-top: 0;
+    font-size: 13px;
+    letter-spacing: 0.03em;
+    color: var(--muted);
+    background: #F0F5F2;
+    font-weight: 700;
+    height: 30px;
+  }
+  tr { height: 12%; }
+  td.r, th.r { text-align: right; }
+  td b { font-weight: 900; }
+  tr.bad td { background: var(--ember-bg); }
+  tr.bad td.hot { color: var(--ember); font-weight: 900; }
+  tr.ok td { background: var(--keep-bg); }
+  .note {
+    padding: 8px 12px;
+    font-size: 18px;
+    line-height: 1.35;
+    font-weight: 800;
+  }
+  .amber { background: var(--amber-bg); color: var(--amber); }
+  .cold { background: var(--ember-bg); color: var(--ember); }
+  footer {
+    margin-top: 8px;
+    background: var(--pine);
+    color: #D5E4DC;
+    padding: 10px 18px 12px;
+    font-size: 16px;
+    line-height: 1.35;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="kicker">数解AI · MIMO<span>图 2 / 3 · 他的对照表</span></div>
+      <h1>困惑度几乎没动</h1>
+      <p class="sub">这句盖不住 top-3。均值 KL 是中位数的 16.6 倍。</p>
+    </header>
+    <div class="body">
+      <div class="panel">
+        <h2>剪过 · Noise floor · 完整<span>Noise floor 正文没定义，照抄列名</span></h2>
+        <table>
+          <tr>
+            <th>项</th>
+            <th class="r">剪过</th>
+            <th class="r">Noise floor</th>
+            <th class="r">完整</th>
+          </tr>
+          <tr>
+            <td>困惑度</td>
+            <td class="r"><b>1.595870</b></td>
+            <td class="r">1.594923</td>
+            <td class="r">1.595245</td>
+          </tr>
+          <tr class="bad">
+            <td>KL 均值</td>
+            <td class="r hot">0.006378</td>
+            <td class="r">0.005079</td>
+            <td class="r">—</td>
+          </tr>
+          <tr>
+            <td>KL 中位</td>
+            <td class="r"><b>0.000385</b></td>
+            <td class="r">0.000273</td>
+            <td class="r">—</td>
+          </tr>
+          <tr>
+            <td>标签在 top-1</td>
+            <td class="r">0.8384</td>
+            <td class="r">0.8385</td>
+            <td class="r">0.8391</td>
+          </tr>
+          <tr>
+            <td>标签在 top-5</td>
+            <td class="r">0.9814</td>
+            <td class="r">0.9817</td>
+            <td class="r">0.9816</td>
+          </tr>
+          <tr>
+            <td>与完整模型一致，top-1</td>
+            <td class="r">0.9769</td>
+            <td class="r">0.9792</td>
+            <td class="r">—</td>
+          </tr>
+          <tr>
+            <td>与完整模型一致，top-2</td>
+            <td class="r">0.8812</td>
+            <td class="r">0.8929</td>
+            <td class="r">—</td>
+          </tr>
+          <tr class="bad">
+            <td>与完整模型一致，top-3</td>
+            <td class="r hot">0.7517</td>
+            <td class="r">0.7754</td>
+            <td class="r">—</td>
+          </tr>
+        </table>
+      </div>
+      <div class="panel">
+        <h2>子集困惑度<span>语言三行相加才是 137,708</span></h2>
+        <table>
+          <tr>
+            <th>子集</th>
+            <th class="r">token</th>
+            <th class="r">剪过</th>
+            <th class="r">完整</th>
+            <th class="r">差</th>
+          </tr>
+          <tr>
+            <td>全部</td>
+            <td class="r">137,708</td>
+            <td class="r"><b>1.5959</b></td>
+            <td class="r">1.5952</td>
+            <td class="r">+0.0007</td>
+          </tr>
+          <tr>
+            <td>推理提示</td>
+            <td class="r">79,136</td>
+            <td class="r"><b>1.6219</b></td>
+            <td class="r">1.6212</td>
+            <td class="r">+0.0007</td>
+          </tr>
+          <tr class="bad">
+            <td>定义了工具</td>
+            <td class="r">18,394</td>
+            <td class="r"><b>1.3802</b></td>
+            <td class="r">1.3784</td>
+            <td class="r hot">+0.0018</td>
+          </tr>
+          <tr class="bad">
+            <td>结尾是工具调用</td>
+            <td class="r">11,292</td>
+            <td class="r"><b>1.3424</b></td>
+            <td class="r">1.3406</td>
+            <td class="r hot">+0.0018</td>
+          </tr>
+          <tr class="ok">
+            <td>其余</td>
+            <td class="r">40,178</td>
+            <td class="r"><b>1.6520</b></td>
+            <td class="r">1.6522</td>
+            <td class="r">−0.0002</td>
+          </tr>
+          <tr class="ok">
+            <td>英文</td>
+            <td class="r">71,373</td>
+            <td class="r"><b>1.6394</b></td>
+            <td class="r">1.6397</td>
+            <td class="r">−0.0003</td>
+          </tr>
+          <tr class="bad">
+            <td>中文</td>
+            <td class="r">53,198</td>
+            <td class="r"><b>1.5439</b></td>
+            <td class="r">1.5420</td>
+            <td class="r hot">+0.0019</td>
+          </tr>
+          <tr>
+            <td>其他语言</td>
+            <td class="r">13,137</td>
+            <td class="r"><b>1.5768</b></td>
+            <td class="r">1.5767</td>
+            <td class="r">+0.0001</td>
+          </tr>
+        </table>
+      </div>
+      <p class="note amber">语言三行 71,373 + 53,198 + 13,137 = 137,708。任务四行 79,136 + 18,394 + 11,292 + 40,178 = 149,000，不是同一份切分。红行是差的绝对值最大的三格，不是「坏了」。</p>
+      <p class="note cold">0.006378 ÷ 0.000385 = 16.6，他没写这个倍数。top-3：0.7754 − 0.7517 = 0.0237，也是两格相减。中文 +0.0019 是子集表最大的正差，仍然很小。</p>
+    </div>
+    <footer>数字摘自 turboderp 帖内截图，不是公开 CSV。全部行 1.5959 / 1.5952 是上表 1.595870 / 1.595245 收到四位。完整模型那一列，KL 和一致率他没填。</footer>
+  </div>
+</body>
+</html>
