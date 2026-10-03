@@ -1301,17 +1301,53 @@ articles:
   - '📦 2026-10-01 存公众号草稿箱（remote-api via vps-us，grace+blue）。✅ 2026-10-03 对账回填：**2026-10-02 20:00 发布** https://mp.weixin.qq.com/s/o7C50Fqhs9IZiQryKhmc9g；目录 git mv 2026-10-01-power-law-rl → 2026-10-02-power-law-rl，frontmatter date / scheduledPublish / wechatUrl 三处同步，gen_charts.py 与 weixin.html 内的本地路径一并改到新目录。'
   - '📉 T+0 数据表现偏弱（2026-10-03 数据审计）：发表记录 46 人 / 单篇详情页 27 人 / 完读率 **11%**（近 5 篇文章最低）/ 平均阅读时长 0.85 分钟 / 分享 2 / 留言 4 / 收藏 2；推荐占比 66.7%（T+0，按 T+1 到账口径不可过早判读）。**失败点在留存而非分发**——对照 09-30 流形假设篇 T+2 已到 164 人 / 完读 21% / 分享 26。复盘落点：反常识疑问句标题需搭配更具体的数字或场景降低「点开后不往下读」的落差。后台另提示该文已自动生成贴图草稿。'
 
+- slug: 2026-10-04-semantic-entropy
+  title: 问 AI 100 遍：100 种说法，为什么只算 1 种答案？
+  series: 数学直觉
+  status: draft_saved
+  published_date: null
+  wechat_url: null
+  files:
+    weixin: true
+    draft: true
+    outline: true
+    cover: true
+  notes:
+  - 选题：数学直觉线（信息论）× RL 观察，合集「数学直觉」，独立可读、开头零导航（全文不出现「第 N 篇 / 上一篇 / 拆给你看」，
+    Nature 那句已改写避子串误报）；兑现 10-02 篇预告「分布变窄的这个窄，用什么尺子量」。grill 日志 .grill/semantic-entropy-ruler.md；
+    大纲 content/2026-10-04-semantic-entropy/outline.md。与 08-28 信息熵篇切割线：那篇量「意外」（zip/困惑度），本篇量「意思有多分散」。
+  - 🎯 交付句：转 1「100 段回答，逐字相同的 0 段——字面层看它换着花样说，意思层看它只说了一件事」；
+    转 2「要 3 种解法，20 次里 0 次凑满 3 条——窄的不是它的能力，是它的默认」。
+  - 🔬 一手实测（2026-10-03，DeepSeek-V4.1-Flash / API 名 deepseek-chat，temperature 1.0）：
+    实验一 同一道往返平均速度题请求 100 次 → 逐字相同 0/100、最终答案 98/100 为 4.8、解题方法 95/100 同一条；
+    实验二 要求「3 种不同解法」20 次 × 3 条 = 60 条 → 0/20 凑满 3 条真不同路、平均 1.60 条（1 组 8/20、2 组 12/20）、20/20 存在换皮；
+    判据固化 + 三次标注投票一致率 60/60。原始输出与标注见 content/2026-10-04-semantic-entropy/data/。
+  - 📚 引用一手来源：2507.14843（RLVR 有时升高 token 级熵、答案级熵降、收敛到更小的一组不同答案；更大采样预算下经验支撑收缩大于扩张）、
+    Farquhar et al. Nature 630:625–630（2024-06-19，意思层而非词序列层算不确定性，双向蕴含聚类；原文用途为抓幻觉）、
+    DeepSeek-V4.1-Flash HF config.json（40 层 / hidden 5120 / 384 路由专家取 6 / hidden_act silu / fp8）。
+  - 🖼 配图 6 张：00-cover.png(1916×821 天然 21:9) + 脚本图 4 张(gen_charts.py，matplotlib 走 uv run) + AI 概念图 1 张。
+    ⚠️ 封面改为「AI 无字底图 + make_cover.py 脚本叠金字」——AI 两次把全角「：」「，」画成半角 `:``,`（docs/image-generation.md 第 5 条记过的坑），
+    脚本叠字才能保证标点一字不差；全角标点已验证。
+  - ✅ 质量核查：quality_check.py ALL PASS（原声 8/8 逐字在场、禁词 / AI 腔 / 尾部链接 / 转发点赞欲 / 配图存在性）；
+    正文 2079 字、含尾部 2496（≤2500 上限）；块公式 0、内联公式 0；话题标签 5 个；hot_articles.py --md --cited + --self-check 通过。
+  - 📦 2026-10-03 入草稿箱（remote-api via vps-us，grace+blue）：**现行草稿** draft media_id kOcXH4SytIYVIpYksTGfHr_TriTmFgCklSE2yTBtPBKO0h1zWLOW7o2_GQIJgsIE /
+    cover media_id kOcXH4SytIYVIpYksTGfHmqqRcfWkaoWGhAWR2N3WjJzT2KMSpMAzAH2CbBdyCQP；5 张正文图上传，
+    05-ruler-concept.png 超 1MB 自动压 JPEG q82。**按作者口径本篇无「下一篇预告」**（发布前检查相应条目记豁免）。
+  - ⚠️ **草稿箱里有一份作废副本**：draft media_id kOcXH4SytIYVIpYksTGfHrGHEnRhxjJYq6TlWI_x4tM4AbgIBSO4zNn73PcW5JFW（首次推送后按「含尾部热门区 ≤2500」口径瘦身 169 字，
+    脚本只封装 draft/add 无 draft/update，故重推生成了第二份）。发布前请在草稿箱删除这份旧的，保留上面那份现行草稿。
+
 summary:
-  total: 92
+  total: 93
   by_status:
     published: 92
     drafting: 0
-    draft_saved: 0
+    draft_saved: 1
   drafting_queue: []
-  ready_queue: []
+  ready_queue:
+  - 2026-10-04-semantic-entropy
   scheduled_queue: []
   planned_queue: []
-  next_publish_date: null
+  next_publish_date: '2026-10-04'
 plan_notes:
 - 2026-08-28 对齐：信息熵 8-28（今日）→ AlphaGo 8-29 → 多模态 8-30（作者确认）。目录名已同步重命名（git mv），frontmatter date 同步。
 - 2026-08-28 二次对齐：fp8 目录名改发布日期 2026-08-09；补 RLHF(7-30)/维度诅咒(高维空间,8-12) 两条已发布缺漏条目；price-war 两目录为贴图轨道，不入文章台账。
