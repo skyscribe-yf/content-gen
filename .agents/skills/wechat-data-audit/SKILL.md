@@ -37,7 +37,10 @@ description: "Audit WeChat Official Account article data, extract performance me
 
 1. 把本次采集结果规范化为一个独立快照 JSON，写入 `/tmp/audit-snapshot.json`。
 2. 快照必须包含 `collectedAt`、`dataThrough`、`periods`、`content`、`users`、`income`、`notes`。
-3. 内容字段使用稳定英文键：`readers30d`、`daily`、`sources`、`articles`；用户字段使用 `channels`、`trend`；流量主广告位放在 `income.slots` 下，例如 `messageArea`、`bottom`、`inline`、`keyword`；文章发布后 7 日累计收入放在 `income.articleIncome`，按文章保存分广告位收入占比。
+3. 内容字段使用稳定英文键：`readers30d`、`daily`、`sources`、`articles`；用户字段使用 `channels`、`trend`；流量主广告位放在 `income.slots` 下（用 `留言区` / `底部` / `inline`），例如 `messageArea`、`bottom`、`inline`、`keyword`；文章发布后 7 日累计收入放在 `income.articleIncome`，按文章保存分广告位收入占比。
+   - ⚠️ **`articles[].reads` 统一取「内容管理 → 发表记录」（`appmsgpublish`）的「阅读人数」列**（单一来源、全量覆盖；用 CSS 类名 `.appmsg-view / .appmsg-like / .appmsg-share / .appmsg-haokan / .appmsg-comment` 取，不要按文字顺序猜）。单篇详情页的渠道饼图 / 完读率 / 留言 / 收藏取**详情页**（去重人数口径）。**两套数字不可混用**——同一篇可差 1.7~2 倍（10-02 RL 篇发表记录 46 vs 详情页 27）。
+   - ⚠️ **`articles[].share` 单位是 0–100 的百分比**（2026-10-03 修正：09-27 / 10-01 两轮曾误存为小数比例 0.117 = 11.7%）。算法：发表记录「分享人数 ÷ 阅读人数 × 100」。
+   - ⚠️ **贴图没有 `appmsgid`**：后台「发表记录」里只有**原创文章**节点带 `appmsgid`（藏在 `/merchant/reward?appmsgid=` 链接里），贴图节点没有；「内容分析 → 多媒体」tab 也没有详情链接。所以单篇渠道饼图只能覆盖 `type=article`，贴图记 `channels: null` 即可，不要在这上面耗时间。
 4. 无数据的曝光率、CTR 或 eCPM 使用 JSON `null`，不要写字符串 `-`；后台卡片和每日明细不一致时，两种口径都保留在 `notes` 或对应字段中。
 5. 运行 `python scripts/wechat_audit_log.py append --input /tmp/audit-snapshot.json`。脚本会校验结构、拒绝重复 `collectedAt`，并使用原子替换保护历史文件。
 6. 再运行 `python scripts/wechat_audit_log.py validate`。验证通过后，才更新 `docs/wechat-data-insights.md`、`docs/wechat-ops.md` 和 `docs/article-title-seo.md`。
@@ -69,6 +72,10 @@ done
 ```
 
 **`last_access` 明显在最近几分钟内 = 活会话**（用户在用）。此时**不要扫码**，直接走下面的「复制 profile」方案。
+
+> ✅ **2026-10-03 复验**：该方案仍然可用（主 profile cookie 创建于 10-03 08:12）。脚本已固化：复制最小集 + `chrome --headless=new --remote-debugging-port=9335 --user-data-dir=/tmp/wx-live-profile`，再 `connect_over_cdp("http://127.0.0.1:9335")`。⚠️ **两个坑**：① `pkill -f "remote-debugging-port=9335"` 写在同一条命令里会**杀掉自己**（bash 命令行也命中该模式）；② **playwright 装在 `.venv-mdnice/bin/python`**，系统 `python3` 没有。
+>
+> ⚠️ **token 不要硬编码**：`scripts/wx_audit_collect.py` 已改为从 `/tmp/wx-token.txt` 读 token。获取方式：先 `page.goto("https://mp.weixin.qq.com/")`（根路径，触发完整登录）等 10-15 秒，再从 `page.url` 里 `re.search(r"[?&]token=(\d+)", url)` 取出写入该文件。token 每次登录都会变，旧 token 访问分析页会显示「请重新登录」。
 
 #### ✅ 可用方案：复制主 profile，让 Chrome 自己解密（不打扰用户正在运行的 Chrome）
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # power-law-rl 篇 3 张脚本图
-# 输出到 content/2026-10-01-power-law-rl/
+# 输出到 content/2026-10-02-power-law-rl/
 import os
 from pathlib import Path
 
@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib import font_manager
 
-OUT = Path("content/2026-10-01-power-law-rl")
+OUT = Path("content/2026-10-02-power-law-rl")
 OUT.mkdir(parents=True, exist_ok=True)
 
 for f in [

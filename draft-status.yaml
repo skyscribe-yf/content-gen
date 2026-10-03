@@ -1279,10 +1279,32 @@ articles:
   - '✅ 2026-10-01 作者供链回填 https://mp.weixin.qq.com/s/z5OT4caCjpMsMKxLd7Zp7A（**09-30 20:00 发布**，非 09-29）：程序化核验 ct=1790769600 → 2026-09-30T20:00:00+08:00、og:title 与 frontmatter title 逐字一致（未被后台精简）、og:description 与 digest 逐字一致、msg_link 与供链一致。已改：slug 2026-09-29→2026-09-30、目录 git mv（内容目录未被 git 跟踪，用 mv）、frontmatter date 2026-09-29→09-30、scheduledPublish 同步、frontmatter 补 wechatUrl、outline.md 排期行+勾选项同步。status draft_saved→published、published_date/wechat_url 写入。grill 日志仍按创建日保留 .grill/2026-09-29-manifold-hypothesis.md 不改名。'
   - '📌 本篇是「数学直觉」系列第 4 篇（高维空间 → KL散度 → 损失面 → 流形假设），尾部导航链已按此序；下一篇预告 C1 对数篇待定档。'
 
+- slug: 2026-10-02-power-law-rl
+  title: RL 越训越准，为什么反而越训越笨？
+  series: 数学直觉
+  status: published
+  published_date: '2026-10-02'
+  wechat_url: https://mp.weixin.qq.com/s/o7C50Fqhs9IZiQryKhmc9g
+  files:
+    weixin: true
+    draft: true
+    outline: true
+    cover: true
+  notes:
+  - '📌 台账补录（2026-10-03）：本篇此前**从未录入台账**，由当日数据审计发现缺口后补建——后台发表记录确认 10-02 20:00 发布、原创、46 人，单篇详情页「已开启群发通知 2026/10/02」二次印证。⚠️ media_id / cover_media_id 未完整留存（outline 只记了缩略 kOcX…UpWkqh / kOcX…bbqwFW），如需后台追查请按日期到草稿箱/发表记录定位。'
+  - '选题：数学直觉线（幂律分布）× RL 观察，合集「数学直觉」，独立可读、开头零导航（全文不出现「第 N 篇 / 上一篇 / 拆给你看」）；与 09-30 流形篇文内互链一次。grill 日志 .grill/power-law-rl-trimming.md（主线「剪刀说」、现象清单、深度、落点均已作者拍板）；大纲 content/2026-10-02-power-law-rl/outline.md。原排期 2026-10-01 20:00，实际顺延一天于 10-02 20:00 发布，目录已按发布日期改名。'
+  - '🎯 交付句：转 1「幂律是世界的默认形状，长尾才是常态」（词频第一名约是第十名的 10 倍、第一百名的 100 倍）；转 2「RL 涨分的秘密恰恰是把这条尾巴剪掉——涨分的剪刀，也是能力的天花板」。'
+  - '🔬 一手来源 6 篇 + 1 报道：2509.25300（ACL 2026，Qwen2.5 0.5B–72B + Llama 3 1B–70B，R²>0.99、20%–30% 数据点外推、等算力下 32B 初期反超 72B）、2601.04670（RL 更新推高置信度、Best-of-N 差距随 N 收窄）、2507.14843（更大采样预算下经验支撑收缩大于扩张）、2601.15609（有限批次偏向被采样模式 → 锐化过头即坍缩）、2510.10150（ACL 2026 杰出论文，STEER）、2602.02545（MRPO 几何重塑，4B 超 Qwen3-32B 为论文口径）、机器之心 2026-09-10 + DeepSeek 官方基准（V4.1 Flash 552B MoE，DeepSWE v1.1 62.7→74.2、GPQA Diamond 92.4→90.9）。数字红线 10 条逐条核过；初稿「第十名 100 倍」笔误已改为「第一名约是第十名的 10 倍」。'
+  - '🎙 原声槽 8 处设、7 处填、槽 7 跳过（进稿 7 ≥ 下限 5），逐字保留；quality_check.py 第 14 项通过。'
+  - '🖼 配图 5 张：00-cover.png（gpt-image-2.5-sunburst，上游忽略 size → center-crop 1672×716 = 21:9，dim image read 5 项核验全过、标题逐字一致）+ 脚本图 3（gen_charts.py：01 词频双对数直线、02 RL 幂律与外推、03 剪尾前后分布）+ AI 概念图 1（04 长尾被剪断；无数字无文字）。AI 图不承载数字，数字图全部脚本画。'
+  - '✅ 门禁：quality_check.py ALL PASS（原声槽 / 爆款 9 条自检 / 恢复期质量门禁 / 禁词 / AI 腔 / 长句 / 尾部链接 / 转发点赞欲）；hot_articles.py --md --cited + --self-check 通过；话题标签 5 个（#幂律分布 #RL后训练 #熵坍缩 #强化学习 #数解AI）；发布前 9 项最终检查通过（无待发布残留、无重复封面标题、预告闭环「熵」接「分布变窄」、互动引导到位）；篇幅 2000 字口径紧凑版。'
+  - '📦 2026-10-01 存公众号草稿箱（remote-api via vps-us，grace+blue）。✅ 2026-10-03 对账回填：**2026-10-02 20:00 发布** https://mp.weixin.qq.com/s/o7C50Fqhs9IZiQryKhmc9g；目录 git mv 2026-10-01-power-law-rl → 2026-10-02-power-law-rl，frontmatter date / scheduledPublish / wechatUrl 三处同步，gen_charts.py 与 weixin.html 内的本地路径一并改到新目录。'
+  - '📉 T+0 数据表现偏弱（2026-10-03 数据审计）：发表记录 46 人 / 单篇详情页 27 人 / 完读率 **11%**（近 5 篇文章最低）/ 平均阅读时长 0.85 分钟 / 分享 2 / 留言 4 / 收藏 2；推荐占比 66.7%（T+0，按 T+1 到账口径不可过早判读）。**失败点在留存而非分发**——对照 09-30 流形假设篇 T+2 已到 164 人 / 完读 21% / 分享 26。复盘落点：反常识疑问句标题需搭配更具体的数字或场景降低「点开后不往下读」的落差。后台另提示该文已自动生成贴图草稿。'
+
 summary:
-  total: 91
+  total: 92
   by_status:
-    published: 91
+    published: 92
     drafting: 0
     draft_saved: 0
   drafting_queue: []
@@ -1330,3 +1352,4 @@ plan_notes:
 - 2026-09-27 18:05 数据审计（skill: wechat-data-audit）：快照 collectedAt=2026-09-27T18:05:32+08:00、dataThrough=2026-09-26 已 append 并 validate 通过（audits 28 条）；每日流量渠道 append-sources 新增 8 天/更新 22 天（台账 61 天，范围 07-28~09-26）；单篇饼图 10 篇归档 docs/wechat-data-article-channels-2026-09-27.json；发表记录采 41 条；报告 wechat-data-audit-report.html 已重生。🔴 **本轮重大口径修正：文章推荐 T+1 到账**——09-24 四家架构 KV 篇发布当日 17 读（推荐 5）、09-25 单日 88 读（推荐 67）、09-26 39 读（推荐 33），累计 144 读里推荐占 72.9%；EnGram 篇首日推荐 3.3% 与之同型属未到账。**0ab~0ad 三轮基于发布当日读数的「文章轨推荐未恢复」判读全部作废**。恢复期仍不退出（滚动 7 篇 0 篇达 150 读：144/68/50/33/32/21/30）。**数据基建两处修复**：① 发现后台 item_show_type 第三类 =10（计数 0=84/8=67/10=6），4 条资讯速递类简讯此前会被 backfill-types 误判为 article → 已追加进 branding/style-corpus/tietu-extra.json 并 backfill-types --force 重刷全量 402 条；② **台账缺口待作者确认**：09-17 09:31 短原创《AI中有趣的对抗思想居然无处不在》(https://mp.weixin.qq.com/s/mFbYxsQ290qgL-cVt1t34Q，39 读/赞 1/留言 0) 后台 show_type=0 确认是文章，但 draft-status.yaml 的 articles 列表无对应条目（仅作为 09-18 GAN 篇底本记在 plan_notes），补录则台账 88→89 篇。**作者 09-27 确认补录**：已建 `2026-09-17-adversarial-thought`（series 调剂品、files 四项全 false——无 content/ 目录，是不走流水线的 698 字个人随笔、0 图 0 公式；线上核验 ct=1789608713 → 09-17 09:31:53、og:title 逐字一致、首发 35 读→累计 39 读）；summary 重算 total 89 / published 89，**台账与后台 type=0 全集对齐**。**登录流程本轮打通免扫码**：.env Cookie 过期 8 天 → 从本机 Chrome 档案（~/.config/google-chrome/Default，cookie 为 v11 需 gnome-keyring）复制到 /tmp/wxprofile → headless Chrome --remote-debugging-port=9333 --password-store=gnome-libsecret → CDP Network.getAllCookies 读明文 → wechat-cdp-cookie.mjs export 写回 .env → status 验证 uin=3923428115。采集接口清单见 insights 0ae.9。**连带修复 backfill-types 失效场景**：贴图标题集依赖 publish-data*.json（快照停在 09-19）+ tietu-corpus-summary + tietu-extra，09-19 之后新发贴图不在集内会被误判为 article——本轮 41 条快照里 7 条新贴图（58个工具/Copilot重构/SWE Pro/Luna6/AA并列第六/72分MIMO/vibe coding SSD）全被错判；已把这批 18 条标题补进 branding/style-corpus/tietu-extra.json（现 25 条）并 backfill-types --force 重刷 402 条，复验 0 误判、全量分布 article 223 / tietu 179。**规则更新：单篇类型判读一律以后台 appmsg_info[].item_show_type 原始字段为准，标题集推断仅作兜底。**
 - 2026-09-27 晚：新篇入箱：MiMo-V2.6 强化学习账本篇《小米花 2345 万训强化学习，评分器只分到 12.7%？》（目录 content/2026-09-28-mimo-rl-ledger/，排期 09-28 20:00）。作者 09-27 提出「小米公开了 RL 数据集」热点，核查后升级为账本拆解（全程直播+账单+全套开源），grill 收敛（.grill/2026-09-27-mimo-rl-ledger.md）。**数据全部一手核实**（技术报告 PDF SHA256 fb81e6e0…，Figure 3 双饼图与左曲线、Table 5、Table 6 均已切图逐项读图核对），推翻媒体/自身共 3 处错误（7000 是 tasks 非 environments；9B 的 RL 结果是 11/11 全涨而非「只涨 0.1」；Flash 的 grader 是 14.2% 而 40.9% 是 Training）。**原声槽 6/6 逐槽交互采集逐字进稿**（作者手打，仅 1 处错字经作者指示修正：期间→旗舰；另作者指示比例统一用 6/7 分数形式）。配图 5 张：封面 00-cover.png 1916x821 原生 21:9（gpt-image-2.5-sunburst，第 5 版定稿，check_cover 文字块 18.1% ≤1/4、标题逐字核验通过）+ 论文原图 4 张（Figure 3 双饼图 / Figure 3 左曲线 / Table 5 任务构成 / Table 6 三级跳，全部 pdftoppm 300dpi + PIL 裁切，无 AI 概念图）。门禁：正文 2455 字 / 含尾部 2580（作者 09-27 指示「不用压缩了，就这样」）；长句 2 处均原声豁免；超 3 句段落 0；禁词 0；AI 腔 0；待发布残留 0；原声 6/6 逐字在场；图片 4 张同级路径无 images/ 前缀；话题标签 5 个；链接 7 条全溯源（check_wechat_links）。📦 存草稿箱（remote-api via vps-us，grace+blue）一次通过：draft media_id kOcXH4SytIYVIpYksTGfHiQRxyb8f_LzqDqZWbU3NsCx7L95UKo_SxvcG9RUOPsv、cover media_id kOcXH4SytIYVIpYksTGfHtH2vnwe2_U11y1yzsiPPX6KR3mnF6QR0xS7AVOsOpIg，4 张正文图上传成功。后台待作者确认：声明原创 + 定时 2026-09-28 20:00 + 勾选合集「开源大模型技术揭秘」。
 - 2026-09-29 对账：MiMo 强化学习账本篇作者供链回填 https://mp.weixin.qq.com/s/f8FJY_GFAXh2Lw5qVblfxg，**实际发布 09-28 20:00**（ct=1790596800，与排期一致）；og:title 与 og:description 分别与 frontmatter title / digest 逐字一致（未被后台精简），msg_link 与供链一致。status draft_saved→published、published_date/wechat_url/frontmatter wechatUrl 三处同步；目录名已是发布日期，无需改名。summary 重算 total 90 / published 90 / draft_saved 0，ready_queue 清空、next_publish_date 置空。
+- '2026-10-03 数据审计 + 台账补录（skill: wechat-data-audit）：① 审计快照 collectedAt=2026-10-03T08:35+08:00、dataThrough=2026-10-02 已 append 并 validate 通过（audits 30 条）；append-sources 更新 30 天（台账 67 天，07-28~10-02）；单篇饼图 5 篇归档 docs/wechat-data-article-channels-2026-10-03.json；报告 HTML 重生。② **发现并补齐一处台账缺口**：10-02 发布的《RL 越训越准，为什么反而越训越笨？》此前**从未入台账**（articles 段与 plan_notes 段都没有），本轮补建条目（slug 2026-10-02-power-law-rl，published，wechat_url 已回填），summary 重算 total 91→92 / published 91→92。③ **目录改名**：该篇原目录用创建日 `content/2026-10-01-power-law-rl/`，实际发布日为 10-02，按命名规则 git mv 为 `content/2026-10-02-power-law-rl/`；连带同步 frontmatter（date 10-01→10-02、scheduledPublish、新增 wechatUrl）、outline.md 排期行与验收行、gen_charts.py 的 OUT 路径、weixin.html 的 data-local-path。④ 发布日双证：后台发表记录标「昨天 20:00」（采集日 10-03）+ 单篇详情页「已开启群发通知 2026/10/02」。⚠️ media_id / cover_media_id 未完整留存（outline 只记缩略 kOcX…UpWkqh / kOcX…bbqwFW），已在条目 notes 标注。⑤ 数据侧口径修正两处（详见 docs/wechat-data-insights.md 0ag.6）：articles[].reads 统一取发表记录「阅读人数」列、articles[].share 统一为百分比；贴图节点无 appmsgid 故单篇饼图只覆盖 type=article。'

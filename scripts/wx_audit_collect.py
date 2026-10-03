@@ -14,7 +14,16 @@ import sys
 import time
 
 PORT = 9335
-TOKEN = "1451619008"
+def _load_token():
+    """Session token is per-login and expires; take it from the file written by the
+    fresh root login (scripts/wx_audit_browser.py / probe). Never hardcode it."""
+    try:
+        return open("/tmp/wx-token.txt").read().strip()
+    except OSError:
+        return ""
+
+
+TOKEN = _load_token()
 
 
 def connect():
