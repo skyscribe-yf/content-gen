@@ -1,5 +1,6 @@
 ---
 title: "问 AI 100 遍：100 种说法，为什么只算 1 种答案？"
+wechatUrl: "https://mp.weixin.qq.com/s/c_Bi9arqz2K29BjCzmaIYQ"
 author: "数解AI"
 date: "2026-10-04"
 type: "原理篇"

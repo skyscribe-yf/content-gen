@@ -133,8 +133,8 @@
 ### 槽 6 · 第 5 节「93 条正确答案只有 1 条路」之后
 - 状态：已填
 - 类型：判断 / 联想
-- 原句：就如前一篇文章（[《问 AI 100 遍：100 种说法，为什么只算 1 种答案？》]（待补链接））说过的，这个语义上高度集中的现象其实严重制约了大模型的创造力。如果这样的合成数据太多，会将模型的表达能力，限制在一个很狭窄的通道上，导致它生成千篇一律、及其平庸无味的产物。这个现象，相信大部分人都已经体会到了。
-- 备注：⚠️ 作者要求插入链接，指向 10-04 语义熵篇（2026-10-04 20:00 发布）；发布前须回填真实 wechatUrl（占位否则触发 45166）。
+- 原句：就如前一篇文章（[《问 AI 100 遍：100 种说法，为什么只算 1 种答案？》](https://mp.weixin.qq.com/s/c_Bi9arqz2K29BjCzmaIYQ)）说过的，这个语义上高度集中的现象其实严重制约了大模型的创造力。如果这样的合成数据太多，会将模型的表达能力，限制在一个很狭窄的通道上，导致它生成千篇一律、及其平庸无味的产物。这个现象，相信大部分人都已经体会到了。
+- 备注：✅ 2026-10-05 已回填真实 wechatUrl（10-04 语义熵篇 2026-10-04 20:00 发布，https://mp.weixin.qq.com/s/c_Bi9arqz2K29BjCzmaIYQ）；weixin.md + quality_check.py SLOTS 同步。
 - 成稿注明：错别字「及其→极其」按门禁只修错别字。
 
 ### 槽 7 · 第 6 节文末开放式问题
@@ -152,6 +152,6 @@
 - [x] 话题标签 5 个（#合成数据 #模型崩塌 #DeepSeek #拒绝采样 #数解AI）
 - [x] check_wechat_links.py（7 条 mp 链接全溯源）+ dry-run 渲染无公式报错
 - [x] 篇幅：正文 2233 / 全篇 CJK 2499（≤2500 上限）
-- [ ] ⏳ **阻塞**：正文槽 6 的 10-04 语义熵篇链接待回填（10-04 今晚 20:00 发布后取真实 wechatUrl）→ 再存草稿箱（否则 45166）
-- [ ] 存公众号草稿箱（remote-api via vps-us，grace/blue）
+- [x] ✅ 2026-10-05 正文槽 6 的 10-04 语义熵篇链接已回填真实 wechatUrl → 阻塞解除，可存草稿箱
+- [x] ✅ 2026-10-05 存公众号草稿箱（remote-api via vps-us，grace/blue，一次通过 EXIT=0）——draft media_id kOcXH4SytIYVIpYksTGfHr4XzI1Z4aFA4llHqAxn48cOUBTrrt-cfiRa83-n4R6_ / cover media_id kOcXH4SytIYVIpYksTGfHkM1Xdl79wkO9GTOwEMVw3xF3XkhJkBlrMZQHou4eZSL
 - [ ] 发布回填 `wechatUrl` + 台账（10-06 发布后）
