@@ -158,10 +158,10 @@
 - [x] 作者原声槽已填且进稿 ≥5（8 处已填，quality_check.py 第 14 项全过）
 - [x] 爆款 9 条自检 + 恢复期质量门禁（quality_check.py ALL PASS）
 - [x] 数字红线 10 条逐条核过（实测两组数据与 data/ 脚本输出对齐；配图 02 标签按方法维度 95/5 改写；**字数口径按「含尾部热门区 ≤2500」对齐 10-02 标定后瘦身至 2497**）
-- [x] 封面生成且标题逐字一致（AI 无字底图 + make_cover.py 叠字；全角「：」「，」放大验证；1916×821 = 21:9）
+- [x] 封面生成且标题逐字一致（AI 无字底图 + make_cover.py 叠字；全角「：」「，」放大验证；1916×821 = 21:9。**2026-10-03 晚重做**：底图换「一叠答题纸 + 两把普通直尺」具体意象，叠字修 3 bug——数字字距拆「1 0 0」、行末「，」下探被裁、文字块高取整微超 25%）
 - [x] hot_articles.py --md --cited + --self-check（Top 6 与锚点一致；尾部 11 条、行尾两空格、行间无空行）
 - [x] 话题标签 5 个（#语义熵 #熵坍缩 #RL后训练 #信息论 #数解AI）
 - [x] 发布前 9 项最终检查（无「待发布」残留 / 正文开头无重复封面标题 / **作者口径：本篇无下一篇预告，预告闭环项记豁免** / 互动引导齐）
 - [x] 标题定稿：问 AI 100 遍：100 种说法，为什么只算 1 种答案？（作者拍板）
-- [x] 渲染 + 存公众号草稿箱（2026-10-03，remote-api via vps-us，grace/blue；**现行 draft kOcX…IJgsIE / cover kOcX…dyCQP**；初版 kOcX…W5JFW 已在瘦身后作废待删）
+- [x] 渲染 + 存公众号草稿箱（2026-10-03，remote-api via vps-us，grace/blue；**现行 draft `kOcXH4SytIYVIpYksTGfHoqbZvrQE8GREbc-g7bB2wCGOXsDbFeYU5fIu88b9u3x` / cover `kOcXH4SytIYVIpYksTGfHgZHBaspfanhv4_vRb_SAJwCMg7G6NhfyWKmB13solmP`**；初版 kOcX…W5JFW、二版 kOcX…IJgsIE 均作废待删。2026-10-03 晚二轮：作者要求润色 AI 文字（原声槽 8 处逐字保留）+ 重做题图后重新存稿）
 - [ ] 发布回填 `wechatUrl` + 台账（待作者在后台定时 10-04 20:00 发布后回填）

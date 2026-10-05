@@ -1,0 +1,24 @@
+{
+  "experiment": "synthetic-data-verifier-narrowness",
+  "date": "2026-10-04",
+  "model": "deepseek-chat (DeepSeek-V4.1-Flash)",
+  "temperature": 1.0,
+  "problem": "从 1 到 20 这 20 个整数中选出若干个（不能一个都不选），要求选出的数之和能被 5 整除，一共有多少种不同的选法？",
+  "truth": 209727,
+  "truth_formula": "(2^20 + 4*2^4)/5 - 1 = 209728 - 1 = 209727（模5单位根/生成函数公式；经 DP 暴力核验一致）",
+  "n": 100,
+  "passed": 93,
+  "pass_rate": 0.93,
+  "failed": 7,
+  "wrong_answers": {"209715": 3, "209919": 1, "183311": 1, "13107": 1, "13119": 1},
+  "wrong_mode_note": "最典型的错解 209715 = floor(2^20/5)，即'20 个数大致均匀分到 5 个余数类'的朴素估计，漏掉 +12 的修正项（正确 209727）。",
+  "correct_method_breakdown": {
+    "criterion": "按核心计算路径归类：使用模5生成函数/循环卷积（等价地枚举 5 个余数类的分布向量再循环卷积）算同一类；直接对余数类做计数算同一思路",
+    "generating_function_cyclic_convolution": 92,
+    "residue_class_direct_count": 1,
+    "distinct_primary_methods": 1,
+    "manual_spotcheck": "随机抽 10/93 条人工核对，10/10 确认使用模5生成函数/循环卷积主路径"
+  },
+  "output_length": {"min": 2870, "max": 7804, "note": "全部为长推导，章节结构近似模板化（第一步/第二步…）"},
+  "source_files": ["exp1-100x.json", "analyze_methods.py"]
+}

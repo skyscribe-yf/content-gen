@@ -574,11 +574,16 @@ class _Base(MovingCameraScene):
         self.add(f)
 
     def bg(self):
-        """柔和的纵向渐变背景（顶部更暗、底部更暖），铺满画布垫底。"""
-        rect = Rectangle(width=FW + 0.1, height=FH + 0.1,
+        """柔和的纵向渐变背景（顶部更暗、底部更暖），铺满画布垫底。
+        ⚠️ 矩形必须显著大于画布（2.2×）：camera_zoom_to 推近时相机 frame 会移出画布边界，
+        尺寸刚好的矩形会露出 config.background_color 平板带 + 硬缝（2026-10-03 TRPO S4 QA A18：
+        顶部 134px 纯色带）。5 色等分把渐变拉伸到 2.2×FH，画面内仍呈现原来的三段渐变。"""
+        c0 = color_to_rgb("#0C1424")
+        c1 = color_to_rgb("#1B2B4E")
+        c2 = color_to_rgb("#223358")
+        rect = Rectangle(width=FW * 2.2, height=FH * 2.2,
                          fill_opacity=1.0, stroke_width=0)
-        rect.set_fill([color_to_rgb("#0C1424"), color_to_rgb("#1B2B4E"),
-                       color_to_rgb("#223358")], opacity=1)
+        rect.set_fill([c0, c0, c1, c2, c2], opacity=1)
         self.add(rect)
 
     def play_red_cross(self, target, run_time: float = 0.65):

@@ -1,0 +1,15 @@
+{
+  "series_title": "给 Agent 装了记忆 封面底图",
+  "output_dir": "content/2026-10-05-agent-memory-vs-docs",
+  "size": "21:9",
+  "resolution": "1k",
+  "cards": [
+    {
+      "title": "给Agent装了记忆 封面底图",
+      "prompt": "A cinematic ultra-wide 21:9 horizontal composition, deep navy-black to near-black background, cool and restrained. The upper half is mostly empty, clean and dimmed, with large negative space. In the lower-middle area: a stacked glowing translucent stack of document planes forming a tidy square \"document block\" (each plane shows clear horizontal line textures / subtle grid, but ABSOLUTELY NO writing, letters or numbers), softly lit in cyan at its edges; to the right of the block, many scattered fragment / confetti-like glowing particles are torn apart and drift away into the dark, gradually fading out — one side is \"documents organized into a book\", the other is \"scattered, defocused memory fragments\". Cold blue dominant palette with a few small warm amber-gold highlights. Clean, engineered, minimal, not cluttered.\n\nSTRICTLY EXCLUDE: any text, letters, digits, symbols, handwriting on the papers, sci-fi HUD panels, robot figures, human faces/people, logos, watermarks, dense particle noise.\n\nHard requirements: no text anywhere in the image (the golden glowing title will be overlaid later by a script). Main visual concentrated in the lower-middle; the upper area must stay empty and dim. Keep important elements away from all four edges for safe cropping.",
+      "filename": "00-cover-raw.png",
+      "size": "21:9",
+      "resolution": "1k"
+    }
+  ]
+}

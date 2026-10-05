@@ -54,3 +54,5 @@
 | 48 | **字幕时间戳优先 `tts/sentence-boundaries.json`（2026-08-16 GRPO 用户反馈字幕不同步）**：build 脚本自动优先级 = Web `manual-boundaries.json` > `sentence-boundaries.json` 逐句 start/end > `pauses.json` 停顿兜底 > `full.subtitle.json` > 字数比例。`sentence-boundaries.json` 的 clips 文本必须逐字拼回 tts.txt，start/end 与 trim 后语音逐句对应；build 时按实际配音时长等比缩放。split_long 不得拆断英文/数字串（DeepSeekMath/77.9%/2024） | 曾只认 `pauses.json`，用停顿槽按字数比例重分文本 → S2「GRPO 的起点」挂 6.1s、后续整句错位；曾 split_long 把 DeepSeekMath/77.9% 切成两半 |
 | 50 | **上下留白各 <10%（2026-08-19 用户拍板）**：整页规划留白上限从 30% 收紧到 10%，内容高度 ≥ 显示带 80%（`MAX_PAGE_MARGIN=0.10` 已固化进 manim_helpers.py，layout_page 硬校验） | 曾 30%/40%（页面偏空，用户要求更满） |
 | 52 | **默认音色 = MiniMax 预设精英男声 `male-qn-jingying`（2026-08-26 用户拍板）**：TTS 默认不再克隆作者音色；`minimax_tts.py` 不传音色参数即用精英男声；克隆音色仅明确要求时用（--clone-audio） | 曾默认克隆作者音色（speech-2.8-turbo） |
+| 53 | **末段转场对齐配音收尾（2026-10-03 TRPO 篇拍板）**：每个场景 `transition_out` 前用显式 `wait()` 把转场窗口压在「末句配音结束 - 0.6s」，滑出结束时刻 = 段末；禁止让 `pad_to_voice()` 兜出 1s+ 纯背景空屏（QA X1） | 曾转场后空屏 1.2-2.4s（S1/S2/S3/S5） |
+| 54 | **背景矩形 2.2× 画布（2026-10-03）**：`bg()` 矩形必须显著大于画布，给 `camera_zoom_to` 留余量；渐变 5 色等分保持画面内三段过渡 | 曾尺寸刚好 → 推近露 config 平板带 + 硬缝（QA A18） |

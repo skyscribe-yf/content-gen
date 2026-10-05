@@ -1,0 +1,15 @@
+{
+  "series_title": "AI Agent 工程合集封面",
+  "output_dir": "content/collection-covers",
+  "size": "3:4",
+  "resolution": "1k",
+  "cards": [
+    {
+      "title": "AI Agent 工程合集封面",
+      "prompt": "A premium hardcover book front cover design, flat layout, portrait 3:4 aspect ratio, for a Chinese technical book series titled \"AI Agent 工程\".\n\nComposition: deep navy matte background fills the entire cover. At the center, an abstract constellation: a small glowing amber core node hovers above a neat stack of luminous cyan document planes (a curated \"document brain\"), while faint scattered dust-like fragments drift away to one side, like uncurated memory snippets dissolving into the dark. Fine luminous threads connect the core to a few amber nodes and down into the document stack, suggesting an agent consulting its own notes before acting. A subtle blueprint grid texture fades into the background. The overall mood: engineered clarity rising out of noise.\n\nTypography: centered in the upper-middle, the bold Chinese title \"AI Agent 工程\" in large ivory serif type with generous letter-spacing. Below the title, a thin amber horizontal rule with a tiny glowing center dot. Beneath the rule, smaller subtitle text in clean ivory sans-serif: \"从记忆到文档，拆开 Agent 的每一次思考\". At the very bottom, small ivory text: \"数解AI\".\n\nNo barcode, no price, no author photo, no ISBN, no dust jacket texture, no realistic human, no window reflections. Clean, editorial, premium book design — the kind you'd see on a technical publisher's catalog cover.\n\nAbsolutely no other visible words, letters, equations, logos, or watermarks beyond the specified Chinese text above.",
+      "filename": "AI Agent 工程-合集封面.png",
+      "size": "3:4",
+      "resolution": "1k"
+    }
+  ]
+}

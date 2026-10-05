@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "tasks": [
+    {
+      "fingerprint": "fbab92adfa1e180e4ce13583a1549ee7284063720e230a573dfc7e318f4f7f77",
+      "task_id": "task_01M44P7D80X25SQ6RRKZ6PSCEK",
+      "status": "completed",
+      "filename": "00-cover-raw.png",
+      "size": "21:9",
+      "resolution": "1k",
+      "n": 1,
+      "submitted_at": "2026-10-05T00:08:11Z",
+      "updated_at": "2026-10-05T00:08:36Z",
+      "saved_paths": [
+        "content/2026-10-05-agent-memory-vs-docs/00-cover-raw.png"
+      ]
+    }
+  ]
+}

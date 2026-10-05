@@ -42,6 +42,20 @@
       "saved_paths": [
         "content/collection-covers/DeepSeek解密-合集封面.png"
       ]
+    },
+    {
+      "fingerprint": "94d9c16827d72e7e3afef9d73a08159f5d95de05744a3b7870ab6ae99ba06665",
+      "task_id": "task_01M44NM6YS9DBW7WCMA200A0YC",
+      "status": "completed",
+      "filename": "AI Agent 工程-合集封面.png",
+      "size": "3:4",
+      "resolution": "1k",
+      "n": 1,
+      "submitted_at": "2026-10-04T23:57:42Z",
+      "updated_at": "2026-10-04T23:58:43Z",
+      "saved_paths": [
+        "content/collection-covers/AI Agent 工程-合集封面.png"
+      ]
     }
   ]
 }

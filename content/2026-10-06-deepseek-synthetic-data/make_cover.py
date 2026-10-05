@@ -18,11 +18,11 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
-D = Path("content/2026-10-04-semantic-entropy")
+D = Path("content/2026-10-06-deepseek-synthetic-data")
 FONT = "/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc"
 FONT_INDEX = 2  # .ttc 里 index=2 是 SC（简体）字面
 
-LINES = ["问 AI 100 遍：100 种说法，", "为什么只算 1 种答案？"]
+LINES = ["DeepSeek 用 AI 自己出了 60 万道题，", "为什么反而更强？"]
 GOLD_TOP, GOLD_BOT = (255, 231, 120), (232, 163, 23)  # #FFE778 → #E8A317
 
 
@@ -121,6 +121,6 @@ def make_cover(bg_path, out_path, lines=LINES, width_ratio=0.94, glow_radius=0.0
 
 
 if __name__ == "__main__":
-    p, sz, fs, bh, ratio = make_cover(D / "00-cover-bg.png", D / "00-cover.png")
+    p, sz, fs, bh, ratio = make_cover(D / "00-cover-raw.png", D / "00-cover.png")
     print(f"封面已生成: {p}  尺寸 {sz}  字号 {fs}")
     print(f"  两行文字块高 {bh}px = 画面高 {ratio:.1%}（硬上限 25%）")

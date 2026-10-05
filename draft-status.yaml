@@ -1336,18 +1336,83 @@ articles:
   - ⚠️ **草稿箱里有一份作废副本**：draft media_id kOcXH4SytIYVIpYksTGfHrGHEnRhxjJYq6TlWI_x4tM4AbgIBSO4zNn73PcW5JFW（首次推送后按「含尾部热门区 ≤2500」口径瘦身 169 字，
     脚本只封装 draft/add 无 draft/update，故重推生成了第二份）。发布前请在草稿箱删除这份旧的，保留上面那份现行草稿。
 
+- slug: 2026-10-06-deepseek-synthetic-data
+  title: DeepSeek 用 AI 自己出了 60 万道题，为什么反而更强？
+  series: 开源大模型技术揭秘
+  status: drafting
+  published_date: null
+  wechat_url: null
+  files:
+    weixin: true
+    draft: false
+    outline: true
+    cover: true
+  notes:
+  - 选题：开源大模型技术揭秘线 D6（DeepSeek 数据工业/合成数据）。grill 日志 .grill/deepseek-synthetic-data.md；
+    大纲 content/2026-10-06-deepseek-synthetic-data/outline.md。轨道由作者拍板（放弃数学线/G 组）。
+  - 🎯 交付句：筛定生死，但筛不治窄——「筛选器定的是生不生，不是宽不宽」。开头从「OpenAI 指控 DeepSeek 蒸馏」争议切入，
+    2 段内掉头到「它连自己的输出都拉回来当数据」。
+  - 🔬 一手实测（2026-10-04，DeepSeek-V4.1-Flash / API 名 deepseek-chat，temperature 1.0，n=100）：
+    组合计数陷阱题（1..20 选若干使和被 5 整除）→ 通过 93/100、失败 7；典型错解 209715=⌊2²⁰/5⌋（漏 +12 修正项）；
+    真值 209727（DP + 单位根公式双验算）；93 条正确答案方法归类 = **1 类**（模5生成函数/循环卷积 92 + 等价余数计数 1），
+    人工抽 10 条 10/10 确认。原始输出 content/2026-10-06-deepseek-synthetic-data/data/exp1-100x.json。
+  - 📚 一手来源：DeepSeek R1《Nature》补充材料 ESM 2025-09-17（V3-Base 预训练零合成数据 + 承认网页含他模生成答案；80 万条=60 万推理拒绝采样+20 万非推理）、
+    Shumailov et al. Nature 631:755–759（2024-07-24）、arXiv 2404.01413、arXiv 2406.07515（需验证器）、arXiv 2510.16657（验证器天花板）、
+    DeepSeek-V4.1-Flash config.json（40 层/5120/384 专家取 6/silu/fp8）。⚠️ DeepSeek 从未公开合成数据占比/成本，正文未编造百分比。
+  - 🖼 配图 5 张：00-cover.png（AI 无字底图 + make_cover.py 叠金字，1916×821 天然 21:9，文字块 25.0% 上限内）+ 脚本图 4 张（gen_charts.py）。
+  - ✅ 门禁：quality_check.py ALL PASS（原声槽 7/7 逐字在场）；正文 2233 / 全篇 CJK 2499（≤2500）；
+    块公式 0、内联公式 2；话题标签 5 个；check_wechat_links 7 条全溯源；hot_articles.py --md --cited + --self-check 通过；dry-run 渲染无公式报错。
+  - ⏳ **待办（阻塞存箱）**：正文原声槽 6 引用 10-04 语义熵篇（今晚 20:00 发布），其 wechatUrl 尚未生成，正文暂留 `（待补链接）` 占位。
+    按作者口径「等 10-04 发布后再存箱」——10-04 发布拿到真实 URL 后回填，再存草稿箱（否则 45166）。
+  - 篇幅口径：含尾部热门区 CJK 2499 ≤2500（对齐 10-02/10-04 标定）。
+
+- slug: 2026-10-05-agent-memory-vs-docs
+  title: 给 Agent 装了记忆，为什么它还是不懂我的项目？
+  series: AI Agent 工程
+  status: draft_saved
+  published_date: null
+  wechat_url: null
+  files:
+    weixin: true
+    draft: true
+    outline: true
+    cover: true
+  notes:
+  - 选题：liao.gg《Agents Don't Need Memory. They Need Documentation.》（2026-10-03）引发的 HN 大讨论（335 分 / 203 评论）复盘。
+    轨道：文章轨·独立机动篇（非系列连载）。grill 日志 .grill/agent-memory-vs-docs.md；大纲 content/2026-10-05-agent-memory-vs-docs/outline.md。
+  - 🎯 立场：中立观察、不站队、略怀疑记忆；怀疑锚在机制层「按段相似度召回」（多跳 / 结构 / 意图三类盲区，reranker 救不回）。
+    主轴=作者两个亲历（RAG 相似度漏召回 + opencode 忽略 docs）；落点=三条自检问题。标题方向 (A) 痛点疑问（作者拍板）。作者 2026-10-05 拍板当日发。
+  - 📚 一手来源：liao.gg 原文 2026-10-03；HN id 49945933（2026-10-05 复核 335 分/203 评论）；
+    ZCode Memory 文档（zcode.z.ai/cn/docs/memory，刻意不记代码结构与 Git 历史、本机 Markdown）；ZCode 上传代码争议（2026-09-18 起，官方回应源于「代码库索引」默认开启、数据不留存不用于训练）；
+    Kimi 记忆空间（50 条 / 500 字）；Hermes Agent（Nous Research，有界记忆）；GLM Coding Agent「记忆机制」文档（docs.bigmodel.cn，指令型 vs 学习型 / ≤200 行）。
+  - 🆕 **新建合集「AI Agent 工程」**（本篇为首篇）：合集封面 content/collection-covers/AI Agent 工程-合集封面.png（apimart 3:4/1k，1086×1448，
+    文字 read 核验：标题/副标题/数解AI 全对）。⚠️ 待作者在后台建合集后回填合集页 URL（尾部系列导航暂缺，因新合集无页 URL）。
+  - 🖼 配图 4 张：00-cover.png（AI 无字底图 1916×821 + make_cover.py 叠金字，标题逐字，文字块 25.0% ≤1/4）+ 脚本图 3 张（gen_charts.py：01 记忆插件流水线 / 02 相似度盲区 / 03 三条自检卡）。
+  - ✅ 门禁：quality_check.py ALL PASS（原声槽 8/8 逐字在场、禁词/AI 腔/尾部链接/转发点赞欲/配图存在性/篇幅）；全篇 CJK 2500 ≤2500（正文 2182）；
+    块公式 0、内联公式 0；话题标签 5 个；check_wechat_links 6 条全溯源；hot_articles.py --md --cited + --self-check 通过；dry-run 渲染无公式报错。
+  - 📦 2026-10-05 入草稿箱（remote-api via vps-us，grace+blue）：**现行草稿（文字润色版）** draft media_id kOcXH4SytIYVIpYksTGfHrfJpdFD_aRa4gkq5cgmqvOpBFPtflve_tU7orqik1Rm /
+    cover media_id kOcXH4SytIYVIpYksTGfHr_tZ_GTSMbZSkf_mqfQxB-V67P0LqCqZTDWd0JUwKrI；3 张正文图上传成功。
+  - ✅ 润色后门禁复跑：quality_check.py ALL PASS（原声 8/8 逐字在场、禁词/AI 腔/尾部链接/转发点赞欲/配图/篇幅）；全篇 CJK 2494 ≤2500；
+    check_wechat_links 6 条全溯源；hot_articles.py --self-check 通过。润色只改 AI 写的句子，8 处原声逐字未动。
+  - ⚠️ **草稿箱里有一份作废副本（首版，未润色）**：draft media_id kOcXH4SytIYVIpYksTGfHqWbCj5zotwA1uBNuJe-mBykrGyEC9rNuxNjRwtNJjGE /
+    cover kOcXH4SytIYVIpYksTGfHm1hOghhTSD0Ld3Q_mZSdQJXb4Mma9rcIqai9ZPAFwLp。脚本只封装 draft/add 无 draft/update，重推即生成第二份 →
+    **发布前请在草稿箱删除首版，保留上面的润色版。**
+  - ⏳ 待办：后台确认 声明原创 + 定时 2026-10-05 20:00 + 勾选合集「AI Agent 工程」；发布后回填 wechatUrl（frontmatter + 本条 + 尾部）。
+
 summary:
-  total: 93
+  total: 95
   by_status:
     published: 92
-    drafting: 0
-    draft_saved: 1
-  drafting_queue: []
+    drafting: 1
+    draft_saved: 2
+  drafting_queue:
+  - 2026-10-06-deepseek-synthetic-data
   ready_queue:
+  - 2026-10-05-agent-memory-vs-docs
   - 2026-10-04-semantic-entropy
   scheduled_queue: []
   planned_queue: []
-  next_publish_date: '2026-10-04'
+  next_publish_date: '2026-10-05'
 plan_notes:
 - 2026-08-28 对齐：信息熵 8-28（今日）→ AlphaGo 8-29 → 多模态 8-30（作者确认）。目录名已同步重命名（git mv），frontmatter date 同步。
 - 2026-08-28 二次对齐：fp8 目录名改发布日期 2026-08-09；补 RLHF(7-30)/维度诅咒(高维空间,8-12) 两条已发布缺漏条目；price-war 两目录为贴图轨道，不入文章台账。

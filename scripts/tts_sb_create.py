@@ -22,7 +22,9 @@ SPLIT_CHARS = "。？！；"
 SECONDARY = "，、——"
 
 
-TAG_RE = re.compile(r"\((breath|sighs|gasps|laughs|pause)\)")
+TAG_RE = re.compile(r"\((breath|sighs|gasps|laughs|pause)\)|<#[\d.]+#>")
+# ⚠️ 必须含 <#0.5#> 类停顿标签：MiniMax 把它当停顿（时间戳已含），若残留在 clip 文本里
+# 会与 build 的 strip_tts_tags 口径不一致 → validate_sentence_ts fail-fast（2026-10-03 TRPO 篇）
 
 
 def clean(s: str) -> str:
