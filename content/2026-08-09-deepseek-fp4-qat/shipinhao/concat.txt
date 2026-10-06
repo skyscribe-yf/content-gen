@@ -1,6 +1,0 @@
-file 'build_S1.ts'
-file 'build_S2.ts'
-file 'build_S3.ts'
-file 'build_S4.ts'
-file 'build_S5.ts'
-file 'build_S6.ts'
