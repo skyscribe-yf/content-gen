@@ -6,6 +6,7 @@ type: "工程观察"
 series: "AI Agent 工程"
 digest: "记忆插件把会话切成片段塞进向量库，每次注入最像的 5 条——可相似度不等于理解。从 liao.gg 引发的 HN 大争论，到国产工具怎么做「有界记忆」，再到一张三条自检清单。"
 cover: "00-cover.png"
+wechatUrl: "https://mp.weixin.qq.com/s/4z-PvTBKv8yBohgdE8-itQ"
 keywords: ["Agent记忆", "上下文工程", "RAG"]
 ---
 

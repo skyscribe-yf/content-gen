@@ -1,0 +1,22 @@
+{
+  "series_title": "Rysana C++ 重写 TypeScript 配图",
+  "output_dir": "content/2026-10-08-rysana-ts-cpp",
+  "size": "21:9",
+  "resolution": "1k",
+  "cards": [
+    {
+      "title": "封面底图（无字，金色标题后续脚本叠加）",
+      "prompt": "A cinematic ultra-wide 21:9 horizontal composition, deep navy-black to near-black background, cool and restrained overall. The upper third is completely empty, dim and clean — large negative space reserved for a golden glowing title that will be overlaid later by a script (therefore ABSOLUTELY NO text, letters, digits or symbols anywhere in the image). In the lower-middle area: a single massive abstract \"compiler core\" — a dark metallic engine block / foundry mold — split open along its middle with a blinding molten-amber seam, as if the code inside is being recast in a new material; sparks and thin light filaments stream upward and to the right with strong directional motion. On its left, cool cyan-blue steel rails and circuit traces lead in; on its right, warm amber-gold glow. Dramatic rim lighting, high contrast between the glowing core and the dark background, engineered and minimal, one clear focal subject only. Keep important elements away from all four edges for safe cropping.\n\nSTRICTLY EXCLUDE: any text, letters, digits, symbols, handwriting, captions, labels, HUD panels, UI screenshots, human faces, people, robots, logos, watermarks, dense particle noise, cluttered multi-element collages.\n\nHard requirements: no text anywhere (the title is overlaid later by a script); single dominant subject with conflict/motion (recasting); upper third empty and dim; strong contrast.",
+      "filename": "00-cover-raw.png",
+      "size": "21:9",
+      "resolution": "1k"
+    },
+    {
+      "title": "两块记分牌（天平）概念图",
+      "prompt": "A cinematic minimalist concept image, dark charcoal background, high contrast, single focal subject: an old brass balance scale that is visibly tipping. Left pan: worn and heavy, piled with rolled paper blueprints, small drafting tools and several tiny abstract dark human silhouettes (no faces, no details). Right pan: new and clean, holding one single glowing microchip-like engine core radiating cool cyan-white light, making the beam tip decisively toward the right side. Subtle light rays from the glowing chip. The mood: an old scoreboard of human labor being outweighed by a new kind of engine. One clear focal subject only, dramatic directional lighting, engineered and clean, not cluttered.\n\nSTRICTLY EXCLUDE: any text, letters, digits, numbers, symbols, formulas, labels, captions, HUD elements, logos, watermarks, robot figures, human faces.\n\nHard requirements: no text or numbers anywhere; single dominant subject (the tipping scale); motion/direction (tipping right); strong contrast between the dull warm left pan and the glowing cool right pan.",
+      "filename": "03-scoreboard.png",
+      "size": "16:9",
+      "resolution": "1k"
+    }
+  ]
+}

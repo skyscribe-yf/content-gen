@@ -50,3 +50,11 @@
 1. 第一时间把 `wechatUrl` 记入该文章 frontmatter
 2. 发文章时勾选对应合集（若忘记勾选，去合集管理添加）
 3. 若文章数据突出（阅读量进前 6），更新「热门文章」菜单
+
+## 合集页 URL 清单（2026-10-07 起集中登记，发新文尾部导航直接取用）
+
+| 合集 | 合集页 URL |
+|---|---|
+| AI Agent 工程 | https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzkyMzQyODExNQ==&action=getalbum&album_id=4680422529625325570#wechat_redirect |
+
+> 其余合集（大模型原理 / 开源大模型技术揭秘 / AI中的数学 / 训练回路 / 强化学习原理 / 视觉生成等）URL 散落在各篇 weixin.md 尾部，后续发布时随篇回填到这里。

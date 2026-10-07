@@ -1,0 +1,36 @@
+{
+ "series_title": "多智能体之争 正文概念图",
+ "output_dir": "content/2026-10-08-multiagent-debate",
+ "size": "16:9",
+ "resolution": "1k",
+ "cards": [
+  {
+   "title": "01-swarm.png",
+   "prompt": "A clean wide 16:9 conceptual illustration on a deep navy-black background. On the left-center, one bright amber-gold core node hovers; from it, thin luminous trails fan out to the right toward many small glowing satellite nodes of cool cyan color, each satellite stopping above its own small neat stack of translucent document planes, all stacks arranged in a wide orderly row. The composition reads as 'one commander dispatching many parallel workers, each carrying its own stack home'. Soft glow, engineered minimalism, generous negative space at top and bottom.\n\nSTRICTLY EXCLUDE: any text, letters, digits, numbers, symbols, robot figures, human faces or people, logos, watermarks, HUD panels.",
+   "filename": "01-swarm.png",
+   "size": "16:9",
+   "resolution": "1k"
+  },
+  {
+   "title": "02-two-camps.png",
+   "prompt": "A clean wide 16:9 conceptual illustration on a deep navy-black background. Left half: a cool blue crystalline fortress built of neat translucent rectangular planes, perfectly aligned grid, calm and orderly, glowing softly cyan. Right half: a warm amber-orange organic structure made of swirling tangled threads and off-axis shards, lively and chaotic, glowing warm. Between the two halves runs a thin horizontal neutral gap of dark empty space with a faint thin white line, like an invisible boundary. Tension without violence, symmetric composition, minimal.\n\nSTRICTLY EXCLUDE: any text, letters, digits, numbers, symbols, robot figures, human faces or people, weapons, logos, watermarks, HUD panels.",
+   "filename": "02-two-camps.png",
+   "size": "16:9",
+   "resolution": "1k"
+  },
+  {
+   "title": "03-conflict-merge.png",
+   "prompt": "A clean wide 16:9 conceptual illustration on a deep navy-black background. From the left edge, four separate luminous streams in different colors (cool blue, warm amber, teal, violet) flow rightward from four small glowing nodes, each stream smooth and confident at first; in the right third of the frame the four streams funnel into a single narrow junction and beyond it the colors twist into one murky tangled knot of crossed glowing threads that fades into darkness. The knot reads as 'everything merged, nothing agrees'. Minimal, elegant, moody.\n\nSTRICTLY EXCLUDE: any text, letters, digits, numbers, symbols, robot figures, human faces or people, logos, watermarks, HUD panels.",
+   "filename": "03-conflict-merge.png",
+   "size": "16:9",
+   "resolution": "1k"
+  },
+  {
+   "title": "04-token-bill.png",
+   "prompt": "A clean wide 16:9 conceptual illustration on a deep navy-black background. In the lower-middle, a neat row of glowing golden coin-like discs (abstract round tokens, blank surfaces) travels along a faint luminous conveyor from a small open chest on the left into a glowing warm furnace/reactor core on the right; above the furnace, a soft heat shimmer and a few drifting embers rise and fade. The scene reads as 'feeding fuel to keep the machine thinking'. Cool dark surroundings, warm burning center, minimal and elegant.\n\nSTRICTLY EXCLUDE: any text, letters, digits, numbers on the coins or anywhere, symbols, meters or gauges, robot figures, human faces or people, logos, watermarks, HUD panels.",
+   "filename": "04-token-bill.png",
+   "size": "16:9",
+   "resolution": "1k"
+  }
+ ]
+}

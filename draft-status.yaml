@@ -1378,7 +1378,7 @@ articles:
   series: AI Agent 工程
   status: published
   published_date: '2026-10-05'
-  wechat_url: null
+  wechat_url: https://mp.weixin.qq.com/s/4z-PvTBKv8yBohgdE8-itQ
   files:
     weixin: true
     draft: true
@@ -1407,18 +1407,40 @@ articles:
     **发布前请在草稿箱删除首版，保留上面的润色版。**
   - ⏳ 待办：后台确认 声明原创 + 定时 2026-10-05 20:00 + 勾选合集「AI Agent 工程」；发布后回填 wechatUrl（frontmatter + 本条 + 尾部）。
 
+- slug: 2026-10-08-rysana-ts-cpp
+  title: 微软用 Go 重写 TypeScript，他一个人用 C++ 又写了一遍
+  status: draft_saved
+  wechat_url: null
+  files:
+    weixin: true
+    outline: true
+    cover: true
+    quality_check: true
+  notes:
+  - '选题与定档：作者 2026-10-07 拍板（热点认知文·独立篇，非系列）。X 热点：Rysana CEO John（@jrysana）用 C++ 把 TypeScript 编译器复刻到 100% 对位（targeting TS6），自称 25-750× 提速、RSS 低 5-20×、"every diagnostic is identical"；对照 Anders/微软 Go 重写（16 个月、8-12×、曾试 AI 移植 "went not so great"）；非孤例链：Copilot runtime→Rust（$120K）、Bun→Rust（$165K）、ArtCraft 七应用复刻 Adobe 全家桶（10-07 见报）。grill 日志 .grill/rysana-ts-cpp.md；大纲 + 原声槽 9/9：content/2026-10-08-rysana-ts-cpp/outline.md。'
+  - '✍️ 原声槽 9 处逐字入稿（作者逐槽手打；含 1 处沿用 + 1 句追加；0 跳过）。素材底稿 material/research-notes.md（含 $10K inference 推文与 Anders 访谈等一手出处）。'
+  - '🎯 判断落点（作者）：语言仍是最大架构决策之一，但记分牌换了——从「人类工程约束」换到「机器与 agent 约束」。冷水位=轻量版（Copilot 几十处回归 / Zig 作者对 Bun rust 版 "unreviewed slop"）。主锤=语言牌（C++ 正是当年被排除的选项）。'
+  - '🔗 内链：reward hacking 篇（boIPBlmyX2ahoFYnEVLjxw，09-14）内联；死循环=作者贴图（HRHYjokuMpkjK0DhEAVOxA，非文章）内联。⚠️ check_wechat_links 对贴图链接无台账可溯源（报 1 条未溯源），但草稿箱 draft/add 一次成功=微信侧校验通过（无 45166）。'
+  - '🖼 配图 4 张：00-cover.png（AI 无字底图 1916×821 + make_cover.py 叠金标题，标题逐字、文字块 25.0% 压线合规）+ 脚本图 01-race / 02-bills（gen_charts.py）+ AI 概念图 03-scoreboard（零文字）。'
+  - '✅ 门禁：quality_check.py ALL PASS（原声 9/9 逐字在场、禁词/AI 腔/长句/标签/链接/配图/篇幅）；全篇 CJK 2497 ≤2500；hot_articles.py --md --cited + --self-check 通过；remote-api dry-run 通过。'
+  - '📤 2026-10-07 存入草稿箱（remote-api via vps-us，grace+blue，默认 cite）：draft media_id kOcXH4SytIYVIpYksTGfHgQTtAPvHdd3V5jVcAk7swUdfPG0K8fEBC0DxcCs2Hq9 / cover media_id kOcXH4SytIYVIpYksTGfHkcJILn8eU053uJBia6FzTB5oavApW1UNmfiGQ1WwMSn；3 张正文图上传成功（03 自动压 JPEG q82）。'
+  - '⏳ 待办：后台确认 声明原创 + 定时（目标 2026-10-08 20:00）+ 合集（无系列，待作者定）；发布后回填 wechatUrl（frontmatter + 本条）+ og 逐字核验。本篇不加「下一篇预告」（作者拍板）。⚠️ 档期警告：2026-10-08-multiagent-debate 亦定档 10-08 20:00（已入箱）——两篇冲突，需作者定序；若本篇挪档，目录名/frontmatter/scheduled 同步改。'
+  - '备注：series 字段未填（非系列篇，待作者定）；目录名 2026-10-08-rysana-ts-cpp 已按目标发布日命名（创建于 10-07，10-08 为发布目标日）。'
+
 summary:
-  total: 95
+  total: 97
   by_status:
     published: 94
     drafting: 0
-    draft_saved: 1
+    draft_saved: 3
   drafting_queue: []
   ready_queue:
   - 2026-10-06-deepseek-synthetic-data
+  - 2026-10-08-multiagent-debate
+  - 2026-10-08-rysana-ts-cpp
   scheduled_queue: []
   planned_queue: []
-  next_publish_date: '2026-10-06'
+  next_publish_date: '2026-10-08'
 plan_notes:
 - 2026-08-28 对齐：信息熵 8-28（今日）→ AlphaGo 8-29 → 多模态 8-30（作者确认）。目录名已同步重命名（git mv），frontmatter date 同步。
 - 2026-08-28 二次对齐：fp8 目录名改发布日期 2026-08-09；补 RLHF(7-30)/维度诅咒(高维空间,8-12) 两条已发布缺漏条目；price-war 两目录为贴图轨道，不入文章台账。
@@ -1462,3 +1484,21 @@ plan_notes:
 - '2026-10-03 数据审计 + 台账补录（skill: wechat-data-audit）：① 审计快照 collectedAt=2026-10-03T08:35+08:00、dataThrough=2026-10-02 已 append 并 validate 通过（audits 30 条）；append-sources 更新 30 天（台账 67 天，07-28~10-02）；单篇饼图 5 篇归档 docs/wechat-data-article-channels-2026-10-03.json；报告 HTML 重生。② **发现并补齐一处台账缺口**：10-02 发布的《RL 越训越准，为什么反而越训越笨？》此前**从未入台账**（articles 段与 plan_notes 段都没有），本轮补建条目（slug 2026-10-02-power-law-rl，published，wechat_url 已回填），summary 重算 total 91→92 / published 91→92。③ **目录改名**：该篇原目录用创建日 `content/2026-10-01-power-law-rl/`，实际发布日为 10-02，按命名规则 git mv 为 `content/2026-10-02-power-law-rl/`；连带同步 frontmatter（date 10-01→10-02、scheduledPublish、新增 wechatUrl）、outline.md 排期行与验收行、gen_charts.py 的 OUT 路径、weixin.html 的 data-local-path。④ 发布日双证：后台发表记录标「昨天 20:00」（采集日 10-03）+ 单篇详情页「已开启群发通知 2026/10/02」。⚠️ media_id / cover_media_id 未完整留存（outline 只记缩略 kOcX…UpWkqh / kOcX…bbqwFW），已在条目 notes 标注。⑤ 数据侧口径修正两处（详见 docs/wechat-data-insights.md 0ag.6）：articles[].reads 统一取发表记录「阅读人数」列、articles[].share 统一为百分比；贴图节点无 appmsgid 故单篇饼图只覆盖 type=article。'
 - '2026-10-05 对账：语义熵篇（2026-10-04-semantic-entropy）作者供链回填 https://mp.weixin.qq.com/s/c_Bi9arqz2K29BjCzmaIYQ，**2026-10-04 20:00 发布**（ct=1791115200）。程序化核验（curl 直取 mp 页面）：og:title 与 frontmatter title 逐字一致、og:description 与 digest 逐字一致、msg_link 与供链一致。status draft_saved→published、published_date/wechat_url/frontmatter wechatUrl 三处同步；目录名已是发布日期，无需改名。**连带回填下游占位**：10-06 合成数据篇正文槽 6「（待补链接）」→ 真实 wechatUrl（weixin.md + quality_check.py SLOTS + outline.md 两处），该篇「等 10-04 发布后取 URL 再存箱」的阻塞解除。summary 重算 total 95 / published 93 / drafting 1 / draft_saved 1，ready_queue→仅 2026-10-05-agent-memory-vs-docs，next_publish_date 保持 10-05。'
 - '2026-10-05 存箱 + 状态对齐（作者口述当日进度）：① **10-06 合成数据篇存入草稿箱**（remote-api via vps-us，grace+blue，citeStatus=true，一次通过 EXIT=0）——存前两处修：正文槽 6 的 10-04 语义熵篇链接已回填、frontmatter 补 `cover: "00-cover.png"`（原缺，否则脚本回退用首张正文图当封面）。draft media_id kOcXH4SytIYVIpYksTGfHr4XzI1Z4aFA4llHqAxn48cOUBTrrt-cfiRa83-n4R6_ / cover media_id kOcXH4SytIYVIpYksTGfHkM1Xdl79wkO9GTOwEMVw3xF3XkhJkBlrMZQHou4eZSL；4 张正文图上传成功；status drafting→draft_saved。② **10-05 AI Agent 开篇篇作者告知当日已发布**（给 Agent 装了记忆，为什么它还是不懂我的项目？），status draft_saved→published、published_date 10-05；⚠️ wechatUrl 待作者供链后回填并做 og 逐字核验。③ summary 重算 total 95 / published 94 / drafting 0 / draft_saved 1，drafting_queue 清空、ready_queue→2026-10-06-deepseek-synthetic-data，next_publish_date→10-06。'
+- slug: 2026-10-08-multiagent-debate
+  title: Anthropic 实测多智能体强 90%，为什么另一家说千万别建？
+  series: AI Agent 工程
+  status: draft_saved
+  wechat_url: null
+  files:
+    weixin: true
+    outline: true
+    cover: true
+    quality_check: true
+  notes:
+  - '选题与定档：作者 2026-10-07 拍板「最近转移到 AI Agent 系列」，内容矩阵同步改五支柱（Agent 2/周 + 数学 1/周 + DeepSeek 机动 1/周，退出日更、长文 4 篇/周、贴图事件驱动）。H1 多智能体路线之争定档 10-08 20:00。grill 日志 .grill/2026-10-07-multiagent-debate.md；大纲/原声槽 content/2026-10-08-multiagent-debate/outline.md（6 槽逐字采集）。'
+  - '🎯 立场（作者拍板）：多 agent 真香但坑很多，不装中立；深度由三笔数学账承担（p^n 误差复利 95%^10≈60% / 阿姆达尔天花板 串行两成 8 agent 只快 3.3 倍上限 5 倍 / 15× token 账）。事实链已核：Cognition《Don''t Build Multi-Agents》2025-06-12、Anthropic 多智能体研究系统 2025-06-13（相隔一天，内部评测强 90.2%，单 agent 4×/多智能体 15× token）；Yan 续篇《Multi-Agents: What''s Actually Working》约十个月后（正文用相对时间表述）。'
+  - '✍️ 原声槽 6 处（5 原声 + 1 互动问句）逐字入稿：Kimi coding plan agent swarm 20 子代理文献搜索（槽 1）/ 多角度深析冲突翻车、上下文污染→困惑度升→「模型降智」（槽 2）/ 策略空间+采样噪音、无协作通信、强行拼凑→「模型摆烂」（槽 3）/ 混合成本结构、廉价模型派简单任务总成本反而可能省（槽 4）/ 四条派活规矩：易分发派出去·复杂自己干·强模型收敛·提示词防停摆（槽 5）/ 作者自出互动问句（槽 6）。错别字级修正：简单人物→任务、负责→复杂、自代理→子代理。作者口径：字数稍多没关系（机器门禁放宽 2800，实测 2765）。'
+  - '🔗 内链：Softmax 篇（5wMquh_v3oon2-NEDeQLEw）+ 策略梯度篇（IcoJTY4b1c-p0Njrxb7isA）垫在槽 3 后；记忆篇（4z-PvTBKv8yBohgdE8-itQ，作者 10-07 供链，draft-status/frontmatter wechatUrl 已回填）垫在 Cognition 原则后。尾部合集导航用「AI Agent 工程」合集页 URL（作者 10-07 供链，已登记 docs/wechat-menu.md 合集清单 + 自动记忆 wechat-agent-collection-urls）。'
+  - '🖼️ 配图 8 张：yai 出 21:9 封面底图 + make_cover.py 叠金色标题（标题块高 25.0% 压线合规）+ 4 张正文 16:9 概念图（swarm 并行分派/两派对撞/四流缠结/token 燃料库，全部零文字过红线）+ 3 张脚本图（05 误差复利曲线/06 阿姆达尔曲线/07 四条规矩卡，gen_charts.py）。作者要求「多几个 yai 图」已满足。热门文章块 hot_articles.py 生成 + --self-check 通过；check_wechat_links.py 10 条 mp 链接全溯源；quality_check.py 全过。'
+  - '📤 2026-10-07 存入草稿箱（remote-api via vps-us，grace+blue，默认 cite）：draft media_id kOcXH4SytIYVIpYksTGfHoBrzYzxcHTqa1K3BhtTC_jWpT3LdwPzoVBssoFFF6hi，cover media_id kOcXH4SytIYVIpYksTGfHveLiYKCpnIRz4IX0ZdZMtTcAsUg92eAQ7pi2k82Yt2P，一次成功。**下一步（作者后台）**：声明原创 + 定时 2026-10-08 20:00 + 勾选合集「AI Agent 工程」；作者先看草稿箱预览。发布后回填 wechatUrl + og 逐字核验。本篇不加「下一篇预告」（作者拍板）。summary 重算 total 96 / published 94 / draft_saved 2，next_publish_date→10-08。'
+- '2026-10-07 存箱（作者口述发起）：① 热点认知篇《微软用 Go 重写 TypeScript，他一个人用 C++ 又写了一遍》（2026-10-08-rysana-ts-cpp）当日全流程完成并入草稿箱，articles 段已建条（见该条 notes，含 draft/cover media_id）；② 台账对账修正：multiagent-debate 条目落在 plan_notes 段且 summary 未随更新（漂移停在 total 95/94/1，实况 97/94/3），本次按 draft_saved 实况重排 summary 与 ready_queue；multiagent 条目结构位置未动，是否移入 articles 段待作者/后续会话定；③ ⚠️ 档期冲突警告：2026-10-08-multiagent-debate 与 2026-10-08-rysana-ts-cpp 同目标 10-08 20:00，两篇均已入箱——按「每天最多 1 篇」需作者定序；若本篇挪档，目录名/frontmatter/scheduled 同步改。'
