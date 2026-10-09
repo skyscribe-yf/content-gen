@@ -1427,17 +1427,37 @@ articles:
   - '⏳ 待办：后台确认 声明原创 + 定时（目标 2026-10-08 20:00）+ 合集（无系列，待作者定）；发布后回填 wechatUrl（frontmatter + 本条）+ og 逐字核验。本篇不加「下一篇预告」（作者拍板）。⚠️ 档期警告：2026-10-08-multiagent-debate 亦定档 10-08 20:00（已入箱）——两篇冲突，需作者定序；若本篇挪档，目录名/frontmatter/scheduled 同步改。'
   - '备注：series 字段未填（非系列篇，待作者定）；目录名 2026-10-08-rysana-ts-cpp 已按目标发布日命名（创建于 10-07，10-08 为发布目标日）。'
 
+- slug: 2026-10-09-dhh-campfire-rust
+  title: Agent 写的 Rust 快了 150 倍，为什么第一版只快 4 倍？
+  status: draft_saved
+  wechat_url: null
+  files:
+    weixin: true
+    outline: true
+    cover: true
+    quality_check: true
+  notes:
+  - '选题与定档：作者 2026-10-09 拍板（热点认知文·独立篇，非系列）。DHH 把 Campfire 用 agent 分别改写成 Elixir/Go/Rust，与 Rails 比速度；The Register 10-07 报道引图：房间页 Rust 36,260 / Rails 241 = 约 150 倍；仓库 plans/perf-attribution.md 里初版只有 4.4 倍（规划抬到约 11 倍）。大纲 content/2026-10-09-dhh-campfire-rust/outline.md。'
+  - '🎯 判断落点：150 倍与 4.4 倍不是同一轮成绩，不能并成「Rust 赢了 150 倍」；10-08 DHH 又说老 C 领先——这张记分牌保质期只有一天。'
+  - '🖼 配图 7 张（正文 6 + 封面）：00-cover.png（AI 无字底图 1916×821 + make_cover.py 叠金标题，封面文字与 frontmatter 一字不差，字芯块高 23.6% / 含辉光 27.9% 压线）+ 02-room-page（四语言 req/s）/ 05-commit-gap（投入不对等，Valim 10-05）/ 01-two-rounds（4.4→150）/ 03-elixir-queue（GenServer 串行 vs 并发，无数字）/ 06-premise-switch（前提对照，无数字）/ 04-scoreboard-timeline（09-28→10-08 时间线）。数字图全部脚本生成（gen_chart*.py），AI 图不写数字。'
+  - '🔧 2026-10-09 晚配图补配 + 位置修正（作者要求「起码 6 张、放合适位置」）：原稿正文只有 1 张（01-two-rounds），且 02-room-page 是孤儿图（生成了但没进正文、outline 配图表也没列）。本次新建 4 张脚本图（03/04/05/06）、把 02 入库、把 01 从第二节段中移到第二节末，02 放开头「大约 150 倍」之后；outline.md 配图表同步重写为 7 行。'
+  - '✅ 门禁：quality_check.py ALL PASS；第 8 项新增孤儿图守卫（正文引用 ↔ 目录 png 一一对应 + 正文配图 ≥6），修掉本次发现的孤儿图隐患。尾部热门文章块由 scripts/hot_articles.py --md --cited 生成，--self-check 通过。'
+  - '📤 2026-10-09 存入草稿箱（remote-api via vps-us，grace+blue，默认 cite，EXIT=0）：draft media_id kOcXH4SytIYVIpYksTGfHpsIfj_2MIMOWoSVj9pSMjW5lAiPctfIKUnRi9fNuGNW / cover media_id kOcXH4SytIYVIpYksTGfHr-1I0byafp2NP9_64MvwGxtGDSQPCDWaWdYof3Kk7gh；6 张正文图全部上传成功。'
+  - '⏳ 待办（作者后台）：声明原创 + 勾选合集（无系列，待作者定）+ 定时（10-09 20:00 已过，需另定档）；发布后回填 wechatUrl（frontmatter + 本条）。'
+  - '⚠️ 口径待决：封面标题按定稿写「4 倍」（正文是 4.4 倍，取整）——本篇主题就是数字口径较真，作者若要统一需改标题后重跑 make_cover.py。备注：series 未填（非系列篇）。'
+
 summary:
-  total: 97
+  total: 98
   by_status:
     published: 94
     drafting: 0
-    draft_saved: 3
+    draft_saved: 4
   drafting_queue: []
   ready_queue:
   - 2026-10-06-deepseek-synthetic-data
   - 2026-10-08-multiagent-debate
   - 2026-10-08-rysana-ts-cpp
+  - 2026-10-09-dhh-campfire-rust
   scheduled_queue: []
   planned_queue: []
   next_publish_date: '2026-10-08'
@@ -1502,3 +1522,4 @@ plan_notes:
   - '🖼️ 配图 8 张：yai 出 21:9 封面底图 + make_cover.py 叠金色标题（标题块高 25.0% 压线合规）+ 4 张正文 16:9 概念图（swarm 并行分派/两派对撞/四流缠结/token 燃料库，全部零文字过红线）+ 3 张脚本图（05 误差复利曲线/06 阿姆达尔曲线/07 四条规矩卡，gen_charts.py）。作者要求「多几个 yai 图」已满足。热门文章块 hot_articles.py 生成 + --self-check 通过；check_wechat_links.py 10 条 mp 链接全溯源；quality_check.py 全过。'
   - '📤 2026-10-07 存入草稿箱（remote-api via vps-us，grace+blue，默认 cite）：draft media_id kOcXH4SytIYVIpYksTGfHoBrzYzxcHTqa1K3BhtTC_jWpT3LdwPzoVBssoFFF6hi，cover media_id kOcXH4SytIYVIpYksTGfHveLiYKCpnIRz4IX0ZdZMtTcAsUg92eAQ7pi2k82Yt2P，一次成功。**下一步（作者后台）**：声明原创 + 定时 2026-10-08 20:00 + 勾选合集「AI Agent 工程」；作者先看草稿箱预览。发布后回填 wechatUrl + og 逐字核验。本篇不加「下一篇预告」（作者拍板）。summary 重算 total 96 / published 94 / draft_saved 2，next_publish_date→10-08。'
 - '2026-10-07 存箱（作者口述发起）：① 热点认知篇《微软用 Go 重写 TypeScript，他一个人用 C++ 又写了一遍》（2026-10-08-rysana-ts-cpp）当日全流程完成并入草稿箱，articles 段已建条（见该条 notes，含 draft/cover media_id）；② 台账对账修正：multiagent-debate 条目落在 plan_notes 段且 summary 未随更新（漂移停在 total 95/94/1，实况 97/94/3），本次按 draft_saved 实况重排 summary 与 ready_queue；multiagent 条目结构位置未动，是否移入 articles 段待作者/后续会话定；③ ⚠️ 档期冲突警告：2026-10-08-multiagent-debate 与 2026-10-08-rysana-ts-cpp 同目标 10-08 20:00，两篇均已入箱——按「每天最多 1 篇」需作者定序；若本篇挪档，目录名/frontmatter/scheduled 同步改。'
+- '2026-10-09 存箱（作者发起：检查配图 + 补图后存草稿箱）：① 热点认知篇《Agent 写的 Rust 快了 150 倍，为什么第一版只快 4 倍？》（2026-10-09-dhh-campfire-rust）当晚入箱（remote-api via vps-us，grace+blue，EXIT=0，draft media_id kOcXH4SytIYVIpYksTGfHpsIfj_2MIMOWoSVj9pSMjW5lAiPctfIKUnRi9fNuGNW）。② 配图体检发现两处问题：正文只有 1 张脚本图、且 02-room-page.png 是孤儿图（已生成未入库）；按作者「起码 6 张、放合适位置」要求新建 4 张脚本图（03-elixir-queue / 04-scoreboard-timeline / 05-commit-gap / 06-premise-switch），正文配图 1→6 张，封面另计。③ quality_check.py 第 8 项加固：孤儿图守卫（正文引用 ↔ 目录 png 一一对应）+ 正文配图 ≥6 张下限。④ 尾部补 🔥 热门文章块（hot_articles.py --md --cited 生成，--self-check 通过）。⑤ summary 重算 total 98 / published 94 / draft_saved 4，ready_queue 追加本篇。⚠️ 本篇定时待作者定（10-09 20:00 已过）；⚠️ 封面标题「4 倍」与正文 4.4 倍为取整关系，如需统一由作者拍板。'

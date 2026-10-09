@@ -1,5 +1,6 @@
 ---
 title: "Anthropic 实测多智能体强 90%，为什么另一家说千万别建？"
+wechatUrl: "https://mp.weixin.qq.com/s/Y6aPD8t8h2-KCUseKXc0mQ"
 author: "数解AI"
 date: "2026-10-08"
 type: "工程观察"

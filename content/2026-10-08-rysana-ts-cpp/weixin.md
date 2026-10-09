@@ -1,5 +1,6 @@
 ---
 title: "微软用 Go 重写 TypeScript，他一个人用 C++ 又写了一遍"
+wechatUrl: "https://mp.weixin.qq.com/s/GmPJAh8ERPkm64KzYirV2g"
 author: "数解AI"
 date: "2026-10-08"
 type: "行业观察"

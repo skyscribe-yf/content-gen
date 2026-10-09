@@ -11,7 +11,7 @@ illustration_count: 5
 digest: "同样一份官方材料里，DeepSeek 一边说预训练零合成数据，一边后训练用 AI 自己出了 60 万道题。为什么它敢这么干？实测跑完 100 次采样才发现：筛选器定的是生不生，不是宽不宽。"
 keywords: "合成数据, 模型崩塌, DeepSeek, 拒绝采样"
 cover: "00-cover.png"
-wechatUrl: "（待发布）"
+wechatUrl: "https://mp.weixin.qq.com/s/oSeuLU2QnR_OWyQWcXzHvw"
 ---
 
 # DeepSeek 用 AI 自己出了 60 万道题，为什么反而更强？

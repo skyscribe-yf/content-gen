@@ -31,10 +31,15 @@ interface ImageInfo {
  * 微信 webview 中会把代码块所有行压成一行。换成 block + white-space: pre 恢复换行。
  */
 function normalizeWechatCodeBlocks(html: string): string {
-  return html.replace(
-    /display:\s*-webkit-box/g,
-    "display: block; white-space: pre",
-  );
+  return html
+    // -webkit-box（旧式 flex）在微信 webview 里会把代码块所有行压成一行；
+    // 换成 block 后必须补回 pre-wrap，否则 HTML 会把代码缩进当作普通空白折叠掉。
+    .replace(/display:\s*-webkit-box/g, "display: block; white-space: pre-wrap; word-break: break-all")
+    // 代码块不横向滚动：手机上滚不动，长行会被直接吞掉。改成自动换行。
+    .replace(/overflow-x:\s*auto/g, "overflow-x: visible")
+    .replace(/white-space:\s*pre(?!-wrap)/g, "white-space: pre-wrap; word-break: break-all")
+    // 代码字号 12px 在手机上偏小
+    .replace(/font-size:\s*12px/g, "font-size: 13px");
 }
 
 /**
@@ -52,6 +57,36 @@ function compactWechatLayout(html: string): string {
     .replace(/margin:\s*10px 10px/g, "margin: 10px 0")
     // h2：右边距归零（左边框保留）
     .replace(/margin:\s*20px 10px 0px 0px/g, "margin: 20px 0 0 0");
+}
+
+/**
+ * 手机微信可读性（2026-10-09，Pi Durable 篇作者反馈）：
+ *  1) 正文段落被 mdnice 压在 15px（容器是 16px），手机上偏小 → 抬到 16px；
+ *  2) 段落上下间距 10px、行高 1.75 → 14px / 1.85，段与段之间更喘得过气；
+ *  3) `ol/ul` 硬编码 `padding-left: 25px`，而 `li` 是 display:block、序号本身是
+ *     文字——参考文献比正文多缩进 25px，看着就是「内容与屏幕左侧有一段空白」
+ *     → 归零，与正文左边缘对齐；
+ *  4) `li` 没有行间距，密集列表贴成一块 → 补 4px。
+ */
+function relaxWechatReadability(html: string): string {
+  return html
+    .replace(
+      /(<p\s[^>]*style="[^"]*?)font-size:\s*15px/g,
+      "$1font-size: 16px",
+    )
+    .replace(
+      /(<p\s[^>]*style="[^"]*?)line-height:\s*1\.75/g,
+      "$1line-height: 1.85",
+    )
+    .replace(
+      /(<p\s[^>]*style="[^"]*?)margin:\s*10px 0/g,
+      "$1margin: 14px 0",
+    )
+    .replace(/(<(?:ol|ul)[^>]*style="[^"]*?)padding-left:\s*25px/g, "$1padding-left: 0")
+    .replace(
+      /(<li\s[^>]*style="[^"]*?)display:\s*block/g,
+      "$1display: block; margin: 4px 0",
+    );
 }
 
 interface ParsedResult {
@@ -130,8 +165,8 @@ export async function convertMarkdown(
   );
 
   const renderedHtml = await renderWithMdnice(rewrittenMarkdown, mdniceTheme, tempDir);
-  const html = compactWechatLayout(
-    normalizeWechatCodeBlocks(await normalizeWechatLists(renderedHtml)),
+  const html = relaxWechatReadability(
+    compactWechatLayout(normalizeWechatCodeBlocks(await normalizeWechatLists(renderedHtml))),
   );
 
   fs.writeFileSync(htmlPath, html, "utf-8");

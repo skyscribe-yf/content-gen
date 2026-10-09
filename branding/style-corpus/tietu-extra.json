@@ -1,5 +1,5 @@
 {
- "_comment": "publish-data*.json 与 tietu-corpus-summary.json 都未收录、但已人工确认的贴图标题。hot_articles.py 会并入贴图过滤集。新增贴图时若发布数据快照滞后，把标题追加到这里。2026-09-27 补两批：① 后台 item_show_type=10 的资讯速递类简讯（第三类，非本号长文）；② 09-19 审计之后新发的 22 条贴图——publish-data*.json 快照停在 09-19，这批标题不在集内会导致 backfill-types 把它们误判为 article（本轮实测误判 7 条）。下次审计若 publish-data 已刷新，可保留（重复不影响，脚本按集合去重）。 2026-10-01 补 09-20~09-30 新发 7 条贴图（同样因 publish-data 快照滞后不在集内，本轮 hot_articles 报「无 URL，跳过」）。",
+ "_comment": "publish-data*.json 与 tietu-corpus-summary.json 都未收录、但已人工确认的贴图标题。hot_articles.py 会并入贴图过滤集。新增贴图时若发布数据快照滞后，把标题追加到这里。2026-09-27 补两批：① 后台 item_show_type=10 的资讯速递类简讯（第三类，非本号长文）；② 09-19 审计之后新发的 22 条贴图——publish-data*.json 快照停在 09-19，这批标题不在集内会导致 backfill-types 把它们误判为 article（本轮实测误判 7 条）。下次审计若 publish-data 已刷新，可保留（重复不影响，脚本按集合去重）。 2026-10-01 补 09-20~09-30 新发 7 条贴图（同样因 publish-data 快照滞后不在集内，本轮 hot_articles 报「无 URL，跳过」）。 2026-10-09 补 10-01~10-09 新发 7 条贴图（publish-data 快照仍滞后，本轮 hot_articles 对 OpenAI 722 篇报「无 URL，跳过」，属误判为文章）。",
  "titles": [
   "严重过拟合的Deepseek，和魔幻的价格",
   "DeepSeek DSH自己人开撕",
@@ -30,6 +30,13 @@
   "模型没换，Agent任务账单却能被砍掉一半？",
   "少想四成，这一刀下去效果却层次不齐",
   "GPT「五分之一」刷屏，其实账单不认这个数",
-  "Gemini 4的77.9%，DeepSWE官方竟找不到？"
+  "Gemini 4的77.9%，DeepSWE官方竟找不到？",
+  "Haiku 5.5标价砍90%，账单没这么爽",
+  "OpenAI内部模型竟然甩出722篇数学草稿！",
+  "Beam盯上GLM，501B参数激活23B，省三倍",
+  "ChatGPT真离谱！假画签了超过15个真人名字",
+  "DeepSeek越权最凶：查余额竟把卡明细都翻了",
+  "Sutton学生扎心了：AI 非忘旧而是学不动新",
+  "DeepSeek 撬 CUDA 墙角，但这只是第一步"
  ]
 }

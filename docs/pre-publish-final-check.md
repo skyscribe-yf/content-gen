@@ -100,6 +100,13 @@
 
 全文通读一遍，确认预告句中的"下一篇"确实解决的是**当前篇留下的缺口**，而不是列表上的下一项。
 
+## 11. 发布入口：必须是 `weixin.md`（走 mdnice 管线）
+
+- 发布必须把 **`weixin.md`** 交给 `baoyu-post-to-wechat`（它内部 spawn `md-to-wechat.ts` → mdnice `scienceBlue` + `compactWechatLayout` + `relaxWechatReadability`）。
+- ⚠️ **禁止先把 md 预渲染成 HTML 再发布**。`baoyu-markdown-to-html` 是**另一条渲染器**（它自己的 grace 主题 ≈ 段落 `margin: 1.5em 8px; letter-spacing: 0.1em`），与 mdnice 的内联样式完全不同——用它生成的 HTML 会把 mdnice 整个绕过去，排版、字号、留白全部脱离项目标准。
+- 事故记录（2026-10-09，Pi Durable 篇）：先渲染成 HTML 再发，草稿箱里的版本不是 mdnice 样式，已重发修正并删除旧稿。
+- 手机可读性规则固化在 `md-to-wechat.ts`：正文 16px、行高 1.85、段间距 14px、`ol/ul` 左缩进归零（修参考文献左侧空白）、`li` 加 4px、代码块 `pre-wrap` 不横滚 + 13px。改主题后需复核这些正则是否仍匹配。
+
 ## 检查清单速览
 
 | # | 项目 | 通过标准 |
@@ -114,3 +121,4 @@
 | 8 | 互动引导 | 含点赞 + 关注 + 收藏 |
 | 9 | 叙事闭环 | 开头痛点 → 正文解答 → 预告 = 同一条逻辑线，结尾预告从当前篇边界自然引出 |
 | 10 | 长句拆分 | 单句 ≤60 汉字，超长句已拆分（豁免：digest/参考资料/合集导航） |
+| 11 | 发布入口 | 交 `weixin.md`（走 mdnice），禁预渲染 HTML；mdnice 管线内已含手机可读性规则 |
