@@ -18,6 +18,19 @@
 - 被替换的文章通过合集页和文末交叉链接仍可访问
 - 账号菜单子菜单数受限时（当前仅支持 2 个），实际配置取列表前 N 篇，文档仍维护完整前 6
 
+**2026-10-15 更新（数据截至 10-14；贴图已过滤）**
+
+| 排序 | 文章 | 链接 | 阅读量 |
+|-----|------|------|--------|
+| 1 | KV缓存存进SSD | `https://mp.weixin.qq.com/s/40BQ06eDTv4-2r8FmQ_rMA` | 3,119 |
+| 2 | 高维空间全是壳 | `https://mp.weixin.qq.com/s/Nrfr-90Fpu3mFDML9s0d1Q` | 1,765 |
+| 3 | 高斯为什么二阶就够 | `https://mp.weixin.qq.com/s/gs_3y7JXuBLlzR5w6jW6fQ` | 1,512 |
+| 4 | 微软用Go重写TypeScript | `https://mp.weixin.qq.com/s/GmPJAh8ERPkm64KzYirV2g` | 1,176 |
+| 5 | Adam优化器 | `https://mp.weixin.qq.com/s/aSLVO-otvr2rxIU1kr2eAA` | 1,109 |
+| 6 | DeepSeek-V4为何不用MLA | `https://mp.weixin.qq.com/s/MQEgbY16mLs-N7g2xKW1HQ` | 1,107 |
+
+变化：微软 Go 篇（583→1,176）新入榜第 4，随机变量（615）掉出。⚠️ 本轮发现聚合口径会低估长尾（旧快照只存 10~21 条，老文刷不到新值），10-15 补录快照已把 `articles[]` 扩到近 30 条，**下一轮起固定存近 30 条**。`hot_articles.py --self-check` 通过。
+
 **2026-09-27 更新（数据截至 09-26；贴图已过滤）** — 榜单与 09-19 版一致，`hot_articles.py --self-check` 通过
 
 **2026-09-19 更新（数据截至 09-18；贴图已过滤）**

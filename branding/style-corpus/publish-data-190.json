@@ -1,0 +1,29 @@
+{
+  "total_count": 185,
+  "publish_count": 66,
+  "masssend_count": 119,
+  "publish_list": [],
+  "featured_count": 2,
+  "item_show_type_counts": [
+    {
+      "item_show_type": 0,
+      "count": 99
+    },
+    {
+      "item_show_type": 5,
+      "count": 0
+    },
+    {
+      "item_show_type": 7,
+      "count": 0
+    },
+    {
+      "item_show_type": 8,
+      "count": 80
+    },
+    {
+      "item_show_type": 10,
+      "count": 6
+    }
+  ]
+}

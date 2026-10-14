@@ -23975,6 +23975,1293 @@
         "用户：10-08 新增关注 2 / 取关 0 / 累计 1,074（上轮 1,070，2 天净增 4）；30 天渠道构成 文章页关注 77%、视频号 2%、更多 21%（channelTotal 100）。用户分析页仍须从首页菜单进入，直接 URL 不可访问。",
         "内容分析 Top10（30 天）由 10-07 的微软Go 篇以 528 人登顶，费马大定理 / ollama 等 9 月爆款已滚出榜单。搜一搜占比 1.0%（连降 5 轮）。"
       ]
+    },
+    {
+      "collectedAt": "2026-10-15T05:52:00+08:00",
+      "dataThrough": "2026-10-14",
+      "periods": {
+        "content": {
+          "from": "2026-09-15",
+          "to": "2026-10-14"
+        },
+        "users": {
+          "from": "2026-10-04",
+          "to": "2026-10-13"
+        },
+        "income": {
+          "from": "2026-10-08",
+          "to": "2026-10-13"
+        }
+      },
+      "content": {
+        "readers30d": 7151,
+        "daily": {
+          "date": "2026-10-14",
+          "reads": 247,
+          "shares": 17,
+          "comments": 5
+        },
+        "sources": {
+          "推荐": 68.8,
+          "公众号消息": 16.3,
+          "其它": 5.5,
+          "聊天会话": 5.0,
+          "公众号主页": 5.0,
+          "朋友圈": 0.7,
+          "搜一搜": 0.6
+        },
+        "articles": [
+          {
+            "date": "2026-10-14",
+            "title": "2 万 token上下文，DeepSeek为什么还是把代码记错了？",
+            "type": "article",
+            "reads": 13,
+            "share": 0.0
+          },
+          {
+            "date": "2026-10-13",
+            "title": "导数公式不是人写的，除了算特征值这种",
+            "type": "article",
+            "reads": 54,
+            "share": 13.0
+          },
+          {
+            "date": "2026-10-12",
+            "title": "训练一步要算几千亿个导数，自动微分如何加速几千倍",
+            "type": "article",
+            "reads": 96,
+            "share": 9.4
+          },
+          {
+            "date": "2026-10-12",
+            "title": "做逆向，人类哪是AI的对手?耐心压根追不上",
+            "type": "tietu",
+            "reads": 67,
+            "share": 4.5
+          },
+          {
+            "date": "2026-10-11",
+            "title": "OpenAI 1 亿局的弯路，和一个还没人做的实验",
+            "type": "article",
+            "reads": 24,
+            "share": 4.2
+          },
+          {
+            "date": "2026-10-10",
+            "title": "Context Rot 是真的吗？上下文还没满，模型为什么就先认输了",
+            "type": "article",
+            "reads": 31,
+            "share": 3.2
+          },
+          {
+            "date": "2026-10-09",
+            "title": "Agent 写的 Rust 快了 150 倍，为什么第一版只快 4 倍？",
+            "type": "article",
+            "reads": 110,
+            "share": 0.9
+          },
+          {
+            "date": "2026-10-09",
+            "title": "Pi Durable：工具调用中途崩溃，重发还是放弃？",
+            "type": "article",
+            "reads": 23,
+            "share": 13.0
+          },
+          {
+            "date": "2026-10-08",
+            "title": "Anthropic 实测多智能体强 90%，为什么另一家说千万别建？",
+            "type": "article",
+            "reads": 51,
+            "share": 3.9
+          },
+          {
+            "date": "2026-10-08",
+            "title": "Haiku 5.5标价砍90%，账单没这么爽",
+            "type": "tietu",
+            "reads": 36,
+            "share": 0.0
+          }
+        ]
+      },
+      "users": {
+        "daily": {
+          "date": "2026-10-13",
+          "new": 3,
+          "cancelled": 0,
+          "net": 3,
+          "total": 1083
+        },
+        "channelTotal": 99,
+        "channels": {
+          "文章页关注": {
+            "count": 78,
+            "share": 78.8
+          },
+          "更多": {
+            "count": 21,
+            "share": 21.2
+          }
+        },
+        "trend": [
+          {
+            "date": "2026-10-13",
+            "new": 3,
+            "cancelled": 0,
+            "net": 3,
+            "total": 1083
+          },
+          {
+            "date": "2026-10-12",
+            "new": 2,
+            "cancelled": 0,
+            "net": 2,
+            "total": 1080
+          },
+          {
+            "date": "2026-10-11",
+            "new": 1,
+            "cancelled": 0,
+            "net": 1,
+            "total": 1078
+          },
+          {
+            "date": "2026-10-10",
+            "new": 1,
+            "cancelled": 1,
+            "net": 0,
+            "total": 1077
+          },
+          {
+            "date": "2026-10-09",
+            "new": 3,
+            "cancelled": 0,
+            "net": 3,
+            "total": 1077
+          },
+          {
+            "date": "2026-10-08",
+            "new": 2,
+            "cancelled": 0,
+            "net": 2,
+            "total": 1074
+          },
+          {
+            "date": "2026-10-07",
+            "new": 3,
+            "cancelled": 1,
+            "net": 2,
+            "total": 1072
+          },
+          {
+            "date": "2026-10-06",
+            "new": 0,
+            "cancelled": 0,
+            "net": 0,
+            "total": 1070
+          },
+          {
+            "date": "2026-10-05",
+            "new": 0,
+            "cancelled": 0,
+            "net": 0,
+            "total": 1070
+          },
+          {
+            "date": "2026-10-04",
+            "new": 2,
+            "cancelled": 0,
+            "net": 2,
+            "total": 1070
+          }
+        ]
+      },
+      "income": {
+        "overview": {
+          "cumulativeRevenue": 100.75,
+          "programmaticRevenue": 100.75,
+          "yesterdayIncrement": 0.49,
+          "mutualSelectionRevenue": 0.0,
+          "commerceRevenue": 0.0
+        },
+        "articleIncomeAvailable": true,
+        "articleIncome": {
+          "scope": "文章发布后 7 日内、不含返佣商品与互选广告",
+          "articles": [
+            {
+              "date": "2026-10-08",
+              "title": "Haiku 5.5标价砍90%，账单没这么爽",
+              "original": false,
+              "revenue": 0.07,
+              "slots": {}
+            },
+            {
+              "date": "2026-10-08",
+              "title": "Anthropic 实测多智能体强 90%，为什么另一家说千万别建？",
+              "original": true,
+              "revenue": 0.12,
+              "slots": {}
+            },
+            {
+              "date": "2026-10-09",
+              "title": "Pi Durable：工具调用中途崩溃，重发还是放弃？",
+              "original": true,
+              "revenue": 0.04,
+              "slots": {}
+            },
+            {
+              "date": "2026-10-09",
+              "title": "Agent 写的 Rust 快了 150 倍，为什么第一版只快 4 倍？",
+              "original": true,
+              "revenue": 0.07,
+              "slots": {}
+            },
+            {
+              "date": "2026-10-10",
+              "title": "Context Rot 是真的吗？上下文还没满，模型为什么就先认输了",
+              "original": true,
+              "revenue": 0.09,
+              "slots": {}
+            },
+            {
+              "date": "2026-10-11",
+              "title": "OpenAI 1 亿局的弯路，和一个还没人做的实验",
+              "original": true,
+              "revenue": 0.01,
+              "slots": {}
+            },
+            {
+              "date": "2026-10-12",
+              "title": "做逆向，人类哪是AI的对手?耐心压根追不上",
+              "original": false,
+              "revenue": 0.25,
+              "slots": {}
+            },
+            {
+              "date": "2026-10-12",
+              "title": "训练一步要算几千亿个导数，自动微分如何加速几千倍",
+              "original": true,
+              "revenue": 0.2,
+              "slots": {}
+            },
+            {
+              "date": "2026-10-13",
+              "title": "导数公式不是人写的，除了算特征值这种",
+              "original": true,
+              "revenue": 0.03,
+              "slots": {}
+            }
+          ]
+        },
+        "slots": {
+          "留言区": {
+            "summary": {
+              "pulls": 3168,
+              "impressions": 529,
+              "exposureRate": 16.7,
+              "clicks": 2,
+              "ctr": 0.38,
+              "ecpm": 1.89,
+              "revenue": 1.0
+            },
+            "dailyRevenueTotal": 0.99,
+            "daily": [
+              {
+                "date": "2026-10-08",
+                "pulls": 1113,
+                "impressions": 225,
+                "exposureRate": 20.22,
+                "clicks": 2,
+                "ctr": 0.89,
+                "ecpm": 1.69,
+                "revenue": 0.38
+              },
+              {
+                "date": "2026-10-09",
+                "pulls": 376,
+                "impressions": 58,
+                "exposureRate": 15.43,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 2.07,
+                "revenue": 0.12
+              },
+              {
+                "date": "2026-10-10",
+                "pulls": 548,
+                "impressions": 75,
+                "exposureRate": 13.69,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 2.27,
+                "revenue": 0.17
+              },
+              {
+                "date": "2026-10-11",
+                "pulls": 202,
+                "impressions": 31,
+                "exposureRate": 15.35,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 2.26,
+                "revenue": 0.07
+              },
+              {
+                "date": "2026-10-12",
+                "pulls": 522,
+                "impressions": 77,
+                "exposureRate": 14.75,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 1.95,
+                "revenue": 0.15
+              },
+              {
+                "date": "2026-10-13",
+                "pulls": 407,
+                "impressions": 63,
+                "exposureRate": 15.48,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 1.59,
+                "revenue": 0.1
+              }
+            ]
+          },
+          "底部": {
+            "summary": {
+              "pulls": 1707,
+              "impressions": 550,
+              "exposureRate": 32.22,
+              "clicks": 4,
+              "ctr": 0.73,
+              "ecpm": 2.4,
+              "revenue": 1.32
+            },
+            "dailyRevenueTotal": 1.32,
+            "daily": [
+              {
+                "date": "2026-10-08",
+                "pulls": 585,
+                "impressions": 248,
+                "exposureRate": 42.39,
+                "clicks": 3,
+                "ctr": 1.21,
+                "ecpm": 1.37,
+                "revenue": 0.34
+              },
+              {
+                "date": "2026-10-09",
+                "pulls": 220,
+                "impressions": 59,
+                "exposureRate": 26.82,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 1.19,
+                "revenue": 0.07
+              },
+              {
+                "date": "2026-10-10",
+                "pulls": 324,
+                "impressions": 90,
+                "exposureRate": 27.78,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 5.22,
+                "revenue": 0.47
+              },
+              {
+                "date": "2026-10-11",
+                "pulls": 116,
+                "impressions": 34,
+                "exposureRate": 29.31,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 3.82,
+                "revenue": 0.13
+              },
+              {
+                "date": "2026-10-12",
+                "pulls": 264,
+                "impressions": 73,
+                "exposureRate": 27.65,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 3.01,
+                "revenue": 0.22
+              },
+              {
+                "date": "2026-10-13",
+                "pulls": 198,
+                "impressions": 46,
+                "exposureRate": 23.23,
+                "clicks": 1,
+                "ctr": 2.17,
+                "ecpm": 1.96,
+                "revenue": 0.09
+              }
+            ]
+          },
+          "inline": {
+            "summary": {
+              "pulls": 3397,
+              "impressions": 2323,
+              "exposureRate": 68.38,
+              "clicks": 6,
+              "ctr": 0.26,
+              "ecpm": 0.68,
+              "revenue": 1.57
+            },
+            "dailyRevenueTotal": 1.57,
+            "daily": [
+              {
+                "date": "2026-10-08",
+                "pulls": 1167,
+                "impressions": 906,
+                "exposureRate": 77.63,
+                "clicks": 2,
+                "ctr": 0.22,
+                "ecpm": 0.49,
+                "revenue": 0.44
+              },
+              {
+                "date": "2026-10-09",
+                "pulls": 437,
+                "impressions": 259,
+                "exposureRate": 59.27,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 0.77,
+                "revenue": 0.2
+              },
+              {
+                "date": "2026-10-10",
+                "pulls": 641,
+                "impressions": 399,
+                "exposureRate": 62.25,
+                "clicks": 1,
+                "ctr": 0.25,
+                "ecpm": 0.65,
+                "revenue": 0.26
+              },
+              {
+                "date": "2026-10-11",
+                "pulls": 234,
+                "impressions": 134,
+                "exposureRate": 57.26,
+                "clicks": 1,
+                "ctr": 0.75,
+                "ecpm": 1.49,
+                "revenue": 0.2
+              },
+              {
+                "date": "2026-10-12",
+                "pulls": 524,
+                "impressions": 355,
+                "exposureRate": 67.75,
+                "clicks": 2,
+                "ctr": 0.56,
+                "ecpm": 0.56,
+                "revenue": 0.2
+              },
+              {
+                "date": "2026-10-13",
+                "pulls": 394,
+                "impressions": 270,
+                "exposureRate": 68.53,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 1.0,
+                "revenue": 0.27
+              }
+            ]
+          },
+          "tietuFeed": {
+            "summary": {
+              "pulls": 387,
+              "impressions": 39,
+              "exposureRate": 10.08,
+              "clicks": 2,
+              "ctr": 5.13,
+              "ecpm": 5.64,
+              "revenue": 0.22
+            },
+            "dailyRevenueTotal": 0.22,
+            "daily": [
+              {
+                "date": "2026-10-08",
+                "pulls": 112,
+                "impressions": 12,
+                "exposureRate": 10.71,
+                "clicks": 1,
+                "ctr": 8.33,
+                "ecpm": 2.5,
+                "revenue": 0.03
+              },
+              {
+                "date": "2026-10-09",
+                "pulls": 43,
+                "impressions": 6,
+                "exposureRate": 13.95,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 1.67,
+                "revenue": 0.01
+              },
+              {
+                "date": "2026-10-10",
+                "pulls": 33,
+                "impressions": 5,
+                "exposureRate": 15.15,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 2.0,
+                "revenue": 0.01
+              },
+              {
+                "date": "2026-10-11",
+                "pulls": 18,
+                "impressions": 3,
+                "exposureRate": 16.67,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 3.33,
+                "revenue": 0.01
+              },
+              {
+                "date": "2026-10-12",
+                "pulls": 89,
+                "impressions": 8,
+                "exposureRate": 8.99,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 16.25,
+                "revenue": 0.13
+              },
+              {
+                "date": "2026-10-13",
+                "pulls": 92,
+                "impressions": 5,
+                "exposureRate": 5.43,
+                "clicks": 1,
+                "ctr": 20.0,
+                "ecpm": 6.0,
+                "revenue": 0.03
+              }
+            ]
+          }
+        }
+      },
+      "notes": [
+        "采集方式：复制主 Chrome profile（wechat cookie 创建 10-13 20:54、last_access 10-15 05:35 活会话）+ headless Chrome 9335 端口由 Chrome 自解密登录，免扫码（第 5 次复验成功）。⚠️ 本轮环境事故：系统 python 3.12→3.14 升级后 `.venv-mdnice` 的 python 符号链接断裂（playwright 不可用），临时用 `uv venv /tmp/pw-venv && uv pip install playwright xlrd jsonschema` 重建环境跑既有脚本，脚本本体未改。",
+        "口径：articles[].reads/share 取「内容管理 → 发表记录」的 appmsgpublish JSON（read_num / share_num，阅读次数口径），share = 分享人数 ÷ 阅读人数 × 100；单篇详情页为去重人数口径。本轮两口径尚未分叉（10-13 下篇：发表记录 54 = 详情页 54 人；样本量太小，不可据此判定口径合并）。",
+        "✅ 30 天渠道交叉验证：页面饼图（推荐 68.8 / 公众号消息 16.3 / 其它 5.5 / 聊天会话 5.0 / 公众号主页 5.0 / 朋友圈 0.7 / 搜一搜 0.6）与 wechat-daily-sources-log 的 09-15~10-14 逐日合计（4917 / 1164 / 396 / 358 / 357 / 49 / 41，全部 7,151）逐项吻合——饼图「先 7 个百分比、后 7 个标签」的 zip 顺序（推荐→公众号消息→其它→聊天会话→公众号主页→朋友圈→搜一搜）由此得到独立验证。",
+        "收入：概览累计 100.75 元（上轮 97.84，5 天 +2.91）；6 日（10-08~10-13）四个有量广告位合计 **4.10 元**：inline(文章中部) 1.57 + 底部 1.32 + 留言区 0.99 + tietuFeed 0.22。",
+        "🟢 **广告曝光首次跨过决策门槛**：6 日曝光 3,441（日均 574 > 200），eCPM/CTR 从此可作参考。文章中部曝光率 68.38%（四者最高）但 eCPM 0.68（最低）；文章底部 eCPM 2.40 + CTR 0.73%（四者最高）；留言区曝光率 16.70%、eCPM 1.89；tietuFeed 曝光率 10.08%（仍最低）。",
+        "🆕 文章级收入明细首次可用（articleIncomeAvailable = true）：9 篇（10-08~10-13 发布，7 日窗口）合计 0.88 元；单篇最高 10-12 贴图《做逆向，人类哪是AI的对手?耐心压根追不上》0.25、其次 10-12 自动微分上篇 0.20；10-13 下篇仅 0.03（T+1）。schema 的 slots 需逐行「展开详情」，本轮未展开，9 篇均记 {}。",
+        "用户：累计关注 1,083（至 10-13；后台横幅「数据系统统计延迟」，10-14 行未出）；10-04~10-13 净增 +13（新增 17 / 取消 2）。渠道构成（99 人）：文章页关注 78 人 78.8%、更多 21 人 21.2%。",
+        "内容（10-14）：全部阅读 247、分享 17、留言 5；页面另两个未标名卡片为点赞 3、收藏 2（schema 只收 reads/shares/comments，点赞/收藏留本 notes）。",
+        "单篇详情（去重人数 / 完读率 / 推荐占比）：10-14 phase-sensitivity 13 人 / 14% / 推荐 0（T+0，公众号消息 85.7）；10-13 autodiff 下篇 54 人 / **7%** / 推荐 50.0；10-12 autodiff 上篇 96 人 / 21% / 推荐 47.5；10-11 AgentGarten 24 人 / 15% / 推荐 33.3；10-10 Context Rot 31 人 / 21% / 推荐 29.4；10-09 Rust 篇 110 人 / 15% / 推荐 60.5；10-09 Pi Durable 23 人 / 29% / 消息 39.3；10-08 Anthropic 多智能体 51 人 / 28% / 推荐 55.6；10-08 Haiku 贴图 36 / 推荐 68.4；10-12 贴图《做逆向…》67 / 推荐 82.6。",
+        "🔴 **10-13 下篇完读率 7% 为近月最低**（同系列 10-12 上篇 21%），且 T+0/T+1 读数按 0ah 口径本就偏低 1.3~1.5 倍，需 T+7 复核；⚠️ 后台单篇详情页「页面数据更新至 2026/10/14」，10-13/10-14 两篇的详情数字仍是未回填状态。"
+      ]
+    },
+    {
+      "collectedAt": "2026-10-15T05:55:00+08:00",
+      "dataThrough": "2026-10-14",
+      "periods": {
+        "content": {
+          "from": "2026-09-15",
+          "to": "2026-10-14"
+        },
+        "users": {
+          "from": "2026-10-04",
+          "to": "2026-10-13"
+        },
+        "income": {
+          "from": "2026-10-08",
+          "to": "2026-10-13"
+        }
+      },
+      "content": {
+        "readers30d": 7151,
+        "daily": {
+          "date": "2026-10-14",
+          "reads": 247,
+          "shares": 17,
+          "comments": 5
+        },
+        "sources": {
+          "推荐": 68.8,
+          "公众号消息": 16.3,
+          "其它": 5.5,
+          "聊天会话": 5.0,
+          "公众号主页": 5.0,
+          "朋友圈": 0.7,
+          "搜一搜": 0.6
+        },
+        "articles": [
+          {
+            "date": "2026-10-14",
+            "title": "2 万 token上下文，DeepSeek为什么还是把代码记错了？",
+            "type": "article",
+            "reads": 13,
+            "share": 0.0
+          },
+          {
+            "date": "2026-10-13",
+            "title": "导数公式不是人写的，除了算特征值这种",
+            "type": "article",
+            "reads": 54,
+            "share": 13.0
+          },
+          {
+            "date": "2026-10-12",
+            "title": "训练一步要算几千亿个导数，自动微分如何加速几千倍",
+            "type": "article",
+            "reads": 96,
+            "share": 9.4
+          },
+          {
+            "date": "2026-10-12",
+            "title": "做逆向，人类哪是AI的对手?耐心压根追不上",
+            "type": "tietu",
+            "reads": 67,
+            "share": 4.5
+          },
+          {
+            "date": "2026-10-11",
+            "title": "OpenAI 1 亿局的弯路，和一个还没人做的实验",
+            "type": "article",
+            "reads": 24,
+            "share": 4.2
+          },
+          {
+            "date": "2026-10-10",
+            "title": "Context Rot 是真的吗？上下文还没满，模型为什么就先认输了",
+            "type": "article",
+            "reads": 31,
+            "share": 3.2
+          },
+          {
+            "date": "2026-10-09",
+            "title": "Agent 写的 Rust 快了 150 倍，为什么第一版只快 4 倍？",
+            "type": "article",
+            "reads": 110,
+            "share": 0.9
+          },
+          {
+            "date": "2026-10-09",
+            "title": "Pi Durable：工具调用中途崩溃，重发还是放弃？",
+            "type": "article",
+            "reads": 23,
+            "share": 13.0
+          },
+          {
+            "date": "2026-10-08",
+            "title": "Anthropic 实测多智能体强 90%，为什么另一家说千万别建？",
+            "type": "article",
+            "reads": 51,
+            "share": 3.9
+          },
+          {
+            "date": "2026-10-08",
+            "title": "Haiku 5.5标价砍90%，账单没这么爽",
+            "type": "tietu",
+            "reads": 36,
+            "share": 0.0
+          },
+          {
+            "date": "2026-10-07",
+            "title": "微软用 Go 重写 TypeScript，他一个人用 C++ 又写了一遍",
+            "type": "article",
+            "reads": 1176,
+            "share": 1.4
+          },
+          {
+            "date": "2026-10-07",
+            "title": "DeepSeek 用 AI 自己出了 60 万道题，为什么反而更强？",
+            "type": "article",
+            "reads": 55,
+            "share": 7.3
+          },
+          {
+            "date": "2026-10-07",
+            "title": "OpenAI内部模型竟然甩出722篇数学草稿！",
+            "type": "tietu",
+            "reads": 58,
+            "share": 3.4
+          },
+          {
+            "date": "2026-10-06",
+            "title": "Beam盯上GLM，501B参数激活23B，省三倍",
+            "type": "tietu",
+            "reads": 95,
+            "share": 3.2
+          },
+          {
+            "date": "2026-10-06",
+            "title": "ChatGPT真离谱！假画签了超过15个真人名字",
+            "type": "tietu",
+            "reads": 100,
+            "share": 0.0
+          },
+          {
+            "date": "2026-10-05",
+            "title": "给 Agent 装了记忆，为什么它还是不懂我的项目？",
+            "type": "article",
+            "reads": 65,
+            "share": 9.2
+          },
+          {
+            "date": "2026-10-04",
+            "title": "问 AI 100 遍：100 种说法，为什么只算 1 种答案？",
+            "type": "article",
+            "reads": 52,
+            "share": 9.6
+          },
+          {
+            "date": "2026-10-04",
+            "title": "DeepSeek越权最凶：查余额竟把卡明细都翻了",
+            "type": "tietu",
+            "reads": 119,
+            "share": 0.8
+          },
+          {
+            "date": "2026-10-04",
+            "title": "Sutton学生扎心了：AI 非忘旧而是学不动新",
+            "type": "tietu",
+            "reads": 62,
+            "share": 4.8
+          },
+          {
+            "date": "2026-10-03",
+            "title": "DeepSeek 撬 CUDA 墙角，但这只是第一步",
+            "type": "tietu",
+            "reads": 88,
+            "share": 3.4
+          },
+          {
+            "date": "2026-10-02",
+            "title": "RL 越训越准，为什么反而越训越笨？",
+            "type": "article",
+            "reads": 95,
+            "share": 10.5
+          },
+          {
+            "date": "2026-10-01",
+            "title": "Gemini 4的77.9%，DeepSWE官方竟找不到？",
+            "type": "tietu",
+            "reads": 114,
+            "share": 0.0
+          },
+          {
+            "date": "2026-09-30",
+            "title": "流形假设：15 万像素的图片，AI 凭什么只用 43 个数就认得？",
+            "type": "article",
+            "reads": 200,
+            "share": 15.0
+          },
+          {
+            "date": "2026-09-30",
+            "title": "GPT「五分之一」刷屏，其实账单不认这个数",
+            "type": "tietu",
+            "reads": 63,
+            "share": 1.6
+          },
+          {
+            "date": "2026-09-29",
+            "title": "小米MIMO v2.6 Pro浅层专家是空的？",
+            "type": "tietu",
+            "reads": 119,
+            "share": 2.5
+          },
+          {
+            "date": "2026-09-28",
+            "title": "少想四成，这一刀下去效果却层次不齐",
+            "type": "tietu",
+            "reads": 90,
+            "share": 0.0
+          },
+          {
+            "date": "2026-09-28",
+            "title": "小米花 2345 万训强化学习，评分器只分到 12.7%？",
+            "type": "article",
+            "reads": 133,
+            "share": 6.8
+          }
+        ]
+      },
+      "users": {
+        "daily": {
+          "date": "2026-10-13",
+          "new": 3,
+          "cancelled": 0,
+          "net": 3,
+          "total": 1083
+        },
+        "channelTotal": 99,
+        "channels": {
+          "文章页关注": {
+            "count": 78,
+            "share": 78.8
+          },
+          "更多": {
+            "count": 21,
+            "share": 21.2
+          }
+        },
+        "trend": [
+          {
+            "date": "2026-10-13",
+            "new": 3,
+            "cancelled": 0,
+            "net": 3,
+            "total": 1083
+          },
+          {
+            "date": "2026-10-12",
+            "new": 2,
+            "cancelled": 0,
+            "net": 2,
+            "total": 1080
+          },
+          {
+            "date": "2026-10-11",
+            "new": 1,
+            "cancelled": 0,
+            "net": 1,
+            "total": 1078
+          },
+          {
+            "date": "2026-10-10",
+            "new": 1,
+            "cancelled": 1,
+            "net": 0,
+            "total": 1077
+          },
+          {
+            "date": "2026-10-09",
+            "new": 3,
+            "cancelled": 0,
+            "net": 3,
+            "total": 1077
+          },
+          {
+            "date": "2026-10-08",
+            "new": 2,
+            "cancelled": 0,
+            "net": 2,
+            "total": 1074
+          },
+          {
+            "date": "2026-10-07",
+            "new": 3,
+            "cancelled": 1,
+            "net": 2,
+            "total": 1072
+          },
+          {
+            "date": "2026-10-06",
+            "new": 0,
+            "cancelled": 0,
+            "net": 0,
+            "total": 1070
+          },
+          {
+            "date": "2026-10-05",
+            "new": 0,
+            "cancelled": 0,
+            "net": 0,
+            "total": 1070
+          },
+          {
+            "date": "2026-10-04",
+            "new": 2,
+            "cancelled": 0,
+            "net": 2,
+            "total": 1070
+          }
+        ]
+      },
+      "income": {
+        "overview": {
+          "cumulativeRevenue": 100.75,
+          "programmaticRevenue": 100.75,
+          "yesterdayIncrement": 0.49,
+          "mutualSelectionRevenue": 0.0,
+          "commerceRevenue": 0.0
+        },
+        "articleIncomeAvailable": true,
+        "articleIncome": {
+          "scope": "文章发布后 7 日内、不含返佣商品与互选广告",
+          "articles": [
+            {
+              "date": "2026-10-08",
+              "title": "Haiku 5.5标价砍90%，账单没这么爽",
+              "original": false,
+              "revenue": 0.07,
+              "slots": {}
+            },
+            {
+              "date": "2026-10-08",
+              "title": "Anthropic 实测多智能体强 90%，为什么另一家说千万别建？",
+              "original": true,
+              "revenue": 0.12,
+              "slots": {}
+            },
+            {
+              "date": "2026-10-09",
+              "title": "Pi Durable：工具调用中途崩溃，重发还是放弃？",
+              "original": true,
+              "revenue": 0.04,
+              "slots": {}
+            },
+            {
+              "date": "2026-10-09",
+              "title": "Agent 写的 Rust 快了 150 倍，为什么第一版只快 4 倍？",
+              "original": true,
+              "revenue": 0.07,
+              "slots": {}
+            },
+            {
+              "date": "2026-10-10",
+              "title": "Context Rot 是真的吗？上下文还没满，模型为什么就先认输了",
+              "original": true,
+              "revenue": 0.09,
+              "slots": {}
+            },
+            {
+              "date": "2026-10-11",
+              "title": "OpenAI 1 亿局的弯路，和一个还没人做的实验",
+              "original": true,
+              "revenue": 0.01,
+              "slots": {}
+            },
+            {
+              "date": "2026-10-12",
+              "title": "做逆向，人类哪是AI的对手?耐心压根追不上",
+              "original": false,
+              "revenue": 0.25,
+              "slots": {}
+            },
+            {
+              "date": "2026-10-12",
+              "title": "训练一步要算几千亿个导数，自动微分如何加速几千倍",
+              "original": true,
+              "revenue": 0.2,
+              "slots": {}
+            },
+            {
+              "date": "2026-10-13",
+              "title": "导数公式不是人写的，除了算特征值这种",
+              "original": true,
+              "revenue": 0.03,
+              "slots": {}
+            }
+          ]
+        },
+        "slots": {
+          "留言区": {
+            "summary": {
+              "pulls": 3168,
+              "impressions": 529,
+              "exposureRate": 16.7,
+              "clicks": 2,
+              "ctr": 0.38,
+              "ecpm": 1.89,
+              "revenue": 1.0
+            },
+            "dailyRevenueTotal": 0.99,
+            "daily": [
+              {
+                "date": "2026-10-08",
+                "pulls": 1113,
+                "impressions": 225,
+                "exposureRate": 20.22,
+                "clicks": 2,
+                "ctr": 0.89,
+                "ecpm": 1.69,
+                "revenue": 0.38
+              },
+              {
+                "date": "2026-10-09",
+                "pulls": 376,
+                "impressions": 58,
+                "exposureRate": 15.43,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 2.07,
+                "revenue": 0.12
+              },
+              {
+                "date": "2026-10-10",
+                "pulls": 548,
+                "impressions": 75,
+                "exposureRate": 13.69,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 2.27,
+                "revenue": 0.17
+              },
+              {
+                "date": "2026-10-11",
+                "pulls": 202,
+                "impressions": 31,
+                "exposureRate": 15.35,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 2.26,
+                "revenue": 0.07
+              },
+              {
+                "date": "2026-10-12",
+                "pulls": 522,
+                "impressions": 77,
+                "exposureRate": 14.75,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 1.95,
+                "revenue": 0.15
+              },
+              {
+                "date": "2026-10-13",
+                "pulls": 407,
+                "impressions": 63,
+                "exposureRate": 15.48,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 1.59,
+                "revenue": 0.1
+              }
+            ]
+          },
+          "底部": {
+            "summary": {
+              "pulls": 1707,
+              "impressions": 550,
+              "exposureRate": 32.22,
+              "clicks": 4,
+              "ctr": 0.73,
+              "ecpm": 2.4,
+              "revenue": 1.32
+            },
+            "dailyRevenueTotal": 1.32,
+            "daily": [
+              {
+                "date": "2026-10-08",
+                "pulls": 585,
+                "impressions": 248,
+                "exposureRate": 42.39,
+                "clicks": 3,
+                "ctr": 1.21,
+                "ecpm": 1.37,
+                "revenue": 0.34
+              },
+              {
+                "date": "2026-10-09",
+                "pulls": 220,
+                "impressions": 59,
+                "exposureRate": 26.82,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 1.19,
+                "revenue": 0.07
+              },
+              {
+                "date": "2026-10-10",
+                "pulls": 324,
+                "impressions": 90,
+                "exposureRate": 27.78,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 5.22,
+                "revenue": 0.47
+              },
+              {
+                "date": "2026-10-11",
+                "pulls": 116,
+                "impressions": 34,
+                "exposureRate": 29.31,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 3.82,
+                "revenue": 0.13
+              },
+              {
+                "date": "2026-10-12",
+                "pulls": 264,
+                "impressions": 73,
+                "exposureRate": 27.65,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 3.01,
+                "revenue": 0.22
+              },
+              {
+                "date": "2026-10-13",
+                "pulls": 198,
+                "impressions": 46,
+                "exposureRate": 23.23,
+                "clicks": 1,
+                "ctr": 2.17,
+                "ecpm": 1.96,
+                "revenue": 0.09
+              }
+            ]
+          },
+          "inline": {
+            "summary": {
+              "pulls": 3397,
+              "impressions": 2323,
+              "exposureRate": 68.38,
+              "clicks": 6,
+              "ctr": 0.26,
+              "ecpm": 0.68,
+              "revenue": 1.57
+            },
+            "dailyRevenueTotal": 1.57,
+            "daily": [
+              {
+                "date": "2026-10-08",
+                "pulls": 1167,
+                "impressions": 906,
+                "exposureRate": 77.63,
+                "clicks": 2,
+                "ctr": 0.22,
+                "ecpm": 0.49,
+                "revenue": 0.44
+              },
+              {
+                "date": "2026-10-09",
+                "pulls": 437,
+                "impressions": 259,
+                "exposureRate": 59.27,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 0.77,
+                "revenue": 0.2
+              },
+              {
+                "date": "2026-10-10",
+                "pulls": 641,
+                "impressions": 399,
+                "exposureRate": 62.25,
+                "clicks": 1,
+                "ctr": 0.25,
+                "ecpm": 0.65,
+                "revenue": 0.26
+              },
+              {
+                "date": "2026-10-11",
+                "pulls": 234,
+                "impressions": 134,
+                "exposureRate": 57.26,
+                "clicks": 1,
+                "ctr": 0.75,
+                "ecpm": 1.49,
+                "revenue": 0.2
+              },
+              {
+                "date": "2026-10-12",
+                "pulls": 524,
+                "impressions": 355,
+                "exposureRate": 67.75,
+                "clicks": 2,
+                "ctr": 0.56,
+                "ecpm": 0.56,
+                "revenue": 0.2
+              },
+              {
+                "date": "2026-10-13",
+                "pulls": 394,
+                "impressions": 270,
+                "exposureRate": 68.53,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 1.0,
+                "revenue": 0.27
+              }
+            ]
+          },
+          "tietuFeed": {
+            "summary": {
+              "pulls": 387,
+              "impressions": 39,
+              "exposureRate": 10.08,
+              "clicks": 2,
+              "ctr": 5.13,
+              "ecpm": 5.64,
+              "revenue": 0.22
+            },
+            "dailyRevenueTotal": 0.22,
+            "daily": [
+              {
+                "date": "2026-10-08",
+                "pulls": 112,
+                "impressions": 12,
+                "exposureRate": 10.71,
+                "clicks": 1,
+                "ctr": 8.33,
+                "ecpm": 2.5,
+                "revenue": 0.03
+              },
+              {
+                "date": "2026-10-09",
+                "pulls": 43,
+                "impressions": 6,
+                "exposureRate": 13.95,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 1.67,
+                "revenue": 0.01
+              },
+              {
+                "date": "2026-10-10",
+                "pulls": 33,
+                "impressions": 5,
+                "exposureRate": 15.15,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 2.0,
+                "revenue": 0.01
+              },
+              {
+                "date": "2026-10-11",
+                "pulls": 18,
+                "impressions": 3,
+                "exposureRate": 16.67,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 3.33,
+                "revenue": 0.01
+              },
+              {
+                "date": "2026-10-12",
+                "pulls": 89,
+                "impressions": 8,
+                "exposureRate": 8.99,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 16.25,
+                "revenue": 0.13
+              },
+              {
+                "date": "2026-10-13",
+                "pulls": 92,
+                "impressions": 5,
+                "exposureRate": 5.43,
+                "clicks": 1,
+                "ctr": 20.0,
+                "ecpm": 6.0,
+                "revenue": 0.03
+              }
+            ]
+          }
+        }
+      },
+      "notes": [
+        "⚠️ 本轮为**同一采集时段的第二次入库（补充快照）**：content/users/income 与 05:52 那条完全相同，仅把 `content.articles` 由近 10 条扩到**近 30 条（09-28~10-14）**。原因：`scripts/hot_articles.py` 的热门榜按「跨快照最高阅读量」聚合，10-09 那轮只存了 12 条（09-24~10-08），导致仍在涨的老文读不到新值——10-07 的《微软用 Go 重写 TypeScript》在 10-09 快照里是 583 读，本轮实测已 **1,188 读**（6 天 +605），旧窗口装不下就没有快照能刷新它，热门榜会长期低估。两条快照均为真实读数，不改动历史。",
+        "📌 由此发现的口径建议：**每轮审计的 articles[] 窗口不宜小于「仍在被推荐的长尾文」的存活期**（当前实测 ≥ 8 天），否则跨快照 max 聚合会失真；下一轮起建议固定存近 30 条。"
+      ]
     }
   ]
 }

@@ -29,9 +29,11 @@
 | 1 | KV缓存SSD | `https://mp.weixin.qq.com/s/40BQ06eDTv4-2r8FmQ_rMA` | 3,119 |
 | 2 | 高维空间全是壳 | `https://mp.weixin.qq.com/s/Nrfr-90Fpu3mFDML9s0d1Q` | 1,765 |
 | 3 | 高斯为什么二阶就够 | `https://mp.weixin.qq.com/s/gs_3y7JXuBLlzR5w6jW6fQ` | 1,512 |
-| 4 | Adam优化器 | `https://mp.weixin.qq.com/s/aSLVO-otvr2rxIU1kr2eAA` | 1,109 |
-| 5 | DeepSeek-V4为何不用MLA | `https://mp.weixin.qq.com/s/MQEgbY16mLs-N7g2xKW1HQ` | 1,107 |
-| 6 | 随机变量为什么不是变量 | `https://mp.weixin.qq.com/s/5BxjOUblW64DXNffHc2sxQ` | 615 |
+| 4 | 微软用Go重写TypeScript | `https://mp.weixin.qq.com/s/GmPJAh8ERPkm64KzYirV2g` | 1,176 |
+| 5 | Adam优化器 | `https://mp.weixin.qq.com/s/aSLVO-otvr2rxIU1kr2eAA` | 1,109 |
+| 6 | DeepSeek-V4为何不用MLA | `https://mp.weixin.qq.com/s/MQEgbY16mLs-N7g2xKW1HQ` | 1,107 |
+
+**2026-10-15 更新**：按 10-15 审计快照（数据截至 10-14）聚合最高阅读重排——《微软用 Go 重写 TypeScript》6 天从 583 涨到 **1,176** 读（推荐长尾），直接进入第 4；原第 6《随机变量为什么不是变量》（615）掉出榜单。⚠️ 本轮同时发现**热门榜的聚合口径会低估长尾**：旧快照只存近 10~21 条，仍在涨的老文没有新快照刷新（详见 `docs/wechat-data-insights.md` 0aj 节与 10-15 补录快照的 notes）。账号菜单仅支持 2 个子菜单，实际配置不变（KV + 高维空间）。
 
 **2026-09-19 更新**：按 09-19 审计快照聚合最高阅读重排——随机变量（615 读）超过 SFT 微调（569）进入第 6；高斯微升至 1,512。榜单由 `scripts/hot_articles.py` 生成；账号菜单仅支持 2 个子菜单，实际配置不变（KV + 高维空间）。
 

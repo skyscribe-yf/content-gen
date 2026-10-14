@@ -76,6 +76,8 @@ done
 > ✅ **2026-10-03 复验**：该方案仍然可用（主 profile cookie 创建于 10-03 08:12）。脚本已固化：复制最小集 + `chrome --headless=new --remote-debugging-port=9335 --user-data-dir=/tmp/wx-live-profile`，再 `connect_over_cdp("http://127.0.0.1:9335")`。⚠️ **两个坑**：① `pkill -f "remote-debugging-port=9335"` 写在同一条命令里会**杀掉自己**（bash 命令行也命中该模式）；② **playwright 装在 `.venv-mdnice/bin/python`**，系统 `python3` 没有。
 >
 > ⚠️ **token 不要硬编码**：`scripts/wx_audit_collect.py` 已改为从 `/tmp/wx-token.txt` 读 token。获取方式：先 `page.goto("https://mp.weixin.qq.com/")`（根路径，触发完整登录）等 10-15 秒，再从 `page.url` 里 `re.search(r"[?&]token=(\d+)", url)` 取出写入该文件。token 每次登录都会变，旧 token 访问分析页会显示「请重新登录」。
+>
+> 🔴 **2026-10-15 环境事故**：系统 python 从 3.12 升到 3.14 后，`.venv-mdnice/bin/python` 符号链接断裂（exec 报「没有那个文件或目录」），**playwright 不可用**。修复：`uv venv /tmp/pw-venv && uv pip install --python /tmp/pw-venv/bin/python playwright xlrd jsonschema`，然后用 `/tmp/pw-venv/bin/python` 跑所有审计脚本（脚本本身不依赖 venv 路径，直接换成这个解释器即可）。`xlrd` 是 `wechat_audit_log.py append-sources` 读 `.xls` 的可选依赖。
 
 #### ✅ 可用方案：复制主 profile，让 Chrome 自己解密（不打扰用户正在运行的 Chrome）
 
@@ -184,6 +186,14 @@ https://mp.weixin.qq.com/misc/appmsganalysis?action=detailpage&msgid=<msgid>_1&p
 4. 若某篇详情页饼图未渲染（“暂无数据”或 0 曝光），记 `channels: null` 并在 `notes` 说明“该篇发布<24h 渠道未回填”。
 5. **入库**：把该 JSON 的精简摘要写入本次快照 `notes`（如“单篇饼图 6篇：GLM 166读 推荐71% / hy4 78读 推荐68% / 每步52读 推荐34% …”），完整文件随快照一起归档（`cp /tmp/article-channel-breakdown.json docs/wechat-data-article-channels-YYYY-MM-DD.json` 或直接贴进 `wechat-data-insights.md` 的 0x.1 表）。
 6. **失败回退**：若详情页点击无反应，先 `snapshot -i` 刷新 refs 再试；仍失败则改用 `wx.cgiData` 的 `appmsg_info` 兜底（`read_num` 已有，但渠道饼图只能靠 UI，直接标 null 并在 insights 里写“未采到单篇饼图”）。
+
+#### 2026-10-15 新增：`articles[]` 改从 appmsgpublish JSON 全量取（推荐）+ 窗口不得小于 30 条
+
+1. **数据源换掉**：不再解析「发表记录」DOM 的 CSS 类，改跑 `node scripts/extract_publish_data.mjs`（它会逐页把 `publish_page` 落到 `branding/style-corpus/publish-data-<begin>.json`，本项目 185 条约 20 页 / 1 分钟）。解析要点：`publish_list[].publish_info` 是 **HTML 转义过的 JSON**（`html.unescape` 后再 `json.loads`），每条 item 带 `appmsgid / item_show_type / read_num / like_num / share_num / comment_num / content_url`——比 DOM 多拿到分享与留言，且不受页面排版改动影响。
+   - ⚠️ 时间字段两处二选一：群发条目有 `sent_info.time`；草稿箱/未群发条目只有内层 `publish_info.create_time`。
+   - ⚠️ 该脚本靠 `/tmp/agent-browser-chrome-*/DevToolsActivePort` 找端口；用自建的 9335 浏览器时要先建一个同名目录写入端口号，并先在 9335 里开一个带 token 的 mp 页面（否则脚本取不到 token）。
+2. **窗口不少于 30 条**：`scripts/hot_articles.py` 的热门榜按「跨快照最高阅读量」聚合，**若某轮快照只存近 10 条，仍在被推荐的长尾老文就永远刷不到新值**（实测：微软 Go 篇 6 天从 583 涨到 1,176，旧窗口装不下→热门榜长期低估）。**今后每轮固定存近 30 条（约 09-28 起的发布记录）**。
+3. **30 天饼图必须与逐日台账交叉验证**：页面饼图文本是「先 7 个百分比、后 7 个标签」，zip 顺序为 推荐→公众号消息→其它→聊天会话→公众号主页→朋友圈→搜一搜；把 `wechat-daily-sources-log.json` 同窗口逐日合计算一遍，两边逐项吻合才可信（2026-10-15 实测 7/7 吻合）。
 
 #### 每日流量渠道明细入库（append-sources，每次采集必做）
 
