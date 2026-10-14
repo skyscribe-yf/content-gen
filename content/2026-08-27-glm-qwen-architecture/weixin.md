@@ -1,6 +1,6 @@
 ---
 wechatUrl: "https://mp.weixin.qq.com/s/5w1mEVLW5igvJ28Dn6pe9A"
-title: "智谱阿里为什么拆注意力？KV缓存砍4.4倍"
+title: "智谱阿里为什么要改注意力？KV缓存竟砍4.4倍"
 author: "数解AI"
 date: "2026-08-27"
 type: "原理篇"

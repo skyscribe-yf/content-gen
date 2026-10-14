@@ -86,6 +86,7 @@
 ## 微信文章链接规则
 
 - **默认主题 grace**（对应发布管线 mdnice `scienceBlue`，主色蓝 `#0F4C81`）：项目已配置 `.baoyu-skills/baoyu-markdown-to-html/EXTEND.md`（预览）与 `.baoyu-skills/baoyu-post-to-wechat/EXTEND.md`（发布）双线 `default_theme: grace`、`default_color: blue`，渲染无需显式传 `--theme`/`--color`。改主题在这里改，两处同改。
+- **标题以后台为准**：台账 / frontmatter / 正文内链文字一律用后台 `msg_title`（作者会在后台改标题，实测 9 篇拟稿标题≠发布标题）；`python3 scripts/verify_published_urls.py` 可全量或单篇核验（2026-10-15：103/103 一致、0 删除）。⚠️ 后台「发表记录」（appmsgpublish）**只收录群发记录**，未群发也已发布的文章不在其中——不能当「全量已发布」校验源。
 - 系列导航链接**必须**是微信 URL（`https://mp.weixin.qq.com/s/...`），禁止相对路径
 - 未发布用 `（待发布）` 标注，发布后补 URL
 - 发布后**必须**把微信 URL 记入 frontmatter `wechatUrl` 字段，供后续文章引用

@@ -207,7 +207,7 @@ articles:
     media_id: kOcXH4SytIYVIpYksTGfHhGCP63LQD0TC006V8vf1q1wdDm8bJSPGpmFCcHNJUpo）。旧草稿 kOcXH4SytIYVIpYksTGfHrXgWrSQm5OzIt4Owpwu0znPz_Nk2jvELH3eC1Rksz9d 及 …HqRdFMPV…/…HoRLI_SV…/…Higdi-Ws… 开头旧稿需在草稿箱删除。 2026-08-11 第三轮重存（--theme grace 蓝色主题 + 热门链接每行独立段落），**最终 media_id: kOcXH4SytIYVIpYksTGfHvrQvkVkBYuseTTmlZGkL07mZ-AsmLQSymnWt13WZSyj**。前两轮草稿（…Hm00F-Pd… 与 …Hh4KOLCg… 无关，第二轮 …HvAmfbsp… 系 FP8）均作废需删除。保存草稿必须显式加 --theme grace（wechat-api.ts 不读 EXTEND.md default_theme）。 2026-08-10 打磨后重存草稿（remote-api --theme grace）：**新 media_id: kOcXH4SytIYVIpYksTGfHrPuKBxoPomaY1PeGu6CCEmwJG2QkaOt6N2SFHuI5r_H**（封面 media_id: kOcXH4SytIYVIpYksTGfHgstv9NSTNzLW009i__Jb1mFR3LLsV1JxMMNuATuvosY）。旧草稿 …HvrQvkVkBY…（第三轮）作废需在草稿箱删除，保留最新一版即可。 2026-08-10 已发布，wechatUrl 已回填：https://mp.weixin.qq.com/s/40BQ06eDTv4-2r8FmQ_rMA（同步回填 Indexer 篇正文「KV 落盘篇（待发布）」为内链）。 2026-08-10 发布前打磨（quality check 11 项全过）：修复 6 处——①「上上篇」×3 →「V4 注意力篇」（V4 注意力篇为 08-04，隔 K=V/mHC/FP8/FP4 四篇，原指称不准）；②开头「上一篇 K=V」→「K=V 篇」（上一篇实为 FP4）；③带宽口径自洽：HBM 1-3 TB/s vs NVMe 3-7 GB/s 实为 140~1000
     倍，补「按保守口径：显存 1 TB/s、阵列 20 GB/s」使 50 倍成立；④「V4-Flash 的配置 n_win=128、L=61」→「V4-Pro」（Flash 43 层，61 层是 Pro，硬伤）；⑤「130 token 文档问第三章/第五章」逻辑矛盾 →「同一份长文档…最后一个完整块」；⑥长句拆分 1 处（61 汉字→2 句）。实验复现全过（36K 交叉点、2s/61s/30 倍、81.9/1.28/0 GB、2667 vs 8000/13334 块）；图片 6 张文字与正文一致；尾部近期热门 6 链接全部有效。'
 - slug: 2026-08-11-deepseek-indexer
-  title: 几万块挑几百块：Lightning Indexer 凭什么敢这么挑
+  title: 稀疏注意力怎么挑重点？DeepSeek-V4 只算 1/64
   series: DeepSeek 技术解密
   status: published
   published_date: '2026-08-11'
@@ -261,7 +261,7 @@ articles:
   notes: '排期 2026-08-14（Obsidian 第15课优先，558行最厚笔记）。V4 技术报告 §3.5.3（注意非 §3.4.3）：为什么长序列必须 CP；两阶段通信（跨 rank 传 m 个未压缩 KV → all-gather 压缩 KV）；每 rank 压缩长度 s/m+1；对比 Ring-Attention 为什么不适用压缩稀疏注意力。grill 日志：.grill/contextual-parallelism.md（谜题式主线「切了会坏」+ 切了会坏模拟器实验）。关键校准：V4-Pro 真实压缩比 CSA m=4/HCA m''=128（config.json compress_ratios，弃用笔记 m=64 演示值）；CP 通信沿用 parallel 篇口径 9MB/层（KV entry 576B）；阶段1 发 m 个未压缩 KV、产出 s/m+1 个 entry、select-and-pad 后总长 cp_size·s/m；CP=8 为长上下文训练配置口径（报告未披露数值）。experiment.py 已跑通：朴素 CP 缺/错块 vs 两阶段 CP 与单卡基准逐一比对一致（CSA 277/276/277、HCA 4/2/4），10 个随机种子全过。正文 2714 汉字、超长句 0、禁词 0。配图 6 张已生成（yairouter，1254²）文字与正文一致；封面 00-cover.png 已生成（21:9 请求、实际 1928x816，标题完整）。已保存至公众号草稿箱（remote-api --theme grace，media_id: kOcXH4SytIYVIpYksTGfHrvOeVGcn6GYlHEcOwro-DBgSYs2KVknHY6ntsowjqaP，封面 media_id: kOcXH4SytIYVIpYksTGfHgQDI7PsmMMs7pFaDikEtUje41-bXE11-CehAo3VVqZ0）。发布前在网页确认声明原创 + 勾选合集。待办：发布后回填 wechatUrl + 上篇 parallel 链接。 2026-08-15 已发布，wechatUrl 已回填：https://mp.weixin.qq.com/s/UB_ILj-62K3VBUY4_AopSw。同步回填：DualPipe 篇（08-15）「上下文并行篇（待发布）」→
     真实内链。'
 - slug: 2026-08-15-deepseek-dualpipe-deepep
-  title: 训练时GPU在等什么？DualPipe与DeepEP通信解密
+  title: DeepEP：训练时GPU的空等怎么藏起来
   series: DeepSeek 技术解密
   status: published
   published_date: '2026-08-15'
@@ -287,7 +287,7 @@ articles:
     outline: true
     cover: true
 - slug: 2026-07-15-词嵌入
-  title: 词嵌入为什么让 AI 懂‘苹果’？5 万个 0 变坐标
+  title: '词嵌入为什么让AI懂"苹果"？5万个0变坐标'
   series: 大模型原理
   status: published
   published_date: '2026-07-15'
@@ -380,7 +380,7 @@ articles:
     cover: true
   notes: 架构全貌篇，KDA+AttnRes+LatentMoE 三轴，含数学直觉。排期：2026-07-28 20:00（Asia/Shanghai）。已发布（frontmatter wechatUrl 已回填；2026-08-09 核查时同步修正 status/wechat_url，原为 scheduled/null 残留）。
 - slug: 2026-07-29-SFT
-  title: SFT微调：为什么同一个模型，突然就听懂指令了？
+  title: SFT微调：1万条数据就能让模型听话？
   series: 大模型原理
   status: published
   published_date: '2026-07-29'
@@ -617,7 +617,7 @@ articles:
   notes: 「AI中的数学」系列 KL 散度篇。素材直出工作流：raw.md 作者口述 11 段，structure.md v2 检查点作者批准（术语修正×2、双头硬币算例、series=数学直觉、标题A）。引用源 refs.md：主引 Alemi《KL is All You Need》（图源×3：大象/VAE世界对/扩散链）+ Lilian Weng《From GAN to WGAN》（KL_JS 四联图 + 不重叠分布实验数据），参考资料 6 条带链接。数字事实验证：双头硬币 5 连正=32:1≈97%；KL(N(0,1)||N(3,1))闭式=Δμ²/2=4.5 nats（图表与理论一致）；JS=log2/W=|θ| 摘自 Lilian 原文。质量核查13项全过（长句>60字清零、禁词0、拆字合规、原声句15条逐字保留）。封面 gpt-image-2 两轮定稿（第一版自造副标题作废，第二版无多余文字，1915x821≈21:9，prompts/00-cover.md）。2026-08-22 已存公众号草稿箱（remote-api --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHk_UJkE11ltaaK80hzEICkd-ujbQfhT85zWpSAqRtnbM（封面 kOcXH4SytIYVIpYksTGfHoCwvFQT6P9CZPEWus1Dl3cYXZW9J08Gn8Uk2CCq6koc）。⚠️ 正文 TRPO 链接为「待发布」占位，TRPO 发布后必须回填微信 URL 再重存草稿。发布前确认：声明原创 + 定时 20:00 + 合集「AI中的数学」。 2026-08-22 TRPO 发布后正文回填链接并完成打磨（长句/长段拆分、补内链×3、修口误×4），重存草稿：media_id kOcXH4SytIYVIpYksTGfHtvsKCFs3go8FzOj3pi00K_xopK7m1VE7wzXtMonGdQV（封面 kOcXH4SytIYVIpYksTGfHjK3ztL7oCakVr-lss3sKMRhIiRg5XAiqvhZY3gGz3d5）。旧草稿 media_id kOcXH4SytIYVIpYksTGfHk_UJkE11ltaaK80hzEICkd-ujbQfhT85zWpSAqRtnbM
     需在草稿箱删除。
 - slug: 2026-08-24-ppo-math
-  title: PPO只用0.2的clip，凭什么顶替0.01预算？
+  title: PPO只用0.2的clip，凭什么顶替0.01的KL预算？
   series: 强化学习原理
   status: published
   published_date: '2026-08-24'
@@ -648,6 +648,7 @@ articles:
     kOcXH4SytIYVIpYksTGfHj-pM4J2wICkJjm86ZnmvfuXwLagG5U0t6RcwJ_75fq8）待删。 2026-08-24 核查：正文已无「待发布后回填」残留；尾部「近期热门」按新规则（AGENTS.md 微信文章链接规则）改为实际热门榜 Top 5（取自 content/navigation/menu-config.md，贴图不计入、不含当前篇）：KV缓存SSD/高维空间/Adam/DeepSeek-V4为何不用MLA/Softmax，链接行不留空行（修复公众号端列表空行）。重存草稿（remote-api，theme=grace color=blue）：media_id kOcXH4SytIYVIpYksTGfHrAQIFf1UA1IFk8ytwFYPA8-ERzGU710lfICxkrm_hWv（封面 kOcXH4SytIYVIpYksTGfHrwu_c4xeRsjVdfURv1Lbes0-wBSZFpx19IcoW8d91rf）。⚠️ 待办：发布前确认声明原创 + 定时 20:00 + 合集「强化学习原理」；若此前有后台手动设置（如广告位），重存后需重设。 2026-08-24 按新规则（scripts/hot_articles.py 固化脚本）改尾部为脚本生成：audit Top 6（KV/高维/Adam/DeepSeek-V4/Softmax/SFT，贴图自动过滤）+ 本文引用文章（策略梯度、MDP），链接行间无空行；重存草稿（remote-api）：media_id kOcXH4SytIYVIpYksTGfHrAQIFf1UA1IFk8ytwFYPA8-ERzGU710lfICxkrm_hWv（封面 kOcXH4SytIYVIpYksTGfHrwu_c4xeRsjVdfURv1Lbes0-wBSZFpx19IcoW8d91rf）。中间版本草稿 …HjL74w… 与 …HtHoRH… 均待删。脚本自检：python3 scripts/hot_articles.py --self-check 通过。
 - slug: 2026-08-24-dsh-harness
   title: DeepSeek Harness社区自己人开撕：创新何在
+  type: tietu  # 2026-10-15 修正：后台 item_show_type=8（贴图轨），原误记为文章
   series: Agent前线
   status: published
   published_date: '2026-08-24'
@@ -660,6 +661,7 @@ articles:
   notes: 贴图（图片消息），合集 Agent 前线。素材 /home/skyscribe/图片/贴图 三张：崔添翼给 Yifan Xu 炮轰帖点赞截图、炮轰原文、DSH 架构图。标题「DeepSeek DSH自己人开撕」17字。公众号后台发表记录确认：2026-08-24 07:00 已发表。合集页 URL 待补。
 - slug: 2026-08-24-pi-dsh-pruner
   title: Pi这波把DSH剪枝骂惨了
+  type: tietu  # 2026-10-15 修正：后台 item_show_type=8（贴图轨），原误记为文章
   series: Agent前线
   status: published
   published_date: '2026-08-24'
@@ -672,6 +674,7 @@ articles:
   notes: 贴图（图片消息），合集 Agent 前线。素材 /home/skyscribe/图片/贴图/0824 四张：Pi 锐评 DSH permanently-lossy pruner、Claude 绑定自家 Schema、Harness 像操作系统、Cordis Effect/Coeffect。标题 13 字，贴图公式（当期热点+强立场）。数字 26%～35% / 72%～88% / 19 Session 照截图。公众号后台发表记录确认：2026-08-24 08:00 已发表。合集页 URL 待补。
 - slug: 2026-08-25-pi-maka-harness
   title: Pi 的新架构，答案早就在数据库论文里了
+  type: tietu  # 2026-10-15 修正：后台 item_show_type=8（贴图轨），原误记为文章
   series: Agent前线
   status: published
   published_date: '2026-08-25'
@@ -740,7 +743,7 @@ articles:
   notes: 视觉/多模态机动篇（G 组试水，2026-08-27 立项）。grill 日志 .grill/2026-08-27-multimodal-split.md（三轮收敛：先写不发；切口=三巨头观点对照；标题定稿）。素材核验：DeepSeek V4-Flash-Vision-Exp 2026-08-21 上线（图片 384 token 上限、Agent 基准跑分、社区实测认不出梁文锋照片）；Kimi K3 2.8T 总参 / MoonViT-V2 从零训；K2.5 早期融合 15T 混合 token + 零视觉 SFT；DeepSeek-VL 消融 100% 图文 MMLU -10.3 / 70:30 -0.3；百度 Unlimited OCR 作者疑似 DeepSeek OCR 核心魏浩然（36氪 2026-06-22）；Janus-Pro 2025-01-27 支撑「2025 年初多模态」原声。原声槽 7 条逐字进稿（opencode issue 场景/曲线救国/组件论一家之言/学艺不精+研究员出走/技术有争议用户需求实在/有条件选带视觉/OCR 偏差）。2026-08-27 已存公众号草稿箱（remote-api --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHpLphu8HdCumcS675Omkg6jJeXnj4DcI16-_hQlsJNQz（封面 kOcXH4SytIYVIpYksTGfHixMHR0E0JQik7LDudHqmFLmVIb_gT-ljaCIHlvzJLoV），正文图 4 张已上传（01/02/03 脚本图 + 04 AI 图）。深度补强后重存（新增「一张图，是怎么被翻译进大脑的」节，正文 4068 字）；旧草稿 kOcXH4SytIYVIpYksTGfHpLphu8HdCumcS675Omkg6jJeXnj4DcI16-_hQlsJNQz 作废可删。2026-08-28 爆款规律复盘后改定标题「GLM-5.3 说视觉没用，转头带上原生视觉」+ digest/关键词/开头/正文多处重写（01/02/03 图重画、封面 prompt 重写）：封面已按新标题重新生成并读图逐字验证（1915x821），热门区 hot_articles.py 重跑一致、--self-check
     通过；2026-08-28 已按新标题+新封面重存草稿箱（remote-api --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHjAKJcw_-Brtm4yduFE2TPkPWPeC0DvTHRfZdQYaWYWp（封面 kOcXH4SytIYVIpYksTGfHnHP0z8qN7oab3TuxO2jyMUlSyoZAcZW9geVilVqQSzH），正文图 5 张已上传（01/02/03 脚本图 + 05/04 AI 图，04 自动压 <1MB JPEG 82）。旧 media_id kOcXH4SytIYVIpYksTGfHiZk2n5AO6MmCSOPgoue-G6LPuJyoqxUD9C_aQIvNX0s 作废可删。2026-08-30 质量检测（15 项全过）+ 改期 08-30 发（大数定律已提前 08-29 发，08-30 空档）：frontmatter 标题同步为「GLM-5.3 说视觉没用，转头带上原生视觉」（此前本地文件仍是旧标题）、弯引号 9 处统一「」、错别字「赛→塞」、「后面会拆→拆解」、「我在开头说的 proxy 和 MCP 曲线救国」改「社区常说的」（开头重写后引用失效）、长句拆 10 处（原声/引用豁免）、数字实时核验（Hy4 08-28 发布 770B/49B 纯文本无视觉 ✓、AA V4 Flash Vision 51 vs V4 Flash 0731 52 低 1 分 ✓）。目录名改 2026-08-30-multimodal-split。已按新标题重存草稿箱（remote-api --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHigJXhVYv_vjhBYV5qFFzEfywHoy8dUzKHRaSVao3KgC。未定时、未群发。⚠️ 发布前确认：声明原创 + 定时 20:00 + 合集「开源大模型技术揭秘」；发布后补 wechatUrl。 2026-08-30 已发布：https://mp.weixin.qq.com/s/HqabnvOdMbq2gX0-V87N6w（wechatUrl 已回填）。
 - slug: 2026-08-27-glm-qwen-architecture
-  title: GLM-5.3-Flash 和 Qwen4 架构：注意力为什么都不够用了？
+  title: 智谱阿里为什么要改注意力？KV缓存竟砍4.4倍
   series: 开源大模型技术揭秘
   status: published
   published_date: '2026-08-27'
@@ -844,7 +847,7 @@ articles:
     cover: true
   notes: R1 两篇拆解上篇（训练：R1-Zero 纯 RL 学会搜索，流形/子流形理论）。与 2026-09-05-test-time-compute 姊妹篇。grill 日志 .grill/2026-09-05-r1-zero-training.md；两篇均 ≤2000 字； 原声无引号融入正文（2026-09-05 作者确立，已入 style-features 红线）。2026-09-05 第五次重存（作者要求 「草稿箱再次生成」，grace 主题 + 无开头 H1）。2026-09-06 对账：实际 09-04（周五）发布， wechat_url 回填（PQj1EFBotvBTzwU7lVG9Ug）。2026-09-06 目录名已按发布日期重命名（09-05→09-04）。
 - slug: 2026-09-05-test-time-compute
-  title: AI 多想 3 秒，正确率为什么从 71% 涨到 86.7%？
+  title: AI 多想 3 秒，为什么正确率能从 71% 涨到 86.7%？
   series: 开源大模型技术揭秘
   status: published
   published_date: '2026-09-05'
@@ -1543,7 +1546,7 @@ articles:
   - '⏳ 待办（作者后台）：确认草稿箱预览与 mdnice 样式 → 声明原创 → 勾选合集「AI Agent 工程」 → 定档（本篇**未定时**、**未群发**）；发布后回填 wechatUrl（frontmatter + 本条 + 台账），并注意「发布后不改标题/摘要」。'
 
 - slug: 2026-10-12-autodiff
-  title: 训练一步要算几千亿个导数，凭什么不会慢几千亿倍？
+  title: 训练一步要算几千亿个导数，自动微分如何加速几千倍
   series: AI中的数学
   status: published
   published_date: '2026-10-12'
@@ -1675,3 +1678,4 @@ plan_notes:
 - '2026-10-10 新篇立项 + 入箱：AI Agent 系列第四篇《Context Rot 是真的吗？上下文还没满，模型为什么就先认输了》（`2026-10-10-context-rot-isolation`）当日全流程走完并入草稿箱。全流程要点：grill 4 轮（选题轨 → 主轴 → 证据支撑 → 标题/篇幅）→ 作者两处现场加需求（**放进 Chroma**、**内链老文章**）→ 大纲 → **原声 8 处/7 槽位逐槽交互**（无批量代填）→ 争议双轨证据链（正方 Chroma/Anthropic/arXiv:2601.15300/Boolean vs 反方 Zenodo null）→ 定价断言一手核验 → 成稿 → 段落 ≤80 字重构 + H2/H3 分层 → 7 张论文原图 + 封面 → 门禁 PASS → 存草稿箱。**三条口径变更**：① 封面文字不再等于全文标题（作者本次指令，**AGENTS.md 封面规格待同步修订**）；② 作者新增硬口径「**每个段落 ≤80 字、长段落必须按意思拆、醒目句独立成段、标题要多级**」，本次已写入本篇 quality_check.py，建议**提升为项目级规则**；③ 内链修正：`5w1mEVLW5igvJ28Dn6pe9A` 的后台真标题是「智谱阿里为什么拆注意力？KV缓存砍4.4倍」，台账/拟稿口径「GLM-5.3-Flash 和 Qwen4 架构…」已失准——**内链文字一律按各篇 frontmatter 反查（同 hot_articles.py 的 canonical_title）**，勿信台账 title 字段。'
 - '2026-10-14 对账（作者供链 1 篇）：《导数公式不是人写的，除了算特征值这种》（content/2026-10-13-autodiff-impl/）author 报「昨日的文章已发布」→ 核验通过后 status draft_saved→published、published_date 2026-10-13、wechat_url + frontmatter wechatUrl 回填，**目录由 2026-10-15 改名 2026-10-13**（原名是按「建议排期 10-15」预排的，实际提前两天发，违反「目录名 = 发布日」须改名；10-02-power-law-rl 同款事故第二次）。summary 重算 published 102→103 / draft_saved 2→1，ready_queue→仅 2026-10-14-phase-sensitivity，next_publish_date→10-14。⚠️ 发布节奏留意：本篇 10-13 22:00 发布，与上篇 10-12 相邻两天连发**同一支纯理论连载**（大纲原本写了「必隔一篇非纯理论」红线，作者定档时未执行），且 10-13 的 22:00 偏离惯用 20:00 档。⏳ 仍欠：① phase-sensitivity（10-14 档）是否已发布待作者确认；② Context Rot 篇 published_date 仍 null（mp 页面直取读不到 ct）；③ 后台作废草稿三份待删。'
 - '2026-10-14 对账（作者供链 2 篇）+ 发布档期改 22:00（作者当日口径）：① Context Rot 篇（2026-10-10-context-rot-isolation）published_date 由 null 补 **2026-10-10**（ct=1791633600 = 10-10 20:00），关闭 10-12 note 里「发布日待核」；② 相位敏感性篇（2026-10-14-phase-sensitivity）status draft_saved→published、wechat_url https://mp.weixin.qq.com/s/1GATyW40jkh1YxuvwVbpUA（ct=1791986400 = **10-14 22:00**）、frontmatter wechatUrl + scheduledPublish 同步。⚠️ **后台标题被改**：发布标题为「2 万 token上下文，DeepSeek为什么还是把代码记错了？」（原拟「上下文只有 2 万 token，模型为什么还是把代码记错了？」）——frontmatter title、台账 title、outline 定稿行已按后台实际同步；今后核验一律以 mp 页面 msg_title 为准，勿以拟稿标题假设一致。③ summary 重算 **total 104 / published 104 / draft_saved 0**，ready_queue 与 scheduled_queue 清空，next_publish_date→null（待作者定档）。④ **档期口径变更（2026-10-14 作者）**：长文固定发布时刻由 20:00 改为 **22:00**，已同步 `AGENTS.md`、`docs/wechat-ops.md`、`docs/content-matrix.md` 三处规则文档；10-13、10-14 两篇实际均为 22:00 发出，即先例已存在。⚠️ 连带观察：10-12 / 10-13 / 10-14 连续三天发文、且 13/14 两篇均为纯理论向，与「每天最多 1 篇 + 禁连续纯理论」的自我约束相抵，是否刻意未确认。⏳ 仍欠：① 2026-10-06-deepseek-synthetic-data 是台账里唯一 published 但无 wechat_url 的条目（frontmatter 亦无，待作者供链）；② 后台三份作废草稿待删。'
+- '2026-10-15 台账修正（作者确认口径 + 全量 URL 核验）：① **口径确认**：作者明确「没有群发也是发布了」——后台「发表记录」（appmsgpublish）只收录**群发**记录，未群发但已发布的文章不在其中（本轮 5 篇不在列表却 URL 有效），**发表记录不得用作「全量已发布」校验源**；带 `wechat_url` 的条目一律视为已发布。新增 `scripts/verify_published_urls.py`（逐条直取 mp 页面比对 msg_title），本轮全量核验 **103/103 条标题一致、0 篇已删除/违规**（首次全量跑出 8 处漂移，已全部回填，见下）。② **9 条标题回填到后台实际 msg_title**（拟稿标题 ≠ 发布标题）：2026-07-15-词嵌入（引号/空格）、2026-07-29-SFT、2026-08-11-deepseek-indexer、2026-08-15-deepseek-dualpipe-deepep、2026-08-24-ppo-math（补 KL）、2026-08-27-glm-qwen-architecture、2026-09-05-test-time-compute、2026-10-12-autodiff、2026-10-13…10-14 phase-sensitivity（上一轮已回填）。其中 3 条**同时改了 `content/*/weixin.md` frontmatter title**（ppo-math / glm-qwen-architecture / autodiff——后两者原 frontmatter 也与后台不一致）；autodiff 的 `quality_check.py` 两处标题断言随之改成「陈述句」版本，重跑 PASS。⚠️ 历史规划物（outline.md 定稿行、prompts/、shipinhao/ 分镜）**未改**——它们记录的是当时的拟稿决策，不是发布事实；`draft.md` 同理。⚠️ glm-qwen-architecture 的标题在 10-10 与 10-15 两次读到的值不同（「拆注意力/KV缓存砍4.4倍」→「要改注意力/KV缓存竟砍4.4倍」），疑似**发布后改过标题**（与「发布后不改标题/摘要」自查冲突，留痕待作者确认）。③ **3 条贴图误分类已修正**：`2026-08-24-dsh-harness`（203 读）、`2026-08-24-pi-dsh-pruner`（206 读）、`2026-08-25-pi-maka-harness`（135 读）后台 `item_show_type=8`，已加 `type: tietu` 标记——这 3 条**不应计入文章轨统计**（与 09-09 费马大定理同类错误）。⚠️ 由于 schema 无 by_type 字段，summary 仍按 total/published 计（104/104），文章轨统计请自行过滤 `type != tietu`（104 − 3 = 101 篇真实文章）。'

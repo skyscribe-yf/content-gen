@@ -155,8 +155,8 @@ chk("我自己就写错过" not in BODY, "无 AI 代拟的第一人称句")
 
 print("[13] 爆款要素抽查")
 title = TEXT.split("\n")[1].split('"')[1]
-chk("几千亿" in title and "几千亿倍" in title, "标题含数字反差")
-chk(title.endswith("？"), "标题为疑问句")
+chk("几千亿" in title and "几千倍" in title, "标题含数字反差")
+chk(not title.endswith("？"), "标题为陈述句（后台发布标题为准，见 draft-status.yaml 2026-10-15 修正）")
 chk("5520 亿个导数" in BODY.split("## ")[0], "开头钩子亮明量级")
 chk("5520 亿个导数不是一个个算出来的" in BODY, "首尾闭环（回扣开头）")
 chk("判断标准只有一条" in BODY, "给出一条可带走的判断")

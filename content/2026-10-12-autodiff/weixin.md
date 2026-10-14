@@ -1,5 +1,5 @@
 ---
-title: "训练一步要算几千亿个导数，凭什么不会慢几千亿倍？"
+title: "训练一步要算几千亿个导数，自动微分如何加速几千倍"
 wechatUrl: "https://mp.weixin.qq.com/s/RxJ5LcgX46pwDwS38NR_UQ"
 author: "数解AI"
 date: "2026-10-12"

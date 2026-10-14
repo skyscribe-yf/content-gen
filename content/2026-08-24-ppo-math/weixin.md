@@ -1,5 +1,5 @@
 ---
-title: "PPO只用0.2的clip，凭什么顶替0.01预算？"
+title: "PPO只用0.2的clip，凭什么顶替0.01的KL预算？"
 author: "数解AI"
 date: "2026-08-24"
 type: "原理篇"
