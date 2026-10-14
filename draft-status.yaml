@@ -1352,6 +1352,7 @@ articles:
     outline: true
     cover: true
   notes:
+  - '⚠️ 2026-10-13 链接缺口排查（作者要求补全缺失链接）：本篇 2026-10-07 已发布但 wechat_url 仍为 null。本地数据源全部查过——`branding/style-corpus/publish-data*.json` 快照最晚只到 2026-09-19、`wechat-published-index.json`（144 条）不含本篇、`docs/wechat-data-article-channels-2026-10-09.json` 只有 appmsgid 2247486631（拼不出 /s/ 公开链接）、审计日志只有阅读数无链接。后台直取也失败：`.env` 的 WECHAT_COOKIE 已过期（mp 页返回「请重新登录」），本机 Chrome profile 里的 mp 会话同样失效（「登录超时，请重新登录」），复制 profile 自解密路子本次不可用（临时 profile 用完即删）。**需作者直接给该篇 /s/ 链接，或重新扫码登录后台后再跑 fetch_wechat_published.mjs 全量刷新索引。**'
   - 选题：开源大模型技术揭秘线 D6（DeepSeek 数据工业/合成数据）。grill 日志 .grill/deepseek-synthetic-data.md；
     大纲 content/2026-10-06-deepseek-synthetic-data/outline.md。轨道由作者拍板（放弃数学线/G 组）。
   - 🎯 交付句：筛定生死，但筛不治窄——「筛选器定的是生不生，不是宽不宽」。开头从「OpenAI 指控 DeepSeek 蒸馏」争议切入，
@@ -1492,9 +1493,9 @@ articles:
 - slug: 2026-10-10-context-rot-isolation
   title: Context Rot 是真的吗？上下文还没满，模型为什么就先认输了
   series: AI Agent 工程
-  status: draft_saved
+  status: published
   published_date: null
-  wechat_url: null
+  wechat_url: https://mp.weixin.qq.com/s/6bdNSe1hiGFUvL1qV_ICUw
   files:
     weixin: true
     outline: true
@@ -1513,13 +1514,14 @@ articles:
   - '✅ 门禁：quality_check.py **PASS**（原声逐字 11 段/8 处全在场；段落超 80 字 **0**；H2=6 节 + H3=14 小标题；禁词/AI 腔 16 词全清；超 60 字 AI 句 **0**；正文配图 7 张、无孤儿图、无 images/ 前缀；标签 5 个含 #数解AI；首尾闭环）。`hot_articles.py --self-check` 自检通过（Top 6 与锚点一致）；`check_wechat_links.py` 17 条 mp 链接**全部可溯源**。cite 安全性实测：带 `--cite` 渲染后 25 个 `<a>` 全为 mp.weixin 内链、零外链转引用，故沿用默认 cite。'
   - '📤 2026-10-10 存入草稿箱（remote-api via vps-us，grace+blue，citeStatus=true，EXIT=0）：draft media_id kOcXH4SytIYVIpYksTGfHpqnPiP6buM7ae5T1XCtSmPz2CTuwshzaMkxhXXlMCfD、cover media_id kOcXH4SytIYVIpYksTGfHoutLezoiwdeBh5TpQ4owhd6zYFi-UjsjrtWFdD_XIL7；7 张正文图全部上传成功。存稿前已删除目录内渲染残留（weixin.html / .bak）——Pi Durable 篇曾因「先渲染 HTML 再发」把非 mdnice 样式发进草稿箱。'
   - '⏳ 待办（作者后台）：确认草稿箱预览与 mdnice 样式 → 声明原创 → 勾选合集「AI Agent 工程」 → 定档（本篇**未定时**、**未群发**）；发布后回填 wechatUrl（frontmatter + 本条 + 台账）。⚠️ 恢复期 B 组：「发布后不改标题/摘要」依然生效。'
+  - '📤 2026-10-12 作者供链回填：status draft_saved→published、wechat_url = https://mp.weixin.qq.com/s/6bdNSe1hiGFUvL1qV_ICUw（同时写入 frontmatter wechatUrl）；上方「待办」项随发布关闭。⚠️ published_date 仍为 null——mp 页面直取返回验证页、读不到 ct，**发布日待核**（作者 2026-10-12 口述「已发布」）。'
 
 - slug: 2026-10-11-agentgarten
   title: OpenAI 1 亿局的弯路，和一个还没人做的实验
   series: AI Agent 工程
-  status: draft_saved
-  published_date: null
-  wechat_url: null
+  status: published
+  published_date: '2026-10-11'
+  wechat_url: https://mp.weixin.qq.com/s/Psa6FOPl57phHn-pfNUfKg
   files:
     weixin: true
     outline: true
@@ -1528,6 +1530,7 @@ articles:
   media_id: kOcXH4SytIYVIpYksTGfHq6vwfL5NSG_vKEtdBd6tu9FCUlRogRDn9I4SQBfV6_3
   cover_media_id: kOcXH4SytIYVIpYksTGfHrBH4UZoc8MHZvTfDbVPcfdLZQQfzi529QjEYh2WO95X
   notes:
+  - '✅ 2026-10-12 对账：作者确认已发布，链接 https://mp.weixin.qq.com/s/Psa6FOPl57phHn-pfNUfKg（2026-10-11 档，AI Agent 工程系列第四篇）；status draft_saved→published、published_date 补 2026-10-11、wechat_url 回填，frontmatter wechatUrl 同步补。'
   - '选题来源：作者 2026-10-10 指名笔记《AgentGarten — 代码世界与神经渲染器》（~/vaults/papers/AI-Chats/concepts/，184 行，主 vault）。grill 日志 `.grill/agentgarten-code-worlds.md`（3 轮：主线分层 → 全装 or 拆篇 → 标题/配图/档期）。作者否决「砍到 2k」：「不要砍，文章长一点也没有关系」——覆盖 `docs/writing-flow.md` 的 2k 默认口径。系列第五篇，链条 记得住 → 派得出去 → 崩了不丢 → 参与权 → **环境从哪来**。'
   - '🎯 交付句：AgentGarten 造的是「压缩后的世界」的游乐场；打破压缩需要的是给「活着的世界」造窗口——而它全系统没有一个组件扮演实验员。两条反直觉答案：① 可验证性没有被“获得”，只是被“转移”了（代码世界的公理是 LLM 从真实分布里蒸馏出来的快照）；② 「一致」和「真」是两个量，一个本体论全错的代码世界可以完美一致、确定、可复现。'
   - '✅ **一手源已核**（arXiv:2610.12374 HTML 全文 + arXiv:1909.07528 v1 全文，均已抓取索引）：掩体第 4 轮 / 斜坡第 10 轮 vs self-play RL ≈2,500 万 / ≈1 亿训练局（Table 3）；渲染器 480×832 @ 36.5 fps 单张 H100，16 帧块 438.8 ms（条件编码 10.6 + Transformer 414.4 + tiny decoder/传输 8.8），缓存 5 sink + 44 recent；backbone Cosmos 3-Nano + 冻结 Wan VAE；Adversarial Forcing = teacher forcing + exact replay + 分布匹配 + **真实视频 GAN loss**；论文 Related Work 自认 “**generated frames need not perfectly realize the supplied state**”（本篇 §5 的核心引证）；§7 Future Work 只有几何条件与环境扩展两节，**无迁移/真机实验**。⚠️ 笔记里的「HF Daily Papers #1 / 130 upvotes」与「清华系团队」**只有二手来源，未入正文**；`GPT-6 Astra` 取自论文自身引文 [32]，正文按“预训练 agent”表述。'
@@ -1538,18 +1541,87 @@ articles:
   - '↔️ 2026-10-11 存草稿箱（remote-api via vps-us，grace+blue，citeStatus=true，EXIT=0）：draft media_id kOcXH4SytIYVIpYksTGfHq6vwfL5NSG_vKEtdBd6tu9FCUlRogRDn9I4SQBfV6_3、cover media_id kOcXH4SytIYVIpYksTGfHrBH4UZoc8MHZvTfDbVPcfdLZQQfzi529QjEYh2WO95X；9 张正文图全部上传成功（4 张 AI 图 >1MB，管线自动转 JPEG q82）。status drafting→draft_saved。入口是 `weixin.md`（走 mdnice，未预渲染 HTML）。'
   - '⏳ 待办（作者后台）：确认草稿箱预览与 mdnice 样式 → 声明原创 → 勾选合集「AI Agent 工程」 → 定档（本篇**未定时**、**未群发**）；发布后回填 wechatUrl（frontmatter + 本条 + 台账），并注意「发布后不改标题/摘要」。'
 
+- slug: 2026-10-12-autodiff
+  title: 训练一步要算几千亿个导数，凭什么不会慢几千亿倍？
+  series: AI中的数学
+  status: published
+  published_date: '2026-10-12'
+  wechat_url: https://mp.weixin.qq.com/s/RxJ5LcgX46pwDwS38NR_UQ
+  scheduled_publish: '2026-10-12 20:00'
+  media_id: kOcXH4SytIYVIpYksTGfHuHaoHEQo9TLUUl_Bib8ur0PNEwFjUTvHUBdpNsrOi0G
+  cover_media_id: kOcXH4SytIYVIpYksTGfHlr-e0X8niPhRQl9_sF_8DpGRncdiB4HPYEIDL9r1CuQ
+  old_media_id: kOcXH4SytIYVIpYksTGfHnLi8BH4yMeFv949qv3XHZZTp1YMkUDl9jQ5HpBIP1pT
+  files:
+    weixin: true
+    outline: true
+    cover: true
+    quality_check: true
+  notes:
+  - '✅ 2026-10-12 对账：作者确认已发布，链接 https://mp.weixin.qq.com/s/RxJ5LcgX46pwDwS38NR_UQ（排期 2026-10-12 20:00）；status draft_saved→published、published_date 补 2026-10-12、wechat_url 回填，frontmatter wechatUrl 同步补。**下篇 2026-10-15-autodiff-impl 正文两处「（待发布）」占位已替换为真实链接**（§三开头 + §六收束），下篇草稿需按新链路重存。'
+  - '选题来源：作者 2026-10-11 指名笔记《矩阵微分与自动求导 — 理论与实现的交叉验证》（~/vaults/papers/AI-Chats/concepts/AI数学/，657 行）+ 本机实测脚本 ~/scripts/matrix-calculus-ad/（9 个 py）。grill 日志 `.grill/2026-10-12-autodiff.md`（6 轮）。作者拍板**拆两篇**（上「为什么快」/ 下「怎么实现」），本篇为上篇。'
+  - '📐 **篇幅特例（作者 2026-10-11 拍板，留痕）**：**下篇明确写 3000+ 字、不砍**（布局约定 → 微分法 → VJP 表 → 原语粒度 → 手写公式边界 → 三路实测全留），覆盖 `docs/writing-flow.md` 的 2k 默认口径。**上篇不破例**：正文 1971 可视字 / 含尾部 2392，符合 ~2k 口径。'
+  - '🎯 交付句：导数的个数是 n，代价不是——求导被组织成一次矩阵乘法的方向选择（一次反向给全部梯度，代价与参数个数无关）。标题（作者拍板 T1）：「训练一步要算几千亿个导数，凭什么不会慢几千亿倍？」'
+  - '🇨🇳 国产模型锚点：**DeepSeek-V4.1-Flash**（总参数 **552B = 5520 亿**，与标题「几千亿」对齐）——来源为官方发布页（2026-09-10）+ `huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash/raw/main/config.json` 实拉（40 层 × 384 路由专家 / 每 token 激活 6+1 / expert_dtype fp4 / 1M 上下文）；激活参数 8B/16B 用官方口径，非自算。Kimi K3（2.8T / 激活 104B，2026-07-27）作量级对照。⚠️ 作者原提 V4-Pro（实测 1.6T）与标题「几千亿」不符，改锚 V4.1-Flash 后对齐。'
+  - '🔬 实测数字（本机 verify.py，2026-10-12 三次连跑取中位）：正向 4096 次 jvp 3765.5 ms vs 反向一次 grad 2.0 ms = **1911×**（笔记原记录 1468×，墙钟随负载漂 1730–2062×，正文取「近两千倍」）；三路对照 AD vs 差分 2.3e-09 / 6.3e-10 / 1.3e-09，AD vs 解析式 0.0e+00；差分精度 x=1e6 时 1.2e-03；jax.grad/jvp/vjp 对照 0.0e+00 / 1.6e-16；check_grads(order=2) 通过。精度类两次运行逐位一致。'
+  - '✍️ **作者原声 7 处（6 填 + 1 沿用）**：槽 1–7 逐槽交互采集（无批量代填），作者手打 6 句；槽 3 为**沿用**笔记 §7.1「第一版 jac 写的是 J[:, j] = pulled_back_vector……」两段，作者 2026-10-11 确认归属。槽 5 在**原句自带句读处**分三段、槽 2/5 句末补句号，均零增删字。原声无引号融入正文（2026-09-05 作者红线）。'
+  - '🧱 硬隔离：与 2026-07-06《反向传播》分工明确（那篇讲「怎么理解」链式法则，本篇讲「机器怎么做到」）；正文不出现 JVP/VJP 缩写（留给下篇），术语限 Jacobian / 计算图两个，各配一句人话版。'
+  - '🖼 配图 6 张：封面 00-cover.png 1916×821 金色两行「几千亿个导数 / 凭什么一次算完」（check_cover 字块高 23.0% ≤ 25%，底图冷色无字）；AI 概念图 1 张（03-记账本，反向光带点亮存根）；脚本结构图 4 张（make_charts.py：三路对照 / 一次一列还是一次一行 / 差分精度天花板 / 千倍差距）+ 1 张伴随算子结构图（06）。数字只走脚本轨。'
+  - '⚠️ **CP 通信量数字未入正文**：笔记 `DeepSeek-第15.1课` 的 63 KB / 14 MB 推导假设压缩比 m=64，与 V4-Pro config 的 compress_ratios（128/4 交替）不符 → 正文只写结构结论（all-gather 的伴随是 reduce-scatter、反向通信量与前向同阶），不引用具体 KB/MB。'
+  - '✅ 门禁：quality_check.py **PASS**（原声 7 槽逐字在场；段落超 80 字 0（59 段）；H2=6 + H3=14；禁词 9 个 + AI 腔 19 词全清；超 60 字 AI 句 0；正文配图 6 张、无孤儿图；标签 5 个含 #数解AI）。`check_wechat_links.py` 11 条 mp 链接全溯源。🔥 热门块由 `hot_articles.py --md --cited` 生成（7 行，行尾两空格）。'
+  - '↔️ 2026-10-12 存草稿箱（remote-api via vps-us，grace+blue，一次通过）：draft media_id kOcXH4SytIYVIpYksTGfHnLi8BH4yMeFv949qv3XHZZTp1YMkUDl9jQ5HpBIP1pT、cover media_id kOcXH4SytIYVIpYksTGfHlr-e0X8niPhRQl9_sF_8DpGRncdiB4HPYEIDL9r1CuQ；6 张正文图全部上传（03-记账本 1.55MB 自动压 JPEG q82）。status drafting→draft_saved。'
+  - '⏳ 待办（作者后台）：确认草稿箱预览与 grace 样式 → 声明原创 → **新建并勾选合集「矩阵微分与自动微分」**（该合集尚不存在，尾部现挂「训练回路合集」真实链接；新合集建好后替换）→ 定档（本篇**未定时、未群发**，建议 2026-10-12 20:00）；发布后回填 wechatUrl（frontmatter + 本条 + 台账）。⚠️ 恢复期：「发布后不改标题/摘要」仍生效。'
+
+- slug: 2026-10-13-autodiff-impl
+  title: 导数公式不是人写的，除了算特征值这种
+  series: AI中的数学
+  status: published
+  published_date: '2026-10-13'
+  wechat_url: https://mp.weixin.qq.com/s/_cNwyI7GiYJXB5zin5rjuw
+  media_id: kOcXH4SytIYVIpYksTGfHtOg4swbk1xq8wb7MxWR8tXYmC_ouwiBsss68ogSGn_z
+  cover_media_id: kOcXH4SytIYVIpYksTGfHhKoRBdBxi7EbNL-INcSDzM27gUu8pj5kQN9JvDYswYz
+  notes:
+  - '📤 2026-10-14 对账（作者供链）：作者报「昨日的文章已发布」并给出 https://mp.weixin.qq.com/s/_cNwyI7GiYJXB5zin5rjuw ——程序化核验（curl 直取 mp 页面）：msg_title 与 frontmatter title 逐字一致、og:description 与 digest 逐字一致、msg_link 与供链一致、**ct=1791900000 = 2026-10-13 22:00 CST**。status draft_saved→published、published_date 补 2026-10-13、wechat_url 回填，frontmatter wechatUrl 同步补。**目录改名**：`content/2026-10-15-autodiff-impl/` → `content/2026-10-13-autodiff-impl/`（原名按建议日 10-15 预排，实际提前两天发布），连带同步 frontmatter date、outline.md 排期/目录两行、make_cover.py 输出路径。✅ 本篇无下游占位欠账（phase-sensitivity 正文未引自动微分）；上篇 10-12 的两处「（待发布）」占位已在 10-12 对账时回填。'
+  - '↔️ 2026-10-13 四轮重存（作者「完成后重新发草稿箱」指令，remote-api via vps-us，grace+blue，EXIT=0）：draft media_id kOcXH4SytIYVIpYksTGfHtOg4swbk1xq8wb7MxWR8tXYmC_ouwiBsss68ogSGn_z。内容与三轮**完全一致**（本轮未改正文，仅台账/其他篇链接变动），可直接用这份、删掉三轮那份。⚠️ 本轮 cover_media_id 未捕获（tail 截断了输出），台账里 cover_media_id 仍是三轮的值，封面本身已在草稿里、不影响发布。'
+  - '↔️ 2026-10-12 三轮重存（上篇真实链接回填后重存，remote-api via vps-us，grace+blue，EXIT=0）：draft media_id kOcXH4SytIYVIpYksTGfHop8zKxZSAGgx-iK_Vjup5AjWQkrA_7MfqeKwCXUd_rt、cover media_id kOcXH4SytIYVIpYksTGfHhKoRBdBxi7EbNL-INcSDzM27gUu8pj5kQN9JvDYswYz。本轮改动：正文两处「（待发布）」占位（§三开头、§六收束）替换为上篇真实链接 https://mp.weixin.qq.com/s/RxJ5LcgX46pwDwS38NR_UQ。check_wechat_links.py：12 条 mp 链接全部可溯源；quality_check.py PASS。⚠️ 待后台删除的作废草稿（共三份）：kOcXH4SytIYVIpYksTGfHhxWhjuWkqE1CP9SPuYyENJpJ4dE4eB2CQInecSNa_VQ（二轮）、kOcXH4SytIYVIpYksTGfHlEI_eAlT_duvY5oC_iIViR4lQmbcgIkCjzzoIphFupV（一轮）、kOcXH4SytIYVIpYksTGfHl57Ug2TbB5qHsiiMvm-9Y8HAzLAHT8sFoNSA7QKAjhZ（初版）。'
+  - '见 plan_notes 2026-10-12 下篇两条。'
+  - '↔️ 2026-10-12 二轮重存（作者复审后再存一次，remote-api via vps-us，grace+blue，EXIT=0）：draft media_id kOcXH4SytIYVIpYksTGfHhxWhjuWkqE1CP9SPuYyENJpJ4dE4eB2CQInecSNa_VQ、cover media_id kOcXH4SytIYVIpYksTGfHlUBq-2lTZdo5H1ICJ_Vj2aobfVpfYp_4aAN19h7kekR。本轮改动仅 §三 logdet 例子——`d log det X = tr(X⁻¹dX)` 由「一句话带过」改成三步展开（① log 链式法则 ② X+dX=X(I+X⁻¹dX) 拆因子 + det 可乘 ③ det(I+A)=∏(1+λᵢ)=1+tr A+⋯，丢二阶项），结论式移到推导末尾。本地 mdnice 实渲复核：50 个公式 SVG、merror 0、katex 0、无 $$ 残留，data-formula 逐条核对无误；quality_check.py PASS。⚠️ 作者提到的另外四条（分母/编译器/很贵或很脆/咬人）上一轮已改完——复审看到的旧措辞来自草稿箱里那两份旧草稿。⚠️ 待后台删除的作废草稿（共两份）：kOcXH4SytIYVIpYksTGfHlEI_eAlT_duvY5oC_iIViR4lQmbcgIkCjzzoIphFupV（一轮）、kOcXH4SytIYVIpYksTGfHl57Ug2TbB5qHsiiMvm-9Y8HAzLAHT8sFoNSA7QKAjhZ（初版）。'
+  - '↔️ 2026-10-12 作者逐条打磨后重存草稿箱（remote-api via vps-us，grace+blue，citeStatus=true，EXIT=0）：draft media_id kOcXH4SytIYVIpYksTGfHlEI_eAlT_duvY5oC_iIViR4lQmbcgIkCjzzoIphFupV、cover media_id kOcXH4SytIYVIpYksTGfHtCnAvL12W9AZUnn3cTQ7sbP16-znNcp46ZfRd4KGI9E（6 张正文图全部上传，02-组合与黑盒 1.62MB 自动转 JPEG q82）。本轮改动：① 开头段按作者口径重写（去掉悬空主语，保留 jax.numpy 404 事实）；② §一 补「计算图」一句解释；③ 粒度表第二列用「、」分隔算子（原先空格挤成一坨）；④ 199/76 → 「相差的那 123 条规则…」；⑤ §三开头补 VJP 解释段并把上篇占位链接放这里（上篇仍「待发布」，发布后回填 URL）；⑥ §微分法 log det 补 Jacobi 公式两步推导；⑦ 表格前导语改「第一列是你设计神经网络某一层时用到的向量操作，具体形式完全依据你的设计而定」；⑧ 手写收益改「减少计算量/工程优化/数学上等价」；⑨ 第一类改「编译器无法自动推导出计算图」、第二类改「能推出来，但反向传播很昂贵或很不稳定」；⑩ Cholesky 首现处补分解定义；⑪ 去翻译腔（「麻烦都从这个分母上长出来」「如实告知」「咬人」「你是否被…所困扰过」「同样等价的东西」「绝不大矩阵化」等）。⚠️ 反例备案：清理翻译腔时曾误改 5 句作者原声（S1/S2/S4/S6/S9），已按 quality_check.py 逐字回退——**作者圈定的原声句不参与润色**。quality_check.py PASS（原声 8/8 在场、超 80 字段落 0、超 60 字长句 0、禁词 0、热门块 self-check 通过）。⚠️ 旧草稿 kOcXH4SytIYVIpYksTGfHl57Ug2TbB5qHsiiMvm-9Y8HAzLAHT8sFoNSA7QKAjhZ 作废，需在后台删除。'
+
+- slug: 2026-10-14-phase-sensitivity
+  title: 上下文只有 2 万 token，模型为什么还是把代码记错了？
+  series: 开源大模型技术揭秘
+  status: draft_saved
+  published_date: null
+  wechat_url: null
+  files:
+    weixin: true
+    outline: true
+    cover: true
+    quality_check: true
+  media_id: kOcXH4SytIYVIpYksTGfHlbAaqbHiRxZ9zxl_iCuOSZBV8VjTLfEB5FVqodgjlyX
+  cover_media_id: kOcXH4SytIYVIpYksTGfHt2v_B7md-sfSiNx2XfNGLkFQk0mQV6of3JzMeqUoFk
+  notes:
+  - '选题来源：作者 2026-10-12 「根据 Obsidian 笔记和文章列表，看看下一篇该写什么素材」→ 选定 `~/vaults/papers/AI-Chats/concepts/大模型原理/相位敏感性-分块KV压缩的周期性弱点.md`（2026-10-09，18.7KB）。grill 日志 `.grill/phase-sensitivity.md`（10 轮，逐轮收敛）。目录 `content/2026-10-14-phase-sensitivity/`。'
+  - '🎯 主轴（作者拍板，中途转向）：先定「实用警告」→ 作者改为「理论深挖为主、不跑实验」→ 收敛为 **(1) 不对称不是 bug，是「压缩在查询之前就写完」的结构性代价** + **(2) 相位的来源不是位置编码 → 所有分块压缩/摘要式记忆的通病**。作者中途推翻「相位压力测试」实验设计（环境里 `DEEPSEEK_API_KEY` 可用，放弃）。'
+  - '✍️ **原声 7 槽逐槽交互采集（无批量代填）**：槽 1 现场 / 槽 2 压缩押注是否缺陷 / 槽 3 理想化假设的忧心 / 槽 4 取到相似文件的现场 / 槽 5 措辞强度（作者指定「我倾向于认为」）/ 槽 6 两级处置（几个字提示 → fork）/ 槽 7 文末互动问。入稿只动三类并全部记账：错别字（槽 4 `连个`→`两个`、槽 2 `deepseek`→`DeepSeek`）、标点（槽 4 半角逗号→全角）、排版（中英间半角空格，不增删任何字）；槽 1 的「**待**翻看了」按规则保持作者原样。'
+  - '🔍 **承重事实全部一手复核**（作者笔记原文只标「读了摘要、§1–§7」，按 `docs/note-material-source.md` 第四节必查）：打开 arXiv:2609.36322 v1（abs + ar5iv 全文）核了 Table 7 八相位准确率、§2.1 代码补全（88 行源码、L=24–39）、§3 消融（去 RoPE / 均匀平均 75.3→19.2 / 重叠窗口）、§4 knockout、§7 自划边界。**两处纠正了笔记口径**：① 定理 1/2 在正文自带 **(Informal)**，正式版 = 附录定理 8（oracle 类上的硬相邻选择，route 可随上下文与块变化）/ 定理 12（线性压缩器 + 小随机初始化梯度流）；② 机制实验不只在自训模型上，§4 的 knockout 也做了 **DeepSeek-V4-Flash-Base**——故正文不写「字节只在自家玩具模型上验机制」。'
+  - '🖼 配图 6 张 + 封面：**论文原图 4 张从 PDF 300dpi 渲染裁剪**（ar5iv 资产只有 Fig 4/5 且仅 810×270，弃用；论文图是矢量图，无法抽内嵌位图）+ 脚本图 2 张（`make_charts.py`）+ 封面（yairouter 冷色无字底图，本次上游如实返回 1916×821；`check_cover.py` 字块 22.2% ≤ 25% PASS）。四张论文图与封面均已**读图复核**；05 首版说明文字压住 58.4% 柱标，抬高 ylim 返工一次。下载的 `*-raw.png` 已删，无孤儿图。'
+  - '✅ 门禁：`quality_check.py` **PASS**（原声 7/7 逐字在场；段落超 80 字 0；H2=7 + H3=6；禁词/AI 腔 0；超 60 字 AI 句 0；三处边界声明在场）。`hot_articles.py --self-check` 通过；`check_wechat_links.py` **7 条 mp 链接全部可溯源**（含回填的 Context Rot 篇）。'
+  - '📤 2026-10-12 存入草稿箱（remote-api via vps-us，grace+blue，EXIT=0，success:true）：draft media_id kOcXH4SytIYVIpYksTGfHlbAaqbHiRxZ9zxl_iCuOSZBV8VjTLfEB5FVqodgjlyX、cover media_id kOcXH4SytIYVIpYksTGfHt2v_B7md-sfSiNx2XfNGLkFQk0mQV6of3JzMeqUoFk；6 张正文图与封面均报上传完成。⚠️ 过程中出现 1 次 `Malformed HTTP response`（隧道抖动）但脚本自行继续并最终 success:true，**请作者在后台预览时确认 6 张正文图都在**。'
+  - '⚠️ 排期与未决：作者 2026-10-12 拍板——**13 日留给自动微分下篇，本篇排 2026-10-14 20:00**（目录/date/scheduledPublish 已同步）。连带待办：① `2026-10-15-autodiff-impl` 的实际发布日应为 **10-13**，其目录名/台账日期尚未同步；② Context Rot 篇 published_date 仍为 null（mp 页面直取返回验证页，读不到 ct）；③ 篇内合集行沿用 10-06 篇的**无 URL 纯粗体**格式，若需带合集链接请给 URL；④ 正文 2601 + 尾部 379 = **2980**，超 2000/2500 口径（硬内容是原声 7 处，作者未要求再砍）。'
+
 summary:
-  total: 101
+  total: 104
   by_status:
-    published: 99
+    published: 103
     drafting: 0
-    draft_saved: 2
+    draft_saved: 1
   drafting_queue: []
   ready_queue:
-  - 2026-10-11-agentgarten
+  - 2026-10-14-phase-sensitivity
   scheduled_queue: []
   planned_queue: []
-  next_publish_date: '2026-10-11'
+  next_publish_date: '2026-10-14'  # 14 日相位敏感性篇（草稿已入箱、待作者后台定档）；13 日自动微分下篇已于 10-13 22:00 发布并回填
 plan_notes:
 - 2026-08-28 对齐：信息熵 8-28（今日）→ AlphaGo 8-29 → 多模态 8-30（作者确认）。目录名已同步重命名（git mv），frontmatter date 同步。
 - 2026-08-28 二次对齐：fp8 目录名改发布日期 2026-08-09；补 RLHF(7-30)/维度诅咒(高维空间,8-12) 两条已发布缺漏条目；price-war 两目录为贴图轨道，不入文章台账。
@@ -1596,4 +1668,8 @@ plan_notes:
 - '2026-10-07 存箱（作者口述发起）：① 热点认知篇《微软用 Go 重写 TypeScript，他一个人用 C++ 又写了一遍》（2026-10-08-rysana-ts-cpp）当日全流程完成并入草稿箱，articles 段已建条（见该条 notes，含 draft/cover media_id）；② 台账对账修正：multiagent-debate 条目落在 plan_notes 段且 summary 未随更新（漂移停在 total 95/94/1，实况 97/94/3），本次按 draft_saved 实况重排 summary 与 ready_queue；multiagent 条目结构位置未动，是否移入 articles 段待作者/后续会话定；③ ⚠️ 档期冲突警告：2026-10-08-multiagent-debate 与 2026-10-08-rysana-ts-cpp 同目标 10-08 20:00，两篇均已入箱——按「每天最多 1 篇」需作者定序；若本篇挪档，目录名/frontmatter/scheduled 同步改。'
 - '2026-10-09 存箱（作者发起：检查配图 + 补图后存草稿箱）：① 热点认知篇《Agent 写的 Rust 快了 150 倍，为什么第一版只快 4 倍？》（2026-10-09-dhh-campfire-rust）当晚入箱（remote-api via vps-us，grace+blue，EXIT=0，draft media_id kOcXH4SytIYVIpYksTGfHpsIfj_2MIMOWoSVj9pSMjW5lAiPctfIKUnRi9fNuGNW）。② 配图体检发现两处问题：正文只有 1 张脚本图、且 02-room-page.png 是孤儿图（已生成未入库）；按作者「起码 6 张、放合适位置」要求新建 4 张脚本图（03-elixir-queue / 04-scoreboard-timeline / 05-commit-gap / 06-premise-switch），正文配图 1→6 张，封面另计。③ quality_check.py 第 8 项加固：孤儿图守卫（正文引用 ↔ 目录 png 一一对应）+ 正文配图 ≥6 张下限。④ 尾部补 🔥 热门文章块（hot_articles.py --md --cited 生成，--self-check 通过）。⑤ summary 重算 total 98 / published 94 / draft_saved 4，ready_queue 追加本篇。⚠️ 本篇定时待作者定（10-09 20:00 已过）；⚠️ 封面标题「4 倍」与正文 4.4 倍为取整关系，如需统一由作者拍板。'
 - '2026-10-10 对账入库（作者供链 2 篇 + 审计日志回扫 + 结构修复）：① 昨日（10-09）两篇作者供链回填——Pi Durable 篇 https://mp.weixin.qq.com/s/_gnfMHGfYW5yxtm6UJkfxg 、Agent 写的 Rust 篇 https://mp.weixin.qq.com/s/KjW6JgeQ0uJ6aDEFN8ohxQ ；前者台账**此前完全无条目**（目录/大纲/配图齐备但未入账），本次补建 slug 2026-10-09-pi-durable（series AI Agent 工程、files 四项全 true、media_id 取自 outline.md 存箱记录），后者 status draft_saved→published。两篇 frontmatter wechatUrl 均由此前会话已回填，与供链逐字一致。② **审计日志回扫发现 3 条状态漂移**（证据 docs/wechat-data-audit-log.json audits[-1].content.articles 发表记录页，collectedAt 2026-10-09T22:24）：2026-10-06-deepseek-synthetic-data 实为 **10-07 发布**（53 读）、2026-10-08-rysana-ts-cpp 实为 **10-07 发布**（583 读，30 天榜第一）、2026-10-08-multiagent-debate 实为 **10-08 发布**（47 读）——三条 status→published + published_date 补填；rysana / multiagent 的 wechat_url 按 frontmatter 回填，deepseek-synthetic 的 frontmatter 无 wechatUrl，仍留 null（⏳ 待作者供链），且其目录名 2026-10-06- 与实际发布日 10-07 不符（待拍板改名）。③ **结构修复**：multiagent-debate 条目此前搁在 plan_notes 段（dict 混入 str 列表，台账计数漏算、summary 长期漂移），已移入 articles 段；另修 plan_notes 里 2026-09-27 审计记录**未加引号**被 YAML 解析成 dict（`skill: wechat-data-audit` 的冒号触发）的静默事故，已还原为单条字符串。④ summary 重算 total 99 / published 99 / draft_saved 0，ready_queue 清空，next_publish_date→10-10。⚠️ 本轮 mp 页面**无法直取核验**（返回「环境异常」验证页，非 403），og:title / ct 逐字核验全部欠账，待 Cookie 可用时补。⚠️ **实际发布节奏已连续两天双发**（10-07 两篇文章 + 10-09 两篇文章），与「每天最多 1 篇」冲突，需作者确认是否有意为之。'
+- '2026-10-12 排期（作者拍板）：上篇《训练一步要算几千亿个导数，凭什么不会慢几千亿倍？》作者已**定时今晚 20:00 群发**。存箱两次：首存 media_id …ZTp1YMk…（尾部挂「训练回路合集」），后因合集改为「AI中的数学」重存 media_id …UBdpNsrOi0G（**旧草稿需作者后台删除**）。合集 URL 取自后台真实数据（appmsgalbummgr 抓取）：AI中的数学 album_id=4655868530679185411（19 篇）。⚠️ 过程事故两起：① /tmp tmpfs 100% 满（4G，mindshield/opencode 等残留约 2.5G）导致 mdnice 浏览器连续 Page crashed，作者清理后恢复——**存量残留清单待专项清理**；② 临时 headless Chrome（9335 端口）pkill/kill 被会话策略拦截，最终走 CDP Browser.close 正常退出。**Cookie 免扫码第五次复验成功**（/tmp/wx-live-profile-1791768351 复制主 profile + --password-store=gnome-libsecret + --no-sandbox，后续应把 --no-sandbox 固化进 wx_audit_browser.py）。后台「AI中的数学」合集 19 篇 ↔ 台账 series 字段存在口径漂移（如「大模型原理」vs 后台「大语言模型原理」），待专项对齐。'
+- '2026-10-12 下篇入箱：《导数公式不是人写的，除了算特征值这种》（content/2026-10-15-autodiff-impl/，排期建议 10-15，中间隔 10-13/10-14 排非纯理论题材）。grill 与上篇同份日志（.grill/2026-10-12-autodiff.md）。标题为作者 2026-10-12 拍板的**非疑问句**（最近 22 篇 19 篇疑问句，作者指出单调）：陈述 + 例外，破折号改逗号，全句 18 字在前 22 字窗口内。原声 8 处全沿用（作者圈定 S1~S7 + 补圈 S9，逐字进稿）。正文 3678 字（作者 2026-10-12 拍板「篇幅不用刻意限制」，按推导密度写足）/ 含尾部 4200。内链 11 条全溯源（反向传播 / Softmax / V4.1 记账 / FP4 / 量化掉点），上篇两条以内文「待发布」写法占位，**上篇发布后回填真实 URL**。quality_check.py PASS。'
+- '2026-10-12 下篇存箱（remote-api via vps-us，grace+blue）：draft media_id kOcXH4SytIYVIpYksTGfHl57Ug2TbB5qHsiiMvm-9Y8HAzLAHT8sFoNSA7QKAjhZ、cover media_id 待补（cover 与 draft 一同上传）。**下篇新的两处一手实测**（写稿中发现并修正）：① 特征值导数（对称情形 = v_i v_i^T）**无除法**，与自动微分逐元素一致——修正了初稿把 1/(λi-λj) 误安到特征值头上的错误；② 新增特征向量梯度随间距扫描（eps=0.01）：Δ=1.000→0.500、0.102→4.784、0.022→17.01、0.020→18.07，而特征值梯度范数恒为 1.000000——结论修正为「梯度被特征值互斥机制顶在很大但有限的值（约 18）」，非教科书式爆炸。conv 一条按「转置卷积+翻核」口径写入（exotic_prims.py 比的是不翻核版本故报 False，conv_adj.py 三行对照证实）。'
 - '2026-10-10 新篇立项 + 入箱：AI Agent 系列第四篇《Context Rot 是真的吗？上下文还没满，模型为什么就先认输了》（`2026-10-10-context-rot-isolation`）当日全流程走完并入草稿箱。全流程要点：grill 4 轮（选题轨 → 主轴 → 证据支撑 → 标题/篇幅）→ 作者两处现场加需求（**放进 Chroma**、**内链老文章**）→ 大纲 → **原声 8 处/7 槽位逐槽交互**（无批量代填）→ 争议双轨证据链（正方 Chroma/Anthropic/arXiv:2601.15300/Boolean vs 反方 Zenodo null）→ 定价断言一手核验 → 成稿 → 段落 ≤80 字重构 + H2/H3 分层 → 7 张论文原图 + 封面 → 门禁 PASS → 存草稿箱。**三条口径变更**：① 封面文字不再等于全文标题（作者本次指令，**AGENTS.md 封面规格待同步修订**）；② 作者新增硬口径「**每个段落 ≤80 字、长段落必须按意思拆、醒目句独立成段、标题要多级**」，本次已写入本篇 quality_check.py，建议**提升为项目级规则**；③ 内链修正：`5w1mEVLW5igvJ28Dn6pe9A` 的后台真标题是「智谱阿里为什么拆注意力？KV缓存砍4.4倍」，台账/拟稿口径「GLM-5.3-Flash 和 Qwen4 架构…」已失准——**内链文字一律按各篇 frontmatter 反查（同 hot_articles.py 的 canonical_title）**，勿信台账 title 字段。'
+- '2026-10-14 对账（作者供链 1 篇）：《导数公式不是人写的，除了算特征值这种》（content/2026-10-13-autodiff-impl/）author 报「昨日的文章已发布」→ 核验通过后 status draft_saved→published、published_date 2026-10-13、wechat_url + frontmatter wechatUrl 回填，**目录由 2026-10-15 改名 2026-10-13**（原名是按「建议排期 10-15」预排的，实际提前两天发，违反「目录名 = 发布日」须改名；10-02-power-law-rl 同款事故第二次）。summary 重算 published 102→103 / draft_saved 2→1，ready_queue→仅 2026-10-14-phase-sensitivity，next_publish_date→10-14。⚠️ 发布节奏留意：本篇 10-13 22:00 发布，与上篇 10-12 相邻两天连发**同一支纯理论连载**（大纲原本写了「必隔一篇非纯理论」红线，作者定档时未执行），且 10-13 的 22:00 偏离惯用 20:00 档。⏳ 仍欠：① phase-sensitivity（10-14 档）是否已发布待作者确认；② Context Rot 篇 published_date 仍 null（mp 页面直取读不到 ct）；③ 后台作废草稿三份待删。'

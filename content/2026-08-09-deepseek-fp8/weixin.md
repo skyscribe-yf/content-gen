@@ -255,7 +255,7 @@ V3 铺好的 FP8 地基，V4 直接在上面盖楼。V4 报告里逐项核对原
 - [Muon 怎么省一半显存？优化器只记一份账](https://mp.weixin.qq.com/s/7bpfjLYn9E-CiBS4TY8A6w)
 - [mHC 怎么让 DeepSeek-V4 稳定训练 61 层？](https://mp.weixin.qq.com/s/VKD1Epopeuj_od-ITbg_dQ)
 - **FP8 训练：残缺数字怎么练出顶级模型（本篇）**
-- FP4 量化：4位数字怎么做到无损（下一篇，待发布）
+- [FP4 量化：4 位数字怎么做到无损](https://mp.weixin.qq.com/s/Bra0y-wCSeYEW5ABxa3slw)
 
 📖 **[大模型原理合集](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzkyMzQyODExNQ==&action=getalbum&album_id=4597831652025925632#wechat_redirect)**：① [BPE分词](https://mp.weixin.qq.com/s/5nR_KI47v_U8KwpQA4Uv5Q) → ② [词嵌入](https://mp.weixin.qq.com/s/rDryn1z_hLt7mwi3X8fsxQ) → ③ [位置编码](https://mp.weixin.qq.com/s/4nO2VqQLaYxGdDmtQeypCQ) → ④ [注意力机制](https://mp.weixin.qq.com/s/KrilwX6VRjI9KfjvD7C6kw) → ⑤ [前馈网络 FFN](https://mp.weixin.qq.com/s/vBCzukDlQyB9O6ASgAmlvQ) → ⑥ [归一化残差](https://mp.weixin.qq.com/s/v-SBuMTbMANSTxHj7gYDkg) → ⑦ [Transformer 全景](https://mp.weixin.qq.com/s/22J8JPkdpVeUx23KahbBmA) → ⑧ [预训练](https://mp.weixin.qq.com/s/XoGHVycQHR5Tp-BWPac9Hg) → ⑨ [SFT](https://mp.weixin.qq.com/s/vwXGbjm9Ai1GPvQi5O3UyQ) → ⑩ [RLHF](https://mp.weixin.qq.com/s/NJDuCLAEfDpILf2J9D6qLQ) → ⑪ [PPO](https://mp.weixin.qq.com/s/OEZtUhm8MT_En7enJo_8dw) → ⑫ [GRPO](https://mp.weixin.qq.com/s/t4sO-zC5v1_jq8hJT_YTGA) → ⑬ [RLVR](https://mp.weixin.qq.com/s/NvemnDdtkinRKEbmtcckzA) → ⑭ [推理加速](https://mp.weixin.qq.com/s/LvxasW-4t0YuXy8nWpyzVw)
 

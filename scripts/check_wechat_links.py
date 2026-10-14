@@ -26,6 +26,14 @@ def main() -> int:
         if z:
             known.add(z.rstrip("/"))
 
+    # 后台发表记录索引也是事实源：贴图轨不进文章台账，台账漏登的旧文也只有这里有
+    idx = ROOT / "branding/style-corpus/wechat-published-index.json"
+    if idx.exists():
+        import json
+        for it in json.loads(idx.read_text(encoding="utf-8")):
+            if it.get("url"):
+                known.add(it["url"].rstrip("/"))
+
     # 各篇 frontmatter wechatUrl 也是事实源
     for f in (ROOT / "content").glob("*/weixin.md"):
         m = re.search(r'wechatUrl:\s*"?(https?://[^"\s]+)"?', f.read_text(encoding="utf-8"))

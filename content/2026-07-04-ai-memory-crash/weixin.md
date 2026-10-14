@@ -187,5 +187,5 @@ AI 的记忆有上限，因为注意力 O(T²) 和 KV cache O(T) 在长序列下
 这是 **DeepSeek 技术解密** 系列的第一篇。
 
 - 上一篇：（这是第一篇）
-- 下一篇：**AI 为什么说话这么慢？——推测解码的数学**（待发布）
+- 下一篇：[大模型 API 为什么这么慢？首字延迟揭秘](https://mp.weixin.qq.com/s/LvxasW-4t0YuXy8nWpyzVw)
 - 并行系列：[深度学习基础：梯度下降——蒙着眼下山](https://mp.weixin.qq.com/s/V6mGvCVFpTvmC51pNtxiTw)

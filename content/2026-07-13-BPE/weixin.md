@@ -345,7 +345,7 @@ token ID
 ① BPE分词：AI为什么把文字切成碎片？（本篇）→ ② 词嵌入是什么？5万个0怎么变成一串坐标（07/15）→ ③ 位置编码怎么工作？词序一错意思全变（07/17）→ ④ 注意力机制是什么？别再当数据库查询（07/19）→ ⑤ FFN → ⑥ 归一化与残差 → ⑦ Transformer → ⑧ [预训练](https://mp.weixin.qq.com/s/XoGHVycQHR5Tp-BWPac9Hg) → ⑨ RLHF → ⑩ 推理加速
 
 🔥 **DeepSeek 技术解密**（账单与工程）
-① [AI上下文为什么越长越慢](https://mp.weixin.qq.com/s/PLVRS0TTHXHDve1Z3r6M7Q) → ② [MoE混合专家入门](https://mp.weixin.qq.com/s/QdkD0CR2fD-HfY77-gX3Ug) → ③ MLA（待发布）
+① [AI上下文为什么越长越慢](https://mp.weixin.qq.com/s/PLVRS0TTHXHDve1Z3r6M7Q) → ② [MoE混合专家入门](https://mp.weixin.qq.com/s/QdkD0CR2fD-HfY77-gX3Ug) → ③ [显存被谁吃掉了？DeepSeek如何省下90%](https://mp.weixin.qq.com/s/HHMNEdCYThOjCLRozQorhg)
 
 📖 **深度学习基础**（已完结）
 ① [梯度下降](https://mp.weixin.qq.com/s/V6mGvCVFpTvmC51pNtxiTw) → ② [损失函数](https://mp.weixin.qq.com/s/zIWqYqYVzEaF1e8P6fcTfw) → ③ [反向传播](https://mp.weixin.qq.com/s/oYj_qpwF4tZG84ImOn977g) → ④ [Softmax](https://mp.weixin.qq.com/s/5wMquh_v3oon2-NEDeQLEw) → ⑤ [残差连接](https://mp.weixin.qq.com/s/xefNN9Gjaw3TKl60KeHzAg) → ⑥ [Adam优化器](https://mp.weixin.qq.com/s/aSLVO-otvr2rxIU1kr2eAA)

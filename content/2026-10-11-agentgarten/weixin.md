@@ -1,5 +1,6 @@
 ---
 title: "OpenAI 1 亿局的弯路，和一个还没人做的实验"
+wechatUrl: "https://mp.weixin.qq.com/s/Psa6FOPl57phHn-pfNUfKg"
 author: "数解AI"
 date: "2026-10-11"
 type: "论文批判"

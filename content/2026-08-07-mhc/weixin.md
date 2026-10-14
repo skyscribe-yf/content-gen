@@ -324,7 +324,7 @@ mHC 这趟拆解里，哪一步最让你觉得"还能这样"？是谱半径管�
 - [K=V：一份KV缓存怎么干两份活？](https://mp.weixin.qq.com/s/88kscO8p0kMxHmeGm2llLA)
 - [Muon 怎么省一半显存？优化器只记一份账](https://mp.weixin.qq.com/s/7bpfjLYn9E-CiBS4TY8A6w)
 - **mHC 怎么让 DeepSeek-V4 稳定训练 61 层？（本篇）**
-- FP8 训练：残缺数字怎么练出顶级模型（下一篇，待发布）
+- [FP8 训练：残缺数字怎么练出顶级模型](https://mp.weixin.qq.com/s/yxrkmxPSZ8CnsFhWZ1bCPA)
 
 每天更新一篇，把大模型的底层原理讲到不用回头查。关注「数解AI」，下一篇拆 FP8 训练怎么用残缺数字练出顶级模型。
 

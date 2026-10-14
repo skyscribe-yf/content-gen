@@ -1,5 +1,6 @@
 ---
 title: "Context Rot 是真的吗？上下文还没满，模型为什么就先认输了"
+wechatUrl: "https://mp.weixin.qq.com/s/6bdNSe1hiGFUvL1qV_ICUw"
 author: "数解AI"
 date: "2026-10-10"
 type: "工程观察"
