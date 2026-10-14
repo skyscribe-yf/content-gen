@@ -13,6 +13,8 @@
 ## 标题（已拍板 T1）
 
 > **上下文只有 2 万 token，模型为什么还是把代码记错了？**
+>
+> ⚠️ **发布时的实际标题（后台改动，2026-10-14 核验）**：**「2 万 token上下文，DeepSeek为什么还是把代码记错了？」**——作者在后台把品牌词 DeepSeek 前置、并省掉「只有」；`weixin.md` frontmatter title 已按后台实际标题同步（frontmatter title 是内链 canonical_title 的事实源）。封面文字不受影响（本就≠标题）。
 
 - 自检：反直觉疑问句 ✓；数字反差「只有 2 万」落在前 22 字截断窗口内 ✓；陌生人 3 秒能说出讲什么 ✓；无续集感、无「篇 N」✓
 - 关键词：`上下文`、`token`、`代码`、`DeepSeek-V4`、`KV 缓存`、`压缩`
@@ -159,7 +161,7 @@
 
 | 位置 | 篇目 | URL |
 |---|---|---|
-| §1 同一母题（跟长度无关） | Context Rot 是真的吗？上下文还没满，模型为什么就先认输了（10-10） | ⏳ **待发布**（草稿箱中，无 wechatUrl）→ 发布后回填正文占位 |
+| §1 同一母题（跟长度无关） | Context Rot 是真的吗？上下文还没满，模型为什么就先认输了（10-10） | ✅ 已回填正文（https://mp.weixin.qq.com/s/6bdNSe1hiGFUvL1qV_ICUw ，10-10 20:00 发布） |
 | §1 长上下文两道墙 | 为什么 AI 上下文越长越慢？两道数学硬墙一次讲透（07-04） | https://mp.weixin.qq.com/s/PLVRS0TTHXHDve1Z3r6M7Q |
 | §2 KV 量化 | KV 缓存压到 1bit：省 92% 显存，凭什么不掉点？（09-01） | https://mp.weixin.qq.com/s/Oy-GyqEB8IP4_0nmvZ7EDQ |
 | §2 每层记账 | DeepSeek V4.1 四十层网络，为什么不给每层都记账？（09-11） | https://mp.weixin.qq.com/s/DBI990JLYtbxQGF3LIWbhQ |

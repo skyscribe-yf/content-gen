@@ -1,13 +1,13 @@
 ---
-title: "上下文只有 2 万 token，模型为什么还是把代码记错了？"
-wechatUrl: ""
+title: "2 万 token上下文，DeepSeek为什么还是把代码记错了？"
+wechatUrl: "https://mp.weixin.qq.com/s/1GATyW40jkh1YxuvwVbpUA"
 author: "数解AI"
 date: "2026-10-14"
 type: "原理篇"
 series: "开源大模型技术揭秘"
 digest: "一次写代码的会话，上下文才两万 token，模型却把同一文件里另一个位置的行当成了目标。原因不在长度——压缩从第一个 token 起就在替你决定该记什么。关键词：KV 缓存、长上下文、压缩。"
 cover: "00-cover.png"
-scheduledPublish: "2026-10-14T20:00:00+08:00"
+scheduledPublish: "2026-10-14T22:00:00+08:00"
 keywords: ["KV 缓存", "长上下文", "压缩", "DeepSeek"]
 ---
 

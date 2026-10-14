@@ -1494,7 +1494,7 @@ articles:
   title: Context Rot 是真的吗？上下文还没满，模型为什么就先认输了
   series: AI Agent 工程
   status: published
-  published_date: null
+  published_date: '2026-10-10'
   wechat_url: https://mp.weixin.qq.com/s/6bdNSe1hiGFUvL1qV_ICUw
   files:
     weixin: true
@@ -1504,6 +1504,7 @@ articles:
   media_id: kOcXH4SytIYVIpYksTGfHpqnPiP6buM7ae5T1XCtSmPz2CTuwshzaMkxhXXlMCfD
   cover_media_id: kOcXH4SytIYVIpYksTGfHoutLezoiwdeBh5TpQ4owhd6zYFi-UjsjrtWFdD_XIL7
   notes:
+  - '📤 2026-10-14 补 published_date（本篇 wechat_url 已在 10-12 回填、日期留空待核）：程序化核验 mp 页面 **ct=1791633600 = 2026-10-10 20:00 CST**，msg_title / og:description / msg_link 与 frontmatter 逐字一致 → published_date 补 2026-10-10，10-12 note 里的「发布日待核」关闭。'
   - '选题与定档：作者 2026-10-10 拍板走「回 AI Agent 主线 H2 子代理/上下文隔离」（未走当日热点 Gemini 4 Argon / 谷歌办公 Agent）；grill 日志 `.grill/2026-10-10-context-rot-isolation.md`。系列第四篇，链条 记得住 → 派得出去 → 崩了不丢 → **参与权**。目录 `content/2026-10-10-context-rot-isolation/`。'
   - '🎯 主轴（作者拍板）：**子代理省下的不是时间，是「参与权」**——那些你后面已经不需要的东西，不再有权参与你接下来的每一次判断。与 10-08 篇不同轴：那篇算任务耦合度（易分发 vs 要收敛），本篇算**上下文参与度**。'
   - '⚖️ 争议双轨（作者要求「context rot 这个争议话题也要用上来，有论文的」）：正方 Chroma 2025 / Anthropic 2025-09 / arXiv:2601.15300 / Boolean；反方 Zenodo 2026-06-18 受控 null。收口句：「两边测的不是同一个东西」——正方多为单轮长输入，agent 上下文是多轮多源渐进累积。'
@@ -1588,11 +1589,11 @@ articles:
   - '↔️ 2026-10-12 作者逐条打磨后重存草稿箱（remote-api via vps-us，grace+blue，citeStatus=true，EXIT=0）：draft media_id kOcXH4SytIYVIpYksTGfHlEI_eAlT_duvY5oC_iIViR4lQmbcgIkCjzzoIphFupV、cover media_id kOcXH4SytIYVIpYksTGfHtCnAvL12W9AZUnn3cTQ7sbP16-znNcp46ZfRd4KGI9E（6 张正文图全部上传，02-组合与黑盒 1.62MB 自动转 JPEG q82）。本轮改动：① 开头段按作者口径重写（去掉悬空主语，保留 jax.numpy 404 事实）；② §一 补「计算图」一句解释；③ 粒度表第二列用「、」分隔算子（原先空格挤成一坨）；④ 199/76 → 「相差的那 123 条规则…」；⑤ §三开头补 VJP 解释段并把上篇占位链接放这里（上篇仍「待发布」，发布后回填 URL）；⑥ §微分法 log det 补 Jacobi 公式两步推导；⑦ 表格前导语改「第一列是你设计神经网络某一层时用到的向量操作，具体形式完全依据你的设计而定」；⑧ 手写收益改「减少计算量/工程优化/数学上等价」；⑨ 第一类改「编译器无法自动推导出计算图」、第二类改「能推出来，但反向传播很昂贵或很不稳定」；⑩ Cholesky 首现处补分解定义；⑪ 去翻译腔（「麻烦都从这个分母上长出来」「如实告知」「咬人」「你是否被…所困扰过」「同样等价的东西」「绝不大矩阵化」等）。⚠️ 反例备案：清理翻译腔时曾误改 5 句作者原声（S1/S2/S4/S6/S9），已按 quality_check.py 逐字回退——**作者圈定的原声句不参与润色**。quality_check.py PASS（原声 8/8 在场、超 80 字段落 0、超 60 字长句 0、禁词 0、热门块 self-check 通过）。⚠️ 旧草稿 kOcXH4SytIYVIpYksTGfHl57Ug2TbB5qHsiiMvm-9Y8HAzLAHT8sFoNSA7QKAjhZ 作废，需在后台删除。'
 
 - slug: 2026-10-14-phase-sensitivity
-  title: 上下文只有 2 万 token，模型为什么还是把代码记错了？
+  title: 2 万 token上下文，DeepSeek为什么还是把代码记错了？
   series: 开源大模型技术揭秘
-  status: draft_saved
-  published_date: null
-  wechat_url: null
+  status: published
+  published_date: '2026-10-14'
+  wechat_url: https://mp.weixin.qq.com/s/1GATyW40jkh1YxuvwVbpUA
   files:
     weixin: true
     outline: true
@@ -1601,6 +1602,7 @@ articles:
   media_id: kOcXH4SytIYVIpYksTGfHlbAaqbHiRxZ9zxl_iCuOSZBV8VjTLfEB5FVqodgjlyX
   cover_media_id: kOcXH4SytIYVIpYksTGfHt2v_B7md-sfSiNx2XfNGLkFQk0mQV6of3JzMeqUoFk
   notes:
+  - '📤 2026-10-14 对账（作者供链）：https://mp.weixin.qq.com/s/1GATyW40jkh1YxuvwVbpUA ——程序化核验：**ct=1791986400 = 2026-10-14 22:00 CST**（原定 20:00 档，实际 22:00 发出）、og:description 与 digest 逐字一致、msg_link 与供链一致。status draft_saved→published、published_date 补 2026-10-14、wechat_url 回填，frontmatter wechatUrl + scheduledPublish（20:00→22:00）同步。⚠️ **后台标题被改**：发布标题为**「2 万 token上下文，DeepSeek为什么还是把代码记错了？」**（原拟「上下文只有 2 万 token，模型为什么还是把代码记错了？」），品牌词 DeepSeek 前置、去掉「只有」——frontmatter title 与 outline 定稿行已按后台实际同步（内链 canonical_title 事实源）。✅ 本篇正文的 Context Rot 内链已是真实 URL（outline 内链表的「⏳ 待发布」行本轮改为 ✅）。'
   - '选题来源：作者 2026-10-12 「根据 Obsidian 笔记和文章列表，看看下一篇该写什么素材」→ 选定 `~/vaults/papers/AI-Chats/concepts/大模型原理/相位敏感性-分块KV压缩的周期性弱点.md`（2026-10-09，18.7KB）。grill 日志 `.grill/phase-sensitivity.md`（10 轮，逐轮收敛）。目录 `content/2026-10-14-phase-sensitivity/`。'
   - '🎯 主轴（作者拍板，中途转向）：先定「实用警告」→ 作者改为「理论深挖为主、不跑实验」→ 收敛为 **(1) 不对称不是 bug，是「压缩在查询之前就写完」的结构性代价** + **(2) 相位的来源不是位置编码 → 所有分块压缩/摘要式记忆的通病**。作者中途推翻「相位压力测试」实验设计（环境里 `DEEPSEEK_API_KEY` 可用，放弃）。'
   - '✍️ **原声 7 槽逐槽交互采集（无批量代填）**：槽 1 现场 / 槽 2 压缩押注是否缺陷 / 槽 3 理想化假设的忧心 / 槽 4 取到相似文件的现场 / 槽 5 措辞强度（作者指定「我倾向于认为」）/ 槽 6 两级处置（几个字提示 → fork）/ 槽 7 文末互动问。入稿只动三类并全部记账：错别字（槽 4 `连个`→`两个`、槽 2 `deepseek`→`DeepSeek`）、标点（槽 4 半角逗号→全角）、排版（中英间半角空格，不增删任何字）；槽 1 的「**待**翻看了」按规则保持作者原样。'
@@ -1613,15 +1615,14 @@ articles:
 summary:
   total: 104
   by_status:
-    published: 103
+    published: 104
     drafting: 0
-    draft_saved: 1
+    draft_saved: 0
   drafting_queue: []
-  ready_queue:
-  - 2026-10-14-phase-sensitivity
+  ready_queue: []
   scheduled_queue: []
   planned_queue: []
-  next_publish_date: '2026-10-14'  # 14 日相位敏感性篇（草稿已入箱、待作者后台定档）；13 日自动微分下篇已于 10-13 22:00 发布并回填
+  next_publish_date: null  # 队列空：10-12/10-13/10-14 三篇均已发布；下一篇待作者定档（新口径：固定 22:00）
 plan_notes:
 - 2026-08-28 对齐：信息熵 8-28（今日）→ AlphaGo 8-29 → 多模态 8-30（作者确认）。目录名已同步重命名（git mv），frontmatter date 同步。
 - 2026-08-28 二次对齐：fp8 目录名改发布日期 2026-08-09；补 RLHF(7-30)/维度诅咒(高维空间,8-12) 两条已发布缺漏条目；price-war 两目录为贴图轨道，不入文章台账。
@@ -1673,3 +1674,4 @@ plan_notes:
 - '2026-10-12 下篇存箱（remote-api via vps-us，grace+blue）：draft media_id kOcXH4SytIYVIpYksTGfHl57Ug2TbB5qHsiiMvm-9Y8HAzLAHT8sFoNSA7QKAjhZ、cover media_id 待补（cover 与 draft 一同上传）。**下篇新的两处一手实测**（写稿中发现并修正）：① 特征值导数（对称情形 = v_i v_i^T）**无除法**，与自动微分逐元素一致——修正了初稿把 1/(λi-λj) 误安到特征值头上的错误；② 新增特征向量梯度随间距扫描（eps=0.01）：Δ=1.000→0.500、0.102→4.784、0.022→17.01、0.020→18.07，而特征值梯度范数恒为 1.000000——结论修正为「梯度被特征值互斥机制顶在很大但有限的值（约 18）」，非教科书式爆炸。conv 一条按「转置卷积+翻核」口径写入（exotic_prims.py 比的是不翻核版本故报 False，conv_adj.py 三行对照证实）。'
 - '2026-10-10 新篇立项 + 入箱：AI Agent 系列第四篇《Context Rot 是真的吗？上下文还没满，模型为什么就先认输了》（`2026-10-10-context-rot-isolation`）当日全流程走完并入草稿箱。全流程要点：grill 4 轮（选题轨 → 主轴 → 证据支撑 → 标题/篇幅）→ 作者两处现场加需求（**放进 Chroma**、**内链老文章**）→ 大纲 → **原声 8 处/7 槽位逐槽交互**（无批量代填）→ 争议双轨证据链（正方 Chroma/Anthropic/arXiv:2601.15300/Boolean vs 反方 Zenodo null）→ 定价断言一手核验 → 成稿 → 段落 ≤80 字重构 + H2/H3 分层 → 7 张论文原图 + 封面 → 门禁 PASS → 存草稿箱。**三条口径变更**：① 封面文字不再等于全文标题（作者本次指令，**AGENTS.md 封面规格待同步修订**）；② 作者新增硬口径「**每个段落 ≤80 字、长段落必须按意思拆、醒目句独立成段、标题要多级**」，本次已写入本篇 quality_check.py，建议**提升为项目级规则**；③ 内链修正：`5w1mEVLW5igvJ28Dn6pe9A` 的后台真标题是「智谱阿里为什么拆注意力？KV缓存砍4.4倍」，台账/拟稿口径「GLM-5.3-Flash 和 Qwen4 架构…」已失准——**内链文字一律按各篇 frontmatter 反查（同 hot_articles.py 的 canonical_title）**，勿信台账 title 字段。'
 - '2026-10-14 对账（作者供链 1 篇）：《导数公式不是人写的，除了算特征值这种》（content/2026-10-13-autodiff-impl/）author 报「昨日的文章已发布」→ 核验通过后 status draft_saved→published、published_date 2026-10-13、wechat_url + frontmatter wechatUrl 回填，**目录由 2026-10-15 改名 2026-10-13**（原名是按「建议排期 10-15」预排的，实际提前两天发，违反「目录名 = 发布日」须改名；10-02-power-law-rl 同款事故第二次）。summary 重算 published 102→103 / draft_saved 2→1，ready_queue→仅 2026-10-14-phase-sensitivity，next_publish_date→10-14。⚠️ 发布节奏留意：本篇 10-13 22:00 发布，与上篇 10-12 相邻两天连发**同一支纯理论连载**（大纲原本写了「必隔一篇非纯理论」红线，作者定档时未执行），且 10-13 的 22:00 偏离惯用 20:00 档。⏳ 仍欠：① phase-sensitivity（10-14 档）是否已发布待作者确认；② Context Rot 篇 published_date 仍 null（mp 页面直取读不到 ct）；③ 后台作废草稿三份待删。'
+- '2026-10-14 对账（作者供链 2 篇）+ 发布档期改 22:00（作者当日口径）：① Context Rot 篇（2026-10-10-context-rot-isolation）published_date 由 null 补 **2026-10-10**（ct=1791633600 = 10-10 20:00），关闭 10-12 note 里「发布日待核」；② 相位敏感性篇（2026-10-14-phase-sensitivity）status draft_saved→published、wechat_url https://mp.weixin.qq.com/s/1GATyW40jkh1YxuvwVbpUA（ct=1791986400 = **10-14 22:00**）、frontmatter wechatUrl + scheduledPublish 同步。⚠️ **后台标题被改**：发布标题为「2 万 token上下文，DeepSeek为什么还是把代码记错了？」（原拟「上下文只有 2 万 token，模型为什么还是把代码记错了？」）——frontmatter title、台账 title、outline 定稿行已按后台实际同步；今后核验一律以 mp 页面 msg_title 为准，勿以拟稿标题假设一致。③ summary 重算 **total 104 / published 104 / draft_saved 0**，ready_queue 与 scheduled_queue 清空，next_publish_date→null（待作者定档）。④ **档期口径变更（2026-10-14 作者）**：长文固定发布时刻由 20:00 改为 **22:00**，已同步 `AGENTS.md`、`docs/wechat-ops.md`、`docs/content-matrix.md` 三处规则文档；10-13、10-14 两篇实际均为 22:00 发出，即先例已存在。⚠️ 连带观察：10-12 / 10-13 / 10-14 连续三天发文、且 13/14 两篇均为纯理论向，与「每天最多 1 篇 + 禁连续纯理论」的自我约束相抵，是否刻意未确认。⏳ 仍欠：① 2026-10-06-deepseek-synthetic-data 是台账里唯一 published 但无 wechat_url 的条目（frontmatter 亦无，待作者供链）；② 后台三份作废草稿待删。'
