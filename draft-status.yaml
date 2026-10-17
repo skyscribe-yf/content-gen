@@ -1668,19 +1668,59 @@ articles:
   - '🔧 **顺手修好审计/渲染基建断链**：`.venv-mdnice` 因系统 python 3.12→3.14 升级后 `bin/python3.12 → /usr/bin/python3.12` 变成死链，mdnice 渲染直接 `posix_spawn ENOENT`（`docs/wechat-data-insights.md` 0aj 节记过这起事故）。本次未重装——site-packages（mdnice / playwright / PIL）完好，只把 `bin/python3.12` 与 `pyvenv.cfg` 的 `home` 重新指向 uv 管理的 CPython 3.12.14（`~/.local/share/uv/python/cpython-3.12.14-linux-x86_64-gnu/bin`），`import mdnice` / `playwright` 复验通过，dry-run 渲染 2 张占位图正常。**下次审计前确认这条软链还在**。'
   - '⏳ 待办（作者后台）：预览确认 grace 样式与 2 张正文图 → 声明原创 → 勾合集「开源大模型技术揭秘」→ 定时 **2026-10-16 22:00**（本篇**未定时、未群发**）；发布后回填 frontmatter `wechatUrl`（本条目 + outline + 台账三处）。'
   - '✅ 2026-10-17 对账（作者供链 https://mp.weixin.qq.com/s/imKzKYitjtrvAcIB3fIr6A，10-16 22:00 档）：status draft_saved→published、published_date 2026-10-16、wechat_url + frontmatter wechatUrl 三处同步；summary 重算 published 104→107 / draft_saved 1→0，ready_queue 清空。'
+- slug: 2026-10-18-ai-native-sdlc-diagnosis
+  title: 写代码已经不再是瓶颈，交付依然困难重重，AI Native SDLC能解决吗
+  series: 软件工程
+  status: draft_saved
+  published_date: null
+  wechat_url: null
+  media_id: kOcXH4SytIYVIpYksTGfHjpHp9HMi8YiXoCx911URMB36OnqqpoVTLKAPkaTnpdB
+  cover_media_id: kOcXH4SytIYVIpYksTGfHkqAvWaEI1TIs8Ard1iAUbAIsGiaXulzqzdRo0-AwN_1
+  files:
+    weixin: true
+    outline: true
+    cover: true
+    quality_check: true
+  notes:
+  - '🎯 立项（2026-10-17）：作者 Obsidian vault「AI-Native SDLC」系列笔记（Anthropic playbook 精读 + MECE 六问 + 续篇独立性 + 成本核算）切成两篇——诊断篇（10-18 22:00）+ 落地篇（10-20 22:00，同系列「软件工程」，面向工程管理者、不涉具体公司产品/项目）。两份共用 grill 日志 `.grill/ai-native-sdlc-two-articles.md`；目录 `content/2026-10-18-ai-native-sdlc-diagnosis/`。主轴：playbook 只答对「能」这一格半，真风险在值/愿/撑/知。'
+  - '✍️ 原声 6 槽逐字进稿（`quality_check.py` SLOTS 6 条在场，长句走原声豁免）；H2=7；配图 4 张脚本图（六阶段对照 / MECE 六格覆盖度 / n_eff 公式 / committed artifact 链）+ 封面 21:9。⚠️ 篇幅：CJK 2582（导航前 2537），略超「含尾部 ≤2500」口径，待作者定夺（同 10-14 / 10-16 篇处置）。'
+  - '📦 2026-10-17 12:29（BJT）存草稿箱（remote-api via vps-us，grace+blue）——⚠️ 该版尾部未收尾：`📖 __NAV_PLACEHOLDER__` 占位符没替换（后台渲染成裸字样 NAV_PLACEHOLDER）、另有一行「话题标签 + 合集导航」残句。'
+  - '🖼 2026-10-17 12:24 全部配图重制（4 张脚本图 + 封面），12:28 正文按「每段 ≤80 字」重排。'
+  - '📦 2026-10-17 20:43（BJT）重存（作者指令「修改过的 2 个 SDLC 草稿，重新发公众号后台」）：① 尾部收尾——占位符改为真实系列导航 `📖 **软件工程**：**写代码已经不再是瓶颈（本篇）** → AI Native SDLC 能落地吗`，删残句行；② 门禁复跑 PASS（`quality_check.py` + `check_wechat_links.py` 全溯源）；③ 整篇重发（封面 + 4 张正文图全量重新上传，旧图 URL 在 12:24 图重制后已过期）。**草稿 media_id 保持不变**：采用「`draft/add` 临时稿 → `draft/update` 覆盖旧 media_id → `draft/delete` 临时稿」三步，草稿箱 4→2、后台无冗余稿。⚠️ API 覆盖更新绕过后台编辑器，作者需复核原稿上的**声明原创 / 合集勾选 / 定时群发**是否仍生效。'
+- slug: 2026-10-20-ai-native-sdlc-landing
+  title: AI Native SDLC 能落地吗：成本、独立性与验收
+  series: 软件工程
+  status: draft_saved
+  published_date: null
+  wechat_url: null
+  media_id: kOcXH4SytIYVIpYksTGfHje-jn9LjeTwiOwkq2UqyqpeYYmafGJi30eZihtuys1k
+  cover_media_id: kOcXH4SytIYVIpYksTGfHqH9dSt3yC9TsEw1VTTkmyA6OjTqs5U-kIXJBY_B3_uI
+  files:
+    weixin: true
+    outline: true
+    cover: true
+    quality_check: true
+  notes:
+  - '🎯 立项（2026-10-17）：与诊断篇同批（共用 grill 日志）。把三道坎落到可执行清单——反馈延迟四档（落地清单 7 条 + 两个反模式）、NFR 三层定义（可单一数值化 / 可结构规则化 / 不可数值化）、成本核算（cost per accepted change、阶梯整单跳档、缓存回本点、按层 ΔFCR、盈亏平衡式）、review 独立性（n_eff / 共失败天花板 β / 六轴多样性 / verifier cascade）、验收一致性（纪律只能画在权限和动作上）。'
+  - '✍️ 原声 5 槽逐字进稿；H2=6；配图 4 张脚本图（反馈延迟四档 / NFR 三层 / 阶梯计费 cliffs / n_eff + β）+ 封面 21:9；CJK 2254（含尾部，口径内）。'
+  - '📦 2026-10-17 12:30（BJT）存草稿箱；20:43（BJT）随诊断篇一并重存（作者同一指令）——尾部导航由「软件工程合集（发布后补链接）：写代码已经不再是瓶颈 → AI Native SDLC 能落地吗」统一为 `📖 **软件工程**：写代码已经不再是瓶颈 → **AI Native SDLC 能落地吗（本篇）**`，封面与 4 张正文图全量重传，草稿 media_id 保持 …uys1k（同「add 临时稿 → update 旧稿 → delete 临时稿」三步）。'
+  - '⏳ 后台待作者确认：**声明原创 + 勾选合集「软件工程」**（合集页 URL 尚未建档，尾部导航暂不带链接）+ **定时 2026-10-18 / 10-20 22:00**；发布后回填 frontmatter `wechatUrl` 与台账。'
 
 summary:
-  total: 107
+  total: 109
   by_status:
     published: 107
     drafting: 0
-    draft_saved: 0
+    draft_saved: 2
   drafting_queue: []
-  ready_queue: []
+  ready_queue:
+  - 2026-10-18-ai-native-sdlc-diagnosis
+  - 2026-10-20-ai-native-sdlc-landing
   scheduled_queue: []
   planned_queue: []
-  next_publish_date: null  # 无待发排期，待作者定档
+  next_publish_date: '2026-10-18'  # 软件工程诊断篇 22:00；落地篇 10-20 22:00 顺排
 plan_notes:
+- '2026-10-17 两篇软件工程（AI Native SDLC）入箱 + 重存：诊断篇（10-18 档）+ 落地篇（10-20 档）由 vault 笔记一次立项两篇，12:29 / 12:30 首次存草稿箱后作者要求重存。重存前修掉诊断篇尾部遗留的 `__NAV_PLACEHOLDER__` 占位符与重复标签行，两篇尾部导航统一为「📖 **软件工程**：篇一 → 篇二（本篇）」风格（合集页 URL 未建档，暂不带链接）。重存走「draft/add 临时稿 → draft/update 覆盖旧 media_id → draft/delete 临时稿」，草稿箱终态 2 篇、media_id 与首存一致。⚠️ 后台待办：声明原创 + 勾合集「软件工程」+ 定时 10-18 / 10-20 22:00；发布后回填 wechatUrl。'
 - '2026-10-15/16 新篇入箱：开源大模型技术揭秘线 MASA 矩阵逼近篇《注意力分数高 66 倍的那列，为什么反而带来 98% 的误差？》（目录 content/2026-10-16-masa-matrix-approximation/，排期 10-16 22:00）。当日全流程：grill 逐问收敛（含 2026-10-15 一轮 vault 三篇 PDF 复核 + 一轮自测实验）→ 大纲 → 原声 8 槽逐槽交互（作者手打 5 + 沿用 3）→ 成稿 → 门禁 PASS → 配图 2 张 + 封面。**本轮两次口径修正**：① 自测扫描第一版**跑反了**（单列当单元，方向越随机 mass 误差反而下降），改块粒度后才是文章里的 93% vs 51%——「单元内的相互作用」只在多 entry 单元上成立；② 封面底图首版发光列为金色，与金色标题撞色并让 check_cover 误判字块 85.7%，改白青色后 PASS。⚠️ 环境：numpy/matplotlib 不在系统 python（.venv-mdnice 亦已断链），本轮新建 `~/.venvs/content-gen-charts`（python 3.12 + numpy 2.5.4 + matplotlib 3.11.2），**装包必须走 `-i https://pypi.tuna.tsinghua.edu.cn/simple`——pypi 默认 CDN 下载会挂死**。'
 - 2026-08-28 对齐：信息熵 8-28（今日）→ AlphaGo 8-29 → 多模态 8-30（作者确认）。目录名已同步重命名（git mv），frontmatter date 同步。
 - 2026-08-28 二次对齐：fp8 目录名改发布日期 2026-08-09；补 RLHF(7-30)/维度诅咒(高维空间,8-12) 两条已发布缺漏条目；price-war 两目录为贴图轨道，不入文章台账。
