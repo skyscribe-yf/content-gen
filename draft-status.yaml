@@ -616,6 +616,19 @@ articles:
   cover_media_id: kOcXH4SytIYVIpYksTGfHjK3ztL7oCakVr-lss3sKMRhIiRg5XAiqvhZY3gGz3d5
   notes: 「AI中的数学」系列 KL 散度篇。素材直出工作流：raw.md 作者口述 11 段，structure.md v2 检查点作者批准（术语修正×2、双头硬币算例、series=数学直觉、标题A）。引用源 refs.md：主引 Alemi《KL is All You Need》（图源×3：大象/VAE世界对/扩散链）+ Lilian Weng《From GAN to WGAN》（KL_JS 四联图 + 不重叠分布实验数据），参考资料 6 条带链接。数字事实验证：双头硬币 5 连正=32:1≈97%；KL(N(0,1)||N(3,1))闭式=Δμ²/2=4.5 nats（图表与理论一致）；JS=log2/W=|θ| 摘自 Lilian 原文。质量核查13项全过（长句>60字清零、禁词0、拆字合规、原声句15条逐字保留）。封面 gpt-image-2 两轮定稿（第一版自造副标题作废，第二版无多余文字，1915x821≈21:9，prompts/00-cover.md）。2026-08-22 已存公众号草稿箱（remote-api --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHk_UJkE11ltaaK80hzEICkd-ujbQfhT85zWpSAqRtnbM（封面 kOcXH4SytIYVIpYksTGfHoCwvFQT6P9CZPEWus1Dl3cYXZW9J08Gn8Uk2CCq6koc）。⚠️ 正文 TRPO 链接为「待发布」占位，TRPO 发布后必须回填微信 URL 再重存草稿。发布前确认：声明原创 + 定时 20:00 + 合集「AI中的数学」。 2026-08-22 TRPO 发布后正文回填链接并完成打磨（长句/长段拆分、补内链×3、修口误×4），重存草稿：media_id kOcXH4SytIYVIpYksTGfHtvsKCFs3go8FzOj3pi00K_xopK7m1VE7wzXtMonGdQV（封面 kOcXH4SytIYVIpYksTGfHjK3ztL7oCakVr-lss3sKMRhIiRg5XAiqvhZY3gGz3d5）。旧草稿 media_id kOcXH4SytIYVIpYksTGfHk_UJkE11ltaaK80hzEICkd-ujbQfhT85zWpSAqRtnbM
     需在草稿箱删除。
+- slug: 2026-08-23-price-war-sequel
+  title: 免费模型轮番上阵，DeepSeek凭啥继续爽用？
+  type: tietu  # 2026-10-17 补录：后台 item_show_type=8（贴图轨）；08-28 曾定「贴图轨不入台账」，2026-10-17 作者拍板随 10-15 口径带 type 补录
+  series: Agent前线
+  status: published
+  published_date: '2026-08-23'
+  wechat_url: https://mp.weixin.qq.com/s/xxnwNv7QOn92YitIoAwZ0w
+  files:
+    weixin: true
+    draft: false
+    outline: false
+    cover: false
+  notes: 贴图（图片消息）。素材目录 content/2026-08-23-price-war-sequel/（raw.md 作者素材 + structure.md + weixin.md 文案）。标题以后台 msg_title 为准（拟稿「免费模型夹击，DeepSeek凭什么还是最爽」），frontmatter title/wechatUrl 已同步。2026-10-17 台账补录（此前游离于台账与审计历史之外，快照无时间戳，发布日期按目录日期推定 08-23）。
 - slug: 2026-08-24-ppo-math
   title: PPO只用0.2的clip，凭什么顶替0.01的KL预算？
   series: 强化学习原理
@@ -755,6 +768,19 @@ articles:
     cover: false
   notes: 2026-08-27 立项（热点机动，替换原 8-27 信息熵档；信息熵顺延 8-28，AlphaGo 顺延 8-29）。背景：GLM-5.3-Flash（08-26 发布，Ox Alpha 揭晓）与 Qwen3.8-Flash-Next（08-26 23:00 开源，Qwen4 架构预览）同一天亮出下一代架构，均为「混合注意力 + 稀疏」路线。GLM：320B-A18B、45 层 3:1（34 KDA + 11 MLA/DSA）、注意力计算 -3.01×/KV cache -4.44×、mHC 残差、IndexPool、MIT 开源、1M 上下文、原生多模态、100T tokens/天全中国芯片。Qwen：125B-A6B + 51B n-gram 嵌入、48 层 12×(3 GDN + 1 QSA)、四分支 Gated Residual、Muon+AdamW、训练成本 1/9、Qwen4 架构预览。⚠️ 写稿前必须实时核验全部数字（docs/data-freshness.md）。grill 日志 .grill/2026-08-27-glm-qwen-architecture.md（三轮收敛：认知交付=注意力正在被拆掉+稀疏化大方向；标题定稿「智谱阿里为什么拆注意力？KV缓存砍4.4倍」21 字符，对标 DeepSeek-V4为何不用MLA 同构；开头=场景对比；结构=六节弧线：为什么拆→GLM怎么拆→Qwen怎么拆→殊途同归→稠密还没死→回扣）。原声槽 7 条逐字进稿（token-stats 实测/牛来揭晓/100T中国芯片/别听自媒体瞎吹/稀疏化10年共识/稠密判死刑为时尚早/tradeoff哲学）。事实核验（2026-08-27 实时搜索）：GLM-5.3-Flash 320B-A18B/45层3:1/注意力-3.01×/KV-4.44×/MIT/1M/原生多模态/100T中国芯片；Qwen3.8-Flash-Next 125B-A6B+51B n-gram/48层12×(3GDN+1QSA)/训练成本1/9/262K原生；Qwen3.8-27B 27B稠密/AA Index 52追平V4 Flash 50/Agentic 51超V4 Pro 50/LiveCodeBench 90.3超Opus 4.6 Max 88.8/SWE-bench Pro
     61.7/开源两天下载破百万。质量自查：正文 3622 字（3.5-5k 内）、禁词 0、原声 7 条逐字在场、开头 100 字场景对比无系列导航、引用旧文 8 处微信 URL 全在、热门区 hot_articles.py 生成（Top 6 + 引用 6 篇）、话题标签 5 个、长句仅剩原声槽/表格（豁免）、「拆过」改「拆解过」、15 项核查全过。图 5 张全出齐（00-cover 21:9 标题逐字核验两行完整/01 成本曲线脚本图/02 架构对照脚本图/03 拆注意力概念图/04 稀疏化共识概念图）。2026-08-27 已存公众号草稿箱（remote-api --theme grace --color blue）：media_id kOcXH4SytIYVIpYksTGfHuol0AdlisFBG6X74yqTZKx8hfhR0lMb5HQ8Le-xoJhC（封面 kOcXH4SytIYVIpYksTGfHvWw5MsIAUjzbsE0MGfQiTwDEp53zHOD1_H84ORdlvBM），正文图 4 张已上传（01/02 脚本图 + 03/04 AI 图，2 张大图自动压缩 JPEG 82）。未定时、未群发。⚠️ 发布前确认：声明原创 + 定时 20:00 + 合集「开源大模型技术揭秘」；发布后补 wechatUrl。
+- slug: 2026-08-27-glm-53-flash-price-war
+  title: GLM-5.3-Flash 半价是假象？实测竟贵 3 倍
+  type: tietu  # 2026-10-17 补录：后台 item_show_type=8（贴图轨）；08-28 曾定「贴图轨不入台账」，2026-10-17 作者拍板随 10-15 口径带 type 补录
+  series: Agent前线
+  status: published
+  published_date: '2026-08-27'
+  wechat_url: https://mp.weixin.qq.com/s/LXYvwQ4kTNLlkMIS-Ex-EQ
+  files:
+    weixin: true
+    draft: false
+    outline: false
+    cover: false
+  notes: 贴图（图片消息），合集 Agent 前线。素材目录 content/2026-08-27-glm-53-flash-price-war/（raw.md + structure.md + 5 张配图），贴图归档 content/2026-08-27-tietu/GLM-5.3-Flash-半价是假象？实测竟贵-3-倍/。标题以后台 msg_title 为准（拟稿「GLM-5.3-Flash 半价是假象？程序员实测贵 3 倍」），frontmatter title/wechatUrl 已同步。2026-10-17 台账补录，发布日期取贴图归档目录日期 08-27。
 - slug: 2026-07-30-RLHF
   title: RLHF怎么让模型选出好回答？
   series: 训练回路
@@ -1348,7 +1374,7 @@ articles:
   series: 开源大模型技术揭秘
   status: published
   published_date: '2026-10-07'
-  wechat_url: null
+  wechat_url: https://mp.weixin.qq.com/s/oSeuLU2QnR_OWyQWcXzHvw
   files:
     weixin: true
     draft: true
@@ -1615,18 +1641,47 @@ articles:
   - '📤 2026-10-12 存入草稿箱（remote-api via vps-us，grace+blue，EXIT=0，success:true）：draft media_id kOcXH4SytIYVIpYksTGfHlbAaqbHiRxZ9zxl_iCuOSZBV8VjTLfEB5FVqodgjlyX、cover media_id kOcXH4SytIYVIpYksTGfHt2v_B7md-sfSiNx2XfNGLkFQk0mQV6of3JzMeqUoFk；6 张正文图与封面均报上传完成。⚠️ 过程中出现 1 次 `Malformed HTTP response`（隧道抖动）但脚本自行继续并最终 success:true，**请作者在后台预览时确认 6 张正文图都在**。'
   - '⚠️ 排期与未决：作者 2026-10-12 拍板——**13 日留给自动微分下篇，本篇排 2026-10-14 20:00**（目录/date/scheduledPublish 已同步）。连带待办：① `2026-10-15-autodiff-impl` 的实际发布日应为 **10-13**，其目录名/台账日期尚未同步；② Context Rot 篇 published_date 仍为 null（mp 页面直取返回验证页，读不到 ct）；③ 篇内合集行沿用 10-06 篇的**无 URL 纯粗体**格式，若需带合集链接请给 URL；④ 正文 2601 + 尾部 379 = **2980**，超 2000/2500 口径（硬内容是原声 7 处，作者未要求再砍）。'
 
+- slug: 2026-10-16-masa-matrix-approximation
+  title: 注意力分数高 66 倍的那列，为什么反而带来 98% 的误差？
+  series: 开源大模型技术揭秘
+  status: published
+  published_date: '2026-10-16'
+  wechat_url: https://mp.weixin.qq.com/s/imKzKYitjtrvAcIB3fIr6A
+  media_id: kOcXH4SytIYVIpYksTGfHljknH9FeXVo1VcJguFMnzSJ1ytvfGGP0U5OhxdfXLRt
+  cover_media_id: kOcXH4SytIYVIpYksTGfHgauX38FmJn177XrjFl5p1SLjeKmDFUYsjrU-1dg1CDx
+  files:
+    weixin: true
+    outline: true
+    cover: true
+    quality_check: true
+  notes:
+  - '🎯 选题来源：作者 Obsidian 笔记 `~/vaults/papers/AI-Chats/concepts/大模型原理/MASA-稀疏注意力是矩阵逼近不是挑mass.md`（2026-10-11，一手论文 arXiv:2610.10871）。grill 日志 `.grill/masa-matrix-approximation.md`（逐问收敛 + 2026-10-15 复核 + 自测实验）。目录 `content/2026-10-16-masa-matrix-approximation/`，排期 2026-10-16 22:00（12/13/14 已连发三天，隔一天）。'
+  - '🎯 主轴（作者拍板）：**选择错位**——现有稀疏注意力按「注意力质量大 = 重要」挑格子，而注意力是通过矩阵乘法被消费的，该按矩阵乘积保留来挑。落点绑 **DeepSeek 选择器线**（NSA 用压缩分数挑块 → V3.2 索引器 KL 对齐注意力分布 → V4 CSA 先压后选），口径「提醒不是打脸」。'
+  - '🧪 **自测两块（`masa_scan.py`，作者 2026-10-15 拍板「图片放正文」）**：① 两列反例复刻——自造质量比 66、value 范数比 2158、方向差 49° 的两列，精确得到 98.0% / 3.0%（打分核验 19.18 对 484.44）；② 块粒度方向扫描——16 块 × 16 列、列 value 范数全设 1、预算 1/16、400 次重复，质量排序 37.1%→92.8% 而矩阵逼近 37.1%→50.6%，相关系数 1.000→0.774，选对率 100%→42.5%。⚠️ **第一版跑反了**：拿单列当单元时方向越随机、质量排序误差反而从 60.1% 降到 56.2%（单列内部不存在抵消）——此条作为「单元内的相互作用只有在块这类多 entry 单元上才成立」的正文依据。'
+  - '📐 **三条边界全部自曝（防杠）**：① 错位要看得见必须**不对称**（所有块同等抵消时两种排序几乎分不开，37.1% 对 30.4%）；② 代价随预算收紧而放大（放宽到 4/16 块差距压到约 0）；③ 单列当单元看不见（见上条）。'
+  - '🔍 **承重事实一手复核（2026-10-15，vault PDF + arXiv HTML 全文）**：MASA §3.1 Eq.4/5（逐元素挑最大是**逐元素误差目标的精确最优解**，只在 $VV^\top$ 像单位阵时才等于真目标）、§3.2 Eq.7/8、Table 1（RULER，128K 增益 1.28/0.48/1.45/2.16）、Table 2（InfiniteBench 47.14→47.99 vs 全注意力 48.06）、Table 3（LongBench 52.69→53.16）、附录 E Table 8（+0.41%/+2.10%/+2.34%/+7.17%，四个配对 98.75% 置信区间全 >0）、§4.2 脚注自划边界；NSA 2502.11089 §3.3.2（选块分数来自压缩分支注意力分数，Eq.8–10）；DeepSeek-V3.2 2512.02556 §2.1（索引器 KL 对齐注意力分布，Eq.1–4；每 query 2048 个 KV）；DeepSeek-V4 §2.3.1（CSA 先压后选，Eq.13–17）。**笔记待复核项全部结项，且一处升级**：原表述「某个特例的最优解」升级为「错目标的精确最优解」。'
+  - '✍️ **作者原声 8 槽逐槽交互采集（无批量代填）**：槽 1 开头（作者提问「这只是硬凑的数学玩具吗」+ 判断）/ 槽 2 第一节末（「大家都还是按内积得分挑最大」）/ 槽 3 §2 公式后（沿用，「这个错位来自 value 的方向差异」）/ 槽 4 §3 复刻数字后（KPI 类比）/ 槽 5 §4 三条边界后（措辞强度「我倾向于认为」）/ 槽 6 §5（沿用，质量分布趋向极端）/ 槽 7 §7 sink 段（沿用，sink 承接 softmax 质量但 value 趋零）/ 槽 8 文末互动问。入稿只动错别字级一处在 outline.md 记账（槽 4 `不应给被滥用`→`不应被滥用`、`最是最好`→`就是最好`）；槽 8 末尾的「吗」按作者原样保留。'
+  - '🖼 配图 2 张 + 封面：`01-66x-98.png`（脚本图，两列反例质量 vs 误差）、`02-direction-scan.png`（脚本图，主图 93% vs 51%）、`00-cover.png`（1916×821，yairouter 冷色无字点阵底图，金色两行「66 倍分数 / 98% 误差」，`check_cover.py` 字块 22.7% ≤ 25% PASS）。⚠️ 首版底图的发光列是金色，与封面金色标题撞色且被 check_cover 的取色判据误判为文字（报 85.7%），已重生成白青色发光列版本。数字只走脚本轨。'
+  - '✅ 门禁：`quality_check.py` **PASS**（原声 8/8 逐字在场；段落超 80 字 0（116 段）；H2=7 + H3=8；禁词/AI 腔 0；超 60 字 AI 句 0；四处自曝 + 三条自测边界 + 图下「非绝对值」句在场；内链 5 条 mp 链接全在场）。🔥 热门块由 `hot_articles.py --md --cited` 生成（11 行，行尾两空格，标题无重复）。'
+  - '⚠️ 篇幅：正文 2186 + 尾部 342 = **2528**（口径 2000 / 合计 ≤2500，超约 28 字）——已从初稿 2874 砍到 2186，其中原声 8 处约占 480 字属硬内容；如需再砍，优先动 §4 三条边界的第三条或 §6 的 128K 分项数字。'
+  - '📦 2026-10-16 存草稿箱（作者「就这个篇幅，发草稿箱吧」指令；remote-api via vps-us，grace+blue，citeStatus=true，一次通过 EXIT=0，success:true）：draft media_id kOcXH4SytIYVIpYksTGfHljknH9FeXVo1VcJguFMnzSJ1ytvfGGP0U5OhxdfXLRt、cover media_id kOcXH4SytIYVIpYksTGfHgauX38FmJn177XrjFl5p1SLjeKmDFUYsjrU-1dg1CDx；2 张正文图（01-66x-98 / 02-direction-scan）与封面均报上传完成。status drafting→draft_saved。'
+  - '🔧 **顺手修好审计/渲染基建断链**：`.venv-mdnice` 因系统 python 3.12→3.14 升级后 `bin/python3.12 → /usr/bin/python3.12` 变成死链，mdnice 渲染直接 `posix_spawn ENOENT`（`docs/wechat-data-insights.md` 0aj 节记过这起事故）。本次未重装——site-packages（mdnice / playwright / PIL）完好，只把 `bin/python3.12` 与 `pyvenv.cfg` 的 `home` 重新指向 uv 管理的 CPython 3.12.14（`~/.local/share/uv/python/cpython-3.12.14-linux-x86_64-gnu/bin`），`import mdnice` / `playwright` 复验通过，dry-run 渲染 2 张占位图正常。**下次审计前确认这条软链还在**。'
+  - '⏳ 待办（作者后台）：预览确认 grace 样式与 2 张正文图 → 声明原创 → 勾合集「开源大模型技术揭秘」→ 定时 **2026-10-16 22:00**（本篇**未定时、未群发**）；发布后回填 frontmatter `wechatUrl`（本条目 + outline + 台账三处）。'
+  - '✅ 2026-10-17 对账（作者供链 https://mp.weixin.qq.com/s/imKzKYitjtrvAcIB3fIr6A，10-16 22:00 档）：status draft_saved→published、published_date 2026-10-16、wechat_url + frontmatter wechatUrl 三处同步；summary 重算 published 104→107 / draft_saved 1→0，ready_queue 清空。'
+
 summary:
-  total: 104
+  total: 107
   by_status:
-    published: 104
+    published: 107
     drafting: 0
     draft_saved: 0
   drafting_queue: []
   ready_queue: []
   scheduled_queue: []
   planned_queue: []
-  next_publish_date: null  # 队列空：10-12/10-13/10-14 三篇均已发布；下一篇待作者定档（新口径：固定 22:00）
+  next_publish_date: null  # 无待发排期，待作者定档
 plan_notes:
+- '2026-10-15/16 新篇入箱：开源大模型技术揭秘线 MASA 矩阵逼近篇《注意力分数高 66 倍的那列，为什么反而带来 98% 的误差？》（目录 content/2026-10-16-masa-matrix-approximation/，排期 10-16 22:00）。当日全流程：grill 逐问收敛（含 2026-10-15 一轮 vault 三篇 PDF 复核 + 一轮自测实验）→ 大纲 → 原声 8 槽逐槽交互（作者手打 5 + 沿用 3）→ 成稿 → 门禁 PASS → 配图 2 张 + 封面。**本轮两次口径修正**：① 自测扫描第一版**跑反了**（单列当单元，方向越随机 mass 误差反而下降），改块粒度后才是文章里的 93% vs 51%——「单元内的相互作用」只在多 entry 单元上成立；② 封面底图首版发光列为金色，与金色标题撞色并让 check_cover 误判字块 85.7%，改白青色后 PASS。⚠️ 环境：numpy/matplotlib 不在系统 python（.venv-mdnice 亦已断链），本轮新建 `~/.venvs/content-gen-charts`（python 3.12 + numpy 2.5.4 + matplotlib 3.11.2），**装包必须走 `-i https://pypi.tuna.tsinghua.edu.cn/simple`——pypi 默认 CDN 下载会挂死**。'
 - 2026-08-28 对齐：信息熵 8-28（今日）→ AlphaGo 8-29 → 多模态 8-30（作者确认）。目录名已同步重命名（git mv），frontmatter date 同步。
 - 2026-08-28 二次对齐：fp8 目录名改发布日期 2026-08-09；补 RLHF(7-30)/维度诅咒(高维空间,8-12) 两条已发布缺漏条目；price-war 两目录为贴图轨道，不入文章台账。
 - 2026-08-28 三次对齐：多模态 08-30→09-02 顺延；大数定律 08-30 定档（M2，上接AlphaGo蒙特卡洛，Top2）、SVD 08-31 定档（B1，接D1矩阵压缩，Top1）；RL 原理系列整体延后5天（下一RL不早于09-03，AlphaGo 08-29 为番外例外）。
@@ -1679,3 +1734,4 @@ plan_notes:
 - '2026-10-14 对账（作者供链 1 篇）：《导数公式不是人写的，除了算特征值这种》（content/2026-10-13-autodiff-impl/）author 报「昨日的文章已发布」→ 核验通过后 status draft_saved→published、published_date 2026-10-13、wechat_url + frontmatter wechatUrl 回填，**目录由 2026-10-15 改名 2026-10-13**（原名是按「建议排期 10-15」预排的，实际提前两天发，违反「目录名 = 发布日」须改名；10-02-power-law-rl 同款事故第二次）。summary 重算 published 102→103 / draft_saved 2→1，ready_queue→仅 2026-10-14-phase-sensitivity，next_publish_date→10-14。⚠️ 发布节奏留意：本篇 10-13 22:00 发布，与上篇 10-12 相邻两天连发**同一支纯理论连载**（大纲原本写了「必隔一篇非纯理论」红线，作者定档时未执行），且 10-13 的 22:00 偏离惯用 20:00 档。⏳ 仍欠：① phase-sensitivity（10-14 档）是否已发布待作者确认；② Context Rot 篇 published_date 仍 null（mp 页面直取读不到 ct）；③ 后台作废草稿三份待删。'
 - '2026-10-14 对账（作者供链 2 篇）+ 发布档期改 22:00（作者当日口径）：① Context Rot 篇（2026-10-10-context-rot-isolation）published_date 由 null 补 **2026-10-10**（ct=1791633600 = 10-10 20:00），关闭 10-12 note 里「发布日待核」；② 相位敏感性篇（2026-10-14-phase-sensitivity）status draft_saved→published、wechat_url https://mp.weixin.qq.com/s/1GATyW40jkh1YxuvwVbpUA（ct=1791986400 = **10-14 22:00**）、frontmatter wechatUrl + scheduledPublish 同步。⚠️ **后台标题被改**：发布标题为「2 万 token上下文，DeepSeek为什么还是把代码记错了？」（原拟「上下文只有 2 万 token，模型为什么还是把代码记错了？」）——frontmatter title、台账 title、outline 定稿行已按后台实际同步；今后核验一律以 mp 页面 msg_title 为准，勿以拟稿标题假设一致。③ summary 重算 **total 104 / published 104 / draft_saved 0**，ready_queue 与 scheduled_queue 清空，next_publish_date→null（待作者定档）。④ **档期口径变更（2026-10-14 作者）**：长文固定发布时刻由 20:00 改为 **22:00**，已同步 `AGENTS.md`、`docs/wechat-ops.md`、`docs/content-matrix.md` 三处规则文档；10-13、10-14 两篇实际均为 22:00 发出，即先例已存在。⚠️ 连带观察：10-12 / 10-13 / 10-14 连续三天发文、且 13/14 两篇均为纯理论向，与「每天最多 1 篇 + 禁连续纯理论」的自我约束相抵，是否刻意未确认。⏳ 仍欠：① 2026-10-06-deepseek-synthetic-data 是台账里唯一 published 但无 wechat_url 的条目（frontmatter 亦无，待作者供链）；② 后台三份作废草稿待删。'
 - '2026-10-15 台账修正（作者确认口径 + 全量 URL 核验）：① **口径确认**：作者明确「没有群发也是发布了」——后台「发表记录」（appmsgpublish）只收录**群发**记录，未群发但已发布的文章不在其中（本轮 5 篇不在列表却 URL 有效），**发表记录不得用作「全量已发布」校验源**；带 `wechat_url` 的条目一律视为已发布。新增 `scripts/verify_published_urls.py`（逐条直取 mp 页面比对 msg_title），本轮全量核验 **103/103 条标题一致、0 篇已删除/违规**（首次全量跑出 8 处漂移，已全部回填，见下）。② **9 条标题回填到后台实际 msg_title**（拟稿标题 ≠ 发布标题）：2026-07-15-词嵌入（引号/空格）、2026-07-29-SFT、2026-08-11-deepseek-indexer、2026-08-15-deepseek-dualpipe-deepep、2026-08-24-ppo-math（补 KL）、2026-08-27-glm-qwen-architecture、2026-09-05-test-time-compute、2026-10-12-autodiff、2026-10-13…10-14 phase-sensitivity（上一轮已回填）。其中 3 条**同时改了 `content/*/weixin.md` frontmatter title**（ppo-math / glm-qwen-architecture / autodiff——后两者原 frontmatter 也与后台不一致）；autodiff 的 `quality_check.py` 两处标题断言随之改成「陈述句」版本，重跑 PASS。⚠️ 历史规划物（outline.md 定稿行、prompts/、shipinhao/ 分镜）**未改**——它们记录的是当时的拟稿决策，不是发布事实；`draft.md` 同理。⚠️ glm-qwen-architecture 的标题在 10-10 与 10-15 两次读到的值不同（「拆注意力/KV缓存砍4.4倍」→「要改注意力/KV缓存竟砍4.4倍」），疑似**发布后改过标题**（与「发布后不改标题/摘要」自查冲突，留痕待作者确认）。③ **3 条贴图误分类已修正**：`2026-08-24-dsh-harness`（203 读）、`2026-08-24-pi-dsh-pruner`（206 读）、`2026-08-25-pi-maka-harness`（135 读）后台 `item_show_type=8`，已加 `type: tietu` 标记——这 3 条**不应计入文章轨统计**（与 09-09 费马大定理同类错误）。⚠️ 由于 schema 无 by_type 字段，summary 仍按 total/published 计（104/104），文章轨统计请自行过滤 `type != tietu`（104 − 3 = 101 篇真实文章）。'
+- '2026-10-17 对账补录（作者供链 + 口径变更）：① **MASA 篇**（2026-10-16-masa-matrix-approximation）作者供链 https://mp.weixin.qq.com/s/imKzKYitjtrvAcIB3fIr6A（10-16 22:00 档），status draft_saved→published、published_date/wechat_url/frontmatter wechatUrl 三处同步。② **2026-10-06-deepseek-synthetic-data** 补 wechat_url https://mp.weixin.qq.com/s/oSeuLU2QnR_OWyQWcXzHvw（frontmatter 已有同链，后台发表记录 10-07 同链，三处对齐，该条「待作者供链」欠账关闭）。③ **两篇价格战贴图入台账**：2026-08-23-price-war-sequel（发布标题「免费模型轮番上阵，DeepSeek凭啥继续爽用？」https://mp.weixin.qq.com/s/xxnwNv7QOn92YitIoAwZ0w）与 2026-08-27-glm-53-flash-price-war（发布标题「GLM-5.3-Flash 半价是假象？实测竟贵 3 倍」https://mp.weixin.qq.com/s/LXYvwQ4kTNLlkMIS-Ex-EQ），均后台 item_show_type=8，带 `type: tietu` 标记——**08-28「贴图轨不入台账」旧口径由作者 10-17 改判**，随 10-15 口径补录；两篇此前游离于台账与审计历史之外（免费模型轮番上阵连审计日志都没有），frontmatter title/wechatUrl 已同步为后台口径，发布日期分别按目录日期推定 08-23 / 贴图归档目录 08-27（快照无时间戳）。④ 程序化核验（verify_published_urls.py 单篇直取）：masa / synthetic-data / price-war-sequel 三条 og/msg_title 一致；glm-53-flash 两条快照（publish-data-90 + wechat-published-index）同链同题，页面直取连续命中「环境异常」反爬页无法核验，欠账待下次 Cookie 可用时补。⑤ summary 重算 total 105→107 / published 104→107 / draft_saved 1→0，ready_queue 清空、next_publish_date 置空。'

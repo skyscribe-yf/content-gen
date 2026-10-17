@@ -1,8 +1,9 @@
 ---
-title: "GLM-5.3-Flash 半价是假象？程序员实测贵 3 倍"
+title: "GLM-5.3-Flash 半价是假象？实测竟贵 3 倍"
 keywords: ["GLM-5.3-Flash", "Ox Alpha", "大模型价格战", "缓存价格", "国产芯片"]
 series: Agent前线
 subtitle: ""
+wechatUrl: "https://mp.weixin.qq.com/s/LXYvwQ4kTNLlkMIS-Ex-EQ"
 ---
 
 匿名刷屏一周的「牛来」，昨天揭晓真身了——GLM-5.3-Flash，智谱家的。

@@ -1,7 +1,7 @@
 ---
-title: "免费模型夹击，DeepSeek凭什么还是最爽"
+title: "免费模型轮番上阵，DeepSeek凭啥继续爽用？"
 keywords: ["DeepSeek供应商", "API价格", "免费模型", "价格战"]
-wechatUrl: ""
+wechatUrl: "https://mp.weixin.qq.com/s/xxnwNv7QOn92YitIoAwZ0w"
 subtitle: ""
 ---
 
