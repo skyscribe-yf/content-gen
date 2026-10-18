@@ -173,7 +173,7 @@ Anthropic 的教训：agent 不会因为"公司规定"而守规矩，只会因�
 
 不过毕竟，它山之石可以攻玉，对于 Anthropic 这种工作方式，探讨和研究的价值还是很高的。
 
-📖 **软件工程**：写代码已经不再是瓶颈 → **AI Native SDLC 能落地吗（本篇）**
+📖 **软件工程**：[写代码已经不再是瓶颈](https://mp.weixin.qq.com/s/ljp5ovIFPI3l9rmlGDDZUw) → **AI Native SDLC 能落地吗（本篇）**
 
 ---
 

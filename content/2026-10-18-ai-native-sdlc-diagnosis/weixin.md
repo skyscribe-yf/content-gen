@@ -1,6 +1,6 @@
 ---
 title: "写代码已经不再是瓶颈，交付依然困难重重，AI Native SDLC能解决吗"
-wechatUrl: ""
+wechatUrl: "https://mp.weixin.qq.com/s/ljp5ovIFPI3l9rmlGDDZUw"
 author: "数解AI"
 date: "2026-10-18"
 type: "诊断篇"
