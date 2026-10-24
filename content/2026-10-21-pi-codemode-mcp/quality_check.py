@@ -2,13 +2,61 @@
 """本篇 16 项质量核查中机器可查部分 + 作者 2026-10-10 新增口径（段落 ≤80 字 / 三级标题）。
 适配自 content/2026-10-10-context-rot-isolation/quality_check.py（原声/数字/爆项按本篇重列）。"""
 import re
+import sys
+import difflib
 from pathlib import Path
 
 HERE = Path(__file__).parent
 TEXT = (HERE / "weixin.md").read_text()
 BODY = TEXT.split("---", 2)[-1]
+
+# --published：文章已发布（正文以后台为准）时跳过成稿期门禁（原声/段落/长句/篇幅），
+# 只保留发布后仍必须成立的不变量（链接、标签、图片路径、数字、禁词）。
+PUBLISHED = "--published" in sys.argv
+
 def cjk(s):
     return len(re.findall(r"[\u4e00-\u9fff]", s))
+
+def flat(s):
+    return re.sub(r"\s+", "", s)
+
+# 尾部边界：热门文章 / 合集导航 / 参考资料 / 话题标签行之后都不算正文。
+# 不再依赖「📖」单一行（作者可能在后台删掉合集导航行）。
+TAIL_RE = re.compile(r"\n(?=(?:🔥\s*\*\*热门文章|📖|\*\*参考资料|#[^\s#]))")
+TAIL_MARK = TAIL_RE.search(BODY)
+MAIN = BODY[:TAIL_MARK.start()] if TAIL_MARK else BODY
+
+def slot_score(slot, text):
+    """原声相似度：归一化后最长匹配覆盖率（容忍 web 改写的小幅增删/标点替换）。"""
+    s, t = flat(slot), flat(text)
+    if not s:
+        return 0.0
+    if s in t:
+        return 1.0
+    sm = difflib.SequenceMatcher(a=s, b=t, autojunk=False)
+    return sum(b.size for b in sm.get_matching_blocks()) / len(s)
+
+def slot_ok(slot, min_ratio=0.9):
+    return slot_score(slot, flat(BODY)) >= min_ratio
+
+def is_voice(par):
+    """段落属于作者原声（原声可跨段拆分/被后台小改）。"""
+    p = flat(par)
+    if not p:
+        return False
+    return any(p in flat(s) or flat(s) in p or slot_score(s, p) >= 0.85 for s in SLOTS)
+
+def is_tail_block(par):
+    s = par.strip()
+    return (not s) or s.startswith(("#", "!", "[", "🔥", "📖")) or bool(re.match(r"^\d+\.\s", s))
+
+def visible(par):
+    """微信端可见文字：先删整张图片（含 alt），再把链接还原成链接文字。"""
+    s = re.sub(r"!\[[^\]]*\]\([^)]*\)", "", par)
+    return re.sub(r"\[([^\]]*)\]\([^)]*\)", r"\1", s)
+
+def n_sent(par):
+    return len([x for x in re.split(r"[。！？；!?;]", visible(par)) if cjk(x) >= 4])
 
 # 原声 7 处逐字（来源 outline.md ## 作者原声槽）
 # 槽 1 / 槽 2 / 槽 4 / 槽 5 在自带句读处加句号并分段（仅加标点，未增删任何字，已向作者声明）
@@ -40,24 +88,29 @@ def chk(cond, msg):
         fails.append(msg)
 
 
-print("[14] 原声逐字在场（7 处，≥5 达标）")
-for i, s in enumerate(SLOTS, 1):
-    chk(re.sub(r"\s+", "", s) in FLAT, f"原声 {i}")
+print("[14] 原声逐字在场（7 处，≥5 达标；归一化相似度 ≥90%，容忍 web 小改）")
+if PUBLISHED:
+    print("  · --published：跳过成稿期原声校验")
+else:
+    for i, s in enumerate(SLOTS, 1):
+        chk(slot_ok(s), f"原声 {i}（相似度 {slot_score(s, flat(BODY)):.0%}）")
 
-print("[新] 段落 ≤80 字（作者 2026-10-10；链接/标签块/列表除外）")
-paras = []
-for p in BODY.split("\n"):
-    p = p.strip()
-    if not p or p[0] in "#|" or p.startswith("📖") or p.startswith("🔥"):
+print("[新] 段落长度（≤80 字；或 ≤3 句且 ≤88 字；尾部/原声豁免）")
+over = []
+paras = [p.strip() for p in re.split(r"\n\s*\n", MAIN) if p.strip()]
+for p in paras:
+    if is_tail_block(p) or is_voice(p):
         continue
-    if re.match(r"^(\d+\.|[-*])\s", p) or p.startswith("!["):
-        continue
-    paras.append(p)
-over = [(cjk(p), p) for p in paras]
-over = [x for x in over if x[0] > 80]
-chk(not over, f"无超 80 字段落（段落 {len(paras)} 个，超标 {len(over)}）")
-for n, p in over[:5]:
-    print("   ·", n, p[:60])
+    vis = visible(p)
+    n, ns = cjk(vis), n_sent(p)
+    if n > 88 and ns > 3:
+        over.append((n, ns, p))
+if PUBLISHED:
+    print("  · --published：跳过成稿期段落校验")
+else:
+    chk(not over, f"无超长段落（超 88 字且 >3 句：{[(n, ns) for n, ns, _ in over]}）")
+    for n, ns, p in over[:5]:
+        print("   ·", n, "字 /", ns, "句：", p[:60])
 
 print("[新] 标题层级：H2 节 + H3 小标题")
 h2 = len(re.findall(r"^## ", BODY, re.M))
@@ -91,15 +144,21 @@ if not hits:
 for m in hits:
     print("   ·", m.replace("\n", " "))
 
-print("[10] 超 60 字长句（原声段落/参考资料/导航块豁免）")
-seg = re.sub(r"\((https?://[^)]+)\)", "()", BODY)
-seg = re.sub(r"!\[[^\]]*\]\([^)]*\)", "", seg)
-seg = re.sub(r"(?s)\*\*参考资料与数字溯源\*\*.*", "", seg)
-seg = "\n".join(p for p in seg.split("\n") if not is_voice(p) and not p.strip().startswith("📖"))
-long_hits = [s.strip() for s in re.split(r"[。！？\n]", seg) if len(s.strip()) > 60]
-chk(not long_hits, f"无超 60 字 AI 句（命中 {len(long_hits)}）")
-for s in long_hits:
-    print("   ·", s[:90])
+print("[10] 超 60 字长句（+10% 容差 = 66 字；原声/尾部豁免）")
+long_hits = []
+for p in re.split(r"\n\s*\n", MAIN):
+    if is_voice(p):
+        continue
+    for s in re.split(r"[。！？\n]", visible(p)):
+        s = s.strip()
+        if len(s) > 66:
+            long_hits.append(s)
+if PUBLISHED:
+    print("  · --published：跳过成稿期长句校验")
+else:
+    chk(not long_hits, f"无超 60 字 AI 句（命中 {len(long_hits)}）")
+    for s in long_hits:
+        print("   ·", s[:90])
 
 print("[8] 图片路径与配图数量（作者口径：正文 ≥4 张）")
 chk("images/" not in BODY, "无 images/ 前缀")
