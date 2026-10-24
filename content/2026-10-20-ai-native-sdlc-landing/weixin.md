@@ -1,6 +1,6 @@
 ---
 title: "AI Native SDLC 能落地吗：成本、独立性与验收"
-wechatUrl: ""
+wechatUrl: "https://mp.weixin.qq.com/s/03eMdY9pGwMNAheLJ7uDBg"
 author: "数解AI"
 date: "2026-10-20"
 type: "落地篇"

@@ -1,0 +1,202 @@
+[
+ {
+  "date": "2026-10-07",
+  "title": "微软用 Go 重写 TypeScript，他一个人用 C++ 又写了一遍",
+  "channels": {
+   "推荐": 95.5,
+   "公众号消息": 2.9,
+   "聊天会话": 1.2,
+   "朋友圈": 0.5,
+   "公众号主页": 0.4,
+   "其它": 0.1,
+   "搜一搜": 0.0
+  },
+  "reads": "1,192",
+  "completion": "37%",
+  "avgMinutes": "2.52 分钟",
+  "shares": "19",
+  "comments": "18",
+  "favorites": "6",
+  "url": "https://mp.weixin.qq.com/misc/appmsganalysis?action=detailpage&msgid=2247486678_1&publish_date=2026-10-07&type=int&pageVersion=1&token=620648624&lang=zh_CN"
+ },
+ {
+  "date": "2026-09-07",
+  "title": "c++之父锐评AI，到底谁膨胀的更厉害",
+  "channels": {
+   "推荐": 93.8,
+   "公众号消息": 4.6,
+   "聊天会话": 1.0,
+   "朋友圈": 0.9,
+   "公众号主页": 0.1,
+   "其它": 0.1,
+   "搜一搜": 0.0
+  },
+  "reads": "930",
+  "completion": null,
+  "avgMinutes": "0.57 分钟",
+  "shares": "5",
+  "comments": "3",
+  "favorites": "3",
+  "url": "https://mp.weixin.qq.com/misc/appmsganalysis?action=detailpage&msgid=2247486029_1&publish_date=2026-09-07&type=int&pageVersion=1&token=620648624&lang=zh_CN"
+ },
+ {
+  "date": "2026-09-07",
+  "title": "DeepSeek为什么会死循环?OOD是死穴",
+  "channels": {
+   "推荐": 83.6,
+   "公众号消息": 11.5,
+   "聊天会话": 1.9,
+   "朋友圈": 1.9,
+   "公众号主页": 1.9,
+   "其它": 0.0,
+   "搜一搜": 0.0
+  },
+  "reads": "538",
+  "completion": null,
+  "avgMinutes": "0.48 分钟",
+  "shares": "4",
+  "comments": "7",
+  "favorites": "6",
+  "url": "https://mp.weixin.qq.com/misc/appmsganalysis?action=detailpage&msgid=2247486034_1&publish_date=2026-09-07&type=int&pageVersion=1&token=620648624&lang=zh_CN"
+ },
+ {
+  "date": "2026-09-24",
+  "title": "同样 1M 上下文，KV 缓存差 15 倍：四家架构差在哪一层",
+  "channels": {
+   "推荐": 74.9,
+   "公众号消息": 10.8,
+   "聊天会话": 7.3,
+   "朋友圈": 5.4,
+   "公众号主页": 3.1,
+   "其它": 0.4,
+   "搜一搜": 0.0
+  },
+  "reads": "259",
+  "completion": "14%",
+  "avgMinutes": "1.13 分钟",
+  "shares": "45",
+  "comments": "5",
+  "favorites": "22",
+  "url": "https://mp.weixin.qq.com/misc/appmsganalysis?action=detailpage&msgid=2247486486_1&publish_date=2026-09-24&type=int&pageVersion=1&token=620648624&lang=zh_CN"
+ },
+ {
+  "date": "2026-09-30",
+  "title": "流形假设：15 万像素的图片，AI 凭什么只用 43 个数就认得？",
+  "channels": {
+   "推荐": 64.8,
+   "公众号消息": 27.0,
+   "聊天会话": 4.8,
+   "朋友圈": 3.5,
+   "公众号主页": 1.3,
+   "其它": 0.0,
+   "搜一搜": 0.0
+  },
+  "reads": "230",
+  "completion": "20%",
+  "avgMinutes": "1.50 分钟",
+  "shares": "33",
+  "comments": "3",
+  "favorites": "27",
+  "url": "https://mp.weixin.qq.com/misc/appmsganalysis?action=detailpage&msgid=2247486542_1&publish_date=2026-09-30&type=int&pageVersion=1&token=620648624&lang=zh_CN"
+ },
+ {
+  "date": "2026-08-12",
+  "title": "高维空间为什么全是壳？内积才是那把尺子",
+  "channels": {
+   "推荐": 84.7,
+   "公众号消息": 6.9,
+   "聊天会话": 4.8,
+   "朋友圈": 3.2,
+   "公众号主页": 2.6,
+   "其它": 2.4,
+   "搜一搜": 0.2
+  },
+  "reads": "1,768",
+  "completion": "22%",
+  "avgMinutes": "2.48 分钟",
+  "shares": "349",
+  "comments": "7",
+  "favorites": "173",
+  "url": "https://mp.weixin.qq.com/misc/appmsganalysis?action=detailpage&msgid=2247485154_1&publish_date=2026-08-12&type=int&pageVersion=1&token=620648624&lang=zh_CN"
+ },
+ {
+  "date": "2026-09-28",
+  "title": "小米花 2345 万训强化学习，评分器只分到 12.7%？",
+  "channels": {
+   "推荐": 75.4,
+   "公众号消息": 13.4,
+   "聊天会话": 6.3,
+   "朋友圈": 4.2,
+   "公众号主页": 2.1,
+   "其它": 0.7,
+   "搜一搜": 0.0
+  },
+  "reads": "142",
+  "completion": "23%",
+  "avgMinutes": "0.93 分钟",
+  "shares": "9",
+  "comments": "3",
+  "favorites": "2",
+  "url": "https://mp.weixin.qq.com/misc/appmsganalysis?action=detailpage&msgid=2247486521_1&publish_date=2026-09-28&type=int&pageVersion=1&token=620648624&lang=zh_CN"
+ },
+ {
+  "date": "2026-10-12",
+  "title": "训练一步要算几千亿个导数，自动微分如何加速几千倍",
+  "channels": {
+   "推荐": 54.1,
+   "公众号消息": 28.1,
+   "聊天会话": 6.7,
+   "朋友圈": 6.7,
+   "公众号主页": 4.4,
+   "其它": 1.5,
+   "搜一搜": 0.0
+  },
+  "reads": "135",
+  "completion": "20%",
+  "avgMinutes": "1.22 分钟",
+  "shares": "16",
+  "comments": "3",
+  "favorites": "11",
+  "url": "https://mp.weixin.qq.com/misc/appmsganalysis?action=detailpage&msgid=2247486721_1&publish_date=2026-10-12&type=int&pageVersion=1&token=620648624&lang=zh_CN"
+ },
+ {
+  "date": "2026-10-04",
+  "title": "DeepSeek越权最凶：查余额竟把卡明细都翻了",
+  "channels": {
+   "推荐": 57.3,
+   "公众号消息": 18.5,
+   "聊天会话": 12.9,
+   "朋友圈": 9.7,
+   "公众号主页": 3.2,
+   "其它": 0.0,
+   "搜一搜": 0.0
+  },
+  "reads": "124",
+  "completion": null,
+  "avgMinutes": "0.70 分钟",
+  "shares": "1",
+  "comments": "4",
+  "favorites": "0",
+  "url": "https://mp.weixin.qq.com/misc/appmsganalysis?action=detailpage&msgid=2247486615_1&publish_date=2026-10-04&type=int&pageVersion=1&token=620648624&lang=zh_CN"
+ },
+ {
+  "date": "2026-10-21",
+  "title": "骂 MCP 最响的人，最终把 MCP 请进了核心",
+  "channels": {
+   "推荐": 62.2,
+   "公众号消息": 21.8,
+   "聊天会话": 10.1,
+   "朋友圈": 3.4,
+   "公众号主页": 2.5,
+   "其它": 0.8,
+   "搜一搜": 0.0
+  },
+  "reads": "119",
+  "completion": "21%",
+  "avgMinutes": "1.27 分钟",
+  "shares": "3",
+  "comments": "3",
+  "favorites": "2",
+  "url": "https://mp.weixin.qq.com/misc/appmsganalysis?action=detailpage&msgid=2247486796_1&publish_date=2026-10-21&type=int&pageVersion=1&token=620648624&lang=zh_CN"
+ }
+]

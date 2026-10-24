@@ -1691,9 +1691,9 @@ articles:
 - slug: 2026-10-20-ai-native-sdlc-landing
   title: AI Native SDLC 能落地吗：成本、独立性与验收
   series: 软件工程
-  status: draft_saved
-  published_date: null
-  wechat_url: null
+  status: published
+  published_date: '2026-10-20'
+  wechat_url: https://mp.weixin.qq.com/s/03eMdY9pGwMNAheLJ7uDBg
   media_id: kOcXH4SytIYVIpYksTGfHje-jn9LjeTwiOwkq2UqyqpeYYmafGJi30eZihtuys1k
   cover_media_id: kOcXH4SytIYVIpYksTGfHqH9dSt3yC9TsEw1VTTkmyA6OjTqs5U-kIXJBY_B3_uI
   files:
@@ -1706,21 +1706,85 @@ articles:
   - '✍️ 原声 5 槽逐字进稿；H2=6；配图 4 张脚本图（反馈延迟四档 / NFR 三层 / 阶梯计费 cliffs / n_eff + β）+ 封面 21:9；CJK 2254（含尾部，口径内）。'
   - '📦 2026-10-17 12:30（BJT）存草稿箱；20:43（BJT）随诊断篇一并重存（作者同一指令）——尾部导航由「软件工程合集（发布后补链接）：写代码已经不再是瓶颈 → AI Native SDLC 能落地吗」统一为 `📖 **软件工程**：写代码已经不再是瓶颈 → **AI Native SDLC 能落地吗（本篇）**`，封面与 4 张正文图全量重传，草稿 media_id 保持 …uys1k（同「add 临时稿 → update 旧稿 → delete 临时稿」三步）。'
   - '⏳ 后台待作者确认：**声明原创 + 勾选合集「软件工程」**（合集页 URL 尚未建档，尾部导航暂不带链接）+ **定时 2026-10-18 / 10-20 22:00**；发布后回填 frontmatter `wechatUrl` 与台账。'
-  - '📦 2026-10-18 21:52（BJT）原地更新（作者指令「更新 SDLC 里面的相关链接，然后发布到草稿箱」，诊断篇已发布）：① 本地 `weixin.md` 尾部导航补诊断篇微信链接 `📖 **软件工程**：[写代码已经不再是瓶颈](https://mp.weixin.qq.com/s/ljp5ovIFPI3l9rmlGDDZUw) → **AI Native SDLC 能落地吗（本篇）**`，门禁复跑 PASS（`quality_check.py` + `check_wechat_links.py` 全溯源）；② 草稿箱经 vps-us remote-api 隧道「`draft/batchget` 取旧稿 → 导航行补 `<a>` → `draft/update` 原地覆盖」——**media_id 保持 …uys1k**、errcode 0，微信自动把短链重写为 `__biz=MzkyMzQyODExNQ==&mid=2247486789&idx=1&sn=5f810f0e…` 全址；草稿箱仍 1 篇，**定时群发 / 声明原创 / 合集勾选绑定不受影响**。'
+  - '✅ 2026-10-21 对账（作者供链 https://mp.weixin.qq.com/s/03eMdY9pGwMNAheLJ7uDBg，10-20 22:00 档定时发出）：status draft_saved→published、published_date 2026-10-20、wechat_url + frontmatter wechatUrl 三处同步；ready_queue 清空、draft_saved 1→0。'
+- slug: 2026-10-21-pi-codemode-mcp
+  title: 骂 MCP 最响的人，最终把 MCP 请进了核心
+  series: AI Agent 工程
+  status: published
+  published_date: '2026-10-21'
+  wechat_url: https://mp.weixin.qq.com/s/qp7XGIEJdMgSto5YN2T-rg
+  media_id: kOcXH4SytIYVIpYksTGfHp_3uT1Xdup2yzMrnHSDBPNrTtluKaTh6Zy2ytCreH5K
+  cover_media_id: null
+  files:
+    weixin: true
+    outline: true
+    cover: true
+    quality_check: true
+  notes:
+  - '🎯 立项：作者 Obsidian vault 笔记《MCP处置三条路-Pi-ClaudeCode-Codex的三档工具暴露》为底本；grill 逐问收敛（.grill/pi-codemode-mcp.md）。主轴=他山之石（pi 从骂 MCP 到请回 MCP 的完整时间线），三家对比部分按作者决定拆去第二篇（第二篇 grill 进行中）。'
+  - '✍️ 成稿要点：结构=时间线反转钩子 → Copilot 三数字（128k/1M 亲历、34k→80k、146k=73% 用户实测口径）+ 作者亲历段 → 2026-04 Earendil 收购 pi → codemode 机制（brains vs hands + 沙箱三无 + 经理类比原声）→ 默认关四理由 + vibes based（vibed bias 原文拼写保留）→ 三层落点接 Context Rot 篇。原声 7/7 逐字进稿；质量核查 17 项 PASS；配图 6 张正文脚本图 + 封面 21:9（文字块 24.7% ≤25%）；外文人名英文原文（Armin Ronacher / Mario Zechner，作者 2026-10-18 口径）。'
+  - '📌 作者归属一手修正（对照笔记旧版）：Armin Ronacher 2025-07《Tools: Code Is All You Need》是外部批评者（后创立 Earendil），pi 作者是 Mario Zechner（2026-04 Earendil 收购 pi 后加入）——开头钩子按修正后链条写。'
+  - '📦 存草稿箱（remote-api via vps-us，grace+blue，--no-cite 保微信内链内联）：draft media_id kOcXH4SytIYVIpYksTGfHp_3uT1Xdup2yzMrnHSDBPNrTtluKaTh6Zy2ytCreH5K，封面 + 6 张正文图全部上传成功。'
+  - '✅ 2026-10-21 对账（作者供链 https://mp.weixin.qq.com/s/qp7XGIEJdMgSto5YN2T-rg，20:00 实发、早于排的 22:00 档）：本条为发布后补录（此前未入台账），status published、published_date 2026-10-21、wechat_url + frontmatter wechatUrl 三处同步。'
+  - '🔄 2026-10-24 后台改动回拉（mp 页面直取 + js_content 转 md 逐句比对）：① 后台 msg_title 改为「骂 MCP 最响的人，最终把 MCP 请进了核心」（最后→最终），台账 title 与 frontmatter 已同步；② 正文 8 处作者改写已回写 weixin.md（开篇两段重排、用户实测/73% 语气加重、Copilot 亲历段「其实一年多以前」、最大 MCP 厂商「之一当时」+「同时，pi 却选了另一条路」、benchmark 句、结尾「下一篇拆解→有空再写吧」）；③ 尾部「📖 AI Agent 工程合集」导航行被作者删除（热门文章保留），本地已同步删除。本地与线上正文逐句比对 0 差异（链接保留本地短链形式）。'
+- slug: 2026-10-22-rust-agent-language
+  title: Rust真的是AI agent时代的最佳语言吗？192个任务辨证看看
+  series: 行业观察
+  status: published
+  published_date: '2026-10-22'
+  wechat_url: https://mp.weixin.qq.com/s/_QjsrRZ0hfxaepldCt5Lhw
+  media_id: kOcXH4SytIYVIpYksTGfHiRE1KV7ZPqF_4mIwvW2obFtBXAwzLchRmosbR4_z8pG
+  cover_media_id: kOcXH4SytIYVIpYksTGfHtQSdn1mIWhB9YSWzl30-m6FOxPRlGZglsrBvTEB1K3P
+  files:
+    weixin: true
+    outline: true
+    cover: true
+    quality_check: true
+  notes:
+  - '🎯 立项：作者 Obsidian vault 笔记《Rust是否是AI-Agent时代的最佳语言》（2026-10-09 归档）为底本；grill 4 轮逐问收敛（.grill/rust-agent-language.md）。主轴=ProgramBench 192 任务实测（简单 74.7 第一 / 难任务 24.7 垫底 / $1.40 最贵）。DHH 150 倍线 10-09 已深写，本篇只一句回调（带内链），主线换成「有答案纸的移植才进 Rust」（Anders 拒 Rust 选 Go → bun check / tsc-rs 用 agent 搬进 Rust 且更快）。'
+  - '✍️ 成稿要点：作者声音=基础设施派亲历（skill 工具 Python/TS→Rust 重写，原声 7 槽逐字进稿 ≥5 下限）；六节问答链过渡（§3 末「Rust 输在哪？」→ §4 首完整句接住，禁短促断言）；新增核查规则 18（段落衔接与章节过渡）与 19（结尾引用文献核查）已写入 docs/article-quality-check.md 并同步 AGENTS.md 索引；可视字数 2498（≤2500）；19 项机器可查部分 ALL PASS（quality_check.py）。'
+  - '📦 存草稿箱（remote-api via vps-us，grace+blue，citeStatus=true，一次通过 EXIT=0）：draft media_id kOcXH4SytIYVIpYksTGfHiRE1KV7ZPqF_4mIwvW2obFtBXAwzLchRmosbR4_z8pG，cover media_id kOcXH4SytIYVIpYksTGfHtQSdn1mIWhB9YSWzl30-m6FOxPRlGZglsrBvTEB1K3P；5 张正文图 + 封面上传成功（01/03/04 自动压 JPEG q82）。'
+  - '⏳ 后台待作者确认：声明原创 + 定时 2026-10-22 22:00（10-21 档已被 pi-codemode 篇 20:00 实发占用）；发布后回填 frontmatter wechatUrl + 台账 + og 逐字核验。'
+  - '✅ 2026-10-24 对账（作者供链 https://mp.weixin.qq.com/s/_QjsrRZ0hfxaepldCt5Lhw，ct=1792670400 → 2026-10-22 20:00）：status draft_saved→published、published_date/wechat_url + frontmatter wechatUrl 三处同步。⚠️ 后台标题被作者改写：拟稿「Rust是AI agent时代的最佳语言？192个任务测完，答案分两半」→ 发布「Rust真的是AI agent时代的最佳语言吗？192个任务辨证看看」，台账 title 与 frontmatter 已按 msg_title 同步（封面仍为拟稿文案，未重制）。'
+  - '🔄 2026-10-24 后台改动回拉（mp 页面直取 + js_content 转 md 逐句比对）：正文 7 处作者改写已回写 weixin.md——① 首段「原因很简单：」；② 首两段合并；③ 「结果答案还是需要分两半来辨证看待」；④「18 倍提升！」；⑤「结果不出意外地分为硬币的两面了」并合并原两段；⑥ 第五节新增一句双内链（微软 Go 篇 + 一篇 Copilot 80 万行 Rust 重构文，后者为作者后台新增的外部长链，本机取不到短链故保留 mp 长链）；⑦ 结尾「下一篇预告」改为「有空我们可以再仔细探究下……harness 层面到底发生了怎样的变化」；另有两处段落合并。⚠️ 作者在后台给两个列表项加了手动「•」字符（与 Markdown 列表符号重复），本地按列表格式保留、未复制该字符。除该列表符号外，本地与线上正文逐句比对 0 差异。'
+- slug: 2026-10-23-mcp-tool-exposure-convergence
+  title: pi 和 OpenAI 不约而同：MCP 工具，答案本来就应该长这样
+  series: AI Agent 工程
+  status: published
+  published_date: '2026-10-23'
+  wechat_url: https://mp.weixin.qq.com/s/jJHG1bn2_F10kmZ0pBCm5Q
+  media_id: kOcXH4SytIYVIpYksTGfHichj2fD3n3isuLaZkuwq6nZ-Y7v20mGj8B_9RPIgn8U
+  cover_media_id: kOcXH4SytIYVIpYksTGfHiy9jAPnzpW_HBxf-OjtlcJo6kEi4ydghI6bET7-NVM4
+  files:
+    weixin: true
+    outline: true
+    cover: true
+    quality_check: true
+  notes:
+  - '🎯 立项：第一篇（2026-10-21-pi-codemode-mcp）grill 时作者即定「三家对比拆第二篇」；grill 六问收敛（.grill/pi-codemode-convergence.md）。主轴=收敛（三家没商量走到同一个答案：三档暴露）；落点=「三家都默认关」=收敛的注脚（方向对、收益不确定、成本确定）；结构=横切四节（工具声明怎么进上下文 / 代码跑在哪一侧 / 大结果怎么管 / 都不默认开）。'
+  - '✍️ 成稿要点：开头钩子=Codex PR 进场（作者定稿末句「谁也没牵头，谁也没跟风。答案本来就应该长这样，才是唯一合理的选项」）；原声 7/7 逐字进稿（槽 1 沿用笔记 §11 Q7 后半，槽 2-7 新采集）；H2=5；配图 5 张脚本图（收敛时间线 / 三档对照 / 三种 placement / 结果侧管法 / 默认关状态）+ 封面 21:9（文字块 24.7%）；正文 1756 字。'
+  - '🔍 事实核查（2026-10-21/22，data-freshness）：PR #36781 merged 2026-08-03 原话确认；**笔记时序修正**——PR #29486（merged 2026-06-22）Codex 2026-06 已默认走 tool search（早于 8 月三档 PR 两个月，收敛链 Anthropic 2026-01 → Codex 2026-06 → 2026-08 → pi 2026-10 更硬）；features.code_mode.enabled 官方配置页现读「under development and off by default」一字未改；issue #29122 open（稳定版 IDE 静默激活开发中代码模式、模型签发 terminate:true、10 小时调用≈3600 轮次）；Anthropic 四数字双源现读（engineering 博客 2025-11-24 + Claude Code 文档：50 工具 10-20K tokens / 30-50 工具准确率下降 / 默认最多加载 5 个 / ENABLE_TOOL_SEARCH=auto 的 10% 阈值）。Codex 第三方 per-tool 档位表砍掉（非官方口径）。'
+  - '📦 2026-10-22 存草稿箱（remote-api via vps-us，grace+blue，--no-cite 保微信内链内联）：draft media_id kOcXH4SytIYVIpYksTGfHichj2fD3n3isuLaZkuwq6nZ-Y7v20mGj8B_9RPIgn8U、cover media_id kOcXH4SytIYVIpYksTGfHiy9jAPnzpW_HBxf-OjtlcJo6kEi4ydghI6bET7-NVM4；封面 + 5 张正文图全部上传成功。'
+  - '⏳ 后台待作者确认：声明原创 + 勾选合集「AI Agent 工程」+ 定时 **2026-10-23 20:00**（作者 10-21 从 10-22 顺延给 Rust 篇让档）；发布后回填 frontmatter wechatUrl 与台账。'
+  - '✅ 2026-10-24 对账（作者供链 https://mp.weixin.qq.com/s/jJHG1bn2_F10kmZ0pBCm5Q，ct=1792764000 → 2026-10-23 22:00，晚于排的 20:00 档）：status draft_saved→published、published_date/wechat_url + frontmatter wechatUrl 三处同步；后台 msg_title 与拟稿一致、未被精简。'
+  - '🔄 2026-10-24 后台改动回拉（mp 页面直取 + js_content 转 md 逐句比对）：正文 10 处作者改写已回写 weixin.md——开篇「合入了一个不大的 PR…改动的总结是这样写的」、pi 1.0 归属改写、「回溯大半年」句、上一篇链接前置并改用「最终」标题、Cloudflare 段拆段、分层给药→下药、Context Rot 句补「已经深入拆解过这个问题了」、pi 四档细节段扩写、bash 脚本与强化学习两句改写、第四节「决定/谁都没敢」与 Codex 事故句改写、结尾 CTA 改「和你一起慢慢深入拆解」并合并互动问句；尾部「📖 AI Agent 工程合集」导航行被作者删除（热门文章保留），本地已同步删除。⚠️ 线上两处作者笔误按原样回写：「窗口。、」多余顿号、「对与按需搜索」应为「对于」——待作者决定是否在后台修正（本地如需再存草稿箱应先修）。除笔误外，本地与线上正文逐句比对 0 差异。'
 
 summary:
-  total: 109
+  total: 112
   by_status:
-    published: 108
+    published: 112
     drafting: 0
-    draft_saved: 1
+    draft_saved: 0
   drafting_queue: []
-  ready_queue:
-  - 2026-10-20-ai-native-sdlc-landing
+  ready_queue: []
   scheduled_queue: []
   planned_queue: []
-  next_publish_date: '2026-10-20'  # 软件工程落地篇 22:00；诊断篇已于 10-18 22:00 定时发出
+  next_publish_date: null
 plan_notes:
+- '2026-10-24 后台改动回拉 + 数据审计（作者发起）：① 三篇近期文章（10-21 pi-codemode / 10-22 Rust / 10-23 三家收敛）作者供链后对账——status→published、published_date/wechat_url/frontmatter 三处同步，summary 重算 published 112 / draft_saved 0、ready_queue 清空；② 用 mp 页面直取 + `js_content` 转 md 逐句比对，把作者的线上改写全部回写 weixin.md（8 + 7 + 10 处文案、两篇尾部合集导航被删、Rust 篇新增双内链），本地与线上逐句 0 差异（仅保留本地短链形式）；后台标题改动按 msg_title 回写（pi 篇「最后→最终」、Rust 篇「Rust真的是……192 个任务辨证看看」）；⚠️ 三家收敛篇线上两处作者笔误（「窗口。、」、「对与按需搜索」）按原样回写待作者定夺；③ ⚠️ 质量门禁现状：三篇的 `quality_check.py` 均报红（pi 原声槽 2 缺失、Rust 吐字 2568 > 2500、收敛篇原声槽 4 改写 + 4 段 >80 字 + 3 句 >60 字）——**原因是作者在后台改写了这些句子，本地按「与线上一致」同步后旧断言不再成立**，不是回归；后续若要从本地重存草稿箱，需先与作者确认是否按线上版放宽断言；④ 数据审计：2026-10-24 10:01 快照（内容/用户/收入，dataThrough 10-23）已 append + validate 通过；append-sources 至 10-23（台账 88 天）；单篇饼图 10 篇归档 docs/wechat-data-article-channels-2026-10-24.json；报告 HTML 重生；`docs/wechat-data-insights.md` 新增 0ak 节，AGENTS/wechat-ops/article-title-seo/menu-config 同步。⚠️ 数据基建：appmsgpublish 66 条老记录无时间戳（含 10-07 微软 Go 篇），首条快照漏长尾，已用「历史快照 + 台账」回填日期并追加补充快照。'
+- '2026-10-22 三家收敛篇入箱：《pi 和 OpenAI 不约而同：MCP 工具，答案本来就应该长这样》（content/2026-10-23-mcp-tool-exposure-convergence/，排期 10-23 20:00，作者 10-21 从 10-22 顺延给 Rust 篇让档）。当日全流程：grill 六问（主轴=收敛 / 落点=三家都默认关 / 结构=横切四节 / 钩子=Codex PR 进场 + 作者末句 / 清单照单 / 标题拍板）→ 大纲 → 原声槽 7 处逐槽交互（1 沿用 + 6 新采集）→ 成稿 → 门禁 PASS（原声 7/7、段落/长句 0 超标、正文 1756 字）→ 配图 5 张脚本图 + 封面。**事实核查两处升级**：① 笔记 Codex 时序修正（PR #29486 2026-06-22：Codex 默认走 tool search 早于 8 月三档 PR 两个月）；② Anthropic 四数字双源现读（engineering 博客 + Claude Code 文档，10% 阈值出自 ENABLE_TOOL_SEARCH=auto）。**配图三处返工**：02 三档对照图行列转置（cells 维度用反）；04 结果侧图条形长度无语义误导（改等宽条目）；05 默认关图多行文字重叠（改卡片式垂直分层）。summary 重算 total 111→112 / draft_saved 1→2，ready_queue 追加本篇（Rust 篇在前），next_publish_date 保持 10-22。'
+- '2026-10-21 新篇入箱：Rust 语言实测篇《Rust是AI agent时代的最佳语言？192个任务测完，答案分两半》（content/2026-10-22-rust-agent-language/）当日全流程：grill 4 轮 → 大纲 → 原声 7 槽逐槽交互（≥5 门禁）→ 成稿 → 门禁（含作者本轮新立第 18/19 项规则）→ 配图 6 张（封面 21:9 脚本叠金题字「192 个任务之后 / Rust 还是最佳语言？」+ 02 数字脚本图 + 3 张 AI 概念图 + 05 分层脚本图）→ 存草稿箱（remote-api via vps-us，一次通过）。作者本轮两次规则增补：① 段落衔接与章节过渡（首段接钩禁短促断言）；② 结尾引用文献事实准确性——均已写入 docs/article-quality-check.md 第 18/19 项 + AGENTS.md 索引。summary 重算 total 110→111 / draft_saved 0→1，ready_queue→本篇，next_publish_date→10-22。⚠️ 后台待作者确认：声明原创 + 定时 10-22 22:00 + 发布后回填 wechatUrl。'
+- '2026-10-21 对账两篇：① SDLC 落地篇（2026-10-20-ai-native-sdlc-landing）作者供链 https://mp.weixin.qq.com/s/03eMdY9pGwMNAheLJ7uDBg（10-20 22:00 档）——status draft_saved→published、published_date/wechat_url/frontmatter wechatUrl 三处同步；② pi-codemode 篇（2026-10-21-pi-codemode-mcp）作者供链 https://mp.weixin.qq.com/s/qp7XGIEJdMgSto5YN2T-rg（10-21 20:00 实发，早于排的 22:00 档）——本条为发布后补录（此前未入台账），status published、published_date 2026-10-21、wechat_url + frontmatter wechatUrl 三处同步。summary 重算 total 109→110 / published 108→110 / draft_saved 1→0，ready_queue 清空、next_publish_date 置空（第二篇「三家对比」grill 进行中，档期待定）。'
 - '2026-10-18 诊断篇发布对账 + 落地篇原地更新：作者供链 https://mp.weixin.qq.com/s/ljp5ovIFPI3l9rmlGDDZUw（10-18 22:00 定时档，后台有成篇改写但 msg_title 与本地一致）——frontmatter wechatUrl / 台账 wechat_url 三处回填，status→published（107→108、draft_saved 2→1），ready_queue 仅剩落地篇、next_publish_date 顺延 10-20。落地篇尾部导航补诊断篇微信链接后走「batchget → 补 <a> → draft/update 原 media_id」原地更新（不新增/删除草稿，保定时与原创合集绑定），门禁复跑 PASS。'
 - '2026-10-17 两篇软件工程（AI Native SDLC）入箱 + 重存：诊断篇（10-18 档）+ 落地篇（10-20 档）由 vault 笔记一次立项两篇，12:29 / 12:30 首次存草稿箱后作者要求重存。重存前修掉诊断篇尾部遗留的 `__NAV_PLACEHOLDER__` 占位符与重复标签行，两篇尾部导航统一为「📖 **软件工程**：篇一 → 篇二（本篇）」风格（合集页 URL 未建档，暂不带链接）。重存走「draft/add 临时稿 → draft/update 覆盖旧 media_id → draft/delete 临时稿」，草稿箱终态 2 篇、media_id 与首存一致。⚠️ 后台待办：声明原创 + 勾合集「软件工程」+ 定时 10-18 / 10-20 22:00；发布后回填 wechatUrl。'
 - '2026-10-15/16 新篇入箱：开源大模型技术揭秘线 MASA 矩阵逼近篇《注意力分数高 66 倍的那列，为什么反而带来 98% 的误差？》（目录 content/2026-10-16-masa-matrix-approximation/，排期 10-16 22:00）。当日全流程：grill 逐问收敛（含 2026-10-15 一轮 vault 三篇 PDF 复核 + 一轮自测实验）→ 大纲 → 原声 8 槽逐槽交互（作者手打 5 + 沿用 3）→ 成稿 → 门禁 PASS → 配图 2 张 + 封面。**本轮两次口径修正**：① 自测扫描第一版**跑反了**（单列当单元，方向越随机 mass 误差反而下降），改块粒度后才是文章里的 93% vs 51%——「单元内的相互作用」只在多 entry 单元上成立；② 封面底图首版发光列为金色，与金色标题撞色并让 check_cover 误判字块 85.7%，改白青色后 PASS。⚠️ 环境：numpy/matplotlib 不在系统 python（.venv-mdnice 亦已断链），本轮新建 `~/.venvs/content-gen-charts`（python 3.12 + numpy 2.5.4 + matplotlib 3.11.2），**装包必须走 `-i https://pypi.tuna.tsinghua.edu.cn/simple`——pypi 默认 CDN 下载会挂死**。'
