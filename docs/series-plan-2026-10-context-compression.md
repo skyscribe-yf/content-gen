@@ -1,7 +1,7 @@
 # 上下文压缩与记忆 · 四篇系列写作计划
 
-> 状态：**C1 已发布**（2026-10-25 20:00，[微信链接](https://mp.weixin.qq.com/s/XdAACdIWD2F6d8rq-ZszKg)，目录 `content/2026-10-25-context-compression-info-bound/`）。grill 日志：[`.grill/context-compression-info-bound.md`](../.grill/context-compression-info-bound.md)。C2/C3/C4 未锁。
-> 下一步：C2 钱账（缓存成本模型）选题/grill——C1 数据已可复用（202 次 compaction 成本样本）。
+> 状态：**C1 已发布**（2026-10-25 20:00，[微信链接](https://mp.weixin.qq.com/s/XdAACdIWD2F6d8rq-ZszKg)，目录 `content/2026-10-25-context-compression-info-bound/`）；**C2 已发布**（2026-10-27 21:13，[微信链接](https://mp.weixin.qq.com/s/p-2YkAFT6sBwdU5_dw5O2g)，目录 `content/2026-10-27-compaction-break-even/`）；**C3 已入草稿箱**（2026-10-28 22:00 档，目录 `content/2026-10-28-compaction-constraint-survival/`，draft media_id …TSeoLt）。grill 日志：C1 `.grill/context-compression-info-bound.md` / C2 `.grill/compaction-break-even.md` / C3 `.grill/compaction-constraint-survival.md`。
+> 下一步：**C4 记忆账（外传）**——C3 发布后按系列规矩隔一周再开题（10-21~23 三连发 + C1/C2/C3 已连发三篇，C4 需隔周）；开题前先查 C3 实际阅读数据。
 > 本文件只记录计划与证据口径；正文素材仍以笔记原文和论文原文为准。
 
 ## 0. 一句话结论
@@ -39,7 +39,7 @@
 |---|---|---|---|---|---|
 | 1 | 信息账 | ACON 401 案例、KEEP-Bench、TRACE、率失真综述 2607.08032 | Claude Code / Codex 的 compaction 行为 | 论文 + 数学推导 | 未写 |
 | 2 | 钱账 | **Pi token logs：202 次 compaction** + Anthropic `clear_at_least` + Codex per-tool 限额 | 本机 107 MB 日志、4,032 个会话 | 成本模型 + 本机数据 | 未写 |
-| 3 | 安全账 | Codex v0.152 压缩丢用户指令/Guardian 授权（第三方，待核）+ Governance Decay + relinking | DSH fail-closed / unknown outcome 不自动重试 | 论文全文 + changelog | 未写 |
+| 3 | 安全账 | Codex commit #41852（2026-10-27 一手）+ Governance Decay + relinking + 本机约束幸存率扫描 | DSH fail-closed / unknown outcome 不自动重试 | 论文摘要 + commit + 本机全量扫描 | ✅ 已入箱 2026-10-28（content/2026-10-28-compaction-constraint-survival/） |
 | 4 | 记忆账 | DSH 事件溯源日志 vs Mem0 抽取/合并/检索；Raw-RAG 6/7 第一；62% 过期判定 | Kimi 50 条×500 字、GLM 200 行、ZCode 刻意不记 | Mem0/Raw-RAG/MemoryTax + DPI | 未写（外传） |
 
 **篇目顺序建议**：信息账 → 钱账 → 安全账 → 记忆账。
@@ -419,3 +419,4 @@ $$V(M)=\mathbb E[\Delta L]-c(M)$$
 
 - 2026-10-26：C1 已发布（2026-10-25 20:00，[微信链接](https://mp.weixin.qq.com/s/XdAACdIWD2F6d8rq-ZszKg)），下一步 C2 钱账。完成作者拍板 #3 的**受控统计**（§4.4：168 同模型 5/5 窗口、121 可回本检验；脚本 `scripts/compaction_stats.py`）。**作者排除令：ollama-cloud 计费不准，钱账数据一律不用**（粗扫 ρ 表两条 ollama 行与 37 样本回本表作废存档）。
 - 2026-10-24：建立。来源为作者 Obsidian 四篇上下文压缩/记忆笔记（`Agent上下文压缩-2026研究全景与HN讨论`、`ACON论文精读`、`ACON后续研究`、`Mem0喧嚣与后果`）+ `Pi-vs-OpenCode-vs-DeepSeekHarness` + `MCP处置三条路` 笔记 + 本机 Pi token logs / sessions 粗扫。已按作者纠正，把落点从 V4.1 模型层改为 harness 会话层。
+- 2026-10-28：**C3 安全账入草稿箱**（content/2026-10-28-compaction-constraint-survival/，排期 10-28 22:00）。全流程：grill 五问收敛（.grill/compaction-constraint-survival.md）→ 本机新实验（scripts/constraint_survival_scan.py：4,041 会话 / 202 次 compaction / 2,556 条约束实例；规则形态丢失 0.3% vs 叮嘱形态 24.4%；87.6% summary 自带 Constraints 节）→ 一手核验三件套（Governance Decay 2606.22528 / relinking 2606.21732 / **Codex commit #41852**——系列计划原记「v0.152 第三方待核」升级为 first-party）→ 原声 8/8 逐槽交互 → 正文 1,746 字 → quality_check PASS → 6 图（封面 + 3 脚本图 + 2 AI 概念图）→ remote-api 入箱。**作者两条新硬约束**：① 原声不进引用块（覆盖 C1/C2 ★ 惯例）；② 原声语气词（嗯/呃）删除。下一步 C4 记忆账隔周开题。
