@@ -1807,18 +1807,40 @@ articles:
   - '✅ 2026-10-27 终态核验（作者令「走完全部流程」）：① draft/delete API 删除首存旧稿（…Hq0uf6Zf…，errcode 0），batchget 确认草稿箱仅剩终版 1 篇；② fetch_draft.sh 回拉终版逐项核验 16 项（ρ=0.20/10 倍/1.6 轮/不到 2 轮在场、旧口径 0.29 与 0.23 元零出现、原声 2 处笔误更正版在场、29 个 MathJax 公式、图片 4 张、热门块/标签/（待发布）仅 C3 一处——全过）；③ 链接：12 锚点 = 8 个不同 sn（C1×3 + Context Rot×3 + 热门×6，与源文同构；微信短链→长链为服务端确定性转换）；④ **CDN 实际图片质量（作者要求）**：正文 4 图与本地 PNG 逐字节同规格（未转码），封面官方降采样 1280 宽 JPEG 57K（金字仅轻度边缘软化），visual-judge CDN 版 5/5 pass（含 320px 信息流缩略模拟可读）。cover_media_id 已更正为终版 thumb（…Hks7Q8gUhT…）。'
   - '⏳ 后台仅剩两步（无 API、必须作者在 mp 后台点）：终版草稿（…HnpwHzi7…）声明原创 + 勾选合集（如有）+ 定时 2026-10-27 22:00；发布后供链回填 frontmatter wechatUrl + 台账。价目已全部为官方口径直核，无需再复核。'
   - '✅ 2026-10-28 发布回填（作者供链 https://mp.weixin.qq.com/s/p-2YkAFT6sBwdU5_dw5O2g，mp 页面直取 ct=1793106790 → 2026-10-27 21:13 实发，早于 22:00 档）：status draft_saved→published、published_date 2026-10-27、wechat_url + frontmatter wechatUrl 两处同步；后台 msg_title 与拟稿一字不差、msg_desc 与 digest 一致、线上无（待发布）残留与 WECHATIMGPH_ 占位符、正文 4 图在场；appmsgid=2247486842。summary 重算 published 113→114 / draft_saved 1→0、ready_queue 清空、next_publish_date 置空。⚠️ 本轮按作者指示只回填 URL，未做正文回拉同步。'
+- slug: 2026-10-28-compaction-constraint-survival
+  title: 上下文压缩：你定的规矩，压缩后还剩几条？
+  series: 上下文压缩与记忆
+  status: draft_saved
+  published_date: '2026-10-28'
+  wechat_url: null
+  media_id: kOcXH4SytIYVIpYksTGfHvWiOBEdiioL9KWI5lYTEYmADSh7r8dO77vkTbTSeoLt
+  cover_media_id: kOcXH4SytIYVIpYksTGfHuRdmn01SKmEY0VGJa27dxNrnS9OmGFUvz-v4d78_s2X
+  files:
+    weixin: true
+    outline: true
+    cover: true
+    quality_check: true
+  notes:
+  - '🎯 立项：系列 C3 安全账（series-plan §3.3；grill 日志 .grill/compaction-constraint-survival.md，2026-10-28 五问收敛）。作者拍板：主轴=用户侧「约束别全写在会被压缩的地方」、钩子=本机约束幸存率扫描、标题方向「上下文压缩：你定的规矩，还剩几条？」、排期 10-28 22:00 紧档。'
+  - '🔬 本机实验（scripts/constraint_survival_scan.py 新建，全量 4,041 会话）：202 次 compaction、2,556 条约束实例；87.6%（177/202）summary 自带 Constraints 节；结构化规则（skill 注入）丢失 0.3%（n=2,363）vs 口语叮嘱丢失 24.4%（n=193）；54 条丢失实例人工逐条判读约 23 条去重真实约束（别删 checkpoint / 先不要生产图片 / 抓实时数据别瞎编等）。'
+  - '📎 一手核验三件套（写作前完成）：① Governance Decay arXiv:2606.22528 摘要（约束幸存违反率 0% vs 丢失 38%、软策略 8.3×、Pinning ~47 token）；② Safe to Check Unsafe to Use arXiv:2606.21732 摘要（relinking 86.9% vs 17.0%、11 防御失守）；③ **openai/codex commit #41852（2026-10-27）**——压缩移除 request_user_input 可信回答致 Guardian 审查看不到授权（系列计划原记「v0.152 第三方整理」作废，升级为 first-party commit）。'
+  - '✍️ 成稿要点：原声 8/8 逐槽交互（语气词按作者指令删除；两处语音转写误差词已标注：再绘画→再复述、合法压缩→例行压缩）；**作者新硬约束：原声不进引用块**（覆盖 C1/C2 的 ★ blockquote 惯例，quality_check 已加专项断言）；正文 1,746 字；术语 2 个（策略保持、安全税）；quality_check PASS。'
+  - '🖼️ 配图 6 张：封面 2048x768 两行金字「你定的规矩 / 压缩后还剩几条」（visual 验收通过、字块占比合规）+ 3 脚本图（幸存率对比 / 论文违反率对照 / 规矩放置三层）+ 2 AI 概念图（目标函数缺项 / 检查执行分离，无数字）。'
+  - '📦 2026-10-28 存草稿箱（remote-api via vps-us，grace+blue，MDNICE_PROXY=7800，一次通过）：draft media_id kOcXH4SytIYVIpYksTGfHvWiOBEdiioL9KWI5lYTEYmADSh7r8dO77vkTbTSeoLt、cover media_id kOcXH4SytIYVIpYksTGfHuRdmn01SKmEY0VGJa27dxNrnS9OmGFUvz-v4d78_s2X；5 张正文图 + 封面上传成功。'
+  - '⏳ 后台待作者：声明原创 + 勾选合集 + 定时 2026-10-28 22:00；发布后供链回填 frontmatter wechatUrl + 台账。'
 
 summary:
-  total: 114
+  total: 115
   by_status:
     published: 114
     drafting: 0
-    draft_saved: 0
+    draft_saved: 1
   drafting_queue: []
-  ready_queue: []
+  ready_queue:
+  - 2026-10-28-compaction-constraint-survival
   scheduled_queue: []
   planned_queue: []
-  next_publish_date: null
+  next_publish_date: '2026-10-28'
 plan_notes:
 - '2026-10-27 C2 钱账全流程入箱：《上下文压缩省了 77% token，为什么账单反而更贵？》（content/2026-10-27-compaction-break-even/，排期 10-27 22:00）。grill 确认 → outline → 原声 6/6 逐槽交互（槽 1「频繁手动 compact 却发现成本上升」、槽 4「三方困境」、槽 5「context rot 混淆要素 + pi 灵活性 + 时机少了」等，槽 1/4 笔误作者确认更正）→ weixin.md 2122 字 → quality_check PASS → 4 脚本图 + 封面（visual-judge 5/5，封面字块 17.3%）→ remote-api 入箱（media_id …Hq0uf6Zf…）。**本轮三条作者数据指令落地**：① 讯飞数字全量排除（含 token 量级，样本 168→51）；② V4-Pro 网关例子移除、论证改走官方价（GLM-5.3-Flash ρ≈0.29 vs DeepSeek V4.1-Flash ρ=0.02 峰谷同折扣，49 样本 what-if：1 轮/100% vs 19.3 轮/84%）；③ 开头钩子相应改为「GLM 1 轮 vs DS 19 轮 vs 会话寿命 99 轮」。summary 重算 total 113→114 / draft_saved 0→1，ready_queue 追加本篇。⚠️ 发布前复核：GLM 刊例价（聚合源口径）、DeepSeek 峰谷价官方页；后台待作者：声明原创 + 定时 22:00 + 发布后回填 wechatUrl。'
 - '2026-10-26 双线：① C1 信息账篇发布对账入台账（见对应条目）；② **C2 钱账立项**（content/2026-10-27-compaction-break-even/，排期默认 10-27 22:00）——完成作者拍板 #3 的受控统计前置（新脚本 scripts/compaction_stats.py：202 次 compaction → 168 个同模型 5/5 窗口 → 剔除讯飞与排除名单后 51 个干净窗口、49 个可回本检验；核心结果降幅 77%（267,916→60,889）、缓存击穿曲线 99.6%→48.5%→98.3%、ρ 谱系 0.003~0.186、N* 2~170 轮、回本 20%/100% 翻转；OpenAI 官方 cached input 10% 与 ainaiba/fenno 拟合互证）。⚠️ **作者两条排除令（2026-10-26）：ollama-cloud 计费不准不入钱账；讯飞数字一律不算（全量）**（连带粗扫 ρ 表两条 ollama 行与 37 样本回本表作废，series-plan §4.3/4.4 已记）。grill 四问收敛（下一篇=C2 / 判定式主轴 / 六节悬念链+个人账本开头 / 标题「上下文压缩省了 77% token，为什么账单反而更贵？」——数字随讯飞剔除由 68% 更新），日志 .grill/compaction-break-even.md 待作者确认后写大纲。summary 无新增条目（C2 尚未入箱）。'
