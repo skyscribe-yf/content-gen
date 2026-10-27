@@ -34,3 +34,7 @@ only_fans_can_comment: 0
 #    远端主机用 `vps-us`（~/.ssh/config 已配置，root，密钥登录）。
 # 4. remote 隧道报错时先 `ssh vps-us 'curl -s -m 8 -o /dev/null -w "%{http_code}" \
 #    https://api.weixin.qq.com/cgi-bin/getcallbackip'` 验证 VPS 出网与白名单。
+# 5. **mdnice 渲染必须走代理**（2026-10-24 复验）：`whaoa.github.io/markdown-nice/`
+#    直连 ERR_TIMED_OUT、本机代理可达；渲染前设
+#    `MDNICE_PROXY=http://127.0.0.1:7800`（2026-09 记录里的 2083 端口已失效）。
+#    不设则 wechat-api / 预览渲染在 mdnice 步骤 net::ERR_TIMED_OUT 失败。

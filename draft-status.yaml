@@ -1768,11 +1768,50 @@ articles:
   - '⏳ 后台待作者确认：声明原创 + 勾选合集「AI Agent 工程」+ 定时 **2026-10-23 20:00**（作者 10-21 从 10-22 顺延给 Rust 篇让档）；发布后回填 frontmatter wechatUrl 与台账。'
   - '✅ 2026-10-24 对账（作者供链 https://mp.weixin.qq.com/s/jJHG1bn2_F10kmZ0pBCm5Q，ct=1792764000 → 2026-10-23 22:00，晚于排的 20:00 档）：status draft_saved→published、published_date/wechat_url + frontmatter wechatUrl 三处同步；后台 msg_title 与拟稿一致、未被精简。'
   - '🔄 2026-10-24 后台改动回拉（mp 页面直取 + js_content 转 md 逐句比对）：正文 10 处作者改写已回写 weixin.md——开篇「合入了一个不大的 PR…改动的总结是这样写的」、pi 1.0 归属改写、「回溯大半年」句、上一篇链接前置并改用「最终」标题、Cloudflare 段拆段、分层给药→下药、Context Rot 句补「已经深入拆解过这个问题了」、pi 四档细节段扩写、bash 脚本与强化学习两句改写、第四节「决定/谁都没敢」与 Codex 事故句改写、结尾 CTA 改「和你一起慢慢深入拆解」并合并互动问句；尾部「📖 AI Agent 工程合集」导航行被作者删除（热门文章保留），本地已同步删除。⚠️ 线上两处作者笔误按原样回写：「窗口。、」多余顿号、「对与按需搜索」应为「对于」——待作者决定是否在后台修正（本地如需再存草稿箱应先修）。除笔误外，本地与线上正文逐句比对 0 差异。'
+- slug: 2026-10-25-context-compression-info-bound
+  title: 上下文压缩的极限：删掉一个 token，任务为什么可能注定失败？
+  series: 上下文压缩与记忆
+  status: published
+  published_date: '2026-10-25'
+  wechat_url: https://mp.weixin.qq.com/s/XdAACdIWD2F6d8rq-ZszKg
+  media_id: null
+  cover_media_id: null
+  files:
+    weixin: true
+    outline: true
+    cover: true
+    quality_check: true
+  notes:
+  - '🎯 立项：「上下文压缩与记忆」四篇系列 C1 信息账篇（计划 docs/series-plan-2026-10-context-compression.md；grill 日志 .grill/context-compression-info-bound.md，2026-10-24 收敛）。主轴=作者翻 202 次 Pi compaction 会话记录（4,036 个会话文件，2026-10-24 扫描）0 次致命翻车 + 信息论边界（数据处理不等式 / Fano / 率失真）；本地统计只作验证集不作论点，论文证据链 AppWorld（2407.18901）/ ACON（2510.00615）/ KEEP-Bench（2610.26827）/ TRACE（2608.06503）。'
+  - '✍️ 成稿要点：六节横切（没事故是运气还是本事 → DPI 地基 → Fano 下界 → 率失真 → 工程保什么 → 上限数学皮实工程）；原声 6 处逐字进稿（voices.md 留档）；配图 5 张脚本图（DPI 链 / 分月重复调用 / Fano-457 / 率失真 / ACON-401，gen_images.py 可复现）+ 封面 21:9；尾部参考文献 6 条（本地扫描口径 + Cover&Thomas + 4 篇 arXiv 均带编号）；math_audit.md 留档公式核查。'
+  - '✅ 2026-10-26 发布对账（作者供链 https://mp.weixin.qq.com/s/XdAACdIWD2F6d8rq-ZszKg，ct=1792929600 → 2026-10-25 20:00 实发，早于 22:00 档）：本条为发布后补录（成稿会话未及入台账），status published、published_date/wechat_url + frontmatter wechatUrl 三处同步。后台 msg_title 与拟稿标题一字不差、msg_desc 与拟稿 digest 一致、线上无（待发布）残留；appmsgid=2247486824（后续数据审计单篇饼图可用）。⚠️ 本仓无草稿箱 media_id / cover_media_id 记录（成稿会话未回写），均置 null；如需正文回拉比对需作者提供 media_id 或走发表记录反查。'
+
+- slug: 2026-10-27-compaction-break-even
+  title: 上下文压缩省了 77% token，为什么账单反而更贵？
+  series: 上下文压缩与记忆
+  status: published
+  published_date: '2026-10-27'
+  wechat_url: https://mp.weixin.qq.com/s/p-2YkAFT6sBwdU5_dw5O2g
+  media_id: kOcXH4SytIYVIpYksTGfHnpwHzi7yw_GIrpW5sg2CwlkkcVPWo4qSqQ83_DsU1HJ
+  cover_media_id: kOcXH4SytIYVIpYksTGfHks7Q8gUhTINdmsC_ioAeiMnY9TLpW0Ldmepp-JikXNr
+  files:
+    weixin: true
+    outline: true
+    cover: true
+    quality_check: true
+  notes:
+  - '🎯 立项：系列 C2 钱账（docs/series-plan-2026-10-context-compression.md §3.2；grill 日志 .grill/compaction-break-even.md，2026-10-26 四问收敛 + 10-27 增补）。主轴=判定式「压缩划不划算取决于缓存多便宜」（N* ∝ 1/ρ）；开题前置的受控统计已完成（scripts/compaction_stats.py：202→168→51 干净窗口/49 可回本检验）。⚠️ 作者三条数据指令：ollama-cloud 计费不准不入钱账、讯飞数字一律不算（全量）、V4-Pro 网关例子移除改走官方价——均已固化进脚本排除名单与 series-plan §4.3/4.4。'
+  - '✍️ 成稿要点：论证主线=官方价阶梯（DeepSeek V4.1-Flash ρ=0.02 峰谷两时段同折扣 / V4-Pro 0.033 / OpenAI 0.10=我 GPT-5.x 账单拟合 0.1000 互证 / GLM-5.3-Flash ≈0.29），49 样本 what-if 回本表（1 轮/100% vs 19.3 轮/84%，16% 永不回本）；§1 缓存击穿弧线（99.6%→48.5%→98.3%，单轮 $0.0818→$0.1083，成本比 P90 13.4×/最大 31×）；§4 三家 harness 工程化身（Anthropic clear_at_least 官方原文已核）；原声 6/6 逐字进稿（voices.md，槽 1/4 笔误经作者确认更正）；正文 2122 字；quality_check PASS（含排除名单零泄漏、旧口径 170 轮/20%/68% 零出现专项）。'
+  - '🖼️ 配图：4 张脚本图（gen_images.py，缓存击穿曲线 / N*–ρ 双对数 / ρ 阶梯回本 / 三家 harness 卡片）+ 封面 21:9 两行金字「省了 77% token / 账单反而更贵？」（字块 17.3% ≤25% 规格；两轮返工：封面首版 30.6% 超标重制、图 1/2 标注压线两轮微调）；documents:visual-judge 终验 5/5 PASS（封面逐字核对 77% 无误）。'
+  - '📦 2026-10-27 存草稿箱两次（remote-api via vps-us，grace+blue，--no-cite 保微信内链内联，MDNICE_PROXY=7800）：首存 media_id kOcXH4SytIYVIpYksTGfHq0uf6Zf…（**作废，待作者在草稿箱删除**）；⚠️ 发布前最终检查时发现 **GLM-5.3-Flash 价目误采第三方转售价**（0.8/2.8/0.23 元 → ρ≈0.29），改正为 Z.ai 官方价 $0.15/$0.50/$0.03（lmspeed 2026-10-16 核验镜像）→ **ρ=0.20**，全链路改正（正文/图2/图3/what-if：GLM 1.6 轮 100% 回本、ρ 差 10 倍；开头「1 轮」→「不到 2 轮」）后重存，**最终 draft media_id kOcXH4SytIYVIpYksTGfHnpwHzi7yw_GIrpW5sg2CwlkkcVPWo4qSqQ83_DsU1HJ**、cover media_id kOcXH4SytIYVIpYksTGfHq-3S7TnjLNVPpo_qNJ0wCk0tILbm8W7EkUyLzFMshKj（封面未变沿用）；4 张正文图（含修正版图2/图3）+ 封面全部上传成功，visual-judge 复验 pass。'
+  - '✅ 2026-10-27 终态核验（作者令「走完全部流程」）：① draft/delete API 删除首存旧稿（…Hq0uf6Zf…，errcode 0），batchget 确认草稿箱仅剩终版 1 篇；② fetch_draft.sh 回拉终版逐项核验 16 项（ρ=0.20/10 倍/1.6 轮/不到 2 轮在场、旧口径 0.29 与 0.23 元零出现、原声 2 处笔误更正版在场、29 个 MathJax 公式、图片 4 张、热门块/标签/（待发布）仅 C3 一处——全过）；③ 链接：12 锚点 = 8 个不同 sn（C1×3 + Context Rot×3 + 热门×6，与源文同构；微信短链→长链为服务端确定性转换）；④ **CDN 实际图片质量（作者要求）**：正文 4 图与本地 PNG 逐字节同规格（未转码），封面官方降采样 1280 宽 JPEG 57K（金字仅轻度边缘软化），visual-judge CDN 版 5/5 pass（含 320px 信息流缩略模拟可读）。cover_media_id 已更正为终版 thumb（…Hks7Q8gUhT…）。'
+  - '⏳ 后台仅剩两步（无 API、必须作者在 mp 后台点）：终版草稿（…HnpwHzi7…）声明原创 + 勾选合集（如有）+ 定时 2026-10-27 22:00；发布后供链回填 frontmatter wechatUrl + 台账。价目已全部为官方口径直核，无需再复核。'
+  - '✅ 2026-10-28 发布回填（作者供链 https://mp.weixin.qq.com/s/p-2YkAFT6sBwdU5_dw5O2g，mp 页面直取 ct=1793106790 → 2026-10-27 21:13 实发，早于 22:00 档）：status draft_saved→published、published_date 2026-10-27、wechat_url + frontmatter wechatUrl 两处同步；后台 msg_title 与拟稿一字不差、msg_desc 与 digest 一致、线上无（待发布）残留与 WECHATIMGPH_ 占位符、正文 4 图在场；appmsgid=2247486842。summary 重算 published 113→114 / draft_saved 1→0、ready_queue 清空、next_publish_date 置空。⚠️ 本轮按作者指示只回填 URL，未做正文回拉同步。'
 
 summary:
-  total: 112
+  total: 114
   by_status:
-    published: 112
+    published: 114
     drafting: 0
     draft_saved: 0
   drafting_queue: []
@@ -1781,6 +1820,9 @@ summary:
   planned_queue: []
   next_publish_date: null
 plan_notes:
+- '2026-10-27 C2 钱账全流程入箱：《上下文压缩省了 77% token，为什么账单反而更贵？》（content/2026-10-27-compaction-break-even/，排期 10-27 22:00）。grill 确认 → outline → 原声 6/6 逐槽交互（槽 1「频繁手动 compact 却发现成本上升」、槽 4「三方困境」、槽 5「context rot 混淆要素 + pi 灵活性 + 时机少了」等，槽 1/4 笔误作者确认更正）→ weixin.md 2122 字 → quality_check PASS → 4 脚本图 + 封面（visual-judge 5/5，封面字块 17.3%）→ remote-api 入箱（media_id …Hq0uf6Zf…）。**本轮三条作者数据指令落地**：① 讯飞数字全量排除（含 token 量级，样本 168→51）；② V4-Pro 网关例子移除、论证改走官方价（GLM-5.3-Flash ρ≈0.29 vs DeepSeek V4.1-Flash ρ=0.02 峰谷同折扣，49 样本 what-if：1 轮/100% vs 19.3 轮/84%）；③ 开头钩子相应改为「GLM 1 轮 vs DS 19 轮 vs 会话寿命 99 轮」。summary 重算 total 113→114 / draft_saved 0→1，ready_queue 追加本篇。⚠️ 发布前复核：GLM 刊例价（聚合源口径）、DeepSeek 峰谷价官方页；后台待作者：声明原创 + 定时 22:00 + 发布后回填 wechatUrl。'
+- '2026-10-26 双线：① C1 信息账篇发布对账入台账（见对应条目）；② **C2 钱账立项**（content/2026-10-27-compaction-break-even/，排期默认 10-27 22:00）——完成作者拍板 #3 的受控统计前置（新脚本 scripts/compaction_stats.py：202 次 compaction → 168 个同模型 5/5 窗口 → 剔除讯飞与排除名单后 51 个干净窗口、49 个可回本检验；核心结果降幅 77%（267,916→60,889）、缓存击穿曲线 99.6%→48.5%→98.3%、ρ 谱系 0.003~0.186、N* 2~170 轮、回本 20%/100% 翻转；OpenAI 官方 cached input 10% 与 ainaiba/fenno 拟合互证）。⚠️ **作者两条排除令（2026-10-26）：ollama-cloud 计费不准不入钱账；讯飞数字一律不算（全量）**（连带粗扫 ρ 表两条 ollama 行与 37 样本回本表作废，series-plan §4.3/4.4 已记）。grill 四问收敛（下一篇=C2 / 判定式主轴 / 六节悬念链+个人账本开头 / 标题「上下文压缩省了 77% token，为什么账单反而更贵？」——数字随讯飞剔除由 68% 更新），日志 .grill/compaction-break-even.md 待作者确认后写大纲。summary 无新增条目（C2 尚未入箱）。'
+- '2026-10-26 发布对账：上下文压缩 C1 信息账篇《上下文压缩的极限：删掉一个 token，任务为什么可能注定失败？》（2026-10-25-context-compression-info-bound）作者供链 https://mp.weixin.qq.com/s/XdAACdIWD2F6d8rq-ZszKg（ct=1792929600 → 2026-10-25 20:00 实发，早于 22:00 档）——本条为发布后补录（成稿会话未入台账），status published、published_date/wechat_url + frontmatter wechatUrl 三处同步；后台 msg_title 与拟稿一字不差、msg_desc 与 digest 一致、无（待发布）残留。summary 重算 total 112→113 / published 112→113。series-plan 文档 C1 状态行同步为已发布。⚠️ 成稿会话未回写草稿箱 media_id（正文回拉比对需 media_id 或发表记录反查）；appmsgid=2247486824 已记入条目 notes。'
 - '2026-10-24 后台改动回拉 + 数据审计（作者发起）：① 三篇近期文章（10-21 pi-codemode / 10-22 Rust / 10-23 三家收敛）作者供链后对账——status→published、published_date/wechat_url/frontmatter 三处同步，summary 重算 published 112 / draft_saved 0、ready_queue 清空；② 用 mp 页面直取 + `js_content` 转 md 逐句比对，把作者的线上改写全部回写 weixin.md（8 + 7 + 10 处文案、两篇尾部合集导航被删、Rust 篇新增双内链），本地与线上逐句 0 差异（仅保留本地短链形式）；后台标题改动按 msg_title 回写（pi 篇「最后→最终」、Rust 篇「Rust真的是……192 个任务辨证看看」）；⚠️ 三家收敛篇线上两处作者笔误（「窗口。、」、「对与按需搜索」）按原样回写待作者定夺；③ ✅ 质量门禁升级（2026-10-24，三份 `quality_check.py` + 规则文档第 20 项）：原声核对改「归一化覆盖率 ≥90%」（容忍后台小改；大幅改写则按线上重录，收敛篇槽 4 已重录）；尾部边界改「🔥 热门文章 / 📖 / **参考资料 / 标签行任一截断」；段落判定改「>88 字且 >3 句」；长句 60 + 10% 容差 = 66 字；篇幅只统计尾部之前的正文；新增 `--published` 模式（跳过成稿期门禁，只查发布不变量）。三篇默认模式与 `--published` 均 PASS，并有注入违规的反向测试（107 字/4 句、槽改写 59%）确认门禁仍会拦；④ 数据审计：2026-10-24 10:01 快照（内容/用户/收入，dataThrough 10-23）已 append + validate 通过；append-sources 至 10-23（台账 88 天）；单篇饼图 10 篇归档 docs/wechat-data-article-channels-2026-10-24.json；报告 HTML 重生；`docs/wechat-data-insights.md` 新增 0ak 节，AGENTS/wechat-ops/article-title-seo/menu-config 同步。⚠️ 数据基建：appmsgpublish 66 条老记录无时间戳（含 10-07 微软 Go 篇），首条快照漏长尾，已用「历史快照 + 台账」回填日期并追加补充快照。'
 - '2026-10-22 三家收敛篇入箱：《pi 和 OpenAI 不约而同：MCP 工具，答案本来就应该长这样》（content/2026-10-23-mcp-tool-exposure-convergence/，排期 10-23 20:00，作者 10-21 从 10-22 顺延给 Rust 篇让档）。当日全流程：grill 六问（主轴=收敛 / 落点=三家都默认关 / 结构=横切四节 / 钩子=Codex PR 进场 + 作者末句 / 清单照单 / 标题拍板）→ 大纲 → 原声槽 7 处逐槽交互（1 沿用 + 6 新采集）→ 成稿 → 门禁 PASS（原声 7/7、段落/长句 0 超标、正文 1756 字）→ 配图 5 张脚本图 + 封面。**事实核查两处升级**：① 笔记 Codex 时序修正（PR #29486 2026-06-22：Codex 默认走 tool search 早于 8 月三档 PR 两个月）；② Anthropic 四数字双源现读（engineering 博客 + Claude Code 文档，10% 阈值出自 ENABLE_TOOL_SEARCH=auto）。**配图三处返工**：02 三档对照图行列转置（cells 维度用反）；04 结果侧图条形长度无语义误导（改等宽条目）；05 默认关图多行文字重叠（改卡片式垂直分层）。summary 重算 total 111→112 / draft_saved 1→2，ready_queue 追加本篇（Rust 篇在前），next_publish_date 保持 10-22。'
 - '2026-10-21 新篇入箱：Rust 语言实测篇《Rust是AI agent时代的最佳语言？192个任务测完，答案分两半》（content/2026-10-22-rust-agent-language/）当日全流程：grill 4 轮 → 大纲 → 原声 7 槽逐槽交互（≥5 门禁）→ 成稿 → 门禁（含作者本轮新立第 18/19 项规则）→ 配图 6 张（封面 21:9 脚本叠金题字「192 个任务之后 / Rust 还是最佳语言？」+ 02 数字脚本图 + 3 张 AI 概念图 + 05 分层脚本图）→ 存草稿箱（remote-api via vps-us，一次通过）。作者本轮两次规则增补：① 段落衔接与章节过渡（首段接钩禁短促断言）；② 结尾引用文献事实准确性——均已写入 docs/article-quality-check.md 第 18/19 项 + AGENTS.md 索引。summary 重算 total 110→111 / draft_saved 0→1，ready_queue→本篇，next_publish_date→10-22。⚠️ 后台待作者确认：声明原创 + 定时 10-22 22:00 + 发布后回填 wechatUrl。'
