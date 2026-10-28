@@ -145,6 +145,30 @@ for d in ["153 个会话", "202 次压缩", "87.6%", "2556 条", "54 条", "0.3%
 for w in ["V4.1", "CSA2", "890 字节", "Fano", "上一篇我们", "篇三", "第三篇"]:
     chk(w not in BODY, f"禁现内容泄漏：{w}")
 
+# 封面核验（2026-10-28 新增，作者反馈「封面文字小且拥挤」后固化）：
+# ① 文字必须脚本叠加——封面目录须有 00-cover-base.png（AI 无字底图）+ make_cover.py 产物证据；
+# ② check_cover.py：21:9 比例 + 金色文字块高 ≤25% 画面高；
+# ③ cover_meta.json：封面文字总字数 ≤12（信息流缩略可读下限）。
+import json as _json
+import subprocess as _sp
+HERE = Path(__file__).parent
+cover = HERE / "00-cover.png"
+chk(cover.exists(), "封面缺失：00-cover.png")
+if cover.exists():
+    r = _sp.run([sys.executable, str(HERE / "check_cover.py"), str(cover)],
+                capture_output=True, text=True)
+    print(r.stdout.strip())
+    chk(r.returncode == 0, "check_cover.py 未通过（比例/文字块高超口径）")
+meta_p = HERE / "cover_meta.json"
+chk(meta_p.exists(), "cover_meta.json 缺失（封面须由 make_cover.py 脚本叠字生成）")
+if meta_p.exists():
+    meta = _json.loads(meta_p.read_text())
+    chk(meta.get("total_chars", 99) <= 12,
+        f"封面文字超 12 字（信息流缩略不可读）：{meta.get('total_chars')} 字 {meta.get('lines')}")
+    chk(meta.get("block_ratio", 1) <= 0.25, f"封面文字块高超 25%：{meta.get('block_ratio')}")
+chk((HERE / "00-cover-base.png").exists(),
+    "缺 00-cover-base.png——封面文字必须脚本叠加（make_cover.py），禁止 AI 生图直接写中文")
+
 # 字数（正文口径，去掉 frontmatter 与尾部块）
 def sec_cjk(s):
     return cjk(re.sub(r"!\[[^\]]*\]\([^)]+\)", "", s))

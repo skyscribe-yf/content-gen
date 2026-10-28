@@ -11,6 +11,7 @@
 ⚠️ 上游忽略 size 参数（实测返回约 1536x1024），故强制中心裁切到 21:9。
 """
 import sys
+import json
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
@@ -131,6 +132,18 @@ if __name__ == "__main__":
     if "--no-crop" not in sys.argv:
         crop_21_9(raw, fixed)
     p, sz, fs, bh, ratio = make_cover(fixed, D / "00-cover.png")
+    total_chars = sum(len(t) for t in LINES)
+    meta = {
+        "lines": LINES,
+        "total_chars": total_chars,
+        "font_size_px": fs,
+        "block_height_px": bh,
+        "block_ratio": round(ratio, 4),
+        "canvas": list(sz),
+        "rule": "封面文字必须脚本叠加（PIL），禁止 AI 生图直接写中文；总字数 ≤12；文字块高 ≤25% 画面高",
+    }
+    (D / "cover_meta.json").write_text(json.dumps(meta, ensure_ascii=False, indent=2))
     print(f"封面已生成: {p}  尺寸 {sz}  字号 {fs}")
     print(f"  两行文字块高 {bh}px = 画面高 {ratio:.1%}（硬上限 25%）")
-    print(f"  封面文字: {' / '.join(LINES)}")
+    print(f"  封面文字: {' / '.join(LINES)}  共 {total_chars} 字（硬上限 12）")
+    print(f"  cover_meta.json 已写入（quality_check.py 自动读取核验）")

@@ -114,7 +114,15 @@ Codex 的修法很说明问题：不再指望摘要记住，而是把授权记�
 
 ![规矩放置三层：会话历史、系统提示、工具层](05-where.png)
 
-这个系列在算四笔账。[上一篇是信息账：删掉一个 token，任务为什么可能注定失败](https://mp.weixin.qq.com/s/XdAACdIWD2F6d8rq-ZszKg)。中间夹了一篇钱账：[省了 77% token，账单反而更贵](https://mp.weixin.qq.com/s/p-2YkAFT6sBwdU5_dw5O2g)。这一篇是安全账：规矩活不活，看放在哪。下一篇是记忆账：你精心维护的记忆，信息量为什么超不过原始历史（待发布）。
+这个系列在算四笔账。
+
+[上一篇是信息账：删掉一个 token，任务为什么可能注定失败](https://mp.weixin.qq.com/s/XdAACdIWD2F6d8rq-ZszKg)。
+
+中间夹了一篇[钱账：省了 77% token，账单反而更贵](https://mp.weixin.qq.com/s/p-2YkAFT6sBwdU5_dw5O2g)。
+
+这一篇是安全账：规矩活不活，看放在哪。
+
+下一篇是记忆账：你精心维护的记忆，信息量为什么超不过原始历史（待发布）。
 
 你平时做例行压缩是怎么做的呢？有没有考虑约束应该放在什么地方？
 

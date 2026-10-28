@@ -1813,7 +1813,7 @@ articles:
   status: draft_saved
   published_date: '2026-10-28'
   wechat_url: null
-  media_id: kOcXH4SytIYVIpYksTGfHvWiOBEdiioL9KWI5lYTEYmADSh7r8dO77vkTbTSeoLt
+  media_id: kOcXH4SytIYVIpYksTGfHqa_L7_uRsg6HzldG61A2Pmv_xOQY6Sx_tNFot1E-q0Y
   cover_media_id: kOcXH4SytIYVIpYksTGfHuRdmn01SKmEY0VGJa27dxNrnS9OmGFUvz-v4d78_s2X
   files:
     weixin: true
@@ -1827,6 +1827,7 @@ articles:
   - '✍️ 成稿要点：原声 8/8 逐槽交互（语气词按作者指令删除；两处语音转写误差词已标注：再绘画→再复述、合法压缩→例行压缩）；**作者新硬约束：原声不进引用块**（覆盖 C1/C2 的 ★ blockquote 惯例，quality_check 已加专项断言）；正文 1,746 字；术语 2 个（策略保持、安全税）；quality_check PASS。'
   - '🖼️ 配图 6 张：封面 2048x768 两行金字「你定的规矩 / 压缩后还剩几条」（visual 验收通过、字块占比合规）+ 3 脚本图（幸存率对比 / 论文违反率对照 / 规矩放置三层）+ 2 AI 概念图（目标函数缺项 / 检查执行分离，无数字）。'
   - '📦 2026-10-28 存草稿箱（remote-api via vps-us，grace+blue，MDNICE_PROXY=7800，一次通过）：draft media_id kOcXH4SytIYVIpYksTGfHvWiOBEdiioL9KWI5lYTEYmADSh7r8dO77vkTbTSeoLt、cover media_id kOcXH4SytIYVIpYksTGfHuRdmn01SKmEY0VGJa27dxNrnS9OmGFUvz-v4d78_s2X；5 张正文图 + 封面上传成功。'
+  - '🖼️ 2026-10-28 封面返工（作者反馈「封面文字小且拥挤」→「文字应脚本插入、不是生图」）：首版封面为 AI 直写中文（字形虚、行距挤，120px 缩略不可辨）。按 Rust 篇模板重制——AI 无字冷色底图 00-cover-bg.png + make_cover.py 脚本叠金色发光字（Noto Sans CJK Bold，88px/行，两行各 7.9%、块高 20.8% ≤25%），总字数 12 到顶。重存草稿箱 **新 draft media_id kOcXH4SytIYVIpYksTGfHqa_L7_uRsg6HzldG61A2Pmv_xOQY6Sx_tNFot1E-q0Y**，旧草稿（…TSeoLt）已用 scripts/wx_draft_manage.py delete（errcode 0），箱内仅剩终版。**规则固化**：AGENTS.md 封面规格节 + pre-publish-final-check 第 1b 项 + image-generation.md「封面文字必须脚本叠加」节 + article-quality-check 第 16 项 A.5 全部写入；quality_check.py 新增封面自动核验（check_cover.py 比例/块高 + cover_meta.json ≤12 字 + 00-cover-base.png 流水线证据），make_cover.py 模板（Rust 篇）同步升级输出 cover_meta.json。'
   - '⏳ 后台待作者：声明原创 + 勾选合集 + 定时 2026-10-28 22:00；发布后供链回填 frontmatter wechatUrl + 台账。'
 
 summary:
