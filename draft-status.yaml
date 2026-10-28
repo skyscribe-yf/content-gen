@@ -1810,9 +1810,9 @@ articles:
 - slug: 2026-10-28-compaction-constraint-survival
   title: 上下文压缩：你定的规矩，压缩后还剩几条？
   series: 上下文压缩与记忆
-  status: draft_saved
+  status: published
   published_date: '2026-10-28'
-  wechat_url: null
+  wechat_url: https://mp.weixin.qq.com/s/fD2q9iJhIohPZ2h7k8chUw
   media_id: kOcXH4SytIYVIpYksTGfHhcFF-5uzSJNLlI6I66Np1VBYtsGKKnPWd8LSR5I8RnF
   cover_media_id: kOcXH4SytIYVIpYksTGfHuRdmn01SKmEY0VGJa27dxNrnS9OmGFUvz-v4d78_s2X
   files:
@@ -1829,20 +1829,20 @@ articles:
   - '📦 2026-10-28 存草稿箱（remote-api via vps-us，grace+blue，MDNICE_PROXY=7800，一次通过）：draft media_id kOcXH4SytIYVIpYksTGfHvWiOBEdiioL9KWI5lYTEYmADSh7r8dO77vkTbTSeoLt、cover media_id kOcXH4SytIYVIpYksTGfHuRdmn01SKmEY0VGJa27dxNrnS9OmGFUvz-v4d78_s2X；5 张正文图 + 封面上传成功。'
   - '🖼️ 2026-10-28 封面返工（作者反馈「封面文字小且拥挤」→「文字应脚本插入、不是生图」）：首版封面为 AI 直写中文（字形虚、行距挤，120px 缩略不可辨）。按 Rust 篇模板重制——AI 无字冷色底图 00-cover-bg.png + make_cover.py 脚本叠金色发光字（Noto Sans CJK Bold，88px/行，两行各 7.9%、块高 20.8% ≤25%），总字数 12 到顶。重存草稿箱 **新 draft media_id kOcXH4SytIYVIpYksTGfHqa_L7_uRsg6HzldG61A2Pmv_xOQY6Sx_tNFot1E-q0Y**，旧草稿（…TSeoLt）已用 scripts/wx_draft_manage.py delete（errcode 0），箱内仅剩终版。**规则固化**：AGENTS.md 封面规格节 + pre-publish-final-check 第 1b 项 + image-generation.md「封面文字必须脚本叠加」节 + article-quality-check 第 16 项 A.5 全部写入；quality_check.py 新增封面自动核验（check_cover.py 比例/块高 + cover_meta.json ≤12 字 + 00-cover-base.png 流水线证据），make_cover.py 模板（Rust 篇）同步升级输出 cover_meta.json。'
   - '🖼️ 2026-10-28 封面二返（作者在草稿里发现「每行字高度只有一多半」）：根因 = make_cover.py 的 L 画布高仅 size+8（96px），小于 Noto Sans CJK 的 ascent+descent（≈1.47em，需 ~130px），**每个字的底部被画布静静裁掉**（每行 85px 字形只剩 64px=7.9% 可见，辉光掩盖下整图正常，放大文字区才看出缺底）。修法：画布 size*2 + 锚点 y=0 + getbbox 裁真实墨迹（模板与 C3 副本均已修）。**门禁升级**：check_cover.py 新增「每行字高 ≥8% 画面高」断言（旧 4% 阈值抓不到——本次 7.9% 会被旧版放行）；AGENTS.md 封面规格节 + image-generation.md 同步写入「PIL 画布陷阱」教训与「验收必须放大文字区逐字看底部」纪律。修复后每行 10.0–10.1%、块高 23.0%，check/quality_check 全过，重存草稿箱 **最终 draft media_id kOcXH4SytIYVIpYksTGfHhcFF-5uzSJNLlI6I66Np1VBYtsGKKnPWd8LSR5I8RnF**，上一版（…1E-q0Y）已删，箱内仅剩终版。'
+  - '✅ 2026-10-28 发布回填（作者供链 https://mp.weixin.qq.com/s/fD2q9iJhIohPZ2h7k8chUw）：status draft_saved→published、published_date 2026-10-28、wechat_url + frontmatter wechatUrl 三处同步；og:title 与拟稿一字不差。**后台改写回拉同步**（curl 直取 mp 页面 3.6MB 全文 + ollama 文本抽取互证）：作者叙事润色约 10 处（开头加「次数多了之后…」「好在我的agent会话一直保存着没有删」、§1 加「比如那个压缩的话题」、§4「事情的起因是这样的」、§6「那厂商怎么不自动修复这个问题？」），槽 1/2/4 按线上终版重录（10-24 门禁规则），**删系列导航**（C1/C2 内链移除，C4 预告改「下次有机会再说，敬请期待」——后台改写模式 #6 去系列导航化）；📖延伸阅读 / 🔥热门文章 / 话题标签经 curl 原始页确认**仍在**（文本抽取会丢这三块，勿误判）。quality_check --published PASS（原声 8/8、封面三项过）。C2 链接 https://mp.weixin.qq.com/s/p-2YkAFT6sBwdU5_dw5O2g 作者复核无误（与台账既有记录一致）。'
   - '⏳ 后台待作者：声明原创 + 勾选合集 + 定时 2026-10-28 22:00；发布后供链回填 frontmatter wechatUrl + 台账。'
 
 summary:
   total: 115
   by_status:
-    published: 114
+    published: 115
     drafting: 0
-    draft_saved: 1
+    draft_saved: 0
   drafting_queue: []
-  ready_queue:
-  - 2026-10-28-compaction-constraint-survival
+  ready_queue: []
   scheduled_queue: []
   planned_queue: []
-  next_publish_date: '2026-10-28'
+  next_publish_date: null
 plan_notes:
 - '2026-10-27 C2 钱账全流程入箱：《上下文压缩省了 77% token，为什么账单反而更贵？》（content/2026-10-27-compaction-break-even/，排期 10-27 22:00）。grill 确认 → outline → 原声 6/6 逐槽交互（槽 1「频繁手动 compact 却发现成本上升」、槽 4「三方困境」、槽 5「context rot 混淆要素 + pi 灵活性 + 时机少了」等，槽 1/4 笔误作者确认更正）→ weixin.md 2122 字 → quality_check PASS → 4 脚本图 + 封面（visual-judge 5/5，封面字块 17.3%）→ remote-api 入箱（media_id …Hq0uf6Zf…）。**本轮三条作者数据指令落地**：① 讯飞数字全量排除（含 token 量级，样本 168→51）；② V4-Pro 网关例子移除、论证改走官方价（GLM-5.3-Flash ρ≈0.29 vs DeepSeek V4.1-Flash ρ=0.02 峰谷同折扣，49 样本 what-if：1 轮/100% vs 19.3 轮/84%）；③ 开头钩子相应改为「GLM 1 轮 vs DS 19 轮 vs 会话寿命 99 轮」。summary 重算 total 113→114 / draft_saved 0→1，ready_queue 追加本篇。⚠️ 发布前复核：GLM 刊例价（聚合源口径）、DeepSeek 峰谷价官方页；后台待作者：声明原创 + 定时 22:00 + 发布后回填 wechatUrl。'
 - '2026-10-26 双线：① C1 信息账篇发布对账入台账（见对应条目）；② **C2 钱账立项**（content/2026-10-27-compaction-break-even/，排期默认 10-27 22:00）——完成作者拍板 #3 的受控统计前置（新脚本 scripts/compaction_stats.py：202 次 compaction → 168 个同模型 5/5 窗口 → 剔除讯飞与排除名单后 51 个干净窗口、49 个可回本检验；核心结果降幅 77%（267,916→60,889）、缓存击穿曲线 99.6%→48.5%→98.3%、ρ 谱系 0.003~0.186、N* 2~170 轮、回本 20%/100% 翻转；OpenAI 官方 cached input 10% 与 ainaiba/fenno 拟合互证）。⚠️ **作者两条排除令（2026-10-26）：ollama-cloud 计费不准不入钱账；讯飞数字一律不算（全量）**（连带粗扫 ρ 表两条 ollama 行与 37 样本回本表作废，series-plan §4.3/4.4 已记）。grill 四问收敛（下一篇=C2 / 判定式主轴 / 六节悬念链+个人账本开头 / 标题「上下文压缩省了 77% token，为什么账单反而更贵？」——数字随讯飞剔除由 68% 更新），日志 .grill/compaction-break-even.md 待作者确认后写大纲。summary 无新增条目（C2 尚未入箱）。'
