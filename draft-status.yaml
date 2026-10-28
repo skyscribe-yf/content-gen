@@ -1813,7 +1813,7 @@ articles:
   status: draft_saved
   published_date: '2026-10-28'
   wechat_url: null
-  media_id: kOcXH4SytIYVIpYksTGfHqa_L7_uRsg6HzldG61A2Pmv_xOQY6Sx_tNFot1E-q0Y
+  media_id: kOcXH4SytIYVIpYksTGfHhcFF-5uzSJNLlI6I66Np1VBYtsGKKnPWd8LSR5I8RnF
   cover_media_id: kOcXH4SytIYVIpYksTGfHuRdmn01SKmEY0VGJa27dxNrnS9OmGFUvz-v4d78_s2X
   files:
     weixin: true
@@ -1828,6 +1828,7 @@ articles:
   - '🖼️ 配图 6 张：封面 2048x768 两行金字「你定的规矩 / 压缩后还剩几条」（visual 验收通过、字块占比合规）+ 3 脚本图（幸存率对比 / 论文违反率对照 / 规矩放置三层）+ 2 AI 概念图（目标函数缺项 / 检查执行分离，无数字）。'
   - '📦 2026-10-28 存草稿箱（remote-api via vps-us，grace+blue，MDNICE_PROXY=7800，一次通过）：draft media_id kOcXH4SytIYVIpYksTGfHvWiOBEdiioL9KWI5lYTEYmADSh7r8dO77vkTbTSeoLt、cover media_id kOcXH4SytIYVIpYksTGfHuRdmn01SKmEY0VGJa27dxNrnS9OmGFUvz-v4d78_s2X；5 张正文图 + 封面上传成功。'
   - '🖼️ 2026-10-28 封面返工（作者反馈「封面文字小且拥挤」→「文字应脚本插入、不是生图」）：首版封面为 AI 直写中文（字形虚、行距挤，120px 缩略不可辨）。按 Rust 篇模板重制——AI 无字冷色底图 00-cover-bg.png + make_cover.py 脚本叠金色发光字（Noto Sans CJK Bold，88px/行，两行各 7.9%、块高 20.8% ≤25%），总字数 12 到顶。重存草稿箱 **新 draft media_id kOcXH4SytIYVIpYksTGfHqa_L7_uRsg6HzldG61A2Pmv_xOQY6Sx_tNFot1E-q0Y**，旧草稿（…TSeoLt）已用 scripts/wx_draft_manage.py delete（errcode 0），箱内仅剩终版。**规则固化**：AGENTS.md 封面规格节 + pre-publish-final-check 第 1b 项 + image-generation.md「封面文字必须脚本叠加」节 + article-quality-check 第 16 项 A.5 全部写入；quality_check.py 新增封面自动核验（check_cover.py 比例/块高 + cover_meta.json ≤12 字 + 00-cover-base.png 流水线证据），make_cover.py 模板（Rust 篇）同步升级输出 cover_meta.json。'
+  - '🖼️ 2026-10-28 封面二返（作者在草稿里发现「每行字高度只有一多半」）：根因 = make_cover.py 的 L 画布高仅 size+8（96px），小于 Noto Sans CJK 的 ascent+descent（≈1.47em，需 ~130px），**每个字的底部被画布静静裁掉**（每行 85px 字形只剩 64px=7.9% 可见，辉光掩盖下整图正常，放大文字区才看出缺底）。修法：画布 size*2 + 锚点 y=0 + getbbox 裁真实墨迹（模板与 C3 副本均已修）。**门禁升级**：check_cover.py 新增「每行字高 ≥8% 画面高」断言（旧 4% 阈值抓不到——本次 7.9% 会被旧版放行）；AGENTS.md 封面规格节 + image-generation.md 同步写入「PIL 画布陷阱」教训与「验收必须放大文字区逐字看底部」纪律。修复后每行 10.0–10.1%、块高 23.0%，check/quality_check 全过，重存草稿箱 **最终 draft media_id kOcXH4SytIYVIpYksTGfHhcFF-5uzSJNLlI6I66Np1VBYtsGKKnPWd8LSR5I8RnF**，上一版（…1E-q0Y）已删，箱内仅剩终版。'
   - '⏳ 后台待作者：声明原创 + 勾选合集 + 定时 2026-10-28 22:00；发布后供链回填 frontmatter wechatUrl + 台账。'
 
 summary:

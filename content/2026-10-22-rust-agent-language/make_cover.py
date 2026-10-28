@@ -59,10 +59,11 @@ def layout(text, size, target_w):
     if gap_after and target_w > natural:
         gap = min(size * 0.10, (target_w - natural) / len(gap_after))
     x = 0
-    img = Image.new("L", (int(target_w) + 4, size + 8), 0)
+    # 画布必须容纳 ascent+descent（Noto Sans CJK ≈ 1.47em）；过低会裁掉字形底部
+    img = Image.new("L", (int(target_w) + 4, size * 2), 0)
     d = ImageDraw.Draw(img)
     for i, ch in enumerate(text):
-        d.text((x, 2), ch, font=f, fill=255)
+        d.text((x, 0), ch, font=f, fill=255)
         x += widths[i] + (gap if i in gap_after else 0)
     bbox = img.getbbox()
     return img.crop(bbox) if bbox else img, img.size[0], size
