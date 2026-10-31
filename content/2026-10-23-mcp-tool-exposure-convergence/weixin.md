@@ -1,6 +1,6 @@
 ---
 title: "pi 和 OpenAI 不约而同：MCP 工具，答案本来就应该长这样"
-wechatUrl: "（待发布）"
+wechatUrl: "https://mp.weixin.qq.com/s/jJHG1bn2_F10kmZ0pBCm5Q"
 author: "数解AI"
 date: "2026-10-23"
 type: "工程观察"

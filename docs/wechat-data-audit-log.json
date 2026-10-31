@@ -26715,6 +26715,908 @@
         "⚠️ 内容分析页「数据概况」第二/第四卡片标题为空（点赞/收藏图标无文本），按位置读数为 2 / 1，本轮未写入 JSON（schema 无对应字段），仅记 notes。",
         "⚠️ 本轮为同一采集时段的**补充快照**：content/users/income 与 10:00 那条完全相同，仅修正 `content.articles` —— appmsgpublish 里有 66 条老记录没有 sent_info.time/create_time（含 10-07 的《微软用 Go 重写 TypeScript》，1,177 读），首条快照按「无时间即丢弃」漏掉了它。本快照用「历史快照 title→date + 台账 published_date」回填日期后再取近 30 条，热门榜跨快照聚合不再丢长尾。"
       ]
+    },
+    {
+      "collectedAt": "2026-10-29T22:17:32+08:00",
+      "dataThrough": "2026-10-28",
+      "periods": {
+        "content": {
+          "from": "2026-09-29",
+          "to": "2026-10-28"
+        },
+        "users": {
+          "from": "2026-09-28",
+          "to": "2026-10-28"
+        },
+        "income": {
+          "from": "2026-10-22",
+          "to": "2026-10-28"
+        }
+      },
+      "content": {
+        "readers30d": 6171,
+        "daily": {
+          "date": "2026-10-28",
+          "reads": 136,
+          "shares": 4,
+          "comments": 4
+        },
+        "sources": {
+          "推荐": 72.7,
+          "公众号消息": 13.5,
+          "聊天会话": 5.3,
+          "其它": 4.6,
+          "公众号主页": 4.2,
+          "搜一搜": 0.6,
+          "朋友圈": 0.3
+        },
+        "articles": [
+          {
+            "date": "2026-10-29",
+            "title": "1M 上下文只算 2048 个 token，MiniMax 的稀疏为什么这次成了？",
+            "type": "article",
+            "reads": 1,
+            "share": 0.0
+          },
+          {
+            "date": "2026-10-28",
+            "title": "上下文压缩：你定的规矩，压缩后还剩几条？",
+            "type": "article",
+            "reads": 20,
+            "share": 15.0
+          },
+          {
+            "date": "2026-10-27",
+            "title": "上下文压缩省了 77% token，为什么账单反而更贵？",
+            "type": "article",
+            "reads": 59,
+            "share": 3.4
+          },
+          {
+            "date": "2026-10-25",
+            "title": "上下文压缩的极限：删掉一个 token，任务为什么可能注定失败？",
+            "type": "article",
+            "reads": 97,
+            "share": 5.2
+          },
+          {
+            "date": "2026-10-25",
+            "title": "高速狂飙的OpenClaw vs 稳健的Pi高下立判",
+            "type": "tietu",
+            "reads": 106,
+            "share": 1.9
+          },
+          {
+            "date": "2026-10-24",
+            "title": "Claude code核心技术人员的离职了",
+            "type": "tietu",
+            "reads": 88,
+            "share": 1.1
+          },
+          {
+            "date": "2026-10-24",
+            "title": "Kimi K3.1是价格，用量和能力都丝毫不值啊",
+            "type": "tietu",
+            "reads": 301,
+            "share": 1.3
+          },
+          {
+            "date": "2026-10-23",
+            "title": "pi 和 OpenAI 不约而同：MCP 工具，答案本来就应该长这样",
+            "type": "article",
+            "reads": 120,
+            "share": 8.3
+          },
+          {
+            "date": "2026-10-22",
+            "title": "Rust真的是AI agent时代的最佳语言吗？192个任务辨证看看",
+            "type": "article",
+            "reads": 193,
+            "share": 5.7
+          },
+          {
+            "date": "2026-10-21",
+            "title": "骂 MCP 最响的人，最终把 MCP 请进了核心",
+            "type": "article",
+            "reads": 120,
+            "share": 2.5
+          },
+          {
+            "date": "2026-10-20",
+            "title": "AI Native SDLC 能落地吗：成本、独立性与验收",
+            "type": "article",
+            "reads": 31,
+            "share": 3.2
+          },
+          {
+            "date": "2026-10-18",
+            "title": "写代码已经不再是瓶颈，交付依然困难重重，AI Native SDLC能解决吗",
+            "type": "article",
+            "reads": 73,
+            "share": 5.5
+          },
+          {
+            "date": "2026-10-16",
+            "title": "注意力分数高 66 倍的那列，为什么反而带来 98% 的误差？",
+            "type": "article",
+            "reads": 43,
+            "share": 14.0
+          },
+          {
+            "date": "2026-10-14",
+            "title": "2 万 token上下文，DeepSeek为什么还是把代码记错了？",
+            "type": "article",
+            "reads": 24,
+            "share": 4.2
+          },
+          {
+            "date": "2026-10-13",
+            "title": "导数公式不是人写的，除了算特征值这种",
+            "type": "article",
+            "reads": 71,
+            "share": 9.9
+          },
+          {
+            "date": "2026-10-12",
+            "title": "训练一步要算几千亿个导数，自动微分如何加速几千倍",
+            "type": "article",
+            "reads": 138,
+            "share": 11.6
+          },
+          {
+            "date": "2026-10-12",
+            "title": "做逆向，人类哪是AI的对手?耐心压根追不上",
+            "type": "tietu",
+            "reads": 72,
+            "share": 4.2
+          },
+          {
+            "date": "2026-10-11",
+            "title": "OpenAI 1 亿局的弯路，和一个还没人做的实验",
+            "type": "article",
+            "reads": 24,
+            "share": 4.2
+          },
+          {
+            "date": "2026-10-10",
+            "title": "Context Rot 是真的吗？上下文还没满，模型为什么就先认输了",
+            "type": "article",
+            "reads": 34,
+            "share": 2.9
+          },
+          {
+            "date": "2026-10-09",
+            "title": "Pi Durable：工具调用中途崩溃，重发还是放弃？",
+            "type": "article",
+            "reads": 24,
+            "share": 12.5
+          },
+          {
+            "date": "2026-10-08",
+            "title": "Anthropic 实测多智能体强 90%，为什么另一家说千万别建？",
+            "type": "article",
+            "reads": 51,
+            "share": 3.9
+          },
+          {
+            "date": "2026-10-08",
+            "title": "Haiku 5.5标价砍90%，账单没这么爽",
+            "type": "tietu",
+            "reads": 38,
+            "share": 0.0
+          },
+          {
+            "date": "2026-10-07",
+            "title": "DeepSeek 用 AI 自己出了 60 万道题，为什么反而更强？",
+            "type": "article",
+            "reads": 57,
+            "share": 7.0
+          },
+          {
+            "date": "2026-10-07",
+            "title": "OpenAI内部模型竟然甩出722篇数学草稿！",
+            "type": "tietu",
+            "reads": 59,
+            "share": 3.4
+          },
+          {
+            "date": "2026-10-06",
+            "title": "Beam盯上GLM，501B参数激活23B，省三倍",
+            "type": "tietu",
+            "reads": 97,
+            "share": 3.1
+          },
+          {
+            "date": "2026-10-06",
+            "title": "ChatGPT真离谱！假画签了超过15个真人名字",
+            "type": "tietu",
+            "reads": 101,
+            "share": 0.0
+          },
+          {
+            "date": "2026-10-05",
+            "title": "给 Agent 装了记忆，为什么它还是不懂我的项目？",
+            "type": "article",
+            "reads": 66,
+            "share": 9.1
+          },
+          {
+            "date": "2026-10-04",
+            "title": "问 AI 100 遍：100 种说法，为什么只算 1 种答案？",
+            "type": "article",
+            "reads": 53,
+            "share": 9.4
+          },
+          {
+            "date": "2026-10-04",
+            "title": "DeepSeek越权最凶：查余额竟把卡明细都翻了",
+            "type": "tietu",
+            "reads": 120,
+            "share": 0.8
+          },
+          {
+            "date": "2026-10-04",
+            "title": "Sutton学生扎心了：AI 非忘旧而是学不动新",
+            "type": "tietu",
+            "reads": 70,
+            "share": 5.7
+          }
+        ]
+      },
+      "users": {
+        "daily": {
+          "date": "2026-10-28",
+          "new": 0,
+          "cancelled": 0,
+          "net": 0,
+          "total": 1100
+        },
+        "channelTotal": 65,
+        "channels": {
+          "文章页关注": {
+            "count": 50,
+            "share": 76.92
+          },
+          "搜一搜": {
+            "count": 9,
+            "share": 13.85
+          },
+          "更多": {
+            "count": 6,
+            "share": 9.23
+          }
+        },
+        "trend": [
+          {
+            "date": "2026-09-29",
+            "new": 7,
+            "cancelled": 0,
+            "net": 7,
+            "total": 1055
+          },
+          {
+            "date": "2026-09-30",
+            "new": 6,
+            "cancelled": 1,
+            "net": 5,
+            "total": 1060
+          },
+          {
+            "date": "2026-10-01",
+            "new": 6,
+            "cancelled": 0,
+            "net": 6,
+            "total": 1066
+          },
+          {
+            "date": "2026-10-02",
+            "new": 2,
+            "cancelled": 1,
+            "net": 1,
+            "total": 1067
+          },
+          {
+            "date": "2026-10-03",
+            "new": 1,
+            "cancelled": 0,
+            "net": 1,
+            "total": 1068
+          },
+          {
+            "date": "2026-10-04",
+            "new": 2,
+            "cancelled": 0,
+            "net": 2,
+            "total": 1070
+          },
+          {
+            "date": "2026-10-05",
+            "new": 0,
+            "cancelled": 0,
+            "net": 0,
+            "total": 1070
+          },
+          {
+            "date": "2026-10-06",
+            "new": 0,
+            "cancelled": 0,
+            "net": 0,
+            "total": 1070
+          },
+          {
+            "date": "2026-10-07",
+            "new": 3,
+            "cancelled": 1,
+            "net": 2,
+            "total": 1072
+          },
+          {
+            "date": "2026-10-08",
+            "new": 2,
+            "cancelled": 0,
+            "net": 2,
+            "total": 1074
+          },
+          {
+            "date": "2026-10-09",
+            "new": 3,
+            "cancelled": 0,
+            "net": 3,
+            "total": 1077
+          },
+          {
+            "date": "2026-10-10",
+            "new": 1,
+            "cancelled": 1,
+            "net": 0,
+            "total": 1077
+          },
+          {
+            "date": "2026-10-11",
+            "new": 1,
+            "cancelled": 0,
+            "net": 1,
+            "total": 1078
+          },
+          {
+            "date": "2026-10-12",
+            "new": 2,
+            "cancelled": 0,
+            "net": 2,
+            "total": 1080
+          },
+          {
+            "date": "2026-10-13",
+            "new": 3,
+            "cancelled": 0,
+            "net": 3,
+            "total": 1083
+          },
+          {
+            "date": "2026-10-14",
+            "new": 2,
+            "cancelled": 0,
+            "net": 2,
+            "total": 1085
+          },
+          {
+            "date": "2026-10-15",
+            "new": 2,
+            "cancelled": 2,
+            "net": 0,
+            "total": 1085
+          },
+          {
+            "date": "2026-10-16",
+            "new": 1,
+            "cancelled": 1,
+            "net": 0,
+            "total": 1085
+          },
+          {
+            "date": "2026-10-17",
+            "new": 2,
+            "cancelled": 0,
+            "net": 2,
+            "total": 1087
+          },
+          {
+            "date": "2026-10-18",
+            "new": 4,
+            "cancelled": 0,
+            "net": 4,
+            "total": 1091
+          },
+          {
+            "date": "2026-10-19",
+            "new": 1,
+            "cancelled": 0,
+            "net": 1,
+            "total": 1092
+          },
+          {
+            "date": "2026-10-20",
+            "new": 2,
+            "cancelled": 0,
+            "net": 2,
+            "total": 1094
+          },
+          {
+            "date": "2026-10-21",
+            "new": 2,
+            "cancelled": 0,
+            "net": 2,
+            "total": 1096
+          },
+          {
+            "date": "2026-10-22",
+            "new": 0,
+            "cancelled": 1,
+            "net": -1,
+            "total": 1095
+          },
+          {
+            "date": "2026-10-23",
+            "new": 2,
+            "cancelled": 0,
+            "net": 2,
+            "total": 1097
+          },
+          {
+            "date": "2026-10-24",
+            "new": 0,
+            "cancelled": 0,
+            "net": 0,
+            "total": 1097
+          },
+          {
+            "date": "2026-10-25",
+            "new": 1,
+            "cancelled": 0,
+            "net": 1,
+            "total": 1098
+          },
+          {
+            "date": "2026-10-26",
+            "new": 2,
+            "cancelled": 0,
+            "net": 2,
+            "total": 1100
+          },
+          {
+            "date": "2026-10-27",
+            "new": 0,
+            "cancelled": 0,
+            "net": 0,
+            "total": 1100
+          },
+          {
+            "date": "2026-10-28",
+            "new": 0,
+            "cancelled": 0,
+            "net": 0,
+            "total": 1100
+          }
+        ]
+      },
+      "income": {
+        "overview": {
+          "cumulativeRevenue": 106.48,
+          "programmaticRevenue": 106.48,
+          "yesterdayIncrement": 0.26,
+          "mutualSelectionRevenue": 0.0,
+          "commerceRevenue": 0.0
+        },
+        "articleIncomeAvailable": true,
+        "articleIncome": {
+          "scope": "文章发布后 7 日内、不含返佣商品与互选广告",
+          "articles": [
+            {
+              "date": "2026-10-22",
+              "title": "Rust真的是AI agent时代的最佳语言吗？192个任务辨证看看",
+              "original": true,
+              "revenue": 0.43,
+              "slots": {}
+            },
+            {
+              "date": "2026-10-23",
+              "title": "pi 和 OpenAI 不约而同：MCP 工具，答案本来就应该长这样",
+              "original": true,
+              "revenue": 0.26,
+              "slots": {}
+            },
+            {
+              "date": "2026-10-24",
+              "title": "Kimi K3.1是价格，用量和能力都丝毫不值啊",
+              "original": false,
+              "revenue": 0.88,
+              "slots": {}
+            },
+            {
+              "date": "2026-10-24",
+              "title": "Claude code核心技术人员的离职了",
+              "original": false,
+              "revenue": 0.24,
+              "slots": {}
+            },
+            {
+              "date": "2026-10-25",
+              "title": "高速狂飙的OpenClaw vs 稳健的Pi高下立判",
+              "original": false,
+              "revenue": 0.14,
+              "slots": {}
+            },
+            {
+              "date": "2026-10-25",
+              "title": "上下文压缩的极限：删掉一个 token，任务为什么可能注定失败？",
+              "original": true,
+              "revenue": 0.07,
+              "slots": {}
+            },
+            {
+              "date": "2026-10-27",
+              "title": "上下文压缩省了 77% token，为什么账单反而更贵？",
+              "original": true,
+              "revenue": 0.11,
+              "slots": {}
+            },
+            {
+              "date": "2026-10-28",
+              "title": "上下文压缩：你定的规矩，压缩后还剩几条？",
+              "original": true,
+              "revenue": 0.01,
+              "slots": {}
+            }
+          ]
+        },
+        "slots": {
+          "留言区": {
+            "summary": {
+              "pulls": 2287,
+              "impressions": 512,
+              "exposureRate": 22.39,
+              "clicks": 1,
+              "ctr": 0.2,
+              "ecpm": 2.97,
+              "revenue": 1.52
+            },
+            "dailyRevenueTotal": 1.53,
+            "daily": [
+              {
+                "date": "2026-10-22",
+                "pulls": 254,
+                "impressions": 37,
+                "exposureRate": 14.57,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 2.7,
+                "revenue": 0.1
+              },
+              {
+                "date": "2026-10-23",
+                "pulls": 236,
+                "impressions": 45,
+                "exposureRate": 19.07,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 1.78,
+                "revenue": 0.08
+              },
+              {
+                "date": "2026-10-24",
+                "pulls": 518,
+                "impressions": 151,
+                "exposureRate": 29.15,
+                "clicks": 1,
+                "ctr": 0.66,
+                "ecpm": 3.64,
+                "revenue": 0.55
+              },
+              {
+                "date": "2026-10-25",
+                "pulls": 478,
+                "impressions": 132,
+                "exposureRate": 27.62,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 3.94,
+                "revenue": 0.52
+              },
+              {
+                "date": "2026-10-26",
+                "pulls": 360,
+                "impressions": 62,
+                "exposureRate": 17.22,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 1.94,
+                "revenue": 0.12
+              },
+              {
+                "date": "2026-10-27",
+                "pulls": 192,
+                "impressions": 38,
+                "exposureRate": 19.79,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 1.58,
+                "revenue": 0.06
+              },
+              {
+                "date": "2026-10-28",
+                "pulls": 249,
+                "impressions": 47,
+                "exposureRate": 18.88,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 2.13,
+                "revenue": 0.1
+              }
+            ]
+          },
+          "底部": {
+            "summary": {
+              "pulls": 693,
+              "impressions": 135,
+              "exposureRate": 19.48,
+              "clicks": 0,
+              "ctr": 0.0,
+              "ecpm": 2.44,
+              "revenue": 0.33
+            },
+            "dailyRevenueTotal": 0.34,
+            "daily": [
+              {
+                "date": "2026-10-22",
+                "pulls": 114,
+                "impressions": 22,
+                "exposureRate": 19.3,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 2.73,
+                "revenue": 0.06
+              },
+              {
+                "date": "2026-10-23",
+                "pulls": 117,
+                "impressions": 24,
+                "exposureRate": 20.51,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 1.67,
+                "revenue": 0.04
+              },
+              {
+                "date": "2026-10-24",
+                "pulls": 127,
+                "impressions": 21,
+                "exposureRate": 16.54,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 4.76,
+                "revenue": 0.1
+              },
+              {
+                "date": "2026-10-25",
+                "pulls": 78,
+                "impressions": 16,
+                "exposureRate": 20.51,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 3.75,
+                "revenue": 0.06
+              },
+              {
+                "date": "2026-10-26",
+                "pulls": 115,
+                "impressions": 16,
+                "exposureRate": 13.91,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 1.88,
+                "revenue": 0.03
+              },
+              {
+                "date": "2026-10-27",
+                "pulls": 53,
+                "impressions": 18,
+                "exposureRate": 33.96,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 1.11,
+                "revenue": 0.02
+              },
+              {
+                "date": "2026-10-28",
+                "pulls": 89,
+                "impressions": 18,
+                "exposureRate": 20.22,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 1.67,
+                "revenue": 0.03
+              }
+            ]
+          },
+          "inline": {
+            "summary": {
+              "pulls": 1378,
+              "impressions": 738,
+              "exposureRate": 53.56,
+              "clicks": 1,
+              "ctr": 0.14,
+              "ecpm": 0.95,
+              "revenue": 0.7
+            },
+            "dailyRevenueTotal": 0.7,
+            "daily": [
+              {
+                "date": "2026-10-22",
+                "pulls": 228,
+                "impressions": 115,
+                "exposureRate": 50.44,
+                "clicks": 1,
+                "ctr": 0.87,
+                "ecpm": 1.13,
+                "revenue": 0.13
+              },
+              {
+                "date": "2026-10-23",
+                "pulls": 236,
+                "impressions": 149,
+                "exposureRate": 63.14,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 0.81,
+                "revenue": 0.12
+              },
+              {
+                "date": "2026-10-24",
+                "pulls": 254,
+                "impressions": 137,
+                "exposureRate": 53.94,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 1.39,
+                "revenue": 0.19
+              },
+              {
+                "date": "2026-10-25",
+                "pulls": 156,
+                "impressions": 79,
+                "exposureRate": 50.64,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 1.14,
+                "revenue": 0.09
+              },
+              {
+                "date": "2026-10-26",
+                "pulls": 220,
+                "impressions": 105,
+                "exposureRate": 47.73,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 0.76,
+                "revenue": 0.08
+              },
+              {
+                "date": "2026-10-27",
+                "pulls": 106,
+                "impressions": 62,
+                "exposureRate": 58.49,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 0.32,
+                "revenue": 0.02
+              },
+              {
+                "date": "2026-10-28",
+                "pulls": 178,
+                "impressions": 91,
+                "exposureRate": 51.12,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 0.77,
+                "revenue": 0.07
+              }
+            ]
+          },
+          "tietuFeed": {
+            "summary": {
+              "pulls": 1017,
+              "impressions": 144,
+              "exposureRate": 14.16,
+              "clicks": 7,
+              "ctr": 4.86,
+              "ecpm": 4.38,
+              "revenue": 0.63
+            },
+            "dailyRevenueTotal": 0.62,
+            "daily": [
+              {
+                "date": "2026-10-22",
+                "pulls": 44,
+                "impressions": 5,
+                "exposureRate": 11.36,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 6.0,
+                "revenue": 0.03
+              },
+              {
+                "date": "2026-10-23",
+                "pulls": 43,
+                "impressions": 11,
+                "exposureRate": 25.58,
+                "clicks": 1,
+                "ctr": 9.09,
+                "ecpm": 1.82,
+                "revenue": 0.02
+              },
+              {
+                "date": "2026-10-24",
+                "pulls": 374,
+                "impressions": 42,
+                "exposureRate": 11.23,
+                "clicks": 3,
+                "ctr": 7.14,
+                "ecpm": 2.86,
+                "revenue": 0.12
+              },
+              {
+                "date": "2026-10-25",
+                "pulls": 307,
+                "impressions": 48,
+                "exposureRate": 15.64,
+                "clicks": 2,
+                "ctr": 4.17,
+                "ecpm": 6.04,
+                "revenue": 0.29
+              },
+              {
+                "date": "2026-10-26",
+                "pulls": 117,
+                "impressions": 20,
+                "exposureRate": 17.09,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 4.5,
+                "revenue": 0.09
+              },
+              {
+                "date": "2026-10-27",
+                "pulls": 63,
+                "impressions": 10,
+                "exposureRate": 15.87,
+                "clicks": 1,
+                "ctr": 10.0,
+                "ecpm": 1.0,
+                "revenue": 0.01
+              },
+              {
+                "date": "2026-10-28",
+                "pulls": 69,
+                "impressions": 8,
+                "exposureRate": 11.59,
+                "clicks": 0,
+                "ctr": 0.0,
+                "ecpm": 7.5,
+                "revenue": 0.06
+              }
+            ]
+          }
+        }
+      },
+      "notes": [
+        "🟢 采集方式：作者主 Chrome profile（~/.config/google-chrome/Default，cookie created 10-26 21:39、last_access 10-29 22:03）复制最小集到 /tmp/wx-live-profile + headless Chrome 9335 自解密，免扫码（第八次复验成功）；token 1230067566、uin 3923428115。",
+        "📌 口径：content.readers30d / sources 取「内容分析」30 天窗口（2026-09-29~10-28），阅读总人数 6,171；content.daily 为昨日（10-28）阅读 136 / 分享 4 / 留言 4（点赞 4、收藏 3 仅记 notes，schema 无字段）；articles[] 按 10-15 新规从 appmsgpublish JSON 全量取，本轮存最近 30 条（10-01~10-29），reads=发表记录「阅读人数」、share=share_num/read_num 百分比。",
+        "📌 单篇详情饼图 18 篇已采（去重人数口径，与发表记录次数口径不同，不可混用）：30 天 Top10 —— 微软 Go 1,193人 推荐95.4% / c++之父 930人 推荐93.8% / Kimi K3.1 297人 推荐87.2% / 流形假设 239人 推荐66.1% / DeepSeek死循环 538人 推荐83.6% / Rust 187人 推荐73.8% / 高维壳 1,768人 推荐84.7% / 自动微分 142人 推荐55.6% / DeepSeek越权 125人 推荐56.8% / 小米2345万 142人 推荐75.4%；近期 8 篇 —— 10-20 SDLC落地 34人（聊天会话35.3% 最高，推荐仅14.7%）/ 10-21 pi-codemode 123人 推荐60.2% / 10-22 Rust 187人 推荐73.8% / 10-23 三家收敛 124人 推荐70.2% / 10-25 C1 98人 推荐64.3% / 10-27 C2 59人 推荐74.6% / 10-28 C3 10人（公众号消息40%+推荐40%）/ 10-29 MiniMax 0人（发布<1h 渠道未回填）。完整归档 docs/wechat-data-article-channels-2026-10-29.json。",
+        "📌 用户：10-28 新增 0 / 取消 0 / 净增 0 / 累计 1,100；渠道窗口 09-28~10-28 新增 65 人＝文章页关注 50（76.92%）＋搜一搜 9（13.85%）＋更多 6（9.23%）。⚠️ 页面渠道卡片合计 65 = 数据表格 09-28~10-28 新增合计（09-28 当日 5 人计入），30 天整窗口（09-29~10-28）合计 60。",
+        "📌 广告收入：累计 106.48 元（较 10-24 快照 +2.61），昨日 +0.26；7 日（10-22~10-28）四广告位合计 3.18 元、曝光 1,529、点击 9（贴图底部推荐流 7 次为点击主力，CTR 4.86% 全场最高）；文章级收入仅展示发布 7 日内（8 篇合计 2.14 元，贴图《Kimi K3.1》0.88 最高，原创文章 Rust 0.43 最高、C3 仅 0.01）。",
+        "⚠️ 关键词广告位（文中关键词广告）7 日与累计全为 0（拉取 0 / 曝光 0），常看列表广告与视频后贴广告同为空，本轮未入库（slots 仅保留有数据的四个位）。",
+        "⚠️ 收入日明细窗口 7 天（10-22~10-28）；概览页累计 106.48 与四位日明细合计 3.18 口径不同（概览含全广告位与历史累计），不强行对齐。"
+      ]
     }
   ]
 }
