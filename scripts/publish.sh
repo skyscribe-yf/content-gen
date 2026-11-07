@@ -72,7 +72,7 @@ PUBLISH_CMD=(
   --theme "$THEME"
   --color "$COLOR"
   --remote
-  --remote-host vps
+  --remote-host vps-us
   --remote-user root
 )
 
