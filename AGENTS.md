@@ -235,9 +235,18 @@ wechatUrl: "https://mp.weixin.qq.com/s/abc123"
 
 草稿写完后**必须执行**，全部通过才能进入发布流程。详见 [`docs/article-quality-check.md`](docs/article-quality-check.md)（含 19 项核查清单 + 第 20 项发布后回拉模式，第 13 项为爆款检查器，第 14 项为自动成稿原声槽，第 15 项为说人话/去 AI 味，第 16 项为转发/点赞欲检查器，第 17 项为**段落长度与标题分层**——每段 ≤80 字、长段落按意思拆、醒目句独立成段、小标题多级，第 18 项为**段落衔接与章节过渡**——遮住标题通读无断点、每节末段留钩子下节首段接住（首段接钩禁短促断言，须完整句+上下文）、过渡句禁功能标签，第 19 项为**结尾引用文献核查**——参考资料逐条可回溯（人名/日期/归属/二手标注四项核对），第 20 项为**发布后回拉与 `--published` 模式**——回拉用 `scripts/fetch_draft.sh <media_id>`（vps-us 隧道，产物 `draft-content.html`；⚠️ 公式在 HTML 里是 SVG 矢量块，纯文本 diff 会把公式滤没，别误判丢失）；作者在后台改过稿的文章，回拉后跑 `quality_check.py --published`：跳过成稿期的原声/段落/长句/篇幅门禁，只查发布不变量（禁词、待发布残留、标签、图片路径、内链、承重数字），避免把作者改稿误报为质量回归）。
 
+## 作者编辑门禁（2026-11-08 作者口径，存草稿箱前必须走）
+
+成稿后**禁止直接存草稿箱**，固定顺序：
+
+1. **机器质检**：`bash scripts/precheck_and_open.sh content/<日期>-<slug>`（跑本篇 `quality_check.py` + `check_cover.py` + 微信链接溯源）
+2. **VS Code 等作者改**：`bash scripts/precheck_and_open.sh content/<日期>-<slug>` 会自动打开 content-gen 文件夹工作区、定位到 `weixin.md`，MPE 预览随文件自动弹出（`.vscode/settings.json` 的 `automaticallyShowPreviewOfMarkdownBeingEdited` 开关）。AI 停在这里等作者，作者改完说一声再继续
+3. **复检**：作者改完后 `bash scripts/precheck_and_open.sh content/<日期>-<slug> --no-open` 复跑一轮。FAIL 项若由作者改稿产生（原声被作者自己改写等），由作者拍板，AI 不擅自改回
+4. **才存草稿箱**：复检通过（或作者明确豁免）后才走 `baoyu-post-to-wechat`（grace + blue，remote-api）
+
 ## 发布前检查
 
-**规则**：调用 `baoyu-post-to-wechat` 发布前，必须确认以下就绪：
+**规则**：调用 `baoyu-post-to-wechat` 发布前，必须确认以下就绪（含上方作者编辑门禁四步全部走完）：
 
 1. **封面图已生成** — `00-cover.png` 存在于文章目录，缺失则先生成
 2. **wechatUrl 已补** — 发布后第一时间把微信 URL 写入 frontmatter `wechatUrl` 字段

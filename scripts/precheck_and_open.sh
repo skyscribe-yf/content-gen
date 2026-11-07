@@ -1,0 +1,69 @@
+#!/usr/bin/env bash
+# precheck_and_open.sh — 作者编辑门禁（2026-11-08 作者口径）
+#
+# 流程：机器质检 → 用 VS Code 打开 weixin.md 等作者改 → 作者改完后
+#       AI 复跑本脚本（--no-open 只复检）→ 通过才存公众号草稿箱。
+#
+# 用法:
+#   bash scripts/precheck_and_open.sh content/<日期>-<slug>          # 质检 + 打开 VS Code
+#   bash scripts/precheck_and_open.sh content/<日期>-<slug> --no-open # 只复检（作者改完后）
+#   bash scripts/precheck_and_open.sh content/<日期>-<slug>/weixin.md # 也可直接给文件
+#
+# 退出码非 0 = 质检未过：修好或作者明确拍板豁免后才允许存草稿箱。
+set -uo pipefail
+
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+ARG="${1:?用法: bash scripts/precheck_and_open.sh <文章目录|weixin.md> [--no-open]}"
+NO_OPEN=0
+[[ "${2:-}" == "--no-open" ]] && NO_OPEN=1
+
+if [[ -d "$ARG" ]]; then DIR="${ARG%/}"; MD="$DIR/weixin.md"; else DIR="$(dirname "$ARG")"; MD="$ARG"; fi
+[[ -f "$MD" ]] || { echo "❌ 找不到 $MD"; exit 1; }
+DIR="$(cd "$DIR" && pwd)"; MD="$DIR/$(basename "$MD")"
+cd "$DIR"
+rc=0
+
+echo "════════ 机器质检：$DIR ════════"
+if [[ -f quality_check.py ]]; then
+  python3 quality_check.py || rc=1
+else
+  echo "⚠️ 本篇无 quality_check.py——从 content/2026-10-21-pi-codemode-mcp/ 复制一份并按本篇改断言；本次跳过机器质检"
+fi
+if [[ -f check_cover.py ]]; then
+  echo "── 封面叠字核验 ──"
+  python3 check_cover.py || rc=1
+fi
+echo "── 微信链接溯源 ──"
+python3 "$ROOT/scripts/check_wechat_links.py" "$MD" || rc=1
+echo "════════════════════════════════"
+
+if [[ $rc -ne 0 ]]; then
+  echo "⛔ 质检未过（见上）。修好或作者拍板豁免后再继续；未过不得存草稿箱。"
+  exit 1
+fi
+echo "✅ 机器质检全部通过"
+
+if [[ $NO_OPEN -eq 1 ]]; then
+  echo "（--no-open 复检模式：未打开 VS Code）"
+  exit 0
+fi
+
+# 开 content-gen 文件夹工作区（.vscode/settings.json 的 MPE 自动预览开关才生效）。
+# 关键事实（2026-11-07 实测）：① code 多路径时只有首个文件会被激活，故单独传 weixin.md；
+# ② MPE 自动预览只挂 onDidChangeActiveTextEditor，目标文件若已是激活标签则无事件；
+# ③ 冷启动第二次 IPC 在窗口就绪前会被吞，故就绪前只发一次、就绪后再补切换。
+SWITCH_FILE="$ROOT/AGENTS.md"   # 跳板：非目标 markdown，用来制造一次编辑器切换
+code "$ROOT" "$MD" || { echo "⚠️ 'code' 命令失败，请手动用 VS Code 打开: $MD"; exit 1; }
+sleep 5                            # 等窗口就绪 + MPE 激活（冷启动约 +2s）
+code "$ROOT" "$SWITCH_FILE" 2>/dev/null || true   # 切到跳板
+sleep 1
+code "$ROOT" "$MD" 2>/dev/null || true            # 切回 weixin.md → 切换事件 → 自动预览
+cat <<EOF
+
+📝 VS Code 已打开 content-gen 文件夹并定位: $MD
+   Markdown Preview Enhanced 预览应已自动弹出（.vscode/settings.json 开关；
+   没弹的话焦点在编辑器里按 Ctrl+Shift+V）。
+   作者直接在 VS Code 里改；改完回复「改好了」，
+   AI 复跑: bash scripts/precheck_and_open.sh $DIR --no-open
+   通过后才走 baoyu-post-to-wechat 存草稿箱（grace + blue）。
+EOF

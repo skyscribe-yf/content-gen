@@ -1,0 +1,6 @@
+{
+  // 作者编辑门禁（2026-11-08）：VS Code 打开 markdown 时 MPE 自动出预览，
+  // 作者改 weixin.md 实时看渲染效果（precheck_and_open.sh 打开文件即触发）。
+  // 兜底快捷键：Ctrl+Shift+V（markdown-preview-enhanced.openPreview）。
+  "markdown-preview-enhanced.automaticallyShowPreviewOfMarkdownBeingEdited": true
+}
