@@ -1,29 +1,56 @@
 #!/usr/bin/env python3
-"""封面叠字：AI 无字底图 → 裁切 21:9 → 脚本画**金色发光两行短标题**。
+"""封面叠字（通用版）：AI 无字底图 → 裁切 21:9 → 脚本画金色/暖白发光两行短标题。
 
-本篇封面文字（只突出一两个要点，作者 2026-10-18  grill 定）：
-  LINES = ["标准答案", "越看越崩"]
+替代过去每篇目录一份的 make_cover.py 副本。用法：
 
-版式规格（AGENTS.md「封面标题显眼度规格」）：
-  金色发光 · 两行居中 · 每行字高约画面高 1/9–1/8 ·
-  整块文字高 ≤ 画面高 1/4 · 除标题外无任何文字 · 背景压暗退后。
+  python3 scripts/make_cover.py <文章目录> [--no-crop]
 
+本篇封面文字外置到文章目录的 cover_spec.json（唯一必填项）：
+
+  {"lines": ["标准答案", "越看越崩"]}
+
+可选覆盖项（默认值即 2026-11-10 篇规格，一般不用动）：
+  gold_top/gold_bot  渐变字色 RGB（作者 2026-11-07 要求：白 → 暖白；
+                     旧金色 #E8A317 对比度不足已废止）
+  canvas             21:9 目标尺寸 [1916, 821]
+  text_y             文字块垂直位置（画面高比例，默认 0.34）
+  width_ratio        文字块宽度（画面宽比例，默认 0.94）
+  glow_radius        辉光半径（画面高比例，默认 0.022）
+
+硬规格（AGENTS.md「封面标题显眼度规格」）：金色/暖白发光 · 两行居中 ·
+每行字高约画面高 1/9–1/8 · 整块文字高 ≤ 画面高 1/4 · 除标题外无任何文字 ·
+背景压暗退后。封面文字总字数 ≤12（信息流缩略可读下限）。
 ⚠️ 上游忽略 size 参数（实测返回约 1536x1024），故强制中心裁切到 21:9。
 """
-import sys
 import json
+import sys
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
-D = Path("content/2026-11-10-self-play-collapse")
+HERE = Path(__file__).resolve().parent
+ROOT = HERE.parent
+
+_args = [a for a in sys.argv[1:] if not a.startswith("--")]
+D = Path(_args[0]).resolve() if _args else Path.cwd()
+
 FONT = "/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc"
 FONT_INDEX = 2  # .ttc 里 index=2 是 SC（简体）字面
 
-LINES = ["标准答案", "越看越崩"]
-GOLD_TOP, GOLD_BOT = (255, 255, 255), (255, 238, 190)  # 白 → 暖白（金色 #E8A317 对比度不足，作者 2026-11-07 要求换色）
+_spec_path = D / "cover_spec.json"
+if not _spec_path.exists():
+    sys.exit(f"❌ 缺 {_spec_path}——封面文字（lines）必须外置到 cover_spec.json")
+_spec = json.loads(_spec_path.read_text(encoding="utf-8"))
+if not _spec.get("lines"):
+    sys.exit(f"❌ {_spec_path} 缺 lines（两行短标题，合计 ≤12 字）")
 
-CANVAS = (1916, 821)  # 21:9（2026-10-09 篇同规格）
+LINES = _spec["lines"]
+GOLD_TOP = tuple(_spec.get("gold_top", (255, 255, 255)))
+GOLD_BOT = tuple(_spec.get("gold_bot", (255, 238, 190)))
+CANVAS = tuple(_spec.get("canvas", (1916, 821)))  # 21:9（2026-10-09 篇同规格）
+TEXT_Y = _spec.get("text_y", 0.34)
+WIDTH_RATIO = _spec.get("width_ratio", 0.94)
+GLOW_RADIUS = _spec.get("glow_radius", 0.022)
 
 
 def crop_21_9(src: Path, dst: Path, size=CANVAS) -> Path:
@@ -38,8 +65,7 @@ def crop_21_9(src: Path, dst: Path, size=CANVAS) -> Path:
     else:                                 # 太高 → 裁上下
         nh = int(round(W / want))
         im = im.crop((0, (H - nh) // 2, W, (H - nh) // 2 + nh))
-    im = im.resize(size, Image.LANCZOS)
-    im.save(dst, "PNG")
+    im.resize(size, Image.LANCZOS).save(dst, "PNG")
     return dst
 
 
@@ -80,7 +106,7 @@ def gold_gradient(w, h):
     return g
 
 
-def make_cover(bg_path, out_path, lines=LINES, width_ratio=0.94, glow_radius=0.022):
+def make_cover(bg_path, out_path, lines=LINES, width_ratio=WIDTH_RATIO, glow_radius=GLOW_RADIUS):
     bg = Image.open(bg_path).convert("RGB")
     W, H = bg.size
     target_w = W * width_ratio
@@ -107,7 +133,7 @@ def make_cover(bg_path, out_path, lines=LINES, width_ratio=0.94, glow_radius=0.0
     masks = [layout(t, size, target_w) for t in lines]
 
     canvas = Image.new("L", (W, H), 0)
-    y = int(H * 0.34)  # 垂直居中偏上（两行短标题）
+    y = int(H * TEXT_Y)  # 垂直居中偏上（两行短标题）
     for m, _, _ in masks:
         canvas.paste(m, ((W - m.size[0]) // 2, y), m)
         y += line_h + leading
@@ -130,6 +156,8 @@ def make_cover(bg_path, out_path, lines=LINES, width_ratio=0.94, glow_radius=0.0
 if __name__ == "__main__":
     raw = D / "00-cover-raw.png"
     fixed = D / "00-cover-base.png"
+    if not raw.exists():
+        sys.exit(f"❌ 缺 {raw}——先放 AI 无字底图（00-cover-raw.png）")
     if "--no-crop" not in sys.argv:
         crop_21_9(raw, fixed)
     p, sz, fs, bh, ratio = make_cover(fixed, D / "00-cover.png")
@@ -147,4 +175,4 @@ if __name__ == "__main__":
     print(f"封面已生成: {p}  尺寸 {sz}  字号 {fs}")
     print(f"  两行文字块高 {bh}px = 画面高 {ratio:.1%}（硬上限 25%）")
     print(f"  封面文字: {' / '.join(LINES)}  共 {total_chars} 字（硬上限 12）")
-    print(f"  cover_meta.json 已写入（quality_check.py 自动读取核验）")
+    print("  cover_meta.json 已写入（quality_check.py 自动读取核验）")

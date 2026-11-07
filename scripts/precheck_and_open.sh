@@ -7,31 +7,46 @@
 # 用法:
 #   bash scripts/precheck_and_open.sh content/<日期>-<slug>          # 质检 + 打开 VS Code
 #   bash scripts/precheck_and_open.sh content/<日期>-<slug> --no-open # 只复检（作者改完后）
+#   bash scripts/precheck_and_open.sh content/<日期>-<slug> --no-open --published # 发布后回拉模式
 #   bash scripts/precheck_and_open.sh content/<日期>-<slug>/weixin.md # 也可直接给文件
+#
+# 质检脚本二轨（2026-11-07 通用化）：
+#   新篇（目录有 quality_check.json）→ scripts/quality_check.py（通用版 + 每篇配置）
+#   旧篇（目录有本地副本）          → 沿用本地副本（历史文章冻结行为）
+#   两者皆无                        → 通用版降级（只跑通用门禁，提示跳过定制项）
 #
 # 退出码非 0 = 质检未过：修好或作者明确拍板豁免后才允许存草稿箱。
 set -uo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-ARG="${1:?用法: bash scripts/precheck_and_open.sh <文章目录|weixin.md> [--no-open]}"
+ARG="${1:?用法: bash scripts/precheck_and_open.sh <文章目录|weixin.md> [--no-open] [--published]}"
 NO_OPEN=0
-[[ "${2:-}" == "--no-open" ]] && NO_OPEN=1
+PUBLISHED=0
+for a in "$@"; do
+  [[ "$a" == "--no-open" ]] && NO_OPEN=1
+  [[ "$a" == "--published" ]] && PUBLISHED=1
+done
 
 if [[ -d "$ARG" ]]; then DIR="${ARG%/}"; MD="$DIR/weixin.md"; else DIR="$(dirname "$ARG")"; MD="$ARG"; fi
 [[ -f "$MD" ]] || { echo "❌ 找不到 $MD"; exit 1; }
 DIR="$(cd "$DIR" && pwd)"; MD="$DIR/$(basename "$MD")"
 cd "$DIR"
 rc=0
+PUB_FLAG=""
+[[ $PUBLISHED -eq 1 ]] && PUB_FLAG="--published"
 
 echo "════════ 机器质检：$DIR ════════"
-if [[ -f quality_check.py ]]; then
-  python3 quality_check.py || rc=1
+if [[ -f "$DIR/quality_check.json" ]]; then
+  python3 "$ROOT/scripts/quality_check.py" "$DIR" $PUB_FLAG || rc=1
+elif [[ -f quality_check.py ]]; then
+  python3 quality_check.py $PUB_FLAG || rc=1
 else
-  echo "⚠️ 本篇无 quality_check.py——从 content/2026-10-21-pi-codemode-mcp/ 复制一份并按本篇改断言；本次跳过机器质检"
+  python3 "$ROOT/scripts/quality_check.py" "$DIR" $PUB_FLAG || rc=1
 fi
-if [[ -f check_cover.py ]]; then
+if [[ -f 00-cover.png && ! -f "$DIR/quality_check.json" ]]; then
+  # 新篇的封面门禁已由通用 quality_check.py 内嵌执行；旧篇本地副本不一定带，补跑一次
   echo "── 封面叠字核验 ──"
-  python3 check_cover.py || rc=1
+  python3 "$ROOT/scripts/check_cover.py" "$DIR" || rc=1
 fi
 echo "── 微信链接溯源 ──"
 python3 "$ROOT/scripts/check_wechat_links.py" "$MD" || rc=1

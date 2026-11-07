@@ -1,18 +1,29 @@
 #!/usr/bin/env python3
-"""封面核验（按 AGENTS.md「封面标题显眼度规格」的口径）：
+"""封面核验（通用版，按 AGENTS.md「封面标题显眼度规格」的口径）：
   1) 21:9 比例；
   2) 文字块总高 ≤ 25% 画面高；
   3) 每行字高 ≥ 8% 画面高（防字形被裁）。
 
-与本目录 make_cover.py 的产物配套。短标题（每行 4 字）不满足
-「横向跨度 ≥45%」的旧启发式（11-08 篇同款封面也会被它判成未检出），
-故本条改为按行高判定。
+用法:
+  python3 scripts/check_cover.py [图片路径|文章目录]
+缺省用当前目录的 00-cover.png。退出码 0 = PASS。
+
+判据说明：短标题（每行 4 字）不满足「横向跨度 ≥45%」的旧启发式，
+故文字行按行高判定；白色/暖白发光字（2026-11-07 起封面由金色改为白→暖白）。
 """
 import sys
 from collections import deque
+from pathlib import Path
 
 import numpy as np
 from PIL import Image
+
+_args = [a for a in sys.argv[1:] if not a.startswith("--")]
+if _args:
+    p = Path(_args[0])
+    img_path = (p / "00-cover.png") if p.is_dir() else p
+else:
+    img_path = Path.cwd() / "00-cover.png"
 
 
 def components(mask):
@@ -41,19 +52,29 @@ def components(mask):
     return out
 
 
-p = sys.argv[1] if len(sys.argv) > 1 else "00-cover.png"
-im = Image.open(p).convert("RGB")
+im = Image.open(img_path).convert("RGB")
 W, H = im.size
 a = np.asarray(im).astype(float)
 r, g, b = a[:, :, 0], a[:, :, 1], a[:, :, 2]
-# 白色 / 暖白发光字（11-08 起封面由金色改为白→暖白）
-m = (r > 205) * (g > 200) * (b > 170)
-comps = components(m)
-glyphs = [c for c in comps
-          if 0.045 * H <= (c[1] - c[0] + 1) <= 0.30 * H
-          and 0.010 * W <= (c[3] - c[2] + 1) <= 0.13 * W
-          and c[4] > 80]
-print(f"{p}: {W}x{H} 比例 {W/H:.3f}；候选文字块 {len(glyphs)} 个（总连通域 {len(comps)}）")
+
+
+def detect(mask):
+    comps = components(mask)
+    glyphs = [c for c in comps
+              if 0.045 * H <= (c[1] - c[0] + 1) <= 0.30 * H
+              and 0.010 * W <= (c[3] - c[2] + 1) <= 0.13 * W
+              and c[4] > 80]
+    return comps, glyphs
+
+
+# 白色 / 暖白发光字（2026-11-08 起封面由金色改为白→暖白）
+comps, glyphs = detect((r > 205) * (g > 200) * (b > 170))
+if not glyphs:
+    # 旧金色封面口径（2026-11-08 前：R,G 高、B 明显低）——复检旧篇时自动回退
+    comps, glyphs = detect((r > 200) * (g > 155) * (b < 150))
+    if glyphs:
+        print("（未检出白/暖白文字，按旧金色封面口径复检）")
+print(f"{img_path}: {W}x{H} 比例 {W/H:.3f}；候选文字块 {len(glyphs)} 个（总连通域 {len(comps)}）")
 
 fails = []
 ratio = W / H

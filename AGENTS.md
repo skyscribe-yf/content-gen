@@ -1,276 +1,105 @@
 # AGENTS.md — 项目级 Agent 配置
 
-本文件是规则索引，详细内容拆分到 `docs/` 下各专题文档。
+本文件只放**硬红线 + 任务路由表**，每次请求全量加载，每 KB 都计费。详细规则、历史数据、示例模板一律现查 `docs/` 对应文件；**禁止把细节抄回本文件**。
 
-## 文章写作流程（硬性门禁）
+## 0. 任务路由表（动手前先定位）
 
-起草大纲前**必须先调用 grill-me skill** 与作者深入讨论（`.agents/skills/grill-me/SKILL.md`）。禁止 AI 单方面生成 `.grill/<slug>.md` 日志。自动成稿在大纲之后还必须采集作者原声槽（进稿 ≥5 处）才写 `weixin.md`——**逐槽交互**：AI 给槽位位置+建议句，作者逐条手动输入，全部槽位走完才结束，禁止批量「过」式代填。详见 [`docs/writing-flow.md`](docs/writing-flow.md)。
+| 要做什么 | 必读 |
+|---|---|
+| 新文章选题/大纲 | `.agents/skills/grill-me/SKILL.md` + `docs/writing-flow.md` + `docs/viral-article-playbook.md` + `docs/content-matrix.md` + `docs/note-material-source.md` |
+| 作者扔素材直出 | `.agents/skills/raw-material-to-wechat-draft/SKILL.md` |
+| 起标题/封面字 | `docs/article-title-seo.md` |
+| 配图/封面 | `docs/image-generation.md` |
+| 贴图（图文消息） | `docs/tietu-viral-playbook.md` + `docs/tietu-infographic-flow.md` |
+| 成稿质量核查 | `docs/article-quality-check.md` |
+| 发布前最终检查 | `docs/pre-publish-final-check.md` |
+| 存草稿箱/发布 | `.agents/skills/baoyu-post-to-wechat/SKILL.md`（grace + blue） |
+| 知乎 | `.agents/skills/post-zhihu/SKILL.md` + `docs/zhihu-promotion.md` |
+| 小红书 | `docs/xiaohongshu-strategy.md` + `docs/xiaohongshu-copy.md` |
+| 视频号 | `.agents/skills/manim-article-video/SKILL.md` 或 `gemini-video-to-shipinhao/SKILL.md` |
+| 数据复盘/审计 | `.agents/skills/wechat-data-audit/SKILL.md` + `docs/wechat-data-insights.md` |
+| 运营策略/排期 | `docs/wechat-ops.md` |
+| 数学公式 | `docs/math-latex.md` |
 
-**两条排版硬规则（2026-11-01 作者追加）**：① 原声句进稿禁止加 ★ 前缀、禁止套 blockquote 装饰，按正文段落直接排；② 正文第一段禁止标题开场——禁止以 `##` 起首、禁止把文章标题抄成开头第一行，第一个节标题只能在开头段之后。
+## 1. 写作流程硬门禁
 
-**正文篇幅：一般 2000 字左右**（可视字数，含尾部总计 ≤2500），紧凑优先、不拉长（2026-09-13 作者口径）。
+- 起草大纲前**必须先调 grill-me skill** 与作者讨论；禁止 AI 单方面生成 `.grill/<slug>.md`
+- 自动成稿：大纲后采集作者原声槽（**进稿 ≥5 处**），**逐槽交互**（AI 给槽位+建议句，作者逐条输入），禁止批量「过」式代填
+- 排版硬规则：① 原声句禁加 ★ 前缀、禁套 blockquote，按正文段落直排；② 正文第一段禁标题开场（禁 `##` 起首、禁把标题抄成第一行）
+- 正文 **~2000 字**（含尾部 ≤2500），紧凑优先不拉长
+- 动笔前必读爆款经验 `docs/viral-article-playbook.md`，标题/开头/结构逐项对照
 
-启动新文章（选题/大纲阶段）**必须先读爆款经验** [`docs/viral-article-playbook.md`](docs/viral-article-playbook.md)，标题/开头/结构逐项对照揣摩后再动笔。
+→ 详规：`docs/writing-flow.md`
 
-## 素材直出公众号草稿 Skill
+## 2. 封面与配图红线
 
-项目级 skill：[`.agents/skills/raw-material-to-wechat-draft/SKILL.md`](.agents/skills/raw-material-to-wechat-draft/SKILL.md)
+- 封面文字**必须脚本叠加**：AI 只出无字深色底图（prompt 写明 no text）→ `make_cover.py` 裁 21:9 + PIL 叠金色发光字（Noto Sans CJK Bold）；**禁止 AI 生图直写中文**；封面文字总字数 **≤12**
+- 每篇必跑 `scripts/check_cover.py`（21:9 + 文字块高 ≤25% + 每行字高 ≥8% 防裁切；`precheck_and_open.sh` 自动调用）；验收必须放大文字区逐字看底部笔画——PIL 画布高度 ≥ 字体 ascent+descent，否则每字底部被静裁
+- 默认后端 yairouter / `gpt-image-2.5-sunburst`（快速用 flare）；上游忽略 size 参数以实际返回为准；prompt 内文字/数字/年份须与正文一致；AI 概念图禁承载数字
+- 缺 API Key 先 `source ~/.bash_env` 再重试，禁止未找 key 就换后端
 
-封装了「作者扔原始素材 → AI 归纳整理（原声句逐字保留）→ 作者检查点确认 → 双轨配图 → 渲染 → 存公众号草稿箱」流程。关键规则：
+→ 详规（含叠字脚本画布陷阱、降级链）：`docs/image-generation.md`
 
-- 素材入口：`scripts/new-raw-topic.sh` 创建 `content/<日期>-<slug>/raw.md`，作者把想表达的一切贴进去
-- 动笔前必须读风格语料 `branding/style-corpus/style-features.md`（手敲贴图 + 长文 raw.md 金标准；2026-08-23 及之后贴图不当风格样本）
-- 原声句逐字保留，AI 只补结构、过渡和公众号惯例
-- 整理后必须停在检查点（结构 + 原声句清单 + 配图清单），作者确认前禁止出图
-- 双轨配图：AI 概念图 4-6 张（封面 21:9），数字/结构用脚本画图，AI 图禁止承载数字
-- 只存草稿箱（`--submit` / `draft/add`），禁止直接发布
+## 3. 发布硬门禁（顺序不可乱；只存草稿箱，禁止直接发布）
 
-## 作者 Obsidian 笔记（素材源，选题/大纲阶段必查）
+1. **机器质检**：`bash scripts/precheck_and_open.sh content/<日期>-<slug>`（quality_check + check_cover + 微信链接溯源）
+2. **VS Code 等作者改**（自动打开 content-gen 工作区定位 weixin.md），AI 停在这里等
+3. **复检** `--no-open`；FAIL 若由作者改稿产生，作者拍板，AI 禁擅自改回
+4. **才存草稿箱**：`baoyu-post-to-wechat`（grace + blue，remote-api）
+- 成稿后必须过 `docs/article-quality-check.md` 全清单（19 项 + 发布后回拉第 20 项 `--published`）
+- 封面 `00-cover.png` 必须存在；图片与 `weixin.md` 同级、**无 `images/` 前缀**；目录名 = 发布日期（变更即重命名目录）
+- 发布入口必须交 `weixin.md` 走 mdnice 管线，**禁止预渲染 HTML 再发布**；主题双线固定 grace+blue（`.baoyu-skills` 两处 EXTEND.md），改主题两处同改
+- 发布后第一时间把微信 URL 写进 frontmatter `wechatUrl`
 
-详见 [`docs/note-material-source.md`](docs/note-material-source.md)。
+→ 9 项最终检查清单：`docs/pre-publish-final-check.md`；图片路径事故根因：`docs/wechat-image-path.md`
 
-作者的 Obsidian 学习笔记是**文章素材的一等来源**——里面有论文研读、机制拆解，也有**作者自己写的判断与批注（原生观点）**。**起草选题/大纲前先查笔记**，不要凭空造选题。
+## 4. 内容红线
 
-- **主 vault（在用）**：`~/vaults/papers`（87 篇，笔记在 `AI-Chats/concepts/`）；**先读自动索引 `AI-Chats/_INDEX.md`** 一屏扫完标题
-- **旧 vault（WSL 时代，17 篇 Agent 论文研读）**：在未挂载的 NTFS 分区上 → 先 `udisksctl mount -b /dev/nvme0n1p3 -o ro`，落在 `/media/skyscribe/Windows/Users/skysc/Documents/Obsidian Vault/`；用完卸掉
-- ⚠️ `~/.agents/skills/obsidian-vault/SKILL.md` 里的 `/mnt/d/Obsidian Vault/AI Research/` 是**死路径**（/mnt/d 现为空），以本文档路径为准
-- **三类内容要分清**：① 一手事实（带 arXiv ID / issue 号，仍要开原文复核）② **作者原生观点**（`我的判断` / `我的理解边界` / `苏格拉底问题`）→ **原声素材，逐字保留、禁止改写** ③ AI 归纳 → 只当线索，进稿重写
-- **一条笔记 ≠ 一篇文章**：按「反常识 + 数字 + 为什么」蒸馏，通常一篇笔记出 1–3 篇；笔记自称「未核实/二次报道」处必须开一手原文复核
-- vault 属作者私人资料，**禁止把原文搬进 `content/` 或提交进本仓库**；`学习/未命名.md` 含明文 API 密钥，禁止读取/引用
+- 衍生内容（小红书卡片/文案等）**必须以 `weixin.md` 为准**，禁参照 draft.md；weixin.md 不存在则暂停生成
+- 价格/版本号/参数规模**必须实时搜索验证**，标题数字与正文一致；⚠️ DeepSeek V4 Pro 发布于 **2026 年 4 月**，禁写 2025
+- 人物禁独立成篇：只能作嵌入技术文的钩子（≤10% 篇幅），标题禁人名开头
+- 理论须挂最新国产模型（优先级 DeepSeek-V4 > GLM-5.2 > Kimi K2.6 > Qwen3，引 HF config.json），标注来源
+- 文章间导航链接**必须微信 URL**（`https://mp.weixin.qq.com/s/...`），禁相对路径；未发布用 `（待发布）` 标注，发布后补 URL
+- 尾部：**不放合集导航、不放下一篇预告**（2026-11-07 废止，合集聚合改由后台勾选）；「🔥 热门文章」必须 `scripts/hot_articles.py --md --cited <本文weixin.md>` 生成（禁手写），行间不留空行、行尾两空格，发布前跑 `--self-check`；正例模板见 `docs/pre-publish-final-check.md` 6c 节
+- 文末 3-5 个话题标签（系列 + 主题 + `#数解AI`）
+- 数学公式用 LaTeX：独立 `$$...$$`，内联 `$...$`
+- 贴图标题/封面定稿前必读 `docs/tietu-viral-playbook.md`：品牌词/事件词前置 + 情绪立场 + 利益钩子至少中两个，封面大字 = 标题核心句，禁谜语，热点当天/次日发 + 开群发
+- 小红书：文案写独立 `copy.txt`（纯文本 ≤1000 字、末尾话题标签），禁嵌入 cards.json；卡片 ≤6 张
+- 知乎：不支持 Markdown，输出 `.md` + `.html` 两份；公式 Unicode；须有独立价值 + ≥3 处公众号引流钩子
 
-## 数学公式
+## 5. 素材源与 vault 纪律
 
-详见 [`docs/math-latex.md`](docs/math-latex.md)。
+- 作者 Obsidian 笔记是**一等素材源**：主 vault `~/vaults/papers`（先读 `AI-Chats/_INDEX.md` 一屏扫题）；旧 vault 在未挂载 NTFS，只读挂载用完卸掉
+- 三类内容分清：一手事实（带 arXiv ID/issue 号，仍要开原文复核）/ 作者原生观点（`我的判断` 等，**逐字保留禁改写**）/ AI 归纳（只当线索，进稿重写）
+- ⚠️ vault 属作者私人资料：**禁止把原文搬进 `content/` 或提交**；`学习/未命名.md` 含明文 API 密钥，禁止读取/引用
+- 贴图归档走 `scripts/tietu_infographic.py`，产物统一放 `content/<日期>-tietu/<标题>/`，禁放项目外目录
 
-规则：使用 LaTeX 公式。独立公式用 `$$...$$`，内联公式用 `$...$`。
+→ 详规：`docs/note-material-source.md`、`docs/tietu-infographic-flow.md`
 
-## 图片生成
+## 6. 数据与运营口径
 
-默认后端：**yairouter**，客户端 `scripts/yairouter_img.py`。默认模型 **gpt-image-2.5-sunburst**；快速出图可用 **gpt-image-2.5-flare**（`--model` / cards.json 的 `model` 字段）；API 失败自动沿链降级 `gpt-image-2.5-flare → grok-imagine-image-quality`（grok 不支持 size 参数、输出固定 1024x1024 JPEG 需裁剪封面，脚本自动转真 PNG，详见 [`docs/image-generation.md`](docs/image-generation.md)）。默认 1K，封面图强制 **21:9**。⚠️ 上游 API 忽略 size 参数（2026-08-07 实测；2026-09-09 复验 2.5 系列），输出尺寸以实际返回为准。prompt 内文字/数字/年份必须与正文一致。详细流程见 [`docs/image-generation.md`](docs/image-generation.md)。
+- 数字事实源：`docs/wechat-data-audit-log.json`（结构见同名 `.schema.json`，操作 `scripts/wechat_audit_log.py`）、`docs/wechat-daily-sources-log.json`、`docs/shipinhao-data-log.json`（视频号独立）
+- **每轮审计结论与历史摘要不在本文件** → 现查 `docs/wechat-data-insights.md`（按 0xx 节定位）
+- 发布节奏：每天最多 1 篇，固定 **22:00**（恢复期可断更，合格才发优先于日更）
+- 恢复期规则、双轨框架、文章级 KPI（T+7 阅读 150–300 / 分享率 ≥10%）→ `docs/wechat-ops.md`
+- 标题/台账/frontmatter 一律以后台 `msg_title` 为准；`scripts/verify_published_urls.py` 可全量或单篇核验
+- ⚠️ 后台「发表记录」只收录群发记录，未群发已发布文章不在其中，不能当「全量已发布」校验源
+- 菜单：「热门文章」≤5 篇手动管理，「全部合集」永久不变 → `docs/wechat-menu.md`
 
-**API Key 规则**：若 shell 环境 / `.env` 中找不到所需 API Key（如 `YAI_API_KEY`、`MINIMAX_API_KEY` 等），**先 `source ~/.bash_env`** 再重试，不要直接报「缺 key」或擅自换后端。`~/.bash_env` 是作者维护的全局密钥文件（含 `YAI_API_KEY` 等）。
+## 7. 关键脚本速查
 
-## 贴图素材归档 + Infographic 生成流程
+| 脚本 | 用途 |
+|---|---|
+| `scripts/precheck_and_open.sh` | 机器质检 + 打开作者工作区（`--no-open` 复检；`--published` 发布后回拉模式） |
+| `scripts/quality_check.py` | 质量门禁通用版；每篇定制项（原声/承重数字/术语/内链/豁免）外置到 `content/<篇>/quality_check.json`；`--published` 跳过成稿期门禁只查发布不变量 |
+| `scripts/check_cover.py` | 封面 21:9 / 文字块高 / 每行字高门禁 |
+| `scripts/hot_articles.py` | 尾部热门文章生成（`--self-check` 验榜单漂移） |
+| `scripts/make_cover.py` | 封面叠字通用版；封面文字外置到 `content/<篇>/cover_spec.json`，产物 `00-cover.png` + `cover_meta.json` |
+| `scripts/yairouter_img.py` | AI 配图 |
+| `scripts/tietu_infographic.py` | 贴图归档 + infographic |
+| `scripts/burn_shipinhao.py` | 视频号字幕烧录（禁手拼 ffmpeg） |
+| `scripts/wechat_audit_log.py` | 审计台账读写 |
 
-需要「把某批贴图按发表时间下载归档、读图提取主要文字、再生成一张 info graphic 图片」时，**必须走固化流程**：`scripts/tietu_infographic.py`（读取公众号发表记录 `item_show_type=8` 贴图 → 按 `content/<日期>-tietu/<标题>/` 归档原始素材 → OCR 写 `summary.json` → 按 briefs 写 `prompt.md` 并生成每目录一张 `infographic.png`）。**所有产物（原始素材、识别文案、prompt、最终图）统一放在 `content/` 下，按发布日期 + 标题组织**，禁止放项目外目录。详细步骤、目录约定、依赖与坑（PNG-as-jpg、size 参数被忽略、CDN URL 需带 query 否则 400、ConnectionError 重跑）见 [`docs/tietu-infographic-flow.md`](docs/tietu-infographic-flow.md)。
-
-触发词示例：「把最近的贴图归档并生成信息图」「贴图原图下载 + infographic」。执行前先 `source ~/.bash_env` 取 `YAI_API_KEY`；贴图清单以 `branding/style-corpus/publish-data*.json` 的 `item_show_type=8` 为准，发布时间缺失时从贴图页 `send_time` 回填。
-
-## 多平台内容一致性
-
-衍生内容（小红书卡片/文案等）**必须以 `weixin.md` 为准**，禁止参照 `draft.md`。weixin.md 不存在则暂停生成。
-
-## 小红书文案格式
-
-详见 [`docs/xiaohongshu-copy.md`](docs/xiaohongshu-copy.md)。
-
-规则：文案写入独立 `copy.txt`，禁止嵌入 `cards.json` 或内联输出。纯文本、≤1000字、末尾带话题标签。
-
-## 知乎推广回答
-
-知乎不支持 Markdown → 输出 `.md` + `.html` 两份文件。公式用 Unicode，回答须有独立价值 + ≥3 处公众号引流钩子。详见 [`docs/zhihu-promotion.md`](docs/zhihu-promotion.md)。
-
-## 知乎发布 Skill
-
-项目级 skill：[`.agents/skills/post-zhihu/SKILL.md`](.agents/skills/post-zhihu/SKILL.md)
-
-封装了「内容裁剪 → 链接替换 → LaTeX 公式保留 → HTML 生成 → CDP 粘贴 → 图片上传 → 发布回写」的知乎专栏/回答全自动发布流程。关键规则：
-- 知乎原生支持 MathJax，公式保留 `$$...$$` 不转 Unicode
-- 正文中的微信链接必须替换为知乎链接（查 `templates/zhihu-urls.yaml`）
-- 图片必须串行上传到知乎 CDN（`pic*.zhihu.com`），禁止外部图床
-- 发布后必须回填知乎 URL 到 `draft-status.yaml` 的 `zhihu_url` 字段
-- 末尾引流只提及公众号名称和回复关键词，不放可点击外链
-
-## 小红书内容策略
-
-入口必须是痛点（不是概念）。封面图钩子 ≤8 字，标签用长尾词。详见 [`docs/xiaohongshu-strategy.md`](docs/xiaohongshu-strategy.md)。
-
-## 微信文章链接规则
-
-- **默认主题 grace**（对应发布管线 mdnice `scienceBlue`，主色蓝 `#0F4C81`）：项目已配置 `.baoyu-skills/baoyu-markdown-to-html/EXTEND.md`（预览）与 `.baoyu-skills/baoyu-post-to-wechat/EXTEND.md`（发布）双线 `default_theme: grace`、`default_color: blue`，渲染无需显式传 `--theme`/`--color`。改主题在这里改，两处同改。
-- **标题以后台为准**：台账 / frontmatter / 正文内链文字一律用后台 `msg_title`（作者会在后台改标题，实测 9 篇拟稿标题≠发布标题）；`python3 scripts/verify_published_urls.py` 可全量或单篇核验（2026-10-15：103/103 一致、0 删除）。⚠️ 后台「发表记录」（appmsgpublish）**只收录群发记录**，未群发也已发布的文章不在其中——不能当「全量已发布」校验源。
-- 系列导航链接**必须**是微信 URL（`https://mp.weixin.qq.com/s/...`），禁止相对路径
-- 未发布用 `（待发布）` 标注，发布后补 URL
-- 发布后**必须**把微信 URL 记入 frontmatter `wechatUrl` 字段，供后续文章引用
-- **尾部惯例（2026-11-07 作者口径变更）**：尾部**不放合集导航（📖 合集链接 + 箭头链），也不放「下一篇预告」**。合集聚合改由后台勾选合集完成（正文不再列篇目）；单篇链接只出现在「🔥 热门文章」块里，不堆叠
-- **尾部「🔥 热门文章」**：链接**必须**由 `scripts/hot_articles.py --md --cited <本文weixin.md>` 生成（数据源：最近审计 `docs/wechat-data-audit-log.json` 聚合历史最高阅读量 Top 6，自动过滤贴图，再追加本文引用到的相关公众号文章），**禁止**手写或凭记忆挑最近发布的文章；生成的链接行间**不留空行**（空行会被渲染成独立段落 `<p margin:1.5em>`，微信端视觉上多出一条空行），**每行行尾带两个空格**（Markdown 硬换行→`<br>`，否则 mdnice 软换行渲染成裸 `\n`→微信编辑器拼成一行或拆成带 padding 的独立段）；发布前跑一遍 `--self-check` 确认榜单未漂移
-
-```yaml
 ---
-title: "梯度下降：蒙着眼下山"
-wechatUrl: "https://mp.weixin.qq.com/s/abc123"
----
-```
 
-### 尾部结构示例（2026-11-07 起）
-
-```markdown
-你的项目里，有没有一条测试是 agent 写的、你从没读过它的断言？
-
-评论区聊聊。如果读到这里，欢迎点赞 👍、收藏 ⭐ 备用，转发给正在被 agent 放养的朋友。关注「数解AI」，慢慢深入拆解。
-
-🔥 **热门文章**：
-
-[篇名](https://mp.weixin.qq.com/s/xxx)  
-[篇名](https://mp.weixin.qq.com/s/yyy)  
-
-**参考资料与数字溯源**
-
-1. …
-
-#主题标签 #主题标签 #系列标签 #数解AI
-```
-
-⚠️ 已废止（历史文章仍保留，新文不再写）：
-
-```markdown
-❌ 📖 **[训练回路合集](https://mp.weixin.qq.com/mp/appmsgalbum?…)**：梯度下降 → 损失函数 → … → Adam
-❌ 下一篇我们聊残差连接：为什么网络越深反而越训不动？
-```
-
-## 微信话题标签
-
-每篇 `weixin.md` 末尾**必须**添加 3-5 个话题标签（`#标签`），用于搜一搜 SEO 和话题聚合。格式：系列标签 + 2-3 个主题标签 + `#数解AI`。详见 [`docs/wechat-topic-tags.md`](docs/wechat-topic-tags.md)。
-
-## 公众号菜单维护
-
-「热门文章」≤5 篇（手动管理），「全部合集」永久不变（合集页 URL）。发新文时勾选合集 + 记入 frontmatter `wechatUrl`。详见 [`docs/wechat-menu.md`](docs/wechat-menu.md)。
-
-## 文章标题
-
-详见 [`docs/article-title-seo.md`](docs/article-title-seo.md)。
-
-核心原则：**关键词前置** + **痛点驱动点击** + **搜一搜 SEO**。关键信息须落在前 22 字内（微信信息流截断窗口），**全标题长度可适度放宽**，以自然通顺优先；含 1 个专业关键词，套标题公式生成，过 9 条自检清单。
-
-**封面标题规格（写入封面 prompt 的硬性要求）**：封面文字**只突出一两个要点，不必等于文章标题**（2026-10-10 作者口径；此前「封面文字 = 标题**一字不差**」废止），也**可以完全不放文字**；版式=金色发光标题横贯全幅（无左右分栏）、每行字号约画面高度 1/9–1/8、**整块文字高度不超过画面高度 1/4**、两行居中、若含数字则数字准确、背景压暗退后、画面禁止任何其他文字。⚠️ 封面与信息流标题是**两套说法，允许不一致**。详见 [`docs/image-generation.md`](docs/image-generation.md)「封面标题显眼度规格」。
-
-**封面文字必须脚本叠加，禁止 AI 生图写中文（2026-10-28 作者反馈后固化，硬性）**：AI 生图直接渲染中文会字形发虚、拥挤、偶发错字，缩到信息流卡片大小即不可读。正确流程 = **AI 只生成无字深色底图（prompt 明确 no text）→ `make_cover.py` 裁 21:9 + PIL 叠金色发光字（Noto Sans CJK Bold）**，模板见 `content/2026-10-22-rust-agent-language/make_cover.py`（复制到新篇目录改 `LINES` 与 `D`）。**封面文字总字数 ≤12**（信息流缩略可读下限，超出即砍字）。**自动核验（每篇必跑，已挂进 quality_check.py）**：`check_cover.py` 验 21:9 比例 + 金色文字块高 ≤25% + **每行字高 ≥8% 画面高（防字形被裁）**；`cover_meta.json`（make_cover.py 产物）验总字数 ≤12；目录须有 `00-cover-base.png`（无字底图）作为「脚本叠字」流水线证据。生成后必须缩到 ~120px 宽模拟信息流卡片肉眼验收。
-
-**叠字脚本画布陷阱（2026-10-28 实踩，作者在草稿里发现）**：PIL 往定高 L 画布写字时，**画布高度必须 ≥ 字体的 ascent+descent**（Noto Sans CJK ≈ 1.47em，88px 字号需 ~130px）——画布只给 `size+8` 会把每个字的**底部静静裁掉**（实测每行 85px 字形只剩 64px 可见，辉光掩盖下整图看着「正常」，只有放大文字区才能看出）。修法：画布用 `size*2`、锚点 y=0、交给 `getbbox()` 裁真实墨迹。**验收纪律**：封面核验不能只看整图缩略和块高比例——必须**放大文字区逐字看底部笔画完整**（`check_cover.py` 的每行 ≥8% 门禁即为此设，低于它直接 FAIL）。
-
-## 贴图标题与封面（爆款规律）
-
-新建贴图（选题定档、标题/封面定稿前）**必须先读** [`docs/tietu-viral-playbook.md`](docs/tietu-viral-playbook.md)（2026-10-04 从历史贴图量级对照提炼，含量级三档表 + 同日对照证据），逐项过文内执行清单。核心规律：
-
-- **题材事件量级定档**：出圈事件（价格战/全网新闻）> 圈内大事件 > 圈内小事件；第三档预期放百级，标题再好也救不了题材
-- **标题三件套**：品牌词/事件词前置（必中）+ 情绪/强立场 + 利益/站队钩子，至少中两个；带一个可转发的具体数字
-- **杜绝谜语化**：陌生人 3 秒说不出讲什么就重写；「网络」「大模型」这类泛指不算品牌词
-- **封面大字 = 定稿标题核心句**，热点词进大字（信息流里标题+封面同帧，禁止两套说法、禁止热点词埋小字）
-- **贴图不做反直觉疑问句**（那是文章轨公式，别混用）；热点当天/次日发 + 开启群发通知
-
-## 理论与实践结合
-
-理论知识点必须关联最新国产模型（HuggingFace config.json）。模型优先级：DeepSeek-V4 > GLM-5.2 > Kimi K2.6 > Qwen3。引用须标注来源。详见 [`docs/theory-practice.md`](docs/theory-practice.md)。
-
-## 数据时效性
-
-所有价格、版本号、参数规模必须实时搜索验证，标题数字和正文一致。⚠️ AI 模型倾向将 DeepSeek V4 Pro 发布时间记为"2025"，**实际为 2026 年 4 月**，所有涉及 V4 Pro 的 prompt/正文须显式标注"2026"。详见 [`docs/data-freshness.md`](docs/data-freshness.md)。
-
-## 人物故事嵌入
-
-**禁止**独立人物故事/传记文章。人物只能作为嵌入技术文章的钩子（≤10% 篇幅）。标题禁止以人物名开头。详见 [`docs/story-embed.md`](docs/story-embed.md)。
-
-## 公众号运营
-
-详见 [`docs/wechat-ops.md`](docs/wechat-ops.md)。
-
-**选题规划**：写新文章前先查 [`docs/content-matrix.md`](docs/content-matrix.md)（内容矩阵与 DeepSeek 反常识选题库，2026-08-26 建立）+ [`docs/note-material-source.md`](docs/note-material-source.md)（作者 Obsidian 笔记素材源，2026-10-10 建立）。
-
-⚠️ **推荐权重恢复期（2026-08-22 起，临时 1–2 周）**：见 `docs/wechat-ops.md`「推荐权重恢复期规则」。恢复期内**「合格才发」优先于日更**（允许断更）、执行质量门禁加严 6 条（见该节 B，任何一条不过不发）、禁同日双发同题材、发布后不改标题/摘要、恢复期互动增量（可回答问题 + 作者 1 小时内回复前 3 条 + 一句话总结卡）。**双轨框架（2026-08-29 确立）**：账号级推荐量靠**贴图轨**（热点事件当天发贴图 + 开群发 + 情绪词标题，禁与文章同日同题材）；文章轨目标文章级指标（数学篇为主力，RL 篇暂停或挂现实模型钩子）。**监控指标（2026-08-29 修正）**：账号级每日推荐量含贴图推荐流（贴图与文章推荐独立），不再作为文章策略判据；改为文章级指标——新发文章 7 日阅读 150–300、留言 ≥5、分享率 ≥10%，滚动窗口 5–7 篇 ≥4 篇达标即退出恢复期。
-
-## 公众号运营数据验证
-
-内容策略决策的实证基础。账号日新增关注不能直接归因到单篇文章。详见 [`docs/wechat-data-insights.md`](docs/wechat-data-insights.md)。
-
-## 公众号数据审计 Skill
-
-项目级 skill：[`.agents/skills/wechat-data-audit/SKILL.md`](.agents/skills/wechat-data-audit/SKILL.md)
-
-封装了「Cookie 注入 → 采集内容/用户数据 → 分析 → 写入项目文档」的完整工作流。AI 在接到数据复盘或运营分析类请求时应优先加载此 skill。
-
-关键规则：
-- 每天最多 1 篇，日更节奏（2026-07-25 起试行；推荐权重恢复期豁免，见「公众号运营」节），固定 **22:00** 发布（**2026-10-14 作者改档**：此前为 20:00；10-13、10-14 两篇实际已 22:00 发出，此后新文一律排 22:00）
-- 末尾含关注引导（价值承诺 + 系列结构）
-- 结尾含 1 个开放式问题引导留言
-- 摘要须含 2-3 个搜索关键词
-- 最新审计：2026-11-07 早场（数据截至 2026-11-06，累计关注 **1,106**，广告收入累计 **109.60 元**（9 天 +3.12））。🔴 **11-06 单日 45 读为 9 月以来最低、近 7 日阅读 859 / 推荐 703（上轮 1,424 / 1,085，-39.7% / -35.2%）**——上轮贴图脉冲（10-24/10-25 的 283/243）退潮后文章轨没接住，11-05/11-06 停更两天推荐从 175 跳水到 35；🟢 但**推荐占比 75.9% 创项目记录新高**、搜一搜 1.0% 二次回升（53 读/30 天）；🟢 **Rust 篇 T+16 长尾到 338 读 / 完读 32%**（滚动窗口内唯一达标篇但已滚出）；🟢 **DeepSeek 只换权重篇 T+6 128 读 + 单篇收入 1.34 元近月最高**；🔴 让 AI 补测试篇 T+2 仅 12 读（无品牌词/数字钩子反例）；🔴 **恢复期 0/7 仍不退出**（近 7 篇 3 篇未定档）。收入：7 日四广告位 **2.64 元**、曝光 891（日均 127 < 200，**eCPM/CTR 本轮不作判据**，回到只看曝光率与拉取）；底部广告 eCPM 13.08/收入 1.19 异动但样本仅 91 不外推；tietuFeed CTR 6.25%/eCPM 6.04 连续两轮点击主力；文章级收入 3 篇 1.58 元。🆕 **基建：后台发表记录/详情页对直接 URL 导航启用额外鉴权**，采集已切换为「菜单点击 + cgiData 逐页抓取」并全量重采 203 条；`scripts/hot_articles.py` 修复 3 个后台新结构兼容 bug（修复前贴图过滤失效会把费马大定理 4,683 读误排热门榜第 1），已复跑 `--self-check` 锚点一致。详见 [`docs/wechat-data-insights.md`](docs/wechat-data-insights.md) 0am 节。
-- 历史审计：2026-10-29 晚场（数据截至 2026-10-28，累计关注 **1,100**，广告收入累计 **106.48 元**（5 天 +2.61））。🟢 **贴图轨两次拉爆账号推荐**：10-24 推荐 283 / 全部 376（Kimi K3.1 贴图 301 读）、10-25 推荐 243 / 303（OpenClaw 贴图 106 读）；近 7 日阅读 **1,424** / 推荐 **1,085**（上轮 768/475，**+85.4% / +128.4%**），近 30 天阅读人数 6,171、推荐占比 **72.7%**。🟡 **恢复期首次达标 1/7**（Rust 实测篇 T+7 **193 读** 首次破 150 门槛，但分享率 5.7% 未达 10%），仍不退出。🔴 **C 系列逐篇走低 97→59→20**（详情人数 98/59/10），C1 完读率仅 13%——系列回读没形成、前情门槛过高。🟢 质量侧：Rust 篇完读 **35%** / 均读 **2.33 分钟**（近月双高）；C3 完读 30%/分享 15% 但样本仅 10 人；SDLC 落地篇推荐占比 14.7%、聊天会话 35.3% 为最高渠道（靠转发进群）。🟡 搜一搜 **0.6%**（七连降后首次回升，35 读/30 天），新增关注里搜一搜仍占 **13.85%**。收入：7 日四广告位 **3.18 元**、曝光 1,529（**日均 218 > 200，eCPM/CTR 首次稳定可作判据**），贴图底部推荐流 CTR **4.86%** / eCPM 4.38 均为第一（7 次点击占全部 9 次）；文章中部曝光率 53.56% 但 eCPM 仅 0.95，留言区 1.52 元占 47.8%；文章级收入 8 篇 2.14 元（**贴图 Kimi 0.88 ≈ 5 篇原创合计 0.88**）。⚠️ 本轮同时回填 10-23 篇 frontmatter 缺失的 wechatUrl（台账早已 published）。详见 [`docs/wechat-data-insights.md`](docs/wechat-data-insights.md) 0al 节。
-- 历史审计：2026-10-24 早场（数据截至 2026-10-23，累计关注 **1,097**，广告收入累计 **103.87 元**（9 天 +3.12））。🟢 **10-21~10-23 阅读三连回升（128/146/159）**，10-23 为 10-14 以来单日最高；三篇强题材接住推荐——pi-codemode **116**、Rust 实测 **119**、三家收敛 79，把阅读从 10-15~10-20 的谷底（70~100）拉回 100-160 平台。🔴 **恢复期仍不退出：滚动 7 篇达标 0/7**（最高 119，150 读门槛仍未破），MCP codemode 篇分享率 **2.6%** 为全轮最低。🟡 近 7 日阅读 **768** / 推荐 **475**（上轮 2,106 / 1,656，**-63.5% / -71.3%**——上轮含微软 Go 篇长尾，非新增崩塌）；推荐占比 **70.5%**、搜一搜 **0.5%**（**七连降**，但新增关注里搜一搜占 **12.68%**，SEO 拉粉丝不拉即时阅读）。🟢 质量侧：Rust 篇完读 **29%** / 均读 **2.17 分钟**（近月最长）；SDLC 诊断篇完读 **45%** / 留言 8 但仅 71 读——**完读率与阅读量仍无关**，题材决定有没有人点。收入：7 日曝光 964（**日均 138 < 200，eCPM/CTR 本轮不作判据**），文章底部 eCPM 4.92 最优；文章级收入 3 篇 1.08 元（**MCP 篇 2 天 0.50 ≈ SDLC 诊断篇 6 天 0.51**）。⚠️ 三篇近期文章已完成后台正文逐句回拉 + 标题同步（10-21「最后→最终」、10-22 后台标题改写）。详见 [`docs/wechat-data-insights.md`](docs/wechat-data-insights.md) 0ak 节。
-- 历史审计：2026-10-15 早场（数据截至 2026-10-14，累计关注 **1,083**（截至 10-13，+9），广告收入累计 **100.75 元**（首破百，5 天 +2.91））。🟢 **广告曝光首次稳定跨过决策门槛**：6 日（10-08~10-13）四广告位合计 **4.10 元**、曝光 3,441（**日均 574 > 200**）→ eCPM/CTR 从此可作判据；文章中部曝光率 68.38% 最高但 eCPM 0.68 最低，文章底部 eCPM 2.40 / CTR 0.73% 最优；🆕 **文章级收入明细首次可用**（9 篇 7 日合计 0.88 元，贴图《做逆向》0.25 最高）。🔴 **恢复期不退出，且比上轮更差：滚动 7 篇达标 0/7**（10-08~10-13 最高 110 读），上轮唯一达标的流形假设篇已滚出窗口。🟡 近 7 日阅读 2,106 / 推荐 1,656（+53% / +86%），但这抬升是 **10-07 微软 Go 篇的推荐长尾**（6 天 583→**1,176 读**，≈100/日），新发的 6 篇首日推荐只有 20~60，**没有一篇接住推荐加量**；10-11 账号级全部阅读跌到 **119**，为 09-27 以来最低。推荐来源占比回到 **68.8%**（窗口效应）；搜一搜 **0.6%**（连降 6 轮）。🔴 **「篇幅是第一杀手」在同系列内部被验证**：10-12 上篇 1,971 字完读 21% vs 10-13 下篇 3,678 字完读 **7%**（同素材、同作者、相邻两天）。⚠️ 本轮修正：后台在发布时把 10-14 篇标题改为「2 万 token上下文，DeepSeek为什么还是把代码记错了？」，**内链文字/台账 title 一律以 mp 页面 msg_title 为准**；⚠️ 审计基建：`.venv-mdnice` 已因系统 python 3.12→3.14 失效，需重建审计 venv。详见 [`docs/wechat-data-insights.md`](docs/wechat-data-insights.md) 0aj 节。
-- 历史审计：2026-10-09 晚场（数据截至 2026-10-08，累计关注 **1,074**（2 天净增 +4），广告收入累计 **97.84 元**、昨日增量 **+1.19（历史最高单日）**）。🟢 **10-08 推荐 547 / 全局阅读 640，近月单日最高**（上一个峰值是 09-30 的 255），几乎全部来自 10-07 文章《微软用 Go 重写 TypeScript，他一个人用 C++ 又写了一遍》——发表记录 **583 读**（30 天榜第一，9 月费马/ollama 等爆款已滚出）、单篇详情 **528 人 / 推荐占 93.4% / 完读率 39%（近月最高）**，但**分享率仅 1.2%**（纯推荐灌入，未自发扩散）。**验证：题材量级 > 标题公式**——同为品牌词疑问句，圈外大事件（微软/TypeScript/C++）583 读 vs 圈内技术文 47~64 读，差 **10 倍**；`docs/tietu-viral-playbook.md` 的量级分档对文章轨同样适用。近 7 天（10-02~10-08）阅读 **1,830** / 推荐 **1,302**（上一滚动 7 日 1,510 / 1,031，**+21.2% / +26.3%**）。🟡 推荐来源占比 74.3%→**61.0%**、公众号消息 14.0%→**21.0%**，**近 30 天阅读人数 12,324→7,214 是窗口滚出 09-07/09-08 两个推荐暴量日（共 5,979 读）所致，非流量崩塌**。**完读率 KPI 第二轮读数**：给 Agent 记忆 22%（T+2）→ **33%（T+4）**，微软 Go T+2 即 39%——**「新发文章 24h 内不判读」再次验证，T+2 读数系统性偏低 1.3~1.5 倍**。**恢复期仍不退出**：滚动 7 篇达标 **1/7**（仅 09-30 流形假设 195 读 / 14.9%）< 4。广告：7 日曝光 **2,330（日均 333 > 200，eCPM/CTR 首次可作参考）**，**首次出现真实点击**（底部 4 / 中部 8 / 留言区 2 / 贴图流 1）；tietuFeed 曝光率 9.8% 仍为四广告位最低。⚠️ **本轮修正：贴图详情页已有渠道饼图**（用 `appmsgid` 拼 `detailpage` URL），贴图不再记 `channels: null`；本轮免扫码采集**第四次复验成功**，cookie 已自动回写 `.env`。详见 [`docs/wechat-data-insights.md`](docs/wechat-data-insights.md) 0ai 节。
-- 历史审计：2026-10-07 早场（数据截至 2026-10-06，累计关注 **1,070**（4 天净增仅 +3），广告收入累计 **96.28 元**、收入滞后至 10-05）。🔴 **推荐深度回落**：10-03→10-05 推荐连续下滑 134→107→**89（09-27 以来最低）**，10-06 靠两张贴图反弹 164；推荐来源占比 80.1%→**74.3%**，公众号消息占比抬升 10.5%→14.0%。**0ag 判断被坐实：推荐池没有独立趋势，跟着内容强度走**；贴图 T+0 即拉当日推荐、文章推荐仍 T+1 到账。**完读率 KPI 首轮完整读数（n=4）**：给 Agent 记忆 22% > 流形假设 21% > RL 16%（T+0 的 11% 质疑解除）> 问 AI 100 遍 12%；⚠️ **0ah.7 历史数据核查（23 篇回测）：完读率与阅读/涨粉/分享零或负相关、被渠道结构主导，已降级为诊断指标**（同渠道横向比 + <15% 发文门禁预警，完读率 T+7 定档）；**结果 KPI 维持 T+7 阅读 ∈[150,300] + 分享率 ≥10%**；**流形假设（T+7 190 读/分享率 15.3%）成第 2 篇达标文章**，滚动 7 篇达标 2/7 < 4，**恢复期仍不退出**。广告位快照**新增 `tietuFeed`（贴图底部推荐流）**口径；日均曝光 182 < 200，eCPM/CTR 继续不作决策依据。本轮免扫码采集**第三次复验成功**，cookie 已自动回写 `.env`。详见 [`docs/wechat-data-insights.md`](docs/wechat-data-insights.md) 0ah 节。
-- 历史审计：2026-10-03 早场（数据截至 2026-10-02，累计关注 **1,067**，累计广告收入 **95.53 元**、昨日 +0.25）。🟡 **推荐：占比创新高但绝对量已回落**——账号推荐来源 **80.1%**（连续 4 轮抬升 60.6→68.4→79.6→80.1，项目记录），近 7 日推荐 1,139 vs 前 7 日 977（**+16.6%**）；但 09-30 见顶 255 后已回落到 10-01 的 134 / 10-02 的 148，**上轮的「阶梯抬升」主要是 09-30 流形假设+贴图拉动，不是推荐池独立趋势**。**恢复期仍不退出**：滚动 7 篇达标 **1 篇**（仅 09-24 四家架构 KV：225 读/推荐 76.4%/分享率 16.9%），远低于 ≥4 的退出线。⚠️ **2026-10-03 作者拍板两条口径修正**：① **留言指标已污染，不再作为 KPI**——作者说明「3 条评论」基本是自己留的 + 跟元宝互动的，后台数据也印证（21 条内容里 12 条恰好 3、3 条为 0，是恒定人工基线）；**下一阶段 KPI 换成完读率**，留言引导继续做但不背 KPI。② **新发文章一律等满 24 小时再判读**（含完读率、均读）——本快照里 10-02 RL 篇的「完读率 11%」是 T+0，不可作结论。三广告位 7 日合计 2.16 元，7 日曝光 1,355、日均 194 < 200，**eCPM/CTR 本轮不作决策依据**。搜一搜 **0.6%**（连降 4 轮）。⚠️ 本轮修正两处口径事故：`articles[].reads` 统一取发表记录「阅读人数」列、`articles[].share` 统一为百分比（此前两轮误存小数比例）——跨 0af/0ag 比较单篇阅读会看到跳变。
-- 🔴 **采集纪律（2026-10-01 新增）**：判定「后台登录态失效」**必须先枚举所有 Chrome profile 的 cookie 创建时间**——本轮活会话在 `~/.config/google-chrome/Default`（09-29 21:54），而 `.env` 的 `WECHAT_COOKIE` 是 09-27 17:01 的死快照。只盯 `.env` 会**误判为需扫码**（本轮差点让作者白扫）。✅ 可用解法：复制主 profile 最小集到 `/tmp/wx-live-profile` + headless Chrome（9335 端口）自解密 cookie，不打扰用户正在运行的 Chrome；**v11 libsecret 手工解密会失败，不要在那条路耗时**。脚本 `scripts/wx_audit_browser.py` + `scripts/wx_audit_collect.py`。后台菜单「流量主」**已改名「广告收入」**；用户分析页不可直接 URL 访问；收入页正文在顶层 `#wxadcontainer`；单篇饼图是 SVG aria 需分别抓百分比与标签再 zip。
-- 🔴 **口径修正（承 09-27）**：文章推荐 **T+1 到账**，单篇推荐一律看累计。⚠️ **另新增两条口径警告**（2026-10-01）：① 单篇**详情页 = 去重人数**、**发表记录列表 = 阅读次数**，09-30 流形假设篇 60 人 vs 120 次，**差 2 倍不可混用**；② 内容分析页的单篇列表**固定近 30 天 Top10、无法按日切换**，按日取数走「发表记录」。「四家横向对照型」拉量、「大数字分配悬念型」（新增：2345 万 + 只分到 12.7%？）拉量、「猎奇翻车型」拉互动，三类轮换。详见 [`docs/wechat-data-insights.md`](docs/wechat-data-insights.md) 0af 节
-- 历史审计：2026-10-01 下午场（数据截至 2026-09-30，累计关注 **1,060**，累计广告收入 95.05 元）。🟢 推荐连续 3 天阶梯抬升（09-27 谷底 98 → 09-30 峰值 255），近 7 日推荐 +24%，但 10-03 复采显示该抬升未能延续。09-30 流形假设篇 T+0 60 人 → T+2 164 人，验证推荐 T+1 到账。历史审计：2026-09-27 晚场（数据截至 2026-09-26，累计关注 **1,043**，累计广告收入 93.07 元）。🔴 **重大口径修正：文章推荐是 T+1 到账**——09-24 KV 篇当日仅 17 读、次日 88 读（其中推荐 67），累计 144 读里推荐占 **72.9%**；此前多轮用「发布当日读数低」判读「推荐未恢复」是错的。09-17 短原创《AI中有趣的对抗思想居然无处不在》已补录（`2026-09-17-adversarial-thought`）。⚠️ `backfill-types` 标题集快照滞后，09-20~09-30 新发贴图已补入 `branding/style-corpus/tietu-extra.json`（2026-10-01 追加 4 条）——**单篇类型判读一律以后台 `item_show_type` 原始字段为准**。详见 0ae 节
-- 数字事实源：[`docs/wechat-data-audit-log.json`](docs/wechat-data-audit-log.json)，结构见同名 `.schema.json`，操作脚本为 `scripts/wechat_audit_log.py`，报告生成脚本为 `scripts/wechat_audit_report.py`，产物为 `docs/wechat-data-audit-report.html`
-- **每日流量渠道明细事实源（2026-08-27 新增）**：[`docs/wechat-daily-sources-log.json`](docs/wechat-daily-sources-log.json)，结构见同名 `.schema.json`——按天 × 传播渠道阅读人数（含每日推荐量）；每次采内容分析后跑 `python scripts/wechat_audit_log.py append-sources --input <tendency_*.xls>` 增量入库，逐日历史只认这份台账
-- **视频号数字事实源（2026-08-25 新增）**：[`docs/shipinhao-data-log.json`](docs/shipinhao-data-log.json)，结构见同名 `.schema.json`——视频号播放/完播/点赞/评论数据，与公众号日志分离（后台登录体系不同，公众号 Cookie 不通用）
-
-## 视频号视频加工 Skill
-
-项目级 skill：[`.agents/skills/gemini-video-to-shipinhao/SKILL.md`](.agents/skills/gemini-video-to-shipinhao/SKILL.md)
-
-封装了「Gemini Notebook 视频 → 视频号成品」全流程：MiMo ASR 字幕 → 拆长句 → 对照公众号文章校对 → 定位/去除 Gemini logo → 烧录黄色字幕 → 替换片尾品牌页为关注卡 → 归档。关键规则：
-
-- 字幕基准是 `weixin.md`，术语/年份必须逐条对照校对（MiMo 误听清单见 SKILL）
-- 烧录必须用 `scripts/burn_shipinhao.py`（滤镜顺序、字号补偿、码率参数、片尾截断点探测已固化，禁止手动拼 ffmpeg 命令丢滤镜链）
-- SRT 备份不得与视频同名（VLC 自动加载同名 .srt 会叠加显示）
-- 产物归档 `content/<日期>-<主题>/shipinhao/`，发布时用「扩展链接」挂公众号文章
-
-## Manim 文章视频 Skill
-
-项目级 skill：[`.agents/skills/manim-article-video/SKILL.md`](.agents/skills/manim-article-video/SKILL.md)
-
-封装了「公众号文章 → Manim 动画视频号成品」全流程：分镜脚本 → MiMo 逐段配音 → Manim 竖屏场景 → 渲染 → `scripts/manim_video_build.py` 一键构建（mux 配音 + 无缝拼接 + 黄色字幕 + 品牌尾卡）→ 验证归档。关键规则：
-
-- **用户用文章标题指代文章**，先 grep 定位 `content/<日期>-<主题>/`，再读 `weixin.md`
-- **语速定稿 speed 1.0 + pitch +2**（2026-08-25 用户拍板「节奏非常快」后降速，勿擅自改）；段间停顿是红线，段尾缓冲 0.1s；默认时长 3-4 分钟（软上限 5 分钟）、5-6 段分镜、动画降噪（每页 1 个主视觉动效，v2 动效每片 ≤3 处）
-- **配音默认用作者克隆音色**（`--clone-audio branding/my-voice-denoised.wav`，MiniMax speech-2.8-turbo 默认、hd 可选；2026-08-11 起 MiMo → MiniMax，用户反馈 MiMo 声音不真实、感情不足）；录音参考 `branding/my-voice-original.m4a`
-- 场景 `construct` 末尾必须 `pad_to_voice()` 补齐到配音时长；ASS 时间戳是**厘秒** `h:mm:ss.cc` 不是毫秒
-- 结尾品牌尾卡：`avatar-sjai.png` 圆角透明化 + 图下黄色「关注「数解AI」」引导
-- 规格（竖屏/时长/配音）先 `ask_user_question`；sudo 类系统操作停下交给用户执行
-
-## 文章质量核查
-
-草稿写完后**必须执行**，全部通过才能进入发布流程。详见 [`docs/article-quality-check.md`](docs/article-quality-check.md)（含 19 项核查清单 + 第 20 项发布后回拉模式，第 13 项为爆款检查器，第 14 项为自动成稿原声槽，第 15 项为说人话/去 AI 味，第 16 项为转发/点赞欲检查器，第 17 项为**段落长度与标题分层**——每段 ≤80 字、长段落按意思拆、醒目句独立成段、小标题多级，第 18 项为**段落衔接与章节过渡**——遮住标题通读无断点、每节末段留钩子下节首段接住（首段接钩禁短促断言，须完整句+上下文）、过渡句禁功能标签，第 19 项为**结尾引用文献核查**——参考资料逐条可回溯（人名/日期/归属/二手标注四项核对），第 20 项为**发布后回拉与 `--published` 模式**——回拉用 `scripts/fetch_draft.sh <media_id>`（vps-us 隧道，产物 `draft-content.html`；⚠️ 公式在 HTML 里是 SVG 矢量块，纯文本 diff 会把公式滤没，别误判丢失）；作者在后台改过稿的文章，回拉后跑 `quality_check.py --published`：跳过成稿期的原声/段落/长句/篇幅门禁，只查发布不变量（禁词、待发布残留、标签、图片路径、内链、承重数字），避免把作者改稿误报为质量回归）。
-
-## 作者编辑门禁（2026-11-08 作者口径，存草稿箱前必须走）
-
-成稿后**禁止直接存草稿箱**，固定顺序：
-
-1. **机器质检**：`bash scripts/precheck_and_open.sh content/<日期>-<slug>`（跑本篇 `quality_check.py` + `check_cover.py` + 微信链接溯源）
-2. **VS Code 等作者改**：`bash scripts/precheck_and_open.sh content/<日期>-<slug>` 会自动打开 content-gen 文件夹工作区、定位到 `weixin.md`，MPE 预览随文件自动弹出（`.vscode/settings.json` 的 `automaticallyShowPreviewOfMarkdownBeingEdited` 开关）。AI 停在这里等作者，作者改完说一声再继续
-3. **复检**：作者改完后 `bash scripts/precheck_and_open.sh content/<日期>-<slug> --no-open` 复跑一轮。FAIL 项若由作者改稿产生（原声被作者自己改写等），由作者拍板，AI 不擅自改回
-4. **才存草稿箱**：复检通过（或作者明确豁免）后才走 `baoyu-post-to-wechat`（grace + blue，remote-api）
-
-## 发布前检查
-
-**规则**：调用 `baoyu-post-to-wechat` 发布前，必须确认以下就绪（含上方作者编辑门禁四步全部走完）：
-
-1. **封面图已生成** — `00-cover.png` 存在于文章目录，缺失则先生成
-2. **wechatUrl 已补** — 发布后第一时间把微信 URL 写入 frontmatter `wechatUrl` 字段
-3. **目录名 = 发布日期** — 发布日期变更时同步重命名目录
-4. **图片路径正确** — 图片与 `weixin.md` 同级，无 `images/` 前缀（详见 `docs/wechat-image-path.md`）
-5. **话题标签已添加** — 文末含 3-5 个 `#标签`（详见 `docs/wechat-topic-tags.md`）
-6. **最终检查已通过** — 逐项过 `docs/pre-publish-final-check.md` 的 7 项清单
-
-## 发布前最终检查
-
-发布前最后一道门禁，9 项：标题/关键词 SEO、正文开头无重复封面图、硬件数字核查（GPU/模型/上下文组合可实际跑通）、无「待发布」残留（替换为已发布微信链接）、文末话题标签、尾部**无合集导航也无下一篇预告**（2026-11-07 起废止这两块）、点赞/关注/收藏引导、叙事闭环（开头 ↔ 结尾互动问题）。详见 [`docs/pre-publish-final-check.md`](docs/pre-publish-final-check.md)。
-
-## 公众号图片路径
-
-详见 [`docs/wechat-image-path.md`](docs/wechat-image-path.md)（硬性规则，发布 45166 的根因）。
-
-## 小红书卡片结构
-
-**规则**：小红书卡片数量控制在 **6 张以内**（精简掉冗余的代码实操和独立关注引导页）。
-
-推荐序列：封面钩子 → 核心问题 → 直觉解释 → 关键洞察 → 实验数据 → 总结+关注
-
-封面必须遵循策略（≤8 字痛点钩子 + 大面积留白），生成前先清理旧文件。
-
-## 目录命名
-
-**规则**：文章目录名用**发布日期**（如 `2026-07-07-softmax`），不用创建日期。发布日期变更时须同步重命名目录。
+*2026-11-07 重构：原 40KB 混合索引/规则/审计历史的版本已拆分——详情进 `docs/` 各专题文件，审计历史移至 `docs/wechat-data-insights.md`，尾部正例模板移至 `docs/pre-publish-final-check.md` 6c 节。改动前完整版见 git 历史。*
