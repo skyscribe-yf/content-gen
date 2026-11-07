@@ -34,6 +34,32 @@ import sys
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
+def _clean_title(t: str) -> str:
+    """标题清洗：与审计日志 articles[].title 保持一致（HTML 实体解码 + nbsp 转普通空格）。
+    publish-data 里是后台原始标题（含 &nbsp; 实体），不清洗则 norm() 匹配不上。"""
+    return html.unescape(t or "").replace("\xa0", " ").strip()
+
+
+def _item_info(item: dict) -> dict | None:
+    """发表记录条目 → appmsg_info 容器。兼容三种结构：
+    1. cgiData 直出（2026-11-07 起）：item.appmsg_info 是内容列表，同时自带的
+       item.publish_info 只是发布动作元数据（无 appmsg_info）——必须以直出为准；
+    2. 旧版：publish_info 是 HTML 转义 JSON 字符串，appmsg_info 在里面；
+    3. 分片版：publish_info 是解析好的 dict。
+    """
+    if item.get("appmsg_info"):
+        return item
+    raw = item.get("publish_info")
+    if isinstance(raw, str) and raw.strip():
+        try:
+            return json.loads(html.unescape(raw))
+        except json.JSONDecodeError:
+            return None
+    if isinstance(raw, dict) and raw.get("appmsg_info"):
+        return raw
+    return None
+
+
 def load_tietu_titles() -> set[str]:
     """三份来源合并的贴图标题集。
 
@@ -51,12 +77,11 @@ def load_tietu_titles() -> set[str]:
         except (OSError, json.JSONDecodeError):
             continue
         for item in data.get("publish_list", []):
-            try:
-                info = json.loads(html.unescape(item.get("publish_info", "")))
-            except json.JSONDecodeError:
+            info = _item_info(item)
+            if info is None:
                 continue
             for app in info.get("appmsg_info", []):
-                t = app.get("title")
+                t = _clean_title(app.get("title"))
                 if not t:
                     continue
                 st = app.get("item_show_type")
@@ -101,13 +126,12 @@ def url_from_publish_data() -> dict[str, str]:
         except (OSError, json.JSONDecodeError):
             continue
         for item in data.get("publish_list", []):
-            try:
-                info = json.loads(html.unescape(item.get("publish_info", "")))
-            except json.JSONDecodeError:
+            info = _item_info(item)
+            if info is None:
                 continue
             for app in info.get("appmsg_info", []):
                 if app.get("title") and app.get("content_url"):
-                    urls.setdefault(app["title"], app["content_url"])
+                    urls.setdefault(_clean_title(app["title"]), app["content_url"])
     return urls
 
 

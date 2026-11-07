@@ -1,0 +1,236 @@
+[
+ {
+  "key": "AI自己出题",
+  "date": "2026-11-07",
+  "title": "AI自己出题",
+  "readers": null,
+  "finishRate": null,
+  "channels": null,
+  "note": "detailpage unreachable"
+ },
+ {
+  "key": "让AI补测试",
+  "date": "2026-11-04",
+  "title": "让AI补测试",
+  "readers": null,
+  "finishRate": null,
+  "channels": null,
+  "note": "detailpage unreachable"
+ },
+ {
+  "key": "60%赞成票",
+  "date": "2026-11-02",
+  "title": "60%赞成票",
+  "readers": null,
+  "finishRate": null,
+  "channels": null,
+  "note": "detailpage unreachable"
+ },
+ {
+  "key": "pi热度贴图",
+  "date": "2026-10-30",
+  "title": "pi热度贴图",
+  "readers": null,
+  "finishRate": null,
+  "channels": null,
+  "note": "detailpage unreachable"
+ },
+ {
+  "key": "1M上下文",
+  "date": "2026-10-29",
+  "title": "1M上下文",
+  "readers": null,
+  "finishRate": null,
+  "channels": null,
+  "note": "detailpage unreachable"
+ },
+ {
+  "key": "C3压缩规矩",
+  "date": "2026-10-28",
+  "title": "C3压缩规矩",
+  "readers": null,
+  "finishRate": null,
+  "channels": null,
+  "note": "detailpage unreachable"
+ },
+ {
+  "key": "C2压缩账单",
+  "date": "2026-10-27",
+  "title": "C2压缩账单",
+  "readers": null,
+  "finishRate": null,
+  "channels": null,
+  "note": "detailpage unreachable"
+ },
+ {
+  "key": "C1压缩极限",
+  "date": "2026-10-25",
+  "title": "C1压缩极限",
+  "readers": null,
+  "finishRate": null,
+  "channels": null,
+  "note": "detailpage unreachable"
+ },
+ {
+  "key": "OpenClaw贴图",
+  "date": "2026-10-25",
+  "title": "OpenClaw贴图",
+  "readers": null,
+  "finishRate": null,
+  "channels": null,
+  "note": "detailpage unreachable"
+ },
+ {
+  "key": "DeepSeek只换权重",
+  "date": null,
+  "title": "DeepSeek 只换了权重",
+  "readers": 130,
+  "finishRate": 13.0,
+  "channels": {
+   "推荐": 70.8,
+   "公众号消息": 22.3,
+   "公众号主页": 3.1,
+   "搜一搜": 2.3,
+   "其它": 1.5,
+   "聊天会话": 0.8,
+   "朋友圈": 0
+  },
+  "note": null
+ },
+ {
+  "key": "微软Go",
+  "date": null,
+  "title": "微软用 Go 重写",
+  "readers": 1198,
+  "finishRate": 37.0,
+  "channels": {
+   "推荐": 95.2,
+   "公众号消息": 2.8,
+   "其它": 1.3,
+   "公众号主页": 0.7,
+   "聊天会话": 0.5,
+   "搜一搜": 0.1,
+   "朋友圈": 0
+  },
+  "note": null
+ },
+ {
+  "key": "c++之父",
+  "date": null,
+  "title": "c++之父锐评AI",
+  "readers": 930,
+  "finishRate": null,
+  "channels": {
+   "推荐": 93.8,
+   "公众号消息": 4.6,
+   "其它": 1,
+   "公众号主页": 0.9,
+   "聊天会话": 0.1,
+   "搜一搜": 0.1,
+   "朋友圈": 0
+  },
+  "note": null
+ },
+ {
+  "key": "自动微分",
+  "date": null,
+  "title": "训练一步要算几千亿个导数",
+  "readers": 147,
+  "finishRate": 20.0,
+  "channels": {
+   "推荐": 57.1,
+   "公众号消息": 25.9,
+   "公众号主页": 6.8,
+   "朋友圈": 6.1,
+   "其它": 4.1,
+   "搜一搜": 1.4,
+   "聊天会话": 0
+  },
+  "note": null
+ },
+ {
+  "key": "Kimi贴图",
+  "date": null,
+  "title": "Kimi K3.1是价格",
+  "readers": 308,
+  "finishRate": null,
+  "channels": {
+   "推荐": 87.3,
+   "公众号消息": 7.8,
+   "聊天会话": 3.9,
+   "其它": 1,
+   "公众号主页": 0.3,
+   "朋友圈": 0,
+   "搜一搜": 0
+  },
+  "note": null
+ },
+ {
+  "key": "pi-codemode",
+  "date": null,
+  "title": "pi 和 OpenAI 不约而同",
+  "readers": 127,
+  "finishRate": 13.0,
+  "channels": {
+   "推荐": 70.1,
+   "公众号消息": 19.7,
+   "聊天会话": 5.5,
+   "公众号主页": 3.1,
+   "其它": 3.1,
+   "朋友圈": 0,
+   "搜一搜": 0
+  },
+  "note": null
+ },
+ {
+  "key": "骂MCP",
+  "date": null,
+  "title": "骂 MCP 最响的人",
+  "readers": 124,
+  "finishRate": 21.0,
+  "channels": {
+   "推荐": 60.5,
+   "公众号消息": 21,
+   "聊天会话": 12.1,
+   "公众号主页": 4,
+   "其它": 2.4,
+   "搜一搜": 0.8,
+   "朋友圈": 0
+  },
+  "note": null
+ },
+ {
+  "key": "DeepSeek死循环",
+  "date": null,
+  "title": "DeepSeek为什么会死循环",
+  "readers": 538,
+  "finishRate": null,
+  "channels": {
+   "推荐": 83.6,
+   "公众号消息": 11.5,
+   "聊天会话": 1.9,
+   "公众号主页": 1.9,
+   "其它": 1.9,
+   "朋友圈": 0,
+   "搜一搜": 0
+  },
+  "note": null
+ },
+ {
+  "key": "Rust篇",
+  "date": null,
+  "title": "Rust篇",
+  "readers": 342,
+  "finishRate": 32.0,
+  "channels": {
+   "推荐": 83.9,
+   "公众号消息": 11.1,
+   "聊天会话": 2.6,
+   "公众号主页": 1.2,
+   "其它": 0.9,
+   "朋友圈": 0.6,
+   "搜一搜": 0.3
+  },
+  "note": null
+ }
+]

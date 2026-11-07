@@ -1,54 +1,2001 @@
 {
-  "total_count": 198,
+  "total_count": 203,
   "publish_count": 66,
-  "masssend_count": 132,
+  "masssend_count": 137,
   "publish_list": [
     {
-      "publish_type": 1,
-      "publish_info": "{&quot;type&quot;:10002,&quot;msgid&quot;:2247486095,&quot;sent_result&quot;:{&quot;reject_index_list&quot;:[]},&quot;appmsg_info&quot;:[{&quot;share_type&quot;:10,&quot;appmsgid&quot;:2247486095,&quot;content_url&quot;:&quot;https:\\/\\/mp.weixin.qq.com\\/s\\/ypwGd7KJ3E2GTqmdLQZzBQ&quot;,&quot;title&quot;:&quot;deepseek v4.1 flash和MIMO来了，谁先上桌&quot;,&quot;is_deleted&quot;:false,&quot;copyright_status&quot;:100,&quot;copyright_type&quot;:0,&quot;read_num&quot;:105,&quot;like_num&quot;:5,&quot;comment_id&quot;:&quot;4685310154224009222&quot;,&quot;is_comment_enable&quot;:true,&quot;comment_num&quot;:2,&quot;vote_id&quot;:[],&quot;super_vote_id&quot;:[],&quot;cover&quot;:&quot;&quot;,&quot;smart_product&quot;:0,&quot;modify_status&quot;:1,&quot;appmsg_like_type&quot;:2,&quot;can_delete_status&quot;:0,&quot;old_like_num&quot;:10,&quot;itemidx&quot;:1,&quot;is_pay_subscribe&quot;:0,&quot;is_from_transfer&quot;:0,&quot;public_tag_info&quot;:{&quot;public_tag_list&quot;:[],&quot;modify_times&quot;:0,&quot;init_tag_list_size&quot;:0},&quot;appmsg_album_info&quot;:{&quot;id&quot;:&quot;4680422529625325570&quot;,&quot;title&quot;:&quot;前沿观察&quot;,&quot;album_id&quot;:4680422529625325570,&quot;appmsg_album_infos&quot;:[{&quot;id&quot;:&quot;4680422529625325570&quot;,&quot;title&quot;:&quot;前沿观察&quot;,&quot;album_id&quot;:4680422529625325570,&quot;appmsg_album_infos&quot;:[],&quot;tagSource&quot;:0}]},&quot;digest&quot;:&quot;&quot;,&quot;is_cooling_article&quot;:0,&quot;pic_cdn_url_235_1&quot;:&quot;&quot;,&quot;pic_cdn_url_16_9&quot;:&quot;&quot;,&quot;pic_cdn_url_3_4&quot;:&quot;&quot;,&quot;pic_cdn_url_1_1&quot;:&quot;&quot;,&quot;disable_recommend&quot;:0,&quot;line_info&quot;:{&quot;use_line&quot;:1,&quot;line_count&quot;:1,&quot;send_time&quot;:1788858519,&quot;is_appmsg_flag&quot;:1,&quot;is_use_flag&quot;:0},&quot;claim_source_type&quot;:0,&quot;share_num&quot;:3,&quot;is_rumor_refutation&quot;:0,&quot;segment_comment_id&quot;:&quot;4685310161454989314&quot;,&quot;is_segment_comment_enable&quot;:true,&quot;multi_picture_cover&quot;:0,&quot;share_imageinfo&quot;:[],&quot;moment_like_num&quot;:0,&quot;item_show_type&quot;:10,&quot;ad_info&quot;:{&quot;has_agreement_ad&quot;:0,&quot;is_recruit_agreement_ad&quot;:0},&quot;audio_in_appmsg&quot;:[],&quot;modify_wording&quot;:&quot;还可以修改3次&quot;,&quot;can_modify&quot;:1,&quot;modify_detail_wording&quot;:[],&quot;appmsg_modified&quot;:0,&quot;total_comment_count_contains_reply&quot;:3,&quot;location_page_show&quot;:0,&quot;can_location_page_show&quot;:0,&quot;remain_modify_count&quot;:3}],&quot;publish_info&quot;:{&quot;bizuin&quot;:3923428115,&quot;msgid&quot;:2247486095,&quot;draft_msgid&quot;:100002448,&quot;publish_type&quot;:1,&quot;publish_src&quot;:3,&quot;publish_status&quot;:200,&quot;create_time&quot;:1788858519,&quot;update_time&quot;:1788858529,&quot;check_results&quot;:[],&quot;show_types&quot;:[10],&quot;index_count&quot;:1,&quot;xa_check_items&quot;:[{&quot;idx&quot;:1,&quot;status&quot;:2,&quot;rescode&quot;:100}],&quot;original_check_type&quot;:0,&quot;normal_check_results&quot;:[],&quot;in_profile&quot;:1,&quot;pre_publish_status&quot;:[],&quot;refutation_audit_info&quot;:[],&quot;service_type&quot;:1,&quot;item_show_types&quot;:[10],&quot;batch_members&quot;:[]},&quot;appmsgex&quot;:[],&quot;copy_appmsg_id&quot;:100002448,&quot;new_publish&quot;:1,&quot;publish_type&quot;:1,&quot;batch_members&quot;:[]}"
-    },
-    {
-      "publish_type": 1,
-      "publish_info": "{&quot;type&quot;:10002,&quot;msgid&quot;:2247486037,&quot;sent_result&quot;:{&quot;reject_index_list&quot;:[]},&quot;appmsg_info&quot;:[{&quot;share_type&quot;:10,&quot;appmsgid&quot;:2247486037,&quot;content_url&quot;:&quot;https:\\/\\/mp.weixin.qq.com\\/s\\/zu1Ypi1Ysv7lpYUYiqRrIw&quot;,&quot;title&quot;:&quot;GLM5.3-flash这时不时停下来的毛病是为何?&quot;,&quot;is_deleted&quot;:false,&quot;copyright_status&quot;:100,&quot;copyright_type&quot;:0,&quot;read_num&quot;:60,&quot;like_num&quot;:3,&quot;comment_id&quot;:&quot;4684965692058730498&quot;,&quot;is_comment_enable&quot;:true,&quot;comment_num&quot;:3,&quot;vote_id&quot;:[],&quot;super_vote_id&quot;:[],&quot;cover&quot;:&quot;&quot;,&quot;smart_product&quot;:0,&quot;modify_status&quot;:1,&quot;appmsg_like_type&quot;:2,&quot;can_delete_status&quot;:0,&quot;old_like_num&quot;:3,&quot;itemidx&quot;:1,&quot;is_pay_subscribe&quot;:0,&quot;is_from_transfer&quot;:0,&quot;public_tag_info&quot;:{&quot;public_tag_list&quot;:[],&quot;modify_times&quot;:0,&quot;init_tag_list_size&quot;:0},&quot;appmsg_album_info&quot;:{&quot;id&quot;:&quot;4662927799626858496&quot;,&quot;title&quot;:&quot;Agent前线&quot;,&quot;album_id&quot;:4662927799626858496,&quot;appmsg_album_infos&quot;:[{&quot;id&quot;:&quot;4662927799626858496&quot;,&quot;title&quot;:&quot;Agent前线&quot;,&quot;album_id&quot;:4662927799626858496,&quot;appmsg_album_infos&quot;:[],&quot;tagSource&quot;:0}]},&quot;digest&quot;:&quot;&quot;,&quot;is_cooling_article&quot;:0,&quot;pic_cdn_url_235_1&quot;:&quot;&quot;,&quot;pic_cdn_url_16_9&quot;:&quot;&quot;,&quot;pic_cdn_url_3_4&quot;:&quot;&quot;,&quot;pic_cdn_url_1_1&quot;:&quot;&quot;,&quot;disable_recommend&quot;:0,&quot;line_info&quot;:{&quot;use_line&quot;:1,&quot;line_count&quot;:0,&quot;send_time&quot;:1788837987,&quot;is_appmsg_flag&quot;:1,&quot;is_use_flag&quot;:0},&quot;claim_source_type&quot;:0,&quot;share_num&quot;:2,&quot;is_rumor_refutation&quot;:0,&quot;segment_comment_id&quot;:&quot;4684965700178903041&quot;,&quot;is_segment_comment_enable&quot;:true,&quot;multi_picture_cover&quot;:0,&quot;share_imageinfo&quot;:[],&quot;moment_like_num&quot;:0,&quot;item_show_type&quot;:10,&quot;ad_info&quot;:{&quot;has_agreement_ad&quot;:0,&quot;is_recruit_agreement_ad&quot;:0},&quot;audio_in_appmsg&quot;:[],&quot;modify_wording&quot;:&quot;还可以修改3次&quot;,&quot;can_modify&quot;:1,&quot;modify_detail_wording&quot;:[],&quot;appmsg_modified&quot;:0,&quot;total_comment_count_contains_reply&quot;:6,&quot;location_page_show&quot;:0,&quot;can_location_page_show&quot;:0,&quot;remain_modify_count&quot;:3}],&quot;publish_info&quot;:{&quot;bizuin&quot;:3923428115,&quot;msgid&quot;:2247486037,&quot;draft_msgid&quot;:100002390,&quot;publish_type&quot;:1,&quot;publish_src&quot;:3,&quot;publish_status&quot;:200,&quot;create_time&quot;:1788837987,&quot;update_time&quot;:1788838021,&quot;check_results&quot;:[],&quot;show_types&quot;:[10],&quot;index_count&quot;:1,&quot;xa_check_items&quot;:[{&quot;idx&quot;:1,&quot;status&quot;:2,&quot;rescode&quot;:100}],&quot;original_check_type&quot;:0,&quot;normal_check_results&quot;:[],&quot;in_profile&quot;:1,&quot;pre_publish_status&quot;:[],&quot;refutation_audit_info&quot;:[],&quot;service_type&quot;:1,&quot;item_show_types&quot;:[10],&quot;batch_members&quot;:[]},&quot;appmsgex&quot;:[],&quot;copy_appmsg_id&quot;:100002390,&quot;new_publish&quot;:1,&quot;publish_type&quot;:1,&quot;batch_members&quot;:[]}"
-    },
-    {
+      "type": 9,
+      "msgid": 1000000147,
+      "sent_info": {
+        "time": 1788955200,
+        "func_flag": 134250498,
+        "is_send_all": true,
+        "is_published": 0,
+        "func_flag2": 0
+      },
+      "sent_status": {
+        "total": 986,
+        "succ": 986,
+        "fail": 0,
+        "progress": 100,
+        "userprotect": 0
+      },
+      "sent_result": {
+        "msg_status": 2,
+        "refuse_reason": "",
+        "reject_index_list": [],
+        "update_time": 1788955273
+      },
+      "appmsg_info": [
+        {
+          "share_type": 0,
+          "appmsgid": 2247486119,
+          "content_url": "https://mp.weixin.qq.com/s/hYKy3dyHXEQkwoN7YmdREA",
+          "title": "误差不是会互相抵消吗？量化模型为什么还是掉点？",
+          "is_deleted": false,
+          "copyright_status": 11,
+          "copyright_type": 1,
+          "read_num": 46,
+          "like_num": 1,
+          "comment_id": "4686205968790159366",
+          "is_comment_enable": true,
+          "comment_num": 1,
+          "reward_money": "0.00",
+          "reprint_num": 0,
+          "vote_id": [],
+          "super_vote_id": [],
+          "cover": "https://mmbiz.qpic.cn/mmbiz_jpg/SXKlAlYL8hGAXiaWKmgcw7qibuYxAeLLCs2abY6hM4wm69z1xILYKzUCHUt1BCY1I8qcIRVBPd8k3ReicXDfzqR0L6vr69A6oQ72j15jPl9Rp4/0?wx_fmt=jpeg",
+          "smart_product": 0,
+          "modify_status": 1,
+          "appmsg_like_type": 2,
+          "can_delete_status": 0,
+          "old_like_num": 3,
+          "itemidx": 1,
+          "is_pay_subscribe": 0,
+          "is_from_transfer": 0,
+          "public_tag_info": {
+            "public_tag_list": [],
+            "modify_times": 0,
+            "init_tag_list_size": 0
+          },
+          "appmsg_album_info": {
+            "id": "4655868530679185411",
+            "title": "AI中的数学",
+            "album_id": 4655868530679185000,
+            "appmsg_album_infos": [
+              {
+                "id": "4655868530679185411",
+                "title": "AI中的数学",
+                "album_id": 4655868530679185000,
+                "appmsg_album_infos": [],
+                "tagSource": 0
+              }
+            ]
+          },
+          "digest": "量化模型的误差不是会互相抵消吗？为什么还是掉点？四舍五入的误差按次数线性累积，随机舍入的波动按√n走——中心极限定理给「误差去哪儿了」一个精确答案：随机误差温和（√n），系统性偏置致命（n）。",
+          "open_fansmsg": 0,
+          "is_cooling_article": 0,
+          "pic_cdn_url_235_1": "https://mmbiz.qpic.cn/sz_mmbiz_jpg/SXKlAlYL8hEFuHztotIP97ERvEXwJMV3Y3yrX6cFld8licyvudh1SWmyjmejTmQAUgbx8nseKDACicO9V6eHTkGrGO4qwhQXsDx8o4iab6ftO8/0?wx_fmt=jpeg",
+          "pic_cdn_url_16_9": "",
+          "disable_recommend": 0,
+          "line_info": {
+            "use_line": 1,
+            "line_count": 0,
+            "send_time": 1788955262,
+            "is_appmsg_flag": 1,
+            "is_use_flag": 0
+          },
+          "claim_source_type": 0,
+          "share_num": 5,
+          "is_rumor_refutation": 0,
+          "segment_comment_id": "4686205982765580293",
+          "is_segment_comment_enable": true,
+          "multi_picture_cover": 0,
+          "share_imageinfo": [],
+          "moment_like_num": 0,
+          "item_show_type": 0,
+          "claim_source": {
+            "is_user_no_claim_source": 1
+          },
+          "ad_info": {
+            "has_agreement_ad": 0,
+            "is_recruit_agreement_ad": 0
+          },
+          "audio_in_appmsg": [],
+          "modify_wording": "还可以修改3次",
+          "can_modify": 1,
+          "modify_detail_wording": [],
+          "appmsg_modified": 0,
+          "total_comment_count_contains_reply": 2,
+          "location_page_show": 0,
+          "can_location_page_show": 0,
+          "remain_modify_count": 3,
+          "isXssEncoded": true,
+          "i": 0,
+          "commentPopShow": false,
+          "delPopShow": false,
+          "undelShow": false,
+          "delWording": "删除后用户将无法访问此页面，确定删除？该操作只能删除历史消息中的记录，不能删除已经成功发送到用户的消息。",
+          "msgid": 1000000147,
+          "modifyFormatTime": "",
+          "deleteFormatTime": ""
+        }
+      ],
+      "appmsgex": [],
+      "copy_type": 77,
+      "copy_appmsg_id": 100002470,
+      "new_publish": 0,
       "publish_type": 101,
-      "publish_info": "{&quot;type&quot;:9,&quot;msgid&quot;:1000000139,&quot;sent_info&quot;:{&quot;time&quot;:1788782400,&quot;func_flag&quot;:134250498,&quot;is_send_all&quot;:true,&quot;is_published&quot;:0,&quot;func_flag2&quot;:0},&quot;sent_status&quot;:{&quot;total&quot;:980,&quot;succ&quot;:980,&quot;fail&quot;:0,&quot;progress&quot;:100,&quot;userprotect&quot;:0},&quot;sent_result&quot;:{&quot;msg_status&quot;:2,&quot;refuse_reason&quot;:&quot;&quot;,&quot;reject_index_list&quot;:[],&quot;update_time&quot;:1788782472},&quot;appmsg_info&quot;:[{&quot;share_type&quot;:0,&quot;appmsgid&quot;:2247486007,&quot;content_url&quot;:&quot;https:\\/\\/mp.weixin.qq.com\\/s\\/aiLaUY-T-vvWbooDGxferQ&quot;,&quot;title&quot;:&quot;生成 30 秒视频要画 900 张图，AI 视频为什么这么贵？&quot;,&quot;is_deleted&quot;:false,&quot;copyright_status&quot;:11,&quot;copyright_type&quot;:1,&quot;read_num&quot;:21,&quot;like_num&quot;:4,&quot;comment_id&quot;:&quot;4683464760087117825&quot;,&quot;is_comment_enable&quot;:true,&quot;comment_num&quot;:0,&quot;reward_money&quot;:&quot;0.00&quot;,&quot;reprint_num&quot;:0,&quot;vote_id&quot;:[],&quot;super_vote_id&quot;:[],&quot;cover&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/mmbiz_jpg\\/SXKlAlYL8hFNJbNbcy3jNPeFbvjIgKyDrkTicCXTd3t5Q1N04gGx2J7Co76wXgfLY3j3ngYUiclf8RlFV9mH9k5RxhO6fhJickM2mQGpzK6iaG4\\/0?wx_fmt=jpeg&quot;,&quot;smart_product&quot;:0,&quot;modify_status&quot;:1,&quot;appmsg_like_type&quot;:2,&quot;can_delete_status&quot;:0,&quot;old_like_num&quot;:6,&quot;itemidx&quot;:1,&quot;is_pay_subscribe&quot;:0,&quot;is_from_transfer&quot;:0,&quot;public_tag_info&quot;:{&quot;public_tag_list&quot;:[],&quot;modify_times&quot;:0,&quot;init_tag_list_size&quot;:0},&quot;appmsg_album_info&quot;:{&quot;id&quot;:&quot;4695468651859247106&quot;,&quot;title&quot;:&quot;多模态及生成模型技术&quot;,&quot;album_id&quot;:4695468651859247106,&quot;appmsg_album_infos&quot;:[{&quot;id&quot;:&quot;4695468651859247106&quot;,&quot;title&quot;:&quot;多模态及生成模型技术&quot;,&quot;album_id&quot;:4695468651859247106,&quot;appmsg_album_infos&quot;:[],&quot;tagSource&quot;:4}]},&quot;digest&quot;:&quot;AI 视频为什么这么贵？7 块钱的积分，生成一条 15 秒视频就耗光了。30 秒视频要画 900 张图，帧与帧之间还要互相「对答案」——算力成本随帧数平方增长。MiniMax H3 用高压缩 VAE 把价格打到主流的三分之一，贵不贵，&quot;,&quot;open_fansmsg&quot;:0,&quot;is_cooling_article&quot;:0,&quot;pic_cdn_url_235_1&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/mmbiz_jpg\\/SXKlAlYL8hHXebSsMwIuia53CR5KqqnNHyqxNpmLib6nKNTJk0BDvicxSVzu4D3JsicgxfnMHtEBd21M9eQTUfL6N4bZEP2yMTMMianaFqyiaFQ7g\\/0?wx_fmt=jpeg&quot;,&quot;pic_cdn_url_16_9&quot;:&quot;&quot;,&quot;disable_recommend&quot;:0,&quot;line_info&quot;:{&quot;use_line&quot;:1,&quot;line_count&quot;:0,&quot;send_time&quot;:1788782461,&quot;is_appmsg_flag&quot;:1,&quot;is_use_flag&quot;:0},&quot;claim_source_type&quot;:0,&quot;share_num&quot;:0,&quot;is_rumor_refutation&quot;:0,&quot;segment_comment_id&quot;:&quot;4683464773055905792&quot;,&quot;is_segment_comment_enable&quot;:true,&quot;multi_picture_cover&quot;:0,&quot;share_imageinfo&quot;:[],&quot;moment_like_num&quot;:0,&quot;item_show_type&quot;:0,&quot;claim_source&quot;:{&quot;is_user_no_claim_source&quot;:1},&quot;ad_info&quot;:{&quot;has_agreement_ad&quot;:0,&quot;is_recruit_agreement_ad&quot;:0},&quot;audio_in_appmsg&quot;:[],&quot;modify_wording&quot;:&quot;还可以修改3次&quot;,&quot;can_modify&quot;:1,&quot;modify_detail_wording&quot;:[],&quot;appmsg_modified&quot;:0,&quot;total_comment_count_contains_reply&quot;:0,&quot;location_page_show&quot;:0,&quot;can_location_page_show&quot;:0,&quot;remain_modify_count&quot;:3}],&quot;appmsgex&quot;:[],&quot;copy_type&quot;:77,&quot;copy_appmsg_id&quot;:100002342,&quot;new_publish&quot;:0,&quot;publish_type&quot;:101,&quot;batch_members&quot;:[]}"
+      "batch_members": [],
+      "view": {
+        "isFirst": false,
+        "isApi": false,
+        "sourceType": 1,
+        "reviewOverTime": false,
+        "mallEditWording": "修改",
+        "isMallActivityDraft": false,
+        "showArticleToImageTips": false,
+        "time": "09月09日",
+        "hasHistory": true,
+        "publishDate": "2026-09-09",
+        "isGoToDataPage": true,
+        "dataPageWording": "发表数据",
+        "isFromApp": 0,
+        "status": "已发表"
+      },
+      "resendPopShow": false
     },
     {
+      "type": 10002,
+      "msgid": 2247486183,
+      "sent_result": {
+        "reject_index_list": []
+      },
+      "appmsg_info": [
+        {
+          "share_type": 10,
+          "appmsgid": 2247486183,
+          "content_url": "https://mp.weixin.qq.com/s/QNZ_w0ptQ6-spp3USUiClw",
+          "title": "NS风波：数学还是人类智力的自留地吗？",
+          "is_deleted": false,
+          "copyright_status": 100,
+          "copyright_type": 0,
+          "read_num": 108,
+          "like_num": 2,
+          "comment_id": "4686569211673018371",
+          "is_comment_enable": true,
+          "comment_num": 2,
+          "vote_id": [],
+          "super_vote_id": [],
+          "cover": "",
+          "smart_product": 0,
+          "modify_status": 1,
+          "appmsg_like_type": 2,
+          "can_delete_status": 0,
+          "old_like_num": 8,
+          "itemidx": 1,
+          "is_pay_subscribe": 0,
+          "is_from_transfer": 0,
+          "public_tag_info": {
+            "public_tag_list": [],
+            "modify_times": 0,
+            "init_tag_list_size": 0
+          },
+          "appmsg_album_info": {
+            "id": "4640284379167162368",
+            "title": "数学",
+            "album_id": 4640284379167162000,
+            "appmsg_album_infos": [
+              {
+                "id": "4640284379167162368",
+                "title": "数学",
+                "album_id": 4640284379167162000,
+                "appmsg_album_infos": [],
+                "tagSource": 0
+              }
+            ]
+          },
+          "digest": "",
+          "is_cooling_article": 0,
+          "pic_cdn_url_235_1": "",
+          "pic_cdn_url_16_9": "",
+          "pic_cdn_url_3_4": "",
+          "pic_cdn_url_1_1": "",
+          "disable_recommend": 0,
+          "line_info": {
+            "use_line": 1,
+            "line_count": 0,
+            "send_time": 1788933565,
+            "is_appmsg_flag": 1,
+            "is_use_flag": 0
+          },
+          "claim_source_type": 0,
+          "share_num": 5,
+          "is_rumor_refutation": 0,
+          "segment_comment_id": "4686569225463889921",
+          "is_segment_comment_enable": true,
+          "multi_picture_cover": 0,
+          "share_imageinfo": [],
+          "moment_like_num": 0,
+          "item_show_type": 10,
+          "claim_source": {
+            "is_user_no_claim_source": 1
+          },
+          "ad_info": {
+            "has_agreement_ad": 0,
+            "is_recruit_agreement_ad": 0
+          },
+          "audio_in_appmsg": [],
+          "modify_wording": "还可以修改3次",
+          "can_modify": 1,
+          "modify_detail_wording": [],
+          "appmsg_modified": 0,
+          "total_comment_count_contains_reply": 3,
+          "location_page_show": 0,
+          "can_location_page_show": 0,
+          "remain_modify_count": 3,
+          "isXssEncoded": true,
+          "i": 0,
+          "commentPopShow": false,
+          "delPopShow": false,
+          "undelShow": false,
+          "delWording": "",
+          "msgid": 2247486183,
+          "modifyFormatTime": "",
+          "deleteFormatTime": ""
+        }
+      ],
+      "publish_info": {
+        "bizuin": 3923428115,
+        "msgid": 2247486183,
+        "draft_msgid": 100002534,
+        "publish_type": 1,
+        "publish_src": 1,
+        "publish_status": 200,
+        "create_time": 1788933565,
+        "update_time": 1788933581,
+        "check_results": [],
+        "show_types": [
+          10
+        ],
+        "index_count": 1,
+        "xa_check_items": [
+          {
+            "idx": 1,
+            "status": 2,
+            "rescode": 100
+          }
+        ],
+        "original_check_type": 1,
+        "normal_check_results": [],
+        "in_profile": 1,
+        "pre_publish_status": [],
+        "refutation_audit_info": [],
+        "service_type": 1,
+        "item_show_types": [
+          10
+        ],
+        "batch_members": []
+      },
+      "appmsgex": [],
+      "copy_appmsg_id": 100002534,
+      "new_publish": 1,
       "publish_type": 1,
-      "publish_info": "{&quot;type&quot;:10002,&quot;msgid&quot;:2247486034,&quot;sent_result&quot;:{&quot;reject_index_list&quot;:[]},&quot;appmsg_info&quot;:[{&quot;share_type&quot;:8,&quot;appmsgid&quot;:2247486034,&quot;content_url&quot;:&quot;https:\\/\\/mp.weixin.qq.com\\/s\\/HRHYjokuMpkjK0DhEAVOxA&quot;,&quot;title&quot;:&quot;DeepSeek为什么会死循环?OOD是死穴&quot;,&quot;is_deleted&quot;:false,&quot;copyright_status&quot;:100,&quot;copyright_type&quot;:0,&quot;read_num&quot;:631,&quot;like_num&quot;:0,&quot;comment_id&quot;:&quot;4684015307768823811&quot;,&quot;is_comment_enable&quot;:true,&quot;comment_num&quot;:5,&quot;vote_id&quot;:[],&quot;super_vote_id&quot;:[],&quot;cover&quot;:&quot;http:\\/\\/mmbiz.qpic.cn\\/mmbiz_jpg\\/SXKlAlYL8hGjMv4KiaOB1jS1draEXfp53TneEMFQlDHbZBvfpMQ6v84csF2TxUvLXAFsc0zhxicVSHqRrCfypNEwNw8OZssibVRuo13icOqHGag\\/0?wx_fmt=jpeg&quot;,&quot;smart_product&quot;:0,&quot;modify_status&quot;:1,&quot;appmsg_like_type&quot;:2,&quot;can_delete_status&quot;:0,&quot;old_like_num&quot;:7,&quot;itemidx&quot;:1,&quot;is_pay_subscribe&quot;:0,&quot;is_from_transfer&quot;:0,&quot;public_tag_info&quot;:{&quot;public_tag_list&quot;:[],&quot;modify_times&quot;:0,&quot;init_tag_list_size&quot;:0},&quot;appmsg_album_info&quot;:{&quot;id&quot;:&quot;4662927799626858496&quot;,&quot;title&quot;:&quot;Agent前线&quot;,&quot;album_id&quot;:4662927799626858496,&quot;appmsg_album_infos&quot;:[{&quot;id&quot;:&quot;4662927799626858496&quot;,&quot;title&quot;:&quot;Agent前线&quot;,&quot;album_id&quot;:4662927799626858496,&quot;appmsg_album_infos&quot;:[],&quot;tagSource&quot;:0}]},&quot;digest&quot;:&quot;现在的前沿coding大模型，基本上都经过了非常复杂的强化学习训练。\\n\\n然后这种训练的本质是高度依赖于概率论和高维统计理论。但是很多人不知道的是，这些方法只能给我们一些基于概率测度的保证，即在一定的概率范围之内，我们不会跑出训练的数据分布的范围，它的收敛保证从数学上，基本上是依照概率测度收敛的。\\n\\n这种收敛性完全不排除在一些极小情况下，模型产生的输出跳出了训练分布之外，这就是人们常说的，很讨厌的out of distribut性问题。\\n\\n模型推理时候的抽样本质，其实会放大这种OOD问题，因为每一个token他都要做一次抽样，联合失败概率是会被急剧放大的。\\n\\n深入一点说，就是运行时候发生的崩溃，一般说模型的遇到跟它的训练时候熟悉的策略空间差别很大的时候，直接就崩了。\\n\\n而现在的大模型训练集基本上是基于Python和TypeScript及Web编程，对于更广泛的软件工程领域挑战，其实它的数据还是很匮乏的，处理不了就死循环，还是时有可见。\\n\\n当然模型的量化也有可能使这种现象更加严重，因为几乎所有的量化都会在某种程度上降低模型的性能。\\n\\n甚至于这种现象在半年前，国内的前沿模型都有很高概率的出现，只不过是从7月份之后，大家出现的概率都不约而同的降低了。\\n\\n软件工程领域的挑战，大模型想要完全变成一个solved problem，还是有距离的。&quot;,&quot;is_cooling_article&quot;:0,&quot;pic_cdn_url_235_1&quot;:&quot;&quot;,&quot;pic_cdn_url_16_9&quot;:&quot;&quot;,&quot;pic_cdn_url_3_4&quot;:&quot;http:\\/\\/mmbiz.qpic.cn\\/sz_mmbiz_jpg\\/SXKlAlYL8hHliboO8joae3VAPskUiaeQs8gSpiaJhO2gsxnricSYUETbsmCEIAImUFZmWF5wxEaRVkRUm1DkuQBQseicNahtMeibkvlsjMOBKf2dw\\/0?wx_fmt=jpeg&quot;,&quot;pic_cdn_url_1_1&quot;:&quot;http:\\/\\/mmbiz.qpic.cn\\/mmbiz_jpg\\/SXKlAlYL8hGjMv4KiaOB1jS1draEXfp53TneEMFQlDHbZBvfpMQ6v84csF2TxUvLXAFsc0zhxicVSHqRrCfypNEwNw8OZssibVRuo13icOqHGag\\/0?wx_fmt=jpeg&quot;,&quot;disable_recommend&quot;:0,&quot;line_info&quot;:{&quot;use_line&quot;:1,&quot;line_count&quot;:0,&quot;send_time&quot;:1788781340,&quot;is_appmsg_flag&quot;:1,&quot;is_use_flag&quot;:0},&quot;claim_source_type&quot;:0,&quot;share_num&quot;:4,&quot;is_rumor_refutation&quot;:0,&quot;segment_comment_id&quot;:&quot;4684015315469565952&quot;,&quot;is_segment_comment_enable&quot;:true,&quot;multi_picture_cover&quot;:0,&quot;share_imageinfo&quot;:[{&quot;file_id&quot;:100002383,&quot;cdn_url&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/mmbiz_jpg\\/SXKlAlYL8hEEGamyPA3rEJIpbV7UmNAukg4GFMI4mjtzETZwic7A7mAHKWfEZH4pz2Wcstyu41xb84RtBRGMficLx0zlwu8bKP9ib3zI7ayNX8\\/0?wx_fmt=jpeg&quot;,&quot;width&quot;:1156,&quot;height&quot;:2377,&quot;cover_url&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/mmbiz_jpg\\/SXKlAlYL8hEEGamyPA3rEJIpbV7UmNAukg4GFMI4mjtzETZwic7A7mAHKWfEZH4pz2Wcstyu41xb84RtBRGMficLx0zlwu8bKP9ib3zI7ayNX8\\/0?wx_fmt=jpeg&quot;,&quot;pic_type&quot;:0,&quot;pic_text&quot;:&quot;&quot;,&quot;pic_cfg&quot;:&quot;&quot;,&quot;theme_color&quot;:{&quot;r&quot;:243,&quot;g&quot;:242,&quot;b&quot;:247},&quot;cal_version&quot;:7,&quot;ori_picture&quot;:{&quot;file_id&quot;:0,&quot;cdn_url&quot;:&quot;&quot;,&quot;width&quot;:0,&quot;height&quot;:0,&quot;crop_ratio&quot;:&quot;&quot;,&quot;crop_list&quot;:&quot;{}&quot;},&quot;format_info&quot;:{&quot;format&quot;:&quot;jpeg&quot;,&quot;frame&quot;:1,&quot;channel&quot;:3,&quot;opacity&quot;:100,&quot;thumbnail&quot;:[{&quot;format&quot;:0,&quot;file_size&quot;:379430,&quot;width&quot;:1156,&quot;height&quot;:2377},{&quot;format&quot;:640,&quot;file_size&quot;:321276,&quot;width&quot;:1080,&quot;height&quot;:2221},{&quot;format&quot;:300,&quot;file_size&quot;:3827,&quot;width&quot;:73,&quot;height&quot;:150}]},&quot;poi_info&quot;:[],&quot;wxa_info&quot;:[],&quot;disable_theme&quot;:1,&quot;bind_ad_info&quot;:[],&quot;cps_ad_info&quot;:[],&quot;pic_window_product&quot;:{&quot;product_encrypt_key&quot;:&quot;&quot;,&quot;product_type&quot;:0,&quot;title&quot;:&quot;&quot;,&quot;data_type&quot;:0,&quot;product_id&quot;:&quot;&quot;},&quot;spot_product_info&quot;:[],&quot;watermark_info&quot;:{&quot;cdn_url&quot;:&quot;http:\\/\\/mmbiz.qpic.cn\\/mmbiz_jpg\\/SXKlAlYL8hEkJE34eYpx40dA8BdJGNicdaAs8zSMQwKdibgiaZcibMT744fmcib8lpVjV79mIWxjg46PcbuvNqeMBTKW7yCMIceGdFF5tk3CrAK0\\/0?wx_fmt=jpeg&quot;,&quot;type&quot;:2,&quot;bizuin&quot;:3923428115,&quot;nickname&quot;:&quot;数解AI&quot;,&quot;is_ai_pic&quot;:false,&quot;watermark_region_lightness&quot;:0.936144590378},&quot;ai_pic_id&quot;:&quot;&quot;,&quot;copy_info&quot;:{&quot;cdn_url&quot;:&quot;http:\\/\\/320.wxapp.tc.qq.com\\/320\\/20304\\/stodownload?m=c7de9b126b8f52902b8301f1f31147de&amp;filekey=08031099ac3718c002220253482a10c7de9b126b8f52902b8301f1f31147de&amp;hy=SH&amp;storeid=26a9ea115000379c82d3a94ce0000014000004f5053481055c1b156fafaf9d&amp;bizid=1023&quot;},&quot;client_info&quot;:{&quot;pic_id&quot;:&quot;&quot;,&quot;associated_info&quot;:{&quot;pic_id&quot;:&quot;&quot;,&quot;cdn_url&quot;:&quot;&quot;,&quot;file_id&quot;:0,&quot;type&quot;:0,&quot;image_template&quot;:&quot;&quot;,&quot;text_poster_prompt&quot;:&quot;&quot;,&quot;text_poster_style&quot;:&quot;&quot;,&quot;text_poster_data_buf&quot;:&quot;&quot;,&quot;text_poster_template_id&quot;:&quot;&quot;},&quot;origin_image_has_edited&quot;:0},&quot;ai_pic_source&quot;:0,&quot;ai_pic_prompt&quot;:&quot;&quot;,&quot;original_info&quot;:{&quot;show_original&quot;:true,&quot;cdn_url&quot;:&quot;http:\\/\\/320.wxapp.tc.qq.com\\/320\\/20304\\/stodownload?m=c7de9b126b8f52902b8301f1f31147de&amp;filekey=08031099ac3718c002220253482a10c7de9b126b8f52902b8301f1f31147de&amp;hy=SH&amp;storeid=26a9ea115000379c82d3a94ce0000014000004f5053481055c1b156fafaf9d&amp;bizid=1023&quot;,&quot;file_size&quot;:906777}}],&quot;moment_like_num&quot;:0,&quot;item_show_type&quot;:8,&quot;ad_info&quot;:{&quot;has_agreement_ad&quot;:0,&quot;is_recruit_agreement_ad&quot;:0},&quot;audio_in_appmsg&quot;:[],&quot;modify_wording&quot;:&quot;还可以修改3次&quot;,&quot;can_modify&quot;:1,&quot;modify_detail_wording&quot;:[],&quot;appmsg_modified&quot;:0,&quot;total_comment_count_contains_reply&quot;:7,&quot;location_page_show&quot;:0,&quot;can_location_page_show&quot;:0,&quot;remain_modify_count&quot;:3}],&quot;publish_info&quot;:{&quot;bizuin&quot;:3923428115,&quot;msgid&quot;:2247486034,&quot;draft_msgid&quot;:100002387,&quot;publish_type&quot;:1,&quot;publish_src&quot;:4,&quot;publish_status&quot;:200,&quot;create_time&quot;:1788781340,&quot;update_time&quot;:1788781361,&quot;check_results&quot;:[],&quot;show_types&quot;:[8],&quot;index_count&quot;:1,&quot;xa_check_items&quot;:[{&quot;idx&quot;:1,&quot;status&quot;:2,&quot;rescode&quot;:100}],&quot;original_check_type&quot;:2,&quot;normal_check_results&quot;:[],&quot;in_profile&quot;:1,&quot;pre_publish_status&quot;:[],&quot;refutation_audit_info&quot;:[],&quot;service_type&quot;:1,&quot;item_show_types&quot;:[8],&quot;batch_members&quot;:[]},&quot;appmsgex&quot;:[],&quot;copy_appmsg_id&quot;:100002387,&quot;new_publish&quot;:1,&quot;publish_type&quot;:1,&quot;batch_members&quot;:[]}"
+      "batch_members": [],
+      "view": {
+        "isFirst": false,
+        "isApi": false,
+        "sourceType": 4,
+        "reviewOverTime": false,
+        "mallEditWording": "修改",
+        "isMallActivityDraft": false,
+        "showArticleToImageTips": false,
+        "time": "09月09日",
+        "hasHistory": true,
+        "publishDate": "2026-09-09",
+        "isGoToDataPage": true,
+        "dataPageWording": "发表数据",
+        "status": "已发表",
+        "msg": "未开启群发通知，内容已在公众号主页展示"
+      },
+      "resendPopShow": false
     },
     {
+      "type": 10002,
+      "msgid": 2247486180,
+      "sent_result": {
+        "reject_index_list": []
+      },
+      "appmsg_info": [
+        {
+          "share_type": 8,
+          "appmsgid": 2247486180,
+          "content_url": "https://mp.weixin.qq.com/s/i_QapRMndttsCKLivzg0Qw",
+          "title": "千禧年NS方程挑起来AI和数学家们的一场风波",
+          "is_deleted": false,
+          "copyright_status": 100,
+          "copyright_type": 0,
+          "read_num": 40,
+          "like_num": 1,
+          "comment_id": "4686553940681916416",
+          "is_comment_enable": true,
+          "comment_num": 0,
+          "vote_id": [],
+          "super_vote_id": [],
+          "cover": "https://mmbiz.qpic.cn/mmbiz_jpg/SXKlAlYL8hHnDlvUHynuolXvTU64q3Fiawq1Hb0xOt0En8zUm6xlUajOeZAwzapvibc93tsMic1cnmwZkLuFNB8dlzC6vssXMRQhmCWoicOG3to/0?wx_fmt=jpeg",
+          "smart_product": 0,
+          "modify_status": 1,
+          "appmsg_like_type": 2,
+          "can_delete_status": 0,
+          "old_like_num": 2,
+          "itemidx": 1,
+          "is_pay_subscribe": 0,
+          "is_from_transfer": 0,
+          "public_tag_info": {
+            "public_tag_list": [],
+            "modify_times": 0,
+            "init_tag_list_size": 0
+          },
+          "appmsg_album_info": {
+            "id": "4680422529625325570",
+            "title": "前沿观察",
+            "album_id": 4680422529625326000,
+            "appmsg_album_infos": [
+              {
+                "id": "4680422529625325570",
+                "title": "前沿观察",
+                "album_id": 4680422529625326000,
+                "appmsg_album_infos": [],
+                "tagSource": 0
+              }
+            ]
+          },
+          "digest": "巨大的利益纠葛面前，最纯粹的数学家也是血肉之躯，也会因为巨大的利害关系而变得面目不再可亲。这次我其实有点分不清，到底是在发生些什么，只看到结果是，NS方程在某些条件下被推进了一大步。&nbsp;\n&nbsp;\n这场正在上演的学术界和AI明星公司之间的争斗/丑闻，全是事关流体力学领域那个最为偏微分方程领域，恐怕大众眼里最为著名的数学问题：NS方程的光滑性问题，是否取得了石破天惊的大突破？&nbsp;\n&nbsp;\n人类数学家到底扮演怎么样的角色？我猜大部分读者也不会去关心具体的NS方程形式，或者爆破条件是什么，光滑性到底是什么意思，稳定性为什么重要，解释起来单是一堆算子符号就把人全吓走了。&nbsp;\n\n毕竟以我的分析学水平，远不足以具体评论这个让当今世界上最有名的神童数学家陶哲轩都痴迷多年的问题。还在Clay研究所给出的千禧年问题之巨额奖金，已经是普通人容易懂得的最好科普了。\n\n这次的核心问题和争议我觉得还是AI明星公司OpenAI,&nbsp;和Anthropic之间的利益白热化争夺。双方为了争抢AGI领头羊的宝座，可谓是杀红了眼睛，双方都招募了大量的数学家、物理学家，对科学前沿展开跨学科研究。\n&nbsp;\n前面有费马大定理获得首次形式化验证的巨大争议，后面有这次关于NS方程问题的合作和署名权之争，我想那些上个贴文在评论区疯狂抨击我的人，起码认真看看这些一日千里的进展吧。&nbsp;\n&nbsp;\n前几天，还有人在我这个小号的评论区里面，尽情地笑不活式嘲讽，AI不能被神话，它只能做一个简单的翻译，沿着人类顶级数学家的智慧做不值一提的验证，什么时候解决了NS方程问题再说。&nbsp;\n&nbsp;\n那么这次它真的来了的时候，鉴于这个争议，我估计还是会有大量的人说，你看人类数学家起到的作用是决定性的！机器什么都不懂！&nbsp;\n&nbsp;\n我当然不想过度神话AI,&nbsp;却也不想对这个发生在自己身边的巨变置若罔闻，因为时代真的在发生巨大的变化。作为一个个人，我永远希望自己能有更深入的理解，也时刻提醒自己不要因为恐惧而将自己包裹在一个信息茧房里面，彻底被潮流所抛弃而完全不自知。&nbsp;\n&nbsp;\n新闻事件背后，人的判断力还是至关重要，不容随意丢弃。但是人和机器，也许本来就不应该对立，人需要去增强理解，提高和迭代自我认知，这方面还是离不开大量的学习和知识积累。",
+          "is_cooling_article": 0,
+          "pic_cdn_url_235_1": "https://mmbiz.qpic.cn/mmbiz_jpg/SXKlAlYL8hHbiauBYmFXdzh1HP9EKg1TMf6B6JYv1QqOic0owr3QibA5qFB8hCcDQhCKDg4tCtA2AX4xvphW54x8LDiadECnmEZFQnucicVf9Xmo/0?wx_fmt=jpeg",
+          "pic_cdn_url_16_9": "",
+          "pic_cdn_url_3_4": "https://mmbiz.qpic.cn/mmbiz_jpg/SXKlAlYL8hHbiauBYmFXdzh1HP9EKg1TMf6B6JYv1QqOic0owr3QibA5qFB8hCcDQhCKDg4tCtA2AX4xvphW54x8LDiadECnmEZFQnucicVf9Xmo/0?wx_fmt=jpeg",
+          "pic_cdn_url_1_1": "https://mmbiz.qpic.cn/mmbiz_jpg/SXKlAlYL8hHnDlvUHynuolXvTU64q3Fiawq1Hb0xOt0En8zUm6xlUajOeZAwzapvibc93tsMic1cnmwZkLuFNB8dlzC6vssXMRQhmCWoicOG3to/0?wx_fmt=jpeg",
+          "disable_recommend": 0,
+          "line_info": {
+            "use_line": 1,
+            "line_count": 0,
+            "send_time": 1788932655,
+            "is_appmsg_flag": 1,
+            "is_use_flag": 0
+          },
+          "claim_source_type": 0,
+          "share_num": 1,
+          "is_rumor_refutation": 0,
+          "segment_comment_id": "4686553955059990532",
+          "is_segment_comment_enable": true,
+          "multi_picture_cover": 0,
+          "share_imageinfo": [
+            {
+              "file_id": 100002528,
+              "cdn_url": "https://mmbiz.qpic.cn/sz_mmbiz_png/SXKlAlYL8hEbpspWoQC4sCXneptTCv1b0VWjyIC0tdZX5YggTwPfScCUribfticHRlxDN7jNHNqv9huWzBCH8yVFpv6bxrOIWlSb3rWkQAcDE/0?wx_fmt=png&from=appmsg",
+              "width": 1086,
+              "height": 1448,
+              "cover_url": "https://mmbiz.qpic.cn/sz_mmbiz_png/SXKlAlYL8hEbpspWoQC4sCXneptTCv1b0VWjyIC0tdZX5YggTwPfScCUribfticHRlxDN7jNHNqv9huWzBCH8yVFpv6bxrOIWlSb3rWkQAcDE/0?wx_fmt=png&from=appmsg",
+              "pic_type": 0,
+              "pic_text": "",
+              "pic_cfg": "",
+              "theme_color": {
+                "r": 242,
+                "g": 250,
+                "b": 254
+              },
+              "cal_version": 7,
+              "ori_picture": {
+                "file_id": 0,
+                "cdn_url": "",
+                "width": 0,
+                "height": 0,
+                "crop_ratio": "",
+                "crop_list": "{}"
+              },
+              "format_info": {
+                "format": "png",
+                "frame": 1,
+                "channel": 3,
+                "opacity": 100,
+                "thumbnail": [
+                  {
+                    "format": 0,
+                    "file_size": 1725776,
+                    "width": 1086,
+                    "height": 1448
+                  },
+                  {
+                    "format": 640,
+                    "file_size": 1606891,
+                    "width": 1080,
+                    "height": 1440
+                  },
+                  {
+                    "format": 300,
+                    "file_size": 51543,
+                    "width": 113,
+                    "height": 150
+                  }
+                ]
+              },
+              "poi_info": [],
+              "wxa_info": [],
+              "disable_theme": 1,
+              "bind_ad_info": [],
+              "cps_ad_info": [],
+              "pic_window_product": {
+                "product_encrypt_key": "",
+                "product_type": 0,
+                "title": "",
+                "data_type": 0,
+                "product_id": ""
+              },
+              "spot_product_info": [],
+              "watermark_info": {
+                "cdn_url": "http://mmbiz.qpic.cn/mmbiz_png/SXKlAlYL8hECg4iaUd0icuEfqb1YBZcyKTdibhy9iaoIChkb5CpCjXfu7J5rGAISdfsdRooabQ6pViaGM1kkI6picP8RgP47ibRicnkkgbzZS2zE6fU/0?wx_fmt=png",
+                "type": 2,
+                "bizuin": 3923428115,
+                "nickname": "数解AI",
+                "is_ai_pic": false,
+                "watermark_region_lightness": 0.720158398151
+              },
+              "ai_pic_id": "",
+              "client_info": {
+                "pic_id": "",
+                "associated_info": {
+                  "pic_id": "",
+                  "cdn_url": "",
+                  "file_id": 0,
+                  "type": 0,
+                  "image_template": "",
+                  "text_poster_prompt": "",
+                  "text_poster_style": "",
+                  "text_poster_data_buf": "",
+                  "text_poster_template_id": ""
+                },
+                "origin_image_has_edited": 0
+              },
+              "share_cover": {
+                "file_id": 100002531,
+                "width": 1086,
+                "height": 1448,
+                "cdn_url": "https://mmbiz.qpic.cn/sz_mmbiz_jpg/SXKlAlYL8hGic2evqv1iazDPnO9l5CPbMKDyAhdaRGYV1BIZ4t0y11whwBJrdjocPbibibBdKEDTr2uicxkO8sdYW9UIXy0TG6rJAq7Eh89kyOWw/0?wx_fmt=jpeg",
+                "crop_info": "{\"ori_url\":\"https://mmbiz.qpic.cn/sz_mmbiz_png/SXKlAlYL8hEbpspWoQC4sCXneptTCv1b0VWjyIC0tdZX5YggTwPfScCUribfticHRlxDN7jNHNqv9huWzBCH8yVFpv6bxrOIWlSb3rWkQAcDE/0?wx_fmt=png&from=appmsg\",\"x1\":0.000000000,\"y1\":0.000000000,\"x2\":1.000000000,\"y2\":1.000000000}"
+              },
+              "ai_pic_source": 0,
+              "ai_pic_prompt": ""
+            }
+          ],
+          "moment_like_num": 0,
+          "item_show_type": 8,
+          "claim_source": {
+            "is_user_no_claim_source": 1
+          },
+          "ad_info": {
+            "has_agreement_ad": 0,
+            "is_recruit_agreement_ad": 0
+          },
+          "audio_in_appmsg": [],
+          "modify_wording": "还可以修改3次",
+          "can_modify": 1,
+          "modify_detail_wording": [],
+          "appmsg_modified": 0,
+          "total_comment_count_contains_reply": 0,
+          "location_page_show": 0,
+          "can_location_page_show": 0,
+          "remain_modify_count": 3,
+          "isXssEncoded": true,
+          "i": 0,
+          "commentPopShow": false,
+          "delPopShow": false,
+          "undelShow": false,
+          "delWording": "",
+          "msgid": 2247486180,
+          "modifyFormatTime": "",
+          "deleteFormatTime": ""
+        }
+      ],
+      "publish_info": {
+        "bizuin": 3923428115,
+        "msgid": 2247486180,
+        "draft_msgid": 100002527,
+        "publish_type": 1,
+        "publish_src": 1,
+        "publish_status": 200,
+        "create_time": 1788932655,
+        "update_time": 1788932679,
+        "check_results": [],
+        "show_types": [
+          8
+        ],
+        "index_count": 1,
+        "xa_check_items": [
+          {
+            "idx": 1,
+            "status": 2,
+            "rescode": 100
+          }
+        ],
+        "original_check_type": 2,
+        "normal_check_results": [],
+        "in_profile": 1,
+        "pre_publish_status": [],
+        "refutation_audit_info": [],
+        "service_type": 1,
+        "item_show_types": [
+          8
+        ],
+        "batch_members": []
+      },
+      "appmsgex": [],
+      "copy_appmsg_id": 100002527,
+      "new_publish": 1,
       "publish_type": 1,
-      "publish_info": "{&quot;type&quot;:10002,&quot;msgid&quot;:2247486029,&quot;sent_result&quot;:{&quot;reject_index_list&quot;:[]},&quot;appmsg_info&quot;:[{&quot;share_type&quot;:8,&quot;appmsgid&quot;:2247486029,&quot;content_url&quot;:&quot;https:\\/\\/mp.weixin.qq.com\\/s\\/uMPANSAgdHqYOJD0fLqQbw&quot;,&quot;title&quot;:&quot;c++之父锐评AI，到底谁膨胀的更厉害&quot;,&quot;is_deleted&quot;:false,&quot;copyright_status&quot;:100,&quot;copyright_type&quot;:0,&quot;read_num&quot;:1515,&quot;like_num&quot;:1,&quot;comment_id&quot;:&quot;4683538719054856193&quot;,&quot;is_comment_enable&quot;:true,&quot;comment_num&quot;:6,&quot;vote_id&quot;:[],&quot;super_vote_id&quot;:[],&quot;cover&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/mmbiz_jpg\\/SXKlAlYL8hH5rZ502t8SSWLLsBmYNxTFwSJpia3ibdgkx5zlL21fnPAZW9jD2iaibjU5g479bNFkKrbkf5yVoRLgvtT1QyTiaL9r0gUqT9Q6UnUo\\/0?wx_fmt=jpeg&quot;,&quot;smart_product&quot;:0,&quot;modify_status&quot;:1,&quot;appmsg_like_type&quot;:2,&quot;can_delete_status&quot;:0,&quot;old_like_num&quot;:8,&quot;itemidx&quot;:1,&quot;is_pay_subscribe&quot;:0,&quot;is_from_transfer&quot;:0,&quot;public_tag_info&quot;:{&quot;public_tag_list&quot;:[],&quot;modify_times&quot;:0,&quot;init_tag_list_size&quot;:0},&quot;appmsg_album_info&quot;:{&quot;id&quot;:&quot;4640283910378192899&quot;,&quot;title&quot;:&quot;软件工程观察&quot;,&quot;album_id&quot;:4640283910378192899,&quot;appmsg_album_infos&quot;:[{&quot;id&quot;:&quot;4640283910378192899&quot;,&quot;title&quot;:&quot;软件工程观察&quot;,&quot;album_id&quot;:4640283910378192899,&quot;appmsg_album_infos&quot;:[],&quot;tagSource&quot;:0}]},&quot;digest&quot;:&quot;70多岁的丹麦老头Bjarne Stroustroup，年轻时代就是以犀利和执拗而著称的，毕竟Unix之父在某个回忆录里面说过，他们因为反对C++的复杂性，而在贝尔实验里面，和B.S闹得不是很愉快，甚至描述为尖叫着大吼大叫的要被拖出去几个人共享的办公室，当年读到那段不禁喷饭。\\n\\n现在时光荏苒几十年了，老爷子照样还是那么桀骜不驯，批评起今天的AI编程也是风采不减。他毫不客气的批评，现在的AI写出来的代码，不属于那百分之一二十他看重的部分，都是严重膨胀的垃圾。\\n\\nX上评论区的反驳很有意思。有人直言c++语言是bug最多，最复杂最烂的一门语言。想要掌握它或许比掌握AI更难。几个批评C++的大佬，Uncle Bob在积极地拥抱AI，玩Grok Bot，指挥AI军团写海量的测试和验证来帮助AI堵漏洞，而Linus自己也在大声呼吁社区保持对AI的开放态度。\\n\\n问题是现在还有多少人坚持古法编程呢？时代变了，根本回不去了。&quot;,&quot;is_cooling_article&quot;:0,&quot;pic_cdn_url_235_1&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/sz_mmbiz_jpg\\/SXKlAlYL8hHpTsuKvia3VRYSzEKSVKbXA6hAShsHWuMDSENKUa7iaQCtwCJtiaX4NBqcapXFvjNRRZWqhLRJMaMLg2T6ibfcNVia2OhDmhAeuTEA\\/0?wx_fmt=jpeg&quot;,&quot;pic_cdn_url_16_9&quot;:&quot;&quot;,&quot;pic_cdn_url_3_4&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/sz_mmbiz_jpg\\/SXKlAlYL8hHpTsuKvia3VRYSzEKSVKbXA6hAShsHWuMDSENKUa7iaQCtwCJtiaX4NBqcapXFvjNRRZWqhLRJMaMLg2T6ibfcNVia2OhDmhAeuTEA\\/0?wx_fmt=jpeg&quot;,&quot;pic_cdn_url_1_1&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/mmbiz_jpg\\/SXKlAlYL8hH5rZ502t8SSWLLsBmYNxTFwSJpia3ibdgkx5zlL21fnPAZW9jD2iaibjU5g479bNFkKrbkf5yVoRLgvtT1QyTiaL9r0gUqT9Q6UnUo\\/0?wx_fmt=jpeg&quot;,&quot;disable_recommend&quot;:0,&quot;line_info&quot;:{&quot;use_line&quot;:1,&quot;line_count&quot;:0,&quot;send_time&quot;:1788752933,&quot;is_appmsg_flag&quot;:1,&quot;is_use_flag&quot;:0},&quot;claim_source_type&quot;:0,&quot;share_num&quot;:7,&quot;is_rumor_refutation&quot;:0,&quot;segment_comment_id&quot;:&quot;4683538727376355331&quot;,&quot;is_segment_comment_enable&quot;:true,&quot;multi_picture_cover&quot;:0,&quot;share_imageinfo&quot;:[{&quot;file_id&quot;:100002443,&quot;cdn_url&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/mmbiz_png\\/SXKlAlYL8hF122zSAQfLfGheVFnHOHyQ8L1JOWElCaNoqOe69kzriaQ3cFy59lKD2ZAEr9etZQ76oOtic04LDWVn43ibfYc9FGvibNlW1sZSIQk\\/0?wx_fmt=png&amp;from=appmsg&quot;,&quot;width&quot;:1086,&quot;height&quot;:1448,&quot;cover_url&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/mmbiz_png\\/SXKlAlYL8hF122zSAQfLfGheVFnHOHyQ8L1JOWElCaNoqOe69kzriaQ3cFy59lKD2ZAEr9etZQ76oOtic04LDWVn43ibfYc9FGvibNlW1sZSIQk\\/0?wx_fmt=png&amp;from=appmsg&quot;,&quot;pic_type&quot;:0,&quot;pic_text&quot;:&quot;&quot;,&quot;pic_cfg&quot;:&quot;&quot;,&quot;theme_color&quot;:{&quot;r&quot;:13,&quot;g&quot;:16,&quot;b&quot;:19},&quot;cal_version&quot;:7,&quot;ori_picture&quot;:{&quot;file_id&quot;:0,&quot;cdn_url&quot;:&quot;&quot;,&quot;width&quot;:0,&quot;height&quot;:0,&quot;crop_ratio&quot;:&quot;&quot;,&quot;crop_list&quot;:&quot;{}&quot;},&quot;format_info&quot;:{&quot;format&quot;:&quot;png&quot;,&quot;frame&quot;:1,&quot;channel&quot;:3,&quot;opacity&quot;:100,&quot;thumbnail&quot;:[{&quot;format&quot;:0,&quot;file_size&quot;:2552636,&quot;width&quot;:1086,&quot;height&quot;:1448},{&quot;format&quot;:640,&quot;file_size&quot;:2273896,&quot;width&quot;:1080,&quot;height&quot;:1440},{&quot;format&quot;:300,&quot;file_size&quot;:60511,&quot;width&quot;:113,&quot;height&quot;:150}]},&quot;poi_info&quot;:[],&quot;wxa_info&quot;:[],&quot;disable_theme&quot;:1,&quot;bind_ad_info&quot;:[],&quot;cps_ad_info&quot;:[],&quot;pic_window_product&quot;:{&quot;product_encrypt_key&quot;:&quot;&quot;,&quot;product_type&quot;:0,&quot;title&quot;:&quot;&quot;,&quot;data_type&quot;:0,&quot;product_id&quot;:&quot;&quot;},&quot;spot_product_info&quot;:[],&quot;watermark_info&quot;:{&quot;cdn_url&quot;:&quot;http:\\/\\/mmbiz.qpic.cn\\/mmbiz_png\\/SXKlAlYL8hGtT4uSxicBTgjIUDHNBCp6KFb0qibZYCGC45tHITgBUV4bQk3XibV1giaXdCMtkfX1jjnE3QtwyX4Xcg7EAjZqgUDKKtPlxTRdJTY\\/0?wx_fmt=png&quot;,&quot;type&quot;:2,&quot;bizuin&quot;:3923428115,&quot;nickname&quot;:&quot;数解AI&quot;,&quot;is_ai_pic&quot;:false,&quot;watermark_region_lightness&quot;:0.324294626713},&quot;ai_pic_id&quot;:&quot;&quot;,&quot;client_info&quot;:{&quot;pic_id&quot;:&quot;&quot;,&quot;associated_info&quot;:{&quot;pic_id&quot;:&quot;&quot;,&quot;cdn_url&quot;:&quot;&quot;,&quot;file_id&quot;:0,&quot;type&quot;:0,&quot;image_template&quot;:&quot;&quot;,&quot;text_poster_prompt&quot;:&quot;&quot;,&quot;text_poster_style&quot;:&quot;&quot;,&quot;text_poster_data_buf&quot;:&quot;&quot;,&quot;text_poster_template_id&quot;:&quot;&quot;},&quot;origin_image_has_edited&quot;:0},&quot;share_cover&quot;:{&quot;file_id&quot;:100002445,&quot;width&quot;:1086,&quot;height&quot;:1448,&quot;cdn_url&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/mmbiz_jpg\\/SXKlAlYL8hEqXd0U5mTqGNF4AQ0BBW4tX5APzVPpwOfVicYKzRs2tXAicGIAz5TYJfVDMNxZ5tsERnv00cTXmAdk6qsDMg9mGwrE2Ynpwiby40\\/0?wx_fmt=jpeg&quot;,&quot;crop_info&quot;:&quot;{\\&quot;ori_url\\&quot;:\\&quot;https:\\/\\/mmbiz.qpic.cn\\/mmbiz_png\\/SXKlAlYL8hF122zSAQfLfGheVFnHOHyQ8L1JOWElCaNoqOe69kzriaQ3cFy59lKD2ZAEr9etZQ76oOtic04LDWVn43ibfYc9FGvibNlW1sZSIQk\\/0?wx_fmt=png&amp;from=appmsg\\&quot;,\\&quot;x1\\&quot;:0.000000000,\\&quot;y1\\&quot;:0.000000000,\\&quot;x2\\&quot;:1.000000000,\\&quot;y2\\&quot;:1.000000000}&quot;},&quot;ai_pic_source&quot;:0,&quot;ai_pic_prompt&quot;:&quot;&quot;}],&quot;moment_like_num&quot;:0,&quot;item_show_type&quot;:8,&quot;claim_source&quot;:{&quot;is_user_no_claim_source&quot;:1},&quot;ad_info&quot;:{&quot;has_agreement_ad&quot;:0,&quot;is_recruit_agreement_ad&quot;:0},&quot;audio_in_appmsg&quot;:[],&quot;modify_wording&quot;:&quot;还可以修改2次&quot;,&quot;can_modify&quot;:1,&quot;private_info&quot;:{&quot;private_type&quot;:0,&quot;update_time&quot;:1788853624},&quot;modify_detail_wording&quot;:[&quot;第1次修改 2026年09月08日 16时10分 闫飞&quot;],&quot;appmsg_modified&quot;:1,&quot;total_comment_count_contains_reply&quot;:10,&quot;location_page_show&quot;:0,&quot;can_location_page_show&quot;:0,&quot;remain_modify_count&quot;:2}],&quot;publish_info&quot;:{&quot;bizuin&quot;:3923428115,&quot;msgid&quot;:2247486029,&quot;draft_msgid&quot;:100002382,&quot;publish_type&quot;:1,&quot;publish_src&quot;:3,&quot;publish_status&quot;:200,&quot;create_time&quot;:1788752933,&quot;update_time&quot;:1788752963,&quot;check_results&quot;:[],&quot;show_types&quot;:[8],&quot;index_count&quot;:1,&quot;xa_check_items&quot;:[{&quot;idx&quot;:1,&quot;status&quot;:2,&quot;rescode&quot;:100}],&quot;original_check_type&quot;:2,&quot;normal_check_results&quot;:[],&quot;in_profile&quot;:1,&quot;pre_publish_status&quot;:[],&quot;refutation_audit_info&quot;:[],&quot;service_type&quot;:1,&quot;item_show_types&quot;:[8],&quot;batch_members&quot;:[]},&quot;appmsgex&quot;:[],&quot;copy_appmsg_id&quot;:100002382,&quot;new_publish&quot;:1,&quot;publish_type&quot;:1,&quot;batch_members&quot;:[]}"
+      "batch_members": [],
+      "view": {
+        "isFirst": false,
+        "isApi": false,
+        "sourceType": 4,
+        "reviewOverTime": false,
+        "mallEditWording": "修改",
+        "isMallActivityDraft": false,
+        "showArticleToImageTips": false,
+        "time": "09月09日",
+        "hasHistory": true,
+        "publishDate": "2026-09-09",
+        "isGoToDataPage": true,
+        "dataPageWording": "发表数据",
+        "status": "已发表",
+        "msg": "未开启群发通知，内容已在公众号主页展示"
+      },
+      "resendPopShow": false
     },
     {
+      "type": 10002,
+      "msgid": 2247486103,
+      "sent_result": {
+        "reject_index_list": []
+      },
+      "appmsg_info": [
+        {
+          "share_type": 8,
+          "appmsgid": 2247486103,
+          "content_url": "https://mp.weixin.qq.com/s/TnFmbwNuqsvwPKkDnOQo5A",
+          "title": "330tps，疾如闪电的DeepSeek&nbsp;v4.1&nbsp;flash",
+          "is_deleted": false,
+          "copyright_status": 100,
+          "copyright_type": 0,
+          "read_num": 160,
+          "like_num": 1,
+          "comment_id": "4685577577258909698",
+          "is_comment_enable": true,
+          "comment_num": 2,
+          "vote_id": [],
+          "super_vote_id": [],
+          "cover": "https://mmbiz.qpic.cn/sz_mmbiz_jpg/SXKlAlYL8hFuCzPWhhCHSHR7NpJnLgfI67qSozKWgvxn8EaaCYKjWdYct6oEhwwfPDawschAiatcUnaniaP6ZgDZVMZ5lyel0sIp1Q2SYAfUA/0?wx_fmt=jpeg",
+          "smart_product": 0,
+          "modify_status": 1,
+          "appmsg_like_type": 2,
+          "can_delete_status": 0,
+          "old_like_num": 4,
+          "itemidx": 1,
+          "is_pay_subscribe": 0,
+          "is_from_transfer": 0,
+          "public_tag_info": {
+            "public_tag_list": [],
+            "modify_times": 0,
+            "init_tag_list_size": 0
+          },
+          "appmsg_album_info": {
+            "id": "4680422529625325570",
+            "title": "前沿观察",
+            "album_id": 4680422529625326000,
+            "appmsg_album_infos": [
+              {
+                "id": "4680422529625325570",
+                "title": "前沿观察",
+                "album_id": 4680422529625326000,
+                "appmsg_album_infos": [],
+                "tagSource": 0
+              }
+            ]
+          },
+          "digest": "DeepSeek&nbsp;v4.1&nbsp;flash，速度飙到330tps，其他家所谓的fast和highspeed，都颤抖吧！幻方又可以仰天大笑出门去了。\n\n至于质量怎样，还有待验证。没有几个复杂任务的检验，还真的不太好评价呢，起码之前经常见的死循环是没出现了，也许是因为我耗的token还不够多。\n\n这方面还真的要夸奖一下，处于公测期的Dim&nbsp;agent，第一时间就上线到自己的套餐里边了，虽然显然是官方转发，但是还给了20的并发量，他家出的手机客户端也很好用，作为一个产品来说，已经非常成熟了。\n\n下午简单和他们开发者交流了一下，他们的接入第三方agent怎么做的，原来是量体裁衣，因为现在这方面挺乱的，既有acp，也有私有协议扩展sdk，好在确认了，他们并没有用很古老的那种基于文本传输的方式和prompt/handoff魔法。如果是最后一种，那可太悲剧了。\n\n不过话说间，我的充值额度居然耗光了，这是要让我继续充值体验吗[呲牙]\n\n&lt;a&nbsp;class=&quot;wx_topic_link&quot;&nbsp;data-topic=&quot;1&quot;&nbsp;style=&quot;color:&nbsp;#576b95;&quot;&gt;#DeepSeek&lt;/a&gt;",
+          "is_cooling_article": 0,
+          "pic_cdn_url_235_1": "",
+          "pic_cdn_url_16_9": "",
+          "pic_cdn_url_3_4": "http://mmbiz.qpic.cn/sz_mmbiz_jpg/SXKlAlYL8hGWKsodvjCNLZh7S5tCXSAQu3d40N6c3ruQN6qiccOnzE7WeLuRqggBOgZxsSTRzS9Nw9052H3aYjQQicX6PDPnH06ib239exqDII/0?wx_fmt=jpeg",
+          "pic_cdn_url_1_1": "http://mmbiz.qpic.cn/sz_mmbiz_jpg/SXKlAlYL8hFuCzPWhhCHSHR7NpJnLgfI67qSozKWgvxn8EaaCYKjWdYct6oEhwwfPDawschAiatcUnaniaP6ZgDZVMZ5lyel0sIp1Q2SYAfUA/0?wx_fmt=jpeg",
+          "disable_recommend": 0,
+          "line_info": {
+            "use_line": 1,
+            "line_count": 0,
+            "send_time": 1788874459,
+            "is_appmsg_flag": 1,
+            "is_use_flag": 0
+          },
+          "claim_source_type": 0,
+          "share_num": 1,
+          "is_rumor_refutation": 0,
+          "segment_comment_id": "4685577587224576000",
+          "is_segment_comment_enable": true,
+          "multi_picture_cover": 0,
+          "share_imageinfo": [
+            {
+              "file_id": 100002452,
+              "cdn_url": "https://mmbiz.qpic.cn/mmbiz_jpg/SXKlAlYL8hGxfg7ZAagOMficSOmnDiaSUgh7P0cmicPdWSYMiaWStWPBGAia1E4T54ia9HHEfQiae2ibpXpsWm2vPnCyqXD4QesyANnTjFiaPBQ56FZM/0?wx_fmt=jpeg",
+              "width": 1080,
+              "height": 1440,
+              "cover_url": "https://mmbiz.qpic.cn/mmbiz_jpg/SXKlAlYL8hGxfg7ZAagOMficSOmnDiaSUgh7P0cmicPdWSYMiaWStWPBGAia1E4T54ia9HHEfQiae2ibpXpsWm2vPnCyqXD4QesyANnTjFiaPBQ56FZM/0?wx_fmt=jpeg",
+              "pic_type": 0,
+              "pic_text": "",
+              "pic_cfg": "",
+              "theme_color": {
+                "r": 59,
+                "g": 147,
+                "b": 231
+              },
+              "cal_version": 7,
+              "ori_picture": {
+                "file_id": 0,
+                "cdn_url": "",
+                "width": 0,
+                "height": 0,
+                "crop_ratio": "",
+                "crop_list": "{}"
+              },
+              "format_info": {
+                "format": "jpeg",
+                "frame": 1,
+                "channel": 3,
+                "opacity": 100,
+                "thumbnail": [
+                  {
+                    "format": 0,
+                    "file_size": 123869,
+                    "width": 1080,
+                    "height": 1440
+                  },
+                  {
+                    "format": 640,
+                    "file_size": 123383,
+                    "width": 1080,
+                    "height": 1440
+                  },
+                  {
+                    "format": 300,
+                    "file_size": 5161,
+                    "width": 113,
+                    "height": 150
+                  }
+                ]
+              },
+              "poi_info": [],
+              "wxa_info": [],
+              "disable_theme": 1,
+              "bind_ad_info": [],
+              "cps_ad_info": [],
+              "pic_window_product": {
+                "product_encrypt_key": "",
+                "product_type": 0,
+                "title": "",
+                "data_type": 0,
+                "product_id": ""
+              },
+              "spot_product_info": [],
+              "watermark_info": {
+                "cdn_url": "http://mmbiz.qpic.cn/sz_mmbiz_jpg/SXKlAlYL8hHFG5dfR65z76EicQMpM8Rhu4vgMvlAD422eqWq3M4qPRJRYXF3W8PaThRG9VO5YxPNOlkJFIL6uKpic0PpUP3OR7P5j28RRrs78/0?wx_fmt=jpeg",
+                "type": 2,
+                "bizuin": 3923428115,
+                "nickname": "数解AI",
+                "is_ai_pic": false,
+                "watermark_region_lightness": 0.532378196716
+              },
+              "ai_pic_id": "603f77f99f759274790d99de98477ca7",
+              "copy_info": {
+                "cdn_url": "http://320.wxapp.tc.qq.com/320/20304/stodownload?m=916160ee122d71f840e5c515e7bef344&filekey=080310a5e00818c002220253482a10916160ee122d71f840e5c515e7bef344&hy=SH&storeid=26aa00d26000a16f52d3a94ce0000014000004f505348211ab1b1570e19ae2&bizid=1023"
+              },
+              "client_info": {
+                "pic_id": "",
+                "associated_info": {
+                  "pic_id": "",
+                  "cdn_url": "",
+                  "file_id": 0,
+                  "type": 0,
+                  "image_template": "",
+                  "text_poster_prompt": "",
+                  "text_poster_style": "",
+                  "text_poster_data_buf": "",
+                  "text_poster_template_id": ""
+                },
+                "origin_image_has_edited": 0
+              },
+              "ai_pic_source": 2,
+              "ai_pic_prompt": "DeepSeek v4.1 flash，速度飙到330tps，其他家所谓的fast和highspeed，都颤抖吧！"
+            },
+            {
+              "file_id": 100002449,
+              "cdn_url": "https://mmbiz.qpic.cn/sz_mmbiz_png/SXKlAlYL8hHticp9yUkOO8nZep9iaIsAj7S0CSDZ87GzVTExicL7qPdiaxgPGj1A7MtKzfTTQmMMdARWt9naDLExfYlFUJ1icHxbgLBcKibt0DA60/0?wx_fmt=png",
+              "width": 2528,
+              "height": 1344,
+              "cover_url": "https://mmbiz.qpic.cn/sz_mmbiz_png/SXKlAlYL8hHticp9yUkOO8nZep9iaIsAj7S0CSDZ87GzVTExicL7qPdiaxgPGj1A7MtKzfTTQmMMdARWt9naDLExfYlFUJ1icHxbgLBcKibt0DA60/0?wx_fmt=png",
+              "pic_type": 0,
+              "pic_text": "",
+              "pic_cfg": "",
+              "theme_color": {
+                "r": 244,
+                "g": 246,
+                "b": 248
+              },
+              "cal_version": 7,
+              "ori_picture": {
+                "file_id": 0,
+                "cdn_url": "",
+                "width": 0,
+                "height": 0,
+                "crop_ratio": "",
+                "crop_list": "{}"
+              },
+              "format_info": {
+                "format": "png",
+                "frame": 1,
+                "channel": 3,
+                "opacity": 100,
+                "thumbnail": [
+                  {
+                    "format": 0,
+                    "file_size": 692510,
+                    "width": 2528,
+                    "height": 1344
+                  },
+                  {
+                    "format": 640,
+                    "file_size": 251290,
+                    "width": 1080,
+                    "height": 574
+                  },
+                  {
+                    "format": 300,
+                    "file_size": 10205,
+                    "width": 150,
+                    "height": 80
+                  }
+                ]
+              },
+              "poi_info": [],
+              "wxa_info": [],
+              "disable_theme": 1,
+              "bind_ad_info": [],
+              "cps_ad_info": [],
+              "pic_window_product": {
+                "product_encrypt_key": "",
+                "product_type": 0,
+                "title": "",
+                "data_type": 0,
+                "product_id": ""
+              },
+              "spot_product_info": [],
+              "watermark_info": {
+                "cdn_url": "http://mmbiz.qpic.cn/mmbiz_png/SXKlAlYL8hGrzTmibiclF7OxBJdR6HAS1ZOPIMHF5THzhZIWZvRkav5XS4KFQJuASxAAzibzO30vbScH4UzI3brW99rYicYvJ4c72kBvU9JdnAw/0?wx_fmt=png",
+                "type": 2,
+                "bizuin": 3923428115,
+                "nickname": "数解AI",
+                "is_ai_pic": false,
+                "watermark_region_lightness": 0.970876157284
+              },
+              "ai_pic_id": "",
+              "copy_info": {
+                "cdn_url": "http://320.wxapp.tc.qq.com/320/20304/stodownload?m=fb2ca790e60d1dd4839f2759953b2b45&filekey=0803109ea22a18c002220253482a10fb2ca790e60d1dd4839f2759953b2b45&hy=SH&storeid=26aa00c94000257452d3a94ce0000014000004f50534803da01b1570eecb17&bizid=1023"
+              },
+              "client_info": {
+                "pic_id": "",
+                "associated_info": {
+                  "pic_id": "",
+                  "cdn_url": "",
+                  "file_id": 0,
+                  "type": 0,
+                  "image_template": "",
+                  "text_poster_prompt": "",
+                  "text_poster_style": "",
+                  "text_poster_data_buf": "",
+                  "text_poster_template_id": ""
+                },
+                "origin_image_has_edited": 0
+              },
+              "ai_pic_source": 0,
+              "ai_pic_prompt": "",
+              "original_info": {
+                "show_original": true,
+                "cdn_url": "http://320.wxapp.tc.qq.com/320/20304/stodownload?m=fb2ca790e60d1dd4839f2759953b2b45&filekey=0803109ea22a18c002220253482a10fb2ca790e60d1dd4839f2759953b2b45&hy=SH&storeid=26aa00c94000257452d3a94ce0000014000004f50534803da01b1570eecb17&bizid=1023",
+                "file_size": 692510
+              }
+            }
+          ],
+          "moment_like_num": 0,
+          "item_show_type": 8,
+          "ad_info": {
+            "has_agreement_ad": 0,
+            "is_recruit_agreement_ad": 0
+          },
+          "audio_in_appmsg": [],
+          "modify_wording": "还可以修改3次",
+          "can_modify": 1,
+          "modify_detail_wording": [],
+          "appmsg_modified": 0,
+          "total_comment_count_contains_reply": 3,
+          "location_page_show": 0,
+          "can_location_page_show": 0,
+          "remain_modify_count": 3,
+          "isXssEncoded": true,
+          "i": 0,
+          "commentPopShow": false,
+          "delPopShow": false,
+          "undelShow": false,
+          "delWording": "",
+          "msgid": 2247486103,
+          "modifyFormatTime": "",
+          "deleteFormatTime": ""
+        }
+      ],
+      "publish_info": {
+        "bizuin": 3923428115,
+        "msgid": 2247486103,
+        "draft_msgid": 100002456,
+        "publish_type": 1,
+        "publish_src": 4,
+        "publish_status": 200,
+        "create_time": 1788874459,
+        "update_time": 1788874479,
+        "check_results": [],
+        "show_types": [
+          8
+        ],
+        "index_count": 1,
+        "xa_check_items": [
+          {
+            "idx": 1,
+            "status": 2,
+            "rescode": 100
+          }
+        ],
+        "original_check_type": 2,
+        "normal_check_results": [],
+        "in_profile": 1,
+        "pre_publish_status": [],
+        "refutation_audit_info": [],
+        "service_type": 1,
+        "item_show_types": [
+          8
+        ],
+        "batch_members": []
+      },
+      "appmsgex": [],
+      "copy_appmsg_id": 100002456,
+      "new_publish": 1,
       "publish_type": 1,
-      "publish_info": "{&quot;type&quot;:10002,&quot;msgid&quot;:2247486020,&quot;sent_result&quot;:{&quot;reject_index_list&quot;:[]},&quot;appmsg_info&quot;:[{&quot;share_type&quot;:8,&quot;appmsgid&quot;:2247486020,&quot;content_url&quot;:&quot;https:\\/\\/mp.weixin.qq.com\\/s\\/17mxx9QQ_UYUiRtvCTsTaQ&quot;,&quot;title&quot;:&quot;ollama的峰谷价模式叠加1\\/3优惠还可以的&quot;,&quot;is_deleted&quot;:false,&quot;copyright_status&quot;:100,&quot;copyright_type&quot;:0,&quot;read_num&quot;:4403,&quot;like_num&quot;:1,&quot;comment_id&quot;:&quot;4683503357599252484&quot;,&quot;is_comment_enable&quot;:true,&quot;comment_num&quot;:7,&quot;vote_id&quot;:[],&quot;super_vote_id&quot;:[],&quot;cover&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/mmbiz_jpg\\/SXKlAlYL8hGBqu9ibVYEISRk0JTKwZQl0thy5U7ia3V5lNSdkY1TQPlwrp9icUy1YSibV8HEeggMIicL0Nu5cj3jeWJQ7Bsz6TyIhLuSoicY0pgZQ\\/0?wx_fmt=jpeg&quot;,&quot;smart_product&quot;:0,&quot;modify_status&quot;:1,&quot;appmsg_like_type&quot;:2,&quot;can_delete_status&quot;:0,&quot;old_like_num&quot;:11,&quot;itemidx&quot;:1,&quot;is_pay_subscribe&quot;:0,&quot;is_from_transfer&quot;:0,&quot;public_tag_info&quot;:{&quot;public_tag_list&quot;:[],&quot;modify_times&quot;:0,&quot;init_tag_list_size&quot;:0},&quot;appmsg_album_info&quot;:{&quot;id&quot;:&quot;4640281535429050368&quot;,&quot;title&quot;:&quot;大模型价格战&quot;,&quot;album_id&quot;:4640281535429050368,&quot;appmsg_album_infos&quot;:[{&quot;id&quot;:&quot;4640281535429050368&quot;,&quot;title&quot;:&quot;大模型价格战&quot;,&quot;album_id&quot;:4640281535429050368,&quot;appmsg_album_infos&quot;:[],&quot;tagSource&quot;:0}]},&quot;digest&quot;:&quot;前面几天刚刚因为新的定价模式导致使用量被大大缩水，ollama cloud推出了它的峰谷计价模式。\\n\\n这次针对的是美国高峰时段，也就是说，北京时间晚上八点到凌晨四点外，DeepSeek是低谷价格，加上三分之一计算的套餐膨胀量，还是很值得的。不过用量不大的，就没那么划算了。\\n\\n如果有现有老模式模糊计价的套餐，暂时还不要升级，因为那个老模式下，20美金的DeepSeek flash，一个月可以使用起码60亿的token。GLM5.2大约12亿，GLM5.3 flash大约18亿。\\n\\n如果结合commandcode go的晚间优惠，还可以省下一大笔token费。\\n\\n大家都涨价了，感觉廉价好用的token越来越少了，怀念7月底时候的DeepSeek v4flash官方API！&quot;,&quot;is_cooling_article&quot;:0,&quot;pic_cdn_url_235_1&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/sz_mmbiz_jpg\\/SXKlAlYL8hEckBHBpK9LXPdKibDawzQSIcz4BrVIqw4fWMJ9USGVtpaPAWoZZpSPu1lss8lUqSsDZHlJcCyca9fpdOLnekA21GxXPwt9YEUA\\/0?wx_fmt=jpeg&quot;,&quot;pic_cdn_url_16_9&quot;:&quot;&quot;,&quot;pic_cdn_url_3_4&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/sz_mmbiz_jpg\\/SXKlAlYL8hEckBHBpK9LXPdKibDawzQSIcz4BrVIqw4fWMJ9USGVtpaPAWoZZpSPu1lss8lUqSsDZHlJcCyca9fpdOLnekA21GxXPwt9YEUA\\/0?wx_fmt=jpeg&quot;,&quot;pic_cdn_url_1_1&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/mmbiz_jpg\\/SXKlAlYL8hGBqu9ibVYEISRk0JTKwZQl0thy5U7ia3V5lNSdkY1TQPlwrp9icUy1YSibV8HEeggMIicL0Nu5cj3jeWJQ7Bsz6TyIhLuSoicY0pgZQ\\/0?wx_fmt=jpeg&quot;,&quot;disable_recommend&quot;:0,&quot;line_info&quot;:{&quot;use_line&quot;:1,&quot;line_count&quot;:0,&quot;send_time&quot;:1788750826,&quot;is_appmsg_flag&quot;:1,&quot;is_use_flag&quot;:0},&quot;claim_source_type&quot;:0,&quot;share_num&quot;:5,&quot;is_rumor_refutation&quot;:0,&quot;segment_comment_id&quot;:&quot;4683503366491176962&quot;,&quot;is_segment_comment_enable&quot;:true,&quot;multi_picture_cover&quot;:0,&quot;share_imageinfo&quot;:[{&quot;file_id&quot;:100002431,&quot;cdn_url&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/sz_mmbiz_png\\/SXKlAlYL8hGVY7mCSYFkG6yN7NvUOZmaicdV7KIpFkOedNZP6GvegCXJicco7xuDkwxPJUp609kLQp9nCHTNuw2HqZWzwjLxicKFvKBul2CkhE\\/0?wx_fmt=png&amp;from=appmsg&quot;,&quot;width&quot;:1086,&quot;height&quot;:1448,&quot;cover_url&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/sz_mmbiz_png\\/SXKlAlYL8hGVY7mCSYFkG6yN7NvUOZmaicdV7KIpFkOedNZP6GvegCXJicco7xuDkwxPJUp609kLQp9nCHTNuw2HqZWzwjLxicKFvKBul2CkhE\\/0?wx_fmt=png&amp;from=appmsg&quot;,&quot;pic_type&quot;:0,&quot;pic_text&quot;:&quot;&quot;,&quot;pic_cfg&quot;:&quot;&quot;,&quot;theme_color&quot;:{&quot;r&quot;:7,&quot;g&quot;:66,&quot;b&quot;:127},&quot;cal_version&quot;:7,&quot;ori_picture&quot;:{&quot;file_id&quot;:0,&quot;cdn_url&quot;:&quot;&quot;,&quot;width&quot;:0,&quot;height&quot;:0,&quot;crop_ratio&quot;:&quot;&quot;,&quot;crop_list&quot;:&quot;{}&quot;},&quot;format_info&quot;:{&quot;format&quot;:&quot;png&quot;,&quot;frame&quot;:1,&quot;channel&quot;:3,&quot;opacity&quot;:100,&quot;thumbnail&quot;:[{&quot;format&quot;:0,&quot;file_size&quot;:1745852,&quot;width&quot;:1086,&quot;height&quot;:1448},{&quot;format&quot;:640,&quot;file_size&quot;:1603047,&quot;width&quot;:1080,&quot;height&quot;:1440},{&quot;format&quot;:300,&quot;file_size&quot;:53739,&quot;width&quot;:113,&quot;height&quot;:150}]},&quot;poi_info&quot;:[],&quot;wxa_info&quot;:[],&quot;disable_theme&quot;:1,&quot;bind_ad_info&quot;:[],&quot;cps_ad_info&quot;:[],&quot;pic_window_product&quot;:{&quot;product_encrypt_key&quot;:&quot;&quot;,&quot;product_type&quot;:0,&quot;title&quot;:&quot;&quot;,&quot;data_type&quot;:0,&quot;product_id&quot;:&quot;&quot;},&quot;spot_product_info&quot;:[],&quot;watermark_info&quot;:{&quot;cdn_url&quot;:&quot;http:\\/\\/mmbiz.qpic.cn\\/mmbiz_png\\/SXKlAlYL8hF6OfOdFfZgicltMgtp8lsdasjP7qU3iavgicWX5bCpmnxqibbuKiaRAdAwDvwsM9BqXwFIjicM2wzp91u4QmIialt0S5A2zcq3fnicQlQ\\/0?wx_fmt=png&quot;,&quot;type&quot;:2,&quot;bizuin&quot;:3923428115,&quot;nickname&quot;:&quot;数解AI&quot;,&quot;is_ai_pic&quot;:false,&quot;watermark_region_lightness&quot;:0.247491806746},&quot;ai_pic_id&quot;:&quot;&quot;,&quot;client_info&quot;:{&quot;pic_id&quot;:&quot;&quot;,&quot;associated_info&quot;:{&quot;pic_id&quot;:&quot;&quot;,&quot;cdn_url&quot;:&quot;&quot;,&quot;file_id&quot;:0,&quot;type&quot;:0,&quot;image_template&quot;:&quot;&quot;,&quot;text_poster_prompt&quot;:&quot;&quot;,&quot;text_poster_style&quot;:&quot;&quot;,&quot;text_poster_data_buf&quot;:&quot;&quot;,&quot;text_poster_template_id&quot;:&quot;&quot;},&quot;origin_image_has_edited&quot;:0},&quot;share_cover&quot;:{&quot;file_id&quot;:100002434,&quot;width&quot;:1086,&quot;height&quot;:1448,&quot;cdn_url&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/sz_mmbiz_jpg\\/SXKlAlYL8hHJM8CVKepeyxpOmSjlb5Q3K6ohyop1zBExAB7oMjsJDAhcp6ia3ShGayxctvAWLchc0x7pu9tV6ibL1cEGmR4BicCajjOXBb6c0w\\/0?wx_fmt=jpeg&quot;,&quot;crop_info&quot;:&quot;{\\&quot;ori_url\\&quot;:\\&quot;https:\\/\\/mmbiz.qpic.cn\\/sz_mmbiz_png\\/SXKlAlYL8hGVY7mCSYFkG6yN7NvUOZmaicdV7KIpFkOedNZP6GvegCXJicco7xuDkwxPJUp609kLQp9nCHTNuw2HqZWzwjLxicKFvKBul2CkhE\\/0?wx_fmt=png&amp;from=appmsg\\&quot;,\\&quot;x1\\&quot;:0.000000000,\\&quot;y1\\&quot;:0.000000000,\\&quot;x2\\&quot;:1.000000000,\\&quot;y2\\&quot;:1.000000000}&quot;},&quot;ai_pic_source&quot;:0,&quot;ai_pic_prompt&quot;:&quot;&quot;}],&quot;moment_like_num&quot;:0,&quot;item_show_type&quot;:8,&quot;claim_source&quot;:{&quot;is_user_no_claim_source&quot;:1},&quot;ad_info&quot;:{&quot;has_agreement_ad&quot;:0,&quot;is_recruit_agreement_ad&quot;:0},&quot;audio_in_appmsg&quot;:[],&quot;modify_wording&quot;:&quot;还可以修改2次&quot;,&quot;can_modify&quot;:1,&quot;private_info&quot;:{&quot;private_type&quot;:0,&quot;update_time&quot;:1788853599},&quot;modify_detail_wording&quot;:[&quot;第1次修改 2026年09月08日 16时03分 闫飞&quot;],&quot;appmsg_modified&quot;:1,&quot;total_comment_count_contains_reply&quot;:17,&quot;location_page_show&quot;:0,&quot;can_location_page_show&quot;:0,&quot;remain_modify_count&quot;:2}],&quot;publish_info&quot;:{&quot;bizuin&quot;:3923428115,&quot;msgid&quot;:2247486020,&quot;draft_msgid&quot;:100002374,&quot;publish_type&quot;:1,&quot;publish_src&quot;:3,&quot;publish_status&quot;:200,&quot;create_time&quot;:1788750826,&quot;update_time&quot;:1788750848,&quot;check_results&quot;:[],&quot;show_types&quot;:[8],&quot;index_count&quot;:1,&quot;xa_check_items&quot;:[{&quot;idx&quot;:1,&quot;status&quot;:2,&quot;rescode&quot;:100}],&quot;original_check_type&quot;:2,&quot;normal_check_results&quot;:[],&quot;in_profile&quot;:1,&quot;pre_publish_status&quot;:[],&quot;refutation_audit_info&quot;:[],&quot;service_type&quot;:1,&quot;item_show_types&quot;:[8],&quot;batch_members&quot;:[]},&quot;appmsgex&quot;:[],&quot;copy_appmsg_id&quot;:100002374,&quot;new_publish&quot;:1,&quot;publish_type&quot;:1,&quot;batch_members&quot;:[]}"
+      "batch_members": [],
+      "view": {
+        "isFirst": false,
+        "isApi": false,
+        "sourceType": 4,
+        "reviewOverTime": false,
+        "mallEditWording": "修改",
+        "isMallActivityDraft": false,
+        "showArticleToImageTips": false,
+        "time": "09月08日",
+        "hasHistory": true,
+        "publishDate": "2026-09-08",
+        "isGoToDataPage": true,
+        "dataPageWording": "发表数据",
+        "status": "已发表",
+        "msg": "未开启群发通知，内容已在公众号主页展示"
+      },
+      "resendPopShow": false
     },
     {
+      "type": 9,
+      "msgid": 1000000140,
+      "sent_info": {
+        "time": 1788868800,
+        "func_flag": 134250498,
+        "is_send_all": true,
+        "is_published": 0,
+        "func_flag2": 0
+      },
+      "sent_status": {
+        "total": 985,
+        "succ": 985,
+        "fail": 0,
+        "progress": 100,
+        "userprotect": 0
+      },
+      "sent_result": {
+        "msg_status": 2,
+        "refuse_reason": "",
+        "reject_index_list": [],
+        "update_time": 1788868913
+      },
+      "appmsg_info": [
+        {
+          "share_type": 0,
+          "appmsgid": 2247486008,
+          "content_url": "https://mp.weixin.qq.com/s/z6dUKGtDjcPQOK9GnxBnFA",
+          "title": "DeepSeek&nbsp;有&nbsp;384&nbsp;个专家，为什么不敢强迫它们平均干活？",
+          "is_deleted": false,
+          "copyright_status": 11,
+          "copyright_type": 1,
+          "read_num": 36,
+          "like_num": 1,
+          "comment_id": "4683468419147595777",
+          "is_comment_enable": true,
+          "comment_num": 0,
+          "reward_money": "0.00",
+          "reprint_num": 0,
+          "vote_id": [],
+          "super_vote_id": [],
+          "cover": "https://mmbiz.qpic.cn/sz_mmbiz_jpg/SXKlAlYL8hGpd1MiaGgsX04onzysGgKn4XgRHPJQQ2cxtBJY1EenmHODUeicib53aAEkXtCQjLAw37pc1AP14BqicaO6tic0ypj8c6QN3piaF86nw/0?wx_fmt=jpeg",
+          "smart_product": 0,
+          "modify_status": 1,
+          "appmsg_like_type": 2,
+          "can_delete_status": 0,
+          "old_like_num": 2,
+          "itemidx": 1,
+          "is_pay_subscribe": 0,
+          "is_from_transfer": 0,
+          "public_tag_info": {
+            "public_tag_list": [],
+            "modify_times": 0,
+            "init_tag_list_size": 0
+          },
+          "appmsg_album_info": {
+            "id": "4655868530679185411",
+            "title": "AI中的数学",
+            "album_id": 4655868530679185000,
+            "appmsg_album_infos": [
+              {
+                "id": "4655868530679185411",
+                "title": "AI中的数学",
+                "album_id": 4655868530679185000,
+                "appmsg_album_infos": [],
+                "tagSource": 0
+              }
+            ]
+          },
+          "digest": "DeepSeek&nbsp;的模型里有&nbsp;384&nbsp;个专家，为什么不敢强迫它们平均干活？因为约束不是铁律，是带价格的偏好——拉格朗日乘子法把「不均衡」标上价格加进训练目标。DeepSeek&nbsp;更狠：连这个价格都不付了，直接调路由偏置。",
+          "open_fansmsg": 0,
+          "is_cooling_article": 0,
+          "pic_cdn_url_235_1": "https://mmbiz.qpic.cn/mmbiz_jpg/SXKlAlYL8hHj0c3iaxLJyQhbtzqdNlUtVCLiaeSAFJibped9ROIRSq4uwuhp3zAHnPzZEmrkeQaMAzWCAIdV3M71XfmjQPN12U8Rb940cRib2lg/0?wx_fmt=jpeg",
+          "pic_cdn_url_16_9": "",
+          "disable_recommend": 0,
+          "line_info": {
+            "use_line": 1,
+            "line_count": 0,
+            "send_time": 1788868902,
+            "is_appmsg_flag": 1,
+            "is_use_flag": 0
+          },
+          "claim_source_type": 0,
+          "share_num": 4,
+          "is_rumor_refutation": 0,
+          "segment_comment_id": "4683468433609555974",
+          "is_segment_comment_enable": true,
+          "multi_picture_cover": 0,
+          "share_imageinfo": [],
+          "moment_like_num": 0,
+          "item_show_type": 0,
+          "claim_source": {
+            "is_user_no_claim_source": 1
+          },
+          "ad_info": {
+            "has_agreement_ad": 0,
+            "is_recruit_agreement_ad": 0
+          },
+          "audio_in_appmsg": [],
+          "modify_wording": "还可以修改3次",
+          "can_modify": 1,
+          "modify_detail_wording": [],
+          "appmsg_modified": 0,
+          "total_comment_count_contains_reply": 0,
+          "location_page_show": 0,
+          "can_location_page_show": 0,
+          "remain_modify_count": 3,
+          "isXssEncoded": true,
+          "i": 0,
+          "commentPopShow": false,
+          "delPopShow": false,
+          "undelShow": false,
+          "delWording": "删除后用户将无法访问此页面，确定删除？该操作只能删除历史消息中的记录，不能删除已经成功发送到用户的消息。",
+          "msgid": 1000000140,
+          "modifyFormatTime": "",
+          "deleteFormatTime": ""
+        }
+      ],
+      "appmsgex": [],
+      "copy_type": 77,
+      "copy_appmsg_id": 100002351,
+      "new_publish": 0,
       "publish_type": 101,
-      "publish_info": "{&quot;type&quot;:9,&quot;msgid&quot;:1000000137,&quot;sent_info&quot;:{&quot;time&quot;:1788696000,&quot;func_flag&quot;:134250498,&quot;is_send_all&quot;:true,&quot;is_published&quot;:0,&quot;func_flag2&quot;:0},&quot;sent_status&quot;:{&quot;total&quot;:980,&quot;succ&quot;:980,&quot;fail&quot;:0,&quot;progress&quot;:100,&quot;userprotect&quot;:0},&quot;sent_result&quot;:{&quot;msg_status&quot;:2,&quot;refuse_reason&quot;:&quot;&quot;,&quot;reject_index_list&quot;:[],&quot;update_time&quot;:1788696081},&quot;appmsg_info&quot;:[{&quot;share_type&quot;:0,&quot;appmsgid&quot;:2247485986,&quot;content_url&quot;:&quot;https:\\/\\/mp.weixin.qq.com\\/s\\/99AlwmvHlBe8goeMzZIEDQ&quot;,&quot;title&quot;:&quot;AI 为什么时灵时不灵？跑分只有 12.8 的模型，难题却解得了&quot;,&quot;is_deleted&quot;:false,&quot;copyright_status&quot;:11,&quot;copyright_type&quot;:1,&quot;read_num&quot;:37,&quot;like_num&quot;:1,&quot;comment_id&quot;:&quot;4682300891461419011&quot;,&quot;is_comment_enable&quot;:true,&quot;comment_num&quot;:0,&quot;reward_money&quot;:&quot;0.00&quot;,&quot;reprint_num&quot;:0,&quot;vote_id&quot;:[],&quot;super_vote_id&quot;:[],&quot;cover&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/mmbiz_jpg\\/SXKlAlYL8hEM3U6uLFbchFhZcFddKicOpynPWvRicpHzDpiatGVYKSFP4GMPfotKcBJsAAv5NR32ibAfcOYq7Ax421C33zlp5uqhzicjL984FJh4\\/0?wx_fmt=jpeg&quot;,&quot;smart_product&quot;:0,&quot;modify_status&quot;:1,&quot;appmsg_like_type&quot;:2,&quot;can_delete_status&quot;:0,&quot;old_like_num&quot;:4,&quot;itemidx&quot;:1,&quot;is_pay_subscribe&quot;:0,&quot;is_from_transfer&quot;:0,&quot;public_tag_info&quot;:{&quot;public_tag_list&quot;:[],&quot;modify_times&quot;:0,&quot;init_tag_list_size&quot;:0},&quot;appmsg_album_info&quot;:{&quot;id&quot;:&quot;4655868530679185411&quot;,&quot;title&quot;:&quot;AI中的数学&quot;,&quot;album_id&quot;:4655868530679185411,&quot;appmsg_album_infos&quot;:[{&quot;id&quot;:&quot;4655868530679185411&quot;,&quot;title&quot;:&quot;AI中的数学&quot;,&quot;album_id&quot;:4655868530679185411,&quot;appmsg_album_infos&quot;:[],&quot;tagSource&quot;:0}]},&quot;digest&quot;:&quot;同一个模型，为什么时灵时不灵？难题解得漂亮，简单题却翻车——跑分只有 12.8 的模型，上限却能解最前沿难题。方差和标准差给「波动」配了一把尺子；DeepSeek-R1 的训练算法 GRPO，正是用「组内减均值、除标准差」判断哪个回答更好。&quot;,&quot;open_fansmsg&quot;:0,&quot;is_cooling_article&quot;:0,&quot;pic_cdn_url_235_1&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/sz_mmbiz_jpg\\/SXKlAlYL8hHZ0Gibu1dmndd0pIZY9lkHZ52VUicMkzkPJBNgvyR3NGfK23zQCd9gbicqIpyFblcqcTqRy4icjKWunmQz9XV3h9g2VibiaicOktD5ro\\/0?wx_fmt=jpeg&quot;,&quot;pic_cdn_url_16_9&quot;:&quot;&quot;,&quot;disable_recommend&quot;:0,&quot;line_info&quot;:{&quot;use_line&quot;:1,&quot;line_count&quot;:0,&quot;send_time&quot;:1788696070,&quot;is_appmsg_flag&quot;:1,&quot;is_use_flag&quot;:0},&quot;claim_source_type&quot;:0,&quot;share_num&quot;:2,&quot;is_rumor_refutation&quot;:0,&quot;segment_comment_id&quot;:&quot;4682300903809449985&quot;,&quot;is_segment_comment_enable&quot;:true,&quot;multi_picture_cover&quot;:0,&quot;share_imageinfo&quot;:[],&quot;moment_like_num&quot;:0,&quot;item_show_type&quot;:0,&quot;claim_source&quot;:{&quot;is_user_no_claim_source&quot;:1},&quot;ad_info&quot;:{&quot;has_agreement_ad&quot;:0,&quot;is_recruit_agreement_ad&quot;:0},&quot;audio_in_appmsg&quot;:[],&quot;modify_wording&quot;:&quot;还可以修改3次&quot;,&quot;can_modify&quot;:1,&quot;modify_detail_wording&quot;:[],&quot;appmsg_modified&quot;:0,&quot;total_comment_count_contains_reply&quot;:0,&quot;location_page_show&quot;:0,&quot;can_location_page_show&quot;:0,&quot;remain_modify_count&quot;:3}],&quot;appmsgex&quot;:[],&quot;copy_type&quot;:77,&quot;copy_appmsg_id&quot;:100002337,&quot;new_publish&quot;:0,&quot;publish_type&quot;:101,&quot;batch_members&quot;:[]}"
+      "batch_members": [],
+      "view": {
+        "isFirst": false,
+        "isApi": false,
+        "sourceType": 1,
+        "reviewOverTime": false,
+        "mallEditWording": "修改",
+        "isMallActivityDraft": false,
+        "showArticleToImageTips": false,
+        "time": "09月08日",
+        "hasHistory": true,
+        "publishDate": "2026-09-08",
+        "isGoToDataPage": true,
+        "dataPageWording": "发表数据",
+        "isFromApp": 0,
+        "status": "已发表"
+      },
+      "resendPopShow": false
     },
     {
+      "type": 10002,
+      "msgid": 2247486095,
+      "sent_result": {
+        "reject_index_list": []
+      },
+      "appmsg_info": [
+        {
+          "share_type": 10,
+          "appmsgid": 2247486095,
+          "content_url": "https://mp.weixin.qq.com/s/ypwGd7KJ3E2GTqmdLQZzBQ",
+          "title": "deepseek&nbsp;v4.1&nbsp;flash和MIMO来了，谁先上桌",
+          "is_deleted": false,
+          "copyright_status": 100,
+          "copyright_type": 0,
+          "read_num": 105,
+          "like_num": 5,
+          "comment_id": "4685310154224009222",
+          "is_comment_enable": true,
+          "comment_num": 2,
+          "vote_id": [],
+          "super_vote_id": [],
+          "cover": "",
+          "smart_product": 0,
+          "modify_status": 1,
+          "appmsg_like_type": 2,
+          "can_delete_status": 0,
+          "old_like_num": 10,
+          "itemidx": 1,
+          "is_pay_subscribe": 0,
+          "is_from_transfer": 0,
+          "public_tag_info": {
+            "public_tag_list": [],
+            "modify_times": 0,
+            "init_tag_list_size": 0
+          },
+          "appmsg_album_info": {
+            "id": "4680422529625325570",
+            "title": "前沿观察",
+            "album_id": 4680422529625326000,
+            "appmsg_album_infos": [
+              {
+                "id": "4680422529625325570",
+                "title": "前沿观察",
+                "album_id": 4680422529625326000,
+                "appmsg_album_infos": [],
+                "tagSource": 0
+              }
+            ]
+          },
+          "digest": "",
+          "is_cooling_article": 0,
+          "pic_cdn_url_235_1": "",
+          "pic_cdn_url_16_9": "",
+          "pic_cdn_url_3_4": "",
+          "pic_cdn_url_1_1": "",
+          "disable_recommend": 0,
+          "line_info": {
+            "use_line": 1,
+            "line_count": 1,
+            "send_time": 1788858519,
+            "is_appmsg_flag": 1,
+            "is_use_flag": 0
+          },
+          "claim_source_type": 0,
+          "share_num": 3,
+          "is_rumor_refutation": 0,
+          "segment_comment_id": "4685310161454989314",
+          "is_segment_comment_enable": true,
+          "multi_picture_cover": 0,
+          "share_imageinfo": [],
+          "moment_like_num": 0,
+          "item_show_type": 10,
+          "ad_info": {
+            "has_agreement_ad": 0,
+            "is_recruit_agreement_ad": 0
+          },
+          "audio_in_appmsg": [],
+          "modify_wording": "还可以修改3次",
+          "can_modify": 1,
+          "modify_detail_wording": [],
+          "appmsg_modified": 0,
+          "total_comment_count_contains_reply": 3,
+          "location_page_show": 0,
+          "can_location_page_show": 0,
+          "remain_modify_count": 3,
+          "isXssEncoded": true,
+          "i": 0,
+          "commentPopShow": false,
+          "delPopShow": false,
+          "undelShow": false,
+          "delWording": "",
+          "msgid": 2247486095,
+          "modifyFormatTime": "",
+          "deleteFormatTime": ""
+        }
+      ],
+      "publish_info": {
+        "bizuin": 3923428115,
+        "msgid": 2247486095,
+        "draft_msgid": 100002448,
+        "publish_type": 1,
+        "publish_src": 3,
+        "publish_status": 200,
+        "create_time": 1788858519,
+        "update_time": 1788858529,
+        "check_results": [],
+        "show_types": [
+          10
+        ],
+        "index_count": 1,
+        "xa_check_items": [
+          {
+            "idx": 1,
+            "status": 2,
+            "rescode": 100
+          }
+        ],
+        "original_check_type": 0,
+        "normal_check_results": [],
+        "in_profile": 1,
+        "pre_publish_status": [],
+        "refutation_audit_info": [],
+        "service_type": 1,
+        "item_show_types": [
+          10
+        ],
+        "batch_members": []
+      },
+      "appmsgex": [],
+      "copy_appmsg_id": 100002448,
+      "new_publish": 1,
       "publish_type": 1,
-      "publish_info": "{&quot;type&quot;:10002,&quot;msgid&quot;:2247485964,&quot;sent_result&quot;:{&quot;reject_index_list&quot;:[]},&quot;appmsg_info&quot;:[{&quot;share_type&quot;:8,&quot;appmsgid&quot;:2247485964,&quot;content_url&quot;:&quot;https:\\/\\/mp.weixin.qq.com\\/s\\/n_s-mFerrQDIera5VRkFtA&quot;,&quot;title&quot;:&quot;大模型集体高潮，web monkey们还能狂飙多远&quot;,&quot;is_deleted&quot;:false,&quot;copyright_status&quot;:100,&quot;copyright_type&quot;:0,&quot;read_num&quot;:63,&quot;like_num&quot;:5,&quot;comment_id&quot;:&quot;4681948003325280258&quot;,&quot;is_comment_enable&quot;:true,&quot;comment_num&quot;:0,&quot;vote_id&quot;:[],&quot;super_vote_id&quot;:[],&quot;cover&quot;:&quot;http:\\/\\/mmbiz.qpic.cn\\/sz_mmbiz_jpg\\/SXKlAlYL8hEO94x1ToYm5MmMKdtNpo59ltasLDBVIEaEsWxNXBLCy3jjPdzNrgJh4ouia06uticywqqYtEJqGLIQrlTKBA7l6wRY2jxHzB6pI\\/0?wx_fmt=jpeg&quot;,&quot;smart_product&quot;:0,&quot;modify_status&quot;:1,&quot;appmsg_like_type&quot;:2,&quot;can_delete_status&quot;:0,&quot;old_like_num&quot;:14,&quot;itemidx&quot;:1,&quot;is_pay_subscribe&quot;:0,&quot;is_from_transfer&quot;:0,&quot;public_tag_info&quot;:{&quot;public_tag_list&quot;:[],&quot;modify_times&quot;:0,&quot;init_tag_list_size&quot;:0},&quot;appmsg_album_info&quot;:{&quot;id&quot;:&quot;4640283910378192899&quot;,&quot;title&quot;:&quot;软件工程观察&quot;,&quot;album_id&quot;:4640283910378192899,&quot;appmsg_album_infos&quot;:[{&quot;id&quot;:&quot;4640283910378192899&quot;,&quot;title&quot;:&quot;软件工程观察&quot;,&quot;album_id&quot;:4640283910378192899,&quot;appmsg_album_infos&quot;:[],&quot;tagSource&quot;:0}]},&quot;digest&quot;:&quot;最近大模型厂商集体打榜刷SOTA的现象尤其突出，以前只是国内厂商喜欢干，但是最近这个名单上多了从年初的御三家掉队的gemini。\\n\\n不过我认为最戏剧性的，莫过于GPT5.6 astra的发布，直接把很多榜单刷到满溢，同时通用能力还很强的地步，难说openai是不是故意的。\\n\\n最近测试了一下astra，只能说是四个字，稳，准，狠，贵。缺点就是贵，总要占一样嘛。不过那个贵是相对的，完成同样的任务，反而时间短了，token少了。\\n\\n图片上的这个刷榜榜尾，数来自月之暗面的Kimi，只不过Kimi的定价也是太贵了，我买的199套餐用下来还是比当时GPT5.6 Sol贵了很多，速度又奇慢无比，叫人难以忍受。所以我就在上个月套餐到期之后退订了。\\n\\n另一方面，看起来大模型刷coding agent的战场也要趋于饱和了。\\n\\n该解决的套路化简单问题解决的差不多了，复杂多变的软件工程挑战其实一个都没有推进多深入。demo多么多么厉害的个人测评，充斥着游戏，小web应用，画图，web操作系统玩具，诸如此类的。\\n\\n外行人恐怕不容易理解这些只是软件工程需要解决的核心挑战的一部分，甚至是一小部分。比如底层软件，通信，网络协议，数据库，各种行业软件，专业领域知识壁垒，都高的吓人。在这些领域，完全信vibe，不正是和猴子差不多嘛。\\n\\n这个概念几十年前，人工智能先贤们给它取名叫随机鹦鹉，前面我公众号文章写出来，还有人以为是我笔误呢。\\n\\n然而现在这只🦜的模仿能力实在是过于惊人，掌握了各种高级统计方法去拟合见过的一切，然而却依然困在学习过的模式里面无法继续升级。\\n\\n信奉vibe搞定一切难题的老板们，大家好运[呲牙]&quot;,&quot;is_cooling_article&quot;:0,&quot;pic_cdn_url_235_1&quot;:&quot;&quot;,&quot;pic_cdn_url_16_9&quot;:&quot;&quot;,&quot;pic_cdn_url_3_4&quot;:&quot;http:\\/\\/mmbiz.qpic.cn\\/mmbiz_jpg\\/SXKlAlYL8hGCOmNt0mzWobd6pNx2sKnibtNSbbiaS3fFjTY5x8DCB3Rf6NcDFj4mE51D3lRq9AaicnMp4icFib7O6bbTpKdtWqwp7YYFU1mUMwmM\\/0?wx_fmt=jpeg&quot;,&quot;pic_cdn_url_1_1&quot;:&quot;http:\\/\\/mmbiz.qpic.cn\\/sz_mmbiz_jpg\\/SXKlAlYL8hEO94x1ToYm5MmMKdtNpo59ltasLDBVIEaEsWxNXBLCy3jjPdzNrgJh4ouia06uticywqqYtEJqGLIQrlTKBA7l6wRY2jxHzB6pI\\/0?wx_fmt=jpeg&quot;,&quot;disable_recommend&quot;:0,&quot;line_info&quot;:{&quot;use_line&quot;:1,&quot;line_count&quot;:0,&quot;send_time&quot;:1788658119,&quot;is_appmsg_flag&quot;:1,&quot;is_use_flag&quot;:0},&quot;claim_source_type&quot;:0,&quot;share_num&quot;:0,&quot;is_rumor_refutation&quot;:0,&quot;segment_comment_id&quot;:&quot;4681948010438819840&quot;,&quot;is_segment_comment_enable&quot;:true,&quot;multi_picture_cover&quot;:0,&quot;share_imageinfo&quot;:[{&quot;file_id&quot;:100002312,&quot;cdn_url&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/sz_mmbiz_jpg\\/SXKlAlYL8hEksCqy0Q4ThaA7ZpQXRn5JYduEungpvIMKsnOUMZhiabKHmYn8o1oZicZZjuf2ZsaicFnQFHc0egA0ppSLxRfiaw2lOeffzSy7r8U\\/0?wx_fmt=jpeg&quot;,&quot;width&quot;:1156,&quot;height&quot;:1928,&quot;cover_url&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/sz_mmbiz_jpg\\/SXKlAlYL8hEksCqy0Q4ThaA7ZpQXRn5JYduEungpvIMKsnOUMZhiabKHmYn8o1oZicZZjuf2ZsaicFnQFHc0egA0ppSLxRfiaw2lOeffzSy7r8U\\/0?wx_fmt=jpeg&quot;,&quot;pic_type&quot;:0,&quot;pic_text&quot;:&quot;&quot;,&quot;pic_cfg&quot;:&quot;&quot;,&quot;theme_color&quot;:{&quot;r&quot;:253,&quot;g&quot;:253,&quot;b&quot;:253},&quot;cal_version&quot;:7,&quot;ori_picture&quot;:{&quot;file_id&quot;:0,&quot;cdn_url&quot;:&quot;&quot;,&quot;width&quot;:0,&quot;height&quot;:0,&quot;crop_ratio&quot;:&quot;&quot;,&quot;crop_list&quot;:&quot;{}&quot;},&quot;format_info&quot;:{&quot;format&quot;:&quot;jpeg&quot;,&quot;frame&quot;:1,&quot;channel&quot;:3,&quot;opacity&quot;:100,&quot;thumbnail&quot;:[{&quot;format&quot;:0,&quot;file_size&quot;:147568,&quot;width&quot;:1156,&quot;height&quot;:1928},{&quot;format&quot;:640,&quot;file_size&quot;:123956,&quot;width&quot;:1080,&quot;height&quot;:1801},{&quot;format&quot;:300,&quot;file_size&quot;:4115,&quot;width&quot;:90,&quot;height&quot;:150}]},&quot;poi_info&quot;:[],&quot;wxa_info&quot;:[],&quot;disable_theme&quot;:1,&quot;bind_ad_info&quot;:[],&quot;cps_ad_info&quot;:[],&quot;pic_window_product&quot;:{&quot;product_encrypt_key&quot;:&quot;&quot;,&quot;product_type&quot;:0,&quot;title&quot;:&quot;&quot;,&quot;data_type&quot;:0,&quot;product_id&quot;:&quot;&quot;},&quot;spot_product_info&quot;:[],&quot;watermark_info&quot;:{&quot;cdn_url&quot;:&quot;http:\\/\\/mmbiz.qpic.cn\\/sz_mmbiz_jpg\\/SXKlAlYL8hFUUUj0KBRliaJjiaKqQoQgYPlZjxbvRkNAFjXwA4cr3iaibBIUQJB9ZC9ZiaOs2kibHvHv1qcIArKly1ibqbJk7ibiciciaZRdJibofXzjIOg\\/0?wx_fmt=jpeg&quot;,&quot;type&quot;:2,&quot;bizuin&quot;:3923428115,&quot;nickname&quot;:&quot;数解AI&quot;,&quot;is_ai_pic&quot;:false,&quot;watermark_region_lightness&quot;:0.918472826481},&quot;ai_pic_id&quot;:&quot;&quot;,&quot;copy_info&quot;:{&quot;cdn_url&quot;:&quot;http:\\/\\/320.wxapp.tc.qq.com\\/320\\/20304\\/stodownload?m=6b5a71ee60b7b31eb2c78eb04a9617ae&amp;filekey=08031089832418c002220253482a106b5a71ee60b7b31eb2c78eb04a9617ae&amp;hy=SH&amp;storeid=26a9cbe39000330d52d3a94ce0000014000004f50534806884bc1e6d26f0fe&amp;bizid=1023&quot;},&quot;client_info&quot;:{&quot;pic_id&quot;:&quot;&quot;,&quot;associated_info&quot;:{&quot;pic_id&quot;:&quot;&quot;,&quot;cdn_url&quot;:&quot;&quot;,&quot;file_id&quot;:0,&quot;type&quot;:0,&quot;image_template&quot;:&quot;&quot;,&quot;text_poster_prompt&quot;:&quot;&quot;,&quot;text_poster_style&quot;:&quot;&quot;,&quot;text_poster_data_buf&quot;:&quot;&quot;,&quot;text_poster_template_id&quot;:&quot;&quot;},&quot;origin_image_has_edited&quot;:0},&quot;ai_pic_source&quot;:0,&quot;ai_pic_prompt&quot;:&quot;&quot;,&quot;original_info&quot;:{&quot;show_original&quot;:true,&quot;cdn_url&quot;:&quot;http:\\/\\/320.wxapp.tc.qq.com\\/320\\/20304\\/stodownload?m=6b5a71ee60b7b31eb2c78eb04a9617ae&amp;filekey=08031089832418c002220253482a106b5a71ee60b7b31eb2c78eb04a9617ae&amp;hy=SH&amp;storeid=26a9cbe39000330d52d3a94ce0000014000004f50534806884bc1e6d26f0fe&amp;bizid=1023&quot;,&quot;file_size&quot;:590217}},{&quot;file_id&quot;:100002313,&quot;cdn_url&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/mmbiz_jpg\\/SXKlAlYL8hFEZWrzUmicl8D2upbGYbaezwaoocJRRqEGv1QaPB1vuxlaGQ9ibsMQrZ3qe6iamcv9BOXwibqBBuIgzJBAbiakVLwhRPaCQ81lpYrI\\/0?wx_fmt=jpeg&quot;,&quot;width&quot;:1156,&quot;height&quot;:1119,&quot;cover_url&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/mmbiz_jpg\\/SXKlAlYL8hFEZWrzUmicl8D2upbGYbaezwaoocJRRqEGv1QaPB1vuxlaGQ9ibsMQrZ3qe6iamcv9BOXwibqBBuIgzJBAbiakVLwhRPaCQ81lpYrI\\/0?wx_fmt=jpeg&quot;,&quot;pic_type&quot;:0,&quot;pic_text&quot;:&quot;&quot;,&quot;pic_cfg&quot;:&quot;&quot;,&quot;theme_color&quot;:{&quot;r&quot;:255,&quot;g&quot;:255,&quot;b&quot;:255},&quot;cal_version&quot;:7,&quot;ori_picture&quot;:{&quot;file_id&quot;:0,&quot;cdn_url&quot;:&quot;&quot;,&quot;width&quot;:0,&quot;height&quot;:0,&quot;crop_ratio&quot;:&quot;&quot;,&quot;crop_list&quot;:&quot;{}&quot;},&quot;format_info&quot;:{&quot;format&quot;:&quot;jpeg&quot;,&quot;frame&quot;:1,&quot;channel&quot;:3,&quot;opacity&quot;:100,&quot;thumbnail&quot;:[{&quot;format&quot;:0,&quot;file_size&quot;:111958,&quot;width&quot;:1156,&quot;height&quot;:1119},{&quot;format&quot;:640,&quot;file_size&quot;:93484,&quot;width&quot;:1080,&quot;height&quot;:1045},{&quot;format&quot;:300,&quot;file_size&quot;:5839,&quot;width&quot;:150,&quot;height&quot;:145}]},&quot;poi_info&quot;:[],&quot;wxa_info&quot;:[],&quot;disable_theme&quot;:1,&quot;bind_ad_info&quot;:[],&quot;cps_ad_info&quot;:[],&quot;pic_window_product&quot;:{&quot;product_encrypt_key&quot;:&quot;&quot;,&quot;product_type&quot;:0,&quot;title&quot;:&quot;&quot;,&quot;data_type&quot;:0,&quot;product_id&quot;:&quot;&quot;},&quot;spot_product_info&quot;:[],&quot;watermark_info&quot;:{&quot;cdn_url&quot;:&quot;http:\\/\\/mmbiz.qpic.cn\\/mmbiz_jpg\\/SXKlAlYL8hHh6dJwYJkNnS2IHrDq9AxVD7DYldEm47eYp1SCiaXmQQge0G0lyPpoicrGEVdAAH42857kE1IRiafJfKc7HQAfx1ic5WegZb44T58\\/0?wx_fmt=jpeg&quot;,&quot;type&quot;:2,&quot;bizuin&quot;:3923428115,&quot;nickname&quot;:&quot;数解AI&quot;,&quot;is_ai_pic&quot;:false,&quot;watermark_region_lightness&quot;:1},&quot;ai_pic_id&quot;:&quot;&quot;,&quot;copy_info&quot;:{&quot;cdn_url&quot;:&quot;http:\\/\\/320.wxapp.tc.qq.com\\/320\\/20304\\/stodownload?m=a8cc2aaa470137d38607b52ba96f4c4e&amp;filekey=080310efc51518c002220253482a10a8cc2aaa470137d38607b52ba96f4c4e&amp;hy=SH&amp;storeid=26a9cbe390009b69e2d3a94ce0000014000004f5053480753d03156bc88ce0&amp;bizid=1023&quot;},&quot;client_info&quot;:{&quot;pic_id&quot;:&quot;&quot;,&quot;associated_info&quot;:{&quot;pic_id&quot;:&quot;&quot;,&quot;cdn_url&quot;:&quot;&quot;,&quot;file_id&quot;:0,&quot;type&quot;:0,&quot;image_template&quot;:&quot;&quot;,&quot;text_poster_prompt&quot;:&quot;&quot;,&quot;text_poster_style&quot;:&quot;&quot;,&quot;text_poster_data_buf&quot;:&quot;&quot;,&quot;text_poster_template_id&quot;:&quot;&quot;},&quot;origin_image_has_edited&quot;:0},&quot;ai_pic_source&quot;:0,&quot;ai_pic_prompt&quot;:&quot;&quot;,&quot;original_info&quot;:{&quot;show_original&quot;:true,&quot;cdn_url&quot;:&quot;http:\\/\\/320.wxapp.tc.qq.com\\/320\\/20304\\/stodownload?m=a8cc2aaa470137d38607b52ba96f4c4e&amp;filekey=080310efc51518c002220253482a10a8cc2aaa470137d38607b52ba96f4c4e&amp;hy=SH&amp;storeid=26a9cbe390009b69e2d3a94ce0000014000004f5053480753d03156bc88ce0&amp;bizid=1023&quot;,&quot;file_size&quot;:353007}}],&quot;moment_like_num&quot;:0,&quot;item_show_type&quot;:8,&quot;ad_info&quot;:{&quot;has_agreement_ad&quot;:0,&quot;is_recruit_agreement_ad&quot;:0},&quot;audio_in_appmsg&quot;:[],&quot;modify_wording&quot;:&quot;还可以修改3次&quot;,&quot;can_modify&quot;:1,&quot;private_info&quot;:{&quot;private_type&quot;:1,&quot;update_time&quot;:1788778808},&quot;modify_detail_wording&quot;:[],&quot;appmsg_modified&quot;:0,&quot;total_comment_count_contains_reply&quot;:0,&quot;location_page_show&quot;:0,&quot;can_location_page_show&quot;:0,&quot;remain_modify_count&quot;:3}],&quot;publish_info&quot;:{&quot;bizuin&quot;:3923428115,&quot;msgid&quot;:2247485964,&quot;draft_msgid&quot;:100002317,&quot;publish_type&quot;:1,&quot;publish_src&quot;:4,&quot;publish_status&quot;:200,&quot;create_time&quot;:1788658119,&quot;update_time&quot;:1788658139,&quot;check_results&quot;:[],&quot;show_types&quot;:[8],&quot;index_count&quot;:1,&quot;xa_check_items&quot;:[{&quot;idx&quot;:1,&quot;status&quot;:2,&quot;rescode&quot;:100}],&quot;original_check_type&quot;:2,&quot;normal_check_results&quot;:[],&quot;in_profile&quot;:1,&quot;pre_publish_status&quot;:[],&quot;refutation_audit_info&quot;:[],&quot;service_type&quot;:1,&quot;item_show_types&quot;:[8],&quot;batch_members&quot;:[]},&quot;appmsgex&quot;:[],&quot;copy_appmsg_id&quot;:100002317,&quot;new_publish&quot;:1,&quot;publish_type&quot;:1,&quot;batch_members&quot;:[]}"
+      "batch_members": [],
+      "view": {
+        "isFirst": false,
+        "isApi": false,
+        "sourceType": 4,
+        "reviewOverTime": false,
+        "mallEditWording": "修改",
+        "isMallActivityDraft": false,
+        "showArticleToImageTips": false,
+        "time": "09月08日",
+        "hasHistory": true,
+        "publishDate": "2026-09-08",
+        "isGoToDataPage": true,
+        "dataPageWording": "发表数据",
+        "status": "已发表",
+        "msg": "未开启群发通知，内容已在公众号主页展示"
+      },
+      "resendPopShow": false
     },
     {
+      "type": 10002,
+      "msgid": 2247486037,
+      "sent_result": {
+        "reject_index_list": []
+      },
+      "appmsg_info": [
+        {
+          "share_type": 10,
+          "appmsgid": 2247486037,
+          "content_url": "https://mp.weixin.qq.com/s/zu1Ypi1Ysv7lpYUYiqRrIw",
+          "title": "GLM5.3-flash这时不时停下来的毛病是为何?",
+          "is_deleted": false,
+          "copyright_status": 100,
+          "copyright_type": 0,
+          "read_num": 62,
+          "like_num": 3,
+          "comment_id": "4684965692058730498",
+          "is_comment_enable": true,
+          "comment_num": 3,
+          "vote_id": [],
+          "super_vote_id": [],
+          "cover": "",
+          "smart_product": 0,
+          "modify_status": 1,
+          "appmsg_like_type": 2,
+          "can_delete_status": 0,
+          "old_like_num": 3,
+          "itemidx": 1,
+          "is_pay_subscribe": 0,
+          "is_from_transfer": 0,
+          "public_tag_info": {
+            "public_tag_list": [],
+            "modify_times": 0,
+            "init_tag_list_size": 0
+          },
+          "appmsg_album_info": {
+            "id": "4662927799626858496",
+            "title": "Agent前线",
+            "album_id": 4662927799626858000,
+            "appmsg_album_infos": [
+              {
+                "id": "4662927799626858496",
+                "title": "Agent前线",
+                "album_id": 4662927799626858000,
+                "appmsg_album_infos": [],
+                "tagSource": 0
+              }
+            ]
+          },
+          "digest": "",
+          "is_cooling_article": 0,
+          "pic_cdn_url_235_1": "",
+          "pic_cdn_url_16_9": "",
+          "pic_cdn_url_3_4": "",
+          "pic_cdn_url_1_1": "",
+          "disable_recommend": 0,
+          "line_info": {
+            "use_line": 1,
+            "line_count": 0,
+            "send_time": 1788837987,
+            "is_appmsg_flag": 1,
+            "is_use_flag": 0
+          },
+          "claim_source_type": 0,
+          "share_num": 2,
+          "is_rumor_refutation": 0,
+          "segment_comment_id": "4684965700178903041",
+          "is_segment_comment_enable": true,
+          "multi_picture_cover": 0,
+          "share_imageinfo": [],
+          "moment_like_num": 0,
+          "item_show_type": 10,
+          "ad_info": {
+            "has_agreement_ad": 0,
+            "is_recruit_agreement_ad": 0
+          },
+          "audio_in_appmsg": [],
+          "modify_wording": "还可以修改3次",
+          "can_modify": 1,
+          "modify_detail_wording": [],
+          "appmsg_modified": 0,
+          "total_comment_count_contains_reply": 6,
+          "location_page_show": 0,
+          "can_location_page_show": 0,
+          "remain_modify_count": 3,
+          "isXssEncoded": true,
+          "i": 0,
+          "commentPopShow": false,
+          "delPopShow": false,
+          "undelShow": false,
+          "delWording": "",
+          "msgid": 2247486037,
+          "modifyFormatTime": "",
+          "deleteFormatTime": ""
+        }
+      ],
+      "publish_info": {
+        "bizuin": 3923428115,
+        "msgid": 2247486037,
+        "draft_msgid": 100002390,
+        "publish_type": 1,
+        "publish_src": 3,
+        "publish_status": 200,
+        "create_time": 1788837987,
+        "update_time": 1788838021,
+        "check_results": [],
+        "show_types": [
+          10
+        ],
+        "index_count": 1,
+        "xa_check_items": [
+          {
+            "idx": 1,
+            "status": 2,
+            "rescode": 100
+          }
+        ],
+        "original_check_type": 0,
+        "normal_check_results": [],
+        "in_profile": 1,
+        "pre_publish_status": [],
+        "refutation_audit_info": [],
+        "service_type": 1,
+        "item_show_types": [
+          10
+        ],
+        "batch_members": []
+      },
+      "appmsgex": [],
+      "copy_appmsg_id": 100002390,
+      "new_publish": 1,
       "publish_type": 1,
-      "publish_info": "{&quot;type&quot;:10002,&quot;msgid&quot;:2247485950,&quot;sent_result&quot;:{&quot;reject_index_list&quot;:[]},&quot;appmsg_info&quot;:[{&quot;share_type&quot;:0,&quot;appmsgid&quot;:2247485950,&quot;content_url&quot;:&quot;https:\\/\\/mp.weixin.qq.com\\/s\\/Boh1Hb3J5_wyilid-jAUww&quot;,&quot;title&quot;:&quot;AI 多想 3 秒，为什么正确率能从 71% 涨到 86.7%？&quot;,&quot;is_deleted&quot;:false,&quot;copyright_status&quot;:11,&quot;copyright_type&quot;:1,&quot;read_num&quot;:34,&quot;like_num&quot;:3,&quot;comment_id&quot;:&quot;4681062252169494530&quot;,&quot;is_comment_enable&quot;:true,&quot;comment_num&quot;:0,&quot;reward_money&quot;:&quot;0.00&quot;,&quot;reprint_num&quot;:0,&quot;vote_id&quot;:[],&quot;super_vote_id&quot;:[],&quot;cover&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/sz_mmbiz_jpg\\/SXKlAlYL8hHvECY38K24xkaHhLWEmibYricdcChfdGzjich0HFHg9tZcMYvPlARfXTeE0LU57sEv40P5Pacj9OD9od4ccHlUmJRmPMgq3t6Qib4\\/0?wx_fmt=jpeg&quot;,&quot;smart_product&quot;:0,&quot;modify_status&quot;:1,&quot;appmsg_like_type&quot;:2,&quot;can_delete_status&quot;:0,&quot;old_like_num&quot;:6,&quot;itemidx&quot;:1,&quot;is_pay_subscribe&quot;:0,&quot;is_from_transfer&quot;:0,&quot;public_tag_info&quot;:{&quot;public_tag_list&quot;:[],&quot;modify_times&quot;:0,&quot;init_tag_list_size&quot;:0},&quot;appmsg_album_info&quot;:{&quot;id&quot;:&quot;4595742887040090112&quot;,&quot;title&quot;:&quot;开源大模型技术揭秘&quot;,&quot;album_id&quot;:4595742887040090112,&quot;appmsg_album_infos&quot;:[{&quot;id&quot;:&quot;4595742887040090112&quot;,&quot;title&quot;:&quot;开源大模型技术揭秘&quot;,&quot;album_id&quot;:4595742887040090112,&quot;appmsg_album_infos&quot;:[],&quot;tagSource&quot;:0}]},&quot;digest&quot;:&quot;同一个模型，一个参数不改，只让它每道题多答几遍取多数票，数学分就从 71 涨到 86.7。推理时计算：为什么「多想」本身就能换分数，又为什么不是想得越多越好？&quot;,&quot;is_cooling_article&quot;:0,&quot;pic_cdn_url_235_1&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/sz_mmbiz_jpg\\/SXKlAlYL8hFic29nLQNCsxYctVNzNfgzVDy5XialsJJeERpRLJS52iaKPFpZFe20YLuI0WEnGIIpjVsEh9icL8lOAWzV6Wn92AEbmBlFeY4Pqgo\\/0?wx_fmt=jpeg&quot;,&quot;pic_cdn_url_16_9&quot;:&quot;&quot;,&quot;pic_cdn_url_3_4&quot;:&quot;&quot;,&quot;pic_cdn_url_1_1&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/sz_mmbiz_jpg\\/SXKlAlYL8hHvECY38K24xkaHhLWEmibYricdcChfdGzjich0HFHg9tZcMYvPlARfXTeE0LU57sEv40P5Pacj9OD9od4ccHlUmJRmPMgq3t6Qib4\\/0?wx_fmt=jpeg&quot;,&quot;disable_recommend&quot;:0,&quot;line_info&quot;:{&quot;use_line&quot;:1,&quot;line_count&quot;:0,&quot;send_time&quot;:1788609600,&quot;is_appmsg_flag&quot;:1,&quot;is_use_flag&quot;:0},&quot;claim_source_type&quot;:0,&quot;share_num&quot;:4,&quot;is_rumor_refutation&quot;:0,&quot;segment_comment_id&quot;:&quot;4681062266144915457&quot;,&quot;is_segment_comment_enable&quot;:true,&quot;multi_picture_cover&quot;:0,&quot;share_imageinfo&quot;:[],&quot;moment_like_num&quot;:0,&quot;item_show_type&quot;:0,&quot;claim_source&quot;:{&quot;is_user_no_claim_source&quot;:1},&quot;ad_info&quot;:{&quot;has_agreement_ad&quot;:0,&quot;is_recruit_agreement_ad&quot;:0},&quot;audio_in_appmsg&quot;:[],&quot;modify_wording&quot;:&quot;还可以修改3次&quot;,&quot;can_modify&quot;:1,&quot;modify_detail_wording&quot;:[],&quot;appmsg_modified&quot;:0,&quot;total_comment_count_contains_reply&quot;:0,&quot;location_page_show&quot;:0,&quot;can_location_page_show&quot;:0,&quot;remain_modify_count&quot;:3}],&quot;publish_info&quot;:{&quot;bizuin&quot;:3923428115,&quot;msgid&quot;:2247485950,&quot;draft_msgid&quot;:100002301,&quot;publish_type&quot;:1,&quot;publish_src&quot;:1,&quot;publish_status&quot;:200,&quot;create_time&quot;:1788609600,&quot;update_time&quot;:1788609600,&quot;check_results&quot;:[],&quot;show_types&quot;:[0],&quot;index_count&quot;:1,&quot;xa_check_items&quot;:[{&quot;idx&quot;:1,&quot;status&quot;:2,&quot;rescode&quot;:100}],&quot;original_check_type&quot;:0,&quot;normal_check_results&quot;:[],&quot;timer_publish_info&quot;:{&quot;create_timer_publish_time&quot;:1788605325,&quot;store_cb&quot;:[{&quot;check_type&quot;:2,&quot;bizuin&quot;:3923428115,&quot;msgid&quot;:2247485950,&quot;check_items&quot;:[{&quot;idx&quot;:1,&quot;status&quot;:2,&quot;rescode&quot;:100}]}]},&quot;in_profile&quot;:1,&quot;pre_publish_status&quot;:[],&quot;refutation_audit_info&quot;:[],&quot;service_type&quot;:1,&quot;item_show_types&quot;:[0],&quot;batch_members&quot;:[]},&quot;appmsgex&quot;:[],&quot;copy_appmsg_id&quot;:100002301,&quot;new_publish&quot;:1,&quot;publish_type&quot;:1,&quot;batch_members&quot;:[]}"
+      "batch_members": [],
+      "view": {
+        "isFirst": false,
+        "isApi": false,
+        "sourceType": 4,
+        "reviewOverTime": false,
+        "mallEditWording": "修改",
+        "isMallActivityDraft": false,
+        "showArticleToImageTips": false,
+        "time": "09月08日",
+        "hasHistory": true,
+        "publishDate": "2026-09-08",
+        "isGoToDataPage": true,
+        "dataPageWording": "发表数据",
+        "status": "已发表",
+        "msg": "未开启群发通知，内容已在公众号主页展示"
+      },
+      "resendPopShow": false
     },
     {
+      "type": 9,
+      "msgid": 1000000139,
+      "sent_info": {
+        "time": 1788782400,
+        "func_flag": 134250498,
+        "is_send_all": true,
+        "is_published": 0,
+        "func_flag2": 0
+      },
+      "sent_status": {
+        "total": 980,
+        "succ": 980,
+        "fail": 0,
+        "progress": 100,
+        "userprotect": 0
+      },
+      "sent_result": {
+        "msg_status": 2,
+        "refuse_reason": "",
+        "reject_index_list": [],
+        "update_time": 1788782472
+      },
+      "appmsg_info": [
+        {
+          "share_type": 0,
+          "appmsgid": 2247486007,
+          "content_url": "https://mp.weixin.qq.com/s/aiLaUY-T-vvWbooDGxferQ",
+          "title": "生成&nbsp;30&nbsp;秒视频要画&nbsp;900&nbsp;张图，AI&nbsp;视频为什么这么贵？",
+          "is_deleted": false,
+          "copyright_status": 11,
+          "copyright_type": 1,
+          "read_num": 21,
+          "like_num": 4,
+          "comment_id": "4683464760087117825",
+          "is_comment_enable": true,
+          "comment_num": 0,
+          "reward_money": "0.00",
+          "reprint_num": 0,
+          "vote_id": [],
+          "super_vote_id": [],
+          "cover": "https://mmbiz.qpic.cn/mmbiz_jpg/SXKlAlYL8hFNJbNbcy3jNPeFbvjIgKyDrkTicCXTd3t5Q1N04gGx2J7Co76wXgfLY3j3ngYUiclf8RlFV9mH9k5RxhO6fhJickM2mQGpzK6iaG4/0?wx_fmt=jpeg",
+          "smart_product": 0,
+          "modify_status": 1,
+          "appmsg_like_type": 2,
+          "can_delete_status": 0,
+          "old_like_num": 6,
+          "itemidx": 1,
+          "is_pay_subscribe": 0,
+          "is_from_transfer": 0,
+          "public_tag_info": {
+            "public_tag_list": [],
+            "modify_times": 0,
+            "init_tag_list_size": 0
+          },
+          "appmsg_album_info": {
+            "id": "4695468651859247106",
+            "title": "多模态及生成模型技术",
+            "album_id": 4695468651859247000,
+            "appmsg_album_infos": [
+              {
+                "id": "4695468651859247106",
+                "title": "多模态及生成模型技术",
+                "album_id": 4695468651859247000,
+                "appmsg_album_infos": [],
+                "tagSource": 4
+              }
+            ]
+          },
+          "digest": "AI&nbsp;视频为什么这么贵？7&nbsp;块钱的积分，生成一条&nbsp;15&nbsp;秒视频就耗光了。30&nbsp;秒视频要画&nbsp;900&nbsp;张图，帧与帧之间还要互相「对答案」——算力成本随帧数平方增长。MiniMax&nbsp;H3&nbsp;用高压缩&nbsp;VAE&nbsp;把价格打到主流的三分之一，贵不贵，",
+          "open_fansmsg": 0,
+          "is_cooling_article": 0,
+          "pic_cdn_url_235_1": "https://mmbiz.qpic.cn/mmbiz_jpg/SXKlAlYL8hHXebSsMwIuia53CR5KqqnNHyqxNpmLib6nKNTJk0BDvicxSVzu4D3JsicgxfnMHtEBd21M9eQTUfL6N4bZEP2yMTMMianaFqyiaFQ7g/0?wx_fmt=jpeg",
+          "pic_cdn_url_16_9": "",
+          "disable_recommend": 0,
+          "line_info": {
+            "use_line": 1,
+            "line_count": 0,
+            "send_time": 1788782461,
+            "is_appmsg_flag": 1,
+            "is_use_flag": 0
+          },
+          "claim_source_type": 0,
+          "share_num": 0,
+          "is_rumor_refutation": 0,
+          "segment_comment_id": "4683464773055905792",
+          "is_segment_comment_enable": true,
+          "multi_picture_cover": 0,
+          "share_imageinfo": [],
+          "moment_like_num": 0,
+          "item_show_type": 0,
+          "claim_source": {
+            "is_user_no_claim_source": 1
+          },
+          "ad_info": {
+            "has_agreement_ad": 0,
+            "is_recruit_agreement_ad": 0
+          },
+          "audio_in_appmsg": [],
+          "modify_wording": "还可以修改3次",
+          "can_modify": 1,
+          "modify_detail_wording": [],
+          "appmsg_modified": 0,
+          "total_comment_count_contains_reply": 0,
+          "location_page_show": 0,
+          "can_location_page_show": 0,
+          "remain_modify_count": 3,
+          "isXssEncoded": true,
+          "i": 0,
+          "commentPopShow": false,
+          "delPopShow": false,
+          "undelShow": false,
+          "delWording": "删除后用户将无法访问此页面，确定删除？该操作只能删除历史消息中的记录，不能删除已经成功发送到用户的消息。",
+          "msgid": 1000000139,
+          "modifyFormatTime": "",
+          "deleteFormatTime": ""
+        }
+      ],
+      "appmsgex": [],
+      "copy_type": 77,
+      "copy_appmsg_id": 100002342,
+      "new_publish": 0,
+      "publish_type": 101,
+      "batch_members": [],
+      "view": {
+        "isFirst": false,
+        "isApi": false,
+        "sourceType": 1,
+        "reviewOverTime": false,
+        "mallEditWording": "修改",
+        "isMallActivityDraft": false,
+        "showArticleToImageTips": false,
+        "time": "09月07日",
+        "hasHistory": true,
+        "publishDate": "2026-09-07",
+        "isGoToDataPage": true,
+        "dataPageWording": "发表数据",
+        "isFromApp": 0,
+        "status": "已发表"
+      },
+      "resendPopShow": false
+    },
+    {
+      "type": 10002,
+      "msgid": 2247486034,
+      "sent_result": {
+        "reject_index_list": []
+      },
+      "appmsg_info": [
+        {
+          "share_type": 8,
+          "appmsgid": 2247486034,
+          "content_url": "https://mp.weixin.qq.com/s/HRHYjokuMpkjK0DhEAVOxA",
+          "title": "DeepSeek为什么会死循环?OOD是死穴",
+          "is_deleted": false,
+          "copyright_status": 100,
+          "copyright_type": 0,
+          "read_num": 655,
+          "like_num": 0,
+          "comment_id": "4684015307768823811",
+          "is_comment_enable": true,
+          "comment_num": 5,
+          "vote_id": [],
+          "super_vote_id": [],
+          "cover": "https://mmbiz.qpic.cn/mmbiz_jpg/SXKlAlYL8hGjMv4KiaOB1jS1draEXfp53TneEMFQlDHbZBvfpMQ6v84csF2TxUvLXAFsc0zhxicVSHqRrCfypNEwNw8OZssibVRuo13icOqHGag/0?wx_fmt=jpeg",
+          "smart_product": 0,
+          "modify_status": 1,
+          "appmsg_like_type": 2,
+          "can_delete_status": 0,
+          "old_like_num": 7,
+          "itemidx": 1,
+          "is_pay_subscribe": 0,
+          "is_from_transfer": 0,
+          "public_tag_info": {
+            "public_tag_list": [],
+            "modify_times": 0,
+            "init_tag_list_size": 0
+          },
+          "appmsg_album_info": {
+            "id": "4662927799626858496",
+            "title": "Agent前线",
+            "album_id": 4662927799626858000,
+            "appmsg_album_infos": [
+              {
+                "id": "4662927799626858496",
+                "title": "Agent前线",
+                "album_id": 4662927799626858000,
+                "appmsg_album_infos": [],
+                "tagSource": 0
+              }
+            ]
+          },
+          "digest": "现在的前沿coding大模型，基本上都经过了非常复杂的强化学习训练。\n\n然后这种训练的本质是高度依赖于概率论和高维统计理论。但是很多人不知道的是，这些方法只能给我们一些基于概率测度的保证，即在一定的概率范围之内，我们不会跑出训练的数据分布的范围，它的收敛保证从数学上，基本上是依照概率测度收敛的。\n\n这种收敛性完全不排除在一些极小情况下，模型产生的输出跳出了训练分布之外，这就是人们常说的，很讨厌的out&nbsp;of&nbsp;distribut性问题。\n\n模型推理时候的抽样本质，其实会放大这种OOD问题，因为每一个token他都要做一次抽样，联合失败概率是会被急剧放大的。\n\n深入一点说，就是运行时候发生的崩溃，一般说模型的遇到跟它的训练时候熟悉的策略空间差别很大的时候，直接就崩了。\n\n而现在的大模型训练集基本上是基于Python和TypeScript及Web编程，对于更广泛的软件工程领域挑战，其实它的数据还是很匮乏的，处理不了就死循环，还是时有可见。\n\n当然模型的量化也有可能使这种现象更加严重，因为几乎所有的量化都会在某种程度上降低模型的性能。\n\n甚至于这种现象在半年前，国内的前沿模型都有很高概率的出现，只不过是从7月份之后，大家出现的概率都不约而同的降低了。\n\n软件工程领域的挑战，大模型想要完全变成一个solved&nbsp;problem，还是有距离的。",
+          "is_cooling_article": 0,
+          "pic_cdn_url_235_1": "",
+          "pic_cdn_url_16_9": "",
+          "pic_cdn_url_3_4": "http://mmbiz.qpic.cn/sz_mmbiz_jpg/SXKlAlYL8hHliboO8joae3VAPskUiaeQs8gSpiaJhO2gsxnricSYUETbsmCEIAImUFZmWF5wxEaRVkRUm1DkuQBQseicNahtMeibkvlsjMOBKf2dw/0?wx_fmt=jpeg",
+          "pic_cdn_url_1_1": "http://mmbiz.qpic.cn/mmbiz_jpg/SXKlAlYL8hGjMv4KiaOB1jS1draEXfp53TneEMFQlDHbZBvfpMQ6v84csF2TxUvLXAFsc0zhxicVSHqRrCfypNEwNw8OZssibVRuo13icOqHGag/0?wx_fmt=jpeg",
+          "disable_recommend": 0,
+          "line_info": {
+            "use_line": 1,
+            "line_count": 0,
+            "send_time": 1788781340,
+            "is_appmsg_flag": 1,
+            "is_use_flag": 0
+          },
+          "claim_source_type": 0,
+          "share_num": 4,
+          "is_rumor_refutation": 0,
+          "segment_comment_id": "4684015315469565952",
+          "is_segment_comment_enable": true,
+          "multi_picture_cover": 0,
+          "share_imageinfo": [
+            {
+              "file_id": 100002383,
+              "cdn_url": "https://mmbiz.qpic.cn/mmbiz_jpg/SXKlAlYL8hEEGamyPA3rEJIpbV7UmNAukg4GFMI4mjtzETZwic7A7mAHKWfEZH4pz2Wcstyu41xb84RtBRGMficLx0zlwu8bKP9ib3zI7ayNX8/0?wx_fmt=jpeg",
+              "width": 1156,
+              "height": 2377,
+              "cover_url": "https://mmbiz.qpic.cn/mmbiz_jpg/SXKlAlYL8hEEGamyPA3rEJIpbV7UmNAukg4GFMI4mjtzETZwic7A7mAHKWfEZH4pz2Wcstyu41xb84RtBRGMficLx0zlwu8bKP9ib3zI7ayNX8/0?wx_fmt=jpeg",
+              "pic_type": 0,
+              "pic_text": "",
+              "pic_cfg": "",
+              "theme_color": {
+                "r": 243,
+                "g": 242,
+                "b": 247
+              },
+              "cal_version": 7,
+              "ori_picture": {
+                "file_id": 0,
+                "cdn_url": "",
+                "width": 0,
+                "height": 0,
+                "crop_ratio": "",
+                "crop_list": "{}"
+              },
+              "format_info": {
+                "format": "jpeg",
+                "frame": 1,
+                "channel": 3,
+                "opacity": 100,
+                "thumbnail": [
+                  {
+                    "format": 0,
+                    "file_size": 379430,
+                    "width": 1156,
+                    "height": 2377
+                  },
+                  {
+                    "format": 640,
+                    "file_size": 321276,
+                    "width": 1080,
+                    "height": 2221
+                  },
+                  {
+                    "format": 300,
+                    "file_size": 3827,
+                    "width": 73,
+                    "height": 150
+                  }
+                ]
+              },
+              "poi_info": [],
+              "wxa_info": [],
+              "disable_theme": 1,
+              "bind_ad_info": [],
+              "cps_ad_info": [],
+              "pic_window_product": {
+                "product_encrypt_key": "",
+                "product_type": 0,
+                "title": "",
+                "data_type": 0,
+                "product_id": ""
+              },
+              "spot_product_info": [],
+              "watermark_info": {
+                "cdn_url": "http://mmbiz.qpic.cn/mmbiz_jpg/SXKlAlYL8hEkJE34eYpx40dA8BdJGNicdaAs8zSMQwKdibgiaZcibMT744fmcib8lpVjV79mIWxjg46PcbuvNqeMBTKW7yCMIceGdFF5tk3CrAK0/0?wx_fmt=jpeg",
+                "type": 2,
+                "bizuin": 3923428115,
+                "nickname": "数解AI",
+                "is_ai_pic": false,
+                "watermark_region_lightness": 0.936144590378
+              },
+              "ai_pic_id": "",
+              "copy_info": {
+                "cdn_url": "http://320.wxapp.tc.qq.com/320/20304/stodownload?m=c7de9b126b8f52902b8301f1f31147de&filekey=08031099ac3718c002220253482a10c7de9b126b8f52902b8301f1f31147de&hy=SH&storeid=26a9ea115000379c82d3a94ce0000014000004f5053481055c1b156fafaf9d&bizid=1023"
+              },
+              "client_info": {
+                "pic_id": "",
+                "associated_info": {
+                  "pic_id": "",
+                  "cdn_url": "",
+                  "file_id": 0,
+                  "type": 0,
+                  "image_template": "",
+                  "text_poster_prompt": "",
+                  "text_poster_style": "",
+                  "text_poster_data_buf": "",
+                  "text_poster_template_id": ""
+                },
+                "origin_image_has_edited": 0
+              },
+              "ai_pic_source": 0,
+              "ai_pic_prompt": "",
+              "original_info": {
+                "show_original": true,
+                "cdn_url": "http://320.wxapp.tc.qq.com/320/20304/stodownload?m=c7de9b126b8f52902b8301f1f31147de&filekey=08031099ac3718c002220253482a10c7de9b126b8f52902b8301f1f31147de&hy=SH&storeid=26a9ea115000379c82d3a94ce0000014000004f5053481055c1b156fafaf9d&bizid=1023",
+                "file_size": 906777
+              }
+            }
+          ],
+          "moment_like_num": 0,
+          "item_show_type": 8,
+          "ad_info": {
+            "has_agreement_ad": 0,
+            "is_recruit_agreement_ad": 0
+          },
+          "audio_in_appmsg": [],
+          "modify_wording": "还可以修改3次",
+          "can_modify": 1,
+          "modify_detail_wording": [],
+          "appmsg_modified": 0,
+          "total_comment_count_contains_reply": 7,
+          "location_page_show": 0,
+          "can_location_page_show": 0,
+          "remain_modify_count": 3,
+          "isXssEncoded": true,
+          "i": 0,
+          "commentPopShow": false,
+          "delPopShow": false,
+          "undelShow": false,
+          "delWording": "",
+          "msgid": 2247486034,
+          "modifyFormatTime": "",
+          "deleteFormatTime": ""
+        }
+      ],
+      "publish_info": {
+        "bizuin": 3923428115,
+        "msgid": 2247486034,
+        "draft_msgid": 100002387,
+        "publish_type": 1,
+        "publish_src": 4,
+        "publish_status": 200,
+        "create_time": 1788781340,
+        "update_time": 1788781361,
+        "check_results": [],
+        "show_types": [
+          8
+        ],
+        "index_count": 1,
+        "xa_check_items": [
+          {
+            "idx": 1,
+            "status": 2,
+            "rescode": 100
+          }
+        ],
+        "original_check_type": 2,
+        "normal_check_results": [],
+        "in_profile": 1,
+        "pre_publish_status": [],
+        "refutation_audit_info": [],
+        "service_type": 1,
+        "item_show_types": [
+          8
+        ],
+        "batch_members": []
+      },
+      "appmsgex": [],
+      "copy_appmsg_id": 100002387,
+      "new_publish": 1,
       "publish_type": 1,
-      "publish_info": "{&quot;type&quot;:10002,&quot;msgid&quot;:2247485944,&quot;sent_result&quot;:{&quot;reject_index_list&quot;:[]},&quot;appmsg_info&quot;:[{&quot;share_type&quot;:8,&quot;appmsgid&quot;:2247485944,&quot;content_url&quot;:&quot;https:\\/\\/mp.weixin.qq.com\\/s\\/IBTzN9naU59xsCv9RtGNdQ&quot;,&quot;title&quot;:&quot;Harness前沿大重构:核心到底是不是♻️&quot;,&quot;is_deleted&quot;:false,&quot;copyright_status&quot;:100,&quot;copyright_type&quot;:0,&quot;read_num&quot;:161,&quot;like_num&quot;:1,&quot;comment_id&quot;:&quot;4680419975294189572&quot;,&quot;is_comment_enable&quot;:true,&quot;comment_num&quot;:2,&quot;vote_id&quot;:[],&quot;super_vote_id&quot;:[],&quot;cover&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/mmbiz_jpg\\/SXKlAlYL8hEufgicby9Mticamd2OyhXTWxtZUHRRlQTZiciaGWx25QHw8MERXJwUSMzRI0yQz0T49evdv0Piahc7baafIxfNAqWOicQrgApflnsw8\\/0?wx_fmt=jpeg&quot;,&quot;smart_product&quot;:0,&quot;modify_status&quot;:1,&quot;appmsg_like_type&quot;:2,&quot;can_delete_status&quot;:0,&quot;old_like_num&quot;:3,&quot;itemidx&quot;:1,&quot;is_pay_subscribe&quot;:0,&quot;is_from_transfer&quot;:0,&quot;public_tag_info&quot;:{&quot;public_tag_list&quot;:[],&quot;modify_times&quot;:0,&quot;init_tag_list_size&quot;:0},&quot;appmsg_album_info&quot;:{&quot;id&quot;:&quot;4662927799626858496&quot;,&quot;title&quot;:&quot;Agent前线&quot;,&quot;album_id&quot;:4662927799626858496,&quot;appmsg_album_infos&quot;:[{&quot;id&quot;:&quot;4662927799626858496&quot;,&quot;title&quot;:&quot;Agent前线&quot;,&quot;album_id&quot;:4662927799626858496,&quot;appmsg_album_infos&quot;:[],&quot;tagSource&quot;:0}]},&quot;digest&quot;:&quot;最近一年多来Agent Harness通过增加越来越多的外壳指令，来帮助大模型补全自身的能力。这些工作方式通过各种各样的名词，包括system prompts， MCP，skills， plug in，extension轮番来轰炸用户的心智。\\n\\n所以一直存在一场很大的争论，就是是否所有的harness都是一个大号的循环？\\n\\nomp作者的这篇文章很值得细读和思考。\\n\\n尤其是OpenAI和Anthropic新发的模型，都要求大家重新审查自己的agents.md。对已有的skilLS和MCP尽量做减法，避免模型被混淆。\\n\\n也许你现在在做的最佳实践都会是错的，你觉得是这样吗？\\n\\n&lt;a class=\\&quot;wx_topic_link\\&quot; topic-id=\\&quot;mtscc7sz-rbj3f3\\&quot; style=\\&quot;color: #576B95 !important;\\&quot; data-topic=\\&quot;1\\&quot;&gt;#harness&lt;\\/a&gt;&quot;,&quot;is_cooling_article&quot;:0,&quot;pic_cdn_url_235_1&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/sz_mmbiz_jpg\\/SXKlAlYL8hGrEP3kVeU3qp0xuczNNiaGFASWIHltnHDS3Fibcz15tbqP1tXTmb8pXzWEX5NNGE479v6KqlNqCHUInM5dLkicrXia8KqDnNncLiao\\/0?wx_fmt=jpeg&quot;,&quot;pic_cdn_url_16_9&quot;:&quot;&quot;,&quot;pic_cdn_url_3_4&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/sz_mmbiz_jpg\\/SXKlAlYL8hGrEP3kVeU3qp0xuczNNiaGFASWIHltnHDS3Fibcz15tbqP1tXTmb8pXzWEX5NNGE479v6KqlNqCHUInM5dLkicrXia8KqDnNncLiao\\/0?wx_fmt=jpeg&quot;,&quot;pic_cdn_url_1_1&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/mmbiz_jpg\\/SXKlAlYL8hEufgicby9Mticamd2OyhXTWxtZUHRRlQTZiciaGWx25QHw8MERXJwUSMzRI0yQz0T49evdv0Piahc7baafIxfNAqWOicQrgApflnsw8\\/0?wx_fmt=jpeg&quot;,&quot;disable_recommend&quot;:0,&quot;line_info&quot;:{&quot;use_line&quot;:1,&quot;line_count&quot;:0,&quot;send_time&quot;:1788567042,&quot;is_appmsg_flag&quot;:1,&quot;is_use_flag&quot;:0},&quot;claim_source_type&quot;:0,&quot;share_num&quot;:8,&quot;is_rumor_refutation&quot;:0,&quot;segment_comment_id&quot;:&quot;4680419983833792512&quot;,&quot;is_segment_comment_enable&quot;:true,&quot;multi_picture_cover&quot;:0,&quot;share_imageinfo&quot;:[{&quot;file_id&quot;:100002392,&quot;cdn_url&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/sz_mmbiz_png\\/SXKlAlYL8hEBhdyqLYVAFtzZF4zpuJN0xrCOlqjmzUFvpiaO1FHVawemNJ4WALicz9JSEEOic9jibvgwjqHw1Z6Gg21rhX9Z3GcicRznZByYtT2Y\\/0?wx_fmt=png&amp;from=appmsg&quot;,&quot;width&quot;:1024,&quot;height&quot;:1536,&quot;cover_url&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/sz_mmbiz_png\\/SXKlAlYL8hEBhdyqLYVAFtzZF4zpuJN0xrCOlqjmzUFvpiaO1FHVawemNJ4WALicz9JSEEOic9jibvgwjqHw1Z6Gg21rhX9Z3GcicRznZByYtT2Y\\/0?wx_fmt=png&amp;from=appmsg&quot;,&quot;pic_type&quot;:0,&quot;pic_text&quot;:&quot;&quot;,&quot;pic_cfg&quot;:&quot;&quot;,&quot;theme_color&quot;:{&quot;r&quot;:254,&quot;g&quot;:253,&quot;b&quot;:254},&quot;cal_version&quot;:7,&quot;ori_picture&quot;:{&quot;file_id&quot;:0,&quot;cdn_url&quot;:&quot;&quot;,&quot;width&quot;:0,&quot;height&quot;:0,&quot;crop_ratio&quot;:&quot;&quot;,&quot;crop_list&quot;:&quot;{}&quot;},&quot;format_info&quot;:{&quot;format&quot;:&quot;png&quot;,&quot;frame&quot;:1,&quot;channel&quot;:3,&quot;opacity&quot;:100,&quot;thumbnail&quot;:[{&quot;format&quot;:0,&quot;file_size&quot;:1634563,&quot;width&quot;:1024,&quot;height&quot;:1536},{&quot;format&quot;:640,&quot;file_size&quot;:1453209,&quot;width&quot;:1024,&quot;height&quot;:1536},{&quot;format&quot;:300,&quot;file_size&quot;:47312,&quot;width&quot;:100,&quot;height&quot;:150}]},&quot;poi_info&quot;:[],&quot;wxa_info&quot;:[],&quot;disable_theme&quot;:1,&quot;bind_ad_info&quot;:[],&quot;cps_ad_info&quot;:[],&quot;pic_window_product&quot;:{&quot;product_encrypt_key&quot;:&quot;&quot;,&quot;product_type&quot;:0,&quot;title&quot;:&quot;&quot;,&quot;data_type&quot;:0,&quot;product_id&quot;:&quot;&quot;},&quot;spot_product_info&quot;:[],&quot;watermark_info&quot;:{&quot;cdn_url&quot;:&quot;http:\\/\\/mmbiz.qpic.cn\\/sz_mmbiz_png\\/SXKlAlYL8hF07NR4K4LvyrCSONd8OX5elwj8lQ8oh8VPskEia5MKaaickaBpBXWm7zDdLPRc7Wyt00YJzVoThDG2O08rukzG3lnygVTdOE7eI\\/0?wx_fmt=png&quot;,&quot;type&quot;:2,&quot;bizuin&quot;:3923428115,&quot;nickname&quot;:&quot;数解AI&quot;,&quot;is_ai_pic&quot;:false,&quot;watermark_region_lightness&quot;:0.297387212515},&quot;ai_pic_id&quot;:&quot;&quot;,&quot;client_info&quot;:{&quot;pic_id&quot;:&quot;&quot;,&quot;associated_info&quot;:{&quot;pic_id&quot;:&quot;&quot;,&quot;cdn_url&quot;:&quot;&quot;,&quot;file_id&quot;:0,&quot;type&quot;:0,&quot;image_template&quot;:&quot;&quot;,&quot;text_poster_prompt&quot;:&quot;&quot;,&quot;text_poster_style&quot;:&quot;&quot;,&quot;text_poster_data_buf&quot;:&quot;&quot;,&quot;text_poster_template_id&quot;:&quot;&quot;},&quot;origin_image_has_edited&quot;:0},&quot;share_cover&quot;:{&quot;file_id&quot;:100002409,&quot;width&quot;:1024,&quot;height&quot;:1365,&quot;cdn_url&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/mmbiz_jpg\\/SXKlAlYL8hGahbtaBUTQ6kNlj54R2yCKvk3RFXSkxvFesnUkmQL3Riba87Rhia7aWluqFOKsr96DGPUEKZ2SIm1EPoIr0r5dxuljypFxshwGk\\/0?wx_fmt=jpeg&quot;,&quot;crop_info&quot;:&quot;{\\&quot;ori_url\\&quot;:\\&quot;https:\\/\\/mmbiz.qpic.cn\\/sz_mmbiz_png\\/SXKlAlYL8hEBhdyqLYVAFtzZF4zpuJN0xrCOlqjmzUFvpiaO1FHVawemNJ4WALicz9JSEEOic9jibvgwjqHw1Z6Gg21rhX9Z3GcicRznZByYtT2Y\\/0?wx_fmt=png&amp;from=appmsg\\&quot;,\\&quot;x1\\&quot;:0.000000000,\\&quot;y1\\&quot;:0.055555556,\\&quot;x2\\&quot;:1.000000000,\\&quot;y2\\&quot;:0.944444418}&quot;},&quot;ai_pic_source&quot;:0,&quot;ai_pic_prompt&quot;:&quot;&quot;}],&quot;moment_like_num&quot;:0,&quot;item_show_type&quot;:8,&quot;claim_source&quot;:{&quot;is_user_no_claim_source&quot;:1},&quot;ad_info&quot;:{&quot;has_agreement_ad&quot;:0,&quot;is_recruit_agreement_ad&quot;:0},&quot;audio_in_appmsg&quot;:[],&quot;modify_wording&quot;:&quot;还可以修改2次&quot;,&quot;can_modify&quot;:1,&quot;private_info&quot;:{&quot;private_type&quot;:0,&quot;update_time&quot;:1788852415},&quot;modify_detail_wording&quot;:[&quot;第1次修改 2026年09月08日 15时24分 闫飞&quot;],&quot;appmsg_modified&quot;:1,&quot;total_comment_count_contains_reply&quot;:3,&quot;location_page_show&quot;:0,&quot;can_location_page_show&quot;:0,&quot;remain_modify_count&quot;:2}],&quot;publish_info&quot;:{&quot;bizuin&quot;:3923428115,&quot;msgid&quot;:2247485944,&quot;draft_msgid&quot;:100002297,&quot;publish_type&quot;:1,&quot;publish_src&quot;:4,&quot;publish_status&quot;:200,&quot;create_time&quot;:1788567042,&quot;update_time&quot;:1788567056,&quot;check_results&quot;:[],&quot;show_types&quot;:[8],&quot;index_count&quot;:1,&quot;xa_check_items&quot;:[{&quot;idx&quot;:1,&quot;status&quot;:2,&quot;rescode&quot;:100}],&quot;original_check_type&quot;:2,&quot;normal_check_results&quot;:[],&quot;in_profile&quot;:1,&quot;pre_publish_status&quot;:[],&quot;refutation_audit_info&quot;:[],&quot;service_type&quot;:1,&quot;item_show_types&quot;:[8],&quot;batch_members&quot;:[]},&quot;appmsgex&quot;:[],&quot;copy_appmsg_id&quot;:100002297,&quot;new_publish&quot;:1,&quot;publish_type&quot;:1,&quot;batch_members&quot;:[]}"
+      "batch_members": [],
+      "view": {
+        "isFirst": false,
+        "isApi": false,
+        "sourceType": 4,
+        "reviewOverTime": false,
+        "mallEditWording": "修改",
+        "isMallActivityDraft": false,
+        "showArticleToImageTips": false,
+        "time": "09月07日",
+        "hasHistory": true,
+        "publishDate": "2026-09-07",
+        "isGoToDataPage": true,
+        "dataPageWording": "发表数据",
+        "status": "已发表",
+        "msg": "未开启群发通知，内容已在公众号主页展示"
+      },
+      "resendPopShow": false
+    },
+    {
+      "type": 10002,
+      "msgid": 2247486029,
+      "sent_result": {
+        "reject_index_list": []
+      },
+      "appmsg_info": [
+        {
+          "share_type": 8,
+          "appmsgid": 2247486029,
+          "content_url": "https://mp.weixin.qq.com/s/uMPANSAgdHqYOJD0fLqQbw",
+          "title": "c++之父锐评AI，到底谁膨胀的更厉害",
+          "is_deleted": false,
+          "copyright_status": 100,
+          "copyright_type": 0,
+          "read_num": 1965,
+          "like_num": 1,
+          "comment_id": "4683538719054856193",
+          "is_comment_enable": true,
+          "comment_num": 7,
+          "vote_id": [],
+          "super_vote_id": [],
+          "cover": "https://mmbiz.qpic.cn/mmbiz_jpg/SXKlAlYL8hH5rZ502t8SSWLLsBmYNxTFwSJpia3ibdgkx5zlL21fnPAZW9jD2iaibjU5g479bNFkKrbkf5yVoRLgvtT1QyTiaL9r0gUqT9Q6UnUo/0?wx_fmt=jpeg",
+          "smart_product": 0,
+          "modify_status": 1,
+          "appmsg_like_type": 2,
+          "can_delete_status": 0,
+          "old_like_num": 10,
+          "itemidx": 1,
+          "is_pay_subscribe": 0,
+          "is_from_transfer": 0,
+          "public_tag_info": {
+            "public_tag_list": [],
+            "modify_times": 0,
+            "init_tag_list_size": 0
+          },
+          "appmsg_album_info": {
+            "id": "4640283910378192899",
+            "title": "软件工程观察",
+            "album_id": 4640283910378193000,
+            "appmsg_album_infos": [
+              {
+                "id": "4640283910378192899",
+                "title": "软件工程观察",
+                "album_id": 4640283910378193000,
+                "appmsg_album_infos": [],
+                "tagSource": 0
+              }
+            ]
+          },
+          "digest": "70多岁的丹麦老头Bjarne&nbsp;Stroustroup，年轻时代就是以犀利和执拗而著称的，毕竟Unix之父在某个回忆录里面说过，他们因为反对C++的复杂性，而在贝尔实验里面，和B.S闹得不是很愉快，甚至描述为尖叫着大吼大叫的要被拖出去几个人共享的办公室，当年读到那段不禁喷饭。\n\n现在时光荏苒几十年了，老爷子照样还是那么桀骜不驯，批评起今天的AI编程也是风采不减。他毫不客气的批评，现在的AI写出来的代码，不属于那百分之一二十他看重的部分，都是严重膨胀的垃圾。\n\nX上评论区的反驳很有意思。有人直言c++语言是bug最多，最复杂最烂的一门语言。想要掌握它或许比掌握AI更难。几个批评C++的大佬，Uncle&nbsp;Bob在积极地拥抱AI，玩Grok&nbsp;Bot，指挥AI军团写海量的测试和验证来帮助AI堵漏洞，而Linus自己也在大声呼吁社区保持对AI的开放态度。\n\n问题是现在还有多少人坚持古法编程呢？时代变了，根本回不去了。",
+          "is_cooling_article": 0,
+          "pic_cdn_url_235_1": "https://mmbiz.qpic.cn/sz_mmbiz_jpg/SXKlAlYL8hHpTsuKvia3VRYSzEKSVKbXA6hAShsHWuMDSENKUa7iaQCtwCJtiaX4NBqcapXFvjNRRZWqhLRJMaMLg2T6ibfcNVia2OhDmhAeuTEA/0?wx_fmt=jpeg",
+          "pic_cdn_url_16_9": "",
+          "pic_cdn_url_3_4": "https://mmbiz.qpic.cn/sz_mmbiz_jpg/SXKlAlYL8hHpTsuKvia3VRYSzEKSVKbXA6hAShsHWuMDSENKUa7iaQCtwCJtiaX4NBqcapXFvjNRRZWqhLRJMaMLg2T6ibfcNVia2OhDmhAeuTEA/0?wx_fmt=jpeg",
+          "pic_cdn_url_1_1": "https://mmbiz.qpic.cn/mmbiz_jpg/SXKlAlYL8hH5rZ502t8SSWLLsBmYNxTFwSJpia3ibdgkx5zlL21fnPAZW9jD2iaibjU5g479bNFkKrbkf5yVoRLgvtT1QyTiaL9r0gUqT9Q6UnUo/0?wx_fmt=jpeg",
+          "disable_recommend": 0,
+          "line_info": {
+            "use_line": 1,
+            "line_count": 0,
+            "send_time": 1788752933,
+            "is_appmsg_flag": 1,
+            "is_use_flag": 0
+          },
+          "claim_source_type": 0,
+          "share_num": 9,
+          "is_rumor_refutation": 0,
+          "segment_comment_id": "4683538727376355331",
+          "is_segment_comment_enable": true,
+          "multi_picture_cover": 0,
+          "share_imageinfo": [
+            {
+              "file_id": 100002443,
+              "cdn_url": "https://mmbiz.qpic.cn/mmbiz_png/SXKlAlYL8hF122zSAQfLfGheVFnHOHyQ8L1JOWElCaNoqOe69kzriaQ3cFy59lKD2ZAEr9etZQ76oOtic04LDWVn43ibfYc9FGvibNlW1sZSIQk/0?wx_fmt=png&from=appmsg",
+              "width": 1086,
+              "height": 1448,
+              "cover_url": "https://mmbiz.qpic.cn/mmbiz_png/SXKlAlYL8hF122zSAQfLfGheVFnHOHyQ8L1JOWElCaNoqOe69kzriaQ3cFy59lKD2ZAEr9etZQ76oOtic04LDWVn43ibfYc9FGvibNlW1sZSIQk/0?wx_fmt=png&from=appmsg",
+              "pic_type": 0,
+              "pic_text": "",
+              "pic_cfg": "",
+              "theme_color": {
+                "r": 13,
+                "g": 16,
+                "b": 19
+              },
+              "cal_version": 7,
+              "ori_picture": {
+                "file_id": 0,
+                "cdn_url": "",
+                "width": 0,
+                "height": 0,
+                "crop_ratio": "",
+                "crop_list": "{}"
+              },
+              "format_info": {
+                "format": "png",
+                "frame": 1,
+                "channel": 3,
+                "opacity": 100,
+                "thumbnail": [
+                  {
+                    "format": 0,
+                    "file_size": 2552636,
+                    "width": 1086,
+                    "height": 1448
+                  },
+                  {
+                    "format": 640,
+                    "file_size": 2273896,
+                    "width": 1080,
+                    "height": 1440
+                  },
+                  {
+                    "format": 300,
+                    "file_size": 60511,
+                    "width": 113,
+                    "height": 150
+                  }
+                ]
+              },
+              "poi_info": [],
+              "wxa_info": [],
+              "disable_theme": 1,
+              "bind_ad_info": [],
+              "cps_ad_info": [],
+              "pic_window_product": {
+                "product_encrypt_key": "",
+                "product_type": 0,
+                "title": "",
+                "data_type": 0,
+                "product_id": ""
+              },
+              "spot_product_info": [],
+              "watermark_info": {
+                "cdn_url": "http://mmbiz.qpic.cn/mmbiz_png/SXKlAlYL8hGtT4uSxicBTgjIUDHNBCp6KFb0qibZYCGC45tHITgBUV4bQk3XibV1giaXdCMtkfX1jjnE3QtwyX4Xcg7EAjZqgUDKKtPlxTRdJTY/0?wx_fmt=png",
+                "type": 2,
+                "bizuin": 3923428115,
+                "nickname": "数解AI",
+                "is_ai_pic": false,
+                "watermark_region_lightness": 0.324294626713
+              },
+              "ai_pic_id": "",
+              "client_info": {
+                "pic_id": "",
+                "associated_info": {
+                  "pic_id": "",
+                  "cdn_url": "",
+                  "file_id": 0,
+                  "type": 0,
+                  "image_template": "",
+                  "text_poster_prompt": "",
+                  "text_poster_style": "",
+                  "text_poster_data_buf": "",
+                  "text_poster_template_id": ""
+                },
+                "origin_image_has_edited": 0
+              },
+              "share_cover": {
+                "file_id": 100002445,
+                "width": 1086,
+                "height": 1448,
+                "cdn_url": "https://mmbiz.qpic.cn/mmbiz_jpg/SXKlAlYL8hEqXd0U5mTqGNF4AQ0BBW4tX5APzVPpwOfVicYKzRs2tXAicGIAz5TYJfVDMNxZ5tsERnv00cTXmAdk6qsDMg9mGwrE2Ynpwiby40/0?wx_fmt=jpeg",
+                "crop_info": "{\"ori_url\":\"https://mmbiz.qpic.cn/mmbiz_png/SXKlAlYL8hF122zSAQfLfGheVFnHOHyQ8L1JOWElCaNoqOe69kzriaQ3cFy59lKD2ZAEr9etZQ76oOtic04LDWVn43ibfYc9FGvibNlW1sZSIQk/0?wx_fmt=png&from=appmsg\",\"x1\":0.000000000,\"y1\":0.000000000,\"x2\":1.000000000,\"y2\":1.000000000}"
+              },
+              "ai_pic_source": 0,
+              "ai_pic_prompt": ""
+            }
+          ],
+          "moment_like_num": 0,
+          "item_show_type": 8,
+          "claim_source": {
+            "is_user_no_claim_source": 1
+          },
+          "ad_info": {
+            "has_agreement_ad": 0,
+            "is_recruit_agreement_ad": 0
+          },
+          "audio_in_appmsg": [],
+          "modify_wording": "还可以修改2次",
+          "can_modify": 1,
+          "private_info": {
+            "private_type": 0,
+            "update_time": 1788853624
+          },
+          "modify_detail_wording": [
+            "第1次修改 2026年09月08日 16时10分 闫飞"
+          ],
+          "appmsg_modified": 1,
+          "total_comment_count_contains_reply": 14,
+          "location_page_show": 0,
+          "can_location_page_show": 0,
+          "remain_modify_count": 2,
+          "isXssEncoded": true,
+          "i": 0,
+          "commentPopShow": false,
+          "delPopShow": false,
+          "undelShow": false,
+          "delWording": "",
+          "msgid": 2247486029,
+          "modifyFormatTime": "",
+          "deleteFormatTime": ""
+        }
+      ],
+      "publish_info": {
+        "bizuin": 3923428115,
+        "msgid": 2247486029,
+        "draft_msgid": 100002382,
+        "publish_type": 1,
+        "publish_src": 3,
+        "publish_status": 200,
+        "create_time": 1788752933,
+        "update_time": 1788752963,
+        "check_results": [],
+        "show_types": [
+          8
+        ],
+        "index_count": 1,
+        "xa_check_items": [
+          {
+            "idx": 1,
+            "status": 2,
+            "rescode": 100
+          }
+        ],
+        "original_check_type": 2,
+        "normal_check_results": [],
+        "in_profile": 1,
+        "pre_publish_status": [],
+        "refutation_audit_info": [],
+        "service_type": 1,
+        "item_show_types": [
+          8
+        ],
+        "batch_members": []
+      },
+      "appmsgex": [],
+      "copy_appmsg_id": 100002382,
+      "new_publish": 1,
+      "publish_type": 1,
+      "batch_members": [],
+      "view": {
+        "isFirst": false,
+        "isApi": false,
+        "sourceType": 4,
+        "reviewOverTime": false,
+        "mallEditWording": "修改",
+        "isMallActivityDraft": false,
+        "showArticleToImageTips": false,
+        "time": "09月07日",
+        "hasHistory": true,
+        "publishDate": "2026-09-07",
+        "isGoToDataPage": true,
+        "dataPageWording": "发表数据",
+        "status": "已发表",
+        "msg": "未开启群发通知，内容已在公众号主页展示"
+      },
+      "resendPopShow": false
     }
   ],
   "featured_count": 2,
   "item_show_type_counts": [
     {
       "item_show_type": 0,
-      "count": 109
+      "count": 113
     },
     {
       "item_show_type": 5,
@@ -60,7 +2007,7 @@
     },
     {
       "item_show_type": 8,
-      "count": 83
+      "count": 84
     },
     {
       "item_show_type": 10,

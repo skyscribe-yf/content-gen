@@ -18,6 +18,19 @@
 - 被替换的文章通过合集页和文末交叉链接仍可访问
 - 账号菜单子菜单数受限时（当前仅支持 2 个），实际配置取列表前 N 篇，文档仍维护完整前 6
 
+**2026-11-07 更新（数据截至 11-06；贴图已过滤）**
+
+| 排序 | 文章 | 链接 | 阅读量 |
+|-----|------|------|--------|
+| 1 | KV缓存存进SSD | `https://mp.weixin.qq.com/s/40BQ06eDTv4-2r8FmQ_rMA` | 3,119 |
+| 2 | 高维空间全是壳 | `https://mp.weixin.qq.com/s/Nrfr-90Fpu3mFDML9s0d1Q` | 1,765 |
+| 3 | 高斯为什么二阶就够 | `https://mp.weixin.qq.com/s/gs_3y7JXuBLlzR5w6jW6fQ` | 1,512 |
+| 4 | 微软用Go重写TypeScript | `https://mp.weixin.qq.com/s/GmPJAh8ERPkm64KzYirV2g` | 1,177 |
+| 5 | Adam优化器 | `https://mp.weixin.qq.com/s/aSLVO-otvr2rxIU1kr2eAA` | 1,109 |
+| 6 | DeepSeek-V4为何不用MLA | `https://mp.weixin.qq.com/s/MQEgbY16mLs-N7g2xKW1HQ` | 1,107 |
+
+榜单结构与上轮一致（仅微软 Go 篇微幅长尾 +1）。⚠️ 同步修复 `scripts/hot_articles.py` 的后台新结构兼容 bug（详见 `content/navigation/menu-config.md` 2026-11-07 注记）。
+
 **2026-10-15 更新（数据截至 10-14；贴图已过滤）**
 
 | 排序 | 文章 | 链接 | 阅读量 |
@@ -25,7 +38,7 @@
 | 1 | KV缓存存进SSD | `https://mp.weixin.qq.com/s/40BQ06eDTv4-2r8FmQ_rMA` | 3,119 |
 | 2 | 高维空间全是壳 | `https://mp.weixin.qq.com/s/Nrfr-90Fpu3mFDML9s0d1Q` | 1,765 |
 | 3 | 高斯为什么二阶就够 | `https://mp.weixin.qq.com/s/gs_3y7JXuBLlzR5w6jW6fQ` | 1,512 |
-| 4 | 微软用Go重写TypeScript | `https://mp.weixin.qq.com/s/GmPJAh8ERPkm64KzYirV2g` | 1,176 |
+| 4 | 微软用Go重写TypeScript | `https://mp.weixin.qq.com/s/GmPJAh8ERPkm64KzYirV2g` | 1,177 |
 | 5 | Adam优化器 | `https://mp.weixin.qq.com/s/aSLVO-otvr2rxIU1kr2eAA` | 1,109 |
 | 6 | DeepSeek-V4为何不用MLA | `https://mp.weixin.qq.com/s/MQEgbY16mLs-N7g2xKW1HQ` | 1,107 |
 
@@ -64,10 +77,12 @@
 2. 发文章时勾选对应合集（若忘记勾选，去合集管理添加）
 3. 若文章数据突出（阅读量进前 6），更新「热门文章」菜单
 
-## 合集页 URL 清单（2026-10-07 起集中登记，发新文尾部导航直接取用）
+⚠️ **2026-11-07 起**：正文尾部**不再写合集导航行**（`📖 合集链接 + 箭头链`）——合集聚合全靠第 2 步的后台勾选，下面的合集页 URL 清单仅用于配置菜单与检索，不再往正文里贴。
+
+## 合集页 URL 清单（菜单配置用；2026-11-07 起不再往正文尾部贴）
 
 | 合集 | 合集页 URL |
 |---|---|
 | AI Agent 工程 | https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzkyMzQyODExNQ==&action=getalbum&album_id=4680422529625325570#wechat_redirect |
 
-> 其余合集（大模型原理 / 开源大模型技术揭秘 / AI中的数学 / 训练回路 / 强化学习原理 / 视觉生成等）URL 散落在各篇 weixin.md 尾部，后续发布时随篇回填到这里。
+> 其余合集（大模型原理 / 开源大模型技术揭秘 / AI中的数学 / 训练回路 / 强化学习原理 / 视觉生成等）URL 散落在各篇历史 weixin.md 尾部，后续配置菜单时随篇回填到这里。

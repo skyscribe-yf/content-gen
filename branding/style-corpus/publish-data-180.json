@@ -1,54 +1,1544 @@
 {
-  "total_count": 198,
+  "total_count": 203,
   "publish_count": 66,
-  "masssend_count": 132,
+  "masssend_count": 137,
   "publish_list": [
     {
+      "type": 9,
+      "msgid": 1000000034,
+      "sent_info": {
+        "time": 1785071947,
+        "func_flag": 32770,
+        "is_send_all": true,
+        "is_published": 0,
+        "func_flag2": 0
+      },
+      "sent_status": {
+        "total": 279,
+        "succ": 279,
+        "fail": 0,
+        "progress": 100,
+        "userprotect": 0
+      },
+      "sent_result": {
+        "msg_status": 2,
+        "refuse_reason": "",
+        "reject_index_list": [],
+        "update_time": 1785071980
+      },
+      "appmsg_info": [
+        {
+          "share_type": 0,
+          "appmsgid": 2247484665,
+          "content_url": "https://mp.weixin.qq.com/s/22J8JPkdpVeUx23KahbBmA",
+          "title": "注意力找人，FFN存知识：跟一句话走完Transformer",
+          "is_deleted": false,
+          "copyright_status": 11,
+          "copyright_type": 1,
+          "read_num": 171,
+          "like_num": 8,
+          "comment_id": "4621781995516428292",
+          "is_comment_enable": true,
+          "comment_num": 3,
+          "reward_money": "0.00",
+          "reprint_num": 0,
+          "vote_id": [],
+          "super_vote_id": [],
+          "cover": "https://mmbiz.qpic.cn/mmbiz_jpg/SXKlAlYL8hGr06Wu4W7Wwgx3UONFMXyO9yZ5MkEChjjWo0m7VMTBBZcvI9n7DiaiaSncsWiapbiaJnDqG9Xpo0u1Qlp2Z3iafBKxuqH2vV58xZP4/0?wx_fmt=jpeg",
+          "smart_product": 0,
+          "modify_status": 1,
+          "appmsg_like_type": 2,
+          "can_delete_status": 0,
+          "old_like_num": 26,
+          "itemidx": 1,
+          "is_pay_subscribe": 0,
+          "is_from_transfer": 0,
+          "public_tag_info": {
+            "public_tag_list": [],
+            "modify_times": 0,
+            "init_tag_list_size": 0
+          },
+          "appmsg_album_info": {
+            "id": "4597831652025925632",
+            "title": "大语言模型原理",
+            "album_id": 4597831652025925600,
+            "appmsg_album_infos": [
+              {
+                "id": "4597831652025925632",
+                "title": "大语言模型原理",
+                "album_id": 4597831652025925600,
+                "appmsg_album_infos": [],
+                "tagSource": 0
+              }
+            ]
+          },
+          "digest": "跟一句话走完Transformer&nbsp;28层：BPE分词→词嵌入→位置编码→注意力→FFN→输出。用Qwen3-1.7B真实数据，展示注意力从第1层到第28层如何从&#39;到处看&#39;变成&#39;盯住关键&#39;。",
+          "open_fansmsg": 0,
+          "is_cooling_article": 0,
+          "pic_cdn_url_235_1": "https://mmbiz.qpic.cn/mmbiz_jpg/SXKlAlYL8hFVicibkVdmOADVQxCrmZuvyVwDqS59WqticQZFENxSfn9QRnjFw3Q8Sv8UzQOSWx9YTCxHWoZr3BZDibmzNiatiaPPGAx9LQIUAVz2o/0?wx_fmt=jpeg",
+          "pic_cdn_url_16_9": "",
+          "disable_recommend": 0,
+          "line_info": {
+            "use_line": 1,
+            "line_count": 0,
+            "send_time": 1785071976,
+            "is_appmsg_flag": 1,
+            "is_use_flag": 0
+          },
+          "claim_source_type": 0,
+          "share_num": 32,
+          "is_rumor_refutation": 0,
+          "segment_comment_id": "4621782008334221312",
+          "is_segment_comment_enable": true,
+          "multi_picture_cover": 0,
+          "share_imageinfo": [],
+          "moment_like_num": 0,
+          "item_show_type": 0,
+          "claim_source": {
+            "is_user_no_claim_source": 1
+          },
+          "ad_info": {
+            "has_agreement_ad": 0,
+            "is_recruit_agreement_ad": 0
+          },
+          "audio_in_appmsg": [],
+          "modify_wording": "还可以修改3次",
+          "can_modify": 1,
+          "modify_detail_wording": [],
+          "appmsg_modified": 0,
+          "total_comment_count_contains_reply": 6,
+          "location_page_show": 0,
+          "can_location_page_show": 0,
+          "remain_modify_count": 3,
+          "isXssEncoded": true,
+          "i": 0,
+          "commentPopShow": false,
+          "delPopShow": false,
+          "undelShow": false,
+          "delWording": "删除后用户将无法访问此页面，确定删除？该操作只能删除历史消息中的记录，不能删除已经成功发送到用户的消息。",
+          "msgid": 1000000034,
+          "modifyFormatTime": "",
+          "deleteFormatTime": ""
+        }
+      ],
+      "appmsgex": [],
+      "copy_type": 77,
+      "copy_appmsg_id": 100001016,
+      "new_publish": 0,
       "publish_type": 101,
-      "publish_info": "{&quot;type&quot;:9,&quot;msgid&quot;:1000000029,&quot;sent_info&quot;:{&quot;time&quot;:1784635800,&quot;func_flag&quot;:134250498,&quot;is_send_all&quot;:true,&quot;is_published&quot;:0,&quot;func_flag2&quot;:0},&quot;sent_status&quot;:{&quot;total&quot;:244,&quot;succ&quot;:244,&quot;fail&quot;:0,&quot;progress&quot;:100,&quot;userprotect&quot;:0},&quot;sent_result&quot;:{&quot;msg_status&quot;:2,&quot;refuse_reason&quot;:&quot;&quot;,&quot;reject_index_list&quot;:[],&quot;update_time&quot;:1784635836},&quot;appmsg_info&quot;:[{&quot;share_type&quot;:0,&quot;appmsgid&quot;:2247484553,&quot;content_url&quot;:&quot;https:\\/\\/mp.weixin.qq.com\\/s\\/HHMNEdCYThOjCLRozQorhg&quot;,&quot;title&quot;:&quot;显存被谁吃掉了？DeepSeek如何省下90%&quot;,&quot;is_deleted&quot;:false,&quot;copyright_status&quot;:11,&quot;copyright_type&quot;:1,&quot;read_num&quot;:95,&quot;like_num&quot;:4,&quot;comment_id&quot;:&quot;4613677817699074051&quot;,&quot;is_comment_enable&quot;:true,&quot;comment_num&quot;:3,&quot;reward_money&quot;:&quot;20.00&quot;,&quot;reprint_num&quot;:0,&quot;vote_id&quot;:[],&quot;super_vote_id&quot;:[],&quot;cover&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/mmbiz_jpg\\/SXKlAlYL8hFypiaFfrPoZdrKhPTVByMNVycmD5Q8byj5vXdHgMf6CzPNmZzich1nB4ibWUofBMkDla8PxwVd00y5E3cRvpcQz0155SLuEAB4Tw\\/0?wx_fmt=jpeg&quot;,&quot;smart_product&quot;:0,&quot;modify_status&quot;:1,&quot;appmsg_like_type&quot;:2,&quot;can_delete_status&quot;:0,&quot;old_like_num&quot;:6,&quot;itemidx&quot;:1,&quot;is_pay_subscribe&quot;:0,&quot;is_from_transfer&quot;:0,&quot;public_tag_info&quot;:{&quot;public_tag_list&quot;:[],&quot;modify_times&quot;:0,&quot;init_tag_list_size&quot;:0},&quot;appmsg_album_info&quot;:{&quot;id&quot;:&quot;4595742887040090112&quot;,&quot;title&quot;:&quot;开源大模型技术揭秘&quot;,&quot;album_id&quot;:4595742887040090112,&quot;appmsg_album_infos&quot;:[{&quot;id&quot;:&quot;4595742887040090112&quot;,&quot;title&quot;:&quot;开源大模型技术揭秘&quot;,&quot;album_id&quot;:4595742887040090112,&quot;appmsg_album_infos&quot;:[],&quot;tagSource&quot;:0}]},&quot;digest&quot;:&quot;长上下文时，吃掉显存的不只模型权重，还有会持续增长的 KV cache。DeepSeek 的 MLA 为什么能把这笔开销省下约九成？&quot;,&quot;open_fansmsg&quot;:0,&quot;is_cooling_article&quot;:0,&quot;pic_cdn_url_235_1&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/mmbiz_jpg\\/SXKlAlYL8hF4MN7bUrDYsRkqI6ZLOSKZb7jJibzxicjjWRzz4zWus6w5alEhPRjNRrNbRXPtpsu4Tk3T8Yjh3JAlKcWia0JM8ooE7LVUuiamdia8\\/0?wx_fmt=jpeg&quot;,&quot;pic_cdn_url_16_9&quot;:&quot;&quot;,&quot;disable_recommend&quot;:0,&quot;line_info&quot;:{&quot;use_line&quot;:1,&quot;line_count&quot;:0,&quot;send_time&quot;:1784635832,&quot;is_appmsg_flag&quot;:1,&quot;is_use_flag&quot;:0},&quot;claim_source_type&quot;:0,&quot;share_num&quot;:11,&quot;is_rumor_refutation&quot;:0,&quot;segment_comment_id&quot;:&quot;4613677832211365889&quot;,&quot;is_segment_comment_enable&quot;:true,&quot;multi_picture_cover&quot;:0,&quot;share_imageinfo&quot;:[],&quot;moment_like_num&quot;:0,&quot;item_show_type&quot;:0,&quot;claim_source&quot;:{&quot;is_user_no_claim_source&quot;:1},&quot;ad_info&quot;:{&quot;has_agreement_ad&quot;:0,&quot;is_recruit_agreement_ad&quot;:0},&quot;audio_in_appmsg&quot;:[],&quot;modify_wording&quot;:&quot;还可以修改3次&quot;,&quot;can_modify&quot;:1,&quot;modify_detail_wording&quot;:[],&quot;appmsg_modified&quot;:0,&quot;total_comment_count_contains_reply&quot;:5,&quot;location_page_show&quot;:0,&quot;can_location_page_show&quot;:0,&quot;remain_modify_count&quot;:3}],&quot;appmsgex&quot;:[],&quot;copy_type&quot;:77,&quot;copy_appmsg_id&quot;:100000904,&quot;new_publish&quot;:0,&quot;publish_type&quot;:101,&quot;batch_members&quot;:[]}"
+      "batch_members": [],
+      "view": {
+        "isFirst": false,
+        "isApi": false,
+        "sourceType": 1,
+        "reviewOverTime": false,
+        "mallEditWording": "修改",
+        "isMallActivityDraft": false,
+        "showArticleToImageTips": false,
+        "time": "07月26日",
+        "hasHistory": false,
+        "publishDate": "2026-07-26",
+        "isGoToDataPage": true,
+        "dataPageWording": "发表数据",
+        "isFromApp": 0,
+        "status": "已发表"
+      },
+      "resendPopShow": false
     },
     {
+      "type": 9,
+      "msgid": 1000000033,
+      "sent_info": {
+        "time": 1784980800,
+        "func_flag": 134250498,
+        "is_send_all": true,
+        "is_published": 0,
+        "func_flag2": 0
+      },
+      "sent_status": {
+        "total": 275,
+        "succ": 275,
+        "fail": 0,
+        "progress": 100,
+        "userprotect": 0
+      },
+      "sent_result": {
+        "msg_status": 2,
+        "refuse_reason": "",
+        "reject_index_list": [],
+        "update_time": 1784980938
+      },
+      "appmsg_info": [
+        {
+          "share_type": 0,
+          "appmsgid": 2247484640,
+          "content_url": "https://mp.weixin.qq.com/s/JcqY0-ClRN6Coh0PJjQ2RA",
+          "title": "数学太难？菲尔兹奖得主也差点放弃",
+          "is_deleted": false,
+          "copyright_status": 11,
+          "copyright_type": 1,
+          "read_num": 94,
+          "like_num": 11,
+          "comment_id": "4619461514612277248",
+          "is_comment_enable": true,
+          "comment_num": 6,
+          "reward_money": "0.00",
+          "reprint_num": 0,
+          "vote_id": [],
+          "super_vote_id": [],
+          "cover": "https://mmbiz.qpic.cn/sz_mmbiz_jpg/SXKlAlYL8hEqQgTgK6glol9E7ib7icoqqv7SwDKwJHzUdCzKiaW2KiakPwwuECgtib2ng6M1Inz4I2VmuibMbHv7bnCCsliaLrxKu7A3Jcz6iarmhQ4/0?wx_fmt=jpeg",
+          "smart_product": 0,
+          "modify_status": 1,
+          "appmsg_like_type": 2,
+          "can_delete_status": 0,
+          "old_like_num": 18,
+          "itemidx": 1,
+          "is_pay_subscribe": 0,
+          "is_from_transfer": 0,
+          "public_tag_info": {
+            "public_tag_list": [],
+            "modify_times": 0,
+            "init_tag_list_size": 0
+          },
+          "appmsg_album_info": {
+            "appmsg_album_infos": []
+          },
+          "digest": "2026菲尔兹奖颁给两位中国数学家——王虹差点跑去学建筑，邓煜靠盲目自信熬过无产出期。但冷板凳不是数学家的专利：Hinton坐了30年AI冬天，张益唐在赛百味当会计时脑子里转素数。数学没那么可怕，可怕的是你在窥破门径之前就先把自己吓跑了。",
+          "open_fansmsg": 0,
+          "is_cooling_article": 0,
+          "pic_cdn_url_235_1": "https://mmbiz.qpic.cn/mmbiz_jpg/SXKlAlYL8hGSKnFgBldzkS0kdWlicj5EYS1bibfYCVLT6JrkKdIVgHXPhcm3zkYeftkj0klQe5G0CvleGyHxz3kzq2eKl7XEIyGw4sLJyRmBA/0?wx_fmt=jpeg",
+          "pic_cdn_url_16_9": "",
+          "disable_recommend": 0,
+          "line_info": {
+            "use_line": 1,
+            "line_count": 0,
+            "send_time": 1784980934,
+            "is_appmsg_flag": 1,
+            "is_use_flag": 0
+          },
+          "claim_source_type": 0,
+          "share_num": 5,
+          "is_rumor_refutation": 0,
+          "segment_comment_id": "4619461528487034880",
+          "is_segment_comment_enable": true,
+          "multi_picture_cover": 0,
+          "share_imageinfo": [],
+          "moment_like_num": 0,
+          "item_show_type": 0,
+          "claim_source": {
+            "is_user_no_claim_source": 1
+          },
+          "ad_info": {
+            "has_agreement_ad": 0,
+            "is_recruit_agreement_ad": 0
+          },
+          "audio_in_appmsg": [],
+          "modify_wording": "还可以修改3次",
+          "can_modify": 1,
+          "modify_detail_wording": [],
+          "appmsg_modified": 0,
+          "total_comment_count_contains_reply": 17,
+          "location_page_show": 0,
+          "can_location_page_show": 0,
+          "remain_modify_count": 3,
+          "isXssEncoded": true,
+          "i": 0,
+          "commentPopShow": false,
+          "delPopShow": false,
+          "undelShow": false,
+          "delWording": "删除后用户将无法访问此页面，确定删除？该操作只能删除历史消息中的记录，不能删除已经成功发送到用户的消息。",
+          "msgid": 1000000033,
+          "modifyFormatTime": "",
+          "deleteFormatTime": ""
+        }
+      ],
+      "appmsgex": [],
+      "copy_type": 77,
+      "copy_appmsg_id": 100000991,
+      "new_publish": 0,
       "publish_type": 101,
-      "publish_info": "{&quot;type&quot;:9,&quot;msgid&quot;:1000000028,&quot;sent_info&quot;:{&quot;time&quot;:1784502600,&quot;func_flag&quot;:134250498,&quot;is_send_all&quot;:true,&quot;is_published&quot;:0,&quot;func_flag2&quot;:0},&quot;sent_status&quot;:{&quot;total&quot;:233,&quot;succ&quot;:233,&quot;fail&quot;:0,&quot;progress&quot;:100,&quot;userprotect&quot;:0},&quot;sent_result&quot;:{&quot;msg_status&quot;:2,&quot;refuse_reason&quot;:&quot;&quot;,&quot;reject_index_list&quot;:[],&quot;update_time&quot;:1784502636},&quot;appmsg_info&quot;:[{&quot;share_type&quot;:0,&quot;appmsgid&quot;:2247484496,&quot;content_url&quot;:&quot;https:\\/\\/mp.weixin.qq.com\\/s\\/_RR5LLWgjGNm-qXdSdnAGA&quot;,&quot;title&quot;:&quot;Kimi K3：KDA怎么撑住1M上下文？&quot;,&quot;is_deleted&quot;:false,&quot;copyright_status&quot;:11,&quot;copyright_type&quot;:1,&quot;read_num&quot;:121,&quot;like_num&quot;:1,&quot;comment_id&quot;:&quot;4612218312314421249&quot;,&quot;is_comment_enable&quot;:true,&quot;comment_num&quot;:1,&quot;reward_money&quot;:&quot;0.00&quot;,&quot;reprint_num&quot;:0,&quot;vote_id&quot;:[],&quot;super_vote_id&quot;:[],&quot;cover&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/sz_mmbiz_jpg\\/SXKlAlYL8hEXPCTicWTs6bgic6aUb3bd9EicGp4L4BuVQ96vpBYfuJKZBRjQvuOxZamO3otZyy9DJck42dHLPC0KFjEpwtVtRMYn4ia5qfaO52U\\/0?wx_fmt=jpeg&quot;,&quot;smart_product&quot;:0,&quot;modify_status&quot;:1,&quot;appmsg_like_type&quot;:2,&quot;can_delete_status&quot;:0,&quot;old_like_num&quot;:9,&quot;itemidx&quot;:1,&quot;is_pay_subscribe&quot;:0,&quot;is_from_transfer&quot;:0,&quot;public_tag_info&quot;:{&quot;public_tag_list&quot;:[],&quot;modify_times&quot;:0,&quot;init_tag_list_size&quot;:0},&quot;appmsg_album_info&quot;:{&quot;id&quot;:&quot;4595742887040090112&quot;,&quot;title&quot;:&quot;开源大模型技术揭秘&quot;,&quot;album_id&quot;:4595742887040090112,&quot;appmsg_album_infos&quot;:[{&quot;id&quot;:&quot;4595742887040090112&quot;,&quot;title&quot;:&quot;开源大模型技术揭秘&quot;,&quot;album_id&quot;:4595742887040090112,&quot;appmsg_album_infos&quot;:[],&quot;tagSource&quot;:0}]},&quot;digest&quot;:&quot;Kimi K3 的 1M 上下文为什么不能只靠堆显存？用 KDA 拆解线性注意力如何处理长历史，以及为什么模型仍要保留全局注意力。&quot;,&quot;open_fansmsg&quot;:0,&quot;is_cooling_article&quot;:0,&quot;pic_cdn_url_235_1&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/sz_mmbiz_jpg\\/SXKlAlYL8hHMXAdWNVyebLZiavE3jKALempkDUckI2bQlJyu0SwXB28O4G4YCYReIyAU3lFATzaFpEU9ONWB6HiazsxTabibGvl50qNouxMaZo\\/0?wx_fmt=jpeg&quot;,&quot;pic_cdn_url_16_9&quot;:&quot;&quot;,&quot;disable_recommend&quot;:0,&quot;line_info&quot;:{&quot;use_line&quot;:1,&quot;line_count&quot;:0,&quot;send_time&quot;:1784502633,&quot;is_appmsg_flag&quot;:1,&quot;is_use_flag&quot;:0},&quot;claim_source_type&quot;:0,&quot;share_num&quot;:14,&quot;is_rumor_refutation&quot;:0,&quot;segment_comment_id&quot;:&quot;4612218328001118208&quot;,&quot;is_segment_comment_enable&quot;:true,&quot;multi_picture_cover&quot;:0,&quot;share_imageinfo&quot;:[],&quot;moment_like_num&quot;:0,&quot;item_show_type&quot;:0,&quot;claim_source&quot;:{&quot;is_user_no_claim_source&quot;:1},&quot;ad_info&quot;:{&quot;has_agreement_ad&quot;:0,&quot;is_recruit_agreement_ad&quot;:0},&quot;audio_in_appmsg&quot;:[],&quot;modify_wording&quot;:&quot;还可以修改3次&quot;,&quot;can_modify&quot;:1,&quot;modify_detail_wording&quot;:[],&quot;appmsg_modified&quot;:0,&quot;total_comment_count_contains_reply&quot;:2,&quot;location_page_show&quot;:0,&quot;can_location_page_show&quot;:0,&quot;remain_modify_count&quot;:3}],&quot;appmsgex&quot;:[],&quot;copy_type&quot;:77,&quot;copy_appmsg_id&quot;:100000847,&quot;new_publish&quot;:0,&quot;publish_type&quot;:101,&quot;batch_members&quot;:[]}"
+      "batch_members": [],
+      "view": {
+        "isFirst": false,
+        "isApi": false,
+        "sourceType": 1,
+        "reviewOverTime": false,
+        "mallEditWording": "修改",
+        "isMallActivityDraft": false,
+        "showArticleToImageTips": false,
+        "time": "07月25日",
+        "hasHistory": false,
+        "publishDate": "2026-07-25",
+        "isGoToDataPage": true,
+        "dataPageWording": "发表数据",
+        "isFromApp": 0,
+        "status": "已发表"
+      },
+      "resendPopShow": false
     },
     {
+      "type": 9,
+      "msgid": 1000000032,
+      "sent_info": {
+        "time": 1784895925,
+        "func_flag": 32770,
+        "is_send_all": true,
+        "is_published": 0,
+        "func_flag2": 0
+      },
+      "sent_status": {
+        "total": 269,
+        "succ": 269,
+        "fail": 0,
+        "progress": 100,
+        "userprotect": 0
+      },
+      "sent_result": {
+        "msg_status": 2,
+        "refuse_reason": "",
+        "reject_index_list": [],
+        "update_time": 1784895963
+      },
+      "appmsg_info": [
+        {
+          "share_type": 0,
+          "appmsgid": 2247484615,
+          "content_url": "https://mp.weixin.qq.com/s/v-SBuMTbMANSTxHj7gYDkg",
+          "title": "归一化为什么总在前面？61层模型靠它不崩",
+          "is_deleted": false,
+          "copyright_status": 11,
+          "copyright_type": 1,
+          "read_num": 65,
+          "like_num": 4,
+          "comment_id": "4618828848716152835",
+          "is_comment_enable": true,
+          "comment_num": 1,
+          "reward_money": "0.00",
+          "reprint_num": 0,
+          "vote_id": [],
+          "super_vote_id": [],
+          "cover": "https://mmbiz.qpic.cn/sz_mmbiz_jpg/SXKlAlYL8hGk70riaSSh1rFB61LmeYjHEnpwNVfW5nBRAicMPNjHMcicqI3a6Jqiadp20yoibs3mic8ia5ktTqicWJvcVJmccsN8jx5GfLLiaSIxjhao/0?wx_fmt=jpeg",
+          "smart_product": 0,
+          "modify_status": 1,
+          "appmsg_like_type": 2,
+          "can_delete_status": 0,
+          "old_like_num": 11,
+          "itemidx": 1,
+          "is_pay_subscribe": 0,
+          "is_from_transfer": 0,
+          "public_tag_info": {
+            "public_tag_list": [],
+            "modify_times": 0,
+            "init_tag_list_size": 0
+          },
+          "appmsg_album_info": {
+            "id": "4597831652025925632",
+            "title": "大语言模型原理",
+            "album_id": 4597831652025925600,
+            "appmsg_album_infos": [
+              {
+                "id": "4597831652025925632",
+                "title": "大语言模型原理",
+                "album_id": 4597831652025925600,
+                "appmsg_album_infos": [],
+                "tagSource": 0
+              }
+            ]
+          },
+          "digest": "归一化为什么放在残差连接前？从&nbsp;LayerNorm&nbsp;到&nbsp;RMSNorm，看&nbsp;Pre-Norm&nbsp;如何稳定&nbsp;Transformer&nbsp;的激活尺度，并读懂&nbsp;61&nbsp;层&nbsp;DeepSeek-V4-Pro&nbsp;的真实结构。",
+          "open_fansmsg": 0,
+          "is_cooling_article": 0,
+          "pic_cdn_url_235_1": "https://mmbiz.qpic.cn/sz_mmbiz_jpg/SXKlAlYL8hEXodOBss4IPniasWTLnL7lzylL0ibNm3NvE2P2zDzoc6z0x2Kj2gS6xYe3enchQjmmOfcKjMo1f1aicFZ1a0yNtb4uOc1SkZBk0A/0?wx_fmt=jpeg",
+          "pic_cdn_url_16_9": "",
+          "disable_recommend": 0,
+          "line_info": {
+            "use_line": 1,
+            "line_count": 0,
+            "send_time": 1784895959,
+            "is_appmsg_flag": 1,
+            "is_use_flag": 0
+          },
+          "claim_source_type": 0,
+          "share_num": 11,
+          "is_rumor_refutation": 0,
+          "segment_comment_id": "4618828861617831937",
+          "is_segment_comment_enable": true,
+          "multi_picture_cover": 0,
+          "share_imageinfo": [],
+          "moment_like_num": 0,
+          "item_show_type": 0,
+          "claim_source": {
+            "is_user_no_claim_source": 1
+          },
+          "ad_info": {
+            "has_agreement_ad": 0,
+            "is_recruit_agreement_ad": 0
+          },
+          "audio_in_appmsg": [],
+          "modify_wording": "还可以修改3次",
+          "can_modify": 1,
+          "modify_detail_wording": [],
+          "appmsg_modified": 0,
+          "total_comment_count_contains_reply": 2,
+          "location_page_show": 0,
+          "can_location_page_show": 0,
+          "remain_modify_count": 3,
+          "isXssEncoded": true,
+          "i": 0,
+          "commentPopShow": false,
+          "delPopShow": false,
+          "undelShow": false,
+          "delWording": "删除后用户将无法访问此页面，确定删除？该操作只能删除历史消息中的记录，不能删除已经成功发送到用户的消息。",
+          "msgid": 1000000032,
+          "modifyFormatTime": "",
+          "deleteFormatTime": ""
+        }
+      ],
+      "appmsgex": [],
+      "copy_type": 77,
+      "copy_appmsg_id": 100000966,
+      "new_publish": 0,
       "publish_type": 101,
-      "publish_info": "{&quot;type&quot;:9,&quot;msgid&quot;:1000000024,&quot;sent_info&quot;:{&quot;time&quot;:1784360058,&quot;func_flag&quot;:32770,&quot;is_send_all&quot;:true,&quot;is_published&quot;:0,&quot;func_flag2&quot;:0},&quot;sent_status&quot;:{&quot;total&quot;:223,&quot;succ&quot;:223,&quot;fail&quot;:0,&quot;progress&quot;:100,&quot;userprotect&quot;:0},&quot;sent_result&quot;:{&quot;msg_status&quot;:2,&quot;refuse_reason&quot;:&quot;&quot;,&quot;reject_index_list&quot;:[],&quot;update_time&quot;:1784360088},&quot;appmsg_info&quot;:[{&quot;share_type&quot;:0,&quot;appmsgid&quot;:2247484439,&quot;content_url&quot;:&quot;https:\\/\\/mp.weixin.qq.com\\/s\\/KrilwX6VRjI9KfjvD7C6kw&quot;,&quot;title&quot;:&quot;注意力机制是什么？别再当数据库查询&quot;,&quot;is_deleted&quot;:false,&quot;copyright_status&quot;:11,&quot;copyright_type&quot;:1,&quot;read_num&quot;:99,&quot;like_num&quot;:3,&quot;comment_id&quot;:&quot;4609838485129232385&quot;,&quot;is_comment_enable&quot;:true,&quot;comment_num&quot;:4,&quot;reward_money&quot;:&quot;5.00&quot;,&quot;reprint_num&quot;:0,&quot;vote_id&quot;:[],&quot;super_vote_id&quot;:[],&quot;cover&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/sz_mmbiz_jpg\\/SXKlAlYL8hFln5BmibdkibDGaldLIr4S5oib7WQqquibVke5P23uMZU07iakd4fyC2iaUbcibr2mNpkM9Oul6WFBgosvic4VOrQR6J1pKAk8nXrpfOU\\/0?wx_fmt=jpeg&quot;,&quot;smart_product&quot;:0,&quot;modify_status&quot;:1,&quot;appmsg_like_type&quot;:2,&quot;can_delete_status&quot;:0,&quot;old_like_num&quot;:13,&quot;itemidx&quot;:1,&quot;is_pay_subscribe&quot;:0,&quot;is_from_transfer&quot;:0,&quot;public_tag_info&quot;:{&quot;public_tag_list&quot;:[],&quot;modify_times&quot;:0,&quot;init_tag_list_size&quot;:0},&quot;appmsg_album_info&quot;:{&quot;id&quot;:&quot;4597831652025925632&quot;,&quot;title&quot;:&quot;大语言模型原理&quot;,&quot;album_id&quot;:4597831652025925632,&quot;appmsg_album_infos&quot;:[{&quot;id&quot;:&quot;4597831652025925632&quot;,&quot;title&quot;:&quot;大语言模型原理&quot;,&quot;album_id&quot;:4597831652025925632,&quot;appmsg_album_infos&quot;:[],&quot;tagSource&quot;:0}]},&quot;digest&quot;:&quot;注意力机制是什么？用 QKV 讲清自注意力、因果注意力和 softmax 加权汇总，看懂模型如何从上下文取信息。&quot;,&quot;open_fansmsg&quot;:0,&quot;is_cooling_article&quot;:0,&quot;pic_cdn_url_235_1&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/sz_mmbiz_jpg\\/SXKlAlYL8hG4a2PSiaiaK14sBJmRgVLLu1el7tREHpCusX8uRYJN3iaAuIs5txwDnDmiajTGBPce3WgH34QokSibVHcZQQfLpfYL8wbYiax5p5AJc\\/0?wx_fmt=jpeg&quot;,&quot;pic_cdn_url_16_9&quot;:&quot;&quot;,&quot;disable_recommend&quot;:0,&quot;line_info&quot;:{&quot;use_line&quot;:1,&quot;line_count&quot;:0,&quot;send_time&quot;:1784360084,&quot;is_appmsg_flag&quot;:1,&quot;is_use_flag&quot;:0},&quot;claim_source_type&quot;:0,&quot;share_num&quot;:23,&quot;is_rumor_refutation&quot;:0,&quot;segment_comment_id&quot;:&quot;4609838497896693764&quot;,&quot;is_segment_comment_enable&quot;:true,&quot;multi_picture_cover&quot;:0,&quot;share_imageinfo&quot;:[],&quot;moment_like_num&quot;:0,&quot;item_show_type&quot;:0,&quot;claim_source&quot;:{&quot;is_user_no_claim_source&quot;:1},&quot;ad_info&quot;:{&quot;has_agreement_ad&quot;:0,&quot;is_recruit_agreement_ad&quot;:0},&quot;audio_in_appmsg&quot;:[],&quot;modify_wording&quot;:&quot;还可以修改3次&quot;,&quot;can_modify&quot;:1,&quot;modify_detail_wording&quot;:[],&quot;appmsg_modified&quot;:0,&quot;total_comment_count_contains_reply&quot;:7,&quot;location_page_show&quot;:0,&quot;can_location_page_show&quot;:0,&quot;remain_modify_count&quot;:3}],&quot;appmsgex&quot;:[],&quot;copy_type&quot;:77,&quot;copy_appmsg_id&quot;:100000761,&quot;new_publish&quot;:0,&quot;publish_type&quot;:101,&quot;batch_members&quot;:[]}"
+      "batch_members": [],
+      "view": {
+        "isFirst": false,
+        "isApi": false,
+        "sourceType": 1,
+        "reviewOverTime": false,
+        "mallEditWording": "修改",
+        "isMallActivityDraft": false,
+        "showArticleToImageTips": false,
+        "time": "07月24日",
+        "hasHistory": false,
+        "publishDate": "2026-07-24",
+        "isGoToDataPage": true,
+        "dataPageWording": "发表数据",
+        "isFromApp": 0,
+        "status": "已发表"
+      },
+      "resendPopShow": false
     },
     {
-      "publish_type": 101,
-      "publish_info": "{&quot;type&quot;:9,&quot;msgid&quot;:1000000022,&quot;sent_info&quot;:{&quot;time&quot;:1784243100,&quot;func_flag&quot;:134250498,&quot;is_send_all&quot;:true,&quot;is_published&quot;:0,&quot;func_flag2&quot;:0},&quot;sent_status&quot;:{&quot;total&quot;:215,&quot;succ&quot;:215,&quot;fail&quot;:0,&quot;progress&quot;:100,&quot;userprotect&quot;:0},&quot;sent_result&quot;:{&quot;msg_status&quot;:2,&quot;refuse_reason&quot;:&quot;&quot;,&quot;reject_index_list&quot;:[],&quot;update_time&quot;:1784243153},&quot;appmsg_info&quot;:[{&quot;share_type&quot;:0,&quot;appmsgid&quot;:2247484405,&quot;content_url&quot;:&quot;https:\\/\\/mp.weixin.qq.com\\/s\\/4nO2VqQLaYxGdDmtQeypCQ&quot;,&quot;title&quot;:&quot;位置编码怎么工作？词序一错意思全变&quot;,&quot;is_deleted&quot;:false,&quot;copyright_status&quot;:11,&quot;copyright_type&quot;:1,&quot;read_num&quot;:84,&quot;like_num&quot;:1,&quot;comment_id&quot;:&quot;4607786765310066688&quot;,&quot;is_comment_enable&quot;:true,&quot;comment_num&quot;:1,&quot;reward_money&quot;:&quot;1.00&quot;,&quot;reprint_num&quot;:0,&quot;vote_id&quot;:[],&quot;super_vote_id&quot;:[],&quot;cover&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/mmbiz_jpg\\/SXKlAlYL8hEZYmVlPHKgcSdd7Jljz2raCn1sUicyo5uyePk9ILmb2N5D3QL0zcXKlZuv1UzoZeVKoAWEJyPSAL1mibdD5V7Q9icnqLoe3hsvvU\\/0?wx_fmt=jpeg&quot;,&quot;smart_product&quot;:0,&quot;modify_status&quot;:1,&quot;appmsg_like_type&quot;:2,&quot;can_delete_status&quot;:0,&quot;old_like_num&quot;:6,&quot;itemidx&quot;:1,&quot;is_pay_subscribe&quot;:0,&quot;is_from_transfer&quot;:0,&quot;public_tag_info&quot;:{&quot;public_tag_list&quot;:[],&quot;modify_times&quot;:0,&quot;init_tag_list_size&quot;:0},&quot;appmsg_album_info&quot;:{&quot;id&quot;:&quot;4597831652025925632&quot;,&quot;title&quot;:&quot;大语言模型原理&quot;,&quot;album_id&quot;:4597831652025925632,&quot;appmsg_album_infos&quot;:[{&quot;id&quot;:&quot;4597831652025925632&quot;,&quot;title&quot;:&quot;大语言模型原理&quot;,&quot;album_id&quot;:4597831652025925632,&quot;appmsg_album_infos&quot;:[],&quot;tagSource&quot;:0}]},&quot;digest&quot;:&quot;位置编码是什么？Transformer如何知道词序：正弦编码到RoPE，相对距离怎么进注意力。&quot;,&quot;open_fansmsg&quot;:0,&quot;is_cooling_article&quot;:0,&quot;pic_cdn_url_235_1&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/mmbiz_jpg\\/SXKlAlYL8hHHtryQHia99uw4FflVLQtHiaEMTIBcjLgfJNKGWhvaZwlH6RZLeR7ibicClR0Otuua3HdLCSISKz4u563E7gNJgnRicmAlFNiaQ8akA\\/0?wx_fmt=jpeg&quot;,&quot;pic_cdn_url_16_9&quot;:&quot;&quot;,&quot;disable_recommend&quot;:0,&quot;line_info&quot;:{&quot;use_line&quot;:1,&quot;line_count&quot;:0,&quot;send_time&quot;:1784243150,&quot;is_appmsg_flag&quot;:1,&quot;is_use_flag&quot;:0},&quot;claim_source_type&quot;:0,&quot;share_num&quot;:8,&quot;is_rumor_refutation&quot;:0,&quot;segment_comment_id&quot;:&quot;4607786779570700289&quot;,&quot;is_segment_comment_enable&quot;:true,&quot;multi_picture_cover&quot;:0,&quot;share_imageinfo&quot;:[],&quot;moment_like_num&quot;:0,&quot;item_show_type&quot;:0,&quot;claim_source&quot;:{&quot;is_user_no_claim_source&quot;:1},&quot;ad_info&quot;:{&quot;has_agreement_ad&quot;:0,&quot;is_recruit_agreement_ad&quot;:0},&quot;audio_in_appmsg&quot;:[],&quot;modify_wording&quot;:&quot;还可以修改3次&quot;,&quot;can_modify&quot;:1,&quot;modify_detail_wording&quot;:[],&quot;appmsg_modified&quot;:0,&quot;total_comment_count_contains_reply&quot;:3,&quot;location_page_show&quot;:0,&quot;can_location_page_show&quot;:0,&quot;remain_modify_count&quot;:3}],&quot;appmsgex&quot;:[],&quot;copy_type&quot;:77,&quot;copy_appmsg_id&quot;:100000756,&quot;new_publish&quot;:0,&quot;publish_type&quot;:101,&quot;batch_members&quot;:[]}"
-    },
-    {
-      "publish_type": 101,
-      "publish_info": "{&quot;type&quot;:9,&quot;msgid&quot;:1000000021,&quot;sent_info&quot;:{&quot;time&quot;:1784084700,&quot;func_flag&quot;:134250498,&quot;is_send_all&quot;:true,&quot;is_published&quot;:0,&quot;func_flag2&quot;:0},&quot;sent_status&quot;:{&quot;total&quot;:185,&quot;succ&quot;:185,&quot;fail&quot;:0,&quot;progress&quot;:100,&quot;userprotect&quot;:0},&quot;sent_result&quot;:{&quot;msg_status&quot;:2,&quot;refuse_reason&quot;:&quot;&quot;,&quot;reject_index_list&quot;:[],&quot;update_time&quot;:1784084751},&quot;appmsg_info&quot;:[{&quot;share_type&quot;:0,&quot;appmsgid&quot;:2247484367,&quot;content_url&quot;:&quot;https:\\/\\/mp.weixin.qq.com\\/s\\/rDryn1z_hLt7mwi3X8fsxQ&quot;,&quot;title&quot;:&quot;词嵌入为什么让AI懂\\&quot;苹果\\&quot;？5万个0变坐标&quot;,&quot;is_deleted&quot;:false,&quot;copyright_status&quot;:11,&quot;copyright_type&quot;:1,&quot;read_num&quot;:43,&quot;like_num&quot;:4,&quot;comment_id&quot;:&quot;4604948633472565249&quot;,&quot;is_comment_enable&quot;:true,&quot;comment_num&quot;:2,&quot;reward_money&quot;:&quot;0.00&quot;,&quot;reprint_num&quot;:0,&quot;vote_id&quot;:[],&quot;super_vote_id&quot;:[],&quot;cover&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/sz_mmbiz_jpg\\/SXKlAlYL8hFsXSRKicgR3F62OC79uE2WQSIJjDAiasFJReAJKhS5qicyG5QHkaPMntHxOmnYogJ44TvtibJNyR99ymuLWfrxl35jacwfYwftv5I\\/0?wx_fmt=jpeg&quot;,&quot;smart_product&quot;:0,&quot;modify_status&quot;:1,&quot;appmsg_like_type&quot;:2,&quot;can_delete_status&quot;:0,&quot;old_like_num&quot;:10,&quot;itemidx&quot;:1,&quot;is_pay_subscribe&quot;:0,&quot;is_from_transfer&quot;:0,&quot;public_tag_info&quot;:{&quot;public_tag_list&quot;:[],&quot;modify_times&quot;:0,&quot;init_tag_list_size&quot;:0},&quot;appmsg_album_info&quot;:{&quot;id&quot;:&quot;4597831652025925632&quot;,&quot;title&quot;:&quot;大语言模型原理&quot;,&quot;album_id&quot;:4597831652025925632,&quot;appmsg_album_infos&quot;:[{&quot;id&quot;:&quot;4597831652025925632&quot;,&quot;title&quot;:&quot;大语言模型原理&quot;,&quot;album_id&quot;:4597831652025925632,&quot;appmsg_album_infos&quot;:[],&quot;tagSource&quot;:0}]},&quot;digest&quot;:&quot;词嵌入为什么能让AI懂语义？token ID如何变成坐标：one-hot、嵌入矩阵、余弦相似度一次讲清。&quot;,&quot;open_fansmsg&quot;:0,&quot;is_cooling_article&quot;:0,&quot;pic_cdn_url_235_1&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/mmbiz_jpg\\/SXKlAlYL8hGmHUiavk4C2TKvll3fiagLpZaagzmw3uHrSnwhEN3V86M2V6z42CcysSLA4MJ9G9E9Aas0CEhpF2luywOK0wIa2AQNzoiaVLt9r0\\/0?wx_fmt=jpeg&quot;,&quot;pic_cdn_url_16_9&quot;:&quot;&quot;,&quot;disable_recommend&quot;:0,&quot;line_info&quot;:{&quot;use_line&quot;:1,&quot;line_count&quot;:0,&quot;send_time&quot;:1784084748,&quot;is_appmsg_flag&quot;:1,&quot;is_use_flag&quot;:0},&quot;claim_source_type&quot;:0,&quot;share_num&quot;:5,&quot;is_rumor_refutation&quot;:0,&quot;segment_comment_id&quot;:&quot;4604948649327034369&quot;,&quot;is_segment_comment_enable&quot;:true,&quot;multi_picture_cover&quot;:0,&quot;share_imageinfo&quot;:[],&quot;moment_like_num&quot;:0,&quot;item_show_type&quot;:0,&quot;claim_source&quot;:{&quot;is_user_no_claim_source&quot;:1},&quot;ad_info&quot;:{&quot;has_agreement_ad&quot;:0,&quot;is_recruit_agreement_ad&quot;:0},&quot;audio_in_appmsg&quot;:[],&quot;modify_wording&quot;:&quot;还可以修改3次&quot;,&quot;can_modify&quot;:1,&quot;modify_detail_wording&quot;:[],&quot;appmsg_modified&quot;:0,&quot;total_comment_count_contains_reply&quot;:4,&quot;location_page_show&quot;:0,&quot;can_location_page_show&quot;:0,&quot;remain_modify_count&quot;:3}],&quot;appmsgex&quot;:[],&quot;copy_type&quot;:77,&quot;copy_appmsg_id&quot;:100000718,&quot;new_publish&quot;:0,&quot;publish_type&quot;:101,&quot;batch_members&quot;:[]}"
-    },
-    {
+      "type": 10002,
+      "msgid": 2247484569,
+      "sent_result": {
+        "reject_index_list": []
+      },
+      "appmsg_info": [
+        {
+          "share_type": 8,
+          "appmsgid": 2247484569,
+          "content_url": "https://mp.weixin.qq.com/s/pM2OylOxhnxl5oEyys6Qug",
+          "title": "菲尔兹奖第一次落到本土成长的数学家头上",
+          "is_deleted": false,
+          "copyright_status": 100,
+          "copyright_type": 0,
+          "read_num": 58,
+          "like_num": 4,
+          "comment_id": "4617506568358690819",
+          "is_comment_enable": true,
+          "comment_num": 3,
+          "vote_id": [],
+          "super_vote_id": [],
+          "cover": "https://mmbiz.qpic.cn/mmbiz_jpg/SXKlAlYL8hHX8ZmN0ib3kTZL4WFW3VUX318vTwcCFeENI8a4OJWzrcz3YhukKIUchsq14Vg0WQHGV5PEVIRPJHtWUpQ9cElNmH729n3ibwhm8/0?wx_fmt=jpeg",
+          "smart_product": 0,
+          "modify_status": 1,
+          "appmsg_like_type": 2,
+          "can_delete_status": 0,
+          "old_like_num": 8,
+          "itemidx": 1,
+          "is_pay_subscribe": 0,
+          "is_from_transfer": 0,
+          "public_tag_info": {
+            "public_tag_list": [],
+            "modify_times": 0,
+            "init_tag_list_size": 0
+          },
+          "appmsg_album_info": {
+            "id": "4640284379167162368",
+            "title": "数学",
+            "album_id": 4640284379167162000,
+            "appmsg_album_infos": [
+              {
+                "id": "4640284379167162368",
+                "title": "数学",
+                "album_id": 4640284379167162000,
+                "appmsg_album_infos": [],
+                "tagSource": 0
+              }
+            ]
+          },
+          "digest": "菲尔兹奖四年一次，只颁给这个世界上最为聪明的数学家，获奖者只要在颁奖的时候，年满四十岁就会自动失去获奖资格。所以这个奖项也是属于极少数天才的殊荣。\n\n之前能得到这个荣誉的，只有哈佛归来的丘成桐大师。\n\n当年在计算数学专业读数学课的时候，老师们瞎调侃就说，谁要能获得菲尔兹奖那就厉害了，不过显然中国人不可能获得。\n\n没想到这么快就看到了，并且还是双黄蛋，太激动人心了。",
+          "is_cooling_article": 0,
+          "pic_cdn_url_235_1": "",
+          "pic_cdn_url_16_9": "http://mmbiz.qpic.cn/sz_mmbiz_jpg/SXKlAlYL8hFLLawic3BXVbSRWeCYialYO0kA11jgtSK0TfjibAtwnJ7OdRea2oIicfibgRF24Ms32v3GNSltSSOOaPbcshGI6ltbx7LyZ4FAQ4EI/0?wx_fmt=jpeg",
+          "pic_cdn_url_3_4": "http://mmbiz.qpic.cn/mmbiz_jpg/SXKlAlYL8hFy3MxvfdwUFoW9ShibYm3lWJwFdibP0C9MMW9PnYFunibwnjdicueiavwiaGAsbREtjXRn5XoibjM1TmRSyws6LYJMibziarXMppgSZbibM/0?wx_fmt=jpeg",
+          "pic_cdn_url_1_1": "http://mmbiz.qpic.cn/mmbiz_jpg/SXKlAlYL8hHX8ZmN0ib3kTZL4WFW3VUX318vTwcCFeENI8a4OJWzrcz3YhukKIUchsq14Vg0WQHGV5PEVIRPJHtWUpQ9cElNmH729n3ibwhm8/0?wx_fmt=jpeg",
+          "disable_recommend": 0,
+          "line_info": {
+            "use_line": 1,
+            "line_count": 0,
+            "send_time": 1784817110,
+            "is_appmsg_flag": 1,
+            "is_use_flag": 0
+          },
+          "claim_source_type": 0,
+          "share_num": 1,
+          "is_rumor_refutation": 0,
+          "segment_comment_id": "4617506575036022786",
+          "is_segment_comment_enable": true,
+          "multi_picture_cover": 0,
+          "share_imageinfo": [
+            {
+              "file_id": 100000916,
+              "cdn_url": "https://mmbiz.qpic.cn/sz_mmbiz_jpg/SXKlAlYL8hGjdI7Fzia7MEeDVM7vqRlrnsQTuES7bcchgobJ9MJgs5D9X243GIYTUVcgyu5GQeYx8F7OXFF1c4J3KEUj76VmEHdicIArD8vTs/0?wx_fmt=jpeg",
+              "width": 716,
+              "height": 1024,
+              "cover_url": "https://mmbiz.qpic.cn/sz_mmbiz_jpg/SXKlAlYL8hGjdI7Fzia7MEeDVM7vqRlrnsQTuES7bcchgobJ9MJgs5D9X243GIYTUVcgyu5GQeYx8F7OXFF1c4J3KEUj76VmEHdicIArD8vTs/0?wx_fmt=jpeg",
+              "pic_type": 0,
+              "pic_text": "",
+              "pic_cfg": "",
+              "theme_color": {
+                "r": 6,
+                "g": 13,
+                "b": 34
+              },
+              "cal_version": 7,
+              "ori_picture": {
+                "file_id": 0,
+                "cdn_url": "",
+                "width": 0,
+                "height": 0,
+                "crop_ratio": "",
+                "crop_list": "{}"
+              },
+              "format_info": {
+                "format": "jpeg",
+                "frame": 1,
+                "channel": 3,
+                "opacity": 100,
+                "thumbnail": [
+                  {
+                    "format": 0,
+                    "file_size": 128477,
+                    "width": 716,
+                    "height": 1024
+                  },
+                  {
+                    "format": 640,
+                    "file_size": 126041,
+                    "width": 716,
+                    "height": 1024
+                  },
+                  {
+                    "format": 300,
+                    "file_size": 5414,
+                    "width": 105,
+                    "height": 150
+                  }
+                ]
+              },
+              "poi_info": [],
+              "wxa_info": [],
+              "disable_theme": 1,
+              "bind_ad_info": [],
+              "cps_ad_info": [],
+              "pic_window_product": {
+                "product_encrypt_key": "",
+                "product_type": 0,
+                "title": "",
+                "data_type": 0,
+                "product_id": ""
+              },
+              "spot_product_info": [],
+              "watermark_info": {
+                "cdn_url": "http://mmbiz.qpic.cn/sz_mmbiz_jpg/SXKlAlYL8hGxibA3T9PicCtic6E5bgcjO1VV4NbD2pdcTI753g2VdYu2FiaCic77f8icib2J9I5UQ1FvX6v2jGRAaT1GzzoXiatveVhOUWWsq8Qsa0A/0?wx_fmt=jpeg",
+                "type": 2,
+                "bizuin": 3923428115,
+                "nickname": "数解AI",
+                "is_ai_pic": false,
+                "watermark_region_lightness": 0.0978881269693
+              },
+              "ai_pic_id": "",
+              "copy_info": {
+                "cdn_url": "http://318.wxapp.tc.qq.com/318/20304/stodownload?m=d78092742732eedb24f83b0f7d146025&filekey=080310b9990818be02220253482a10d78092742732eedb24f83b0f7d146025&hy=SH&storeid=26a6224b90001e3dae9dac3130000013e00004f5053482d92b1f156ae91cf8&bizid=1023"
+              },
+              "client_info": {
+                "pic_id": "b82066e8-3122-40f8-99b9-0d983d1be863",
+                "associated_info": {
+                  "pic_id": "",
+                  "cdn_url": "",
+                  "file_id": 0,
+                  "type": 0,
+                  "image_template": "",
+                  "text_poster_prompt": "",
+                  "text_poster_style": "",
+                  "text_poster_data_buf": "",
+                  "text_poster_template_id": ""
+                },
+                "origin_image_has_edited": 0
+              },
+              "share_cover": {
+                "file_id": 100000919,
+                "width": 716,
+                "height": 955,
+                "cdn_url": "https://mmbiz.qpic.cn/mmbiz_jpg/SXKlAlYL8hEDaotwadcgyhkOcwuefibpuibLMvlEd5XEgCztuyuPEobMyrqGE5M2R4e9wRRlfBqnxUF8V138Y81hzjccEtZoBze5UHyVfGU7E/0?wx_fmt=jpeg",
+                "crop_info": "{\"ori_url\":\"http://318.wxapp.tc.qq.com/318/20304/stodownload?m=d78092742732eedb24f83b0f7d146025&filekey=080310b9990818be02220253482a10d78092742732eedb24f83b0f7d146025&hy=SH&storeid=26a6224b90001e3dae9dac3130000013e00004f5053482d92b1f156ae91cf8&bizid=1023\",\"x1\":0.000000000,\"y1\":0.033854157,\"x2\":1.000000000,\"y2\":0.966145873}"
+              },
+              "ai_pic_source": 0,
+              "ai_pic_prompt": "",
+              "original_info": {
+                "show_original": true,
+                "cdn_url": "http://318.wxapp.tc.qq.com/318/20304/stodownload?m=d78092742732eedb24f83b0f7d146025&filekey=080310b9990818be02220253482a10d78092742732eedb24f83b0f7d146025&hy=SH&storeid=26a6224b90001e3dae9dac3130000013e00004f5053482d92b1f156ae91cf8&bizid=1023",
+                "file_size": 134329
+              }
+            }
+          ],
+          "moment_like_num": 0,
+          "item_show_type": 8,
+          "ad_info": {
+            "has_agreement_ad": 0,
+            "is_recruit_agreement_ad": 0
+          },
+          "audio_in_appmsg": [],
+          "modify_wording": "还可以修改3次",
+          "can_modify": 1,
+          "private_info": {
+            "private_type": 1,
+            "update_time": 1788851562
+          },
+          "modify_detail_wording": [],
+          "appmsg_modified": 0,
+          "total_comment_count_contains_reply": 4,
+          "location_page_show": 0,
+          "can_location_page_show": 0,
+          "remain_modify_count": 3,
+          "isXssEncoded": true,
+          "i": 0,
+          "commentPopShow": false,
+          "delPopShow": false,
+          "undelShow": false,
+          "delWording": "",
+          "msgid": 2247484569,
+          "modifyFormatTime": "",
+          "deleteFormatTime": ""
+        }
+      ],
+      "publish_info": {
+        "bizuin": 3923428115,
+        "msgid": 2247484569,
+        "draft_msgid": 100000922,
+        "publish_type": 1,
+        "publish_src": 3,
+        "publish_status": 200,
+        "create_time": 1784817110,
+        "update_time": 1784817118,
+        "check_results": [],
+        "show_types": [
+          8
+        ],
+        "index_count": 1,
+        "xa_check_items": [
+          {
+            "idx": 1,
+            "status": 2,
+            "rescode": 100
+          }
+        ],
+        "original_check_type": 2,
+        "normal_check_results": [],
+        "in_profile": 1,
+        "pre_publish_status": [],
+        "refutation_audit_info": [],
+        "service_type": 1,
+        "item_show_types": [
+          8
+        ],
+        "batch_members": []
+      },
+      "appmsgex": [],
+      "copy_appmsg_id": 100000922,
+      "new_publish": 1,
       "publish_type": 1,
-      "publish_info": "{&quot;type&quot;:10002,&quot;msgid&quot;:2247484313,&quot;sent_result&quot;:{&quot;reject_index_list&quot;:[]},&quot;appmsg_info&quot;:[{&quot;share_type&quot;:0,&quot;appmsgid&quot;:2247484313,&quot;content_url&quot;:&quot;https:\\/\\/mp.weixin.qq.com\\/s\\/5nR_KI47v_U8KwpQA4Uv5Q&quot;,&quot;title&quot;:&quot;BPE分词：AI为什么把文字切成碎片？&quot;,&quot;is_deleted&quot;:false,&quot;copyright_status&quot;:11,&quot;copyright_type&quot;:1,&quot;read_num&quot;:132,&quot;like_num&quot;:18,&quot;comment_id&quot;:&quot;4602324128577191937&quot;,&quot;is_comment_enable&quot;:true,&quot;comment_num&quot;:10,&quot;reward_money&quot;:&quot;0.00&quot;,&quot;reprint_num&quot;:0,&quot;vote_id&quot;:[],&quot;super_vote_id&quot;:[],&quot;cover&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/sz_mmbiz_jpg\\/SXKlAlYL8hHuOTStfb3L2eBibhtPbky0MiaRIrODKQaqwG4ox9k7aAIofBh3jn95UX5KbhAgQaD9ZBgP3gaiaCJDxkIKtgBztiasSibg1xeBLokU\\/0?wx_fmt=jpeg&quot;,&quot;smart_product&quot;:0,&quot;modify_status&quot;:1,&quot;appmsg_like_type&quot;:2,&quot;can_delete_status&quot;:0,&quot;old_like_num&quot;:30,&quot;itemidx&quot;:1,&quot;is_pay_subscribe&quot;:0,&quot;is_from_transfer&quot;:0,&quot;public_tag_info&quot;:{&quot;public_tag_list&quot;:[],&quot;modify_times&quot;:0,&quot;init_tag_list_size&quot;:0},&quot;appmsg_album_info&quot;:{&quot;id&quot;:&quot;4597831652025925632&quot;,&quot;title&quot;:&quot;大语言模型原理&quot;,&quot;album_id&quot;:4597831652025925632,&quot;appmsg_album_infos&quot;:[{&quot;id&quot;:&quot;4597831652025925632&quot;,&quot;title&quot;:&quot;大语言模型原理&quot;,&quot;album_id&quot;:4597831652025925632,&quot;appmsg_album_infos&quot;:[],&quot;tagSource&quot;:0}]},&quot;digest&quot;:&quot;为什么 AI 不按词读字？BPE 分词用频率统计把句子切成 token，切法直接影响上下文窗口和 API 费用。从原理到代码，一次讲懂 Tokenizer 内部机制。&quot;,&quot;is_cooling_article&quot;:0,&quot;pic_cdn_url_235_1&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/mmbiz_jpg\\/SXKlAlYL8hFWmSevYS0qxtV9GXeoW54ibvDicS9Kic3hX4A3ThMqOnCibQ6K05IvotWLjQf1U9yjoETv41AFurWzc717picoWWjxBPCAm5A9Xia0c\\/0?wx_fmt=jpeg&quot;,&quot;pic_cdn_url_16_9&quot;:&quot;&quot;,&quot;pic_cdn_url_3_4&quot;:&quot;&quot;,&quot;pic_cdn_url_1_1&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/sz_mmbiz_jpg\\/SXKlAlYL8hHuOTStfb3L2eBibhtPbky0MiaRIrODKQaqwG4ox9k7aAIofBh3jn95UX5KbhAgQaD9ZBgP3gaiaCJDxkIKtgBztiasSibg1xeBLokU\\/0?wx_fmt=jpeg&quot;,&quot;disable_recommend&quot;:0,&quot;line_info&quot;:{&quot;use_line&quot;:1,&quot;line_count&quot;:0,&quot;send_time&quot;:1783912500,&quot;is_appmsg_flag&quot;:1,&quot;is_use_flag&quot;:0},&quot;claim_source_type&quot;:0,&quot;share_num&quot;:9,&quot;is_rumor_refutation&quot;:0,&quot;segment_comment_id&quot;:&quot;4602324143072706566&quot;,&quot;is_segment_comment_enable&quot;:true,&quot;multi_picture_cover&quot;:0,&quot;share_imageinfo&quot;:[],&quot;moment_like_num&quot;:0,&quot;item_show_type&quot;:0,&quot;claim_source&quot;:{&quot;is_user_no_claim_source&quot;:1},&quot;ad_info&quot;:{&quot;has_agreement_ad&quot;:0,&quot;is_recruit_agreement_ad&quot;:0},&quot;audio_in_appmsg&quot;:[],&quot;modify_wording&quot;:&quot;还可以修改2次&quot;,&quot;can_modify&quot;:1,&quot;modify_detail_wording&quot;:[&quot;第1次修改 2026年07月14日 12时21分 闫飞&quot;],&quot;appmsg_modified&quot;:1,&quot;total_comment_count_contains_reply&quot;:18,&quot;location_page_show&quot;:0,&quot;can_location_page_show&quot;:0,&quot;remain_modify_count&quot;:2}],&quot;publish_info&quot;:{&quot;bizuin&quot;:3923428115,&quot;msgid&quot;:2247484313,&quot;draft_msgid&quot;:100000664,&quot;publish_type&quot;:1,&quot;publish_src&quot;:1,&quot;publish_status&quot;:200,&quot;create_time&quot;:1783912500,&quot;update_time&quot;:1783912500,&quot;check_results&quot;:[],&quot;show_types&quot;:[0],&quot;index_count&quot;:1,&quot;xa_check_items&quot;:[{&quot;idx&quot;:1,&quot;status&quot;:2,&quot;rescode&quot;:100}],&quot;original_check_type&quot;:1,&quot;normal_check_results&quot;:[],&quot;timer_publish_info&quot;:{&quot;create_timer_publish_time&quot;:1783912167,&quot;store_cb&quot;:[{&quot;check_type&quot;:2,&quot;bizuin&quot;:3923428115,&quot;msgid&quot;:2247484313,&quot;check_items&quot;:[{&quot;idx&quot;:1,&quot;status&quot;:2,&quot;rescode&quot;:100}]}]},&quot;in_profile&quot;:1,&quot;pre_publish_status&quot;:[],&quot;refutation_audit_info&quot;:[],&quot;service_type&quot;:1,&quot;item_show_types&quot;:[0],&quot;batch_members&quot;:[]},&quot;appmsgex&quot;:[],&quot;copy_appmsg_id&quot;:100000664,&quot;new_publish&quot;:1,&quot;publish_type&quot;:1,&quot;batch_members&quot;:[]}"
+      "batch_members": [],
+      "view": {
+        "isFirst": false,
+        "isApi": false,
+        "sourceType": 4,
+        "reviewOverTime": false,
+        "mallEditWording": "修改",
+        "isMallActivityDraft": false,
+        "showArticleToImageTips": false,
+        "time": "07月23日",
+        "hasHistory": false,
+        "publishDate": "2026-07-23",
+        "isGoToDataPage": true,
+        "dataPageWording": "发表数据",
+        "status": "已发表",
+        "msg": "未开启群发通知，内容已在公众号主页展示"
+      },
+      "resendPopShow": false
     },
     {
+      "type": 9,
+      "msgid": 1000000030,
+      "sent_info": {
+        "time": 1784761726,
+        "func_flag": 32770,
+        "is_send_all": true,
+        "is_published": 0,
+        "func_flag2": 0
+      },
+      "sent_status": {
+        "total": 253,
+        "succ": 253,
+        "fail": 0,
+        "progress": 100,
+        "userprotect": 0
+      },
+      "sent_result": {
+        "msg_status": 2,
+        "refuse_reason": "",
+        "reject_index_list": [],
+        "update_time": 1784761756
+      },
+      "appmsg_info": [
+        {
+          "share_type": 0,
+          "appmsgid": 2247484562,
+          "content_url": "https://mp.weixin.qq.com/s/vBCzukDlQyB9O6ASgAmlvQ",
+          "title": "Attention都够了，为什么还要前馈网络？",
+          "is_deleted": false,
+          "copyright_status": 11,
+          "copyright_type": 1,
+          "read_num": 305,
+          "like_num": 3,
+          "comment_id": "4616577357116702722",
+          "is_comment_enable": true,
+          "comment_num": 2,
+          "reward_money": "0.00",
+          "reprint_num": 0,
+          "vote_id": [],
+          "super_vote_id": [],
+          "cover": "https://mmbiz.qpic.cn/mmbiz_jpg/SXKlAlYL8hEcaE2zbZLX0MG8eXktWHCj774L1uzcStoVwcTDZ0z1Hs58klbnfpbrrrdyicr4eqLjhERuFicrsl2YgCJKXRNU29qNTvyMsYvr4/0?wx_fmt=jpeg",
+          "smart_product": 0,
+          "modify_status": 1,
+          "appmsg_like_type": 2,
+          "can_delete_status": 0,
+          "old_like_num": 12,
+          "itemidx": 1,
+          "is_pay_subscribe": 0,
+          "is_from_transfer": 0,
+          "public_tag_info": {
+            "public_tag_list": [],
+            "modify_times": 0,
+            "init_tag_list_size": 0
+          },
+          "appmsg_album_info": {
+            "id": "4597831652025925632",
+            "title": "大语言模型原理",
+            "album_id": 4597831652025925600,
+            "appmsg_album_infos": [
+              {
+                "id": "4597831652025925632",
+                "title": "大语言模型原理",
+                "album_id": 4597831652025925600,
+                "appmsg_album_infos": [],
+                "tagSource": 0
+              }
+            ]
+          },
+          "digest": "Transformer&nbsp;里，前馈网络（FFN）为什么接在注意力之后？注意力把上下文汇进每个&nbsp;token，FFN&nbsp;再用&nbsp;SwiGLU&nbsp;独立扩张、筛选和投影这份表示。用一个可运行实验验证：改动一个&nbsp;token，不会穿过&nbsp;FFN&nbsp;改变另一个。",
+          "open_fansmsg": 0,
+          "is_cooling_article": 0,
+          "pic_cdn_url_235_1": "https://mmbiz.qpic.cn/mmbiz_jpg/SXKlAlYL8hFXx4XGLK1picGDtsxf3YkryWc5BMxu1KvsfjO4L3Hv6WWsGwufu1wAl0aMs5FaPyeLmcqbPEGPwT4u525MBiaUretE5M5iaKVgzw/0?wx_fmt=jpeg",
+          "pic_cdn_url_16_9": "",
+          "disable_recommend": 0,
+          "line_info": {
+            "use_line": 1,
+            "line_count": 0,
+            "send_time": 1784761753,
+            "is_appmsg_flag": 1,
+            "is_use_flag": 0
+          },
+          "claim_source_type": 0,
+          "share_num": 43,
+          "is_rumor_refutation": 0,
+          "segment_comment_id": "4616577371628994560",
+          "is_segment_comment_enable": true,
+          "multi_picture_cover": 0,
+          "share_imageinfo": [],
+          "moment_like_num": 0,
+          "item_show_type": 0,
+          "claim_source": {
+            "is_user_no_claim_source": 1
+          },
+          "ad_info": {
+            "has_agreement_ad": 0,
+            "is_recruit_agreement_ad": 0
+          },
+          "audio_in_appmsg": [],
+          "modify_wording": "还可以修改2次",
+          "can_modify": 1,
+          "modify_detail_wording": [
+            "第1次修改 2026年07月23日 07时15分 闫飞"
+          ],
+          "appmsg_modified": 1,
+          "total_comment_count_contains_reply": 7,
+          "location_page_show": 0,
+          "can_location_page_show": 0,
+          "remain_modify_count": 2,
+          "isXssEncoded": true,
+          "i": 0,
+          "commentPopShow": false,
+          "delPopShow": false,
+          "undelShow": false,
+          "delWording": "删除后用户将无法访问此页面，确定删除？该操作只能删除历史消息中的记录，不能删除已经成功发送到用户的消息。",
+          "msgid": 1000000030,
+          "modifyFormatTime": "",
+          "deleteFormatTime": ""
+        }
+      ],
+      "appmsgex": [],
+      "copy_type": 77,
+      "copy_appmsg_id": 100000913,
+      "new_publish": 0,
       "publish_type": 101,
-      "publish_info": "{&quot;type&quot;:9,&quot;msgid&quot;:1000000019,&quot;sent_info&quot;:{&quot;time&quot;:1783911720,&quot;func_flag&quot;:134250498,&quot;is_send_all&quot;:true,&quot;is_published&quot;:0,&quot;func_flag2&quot;:0},&quot;sent_status&quot;:{&quot;total&quot;:148,&quot;succ&quot;:148,&quot;fail&quot;:0,&quot;progress&quot;:100,&quot;userprotect&quot;:0},&quot;sent_result&quot;:{&quot;msg_status&quot;:7,&quot;refuse_reason&quot;:&quot;&quot;,&quot;reject_index_list&quot;:[],&quot;msg_fail_reason&quot;:&quot;该内容已被删除，你的粉丝在“查看历史消息”中将无法查看该内容&quot;,&quot;update_time&quot;:1783912006},&quot;appmsg_info&quot;:[{&quot;share_type&quot;:0,&quot;appmsgid&quot;:2247484173,&quot;content_url&quot;:&quot;http:\\/\\/mp.weixin.qq.com\\/s?__biz=MzkyMzQyODExNQ==&amp;tempkey=MTM5OF91UnVIUlVaQ1cvNmg2emczdlNuRXpKS0xtUEx1dlgtbVdvaXZjVS1PejYzdWVHbzA4eDFLX0VGQUJZbHpSZXBoT2NoRG9UY2VSWHFFcHlDaDBMRDAydlhRdGk4S2xSdC00a0xkbXp1N2lxOGdDYkJxLXJkeklCZ0dCQzE4OUFBQkthb1lqallQdDV2MExURmRnYzJnVDJpNm9rOGd4QlNmZEFLbW5nfn4%3D&amp;chksm=c1e47771f693fe679e290a36b40122b668a3c4040923ffd1111ae0d0318180b6b0d74ebe6dae#rd&quot;,&quot;title&quot;:&quot;BPE分词：AI为什么把文字切成碎片？&quot;,&quot;is_deleted&quot;:true,&quot;copyright_status&quot;:100,&quot;copyright_type&quot;:1,&quot;read_num&quot;:1,&quot;like_num&quot;:0,&quot;comment_id&quot;:&quot;4601159616562036738&quot;,&quot;is_comment_enable&quot;:true,&quot;comment_num&quot;:0,&quot;reward_money&quot;:&quot;0.00&quot;,&quot;vote_id&quot;:[],&quot;super_vote_id&quot;:[],&quot;cover&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/sz_mmbiz_jpg\\/SXKlAlYL8hHuOTStfb3L2eBibhtPbky0MiaRIrODKQaqwG4ox9k7aAIofBh3jn95UX5KbhAgQaD9ZBgP3gaiaCJDxkIKtgBztiasSibg1xeBLokU\\/0?wx_fmt=jpeg&quot;,&quot;smart_product&quot;:0,&quot;appmsg_like_type&quot;:2,&quot;old_like_num&quot;:0,&quot;itemidx&quot;:1,&quot;is_pay_subscribe&quot;:0,&quot;is_from_transfer&quot;:0,&quot;public_tag_info&quot;:{&quot;public_tag_list&quot;:[],&quot;modify_times&quot;:0,&quot;init_tag_list_size&quot;:0},&quot;appmsg_album_info&quot;:{&quot;appmsg_album_infos&quot;:[]},&quot;digest&quot;:&quot;为什么 AI 不按词读字？BPE 分词用频率统计把句子切成 token，切法直接影响上下文窗口和 API 费用。从原理到代码，一次讲懂 Tokenizer 内部机制。&quot;,&quot;delete_time&quot;:1783912006,&quot;open_fansmsg&quot;:0,&quot;is_cooling_article&quot;:0,&quot;pic_cdn_url_235_1&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/mmbiz_jpg\\/SXKlAlYL8hFWmSevYS0qxtV9GXeoW54ibvDicS9Kic3hX4A3ThMqOnCibQ6K05IvotWLjQf1U9yjoETv41AFurWzc717picoWWjxBPCAm5A9Xia0c\\/0?wx_fmt=jpeg&quot;,&quot;pic_cdn_url_16_9&quot;:&quot;&quot;,&quot;disable_recommend&quot;:0,&quot;line_info&quot;:{&quot;use_line&quot;:1,&quot;line_count&quot;:0,&quot;send_time&quot;:1783911801,&quot;is_appmsg_flag&quot;:1,&quot;is_use_flag&quot;:0},&quot;claim_source_type&quot;:0,&quot;delete_nickname&quot;:&quot;闫飞&quot;,&quot;share_num&quot;:0,&quot;is_rumor_refutation&quot;:0,&quot;segment_comment_id&quot;:&quot;4601159630285799425&quot;,&quot;is_segment_comment_enable&quot;:true,&quot;multi_picture_cover&quot;:0,&quot;share_imageinfo&quot;:[],&quot;moment_like_num&quot;:0,&quot;item_show_type&quot;:0,&quot;claim_source&quot;:{&quot;is_user_no_claim_source&quot;:1},&quot;ad_info&quot;:{&quot;has_agreement_ad&quot;:0,&quot;is_recruit_agreement_ad&quot;:0},&quot;audio_in_appmsg&quot;:[],&quot;modify_detail_wording&quot;:[],&quot;total_comment_count_contains_reply&quot;:0,&quot;location_page_show&quot;:0,&quot;can_location_page_show&quot;:0}],&quot;appmsgex&quot;:[],&quot;copy_type&quot;:77,&quot;copy_appmsg_id&quot;:100000522,&quot;new_publish&quot;:0,&quot;publish_type&quot;:101,&quot;batch_members&quot;:[]}"
+      "batch_members": [],
+      "view": {
+        "isFirst": false,
+        "isApi": false,
+        "sourceType": 1,
+        "reviewOverTime": false,
+        "mallEditWording": "修改",
+        "isMallActivityDraft": false,
+        "showArticleToImageTips": false,
+        "time": "07月23日",
+        "hasHistory": false,
+        "publishDate": "2026-07-23",
+        "isGoToDataPage": true,
+        "dataPageWording": "发表数据",
+        "isFromApp": 0,
+        "status": "已发表"
+      },
+      "resendPopShow": false
     },
     {
+      "type": 9,
+      "msgid": 1000000029,
+      "sent_info": {
+        "time": 1784635800,
+        "func_flag": 134250498,
+        "is_send_all": true,
+        "is_published": 0,
+        "func_flag2": 0
+      },
+      "sent_status": {
+        "total": 244,
+        "succ": 244,
+        "fail": 0,
+        "progress": 100,
+        "userprotect": 0
+      },
+      "sent_result": {
+        "msg_status": 2,
+        "refuse_reason": "",
+        "reject_index_list": [],
+        "update_time": 1784635836
+      },
+      "appmsg_info": [
+        {
+          "share_type": 0,
+          "appmsgid": 2247484553,
+          "content_url": "https://mp.weixin.qq.com/s/HHMNEdCYThOjCLRozQorhg",
+          "title": "显存被谁吃掉了？DeepSeek如何省下90%",
+          "is_deleted": false,
+          "copyright_status": 11,
+          "copyright_type": 1,
+          "read_num": 95,
+          "like_num": 4,
+          "comment_id": "4613677817699074051",
+          "is_comment_enable": true,
+          "comment_num": 3,
+          "reward_money": "20.00",
+          "reprint_num": 0,
+          "vote_id": [],
+          "super_vote_id": [],
+          "cover": "https://mmbiz.qpic.cn/mmbiz_jpg/SXKlAlYL8hFypiaFfrPoZdrKhPTVByMNVycmD5Q8byj5vXdHgMf6CzPNmZzich1nB4ibWUofBMkDla8PxwVd00y5E3cRvpcQz0155SLuEAB4Tw/0?wx_fmt=jpeg",
+          "smart_product": 0,
+          "modify_status": 1,
+          "appmsg_like_type": 2,
+          "can_delete_status": 0,
+          "old_like_num": 6,
+          "itemidx": 1,
+          "is_pay_subscribe": 0,
+          "is_from_transfer": 0,
+          "public_tag_info": {
+            "public_tag_list": [],
+            "modify_times": 0,
+            "init_tag_list_size": 0
+          },
+          "appmsg_album_info": {
+            "id": "4595742887040090112",
+            "title": "开源大模型技术揭秘",
+            "album_id": 4595742887040090000,
+            "appmsg_album_infos": [
+              {
+                "id": "4595742887040090112",
+                "title": "开源大模型技术揭秘",
+                "album_id": 4595742887040090000,
+                "appmsg_album_infos": [],
+                "tagSource": 0
+              }
+            ]
+          },
+          "digest": "长上下文时，吃掉显存的不只模型权重，还有会持续增长的&nbsp;KV&nbsp;cache。DeepSeek&nbsp;的&nbsp;MLA&nbsp;为什么能把这笔开销省下约九成？",
+          "open_fansmsg": 0,
+          "is_cooling_article": 0,
+          "pic_cdn_url_235_1": "https://mmbiz.qpic.cn/mmbiz_jpg/SXKlAlYL8hF4MN7bUrDYsRkqI6ZLOSKZb7jJibzxicjjWRzz4zWus6w5alEhPRjNRrNbRXPtpsu4Tk3T8Yjh3JAlKcWia0JM8ooE7LVUuiamdia8/0?wx_fmt=jpeg",
+          "pic_cdn_url_16_9": "",
+          "disable_recommend": 0,
+          "line_info": {
+            "use_line": 1,
+            "line_count": 0,
+            "send_time": 1784635832,
+            "is_appmsg_flag": 1,
+            "is_use_flag": 0
+          },
+          "claim_source_type": 0,
+          "share_num": 11,
+          "is_rumor_refutation": 0,
+          "segment_comment_id": "4613677832211365889",
+          "is_segment_comment_enable": true,
+          "multi_picture_cover": 0,
+          "share_imageinfo": [],
+          "moment_like_num": 0,
+          "item_show_type": 0,
+          "claim_source": {
+            "is_user_no_claim_source": 1
+          },
+          "ad_info": {
+            "has_agreement_ad": 0,
+            "is_recruit_agreement_ad": 0
+          },
+          "audio_in_appmsg": [],
+          "modify_wording": "还可以修改3次",
+          "can_modify": 1,
+          "modify_detail_wording": [],
+          "appmsg_modified": 0,
+          "total_comment_count_contains_reply": 5,
+          "location_page_show": 0,
+          "can_location_page_show": 0,
+          "remain_modify_count": 3,
+          "isXssEncoded": true,
+          "i": 0,
+          "commentPopShow": false,
+          "delPopShow": false,
+          "undelShow": false,
+          "delWording": "删除后用户将无法访问此页面，确定删除？该操作只能删除历史消息中的记录，不能删除已经成功发送到用户的消息。",
+          "msgid": 1000000029,
+          "modifyFormatTime": "",
+          "deleteFormatTime": ""
+        }
+      ],
+      "appmsgex": [],
+      "copy_type": 77,
+      "copy_appmsg_id": 100000904,
+      "new_publish": 0,
       "publish_type": 101,
-      "publish_info": "{&quot;type&quot;:9,&quot;msgid&quot;:1000000017,&quot;sent_info&quot;:{&quot;time&quot;:1783742448,&quot;func_flag&quot;:32770,&quot;is_send_all&quot;:true,&quot;is_published&quot;:0,&quot;func_flag2&quot;:0},&quot;sent_status&quot;:{&quot;total&quot;:142,&quot;succ&quot;:142,&quot;fail&quot;:0,&quot;progress&quot;:100,&quot;userprotect&quot;:0},&quot;sent_result&quot;:{&quot;msg_status&quot;:2,&quot;refuse_reason&quot;:&quot;&quot;,&quot;reject_index_list&quot;:[],&quot;update_time&quot;:1783742500},&quot;appmsg_info&quot;:[{&quot;share_type&quot;:0,&quot;appmsgid&quot;:2247484104,&quot;content_url&quot;:&quot;https:\\/\\/mp.weixin.qq.com\\/s\\/QdkD0CR2fD-HfY77-gX3Ug&quot;,&quot;title&quot;:&quot;DeepSeek便宜30倍的秘密：MoE混合专家入门&quot;,&quot;is_deleted&quot;:false,&quot;copyright_status&quot;:11,&quot;copyright_type&quot;:1,&quot;read_num&quot;:66,&quot;like_num&quot;:6,&quot;comment_id&quot;:&quot;4599476712161247237&quot;,&quot;is_comment_enable&quot;:true,&quot;comment_num&quot;:6,&quot;reward_money&quot;:&quot;0.00&quot;,&quot;reprint_num&quot;:0,&quot;vote_id&quot;:[],&quot;super_vote_id&quot;:[],&quot;cover&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/sz_mmbiz_jpg\\/SXKlAlYL8hFHA3cMoFQqvCFdiciasjEoqhqOVJs45Bdtu3qdYUINfmibmmiasLlUJCBarCGicIxmLrcL1b9l5j5WkeqCJlrbuIc0iaurHgZKyb37Y\\/0?wx_fmt=jpeg&quot;,&quot;smart_product&quot;:0,&quot;modify_status&quot;:1,&quot;appmsg_like_type&quot;:2,&quot;can_delete_status&quot;:0,&quot;old_like_num&quot;:20,&quot;itemidx&quot;:1,&quot;is_pay_subscribe&quot;:0,&quot;is_from_transfer&quot;:0,&quot;public_tag_info&quot;:{&quot;public_tag_list&quot;:[],&quot;modify_times&quot;:0,&quot;init_tag_list_size&quot;:0},&quot;appmsg_album_info&quot;:{&quot;id&quot;:&quot;4595742887040090112&quot;,&quot;title&quot;:&quot;开源大模型技术揭秘&quot;,&quot;album_id&quot;:4595742887040090112,&quot;appmsg_album_infos&quot;:[{&quot;id&quot;:&quot;4595742887040090112&quot;,&quot;title&quot;:&quot;开源大模型技术揭秘&quot;,&quot;album_id&quot;:4595742887040090112,&quot;appmsg_album_infos&quot;:[],&quot;tagSource&quot;:0}]},&quot;digest&quot;:&quot;MoE混合专家是什么？DeepSeek为何便宜约30倍：缓存命中+稀疏路由只激活部分专家，真实token账单拆开看&quot;,&quot;open_fansmsg&quot;:0,&quot;is_cooling_article&quot;:0,&quot;pic_cdn_url_235_1&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/sz_mmbiz_jpg\\/SXKlAlYL8hH466bz7mRUMTSajlhWQt8iahdqqyAluFkEpjHFoe1ZmQZSOh4YdeCTvH5YmZiaRq1eia3UiaQ5HL5t0meO1kicRLKCCzXQjHibUjuog\\/0?wx_fmt=jpeg&quot;,&quot;pic_cdn_url_16_9&quot;:&quot;&quot;,&quot;disable_recommend&quot;:0,&quot;line_info&quot;:{&quot;use_line&quot;:1,&quot;line_count&quot;:0,&quot;send_time&quot;:1783742496,&quot;is_appmsg_flag&quot;:1,&quot;is_use_flag&quot;:0},&quot;claim_source_type&quot;:0,&quot;share_num&quot;:5,&quot;is_rumor_refutation&quot;:0,&quot;segment_comment_id&quot;:&quot;4599476724677050372&quot;,&quot;is_segment_comment_enable&quot;:true,&quot;multi_picture_cover&quot;:0,&quot;share_imageinfo&quot;:[],&quot;moment_like_num&quot;:0,&quot;item_show_type&quot;:0,&quot;claim_source&quot;:{&quot;is_user_no_claim_source&quot;:1},&quot;ad_info&quot;:{&quot;has_agreement_ad&quot;:0,&quot;is_recruit_agreement_ad&quot;:0},&quot;audio_in_appmsg&quot;:[],&quot;modify_wording&quot;:&quot;还可以修改1次&quot;,&quot;can_modify&quot;:1,&quot;modify_detail_wording&quot;:[&quot;第1次修改 2026年07月12日 06时05分 闫飞&quot;,&quot;第2次修改 2026年07月12日 06时29分 闫飞&quot;],&quot;appmsg_modified&quot;:1,&quot;total_comment_count_contains_reply&quot;:11,&quot;location_page_show&quot;:0,&quot;can_location_page_show&quot;:0,&quot;remain_modify_count&quot;:1}],&quot;appmsgex&quot;:[],&quot;copy_type&quot;:77,&quot;copy_appmsg_id&quot;:100000455,&quot;new_publish&quot;:0,&quot;publish_type&quot;:101,&quot;batch_members&quot;:[]}"
+      "batch_members": [],
+      "view": {
+        "isFirst": false,
+        "isApi": false,
+        "sourceType": 1,
+        "reviewOverTime": false,
+        "mallEditWording": "修改",
+        "isMallActivityDraft": false,
+        "showArticleToImageTips": false,
+        "time": "07月21日",
+        "hasHistory": false,
+        "publishDate": "2026-07-21",
+        "isGoToDataPage": true,
+        "dataPageWording": "发表数据",
+        "isFromApp": 0,
+        "status": "已发表"
+      },
+      "resendPopShow": false
     },
     {
+      "type": 9,
+      "msgid": 1000000028,
+      "sent_info": {
+        "time": 1784502600,
+        "func_flag": 134250498,
+        "is_send_all": true,
+        "is_published": 0,
+        "func_flag2": 0
+      },
+      "sent_status": {
+        "total": 233,
+        "succ": 233,
+        "fail": 0,
+        "progress": 100,
+        "userprotect": 0
+      },
+      "sent_result": {
+        "msg_status": 2,
+        "refuse_reason": "",
+        "reject_index_list": [],
+        "update_time": 1784502636
+      },
+      "appmsg_info": [
+        {
+          "share_type": 0,
+          "appmsgid": 2247484496,
+          "content_url": "https://mp.weixin.qq.com/s/_RR5LLWgjGNm-qXdSdnAGA",
+          "title": "Kimi&nbsp;K3：KDA怎么撑住1M上下文？",
+          "is_deleted": false,
+          "copyright_status": 11,
+          "copyright_type": 1,
+          "read_num": 122,
+          "like_num": 1,
+          "comment_id": "4612218312314421249",
+          "is_comment_enable": true,
+          "comment_num": 1,
+          "reward_money": "0.00",
+          "reprint_num": 0,
+          "vote_id": [],
+          "super_vote_id": [],
+          "cover": "https://mmbiz.qpic.cn/sz_mmbiz_jpg/SXKlAlYL8hEXPCTicWTs6bgic6aUb3bd9EicGp4L4BuVQ96vpBYfuJKZBRjQvuOxZamO3otZyy9DJck42dHLPC0KFjEpwtVtRMYn4ia5qfaO52U/0?wx_fmt=jpeg",
+          "smart_product": 0,
+          "modify_status": 1,
+          "appmsg_like_type": 2,
+          "can_delete_status": 0,
+          "old_like_num": 9,
+          "itemidx": 1,
+          "is_pay_subscribe": 0,
+          "is_from_transfer": 0,
+          "public_tag_info": {
+            "public_tag_list": [],
+            "modify_times": 0,
+            "init_tag_list_size": 0
+          },
+          "appmsg_album_info": {
+            "id": "4595742887040090112",
+            "title": "开源大模型技术揭秘",
+            "album_id": 4595742887040090000,
+            "appmsg_album_infos": [
+              {
+                "id": "4595742887040090112",
+                "title": "开源大模型技术揭秘",
+                "album_id": 4595742887040090000,
+                "appmsg_album_infos": [],
+                "tagSource": 0
+              }
+            ]
+          },
+          "digest": "Kimi&nbsp;K3&nbsp;的&nbsp;1M&nbsp;上下文为什么不能只靠堆显存？用&nbsp;KDA&nbsp;拆解线性注意力如何处理长历史，以及为什么模型仍要保留全局注意力。",
+          "open_fansmsg": 0,
+          "is_cooling_article": 0,
+          "pic_cdn_url_235_1": "https://mmbiz.qpic.cn/sz_mmbiz_jpg/SXKlAlYL8hHMXAdWNVyebLZiavE3jKALempkDUckI2bQlJyu0SwXB28O4G4YCYReIyAU3lFATzaFpEU9ONWB6HiazsxTabibGvl50qNouxMaZo/0?wx_fmt=jpeg",
+          "pic_cdn_url_16_9": "",
+          "disable_recommend": 0,
+          "line_info": {
+            "use_line": 1,
+            "line_count": 0,
+            "send_time": 1784502633,
+            "is_appmsg_flag": 1,
+            "is_use_flag": 0
+          },
+          "claim_source_type": 0,
+          "share_num": 14,
+          "is_rumor_refutation": 0,
+          "segment_comment_id": "4612218328001118208",
+          "is_segment_comment_enable": true,
+          "multi_picture_cover": 0,
+          "share_imageinfo": [],
+          "moment_like_num": 0,
+          "item_show_type": 0,
+          "claim_source": {
+            "is_user_no_claim_source": 1
+          },
+          "ad_info": {
+            "has_agreement_ad": 0,
+            "is_recruit_agreement_ad": 0
+          },
+          "audio_in_appmsg": [],
+          "modify_wording": "还可以修改3次",
+          "can_modify": 1,
+          "modify_detail_wording": [],
+          "appmsg_modified": 0,
+          "total_comment_count_contains_reply": 2,
+          "location_page_show": 0,
+          "can_location_page_show": 0,
+          "remain_modify_count": 3,
+          "isXssEncoded": true,
+          "i": 0,
+          "commentPopShow": false,
+          "delPopShow": false,
+          "undelShow": false,
+          "delWording": "删除后用户将无法访问此页面，确定删除？该操作只能删除历史消息中的记录，不能删除已经成功发送到用户的消息。",
+          "msgid": 1000000028,
+          "modifyFormatTime": "",
+          "deleteFormatTime": ""
+        }
+      ],
+      "appmsgex": [],
+      "copy_type": 77,
+      "copy_appmsg_id": 100000847,
+      "new_publish": 0,
       "publish_type": 101,
-      "publish_info": "{&quot;type&quot;:9,&quot;msgid&quot;:1000000016,&quot;sent_info&quot;:{&quot;time&quot;:1783654800,&quot;func_flag&quot;:134250498,&quot;is_send_all&quot;:true,&quot;is_published&quot;:0,&quot;func_flag2&quot;:0},&quot;sent_status&quot;:{&quot;total&quot;:129,&quot;succ&quot;:129,&quot;fail&quot;:0,&quot;progress&quot;:100,&quot;userprotect&quot;:0},&quot;sent_result&quot;:{&quot;msg_status&quot;:2,&quot;refuse_reason&quot;:&quot;&quot;,&quot;reject_index_list&quot;:[],&quot;update_time&quot;:1783654821},&quot;appmsg_info&quot;:[{&quot;share_type&quot;:0,&quot;appmsgid&quot;:2247483930,&quot;content_url&quot;:&quot;https:\\/\\/mp.weixin.qq.com\\/s\\/aSLVO-otvr2rxIU1kr2eAA&quot;,&quot;title&quot;:&quot;学习率怎么自动调？Adam 优化器拆给你看&quot;,&quot;is_deleted&quot;:false,&quot;copyright_status&quot;:11,&quot;copyright_type&quot;:1,&quot;read_num&quot;:1113,&quot;like_num&quot;:13,&quot;comment_id&quot;:&quot;4597832938821615620&quot;,&quot;is_comment_enable&quot;:true,&quot;comment_num&quot;:6,&quot;reprint_num&quot;:0,&quot;vote_id&quot;:[],&quot;super_vote_id&quot;:[],&quot;cover&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/sz_mmbiz_jpg\\/SXKlAlYL8hGw8mQjIT6JnRXXJdxaWzkuIlaDdGLx3rJoiayheO2rVEH3MUT9QowLGkjRcMnXE7gGwNPEKpysT4FyOaKsdVx4YzejKdueWtibQ\\/0?wx_fmt=jpeg&quot;,&quot;smart_product&quot;:0,&quot;modify_status&quot;:1,&quot;appmsg_like_type&quot;:2,&quot;can_delete_status&quot;:0,&quot;old_like_num&quot;:34,&quot;itemidx&quot;:1,&quot;is_pay_subscribe&quot;:0,&quot;is_from_transfer&quot;:0,&quot;public_tag_info&quot;:{&quot;public_tag_list&quot;:[],&quot;modify_times&quot;:0,&quot;init_tag_list_size&quot;:0},&quot;appmsg_album_info&quot;:{&quot;id&quot;:&quot;4594958081087864833&quot;,&quot;title&quot;:&quot;深度学习基础&quot;,&quot;album_id&quot;:4594958081087864833,&quot;appmsg_album_infos&quot;:[{&quot;id&quot;:&quot;4594958081087864833&quot;,&quot;title&quot;:&quot;深度学习基础&quot;,&quot;album_id&quot;:4594958081087864833,&quot;appmsg_album_infos&quot;:[],&quot;tagSource&quot;:0}]},&quot;digest&quot;:&quot;学习率怎么自动调？Adam优化器给每参数单独调速：步长=方向\\/尺度，拆开动量与二阶矩。&quot;,&quot;open_fansmsg&quot;:0,&quot;is_cooling_article&quot;:0,&quot;pic_cdn_url_235_1&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/mmbiz_jpg\\/SXKlAlYL8hEKSafCTgzpPDaBaD45SPGL247HFJBlKRnBkTxfM2iaqtu5KLwXbmGn4zRCmb023fuIvoglazeiaFkk49pDxd9C1JTeSUwsOg3AI\\/0?wx_fmt=jpeg&quot;,&quot;pic_cdn_url_16_9&quot;:&quot;&quot;,&quot;disable_recommend&quot;:0,&quot;line_info&quot;:{&quot;use_line&quot;:1,&quot;line_count&quot;:1,&quot;send_time&quot;:1783654818,&quot;is_appmsg_flag&quot;:1,&quot;is_use_flag&quot;:0},&quot;claim_source_type&quot;:0,&quot;share_num&quot;:194,&quot;is_rumor_refutation&quot;:0,&quot;segment_comment_id&quot;:&quot;4597832952713150464&quot;,&quot;is_segment_comment_enable&quot;:true,&quot;multi_picture_cover&quot;:0,&quot;share_imageinfo&quot;:[],&quot;moment_like_num&quot;:0,&quot;item_show_type&quot;:0,&quot;claim_source&quot;:{&quot;is_user_no_claim_source&quot;:1},&quot;ad_info&quot;:{&quot;has_agreement_ad&quot;:0,&quot;is_recruit_agreement_ad&quot;:0},&quot;audio_in_appmsg&quot;:[],&quot;modify_wording&quot;:&quot;还可以修改2次&quot;,&quot;can_modify&quot;:1,&quot;modify_detail_wording&quot;:[&quot;第1次修改 2026年07月12日 06时19分 闫飞&quot;],&quot;appmsg_modified&quot;:1,&quot;total_comment_count_contains_reply&quot;:12,&quot;location_page_show&quot;:0,&quot;can_location_page_show&quot;:0,&quot;remain_modify_count&quot;:2}],&quot;appmsgex&quot;:[],&quot;copy_type&quot;:77,&quot;copy_appmsg_id&quot;:100000281,&quot;new_publish&quot;:0,&quot;publish_type&quot;:101,&quot;batch_members&quot;:[]}"
+      "batch_members": [],
+      "view": {
+        "isFirst": false,
+        "isApi": false,
+        "sourceType": 1,
+        "reviewOverTime": false,
+        "mallEditWording": "修改",
+        "isMallActivityDraft": false,
+        "showArticleToImageTips": false,
+        "time": "07月20日",
+        "hasHistory": false,
+        "publishDate": "2026-07-20",
+        "isGoToDataPage": true,
+        "dataPageWording": "发表数据",
+        "isFromApp": 0,
+        "status": "已发表"
+      },
+      "resendPopShow": false
     },
     {
-      "publish_type": 1,
-      "publish_info": "{&quot;type&quot;:10002,&quot;msgid&quot;:2247483916,&quot;sent_result&quot;:{&quot;reject_index_list&quot;:[]},&quot;appmsg_info&quot;:[{&quot;share_type&quot;:0,&quot;appmsgid&quot;:2247483916,&quot;content_url&quot;:&quot;http:\\/\\/mp.weixin.qq.com\\/s?__biz=MzkyMzQyODExNQ==&amp;tempkey=MTM5OF9mL3NpdndDVTc2WlBTTTFEdlNuRXpKS0xtUEx1dlgtbVdvaXZjVS1PejYzdWVHbzA4eDFLX0VGQUJZazBCcmRSYlQzbmxaNEx2bW1sVEd6N2xHMTYzWDhqQVdZMl9qVWNHX1Q3bTNGUFJ6VDJSMzhlbHFYdTctOGtGYmRrMm9vX25sdEFtOWt2SHpFekpzd1UzMnBqSVRDTWdjODJHMDJ0blptT0pBfn4%3D&amp;chksm=c1e47670f693ff66af814bce0e8546cd7291269348ca12f35c22160b5d2075e8bfd007076c16#rd&quot;,&quot;title&quot;:&quot;数解AI · 全部文章&quot;,&quot;is_deleted&quot;:true,&quot;copyright_status&quot;:100,&quot;copyright_type&quot;:1,&quot;read_num&quot;:1,&quot;like_num&quot;:1,&quot;comment_id&quot;:&quot;4597133903970271235&quot;,&quot;is_comment_enable&quot;:true,&quot;comment_num&quot;:0,&quot;vote_id&quot;:[],&quot;super_vote_id&quot;:[],&quot;cover&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/mmbiz_jpg\\/SXKlAlYL8hHe8R4tVDBlwEpc0prMdmlxyev9fvLvzmib9ia0kf3F2fhHKswMnZgXbKkVd2Op4RxDVsPeZBPfJicEJlSK9PypCDutwicbAibN23Mk\\/0?wx_fmt=jpeg&quot;,&quot;smart_product&quot;:0,&quot;appmsg_like_type&quot;:2,&quot;old_like_num&quot;:1,&quot;itemidx&quot;:1,&quot;is_pay_subscribe&quot;:0,&quot;is_from_transfer&quot;:0,&quot;public_tag_info&quot;:{&quot;public_tag_list&quot;:[],&quot;modify_times&quot;:0,&quot;init_tag_list_size&quot;:0},&quot;appmsg_album_info&quot;:{&quot;appmsg_album_infos&quot;:[]},&quot;digest&quot;:&quot;数解AI全部文章目录——深度学习基础、热点背后的数学，按阅读顺序组织，每篇逻辑递进。&quot;,&quot;delete_time&quot;:1783603067,&quot;is_cooling_article&quot;:0,&quot;pic_cdn_url_235_1&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/mmbiz_jpg\\/SXKlAlYL8hErda3pl9NZUv4etTbTZWBN6hn3R5kwPWASx1k2DGydV8XmpsZcUAP4YAtZYu6q7mS4cGKs8vSo4XxeRcBEC1QIUfiaIcC4FSls\\/0?wx_fmt=jpeg&quot;,&quot;pic_cdn_url_16_9&quot;:&quot;&quot;,&quot;pic_cdn_url_3_4&quot;:&quot;&quot;,&quot;pic_cdn_url_1_1&quot;:&quot;https:\\/\\/mmbiz.qpic.cn\\/mmbiz_jpg\\/SXKlAlYL8hHe8R4tVDBlwEpc0prMdmlxyev9fvLvzmib9ia0kf3F2fhHKswMnZgXbKkVd2Op4RxDVsPeZBPfJicEJlSK9PypCDutwicbAibN23Mk\\/0?wx_fmt=jpeg&quot;,&quot;disable_recommend&quot;:0,&quot;line_info&quot;:{&quot;use_line&quot;:1,&quot;line_count&quot;:0,&quot;send_time&quot;:1783602805,&quot;is_appmsg_flag&quot;:1,&quot;is_use_flag&quot;:0},&quot;claim_source_type&quot;:0,&quot;delete_nickname&quot;:&quot;闫飞&quot;,&quot;share_num&quot;:1,&quot;is_rumor_refutation&quot;:0,&quot;segment_comment_id&quot;:&quot;4597133917576593412&quot;,&quot;is_segment_comment_enable&quot;:true,&quot;multi_picture_cover&quot;:0,&quot;share_imageinfo&quot;:[],&quot;moment_like_num&quot;:0,&quot;item_show_type&quot;:0,&quot;claim_source&quot;:{&quot;is_user_no_claim_source&quot;:1},&quot;ad_info&quot;:{&quot;has_agreement_ad&quot;:0,&quot;is_recruit_agreement_ad&quot;:0},&quot;audio_in_appmsg&quot;:[],&quot;modify_detail_wording&quot;:[],&quot;total_comment_count_contains_reply&quot;:0,&quot;location_page_show&quot;:0,&quot;can_location_page_show&quot;:0}],&quot;publish_info&quot;:{&quot;bizuin&quot;:3923428115,&quot;msgid&quot;:2247483916,&quot;draft_msgid&quot;:100000267,&quot;publish_type&quot;:1,&quot;publish_src&quot;:1,&quot;publish_status&quot;:300,&quot;create_time&quot;:1783602805,&quot;update_time&quot;:1783603068,&quot;check_results&quot;:[],&quot;show_types&quot;:[0],&quot;index_count&quot;:1,&quot;xa_check_items&quot;:[{&quot;idx&quot;:1,&quot;status&quot;:2,&quot;rescode&quot;:100}],&quot;original_check_type&quot;:1,&quot;normal_check_results&quot;:[],&quot;in_profile&quot;:1,&quot;pre_publish_status&quot;:[200],&quot;refutation_audit_info&quot;:[],&quot;service_type&quot;:1,&quot;item_show_types&quot;:[0],&quot;batch_members&quot;:[]},&quot;appmsgex&quot;:[],&quot;copy_appmsg_id&quot;:100000267,&quot;new_publish&quot;:1,&quot;publish_type&quot;:1,&quot;batch_members&quot;:[]}"
+      "type": 9,
+      "msgid": 1000000024,
+      "sent_info": {
+        "time": 1784360058,
+        "func_flag": 32770,
+        "is_send_all": true,
+        "is_published": 0,
+        "func_flag2": 0
+      },
+      "sent_status": {
+        "total": 223,
+        "succ": 223,
+        "fail": 0,
+        "progress": 100,
+        "userprotect": 0
+      },
+      "sent_result": {
+        "msg_status": 2,
+        "refuse_reason": "",
+        "reject_index_list": [],
+        "update_time": 1784360088
+      },
+      "appmsg_info": [
+        {
+          "share_type": 0,
+          "appmsgid": 2247484439,
+          "content_url": "https://mp.weixin.qq.com/s/KrilwX6VRjI9KfjvD7C6kw",
+          "title": "注意力机制是什么？别再当数据库查询",
+          "is_deleted": false,
+          "copyright_status": 11,
+          "copyright_type": 1,
+          "read_num": 100,
+          "like_num": 3,
+          "comment_id": "4609838485129232385",
+          "is_comment_enable": true,
+          "comment_num": 4,
+          "reward_money": "5.00",
+          "reprint_num": 0,
+          "vote_id": [],
+          "super_vote_id": [],
+          "cover": "https://mmbiz.qpic.cn/sz_mmbiz_jpg/SXKlAlYL8hFln5BmibdkibDGaldLIr4S5oib7WQqquibVke5P23uMZU07iakd4fyC2iaUbcibr2mNpkM9Oul6WFBgosvic4VOrQR6J1pKAk8nXrpfOU/0?wx_fmt=jpeg",
+          "smart_product": 0,
+          "modify_status": 1,
+          "appmsg_like_type": 2,
+          "can_delete_status": 0,
+          "old_like_num": 13,
+          "itemidx": 1,
+          "is_pay_subscribe": 0,
+          "is_from_transfer": 0,
+          "public_tag_info": {
+            "public_tag_list": [],
+            "modify_times": 0,
+            "init_tag_list_size": 0
+          },
+          "appmsg_album_info": {
+            "id": "4597831652025925632",
+            "title": "大语言模型原理",
+            "album_id": 4597831652025925600,
+            "appmsg_album_infos": [
+              {
+                "id": "4597831652025925632",
+                "title": "大语言模型原理",
+                "album_id": 4597831652025925600,
+                "appmsg_album_infos": [],
+                "tagSource": 0
+              }
+            ]
+          },
+          "digest": "注意力机制是什么？用&nbsp;QKV&nbsp;讲清自注意力、因果注意力和&nbsp;softmax&nbsp;加权汇总，看懂模型如何从上下文取信息。",
+          "open_fansmsg": 0,
+          "is_cooling_article": 0,
+          "pic_cdn_url_235_1": "https://mmbiz.qpic.cn/sz_mmbiz_jpg/SXKlAlYL8hG4a2PSiaiaK14sBJmRgVLLu1el7tREHpCusX8uRYJN3iaAuIs5txwDnDmiajTGBPce3WgH34QokSibVHcZQQfLpfYL8wbYiax5p5AJc/0?wx_fmt=jpeg",
+          "pic_cdn_url_16_9": "",
+          "disable_recommend": 0,
+          "line_info": {
+            "use_line": 1,
+            "line_count": 0,
+            "send_time": 1784360084,
+            "is_appmsg_flag": 1,
+            "is_use_flag": 0
+          },
+          "claim_source_type": 0,
+          "share_num": 23,
+          "is_rumor_refutation": 0,
+          "segment_comment_id": "4609838497896693764",
+          "is_segment_comment_enable": true,
+          "multi_picture_cover": 0,
+          "share_imageinfo": [],
+          "moment_like_num": 0,
+          "item_show_type": 0,
+          "claim_source": {
+            "is_user_no_claim_source": 1
+          },
+          "ad_info": {
+            "has_agreement_ad": 0,
+            "is_recruit_agreement_ad": 0
+          },
+          "audio_in_appmsg": [],
+          "modify_wording": "还可以修改3次",
+          "can_modify": 1,
+          "modify_detail_wording": [],
+          "appmsg_modified": 0,
+          "total_comment_count_contains_reply": 7,
+          "location_page_show": 0,
+          "can_location_page_show": 0,
+          "remain_modify_count": 3,
+          "isXssEncoded": true,
+          "i": 0,
+          "commentPopShow": false,
+          "delPopShow": false,
+          "undelShow": false,
+          "delWording": "删除后用户将无法访问此页面，确定删除？该操作只能删除历史消息中的记录，不能删除已经成功发送到用户的消息。",
+          "msgid": 1000000024,
+          "modifyFormatTime": "",
+          "deleteFormatTime": ""
+        }
+      ],
+      "appmsgex": [],
+      "copy_type": 77,
+      "copy_appmsg_id": 100000761,
+      "new_publish": 0,
+      "publish_type": 101,
+      "batch_members": [],
+      "view": {
+        "isFirst": false,
+        "isApi": false,
+        "sourceType": 1,
+        "reviewOverTime": false,
+        "mallEditWording": "修改",
+        "isMallActivityDraft": false,
+        "showArticleToImageTips": false,
+        "time": "07月18日",
+        "hasHistory": false,
+        "publishDate": "2026-07-18",
+        "isGoToDataPage": true,
+        "dataPageWording": "发表数据",
+        "isFromApp": 0,
+        "status": "已发表"
+      },
+      "resendPopShow": false
+    },
+    {
+      "type": 9,
+      "msgid": 1000000022,
+      "sent_info": {
+        "time": 1784243100,
+        "func_flag": 134250498,
+        "is_send_all": true,
+        "is_published": 0,
+        "func_flag2": 0
+      },
+      "sent_status": {
+        "total": 215,
+        "succ": 215,
+        "fail": 0,
+        "progress": 100,
+        "userprotect": 0
+      },
+      "sent_result": {
+        "msg_status": 2,
+        "refuse_reason": "",
+        "reject_index_list": [],
+        "update_time": 1784243153
+      },
+      "appmsg_info": [
+        {
+          "share_type": 0,
+          "appmsgid": 2247484405,
+          "content_url": "https://mp.weixin.qq.com/s/4nO2VqQLaYxGdDmtQeypCQ",
+          "title": "位置编码怎么工作？词序一错意思全变",
+          "is_deleted": false,
+          "copyright_status": 11,
+          "copyright_type": 1,
+          "read_num": 84,
+          "like_num": 1,
+          "comment_id": "4607786765310066688",
+          "is_comment_enable": true,
+          "comment_num": 1,
+          "reward_money": "1.00",
+          "reprint_num": 0,
+          "vote_id": [],
+          "super_vote_id": [],
+          "cover": "https://mmbiz.qpic.cn/mmbiz_jpg/SXKlAlYL8hEZYmVlPHKgcSdd7Jljz2raCn1sUicyo5uyePk9ILmb2N5D3QL0zcXKlZuv1UzoZeVKoAWEJyPSAL1mibdD5V7Q9icnqLoe3hsvvU/0?wx_fmt=jpeg",
+          "smart_product": 0,
+          "modify_status": 1,
+          "appmsg_like_type": 2,
+          "can_delete_status": 0,
+          "old_like_num": 6,
+          "itemidx": 1,
+          "is_pay_subscribe": 0,
+          "is_from_transfer": 0,
+          "public_tag_info": {
+            "public_tag_list": [],
+            "modify_times": 0,
+            "init_tag_list_size": 0
+          },
+          "appmsg_album_info": {
+            "id": "4597831652025925632",
+            "title": "大语言模型原理",
+            "album_id": 4597831652025925600,
+            "appmsg_album_infos": [
+              {
+                "id": "4597831652025925632",
+                "title": "大语言模型原理",
+                "album_id": 4597831652025925600,
+                "appmsg_album_infos": [],
+                "tagSource": 0
+              }
+            ]
+          },
+          "digest": "位置编码是什么？Transformer如何知道词序：正弦编码到RoPE，相对距离怎么进注意力。",
+          "open_fansmsg": 0,
+          "is_cooling_article": 0,
+          "pic_cdn_url_235_1": "https://mmbiz.qpic.cn/mmbiz_jpg/SXKlAlYL8hHHtryQHia99uw4FflVLQtHiaEMTIBcjLgfJNKGWhvaZwlH6RZLeR7ibicClR0Otuua3HdLCSISKz4u563E7gNJgnRicmAlFNiaQ8akA/0?wx_fmt=jpeg",
+          "pic_cdn_url_16_9": "",
+          "disable_recommend": 0,
+          "line_info": {
+            "use_line": 1,
+            "line_count": 0,
+            "send_time": 1784243150,
+            "is_appmsg_flag": 1,
+            "is_use_flag": 0
+          },
+          "claim_source_type": 0,
+          "share_num": 8,
+          "is_rumor_refutation": 0,
+          "segment_comment_id": "4607786779570700289",
+          "is_segment_comment_enable": true,
+          "multi_picture_cover": 0,
+          "share_imageinfo": [],
+          "moment_like_num": 0,
+          "item_show_type": 0,
+          "claim_source": {
+            "is_user_no_claim_source": 1
+          },
+          "ad_info": {
+            "has_agreement_ad": 0,
+            "is_recruit_agreement_ad": 0
+          },
+          "audio_in_appmsg": [],
+          "modify_wording": "还可以修改3次",
+          "can_modify": 1,
+          "modify_detail_wording": [],
+          "appmsg_modified": 0,
+          "total_comment_count_contains_reply": 3,
+          "location_page_show": 0,
+          "can_location_page_show": 0,
+          "remain_modify_count": 3,
+          "isXssEncoded": true,
+          "i": 0,
+          "commentPopShow": false,
+          "delPopShow": false,
+          "undelShow": false,
+          "delWording": "删除后用户将无法访问此页面，确定删除？该操作只能删除历史消息中的记录，不能删除已经成功发送到用户的消息。",
+          "msgid": 1000000022,
+          "modifyFormatTime": "",
+          "deleteFormatTime": ""
+        }
+      ],
+      "appmsgex": [],
+      "copy_type": 77,
+      "copy_appmsg_id": 100000756,
+      "new_publish": 0,
+      "publish_type": 101,
+      "batch_members": [],
+      "view": {
+        "isFirst": false,
+        "isApi": false,
+        "sourceType": 1,
+        "reviewOverTime": false,
+        "mallEditWording": "修改",
+        "isMallActivityDraft": false,
+        "showArticleToImageTips": false,
+        "time": "07月17日",
+        "hasHistory": false,
+        "publishDate": "2026-07-17",
+        "isGoToDataPage": true,
+        "dataPageWording": "发表数据",
+        "isFromApp": 0,
+        "status": "已发表"
+      },
+      "resendPopShow": false
+    },
+    {
+      "type": 9,
+      "msgid": 1000000021,
+      "sent_info": {
+        "time": 1784084700,
+        "func_flag": 134250498,
+        "is_send_all": true,
+        "is_published": 0,
+        "func_flag2": 0
+      },
+      "sent_status": {
+        "total": 185,
+        "succ": 185,
+        "fail": 0,
+        "progress": 100,
+        "userprotect": 0
+      },
+      "sent_result": {
+        "msg_status": 2,
+        "refuse_reason": "",
+        "reject_index_list": [],
+        "update_time": 1784084751
+      },
+      "appmsg_info": [
+        {
+          "share_type": 0,
+          "appmsgid": 2247484367,
+          "content_url": "https://mp.weixin.qq.com/s/rDryn1z_hLt7mwi3X8fsxQ",
+          "title": "词嵌入为什么让AI懂&quot;苹果&quot;？5万个0变坐标",
+          "is_deleted": false,
+          "copyright_status": 11,
+          "copyright_type": 1,
+          "read_num": 43,
+          "like_num": 4,
+          "comment_id": "4604948633472565249",
+          "is_comment_enable": true,
+          "comment_num": 2,
+          "reward_money": "0.00",
+          "reprint_num": 0,
+          "vote_id": [],
+          "super_vote_id": [],
+          "cover": "https://mmbiz.qpic.cn/sz_mmbiz_jpg/SXKlAlYL8hFsXSRKicgR3F62OC79uE2WQSIJjDAiasFJReAJKhS5qicyG5QHkaPMntHxOmnYogJ44TvtibJNyR99ymuLWfrxl35jacwfYwftv5I/0?wx_fmt=jpeg",
+          "smart_product": 0,
+          "modify_status": 1,
+          "appmsg_like_type": 2,
+          "can_delete_status": 0,
+          "old_like_num": 10,
+          "itemidx": 1,
+          "is_pay_subscribe": 0,
+          "is_from_transfer": 0,
+          "public_tag_info": {
+            "public_tag_list": [],
+            "modify_times": 0,
+            "init_tag_list_size": 0
+          },
+          "appmsg_album_info": {
+            "id": "4597831652025925632",
+            "title": "大语言模型原理",
+            "album_id": 4597831652025925600,
+            "appmsg_album_infos": [
+              {
+                "id": "4597831652025925632",
+                "title": "大语言模型原理",
+                "album_id": 4597831652025925600,
+                "appmsg_album_infos": [],
+                "tagSource": 0
+              }
+            ]
+          },
+          "digest": "词嵌入为什么能让AI懂语义？token&nbsp;ID如何变成坐标：one-hot、嵌入矩阵、余弦相似度一次讲清。",
+          "open_fansmsg": 0,
+          "is_cooling_article": 0,
+          "pic_cdn_url_235_1": "https://mmbiz.qpic.cn/mmbiz_jpg/SXKlAlYL8hGmHUiavk4C2TKvll3fiagLpZaagzmw3uHrSnwhEN3V86M2V6z42CcysSLA4MJ9G9E9Aas0CEhpF2luywOK0wIa2AQNzoiaVLt9r0/0?wx_fmt=jpeg",
+          "pic_cdn_url_16_9": "",
+          "disable_recommend": 0,
+          "line_info": {
+            "use_line": 1,
+            "line_count": 0,
+            "send_time": 1784084748,
+            "is_appmsg_flag": 1,
+            "is_use_flag": 0
+          },
+          "claim_source_type": 0,
+          "share_num": 5,
+          "is_rumor_refutation": 0,
+          "segment_comment_id": "4604948649327034369",
+          "is_segment_comment_enable": true,
+          "multi_picture_cover": 0,
+          "share_imageinfo": [],
+          "moment_like_num": 0,
+          "item_show_type": 0,
+          "claim_source": {
+            "is_user_no_claim_source": 1
+          },
+          "ad_info": {
+            "has_agreement_ad": 0,
+            "is_recruit_agreement_ad": 0
+          },
+          "audio_in_appmsg": [],
+          "modify_wording": "还可以修改3次",
+          "can_modify": 1,
+          "modify_detail_wording": [],
+          "appmsg_modified": 0,
+          "total_comment_count_contains_reply": 4,
+          "location_page_show": 0,
+          "can_location_page_show": 0,
+          "remain_modify_count": 3,
+          "isXssEncoded": true,
+          "i": 0,
+          "commentPopShow": false,
+          "delPopShow": false,
+          "undelShow": false,
+          "delWording": "删除后用户将无法访问此页面，确定删除？该操作只能删除历史消息中的记录，不能删除已经成功发送到用户的消息。",
+          "msgid": 1000000021,
+          "modifyFormatTime": "",
+          "deleteFormatTime": ""
+        }
+      ],
+      "appmsgex": [],
+      "copy_type": 77,
+      "copy_appmsg_id": 100000718,
+      "new_publish": 0,
+      "publish_type": 101,
+      "batch_members": [],
+      "view": {
+        "isFirst": false,
+        "isApi": false,
+        "sourceType": 1,
+        "reviewOverTime": false,
+        "mallEditWording": "修改",
+        "isMallActivityDraft": false,
+        "showArticleToImageTips": false,
+        "time": "07月15日",
+        "hasHistory": false,
+        "publishDate": "2026-07-15",
+        "isGoToDataPage": true,
+        "dataPageWording": "发表数据",
+        "isFromApp": 0,
+        "status": "已发表"
+      },
+      "resendPopShow": false
     }
   ],
   "featured_count": 2,
   "item_show_type_counts": [
     {
       "item_show_type": 0,
-      "count": 109
+      "count": 113
     },
     {
       "item_show_type": 5,
@@ -60,7 +1550,7 @@
     },
     {
       "item_show_type": 8,
-      "count": 83
+      "count": 84
     },
     {
       "item_show_type": 10,
