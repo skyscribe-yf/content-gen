@@ -1931,17 +1931,38 @@ articles:
   - '✅ 2026-11-07 发布回填（作者供链）：https://mp.weixin.qq.com/s/ZiQlEtB-vL5nzJo7ye4RvA，按排期 2026-11-05 22:00 档实发；本篇此前未入台账，本次补建条目；status published，published_date / wechat_url 与 frontmatter wechatUrl 三处同步。⚠️ 目录无 quality_check.py（files.quality_check=false），后台 media_id / 发布时刻未经 appmsgpublish 复核（作者供链为准）。'
   - '🔁 2026-11-07 发布后回拉（作者后台改稿同步）：mp 页面 `js_content` 逐段比对后回写 weixin.md——① 开头改「有时候我发现，我的 agent 任务跑到一半，它会把上百行代码全部推倒重来」，死循环段拆成两段（「还有一次…突然出现。」+「那是一个非常复杂的修改 bug 的任务…实在是太可惜。」）；②「而训练界」→「而在模型训练领域」、「模型变强要刷题」→「模型变强就要刷题」；③「那把题也自己出？」与 2025 段并成一段，改「那能否让题目也 AI 自己出？」「真有人开始这么做了」「在零道人类题情况下，甚至可以反超…」；④ 自对弈段作者新加内链（[AlphaGo 十年：那只狗到底是靠什么赢的？](https://mp.weixin.qq.com/s/420EHNlLpfKksNy30sgEsg)）；⑤「解题方秒会」→「解题方法会」（线上原文如此，疑为作者笔误，按原样回写待作者定夺）；⑥ R-Zero 段末新增「这种对抗的思路，在 AI 的各个领域都是老常客了，如 GAN, Actor-Critic 架构等。」；⑦「先别急着沸腾」→「但是先别急着高兴太早」、「有条硬边界」→「有一条硬边界」、「可大量真实任务没有」→「…没有类似清洗的判定标准」、「数字很硬」→「数字看起来很硬核」；⑧ 结尾段作者新加内链（[DeepSeek 只换了权重：分数涨 11 分，思考少了三成](https://mp.weixin.qq.com/s/HG2yIC1XVNRGLz909UzifA)）；⑨ 倒数第二段改写并拆成两段（「…各方面的论文也都在想办法看怎么能内化到模型自身。」+「方向在这，天花板也还清楚的摆在那里，究竟能到什么程度，还有待进一步观察。」）；⑩ 作者删除尾部「📖 AI Agent 工程合集」与「下一篇：…」两行。链接 9 条全溯源。'
 
+- slug: 2026-11-10-self-play-collapse
+  title: 给 AI 看标准答案，它为什么反而越练越差？
+  series: AI Agent 工程
+  status: draft_saved
+  published_date: null
+  wechat_url: null
+  media_id: kOcXH4SytIYVIpYksTGfHsOkmf9BjFARGbr2NQ3Uy7uR1xu8SmYEGNOxvfyvfOUh
+  cover_media_id: kOcXH4SytIYVIpYksTGfHkPYIT2RaP3E-gkDXk4Z2oPgUdqpae_8M18EohQZd6bi
+  files:
+    weixin: true
+    outline: true
+    cover: true
+    quality_check: true
+  notes:
+  - '🎯 立项（2026-11-07）：自我迭代系列篇 2（共 4 篇，篇 1 已发 11-05）。grill 逐问收敛（.grill/2026-11-10-self-play-collapse.md）：破点=数据门控 vs 奖励接地的不对称；脊柱=「六种失败只有两把杠杆，先修门控」；落点=agent 自练流水线；开头走作者亲历「自评越评越自信、但评错方向」。'
+  - '📄 一手证据：arXiv:2605.22217v1《Survive or Collapse》（UCSB + Cisco，2026-05-21）全文 + 附录 A/B/C 已读。承重数字全部论文口径：门控开 0.71/0.67/0.67、门控关 0.002/0.006/0.002；Grounded Proposer Paradox 0.002 vs 0.007（差在轨迹斜率）；ε 相变两阶段（0.16→0.44 训练侧、0.651→0.004 域内、混合指标 0.329/0.313 与 0.305/0.316）；自适应调度 450/500 步 0.420/0.481 对 0.674/0.686；末期题池准入率 ≈0.007。⚠️ 论文 §2.4 的 DSL 基线 0.14 与附录 C 的 0.53 是两套口径，正文只用 coding 域数字。'
+  - '✍️ 成稿：原作者声 8 槽逐槽交互，槽 6/7/8 作者「全跳过」→ 进稿 5 处（≥5 达标）；作者在 VS Code 改稿阶段自改槽 2、槽 6 措辞并重写开头/结尾，质检断言已同步为其新措辞（算作者原声版本）。作者 2026-11-07 拍板豁免：段落超长 2 处、长句 3 处、篇幅、文末互动问不补；AI 将「吸引子」两处改为「彼此对得上、跟事实对不上的坑」「给那条错路修高速」；术语统一「自我对弈」（6 处）。作者改稿后实测：正文 2469 字 / 全文 2784 字。'
+  - '🖼 配图 6 张：01 两把杠杆流程图（gen_charts.py 自绘）、02 门控开/关崩塌曲线（论文 Fig2）、03 自洽奖励 k/16 示意（自绘，图注注明非论文实测）、04 ε 相变（Fig4）、05 自适应调度（Fig6）、06 题池准入率（Fig5）；论文原图 pdftoppm 300dpi 裁切。封面：AI 无字深色底图（gpt-image-2.5-sunburst）+ make_cover.py 叠白字「标准答案 / 越看越崩」，8 字、字高 23.1%、块高 23.1%。'
+  - '🚦 门禁：quality_check.py PASS（原声 5/5、禁词 0、AI 腔 0、内链 2 条溯源、承重数字 24 项在场）、check_cover.py PASS（21:9 + 字高/块高）、check_wechat_links 9 条全溯源、hot_articles.py --cited 生成 6+3 行（行尾双空格）。check_cover.py 按 AGENTS 规格重写（旧「横向跨度 ≥45%」启发式对 4 字短标题会误报，11-08 篇同款封面也踩）。'
+  - '📦 2026-11-07 存草稿箱（remote-api via vps-us，grace+blue，6 图上传一次通过）：draft media_id 与 cover media_id 见上。后台待作者确认：声明原创 + 定时 2026-11-10 22:00 + 勾选合集「AI Agent 工程」；发布后回填 frontmatter wechatUrl。'
 summary:
-  total: 120
+  total: 121
   by_status:
     published: 120
     drafting: 0
-    draft_saved: 0
+    draft_saved: 1
   drafting_queue: []
-  ready_queue: []
+  ready_queue:
+  - 2026-11-10-self-play-collapse
   scheduled_queue: []
   planned_queue: []
-  next_publish_date: null
+  next_publish_date: '2026-11-10'
 plan_notes:
 - '2026-11-07 写作规则变更（作者口径）：**尾部不再放「下一篇」硬性预告**（改为有空再写，无排期就不写，禁空头预告），**也不再放「📖 合集链接 + 箭头链」合集导航**——合集聚合改由后台发布时勾选合集完成，正文不列篇目。已同步 6 处：`AGENTS.md`（尾部惯例 + 尾部结构示例 + 发布前最终检查 9 项）、`docs/pre-publish-final-check.md`（第 6/7/9 节重写 + 清单速览 row 6/7/9）、`docs/wechat-ops.md`（文末引导模板改三段式，旧模板标废止）、`docs/wechat-topic-tags.md`（示例去掉 📖 行）、`docs/wechat-menu.md`（合集 URL 清单改为菜单配置用，不再往正文贴）、`docs/article-quality-check.md`（尾部边界不再依赖 📖，提醒新文脚本删掉「下一篇预告在位」断言）。历史已发文章不回头改。'
 - '2026-11-07 对账（作者一次供链 3 篇）：① **2026-11-04-intent-formalization**（《让 AI 补测试，它为什么把 bug 当成标准答案？》，后台发布版标题）https://mp.weixin.qq.com/s/_7aP6jaNXZU0NSQ1UcfMWA —— status draft_saved→published、published_date 2026-11-04、wechat_url + frontmatter wechatUrl 三处同步；标题按后台 msg_title 把「写成」改「当成」（台账 + frontmatter 两处，outline/.grill 等历史规划物不动）。② **2026-11-05-self-play-curriculum**（《AI 自己出题自己考：零人类数据，为什么反而更强？》）https://mp.weixin.qq.com/s/ZiQlEtB-vL5nzJo7ye4RvA —— 本篇此前**从未入台账**（成稿会话未建条），本次补建条目并回填 frontmatter wechatUrl（原缺该字段）；media_id / cover_media_id 取 outline.md 存箱记录，目录无 quality_check.py 故 files.quality_check=false。③ 2026-11-02-cpp26-contracts-vote 供链与台账既有 wechat_url 逐字一致，无需改动。程序化核验：verify_published_urls.py 单篇三条全部抓到 msg_title——self-play / contracts 与台账逐字一致，intent-formalization 为唯一漂移（已修正）；og:description / ct 核验欠账（脚本只比标题）。summary 重算 total 119→120 / published 118→120 / draft_saved 1→0，ready_queue 与 scheduled_queue 仍为空、next_publish_date 保持 null。④ **三篇逐个发布后回拉**（作者要求「草稿箱里的微调也要覆盖回来」）：mp 页面 `js_content` → 块级 diff（文本块 + 段落边界），把作者线上改稿全部回写到各篇 weixin.md，带内链的改写用台账短链回插（AlphaGo 420EHN、机械臂 boIPBl、信息熵 BkGWzK、10-31 post-training HG2yIC）——三篇 mp 链接全溯源（cpp26 7 条 / intent 10 条 / self-play 9 条）；回拉后块级 diff 仅剩「图片占位 + 热门榜硬换行 + 参考资料逐条拆分」三类渲染格式差异，正文 0 差异。原声槽按线上重录（cpp26 槽 6、intent 槽 1/4/7，intent norm 增加「内链降为纯文字」以兼容作者后加锚点）；两篇 quality_check 残留项均为作者改稿造成（cpp26：长句 1 + 作者删掉「下一篇」预告；intent：合并段 1），均属成稿期门禁，发布后不追。⚠️ self-play 线上「解题方法会」（原「解题方秒会」）疑为作者笔误，已按原样回写待作者定夺。'
@@ -2011,3 +2032,4 @@ plan_notes:
 - '2026-10-14 对账（作者供链 2 篇）+ 发布档期改 22:00（作者当日口径）：① Context Rot 篇（2026-10-10-context-rot-isolation）published_date 由 null 补 **2026-10-10**（ct=1791633600 = 10-10 20:00），关闭 10-12 note 里「发布日待核」；② 相位敏感性篇（2026-10-14-phase-sensitivity）status draft_saved→published、wechat_url https://mp.weixin.qq.com/s/1GATyW40jkh1YxuvwVbpUA（ct=1791986400 = **10-14 22:00**）、frontmatter wechatUrl + scheduledPublish 同步。⚠️ **后台标题被改**：发布标题为「2 万 token上下文，DeepSeek为什么还是把代码记错了？」（原拟「上下文只有 2 万 token，模型为什么还是把代码记错了？」）——frontmatter title、台账 title、outline 定稿行已按后台实际同步；今后核验一律以 mp 页面 msg_title 为准，勿以拟稿标题假设一致。③ summary 重算 **total 104 / published 104 / draft_saved 0**，ready_queue 与 scheduled_queue 清空，next_publish_date→null（待作者定档）。④ **档期口径变更（2026-10-14 作者）**：长文固定发布时刻由 20:00 改为 **22:00**，已同步 `AGENTS.md`、`docs/wechat-ops.md`、`docs/content-matrix.md` 三处规则文档；10-13、10-14 两篇实际均为 22:00 发出，即先例已存在。⚠️ 连带观察：10-12 / 10-13 / 10-14 连续三天发文、且 13/14 两篇均为纯理论向，与「每天最多 1 篇 + 禁连续纯理论」的自我约束相抵，是否刻意未确认。⏳ 仍欠：① 2026-10-06-deepseek-synthetic-data 是台账里唯一 published 但无 wechat_url 的条目（frontmatter 亦无，待作者供链）；② 后台三份作废草稿待删。'
 - '2026-10-15 台账修正（作者确认口径 + 全量 URL 核验）：① **口径确认**：作者明确「没有群发也是发布了」——后台「发表记录」（appmsgpublish）只收录**群发**记录，未群发但已发布的文章不在其中（本轮 5 篇不在列表却 URL 有效），**发表记录不得用作「全量已发布」校验源**；带 `wechat_url` 的条目一律视为已发布。新增 `scripts/verify_published_urls.py`（逐条直取 mp 页面比对 msg_title），本轮全量核验 **103/103 条标题一致、0 篇已删除/违规**（首次全量跑出 8 处漂移，已全部回填，见下）。② **9 条标题回填到后台实际 msg_title**（拟稿标题 ≠ 发布标题）：2026-07-15-词嵌入（引号/空格）、2026-07-29-SFT、2026-08-11-deepseek-indexer、2026-08-15-deepseek-dualpipe-deepep、2026-08-24-ppo-math（补 KL）、2026-08-27-glm-qwen-architecture、2026-09-05-test-time-compute、2026-10-12-autodiff、2026-10-13…10-14 phase-sensitivity（上一轮已回填）。其中 3 条**同时改了 `content/*/weixin.md` frontmatter title**（ppo-math / glm-qwen-architecture / autodiff——后两者原 frontmatter 也与后台不一致）；autodiff 的 `quality_check.py` 两处标题断言随之改成「陈述句」版本，重跑 PASS。⚠️ 历史规划物（outline.md 定稿行、prompts/、shipinhao/ 分镜）**未改**——它们记录的是当时的拟稿决策，不是发布事实；`draft.md` 同理。⚠️ glm-qwen-architecture 的标题在 10-10 与 10-15 两次读到的值不同（「拆注意力/KV缓存砍4.4倍」→「要改注意力/KV缓存竟砍4.4倍」），疑似**发布后改过标题**（与「发布后不改标题/摘要」自查冲突，留痕待作者确认）。③ **3 条贴图误分类已修正**：`2026-08-24-dsh-harness`（203 读）、`2026-08-24-pi-dsh-pruner`（206 读）、`2026-08-25-pi-maka-harness`（135 读）后台 `item_show_type=8`，已加 `type: tietu` 标记——这 3 条**不应计入文章轨统计**（与 09-09 费马大定理同类错误）。⚠️ 由于 schema 无 by_type 字段，summary 仍按 total/published 计（104/104），文章轨统计请自行过滤 `type != tietu`（104 − 3 = 101 篇真实文章）。'
 - '2026-10-17 对账补录（作者供链 + 口径变更）：① **MASA 篇**（2026-10-16-masa-matrix-approximation）作者供链 https://mp.weixin.qq.com/s/imKzKYitjtrvAcIB3fIr6A（10-16 22:00 档），status draft_saved→published、published_date/wechat_url/frontmatter wechatUrl 三处同步。② **2026-10-06-deepseek-synthetic-data** 补 wechat_url https://mp.weixin.qq.com/s/oSeuLU2QnR_OWyQWcXzHvw（frontmatter 已有同链，后台发表记录 10-07 同链，三处对齐，该条「待作者供链」欠账关闭）。③ **两篇价格战贴图入台账**：2026-08-23-price-war-sequel（发布标题「免费模型轮番上阵，DeepSeek凭啥继续爽用？」https://mp.weixin.qq.com/s/xxnwNv7QOn92YitIoAwZ0w）与 2026-08-27-glm-53-flash-price-war（发布标题「GLM-5.3-Flash 半价是假象？实测竟贵 3 倍」https://mp.weixin.qq.com/s/LXYvwQ4kTNLlkMIS-Ex-EQ），均后台 item_show_type=8，带 `type: tietu` 标记——**08-28「贴图轨不入台账」旧口径由作者 10-17 改判**，随 10-15 口径补录；两篇此前游离于台账与审计历史之外（免费模型轮番上阵连审计日志都没有），frontmatter title/wechatUrl 已同步为后台口径，发布日期分别按目录日期推定 08-23 / 贴图归档目录 08-27（快照无时间戳）。④ 程序化核验（verify_published_urls.py 单篇直取）：masa / synthetic-data / price-war-sequel 三条 og/msg_title 一致；glm-53-flash 两条快照（publish-data-90 + wechat-published-index）同链同题，页面直取连续命中「环境异常」反爬页无法核验，欠账待下次 Cookie 可用时补。⑤ summary 重算 total 105→107 / published 104→107 / draft_saved 1→0，ready_queue 清空、next_publish_date 置空。'
+- '2026-11-07 存箱：自我迭代系列篇 2《给 AI 看标准答案，它为什么反而越练越差？》（content/2026-11-10-self-play-collapse/，排期 11-10 22:00）入草稿箱（remote-api via vps-us，grace+blue）。作者编辑门禁四步走完：precheck 全过 → VS Code 改稿 → --no-open 复检 PASS → 存箱。作者改稿新增/重写若干段并拍板豁免 4 项（段落超长 2、长句 3、篇幅、文末互动问不补），已在 quality_check.py 写成 EXEMPT 留痕。⚠️ 台账缺口：2026-11-08-jl-random-projection 同为 draft_saved（11-08 22:00 档，media_id 见 2026-11-07 更新记录）但未入 articles 段，待补。'
