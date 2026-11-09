@@ -541,6 +541,21 @@
       "favorites": null,
       "followersGained": null,
       "source": "manual"
+    },
+    {
+      "publishDate": "2026-11-09",
+      "title": "向量检索为什么敢随机降维？1536 维砍到 128，精度几乎不掉",
+      "slug": "jl-random-projection",
+      "mode": "manim-tts-builtin",
+      "durationSec": 278,
+      "views": null,
+      "completionRate": null,
+      "likes": null,
+      "comments": null,
+      "shares": null,
+      "favorites": null,
+      "followersGained": null,
+      "source": "manual"
     }
   ]
 }
