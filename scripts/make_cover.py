@@ -141,7 +141,18 @@ def make_cover(bg_path, out_path, lines=LINES, width_ratio=WIDTH_RATIO, glow_rad
     gr = max(6, int(H * glow_radius))
     glow = canvas.filter(ImageFilter.GaussianBlur(gr))
     glow = glow.point(lambda v: min(255, int(v * 1.15)))
-    out = bg.copy()
+    # 背景压暗退后（硬规格原文）：文字带外重压、带内轻压。
+    # 根因（2026-11-07 实踩）：check_cover 的「整块文字高」按全场亮连通域 min-max
+    # 计量，背景里够亮的艺术元素会被算进文字块高——不压暗，「亮元素丰富的封面」
+    # 在门禁下不可能过，曾逼出「把底图清空」的错误 prompt。压暗系数保证
+    # 255×0.75=191 / 255×0.40=102，均低于检测阈值 205，艺术构图可全幅保留。
+    band_top = max(0, int(H * TEXT_Y) - gr * 3)
+    band_bot = min(H, int(H * TEXT_Y) + block_h + gr * 3)
+    feather = Image.new("L", (W, H), 0)
+    ImageDraw.Draw(feather).rectangle([0, band_top, W, band_bot], fill=255)
+    feather = feather.filter(ImageFilter.GaussianBlur(gr * 2))
+    out = Image.composite(bg.point(lambda v: int(v * 0.75)),
+                          bg.point(lambda v: int(v * 0.40)), feather)
     halo = Image.new("RGB", (W, H), (255, 200, 60))
     out = Image.composite(Image.blend(out, halo, 0.85), out, glow)
     text_rgb = gold_gradient(W, H)

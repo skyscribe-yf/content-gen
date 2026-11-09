@@ -1,0 +1,15 @@
+{
+  "lines": [
+    "老师越强",
+    "学生越崩？"
+  ],
+  "total_chars": 9,
+  "font_size_px": 88,
+  "block_height_px": 203,
+  "block_ratio": 0.2473,
+  "canvas": [
+    1916,
+    821
+  ],
+  "rule": "封面文字必须脚本叠加（PIL），禁止 AI 生图直接写中文；总字数 ≤12；文字块高 ≤25% 画面高"
+}

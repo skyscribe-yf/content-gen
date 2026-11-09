@@ -2,7 +2,7 @@
 """通用质量核查（机器可查部分）。替代过去每篇目录一份的 quality_check.py 副本。
 
 用法:
-  python3 scripts/quality_check.py <文章目录|weixin.md> [--published]
+  python3 scripts/quality_check.py <文章目录|weixin.md> [--published] [--skip-voice]
 
 每篇定制项外置到文章目录的 quality_check.json：
   slots        作者原声句列表（逐字；容忍后台润色，相似度 ≥0.9 判在场）
@@ -20,6 +20,8 @@
 缺 quality_check.json 时只跑通用门禁并提示跳过定制项（旧篇历史副本仍在各自目录）。
 --published：发布后回拉模式，跳过成稿期门禁（原声/段落/长句/篇幅/爆款要素），
 只查发布不变量（禁词/待发布/标签/图片路径/内链/承重数字/封面）。
+--skip-voice：第一轮质检模式，跳过第 14 项原声门禁（作者此时还在 VS Code 填原声
+占位符）。发布前终检不带此参数：必须 ≥5 逐字在场且无【作者填入】残留。
 """
 import difflib
 import json
@@ -33,6 +35,7 @@ ROOT = HERE.parent
 
 _args = [a for a in sys.argv[1:] if not a.startswith("--")]
 PUBLISHED = "--published" in sys.argv
+SKIP_VOICE = "--skip-voice" in sys.argv
 if _args:
     _p = Path(_args[0])
     DIR = (_p if _p.is_dir() else _p.parent).resolve()
@@ -124,17 +127,23 @@ def skip_in_published():
     return False
 
 
-print(f"[14] 原声逐字在场（{len(SLOTS)} 句，≥5 达标）")
-if not SLOTS:
-    print("  · 无 slots 配置，跳过")
+print("[14] 原声逐字在场（终检门禁：≥5 达标 + 占位符清零）")
+if SKIP_VOICE:
+    print("  · --skip-voice：第一轮质检，跳过本项（作者正在 VS Code 填原声）")
 elif not skip_in_published():
-    for i, s in enumerate(SLOTS, 1):
-        chk(slot_score(s, BODY) >= 0.9, f"原声 {i}（相似度 {slot_score(s, BODY):.0%}）")
-    # 作者硬约束：原声不得进引用块（> blockquote），直接做正文段落
-    quote_lines = [l for l in BODY.splitlines() if l.lstrip().startswith(">")]
-    for i, s in enumerate(SLOTS, 1):
-        chk(not any(flat(s) and flat(s) in flat(l) for l in quote_lines),
-            f"原声 {i} 未进引用块（作者禁项）")
+    if not SLOTS:
+        print("  · 无 slots 配置，跳过逐字比对")
+    else:
+        for i, s in enumerate(SLOTS, 1):
+            chk(slot_score(s, BODY) >= 0.9, f"原声 {i}（相似度 {slot_score(s, BODY):.0%}）")
+        # 作者硬约束：原声不得进引用块（> blockquote），直接做正文段落
+        quote_lines = [l for l in BODY.splitlines() if l.lstrip().startswith(">")]
+        for i, s in enumerate(SLOTS, 1):
+            chk(not any(flat(s) and flat(s) in flat(l) for l in quote_lines),
+                f"原声 {i} 未进引用块（作者禁项）")
+    # 占位符清零：作者没填完的槽不许带进终检（2026-11-07 作者口径）
+    leftovers = BODY.count("【作者填入】")
+    chk(leftovers == 0, f"【作者填入】占位符残留 {leftovers} 处", gate="原声占位符")
 
 print("[17] 开头禁标题开场（2026-11-01 口径）")
 if skip_in_published():
@@ -191,7 +200,8 @@ for w in ["值得注意的是", "让我们来", "总而言之", "综上所述", 
     chk(w not in BODY, f"无「{w}」")
 
 print("[10] 超 60 字长句（原声段落 / 参考资料豁免）")
-seg = re.sub(r"\$[^$]*\$", "", BODY)
+seg = re.sub(r"\$\$[^$]*\$\$", "", BODY)  # 展示公式先整块剥（否则 $$ 被当成空内联数学、公式体残留被当长句，2026-11-08 实踩）
+seg = re.sub(r"\$[^$]*\$", "", seg)
 seg = re.sub(r"!\[[^\]]*\]\([^)]*\)", "", seg)
 seg = re.sub(r"\[([^\]]*)\]\([^)]*\)", r"\1", seg)
 seg = re.sub(r"(?s)\*\*参考资料与数字溯源\*\*.*", "", seg)
@@ -275,7 +285,9 @@ if meta_p.exists():
     chk(meta.get("block_ratio", 1) <= 0.25, f"封面文字块高超 25%：{meta.get('block_ratio')}")
 
 print()
-print(f"原声 {sum(1 for s in SLOTS if slot_score(s, BODY) >= 0.9)}/{len(SLOTS)} | "
+voice_part = ("原声 跳过（第一轮）" if SKIP_VOICE
+              else f"原声 {sum(1 for s in SLOTS if slot_score(s, BODY) >= 0.9)}/{len(SLOTS)}")
+print(f"{voice_part} | "
       f"图 {len(refs)} 张 | 内链 {len(links)} 条")
 print("PASS" if not fails else f"FAIL: {len(fails)} 项未过")
 for f in fails:

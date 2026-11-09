@@ -6,12 +6,12 @@
 
 | 要做什么 | 必读 |
 |---|---|
-| 新文章选题/大纲 | `.agents/skills/grill-me/SKILL.md` + `docs/writing-flow.md` + `docs/viral-article-playbook.md` + `docs/content-matrix.md` + `docs/note-material-source.md` |
+| 新文章选题/大纲 | `docs/writing-flow.md` + `.agents/skills/grill-me/SKILL.md` + `docs/viral-article-playbook.md`（调研 lane：派命名 agent `article-researcher`，定义 `.agents/agents/article-researcher.md`；`content-matrix.md`/`note-material-source.md` 归它读，main 按 brief 指向按需取） |
 | 作者扔素材直出 | `.agents/skills/raw-material-to-wechat-draft/SKILL.md` |
 | 起标题/封面字 | `docs/article-title-seo.md` |
 | 配图/封面 | `docs/image-generation.md` |
 | 贴图（图文消息） | `docs/tietu-viral-playbook.md` + `docs/tietu-infographic-flow.md` |
-| 成稿质量核查 | `docs/article-quality-check.md` |
+| 成稿质量核查 | 派命名 agent `article-reviewer`（`.agents/agents/article-reviewer.md`）+ `docs/article-quality-check.md` |
 | 发布前最终检查 | `docs/pre-publish-final-check.md` |
 | 存草稿箱/发布 | `.agents/skills/baoyu-post-to-wechat/SKILL.md`（grace + blue） |
 | 知乎 | `.agents/skills/post-zhihu/SKILL.md` + `docs/zhihu-promotion.md` |
@@ -24,7 +24,7 @@
 ## 1. 写作流程硬门禁
 
 - 起草大纲前**必须先调 grill-me skill** 与作者讨论；禁止 AI 单方面生成 `.grill/<slug>.md`
-- 自动成稿：大纲后采集作者原声槽（**进稿 ≥5 处**），**逐槽交互**（AI 给槽位+建议句，作者逐条输入），禁止批量「过」式代填
+- 自动成稿：大纲末尾列作者原声槽（**进稿 ≥5 处**），全部占位符，**作者在 VS Code 自行填入**（AI 不等填直接动笔，weixin.md 槽位留 `【作者填入】`）；AI 禁代拟、禁代填、禁追问催稿；原声门禁在**发布前终检**把关（第一轮质检 `--skip-voice` 不管原声；终检 ≥5 逐字在场 + 占位符清零才准存草稿箱）
 - 排版硬规则：① 原声句禁加 ★ 前缀、禁套 blockquote，按正文段落直排；② 正文第一段禁标题开场（禁 `##` 起首、禁把标题抄成第一行）
 - 正文 **~2000 字**（含尾部 ≤2500），紧凑优先不拉长
 - 动笔前必读爆款经验 `docs/viral-article-playbook.md`，标题/开头/结构逐项对照
@@ -42,9 +42,11 @@
 
 ## 3. 发布硬门禁（顺序不可乱；只存草稿箱，禁止直接发布）
 
-1. **机器质检**：`bash scripts/precheck_and_open.sh content/<日期>-<slug>`（quality_check + check_cover + 微信链接溯源）
+`weixin.md` 写完先后台派命名 agent **`article-reviewer`**，main agent 按回传 findings 修完再进下列四步：
+
+1. **第一轮机器质检**：`bash scripts/precheck_and_open.sh content/<日期>-<slug> --skip-voice`（quality_check + check_cover + 微信链接溯源；`--skip-voice`=不管原声，作者正在 VS Code 填）
 2. **VS Code 等作者改**（自动打开 content-gen 工作区定位 weixin.md），AI 停在这里等
-3. **复检** `--no-open`；FAIL 若由作者改稿产生，作者拍板，AI 禁擅自改回
+3. **终检** `--no-open`（全量含原声门禁：≥5 逐字在场 + 占位符清零；终检前 AI 把 outline 已填原声同步进 quality_check.json 的 slots）；FAIL 若由作者改稿产生，作者拍板，AI 禁擅自改回
 4. **才存草稿箱**：`baoyu-post-to-wechat`（grace + blue，remote-api）
 - 成稿后必须过 `docs/article-quality-check.md` 全清单（19 项 + 发布后回拉第 20 项 `--published`）
 - 封面 `00-cover.png` 必须存在；图片与 `weixin.md` 同级、**无 `images/` 前缀**；目录名 = 发布日期（变更即重命名目录）
@@ -90,7 +92,7 @@
 
 | 脚本 | 用途 |
 |---|---|
-| `scripts/precheck_and_open.sh` | 机器质检 + 打开作者工作区（`--no-open` 复检；`--published` 发布后回拉模式） |
+| `scripts/precheck_and_open.sh` | 机器质检 + 打开作者工作区（第一轮 `--skip-voice` 不管原声；`--no-open` 终检；`--published` 发布后回拉模式） |
 | `scripts/quality_check.py` | 质量门禁通用版；每篇定制项（原声/承重数字/术语/内链/豁免）外置到 `content/<篇>/quality_check.json`；`--published` 跳过成稿期门禁只查发布不变量 |
 | `scripts/check_cover.py` | 封面 21:9 / 文字块高 / 每行字高门禁 |
 | `scripts/hot_articles.py` | 尾部热门文章生成（`--self-check` 验榜单漂移） |

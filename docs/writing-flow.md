@@ -6,7 +6,7 @@
 
 Skill 位置：[`.agents/skills/grill-me/SKILL.md`](.agents/skills/grill-me/SKILL.md)
 
-自动成稿在写出 `outline.md` 之后、动笔 `weixin.md` 之前，**必须先做作者原声槽对话**，进稿原声不少于 5 处。规则见下文「作者原声槽」。
+自动成稿在写出 `outline.md` 之后、动笔 `weixin.md` 之前，**大纲末尾必须列作者原声槽（全部占位符）**；AI 不等作者填直接动笔，`weixin.md` 每个槽位留 `【作者填入】`，由作者在 VS Code 自行填入；原声门禁在**发布前终检**把关（≥5 逐字在场 + 占位符清零），第一轮质检不管原声。规则见下文「作者原声槽」。
 
 ## 篇幅
 
@@ -27,27 +27,35 @@ Skill 位置：[`.agents/skills/grill-me/SKILL.md`](.agents/skills/grill-me/SKIL
 
 ## 执行流程（自动成稿）
 
-1. 作者提出选题方向 → AI 加载 grill-me skill
-2. grill-me 逐轮追问：意图、约束、核心冲突、类比选择、受众假设等
+1. 作者提出选题方向 → AI 派生 `<slug>`，派发命名 agent **`article-researcher`**（`subagent({ agent: "article-researcher", task: "选题方向：…；slug：…" })`），**等 brief 回传**（原生完成通知唤醒；async 派发则 `bg_wait` 阻塞等），main agent 将 brief 落盘 `.grill/<slug>-research.md`
+2. **brief 在手后**才加载 grill-me skill 逐轮追问：意图、约束、核心冲突、类比选择、受众假设等
 3. 讨论收敛后，AI 将结论写入 `.grill/<slug>.md` 日志
-4. 确认 grill 日志无误 → 方可进入大纲起草
-5. 读 [`docs/viral-article-playbook.md`](viral-article-playbook.md)，写 `outline.md`（定位、结论、结构、配图、既有检查清单）
-6. **停住，禁止写 `weixin.md`。** 原声槽采集走**逐槽交互**：AI 一次只提 **1 个槽位**，给出 ①槽位位置（节 + 前后文原句）②建议句（只提示方向和口吻，供参考）→ **等作者手动输入原句**（或明确「用建议」/「跳过」）→ AI 逐字回填 `outline.md` 的 `## 作者原声槽` 并更新计数 → 再进入下一槽。默认 7–10 个候选槽（节少时可少列，不得少于 5 个），进稿下限 5 处。
-7. **全部槽位走完且 ≥5 处已填，才算完成此门禁。禁止批量确认代填**——不允许「回复过=全部照用」，每个槽位必须有作者显式输入；作者输入的句子逐字进稿，只修错别字。
-8. 少于 5：停在大纲。作者说「先写着」「帮我凑两句」也不写正文、不代填。
-
-已有沿用原声仍要展示空槽（标明已占用）。沿用已经 ≥ 5 时，作者可以回复「就这些」过门；空槽未展示之前，不能以「grill 里已经有了」跳过第 6 步。
+4. 确认 grill 日志无误**且 `.grill/<slug>-research.md` 调研 brief 已在手**（brief 未回则等完成通知，禁开写）→ 方可进入大纲起草
+5. 读 [`docs/viral-article-playbook.md`](viral-article-playbook.md)，写 `outline.md`（定位、结论、结构、配图、既有检查清单）；**一手证据 / vault 素材 / 内链以 brief 为单一事实源**，brief 缺项才定点补查并回写 brief 对应节
+6. **大纲末尾列作者原声槽，全部占位符**：默认 7–10 个候选槽（节少时可少列，不得少于 5 个），每槽给「位置 + 为什么这里 + 问你一句 + 方向」四行提示，原句一律占位符 `【作者填入】`。**AI 不等作者填，直接动笔**：写 `weixin.md` 时在每个槽位「位置」留 `【作者填入】` 占位符。
+7. 作者在 VS Code 自行填入（`outline.md` 或 `weixin.md` 填哪处均可，以 `weixin.md` 为准；可粘 grill 逐字原话，算 1 处；也可整槽标「跳过」）。**AI 禁代拟、禁代填、禁追问催稿**——作者问「这槽写什么好」也只给更具体的提示或方向，不给成句。
+8. 原声门禁后移到**发布前终检**：已填 <5 或 `weixin.md` 残留 `【作者填入】` → 禁止存草稿箱（见下文「成稿后：作者编辑门禁」两轮质检）。作者说「先写着」「帮我凑两句」也不代填。
 
 正在写的自动成稿篇，从「尚未写 `weixin.md`」的那一步开始执行。不回溯已发布文章。
 
+## 调研 subagent（选题阶段，2026-11-07 起）
+
+选题阶段的重活（矩阵定位、vault 扫描、选题搜索、arXiv 全文抓取）历史上在主上下文烧掉 **113k tokens**（2026-11-07 会话实测：动笔前 25 分钟，占单篇成稿上下文 43%），改为派命名 agent **`article-researcher`** 承担（定义 `.agents/agents/article-researcher.md`，只读工具由 harness 锁定），main agent 只收 ≤6KB 的结构化 brief：
+
+- **派发时机**：作者提出选题方向即派；**brief 回传后 main agent 才进 grill-me**（2026-11-07 作者改口径：先调研后讨论——grill 的意图/约束/类比讨论要踩在已核实的一手证据上，避免讨论收敛后发现素材不成立而返工；「派完不等、直接 grill-me」旧口径废止）
+- **brief 落盘**：子 agent 以 output 回传 brief，main agent 写入 `.grill/<slug>-research.md`
+- **硬门禁**：brief 未回不写 `outline.md`；brief 标「未核实」的承重数字禁进大纲结论层
+- **main agent 不再全文通读** `docs/content-matrix.md` 与 `docs/note-material-source.md`（归 subagent）；按 brief 指向定点取，禁止重复覆盖
+- **brief 缺项补核**：`subagent({ action: "resume", id, message })` 回到同一 run 补，不自己抓全文
+
 ## 成稿后：作者编辑门禁（存草稿箱前必走，2026-11-08 起）
 
-`weixin.md` 写完后**禁止直接存草稿箱**，固定四步：
+`weixin.md` 写完后**禁止直接存草稿箱**。先后台派发命名 agent **`article-reviewer`**（定义 `.agents/agents/article-reviewer.md`，只读工具由 harness 锁定：机器质检三轨 + 封面/配图核验 + 19 项人工清单 + 与调研 brief 对账），findings 以 output 回传、main agent 落盘 `.grill/<slug>-review.md` 并按 findings 修完，再走固定四步：
 
-1. `bash scripts/precheck_and_open.sh content/<日期>-<slug>`——机器质检（本篇 `quality_check.py` + `check_cover.py` + 微信链接溯源）
-2. 脚本自动打开 content-gen 文件夹工作区并定位到 `weixin.md`，MPE 预览随文件自动弹出（`.vscode/settings.json` 自动预览开关）——**AI 停在这里等作者改**，不催、不代改
-3. 作者改完后 `bash scripts/precheck_and_open.sh content/<日期>-<slug> --no-open` 复检一轮；FAIL 项由作者改稿产生的（如原声被作者自己改写），由作者拍板，AI 不擅自改回
-4. 复检通过（或作者明确豁免）才走 `baoyu-post-to-wechat` 存草稿箱（grace + blue）
+1. `bash scripts/precheck_and_open.sh content/<日期>-<slug> --skip-voice`——**第一轮机器质检**（本篇 `quality_check.py` + `check_cover.py` + 微信链接溯源）；`--skip-voice` = 不管原声（作者此时正在 VS Code 填原声占位符）
+2. 脚本自动打开 content-gen 文件夹工作区并定位到 `weixin.md`，MPE 预览随文件自动弹出（`.vscode/settings.json` 自动预览开关）——**AI 停在这里等作者改**（内容修改 + 填原声占位符），不催、不代改
+3. 作者改完后 `bash scripts/precheck_and_open.sh content/<日期>-<slug> --no-open`——**终检**（全量含原声门禁：≥5 逐字在场 + 无 `【作者填入】` 残留；终检前 AI 把已填原句（outline / weixin.md 哪处有填取哪处，**以 `weixin.md` 为准**）同步进本篇 `quality_check.json` 的 `slots`，逐字）；FAIL 项由作者改稿产生的（如原声被作者自己改写），由作者拍板，AI 不擅自改回
+4. 终检通过（或作者明确豁免）才走 `baoyu-post-to-wechat` 存草稿箱（grace + blue）
 
 完整规则见 `AGENTS.md`「作者编辑门禁」节。
 
@@ -59,42 +67,43 @@ Skill 位置：[`.agents/skills/grill-me/SKILL.md`](.agents/skills/grill-me/SKIL
 
 - 一句或连续几句、表达同一个亲历 / 判断 / 类比 / 实测 / 提问，算 **1 处**。
 - 只有作者写出来的句子才算。AI 写的开头钩子、过渡、小结、开放式问题都不算。
-- grill 对话或作者笔记里的 **逐字原话**，且确定进稿，可标「沿用」并计入；AI 写进 `.grill/<slug>.md` 的综述、Intent、决策摘要不算。
+- grill 对话或作者笔记里的 **逐字原话**，作者粘进占位符即算 1 处；AI 写进 `.grill/<slug>.md` 的综述、Intent、决策摘要不算。
 - 作者标明用来填槽的句子，即使很短，也算；AI 不得以「不够感人」拒收。
 - 「跳过」的槽不计。
 - 下限 5 是进稿处数，不是展示槽数。能多则多。
 
-### 对话里怎么问
+### 占位符怎么列（2026-11-07 作者改口径：VS Code 自填，取代逐槽交互）
 
-每个槽固定四行，**禁止出现可进稿的完整原声句**（沿用槽引用作者已有原话除外）：
+每个槽固定四行，**原句一律占位符，禁止出现可进稿的完整原声句**：
 
 - **位置**：第几节，接在哪句论点后面
 - **为什么这里**：读者这里容易出戏，或需要一个「我」
-- **问你一句**：具体、可回答（「你第一次在哪看到这个数字愣住的？」），禁止「有什么感想？」这类空问
+- **问你一句**：具体、可回答的提示（「你第一次在哪看到这个数字愣住的？」），禁止「有什么感想？」这类空问
 - **方向**：只点类型（亲历 / 类比 / 吐槽 / 实测 / 互动问），不给成句
+- **原句**：`【作者填入】`（作者在 VS Code 填入；粘 grill 逐字原话亦可，算 1 处）
 
-已占用的沿用槽同样列出，多一行：`已占用，算 1 处：「……原话……」`。
+作者不填也不催：AI 只在大纲里留好槽位与提示，填多少、什么时候填由作者在 VS Code 决定。作者问「这槽写什么好」：只换更具体的提示或方向，仍不给成句。
 
-作者一次回复多个编号时，按编号原样归档，不改写、不合并、不润色。某一槽作者说「帮我起一句 / 你写」：只换一个更具体的问题或方向，仍不给成句。
+AI 写 `weixin.md` 时在同一槽位留同样占位符；作者在 `outline.md` 或 `weixin.md` 填均可，**以 `weixin.md` 为准**（终检查的是 `weixin.md`）。
 
 ### `outline.md` 怎么记
 
-在大纲末尾追加。计数写在节标题下第一行。状态只有三种：`已填`、`沿用`、`跳过`。既有检查清单增加一项：`[ ] 作者原声槽已填且进稿 ≥5`。
+在大纲末尾追加。计数写在节标题下第一行。状态只有三种：`待填`（占位符，等作者 VS Code 填入）、`已填`（作者已填入）、`跳过`（作者明确不用）。既有检查清单增加一项：`[ ] 作者原声槽已填且进稿 ≥5`。
 
 ```markdown
 ## 作者原声槽
 
-原声进稿：6 / 下限 5
+原声进稿：2 / 下限 5（其余待作者填入）
 
 ### 槽 1 · 开头场景之后
-- 状态：沿用
+- 状态：待填
 - 类型：亲历
-- 原句：恨不得给当年的自己一拳
+- 原句：【作者填入】
 
 ### 槽 3 · 第三节「折扣回报」之后
 - 状态：已填
 - 类型：吐槽
-- 原句：（作者原文）
+- 原句：（作者在 VS Code 填入的原文）
 
 ### 槽 4 · 第四节结尾
 - 状态：跳过
@@ -107,7 +116,7 @@ Skill 位置：[`.agents/skills/grill-me/SKILL.md`](.agents/skills/grill-me/SKIL
 
 ### 挡板
 
-1. **成稿前**：`outline.md` 中状态为「已填」或「沿用」的条目 < 5，禁止创建或覆写 `weixin.md`。
+1. **终检前**：`outline.md` 中「已填」< 5，或 `weixin.md` 残留 `【作者填入】` 占位符，禁止存草稿箱（2026-11-07 作者改口径：门禁只在最后一关，不再卡动笔）。
 2. **代拟**：AI 不得写出可进稿的原声句。唯一允许的改动是错别字。
 3. **成稿后**：见 [`docs/article-quality-check.md`](article-quality-check.md) 第 14 项（原声逐字在场）和第 15 项（说人话 / 去 AI 味）。
 
@@ -139,5 +148,7 @@ Skill 位置：[`.agents/skills/grill-me/SKILL.md`](.agents/skills/grill-me/SKIL
 - 禁止在 grill-me 讨论完成前输出大纲或草稿
 - 禁止 AI 单方面生成 grill 日志（必须经过逐轮追问）
 - 禁止以"我已经了解了"跳过 grill-me 流程
-- 禁止在原声槽未展示、或「已填」+「沿用」< 5 时写 `weixin.md`
+- 禁止代填占位符；终检「已填」< 5 或占位符未清零禁存草稿箱
 - 禁止代拟可进稿的原声句（包括作者要求「帮我起一句」时）
+- 禁止 brief 未回就写 `outline.md`；禁止 brief 标「未核实」的承重数字进大纲结论层
+- 禁止 main agent 重复调研 subagent 已覆盖的重活（content-matrix 全文通读、vault 通读、arXiv 全文抓取）

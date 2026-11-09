@@ -6,9 +6,13 @@
 #
 # 用法:
 #   bash scripts/precheck_and_open.sh content/<日期>-<slug>          # 质检 + 打开 VS Code
+#   bash scripts/precheck_and_open.sh content/<日期>-<slug> --skip-voice # 第一轮质检：不管原声
 #   bash scripts/precheck_and_open.sh content/<日期>-<slug> --no-open # 只复检（作者改完后）
 #   bash scripts/precheck_and_open.sh content/<日期>-<slug> --no-open --published # 发布后回拉模式
 #   bash scripts/precheck_and_open.sh content/<日期>-<slug>/weixin.md # 也可直接给文件
+#
+# 质检两轮口径（2026-11-07 作者定）：第一轮 --skip-voice（作者正在 VS Code 填原声占位符）；
+# 终检 --no-open 不带 --skip-voice（原声 ≥5 逐字在场 + 占位符清零才准存草稿箱）。
 #
 # 质检脚本二轨（2026-11-07 通用化）：
 #   新篇（目录有 quality_check.json）→ scripts/quality_check.py（通用版 + 每篇配置）
@@ -22,9 +26,11 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 ARG="${1:?用法: bash scripts/precheck_and_open.sh <文章目录|weixin.md> [--no-open] [--published]}"
 NO_OPEN=0
 PUBLISHED=0
+SKIP_VOICE=0
 for a in "$@"; do
   [[ "$a" == "--no-open" ]] && NO_OPEN=1
   [[ "$a" == "--published" ]] && PUBLISHED=1
+  [[ "$a" == "--skip-voice" ]] && SKIP_VOICE=1
 done
 
 if [[ -d "$ARG" ]]; then DIR="${ARG%/}"; MD="$DIR/weixin.md"; else DIR="$(dirname "$ARG")"; MD="$ARG"; fi
@@ -34,6 +40,7 @@ cd "$DIR"
 rc=0
 PUB_FLAG=""
 [[ $PUBLISHED -eq 1 ]] && PUB_FLAG="--published"
+[[ $SKIP_VOICE -eq 1 ]] && PUB_FLAG="$PUB_FLAG --skip-voice"
 
 echo "════════ 机器质检：$DIR ════════"
 if [[ -f "$DIR/quality_check.json" ]]; then
