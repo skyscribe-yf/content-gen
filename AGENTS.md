@@ -8,6 +8,7 @@
 |---|---|
 | 新文章选题/大纲 | `docs/writing-flow.md` + `.agents/skills/grill-me/SKILL.md` + `docs/viral-article-playbook.md`（调研 lane：派命名 agent `article-researcher`，定义 `.agents/agents/article-researcher.md`；`content-matrix.md`/`note-material-source.md` 归它读，main 按 brief 指向按需取） |
 | 作者扔素材直出 | `.agents/skills/raw-material-to-wechat-draft/SKILL.md` |
+| 作者手写 draft.md 直出（建稿+静默等「好了」+润色/查事实/补公式/配图/事实裁决/质检/封面/存草稿） | `.agents/skills/handwritten-draft-to-wechat/SKILL.md`（建稿：`scripts/new-handwritten-topic.sh`） |
 | 起标题/封面字 | `docs/article-title-seo.md` |
 | 配图/封面 | `docs/image-generation.md` |
 | 贴图（图文消息） | `docs/tietu-viral-playbook.md` + `docs/tietu-infographic-flow.md` |

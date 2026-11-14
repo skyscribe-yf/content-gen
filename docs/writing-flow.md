@@ -22,8 +22,9 @@ Skill 位置：[`.agents/skills/grill-me/SKILL.md`](.agents/skills/grill-me/SKIL
 
 - **自动成稿**（本文件后半段）：选题经 grill-me，产物是 `outline.md` 再写 `weixin.md`。套原声槽门禁。
 - **素材直出**：走 [`.agents/skills/raw-material-to-wechat-draft/SKILL.md`](../.agents/skills/raw-material-to-wechat-draft/SKILL.md)，用 `raw.md` + 原声句清单。**不套**本文件的原声槽门禁。
+- **手写稿直出**：走 [`.agents/skills/handwritten-draft-to-wechat/SKILL.md`](../.agents/skills/handwritten-draft-to-wechat/SKILL.md)，作者手写全文 `draft.md`——**所有要 AI 补的地方统一标「待补充」**（公式/配图/表格/前文索引/事实数据五种，冒号后说明类型；`【图样：描述】`是配图等价写法）。AI 建稿 + 开 VS Code 后静默等作者说「好了」，**收到「好了」先校验稿件非空**（正文去头和注释块 <500 字 → 驳回继续等），再跑 润色（含内链：前文索引只取已发布文章微信 URL；**最小干预：AI 新增正文段落默认禁止，作者行文自足时禁写桥接/过渡/总结段**）→ 素材扫描（作者提示时扫 Obsidian `_INDEX.md`）+ 查事实 → 补公式 → 配图 → 事实查验（作者裁决）→ 质量审查 → 封面 → 存草稿箱。**不套**原声槽门禁——全文手写即全篇原声，AI 把作者原稿段落登记进本篇 `quality_check.json` 的 `slots` 让机器核验润色未动原声；事实疑点必须交作者裁决；作者编辑门禁与发布硬门禁和自动成稿相同；**篇幅可被作者口头豁免**（「不要管文章长度」→ `quality_check.json` 的 `exempt` 加「篇幅」并放大 `body_max`/`all_max`，禁按默认 2000 字口径砍稿）。
 
-判断：目录里有作为素材入口的 `raw.md`、且作者按素材直出 skill 走 → 不套。作者明确说走 grill / 大纲成稿 → 套。
+判断：目录里有作为素材入口的 `raw.md`、且作者按素材直出 skill 走 → 不套。目录里有 `draft.md`、且作者按手写稿直出 skill 走 → 不套（slots 门禁见上）。作者明确说走 grill / 大纲成稿 → 套。
 
 ## 执行流程（自动成稿）
 
