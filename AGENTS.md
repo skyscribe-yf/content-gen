@@ -9,6 +9,7 @@
 | 新文章选题/大纲 | `docs/writing-flow.md` + `.agents/skills/grill-me/SKILL.md` + `docs/viral-article-playbook.md`（调研 lane：派命名 agent `article-researcher`，定义 `.agents/agents/article-researcher.md`；`content-matrix.md`/`note-material-source.md` 归它读，main 按 brief 指向按需取） |
 | 作者扔素材直出 | `.agents/skills/raw-material-to-wechat-draft/SKILL.md` |
 | 作者手写 draft.md 直出（建稿+静默等「好了」+润色/查事实/补公式/配图/事实裁决/质检/封面/存草稿） | `.agents/skills/handwritten-draft-to-wechat/SKILL.md`（建稿：`scripts/new-handwritten-topic.sh`） |
+| 写正式 `weixin.md` 初版（三支路通用） | 派命名 agent `weixin-writer`（`.agents/agents/weixin-writer.md`，Gemini Web auto / thinking medium）；main 只复核 + 补 `quality_check.json`，分支细则见对应 skill |
 | 起标题/封面字 | `docs/article-title-seo.md` |
 | 配图/封面 | `docs/image-generation.md` |
 | 贴图（图文消息） | `docs/tietu-viral-playbook.md` + `docs/tietu-infographic-flow.md` |
@@ -27,6 +28,7 @@
 
 - 起草大纲前**必须先调 grill-me skill** 与作者讨论；禁止 AI 单方面生成 `.grill/<slug>.md`
 - 自动成稿：大纲末尾列作者原声槽（**进稿 ≥5 处**），全部占位符，**作者在 VS Code 自行填入**（AI 不等填直接动笔，weixin.md 槽位留 `【作者填入】`）；AI 禁代拟、禁代填、禁追问催稿；原声门禁在**发布前终检**把关（第一轮质检 `--skip-voice` 不管原声；终检 ≥5 逐字在场 + 占位符清零才准存草稿箱）
+- 成稿必派 subagent：正式 `weixin.md` **初版**一律由命名 agent **`weixin-writer`** 生成（Gemini Web auto / thinking medium），main agent 禁自己从零写正文；回传后 main 复核 frontmatter/篇幅/占位符/图片名，再补 `quality_check.json` 并派 `article-reviewer`
 - 排版硬规则：① 原声句禁加 ★ 前缀、禁套 blockquote，按正文段落直排；② 正文第一段禁标题开场（禁 `##` 起首、禁把标题抄成第一行）
 - 正文 **~2000 字**（含尾部 ≤2500），紧凑优先不拉长
 - 动笔前必读爆款经验 `docs/viral-article-playbook.md`，标题/开头/结构逐项对照
@@ -84,7 +86,7 @@
 
 - 数字事实源：`docs/wechat-data-audit-log.json`（结构见同名 `.schema.json`，操作 `scripts/wechat_audit_log.py`）、`docs/wechat-daily-sources-log.json`、`docs/shipinhao-data-log.json`（视频号独立）
 - **每轮审计结论与历史摘要不在本文件** → 现查 `docs/wechat-data-insights.md`（按 0xx 节定位）
-- 发布节奏：每天最多 1 篇，固定 **22:00**（恢复期可断更，合格才发优先于日更）
+- 发布节奏：每 2 天 1 篇，固定 **20:00**（2026-11-15 作者改档，此前每天 1 篇 22:00；恢复期可断更，合格才发优先于节奏）
 - 恢复期规则、双轨框架、文章级 KPI（T+7 阅读 150–300 / 分享率 ≥10%）→ `docs/wechat-ops.md`
 - 标题/台账/frontmatter 一律以后台 `msg_title` 为准；`scripts/verify_published_urls.py` 可全量或单篇核验
 - ⚠️ 后台「发表记录」只收录群发记录，未群发已发布文章不在其中，不能当「全量已发布」校验源

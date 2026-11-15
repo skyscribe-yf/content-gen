@@ -2073,6 +2073,19 @@ articles:
     ✅ 2026-11-07 发布回填（作者供链）：https://mp.weixin.qq.com/s/ZiQlEtB-vL5nzJo7ye4RvA，按排期 2026-11-05 22:00 档实发；本篇此前未入台账，本次补建条目；status published，published_date / wechat_url 与 frontmatter wechatUrl 三处同步。⚠️ 目录无 quality_check.py（files.quality_check=false），后台 media_id / 发布时刻未经 appmsgpublish 复核（作者供链为准）。
 
     🔁 2026-11-07 发布后回拉（作者后台改稿同步）：mp 页面 `js_content` 逐段比对后回写 weixin.md——① 开头改「有时候我发现，我的 agent 任务跑到一半，它会把上百行代码全部推倒重来」，死循环段拆成两段（「还有一次…突然出现。」+「那是一个非常复杂的修改 bug 的任务…实在是太可惜。」）；②「而训练界」→「而在模型训练领域」、「模型变强要刷题」→「模型变强就要刷题」；③「那把题也自己出？」与 2025 段并成一段，改「那能否让题目也 AI 自己出？」「真有人开始这么做了」「在零道人类题情况下，甚至可以反超…」；④ 自对弈段作者新加内链（[AlphaGo 十年：那只狗到底是靠什么赢的？](https://mp.weixin.qq.com/s/420EHNlLpfKksNy30sgEsg)）；⑤「解题方秒会」→「解题方法会」（线上原文如此，疑为作者笔误，按原样回写待作者定夺）；⑥ R-Zero 段末新增「这种对抗的思路，在 AI 的各个领域都是老常客了，如 GAN, Actor-Critic 架构等。」；⑦「先别急着沸腾」→「但是先别急着高兴太早」、「有条硬边界」→「有一条硬边界」、「可大量真实任务没有」→「…没有类似清洗的判定标准」、「数字很硬」→「数字看起来很硬核」；⑧ 结尾段作者新加内链（[DeepSeek 只换了权重：分数涨 11 分，思考少了三成](https://mp.weixin.qq.com/s/HG2yIC1XVNRGLz909UzifA)）；⑨ 倒数第二段改写并拆成两段（「…各方面的论文也都在想办法看怎么能内化到模型自身。」+「方向在这，天花板也还清楚的摆在那里，究竟能到什么程度，还有待进一步观察。」）；⑩ 作者删除尾部「📖 AI Agent 工程合集」与「下一篇：…」两行。链接 9 条全溯源。'
+- slug: 2026-11-08-jl-random-projection
+  title: 向量检索为什么敢随机降维？1536 维砍到 128，精度几乎不掉
+  series: 数学直觉
+  status: published
+  published_date: '2026-11-08'
+  wechat_url: https://mp.weixin.qq.com/s/1f4j4sIGlEmRFiVe0Cv7pg
+  type: 原理篇
+  files:
+    weixin: true
+    outline: true
+    cover: true
+    quality_check: true
+  notes: 2026-11-15 补登台账：该篇成稿于 11-07、11-08 22:00 档发布，但从未登记进台账（与 11-07 self-play-curriculum、11-12 panorama 同类漏登事故）。frontmatter wechatUrl 由作者供链回填后经 verify_published_urls 核验：og:title 与 frontmatter 逐字一致、页面未删除未违规、ct=1794139200（2026-11-08 20:00 CST）。审计源 docs/wechat-data-audit-log.json 仅覆盖到 11-04，故该篇无审计数据；shipinhao-data-log.json 有同名成片记录。
 - slug: 2026-11-10-self-play-collapse
   title: 给 AI 看标准答案，它为什么反而越练越差？
   series: AI Agent 工程
@@ -2146,11 +2159,20 @@ articles:
   notes: '🖊️ 手写稿直出流程首篇（skill handwritten-draft-to-wechat）：作者手写 draft.md 全文（9243 字），AI 建稿+开 VS Code 静默等「好了」→ 润色（原话 11/11 逐字在场）→ 双 lane 事实核查（Paseo 免费档；Grok 档 402 余额不足挂掉后兜底成功）+ Obsidian vault 素材 → 公式 25 块/内联 76 渲染零 merror → 配图 5（脚本 4 + AI 概念图 1）→ 事实疑点 6 条作者裁决（cuDNN→cuRAND 等）→ article-reviewer findings 15 项全修 → 封面「禁运卡上的/国产大模型？」11 字过门禁 → 作者终审 → 存草稿箱（media_id kOcXH4SytIYVIpYksTGfHrMUnXQhkHGDEkBGjP_xy93Z5UAErr2RzmCLsmmW3Nxl，grace+blue remote-api）。正文 6149 字，作者口径「不要管文章长度」exempt 留痕。
 
     📤 发布回填（2026-11-14 作者供链）：后台 msg_title《国产大模型真是用禁运的GB300训练的吗？》（比拟稿多一个「吗」，frontmatter title 已按后台口径同步）；wechat_url/frontmatter wechatUrl/published-index 三处回填。⚠️ 流程缺口留痕：本篇建稿时未登记 draft-status（新流程缺登记步），发布时才补录——已在 SKILL.md 阶段 0/7 补「建稿登记 draft_saved + 发布翻 published」两步。'
+- slug: 2026-11-18-dgm-self-modifying-code
+  title: AI 改自己的代码，两周烧掉两万二：钱到底花在想，还是花在判
+  series: AI Agent 工程
+  status: draft_saved
+  published_date: null
+  scheduled_publish: 2026-11-18 20:00
+  wechat_url: null
+  cover_media_id: kOcXH4SytIYVIpYksTGfHoR3gQ82nl-9LMNKgaRVh9p0W3D5SQqp4GjsEQh3hJLw
+  draft_media_id: kOcXH4SytIYVIpYksTGfHmhrXHnO2a2hShMwsj9NBr4yg3oQ8q81SyZRNW8Uuwoq
 summary:
-  total: 124
+  total: 126
   by_status:
-    published: 123
-    draft_saved: 1
+    published: 124
+    draft_saved: 2
   drafting_queue: []
   ready_queue: []
   scheduled_queue: []

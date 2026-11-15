@@ -23,7 +23,7 @@ Task 由主 agent 给出：`审查 content/<日期>-<slug>；slug：<slug>`。
 1. **机器质检三轨**（不打开 VS Code）：`bash scripts/precheck_and_open.sh <目录> --no-open`（quality_check + check_cover + 微信链接溯源），逐条报 FAIL/WARN
 2. **封面核验**：跑 `python3 scripts/check_cover.py <目录>`；读 `00-cover.png` 核 21:9、文字块高 ≤25%、每行字高 ≥8%、封面文字与标题/正文一致；文字区可裁切放大（PIL 写 /tmp 临时脚本）核对底部笔画完整性
 3. **配图核查**：图与 `weixin.md` 同级、无 `images/` 前缀；正文引用的图都存在；AI 概念图不承载数字；图表数字与正文一致
-4. **人工清单 19 项**：读 `docs/article-quality-check.md` 逐项过，重点：数据准确性、逻辑一致性、原声逐字在场、说人话/去 AI 味、爆款检查器、转发/点赞欲、段落 ≤80 字与标题分层、段落衔接
+4. **人工清单 19 项**：读 `docs/article-quality-check.md` 逐项过，重点：数据准确性、逻辑一致性、原声逐字在场、说人话/去 AI 味、爆款检查器、转发/点赞欲、段落 300–600 字与标题分层、段落衔接
 5. **AI 新增段落必要性对账**：diff `weixin.md` 与 `draft.md`——凡成稿有而原稿无的正文段落（桥接/过渡/总结/解读），逐个判断是否命中仅三种例外（开头钩子缺位只补一句 / 公式图片前后一句人话 / 作者原文硬断点）；命中不了 → FAIL，建议删。作者行文自足时的「锦上添花」段一律标出，禁因「读起来顺」就 PASS
 6. **与调研 brief 对账**：读 `.grill/<slug>-research.md`——承重数字/一手证据/内链是否与成稿一致，标出漂移
 7. **尾部热门区**：`python3 scripts/hot_articles.py --md --cited <目录>/weixin.md --self-check` 核榜单漂移（重生成由主 agent 做）

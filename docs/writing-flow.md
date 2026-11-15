@@ -14,13 +14,13 @@ Skill 位置：[`.agents/skills/grill-me/SKILL.md`](.agents/skills/grill-me/SKIL
 
 **数学篇的「深」= 推导密度，不是篇幅**（2026-09-14 作者口径，奖励函数 hack 篇确立）：字数口径不变，把「会写浅」的地方整段换成推导——只给结论不给式子的补式子，只给现象不给条件的补成立条件，只给直觉不给反例的补边界。禁止以「数学篇可以放宽到 3-4k」为由扩写。
 
-**段落 ≤80 字 + 多级标题**（2026-10-10 作者新规，**项目级、不豁免**）：每个段落不超过 **80 个可视字**，长段落**按意思拆**（不按字数拦腰切）；醒目句（驱动句 / 反转句 / 金句）**独立成段**；`##` 节 ≥5 个，超约 400 字的节**必补 `###` 小标题**。原声句不改写，但可在原句自带句读处加句号、分段（不增删字）。
+**段落 300–600 字 + 多级标题**（2026-11-15 作者纠正，**取代 2026-10-10「≤80 字」旧规，项目级**）：**小于 300 字一般不分段**，段落长于 300 字可以、**不超过 600 字**，超过才在逻辑转折处拆；醒目句（驱动句 / 反转句 / 金句）**独立成段**；`##` 节 ≥5 个，超约 400 字的节**必补 `###` 小标题**（每节 1 个、放在真逻辑转折处，不随意增拆）。原声句不改写，但可在原句自带句读处加句号、分段（不增删字）。
 
 **开头禁标题开场（2026-11-01 作者追加，项目级）**：正文第一段必须是钩子文本——**禁止以 `##` 标题起首，也禁止把文章标题抄成开头第一行**。第一个节标题只能出现在开头段之后。细则与自检见 [`article-quality-check.md`](article-quality-check.md) **第 17 项**；脚本参考实现 `content/2026-10-10-context-rot-isolation/quality_check.py`。
 
 ## 适用范围
 
-- **自动成稿**（本文件后半段）：选题经 grill-me，产物是 `outline.md` 再写 `weixin.md`。套原声槽门禁。
+- **自动成稿**（本文件后半段）：选题经 grill-me，产物是 `outline.md`，再由 `weixin-writer` 生成 `weixin.md`。套原声槽门禁。
 - **素材直出**：走 [`.agents/skills/raw-material-to-wechat-draft/SKILL.md`](../.agents/skills/raw-material-to-wechat-draft/SKILL.md)，用 `raw.md` + 原声句清单。**不套**本文件的原声槽门禁。
 - **手写稿直出**：走 [`.agents/skills/handwritten-draft-to-wechat/SKILL.md`](../.agents/skills/handwritten-draft-to-wechat/SKILL.md)，作者手写全文 `draft.md`——**所有要 AI 补的地方统一标「待补充」**（公式/配图/表格/前文索引/事实数据五种，冒号后说明类型；`【图样：描述】`是配图等价写法）。AI 建稿 + 开 VS Code 后静默等作者说「好了」，**收到「好了」先校验稿件非空**（正文去头和注释块 <500 字 → 驳回继续等），再跑 润色（含内链：前文索引只取已发布文章微信 URL；**最小干预：AI 新增正文段落默认禁止，作者行文自足时禁写桥接/过渡/总结段**）→ 素材扫描（作者提示时扫 Obsidian `_INDEX.md`）+ 查事实 → 补公式 → 配图 → 事实查验（作者裁决）→ 质量审查 → 封面 → 存草稿箱。**不套**原声槽门禁——全文手写即全篇原声，AI 把作者原稿段落登记进本篇 `quality_check.json` 的 `slots` 让机器核验润色未动原声；事实疑点必须交作者裁决；作者编辑门禁与发布硬门禁和自动成稿相同；**篇幅可被作者口头豁免**（「不要管文章长度」→ `quality_check.json` 的 `exempt` 加「篇幅」并放大 `body_max`/`all_max`，禁按默认 2000 字口径砍稿）。
 
@@ -33,9 +33,10 @@ Skill 位置：[`.agents/skills/grill-me/SKILL.md`](.agents/skills/grill-me/SKIL
 3. 讨论收敛后，AI 将结论写入 `.grill/<slug>.md` 日志
 4. 确认 grill 日志无误**且 `.grill/<slug>-research.md` 调研 brief 已在手**（brief 未回则等完成通知，禁开写）→ 方可进入大纲起草
 5. 读 [`docs/viral-article-playbook.md`](viral-article-playbook.md)，写 `outline.md`（定位、结论、结构、配图、既有检查清单）；**一手证据 / vault 素材 / 内链以 brief 为单一事实源**，brief 缺项才定点补查并回写 brief 对应节
-6. **大纲末尾列作者原声槽，全部占位符**：默认 7–10 个候选槽（节少时可少列，不得少于 5 个），每槽给「位置 + 为什么这里 + 问你一句 + 方向」四行提示，原句一律占位符 `【作者填入】`。**AI 不等作者填，直接动笔**：写 `weixin.md` 时在每个槽位「位置」留 `【作者填入】` 占位符。
-7. 作者在 VS Code 自行填入（`outline.md` 或 `weixin.md` 填哪处均可，以 `weixin.md` 为准；可粘 grill 逐字原话，算 1 处；也可整槽标「跳过」）。**AI 禁代拟、禁代填、禁追问催稿**——作者问「这槽写什么好」也只给更具体的提示或方向，不给成句。
-8. 原声门禁后移到**发布前终检**：已填 <5 或 `weixin.md` 残留 `【作者填入】` → 禁止存草稿箱（见下文「成稿后：作者编辑门禁」两轮质检）。作者说「先写着」「帮我凑两句」也不代填。
+6. **大纲末尾列作者原声槽，全部占位符**：默认 7–10 个候选槽（节少时可少列，不得少于 5 个），每槽给「位置 + 为什么这里 + 问你一句 + 方向」四行提示，原句一律占位符 `【作者填入】`。
+7. **成稿派发（2026-11-15 起）**：大纲与调研 brief 定稿后派命名 agent **`weixin-writer`**（`subagent({ agent: "weixin-writer", task: "目录：content/<日期>-<slug>；分支：auto；slug：…；原声槽：n 个" })`），**不等作者填、直接动笔**写出 `weixin.md` 初版，每个槽位「位置」留 `【作者填入】` 占位符；**main agent 禁自己从零写正文**。回传后 main 复核 frontmatter / 篇幅 / 占位符 / 图片名，再补 `quality_check.json` 并派 `article-reviewer`。细则见下文「成稿 subagent」。
+8. 作者在 VS Code 自行填入（`outline.md` 或 `weixin.md` 填哪处均可，以 `weixin.md` 为准；可粘 grill 逐字原话，算 1 处；也可整槽标「跳过」）。**AI 禁代拟、禁代填、禁追问催稿**——作者问「这槽写什么好」也只给更具体的提示或方向，不给成句。
+9. 原声门禁后移到**发布前终检**：已填 <5 或 `weixin.md` 残留 `【作者填入】` → 禁止存草稿箱（见下文「成稿后：作者编辑门禁」两轮质检）。作者说「先写着」「帮我凑两句」也不代填。
 
 正在写的自动成稿篇，从「尚未写 `weixin.md`」的那一步开始执行。不回溯已发布文章。
 
@@ -48,6 +49,17 @@ Skill 位置：[`.agents/skills/grill-me/SKILL.md`](.agents/skills/grill-me/SKIL
 - **硬门禁**：brief 未回不写 `outline.md`；brief 标「未核实」的承重数字禁进大纲结论层
 - **main agent 不再全文通读** `docs/content-matrix.md` 与 `docs/note-material-source.md`（归 subagent）；按 brief 指向定点取，禁止重复覆盖
 - **brief 缺项补核**：`subagent({ action: "resume", id, message })` 回到同一 run 补，不自己抓全文
+
+## 成稿 subagent（成稿阶段，2026-11-15 起）
+
+正式 `weixin.md` 的**初版**由命名 agent **`weixin-writer`** 生成（定义 `.agents/agents/weixin-writer.md`：模型 `gemini-web/gemini-auto`，thinking `medium`，工具集含 write/edit——全流程唯一产出正文的 lane）。三支路（自动成稿 / 手写稿直出 / 素材直出）共用：
+
+- **派发时机**：自动成稿 = `outline.md` 与 `.grill/<slug>-research.md` 定稿后；手写稿 = 作者说「好了」且空稿校验通过后；素材直出 = `structure.md` 获作者批准后
+- **task 必给**：目录 `content/<日期>-<slug>`、分支（`auto` / `handwritten` / `raw`）、`slug`；自动成稿另给原声槽数量，手写稿另给「待补充」清单与作者豁免（如「篇幅」）
+- **产出**：`weixin.md` 初版（frontmatter + 正文 + 原声占位符 + 公式 + 配图占位 + 内链 + 尾部热门区/话题标签）+ 一份成稿报告（字数 / 结构 / 原声计数 / 待补充处理 / 配图计划 / 内链 / 存疑点）；子 agent 不派 subagent、不出图、不裁决事实、不碰封面与草稿箱
+- **回传后 main agent 负责**：① 复核 frontmatter / 篇幅 / 段落与标题层级 / 原声占位符残留 / 图片文件名；② 写本篇 `quality_check.json`（slots 逐字取自 `draft.md` 或作者填入内容，numbers/links 按成稿）；③ 派 `article-reviewer`，按 findings 修补——**修补不经过 `weixin-writer`**
+- **缺项补稿**：回传缺失或成稿明显不达标 → `subagent({ action: "resume", id, message })` 回同一 run 补，不新建 run；连续 2 次不达标才由 main agent 按 outline 补写，并在 `.grill/<slug>-review.md` 留痕
+- **禁**：main agent 自己从零写正文；让 `weixin-writer` 自审替代 `article-reviewer`
 
 ## 成稿后：作者编辑门禁（存草稿箱前必走，2026-11-08 起）
 
@@ -85,7 +97,7 @@ Skill 位置：[`.agents/skills/grill-me/SKILL.md`](.agents/skills/grill-me/SKIL
 
 作者不填也不催：AI 只在大纲里留好槽位与提示，填多少、什么时候填由作者在 VS Code 决定。作者问「这槽写什么好」：只换更具体的提示或方向，仍不给成句。
 
-AI 写 `weixin.md` 时在同一槽位留同样占位符；作者在 `outline.md` 或 `weixin.md` 填均可，**以 `weixin.md` 为准**（终检查的是 `weixin.md`）。
+`weixin-writer` 写 `weixin.md` 时在同一槽位留同样占位符；作者在 `outline.md` 或 `weixin.md` 填均可，**以 `weixin.md` 为准**（终检查的是 `weixin.md`）。
 
 ### `outline.md` 怎么记
 
@@ -111,7 +123,7 @@ AI 写 `weixin.md` 时在同一槽位留同样占位符；作者在 `outline.md`
 - 类型：类比
 ```
 
-写 `weixin.md` 时：按槽的「位置」插入对应「原句」；不改写、不补总结句、不把口语改成书面语。只修明显错别字。
+写 `weixin.md` 时（`weixin-writer` 执行）：按槽的「位置」插入对应「原句」；不改写、不补总结句、不把口语改成书面语。只修明显错别字。
 
 **原声排版硬规则（2026-11-01 作者追加）**：原声句进稿**禁止加 ★ 前缀、禁止套 blockquote 或任何 AI 加的装饰框**，按正文段落直接排。作者自己在后台改稿时加的 ★ 是后台习惯，AI 成稿一律不得预先添加。
 

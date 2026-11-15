@@ -7,6 +7,7 @@ series: "数学直觉"
 digest: "embedding 拿到手第一件事是砍维度：1536 维砍到 128，精度几乎不掉。凭什么？JL 引理、随机投影为什么打赢精心设计的 PCA，以及 DeepSeek MLA 的 512 维。"
 cover: "00-cover.png"
 keywords: "向量检索, 降维, JL 引理, 随机投影, embedding"
+wechatUrl: "https://mp.weixin.qq.com/s/1f4j4sIGlEmRFiVe0Cv7pg"
 ---
 
 搭过 RAG 的人都大约知道一个潜规则：embedding 模型吐出来的向量，第一件事不是建索引，是砍维度。

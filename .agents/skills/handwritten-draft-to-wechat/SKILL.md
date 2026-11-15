@@ -23,6 +23,7 @@ description: Use when 作者要手写全文直出公众号——建 draft.md、V
 10. **质量审查必派**：weixin.md 第一版完成后派命名 agent **`article-reviewer`**（`async: true` + 完成通知），findings 落盘 `.grill/<slug>-review.md`，主 agent 按 findings 修完才进封面。
 11. **作者编辑门禁（存草稿箱前）**：`scripts/precheck_and_open.sh` 两轮（打开 VS Code 等作者 → `--no-open` 复检），通过或作者明确豁免才存草稿。详见 AGENTS.md「发布硬门禁」。
 12. **只存草稿，禁止直接发布**：走 `baoyu-post-to-wechat` 的 `--submit`（浏览器保存草稿）或 API `draft/add`，不触发群发；存草稿前复校验 draft.md 与阶段 0 记录的 md5 一致（作者原稿未被管线改动）；发布后第一时间回填 frontmatter `wechatUrl`。
+13. **成稿必派 subagent**：`weixin.md` **初版**由命名 agent **`weixin-writer`**（`.agents/agents/weixin-writer.md`；`gemini-web/gemini-auto` + thinking `medium`）生成；main agent 只复核、补 `quality_check.json` 与跑后续门禁，禁自己从零写正文。
 
 ## 工作流
 
@@ -35,19 +36,21 @@ description: Use when 作者要手写全文直出公众号——建 draft.md、V
 3. 作者说「好了」→ **先空稿校验**：读 draft.md 全文，正文（去 YAML 头和约定注释块）不足 500 字 → 只含模板占位句，判定未开写，告知作者「稿子还是空的，写完再跟我说」并回到静默等待；禁启动后续任何阶段、禁代写救场。
 4. 稿件非空 → 记录 draft.md 的 md5（冻结基线，存草稿前复校验）→ 通读全文，列「待补充」清单（五种类型各几处），进入阶段 1。
 
-### 阶段 1 · 润色（draft.md → weixin.md）
+### 阶段 1 · 润色（draft.md → weixin.md；派 `weixin-writer` 执行）
 
 draft.md 冻结不动；成稿写 `weixin.md`（唯一发布基准）。
 
+**派发（2026-11-15 起）**：本阶段整体交命名 agent **`weixin-writer`**（`.agents/agents/weixin-writer.md`；`gemini-web/gemini-auto` + thinking `medium`），task 给：目录、`slug`、`draft.md` 的 md5 基线、待补充清单（五类各几处）、作者豁免（如「篇幅」）。main agent 禁自己从零写正文；回传后按下列清单逐项复核，并补第 9 项 `quality_check.json`。
+
 1. **读语料**：`branding/style-corpus/style-features.md` 认原声句类型（本篇全文手写，全部算原声）。
 2. **标题**：作者 frontmatter 有 `title` 就用；空着按 `docs/article-title-seo.md` 起（≤22 字、关键词前置、痛点驱动），写进 weixin.md frontmatter。
-3. **正文搬运**：作者原话逐字进稿，只修明显错别字。段落 ≤80 字、`##` 节 ≥5、超 400 字的节补 `###`（`docs/writing-flow.md` 2026-10-10 规；**原声段落按门禁豁免**，不得为凑规则改写原句）。
+3. **正文搬运**：作者原话逐字进稿，只修明显错别字。段落 300–600 字（<300 一般不分段，醒目句独立成段）、`##` 节 ≥5、超约 400 字的节补 `###`（`docs/writing-flow.md` 2026-11-15 规，≤80 字旧规已废止；**原声段落按门禁豁免**，不得为凑规则改写原句）。
 4. **开头钩子**：正文第一段禁标题开场（禁 `##` 起首、禁把标题抄成第一行）；作者自己写好了钩子就不动；没写则 AI **只补一句**，禁加段。
 5. **补公式**：公式类「待补充」→ LaTeX（`docs/math-latex.md`），公式前后补一句人话解释（门禁 3 例外②，除此以外 AI 禁写任何结构过渡/桥接段）；结尾禁加引导段——项目规矩要的尾部（热门文章 + 话题标签）除外。
 6. **图片/表格占位**：每一处配图类「待补充」或「【图样：描述】」→ `![说明](NN-名称.png)`，同时登记出图计划（描述 + 轨道：AI 概念图 / 脚本数据图 / 脚本表格）。图片与 weixin.md 同级、无 `images/` 前缀。
 7. **内链（前文索引）**：作者标了「待补充：插入《篇名》前文链接」→ 按篇名取已发布文章微信 URL 插到指定位置；没标 → AI 按本篇主题从 `branding/style-corpus/wechat-published-index.json` / `docs/wechat-data-audit-log.json` 配 2–4 篇相关旧文，插在相关论述处（禁堆文末）。链接登记进 `quality_check.json` 的 `links`。
 8. **frontmatter 补全**：`digest`/`keywords`/`type`/`series` 作者没填则 AI 补。
-9. **写 quality_check.json**：`slots` = 作者原稿段落逐字（挑 8–12 段有代表性的：亲历/判断/类比/实测/提问），让机器核验润色没动原声；其余定制项按 `scripts/quality_check.py` 要求，`numbers` 与正文格式严格一致（LaTeX 千分位写 `745{,}472` 这种转义形态）。
+9. **写 quality_check.json（main agent 在 `weixin-writer` 回传后做）**：`slots` = 作者原稿段落逐字（挑 8–12 段有代表性的：亲历/判断/类比/实测/提问），让机器核验润色没动原声；其余定制项按 `scripts/quality_check.py` 要求，`numbers` 与正文格式严格一致（LaTeX 千分位写 `745{,}472` 这种转义形态）。
 10. **篇幅豁免**：作者说过「不要管文章长度」等口径 → `exempt` 加「篇幅」并同步调大 `body_max`/`all_max`（参考 2026-11-14 篇的 99999）；**禁再按默认 ~2000 字口径砍作者稿**。作者没提 → 按默认口径。
 11. **尾部热门文章**：`python3 scripts/hot_articles.py --md --cited <weixin.md>` 生成「🔥 热门文章」区（禁手写），发布前跑 `--self-check`；正例模板见 `docs/pre-publish-final-check.md` 6c 节。
 
@@ -123,6 +126,7 @@ draft.md 冻结不动；成稿写 `weixin.md`（唯一发布基准）。
 - 疑点数字未经作者裁决就出数据图/进终稿
 - 只核查作者原话，不核查 AI 润色期补写的新数字/论断
 - 跳过 article-reviewer 或作者编辑门禁直接存草稿箱
+- main agent 自己从零写 weixin.md 初版（应派 `weixin-writer`）；或让 `weixin-writer` 替 `article-reviewer` 自审
 - AI 概念图承载具体数字；图片带 `images/` 前缀；外文表格用截图
 - 用 draft.md 当发布基准（唯一基准是 weixin.md）
 - 内链用相对路径、或把未发布文章当已发布引用

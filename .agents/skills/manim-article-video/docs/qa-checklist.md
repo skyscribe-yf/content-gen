@@ -40,9 +40,10 @@ QA subagent 按此清单逐项核查，输出 **PASS / FAIL + 证据**（文件:
 | B3 | 字幕折行 | 抽长句帧 | ≤2 行；英文单词不拆断 |
 | B4 | 音画同步 | `python3 scripts/check_sync.py <shipinhao目录>`；若存在 `tts/sentence-boundaries.json`，对比 `subs.srt` 每条与 clips 的 start/end（按实际段长累计） | 字幕时间戳无重叠/无过短；每条字幕都落在对应 clip 区间内，不跨句；「声音与画面同步但字幕不同步」= build 时间戳优先级错误，必须用 sentence-boundaries |
 | B5 | 无长静音 | `ffmpeg -i 成品 -af silencedetect=noise=-35dB:d=1.5 -f null -` | 最长静音段 <1.5s（段间 0.1s 缓冲、句间 <1s 正常） |
-| B6 | 时长 | ffprobe | ≈ Σ(VOICE_DUR) + N×0.1 |
+| B6 | 时长 | ffprobe | ≈ Σ(VOICE_DUR) + N×0.1（溶解转场不改变总时长：垫尾 D 秒被 xfade 消耗，末尾 -t 裁回） |
 | B7 | 封面 | 检查 `<标题>-封面.png` | yairouter 1080×1920；关键内容在 3:4 安全区 y∈[240,1680] |
-| B8 | 用户报点 ASR 抽验（有反馈时必做） | 提取报点 ±1s 各 2s 音频 → MiMo ASR（`scripts/mimo_srt.py`）→ 与 subs.srt 同刻文本对比 | 语音内容 == 字幕文本；不一致 → 按 av-sync.md 精修 sentence-boundaries 后重 build |
+| B8 | 段间溶解转场（2026-10-06 起） | `ffprobe -select_streams v -show_entries packet=pts_time` 排序查间隙；逐段边界（Σ 视频流时长）±0.2s 抽帧 | 无 >1 帧的 pts 间隙（链式 xfade 丢帧事故＝每处跳 12 帧）；边界前 0.35s↔0.2s 帧有差异 = 出画内容在溶解；若两侧均为空背景（场景 transition_out 已清空）也算通过——背景连续、无跳切可感；`--no-fade` 时不查 |
+| B9 | 用户报点 ASR 抽验（有反馈时必做） | 提取报点 ±1s 各 2s 音频 → MiMo ASR（`scripts/mimo_srt.py`）→ 与 subs.srt 同刻文本对比 | 语音内容 == 字幕文本；不一致 → 按 av-sync.md 精修 sentence-boundaries 后重 build |
 
 ## 常见 FAIL 模式（对应 pitfalls.md）
 

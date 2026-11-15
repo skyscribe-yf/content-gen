@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Manim 文章视频 → 视频号成品一键构建（mux 配音 + concat + 字幕 + 烧录）。
+"""Manim 文章视频 → 视频号成品一键构建（mux 配音 + 溶解转场拼接 + 字幕 + 烧录）。
 
 约定工作目录（shipinhao/，见 .agents/skills/manim-article-video/SKILL.md）：
   scenes.py          Manim 场景（S1..SN，竖屏 config + pad_to_voice）
@@ -12,9 +12,12 @@
 
 用法：
   python3 scripts/manim_video_build.py content/<日期>-<主题>/shipinhao \
-      [--speed 1.0] [--tail 0.1] [--out 成品.mp4]
+      [--speed 1.0] [--tail 0.1] [--out 成品.mp4] [--fade 0.4]
 
 说明：
+  - 段间默认 **溶解转场**（xfade dissolve，--fade 秒数，默认 0.4）：转场窗口压在
+    【段边界前 D 秒】，上一段出画内容在现场溶解、新段准时出现；新段首帧冻结垫头供
+    溶解消耗，总时长/音频/字幕时间轴与硬切完全一致；--no-fade 退回硬切 concat
   - 段间无缝衔接靠 --tail（默认 0.1s）；用户嫌停顿改小、嫌太赶改大
   - 语速用 ffmpeg atempo 后处理（无需重生成 TTS / 重渲染 Manim）
   - 字幕：优先 tts/sentence-boundaries.json 的逐句 start/end；没有时才退回口播停顿驱动切分
@@ -45,6 +48,17 @@ def dur_of(path: Path) -> float:
         ["ffprobe", "-v", "error", "-show_entries", "format=duration",
          "-of", "csv=p=0", str(path)], text=True)
     return float(out.strip())
+
+
+def vdur_of(path: Path) -> float:
+    """视频流时长（帧数/fps，不含 AAC padding）——xfade 偏移必须按视频帧时间轴算，
+    用容器时长会因每段 AAC padding 累积漂移、导致转场处掉帧。"""
+    out = subprocess.check_output(
+        ["ffprobe", "-v", "error", "-select_streams", "v", "-count_packets",
+         "-show_entries", "stream=nb_read_packets,r_frame_rate", "-of", "json", str(path)], text=True)
+    st = json.loads(out)["streams"][0]
+    num, den = st["r_frame_rate"].split("/")
+    return int(st["nb_read_packets"]) / (float(num) / float(den))
 
 
 def _hard_cut_text(s: str, limit: int = 26) -> list[str]:
@@ -794,6 +808,11 @@ def main():
     ap.add_argument("workdir", nargs="?", help="shipinhao 工作目录（含 scenes.py / tts.txt / tts/）")
     ap.add_argument("--speed", type=float, default=1.0, help="配音语速（atempo 后处理，默认 1.0 原速）")
     ap.add_argument("--tail", type=float, default=0.1, help="段尾缓冲秒数（默认 0.1，段间无缝）")
+    ap.add_argument("--fade", type=float, default=0.4,
+                    help="段间溶解转场秒数（xfade dissolve，窗口在段边界前，默认 0.4；总时长不变）")
+    ap.add_argument("--transition", default="dissolve",
+                    help="xfade 转场类型（默认 dissolve 溶解；可选 fadeblack/fadewhite 等，见 ffmpeg -h filter=xfade）")
+    ap.add_argument("--no-fade", action="store_true", help="关闭段间溶解转场，退回硬切 concat")
     ap.add_argument("--last-tail", type=float, default=0.0,
                     help="末段额外画面停留秒数（尾卡停留，默认 0；末段 mux 时长取 max(配音+tail+last_tail, 动画实际时长)）")
     ap.add_argument("--out", default="成品.mp4", help="输出文件名")
@@ -864,16 +883,60 @@ def main():
         seg_dur[seg] = actual  # 用实际段时长（AAC 编码 padding 后略超 vd），字幕时间轴与 concat 严格一致
         print(f"{seg}: 配音 {ad:.2f}s → 视频 {vd:.2f}s（实际 {actual:.2f}s）")
 
-    # 4) concat（ts 中转：ffmpeg concat demuxer 直接拼 mp4 会改写第 2+ 段的 AAC
-    #    （edit list/priming 处理），导致段内音画漂移——先转 mpegts 再拼，字节保留）
-    for seg in segments:
-        run(["ffmpeg", "-y", "-v", "error", "-i", str(wd / f"build_{seg}.mp4"),
-             "-c", "copy", "-f", "mpegts", str(wd / f"build_{seg}.ts")])
-    concat_txt = wd / "concat.txt"
-    concat_txt.write_text("".join(f"file 'build_{s}.ts'\n" for s in segments), encoding="utf-8")
-    full = wd / "build_full.mp4"
-    run(["ffmpeg", "-y", "-v", "error", "-f", "concat", "-safe", "0",
-         "-i", str(concat_txt), "-c", "copy", str(full)])
+    # 4) 拼接：段间溶解转场（xfade dissolve，2026-10-06 用户拍板为默认）
+    #    每个转场独立组装，不用链式 xfade（链到第 3 个起 framesync 会丢帧，2026-10-06 实测）：
+    #      t_i  = 第 i 段最后 D 秒（出画内容现场）
+    #      h_i  = 第 i+1 段首帧冻结 D 秒（新场景先亮相、再准时动起来）
+    #      m_i  = xfade(t_i, h_i, offset=0, d=D) → D 秒交叉溶解
+    #      b_i  = 第 i 段主体（去掉尾 D 秒；末段全取）
+    #    concat 滤镜按 b0 m0 b1 m1 … m_{n-2} b_{n-1} 组装，音频硬切 concat。
+    #    新段内容/配音/字幕仍在段边界准时开始，总时长与硬切完全一致。
+    #    ⚠️ 时长按【视频流】（帧数/fps）算：容器时长含 AAC padding，每段多 0.02~0.09s。
+    #    （旧硬切整体走 ts 中转 concat demuxer：直接拼 mp4 会改写第 2+ 段的 AAC edit
+    #     list/priming 导致段内音画漂移——保留在 --no-fade 分支）
+    vdur = {seg: vdur_of(wd / f"build_{seg}.mp4") for seg in segments}
+    total = sum(seg_dur.values())  # 音频/字幕时间轴（容器时长）
+    fade = 0.0 if args.no_fade else args.fade
+    if fade > 0 and len(segments) > 1:
+        n = len(segments)
+        D = min(fade, min(vdur.values()) / 2)
+        inputs: list[str] = []
+        for seg in segments:
+            inputs += ["-i", str(wd / f"build_{seg}.mp4")]
+        fc: list[str] = []
+        for i, seg in enumerate(segments):
+            end = vdur[seg] - (D if i < n - 1 else 0.0)
+            fc.append(f"[{i}:v]trim=0:{end:.4f},setpts=PTS-STARTPTS,format=yuv420p[b{i}]")
+        for i in range(n - 1):
+            fc.append(f"[{i}:v]trim={vdur[segments[i]] - D:.4f}:{vdur[segments[i]]:.4f},"
+                      f"setpts=PTS-STARTPTS,format=yuv420p[t{i}]")
+            fc.append(f"[{i + 1}:v]tpad=start_mode=clone:start_duration={D},trim=0:{D},"
+                      f"setpts=PTS-STARTPTS,format=yuv420p[h{i + 1}]")
+            fc.append(f"[t{i}][h{i + 1}]xfade=transition={args.transition}:duration={D}:offset=0[m{i}]")
+        order: list[str] = []
+        for i in range(n):
+            order.append(f"[b{i}]")
+            if i < n - 1:
+                order.append(f"[m{i}]")
+        fc.append("".join(order) + f"concat=n={2 * n - 1}:v=1:a=0[vout]")
+        fc.append("".join(f"[{i}:a]" for i in range(n)) + f"concat=n={n}:v=0:a=1[aout]")
+        full = wd / "build_full.mp4"
+        run(["ffmpeg", "-y", "-v", "error", *inputs,
+             "-filter_complex", ";".join(fc),
+             "-map", "[vout]", "-map", "[aout]",
+             "-c:v", "libx264", "-crf", "16", "-preset", "medium",
+             "-c:a", "aac", "-b:a", "192k", "-t", f"{total:.3f}",
+             str(full)])
+        print(f"拼接: {n} 段 {args.transition} 溶解转场 {D:.2f}s（窗口在段边界前，总时长 {total:.1f}s 与硬切一致）")
+    else:
+        for seg in segments:
+            run(["ffmpeg", "-y", "-v", "error", "-i", str(wd / f"build_{seg}.mp4"),
+                 "-c", "copy", "-f", "mpegts", str(wd / f"build_{seg}.ts")])
+        concat_txt = wd / "concat.txt"
+        concat_txt.write_text("".join(f"file 'build_{s}.ts'\n" for s in segments), encoding="utf-8")
+        full = wd / "build_full.mp4"
+        run(["ffmpeg", "-y", "-v", "error", "-f", "concat", "-safe", "0",
+             "-i", str(concat_txt), "-c", "copy", str(full)])
 
     # 5) 字幕 SRT + ASS（优先用 TTS 句子级时间戳对齐，修复对白漂移）
     voices_map = {seg: v for seg, v in zip(segments, voices)}

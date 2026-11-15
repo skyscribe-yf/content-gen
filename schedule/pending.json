@@ -1,7 +1,7 @@
 {
   "schema": "schedule/schema.json#/$defs/ledger",
   "schema_version": 1,
-  "updated": "2026-11-15T08:22:18",
+  "updated": "2026-11-15T12:05:35",
   "articles": [
     {
       "slug": "2026-11-14-opd-multi-teacher-distillation",
@@ -16,6 +16,17 @@
         "cover": true,
         "quality_check": true
       }
+    },
+    {
+      "slug": "2026-11-18-dgm-self-modifying-code",
+      "title": "AI 改自己的代码，两周烧掉两万二：钱到底花在想，还是花在判",
+      "series": "AI Agent 工程",
+      "status": "draft_saved",
+      "published_date": null,
+      "wechat_url": null,
+      "scheduled_publish": "2026-11-18 20:00",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHoR3gQ82nl-9LMNKgaRVh9p0W3D5SQqp4GjsEQh3hJLw",
+      "draft_media_id": "kOcXH4SytIYVIpYksTGfHmhrXHnO2a2hShMwsj9NBr4yg3oQ8q81SyZRNW8Uuwoq"
     }
   ]
 }

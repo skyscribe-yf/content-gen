@@ -1,7 +1,7 @@
 {
   "schema": "schedule/schema.json#/$defs/ledger",
   "schema_version": 1,
-  "updated": "2026-11-15T08:22:18",
+  "updated": "2026-11-15T12:05:35",
   "articles": [
     {
       "slug": "2026-07-03-损失函数",
@@ -1788,6 +1788,21 @@
         "outline": true,
         "cover": true,
         "quality_check": false
+      }
+    },
+    {
+      "slug": "2026-11-08-jl-random-projection",
+      "title": "向量检索为什么敢随机降维？1536 维砍到 128，精度几乎不掉",
+      "series": "数学直觉",
+      "status": "published",
+      "published_date": "2026-11-08",
+      "wechat_url": "https://mp.weixin.qq.com/s/1f4j4sIGlEmRFiVe0Cv7pg",
+      "type": "原理篇",
+      "files": {
+        "weixin": true,
+        "outline": true,
+        "cover": true,
+        "quality_check": true
       }
     },
     {

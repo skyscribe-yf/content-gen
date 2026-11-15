@@ -154,7 +154,7 @@ else:
     chk(not first.startswith("#"), "正文首段不是标题")
     chk(first[:12] not in title_line, "正文首段没有抄标题")
 
-print("[17] 段落 ≤80 字（原声段落按门禁豁免：逐字不改写）")
+print("[17] 段落 ≤600 字（2026-11-15 口径，取代 ≤80 字旧规；原声段落按门禁豁免：逐字不改写）")
 paras = []
 for p in BODY.split("\n"):
     p = p.strip()
@@ -163,16 +163,16 @@ for p in BODY.split("\n"):
     if re.match(r"^(\d+\.|[-*])\s", p) or p.startswith("!["):
         continue
     paras.append(p)
-over = [(cjk(p), p) for p in paras if cjk(p) > 80]
+over = [(cjk(p), p) for p in paras if cjk(p) > 600]
 voice_over = [(n, p) for n, p in over if is_voice(p)]
 ai_over = [(n, p) for n, p in over if not is_voice(p)]
 if not skip_in_published():
     if ai_over:
-        chk(False, f"非原声超 80 字段落 {len(ai_over)} 处", gate="段落超长")
+        chk(False, f"非原声超 600 字段落 {len(ai_over)} 处", gate="段落超长")
         for n, p in ai_over[:5]:
             print("   ·", n, p[:60])
     else:
-        chk(True, f"非原声段落均在 80 字内（段落 {len(paras)} 个）")
+        chk(True, f"非原声段落均在 600 字内（段落 {len(paras)} 个）")
     print(f"   · 原声豁免 {len(voice_over)} 处：{[n for n, _ in voice_over]}")
 
 print("[17] 标题层级与分节篇幅（超 400 字的节必补 ###）")
