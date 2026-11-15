@@ -1844,9 +1844,9 @@ articles:
 - slug: 2026-11-10-self-play-collapse
   title: 给 AI 看标准答案，它为什么反而越练越差？
   series: AI Agent 工程
-  status: draft_saved
-  published_date: null
-  wechat_url: null
+  status: published
+  published_date: '2026-11-10'
+  wechat_url: https://mp.weixin.qq.com/s/YH_pzpuzMSFveILqQ4aWyw
   media_id: kOcXH4SytIYVIpYksTGfHsOkmf9BjFARGbr2NQ3Uy7uR1xu8SmYEGNOxvfyvfOUh
   cover_media_id: kOcXH4SytIYVIpYksTGfHkPYIT2RaP3E-gkDXk4Z2oPgUdqpae_8M18EohQZd6bi
   files:
@@ -1861,6 +1861,7 @@ articles:
   - 🖼 配图 6 张：01 两把杠杆流程图（gen_charts.py 自绘）、02 门控开/关崩塌曲线（论文 Fig2）、03 自洽奖励 k/16 示意（自绘，图注注明非论文实测）、04 ε 相变（Fig4）、05 自适应调度（Fig6）、06 题池准入率（Fig5）；论文原图 pdftoppm 300dpi 裁切。封面：AI 无字深色底图（gpt-image-2.5-sunburst）+ make_cover.py 叠白字「标准答案 / 越看越崩」，8 字、字高 23.1%、块高 23.1%。
   - 🚦 门禁：quality_check.py PASS（原声 5/5、禁词 0、AI 腔 0、内链 2 条溯源、承重数字 24 项在场）、check_cover.py PASS（21:9 + 字高/块高）、check_wechat_links 9 条全溯源、hot_articles.py --cited 生成 6+3 行（行尾双空格）。check_cover.py 按 AGENTS 规格重写（旧「横向跨度 ≥45%」启发式对 4 字短标题会误报，11-08 篇同款封面也踩）。
   - 📦 2026-11-07 存草稿箱（remote-api via vps-us，grace+blue，6 图上传一次通过）：draft media_id 与 cover media_id 见上。后台待作者确认：声明原创 + 定时 2026-11-10 22:00 + 勾选合集「AI Agent 工程」；发布后回填 frontmatter wechatUrl。
+  - 📤 发布回填（2026-11-14 作者供链 https://mp.weixin.qq.com/s/YH_pzpuzMSFveILqQ4aWyw）：后台页面直取核验——ct=1794312000 = 2026-11-10 20:00 CST（按排期档发布）；msg_title《给 AI 看标准答案，它为什么反而越练越差？》与本地一字不差。**正文字符级比对后台版 vs 本地版：零差异**（仅列表 bullet 与 # 标签前缀的渲染差）——作者未在后台改内容，本地 weixin.md 只补 frontmatter wechatUrl。frontmatter/台账/published-index 三处回填，verify_published_urls 单篇核验通过。
 - slug: 2026-11-14-opd-multi-teacher-distillation
   title: 换个更强的老师，模型训练为什么反而崩溃了
   series: 开源大模型技术揭秘
@@ -1877,6 +1878,7 @@ articles:
   - 📄 一手证据（brief：.grill/opd-multi-teacher-distillation-research.md）：MOPD arXiv:2606.30406v1 Table 2/Table 4 三源核到；DeepSeek-V4 arXiv:2606.19348 §5.1（2026-04-24 发布预览版）；Kimi K3 arXiv:2607.24653（3 域×3 档=9 专家）；MiMo-V2-Flash arXiv:2601.02780（2026-01）。竞品查重：公众号《北大提出 MOPD》（07-11）已写「同源 teacher 是稳定性命门」，差异化=前传 off/on 分工 + 方言比喻 + 三家串范式换代；禁写全网首发。
   - ✍️ 成稿（2026-11-07）：weixin.md 正文约 1720 字 + 脚本尾块。原声槽 8 处全部【作者填入】占位符（作者当日新口径：VS Code 自填；原声门禁后移到发布前终检，第一轮质检 --skip-voice 不管原声）。配图 4 张（脚本图 2：三范式分数对比/换师诊断；AI 概念图 2：口音比喻/三家构造）+ 封面「更强的老师/反而崩了？」10 字块高 23.1%。第一轮质检 PASS；终检待作者填槽后跑。
   - 📦 存草稿箱（2026-11-08）：baoyu-post-to-wechat grace+blue remote-api（vps-us 隧道）成功，media_id kOcXH4SytIYVIpYksTGfHk9N-FMC4fCkVbzm4S9XYhWuXncW4PHFLW86EVhZQl9y。终检 PASS（原声 9/9、封面 23.4%、内链 16、链接全溯源、篇幅作者豁免）。待作者 22:00 后台勾选合集并群发；发布后回拉 URL 写 frontmatter wechatUrl + 跑 --published。
+  - 📅 改排（2026-11-14 作者拍板）：由 11-14 22:00 档**改排 2026-11-16**（作者原话「OPD 这个，排到 11/16 了」）；draft-status summary 的 next_publish_date 已同步 11-16，草稿箱稿不动、发布时直接用。
 - slug: 2026-11-14-国产大模型GB300之谜
   title: 国产大模型真是用禁运的GB300训练的吗？
   series: 数学直觉
@@ -1895,14 +1897,13 @@ articles:
 summary:
   total: 123
   by_status:
-    published: 121
-    draft_saved: 2
+    published: 122
+    draft_saved: 1
   drafting_queue: []
-  ready_queue:
-  - 2026-11-10-self-play-collapse
+  ready_queue: []
   scheduled_queue: []
   planned_queue: []
-  next_publish_date: '2026-11-15'
+  next_publish_date: '2026-11-16'
 plan_notes:
 - 2026-11-07 写作规则变更（作者口径）：**尾部不再放「下一篇」硬性预告**（改为有空再写，无排期就不写，禁空头预告），**也不再放「📖 合集链接 + 箭头链」合集导航**——合集聚合改由后台发布时勾选合集完成，正文不列篇目。已同步 6 处：`AGENTS.md`（尾部惯例 + 尾部结构示例 + 发布前最终检查 9 项）、`docs/pre-publish-final-check.md`（第 6/7/9 节重写 + 清单速览 row 6/7/9）、`docs/wechat-ops.md`（文末引导模板改三段式，旧模板标废止）、`docs/wechat-topic-tags.md`（示例去掉 📖 行）、`docs/wechat-menu.md`（合集 URL 清单改为菜单配置用，不再往正文贴）、`docs/article-quality-check.md`（尾部边界不再依赖 📖，提醒新文脚本删掉「下一篇预告在位」断言）。历史已发文章不回头改。
 - 2026-11-07 对账（作者一次供链 3 篇）：① **2026-11-04-intent-formalization**（《让 AI 补测试，它为什么把 bug 当成标准答案？》，后台发布版标题）https://mp.weixin.qq.com/s/_7aP6jaNXZU0NSQ1UcfMWA —— status draft_saved→published、published_date 2026-11-04、wechat_url + frontmatter wechatUrl 三处同步；标题按后台 msg_title 把「写成」改「当成」（台账 + frontmatter 两处，outline/.grill 等历史规划物不动）。② **2026-11-05-self-play-curriculum**（《AI 自己出题自己考：零人类数据，为什么反而更强？》）https://mp.weixin.qq.com/s/ZiQlEtB-vL5nzJo7ye4RvA —— 本篇此前**从未入台账**（成稿会话未建条），本次补建条目并回填 frontmatter wechatUrl（原缺该字段）；media_id / cover_media_id 取 outline.md 存箱记录，目录无 quality_check.py 故 files.quality_check=false。③ 2026-11-02-cpp26-contracts-vote 供链与台账既有 wechat_url 逐字一致，无需改动。程序化核验：verify_published_urls.py 单篇三条全部抓到 msg_title——self-play / contracts 与台账逐字一致，intent-formalization 为唯一漂移（已修正）；og:description / ct 核验欠账（脚本只比标题）。summary 重算 total 119→120 / published 118→120 / draft_saved 1→0，ready_queue 与 scheduled_queue 仍为空、next_publish_date 保持 null。④ **三篇逐个发布后回拉**（作者要求「草稿箱里的微调也要覆盖回来」）：mp 页面 `js_content` → 块级 diff（文本块 + 段落边界），把作者线上改稿全部回写到各篇 weixin.md，带内链的改写用台账短链回插（AlphaGo 420EHN、机械臂 boIPBl、信息熵 BkGWzK、10-31 post-training HG2yIC）——三篇 mp 链接全溯源（cpp26 7 条 / intent 10 条 / self-play 9 条）；回拉后块级 diff 仅剩「图片占位 + 热门榜硬换行 + 参考资料逐条拆分」三类渲染格式差异，正文 0 差异。原声槽按线上重录（cpp26 槽 6、intent 槽 1/4/7，intent norm 增加「内链降为纯文字」以兼容作者后加锚点）；两篇 quality_check 残留项均为作者改稿造成（cpp26：长句 1 + 作者删掉「下一篇」预告；intent：合并段 1），均属成稿期门禁，发布后不追。⚠️ self-play 线上「解题方法会」（原「解题方秒会」）疑为作者笔误，已按原样回写待作者定夺。
