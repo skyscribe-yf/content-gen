@@ -2099,6 +2099,18 @@ articles:
     📦 2026-11-07 存草稿箱（remote-api via vps-us，grace+blue，6 图上传一次通过）：draft media_id 与 cover media_id 见上。后台待作者确认：声明原创 + 定时 2026-11-10 22:00 + 勾选合集「AI Agent 工程」；发布后回填 frontmatter wechatUrl。
 
     📤 发布回填（2026-11-14 作者供链 https://mp.weixin.qq.com/s/YH_pzpuzMSFveILqQ4aWyw）：后台页面直取核验——ct=1794312000 = 2026-11-10 20:00 CST（按排期档发布）；msg_title《给 AI 看标准答案，它为什么反而越练越差？》与本地一字不差。**正文字符级比对后台版 vs 本地版：零差异**（仅列表 bullet 与'
+- slug: 2026-11-12-self-iteration-panorama
+  title: 1,250 篇论文之后：AI 自己练自己，为什么只有两条线敢上生产？
+  series: AI Agent 工程
+  status: published
+  published_date: '2026-11-12'
+  wechat_url: https://mp.weixin.qq.com/s/8O45vlW6bCqOlObyf2lF7Q
+  files:
+    weixin: true
+    outline: true
+    cover: true
+    quality_check: true
+  notes: 2026-11-15 补登台账：该篇成稿时漏登（与 11-07 self-play-curriculum 同类事故）。frontmatter wechatUrl 由并行会话回填后，URL 经 verify_published_urls 直取 mp 页面核验：msg_title 与 frontmatter 逐字一致、未删除、ct=1794484800（≈2026-11-12）。无 draft.md（未走手写/素材直出流程），quality_check.json 在场但无本地 quality_check.py。
 - slug: 2026-11-14-opd-multi-teacher-distillation
   title: 换个更强的老师，模型训练为什么反而崩溃了
   series: 开源大模型技术揭秘
@@ -2135,9 +2147,9 @@ articles:
 
     📤 发布回填（2026-11-14 作者供链）：后台 msg_title《国产大模型真是用禁运的GB300训练的吗？》（比拟稿多一个「吗」，frontmatter title 已按后台口径同步）；wechat_url/frontmatter wechatUrl/published-index 三处回填。⚠️ 流程缺口留痕：本篇建稿时未登记 draft-status（新流程缺登记步），发布时才补录——已在 SKILL.md 阶段 0/7 补「建稿登记 draft_saved + 发布翻 published」两步。'
 summary:
-  total: 123
+  total: 124
   by_status:
-    published: 122
+    published: 123
     draft_saved: 1
   drafting_queue: []
   ready_queue: []

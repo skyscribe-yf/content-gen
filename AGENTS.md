@@ -20,7 +20,7 @@
 | 视频号 | `.agents/skills/manim-article-video/SKILL.md` 或 `gemini-video-to-shipinhao/SKILL.md` |
 | 数据复盘/审计 | `.agents/skills/wechat-data-audit/SKILL.md` + `docs/wechat-data-insights.md` |
 | 运营策略/排期 | `docs/wechat-ops.md` |
-| 查排期/登记状态/回填 URL | `scripts/schedule.py`（主源 `schedule/*.json`，schema `schedule/schema.json`；`draft-status.yaml` 是生成视图，勿手改） |
+| 查排期/登记状态/回填 URL | `scripts/schedule.py`（`summary`/`list`/`get`/`set`；主源 `schedule/*.json` + `schema.json`；`draft-status.yaml` 是生成视图，勿手改） |
 | 数学公式 | `docs/math-latex.md` |
 
 ## 1. 写作流程硬门禁
@@ -96,6 +96,7 @@
 |---|---|
 | `scripts/precheck_and_open.sh` | 机器质检 + 打开作者工作区（第一轮 `--skip-voice` 不管原声；`--no-open` 终检；`--published` 发布后回拉模式） |
 | `scripts/quality_check.py` | 质量门禁通用版；每篇定制项（原声/承重数字/术语/内链/豁免）外置到 `content/<篇>/quality_check.json`；`--published` 跳过成稿期门禁只查发布不变量 |
+| `scripts/schedule.py` | 排期台账唯一入口（主源 `schedule/*.json` + `schema.json`）：`summary`/`list`/`get <slug>` 查询，`add`/`set --status ...` 登记与状态回填，`validate` 校验；`draft-status.yaml` 是生成视图勿手改 |
 | `scripts/check_cover.py` | 封面 21:9 / 文字块高 / 每行字高门禁 |
 | `scripts/hot_articles.py` | 尾部热门文章生成（`--self-check` 验榜单漂移） |
 | `scripts/make_cover.py` | 封面叠字通用版；封面文字外置到 `content/<篇>/cover_spec.json`，产物 `00-cover.png` + `cover_meta.json` |

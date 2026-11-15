@@ -70,6 +70,12 @@ TEMPLATE
 
 sed -i "s/__DATE__/${DATE}/" "${DIR}/draft.md"
 
+# 登记排期台账（建稿即登记，防发布时漏登——2026-11-14 GB300 篇教训）
+SLUG="$(basename "$DIR")"
+python3 "$ROOT/scripts/schedule.py" add "$SLUG" --title "$TOPIC" --status drafting \
+    && echo "📋 台账已登记: ${SLUG} [drafting]" \
+    || echo "⚠️ 台账登记失败，请手动: python3 scripts/schedule.py add ${SLUG} --title <标题> --status drafting"
+
 echo "✅ 已创建手写稿: ${DIR}/draft.md"
 echo ""
 echo "📝 正在打开 VS Code（预览随文件自动弹出）……"

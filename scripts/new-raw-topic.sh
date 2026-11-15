@@ -5,6 +5,7 @@
 TOPIC="$1"
 DATE=$(date +%Y-%m-%d)
 DIR="content/${DATE}-${TOPIC}"
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 
 if [ -z "$TOPIC" ] || [ "$TOPIC" = "-h" ] || [ "$TOPIC" = "--help" ]; then
     echo "用法: ./scripts/new-raw-topic.sh \"话题slug\""
@@ -38,6 +39,12 @@ cat > "${DIR}/raw.md" << 'TEMPLATE'
 TEMPLATE
 
 echo "✅ 已创建话题文件夹: ${DIR}"
+
+# 登记排期台账（建话题即登记，防发布时漏登——2026-11-14 GB300 篇教训）
+SLUG="$(basename "$DIR")"
+python3 "$ROOT/scripts/schedule.py" add "$SLUG" --title "$TOPIC" --status planned \
+    && echo "📋 台账已登记: ${SLUG} [planned]" \
+    || echo "⚠️ 台账登记失败，请手动: python3 scripts/schedule.py add ${SLUG} --title <标题> --status planned"
 echo ""
 echo "📝 下一步:"
 echo "  1. 把想表达的内容全部贴进 ${DIR}/raw.md"

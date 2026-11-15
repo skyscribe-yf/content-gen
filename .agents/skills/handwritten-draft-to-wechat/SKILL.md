@@ -30,7 +30,7 @@ description: Use when 作者要手写全文直出公众号——建 draft.md、V
 
 1. 作者给出话题 → AI 派生 `<slug>`（kebab-case，与目录名一致）→ `bash scripts/new-handwritten-topic.sh "<slug>"`。
    产物：`content/<日期>-<slug>/draft.md`（YAML 头 + 手写约定注释块），脚本自动打开 VS Code 并弹出 MPE 预览。
-   **同步登记台账**：`python3 scripts/schedule.py add <slug> --title <拟稿标题> [--series S] --status drafting`（published_date/wechat_url 自动为 null，files 用 `set --file weixin=true` 按实际补）——2026-11-14 GB300 篇漏了这步，发布时才补录，禁止再犯。
+   **台账登记由脚手架自动完成**（`new-handwritten-topic.sh` 建稿即跑 `schedule.py add`）；AI 建稿后用 `python3 scripts/schedule.py get <目录名>` 核对有条目，缺了立即手动 `add`——2026-11-14 GB300 篇漏了这步，发布时才补录，禁止再犯。（台账 slug = `content/` 下完整目录名）
 2. **AI 静默**：作者在 VS Code 写完全文之前不做任何事。作者问「这里写什么」也只给提示不给成句。
 3. 作者说「好了」→ **先空稿校验**：读 draft.md 全文，正文（去 YAML 头和约定注释块）不足 500 字 → 只含模板占位句，判定未开写，告知作者「稿子还是空的，写完再跟我说」并回到静默等待；禁启动后续任何阶段、禁代写救场。
 4. 稿件非空 → 记录 draft.md 的 md5（冻结基线，存草稿前复校验）→ 通读全文，列「待补充」清单（五种类型各几处），进入阶段 1。

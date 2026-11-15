@@ -1,7 +1,7 @@
 {
   "schema": "schedule/schema.json#/$defs/ledger",
   "schema_version": 1,
-  "updated": "2026-11-15T08:14:49",
+  "updated": "2026-11-15T08:22:18",
   "articles": [
     {
       "slug": "2026-07-03-损失函数",
@@ -1799,6 +1799,20 @@
       "wechat_url": "https://mp.weixin.qq.com/s/YH_pzpuzMSFveILqQ4aWyw",
       "media_id": "kOcXH4SytIYVIpYksTGfHsOkmf9BjFARGbr2NQ3Uy7uR1xu8SmYEGNOxvfyvfOUh",
       "cover_media_id": "kOcXH4SytIYVIpYksTGfHkPYIT2RaP3E-gkDXk4Z2oPgUdqpae_8M18EohQZd6bi",
+      "files": {
+        "weixin": true,
+        "outline": true,
+        "cover": true,
+        "quality_check": true
+      }
+    },
+    {
+      "slug": "2026-11-12-self-iteration-panorama",
+      "title": "1,250 篇论文之后：AI 自己练自己，为什么只有两条线敢上生产？",
+      "series": "AI Agent 工程",
+      "status": "published",
+      "published_date": "2026-11-12",
+      "wechat_url": "https://mp.weixin.qq.com/s/8O45vlW6bCqOlObyf2lF7Q",
       "files": {
         "weixin": true,
         "outline": true,

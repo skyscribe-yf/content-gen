@@ -7,7 +7,7 @@ series: "AI Agent 工程"
 digest: "2026 年 7 月一篇综述扫了 1,250 篇自我改进论文，把这条赛道切成两个名字。真正进了生产线的只有两条，共同点不是先进，而是它们每轮迭代都能拿到几乎免费的反饥。越往「连改进能力也交出去」走，监督就越贵。"
 cover: "00-cover.png"
 keywords: "自我改进, 自我迭代, 有界自精化, 递归自我改进, AI Agent"
-wechatUrl: ""  # 草稿已存 2026-11-07，media_id kOcXH4SytIYVIpYksTGfHhbqvg_5LtLim6NT-rbJaJDyRg69UWTfTo_wlv7sSoqg；发布后回填真实 URL
+wechatUrl: "https://mp.weixin.qq.com/s/8O45vlW6bCqOlObyf2lF7Q"
 ---
 
 我经常会让 agent 来修改我的项目级别的 AGENTS.md。很多时候它改完的指令都会加入一些非常具体的绑定当前 harness 的指令，导致提交到代码库之后，别人可能没法用。

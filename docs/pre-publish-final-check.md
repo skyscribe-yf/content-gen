@@ -134,6 +134,16 @@
 - 事故记录（2026-10-09，Pi Durable 篇）：先渲染成 HTML 再发，草稿箱里的版本不是 mdnice 样式，已重发修正并删除旧稿。
 - 手机可读性规则固化在 `md-to-wechat.ts`：正文 16px、行高 1.85、段间距 14px、`ol/ul` 左缩进归零（修参考文献左侧空白）、`li` 加 4px、代码块 `pre-wrap` 不横滚 + 13px。改主题后需复核这些正则是否仍匹配。
 
+## 12. 发布后回填三处（缺一不可）
+
+作者确认已发布（供链接）后，**三处**必须同步，禁止只改 frontmatter：
+
+1. `weixin.md` frontmatter `wechatUrl` = 真实 URL；**title 同步为后台 msg_title**（发布时作者可能改过标题）
+2. 台账（主源）：`python3 scripts/schedule.py set <slug> --status published --published-date <日期> --wechat-url <url>`——条目自动迁入 `published.json`、计数自动重算；**禁止手改 `draft-status.yaml`**（生成视图）
+3. `branding/style-corpus/wechat-published-index.json` 首行追加 `{title: 后台 msg_title, url}`（内链检索源）
+
+存草稿箱时对应翻 `draft_saved`：`set <slug> --status draft_saved --draft-media-id <media_id>`。
+
 ## 检查清单速览
 
 | # | 项目 | 通过标准 |
@@ -150,3 +160,4 @@
 | 9 | 叙事闭环 | 开头痛点 → 正文解答 → 结尾阶段结论 + 开放问题 = 同一条逻辑线 |
 | 10 | 长句拆分 | 单句 ≤60 汉字，超长句已拆分（豁免：digest/参考资料/合集导航） |
 | 11 | 发布入口 | 交 `weixin.md`（走 mdnice），禁预渲染 HTML；mdnice 管线内已含手机可读性规则 |
+| 12 | 发布后回填三处 | frontmatter `wechatUrl` + 台账 `schedule.py set --status published` + branding index 首行；存箱时翻 `draft_saved` + media_id |
