@@ -17,7 +17,7 @@ metadata:
 
 - User asks to publish an article to Zhihu 专栏 or answer a Zhihu question
 - User asks to convert WeChat-focused content to Zhihu-friendly format
-- User needs to manage Zhihu URL tracking in draft-status.yaml
+- User needs to manage Zhihu URL tracking in the schedule ledger (schedule/*.json)
 - User asks about Zhihu image upload, formula handling, or cross-platform link replacement
 
 ## Key Facts About Zhihu
@@ -49,7 +49,8 @@ When this skill prompts the user, follow this tool-selection rule:
 Project-level scripts (in `{root}/scripts/`):
 | Script | Purpose |
 |--------|---------|
-| `scripts/publish-scheduler.py` | 发布调度和状态管理 |
+| `scripts/schedule.py` | 排期台账读写（主源 schedule/*.json） |
+| `scripts/publish-scheduler.py` | （已弃用，见脚本头）多平台错位窗口试运行工具 |
 
 ## Preferences (EXTEND.md)
 
@@ -98,7 +99,7 @@ If user didn't specify → Ask:
 | Source | Detection | Next |
 |--------|-----------|------|
 | `promote/zhihu-{slug}.md` exists | File exists | Step 2 |
-| `promote/zhihu-{slug}.md` missing | Check `draft-status.yaml` | Generate from `content/{slug}/weixin.md` |
+| `promote/zhihu-{slug}.md` missing | Check 台账（`python3 scripts/schedule.py get <slug>`） | Generate from `content/{slug}/weixin.md` |
 | Mode = answer | Need question URL | Ask for question link |
 
 **Content source priority**:
@@ -192,11 +193,9 @@ After successful publish:
    - Article: `https://zhuanlan.zhihu.com/p/XXXXXXX`
    - Answer: `https://www.zhihu.com/question/.../answer/XXXXXXX`
 
-2. Update `draft-status.yaml`:
-   ```yaml
-   - slug: "2026-07-10-优化器"
-     ...
-     zhihu_url: "https://zhuanlan.zhihu.com/p/XXXXXXX"
+2. Update 台账（等价于旧 draft-status.yaml 手改 zhihu_url 字段）：
+   ```bash
+   python3 scripts/schedule.py set "<slug>" --zhihu-url "https://zhuanlan.zhihu.com/p/XXXXXXX"
    ```
 
 3. Update `templates/zhihu-urls.yaml` mapping (for future cross-ref).

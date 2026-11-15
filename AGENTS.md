@@ -20,6 +20,7 @@
 | 视频号 | `.agents/skills/manim-article-video/SKILL.md` 或 `gemini-video-to-shipinhao/SKILL.md` |
 | 数据复盘/审计 | `.agents/skills/wechat-data-audit/SKILL.md` + `docs/wechat-data-insights.md` |
 | 运营策略/排期 | `docs/wechat-ops.md` |
+| 查排期/登记状态/回填 URL | `scripts/schedule.py`（主源 `schedule/*.json`，schema `schedule/schema.json`；`draft-status.yaml` 是生成视图，勿手改） |
 | 数学公式 | `docs/math-latex.md` |
 
 ## 1. 写作流程硬门禁

@@ -106,9 +106,8 @@ agent-browser wait 5000
 ### Step 8: 回填 URL
 
 ```bash
-# 更新 draft-status.yaml
-python3 scripts/publish-scheduler.py publish <topic> zhihu
-# 手动填写 zhihu_url
+# 更新台账（zhihu_url 字段）
+python3 scripts/schedule.py set <slug> --zhihu-url "https://zhuanlan.zhihu.com/p/XXXXXXX"
 ```
 
 ## 回答 (question/{id}/answer) 发布流程

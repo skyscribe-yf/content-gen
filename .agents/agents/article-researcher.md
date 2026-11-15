@@ -21,7 +21,7 @@ Task 由主 agent 给出：`调研 <选题方向（作者原话或主 agent 提�
 
 ## Procedure
 
-1. **排期与状态**：读 `draft-status.yaml`；`ls content/` 看近况；读 `.grill/` 既有日志（系列计划必读，如 `self-iteration-series.md`）
+1. **排期与状态**：`python3 scripts/schedule.py list`（待发布队列）+ `python3 scripts/schedule.py summary`（计数/下一个发布日）；`ls content/` 看近况；读 `.grill/` 既有日志（系列计划必读，如 `self-iteration-series.md`）
 2. **矩阵定位**：读 `docs/content-matrix.md` 定位支柱/系列/组；grep `content/` + 矩阵 ✅ 标记查重（死题/已写/撞车）；报 22:00 档期冲突
 3. **vault 素材**：先读 `~/vaults/papers/AI-Chats/_INDEX.md` 扫题 → 对口笔记读「我的判断 / 我的理解边界 / 苏格拉底问题 / 第一人称批注」→ **逐字短引**（每处 ≤3 句，注明笔记路径）+ 一手事实线索（frontmatter `paper_ids:` / `source:`）
 4. **选题搜索**：2–4 次 web 搜索（deepseek_search，必要时 curl）——近期动态、同题竞品文章、是否已写滥

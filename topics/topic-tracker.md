@@ -4,7 +4,7 @@
 > 内容定位：**AI的数学原理 → AI的核心算法 → 模型实测验证**
 > 内容比例：原理篇50% : 融合篇30% : 评测篇20%
 
-> **草稿状态看 `../draft-status.yaml`** — 那是唯一真实来源。本文件的状态列从 yaml 派生，手动更新同步。
+> **草稿状态看 `../schedule/pending.json`** — 那是主源（`python3 scripts/schedule.py list` 查看，`set` 改状态）。本文件的状态列从台账派生，手动更新同步。
 > 运行 `python3 scripts/scan-status.py` 快速检视所有草稿状态。
 
 ## 📈 发布进度总览（更新于 2026-07-13）

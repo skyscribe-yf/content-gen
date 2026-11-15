@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schedule/schema.json",
+  "title": "content-gen 排期台账（schedule）",
+  "description": "已发布/待发布文章的主源数据。draft-status.yaml 是本目录 JSON 的生成视图，勿手改。唯一读写入口：scripts/schedule.py。",
+  "type": "object",
+  "$defs": {
+    "article": {
+      "type": "object",
+      "required": ["slug", "title", "status"],
+      "additionalProperties": false,
+      "properties": {
+        "slug": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}-[^/\\s]+$",
+          "description": "内容目录名（发布日期-短名），全局唯一"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "description": "标题；已发布条目以后台 msg_title 为准"
+        },
+        "series": {
+          "type": ["string", "null"],
+          "description": "所属系列；个人随笔等无系列为 null"
+        },
+        "status": {
+          "enum": ["planned", "drafting", "ready", "scheduled", "draft_saved", "published"],
+          "description": "planned→drafting→ready→scheduled→published；draft_saved=已存公众号草稿箱未发布"
+        },
+        "published_date": {
+          "type": ["string", "null"],
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+          "description": "实际发布日期（YYYY-MM-DD）；status=published 时必填，其余为 null"
+        },
+        "scheduled_publish": {
+          "type": ["string", "null"],
+          "description": "计划发布时间（如 '2026-10-12 20:00'），可选"
+        },
+        "wechat_url": {
+          "type": ["string", "null"],
+          "pattern": "^https://mp\\.weixin\\.qq\\.com/s/",
+          "description": "公众号链接；status=published 时必填，其余为 null"
+        },
+        "zhihu_url": {
+          "type": ["string", "null"],
+          "description": "知乎专栏链接，发布知乎后回填"
+        },
+        "type": {
+          "type": ["string", "null"],
+          "description": "内容类型标记，如 tietu=贴图轨；缺省/null=文章轨"
+        },
+        "media_id": {
+          "type": ["string", "null"],
+          "description": "公众号草稿 media_id（remote-api 存箱回填）"
+        },
+        "cover_media_id": {
+          "type": ["string", "null"],
+          "description": "封面图 media_id"
+        },
+        "draft_media_id": {
+          "type": ["string", "null"],
+          "description": "draft_saved 状态记的草稿 media_id"
+        },
+        "old_media_id": {
+          "type": ["string", "null"],
+          "description": "被替换的旧草稿 media_id"
+        },
+        "files": {
+          "$ref": "#/$defs/files",
+          "description": "content/<slug>/ 下各产物是否存在"
+        }
+      }
+    },
+    "files": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "weixin": {"type": "boolean", "description": "weixin.md 定稿存在"},
+        "draft": {"type": "boolean", "description": "draft.md 存在"},
+        "outline": {"type": "boolean", "description": "outline.md 存在"},
+        "cover": {"type": "boolean", "description": "00-cover.png 存在"},
+        "quality_check": {"type": "boolean", "description": "quality_check.py 存在"}
+      }
+    },
+    "ledger": {
+      "type": "object",
+      "required": ["schema", "schema_version", "updated", "articles"],
+      "additionalProperties": false,
+      "properties": {
+        "schema": {"const": "schedule/schema.json#/$defs/ledger"},
+        "schema_version": {"const": 1},
+        "updated": {"type": "string", "description": "ISO 时间戳"},
+        "articles": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/article"},
+          "description": "按 slug 升序（slug 前缀即发布日期）"
+        }
+      }
+    },
+    "notes_file": {
+      "type": "object",
+      "required": ["schema", "schema_version", "updated", "notes", "plan_notes"],
+      "additionalProperties": false,
+      "properties": {
+        "schema": {"const": "schedule/schema.json#/$defs/notes_file"},
+        "schema_version": {"const": 1},
+        "updated": {"type": "string"},
+        "notes": {
+          "type": "object",
+          "description": "slug → 该篇的历史笔记（立项/grill/发布记录长文），按需单点读取",
+          "additionalProperties": {"type": "string"}
+        },
+        "plan_notes": {
+          "type": "array",
+          "description": "全局规划/对账历史（原 draft-status.yaml 的 plan_notes）",
+          "items": {"type": "string"}
+        }
+      }
+    },
+    "meta": {
+      "type": "object",
+      "required": ["schema", "schema_version", "updated", "total", "by_status", "next_publish_date"],
+      "additionalProperties": false,
+      "properties": {
+        "schema": {"const": "schedule/schema.json#/$defs/meta"},
+        "schema_version": {"const": 1},
+        "updated": {"type": "string"},
+        "total": {"type": "integer", "minimum": 0, "description": "published+pending 总数"},
+        "by_status": {
+          "type": "object",
+          "description": "各 status 计数（只含出现过的状态）",
+          "additionalProperties": {"type": "integer", "minimum": 0}
+        },
+        "next_publish_date": {
+          "type": ["string", "null"],
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+          "description": "下一个计划发布日；无排期时为 null"
+        },
+        "source": {
+          "type": "object",
+          "description": "主源文件指针",
+          "additionalProperties": {"type": "string"}
+        }
+      }
+    }
+  },
+  "invariants": {
+    "_comment": "非 JSON Schema 关键词；scripts/schedule.py validate 额外强制的跨文件不变量",
+    "published_json": "所有条目 status=published 且 published_date/wechat_url 非空",
+    "pending_json": "所有条目 status!=published 且 published_date/wechat_url 为 null",
+    "slug_unique": "slug 在 published.json 与 pending.json 间唯一",
+    "notes_keys": "notes.json 的 notes 键必须能在两个台账中找到对应 slug",
+    "meta_counts": "meta.json 的 total/by_status 与两个台账实际内容一致"
+  }
+}

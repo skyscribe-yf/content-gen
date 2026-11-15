@@ -30,7 +30,7 @@ description: Use when 作者要手写全文直出公众号——建 draft.md、V
 
 1. 作者给出话题 → AI 派生 `<slug>`（kebab-case，与目录名一致）→ `bash scripts/new-handwritten-topic.sh "<slug>"`。
    产物：`content/<日期>-<slug>/draft.md`（YAML 头 + 手写约定注释块），脚本自动打开 VS Code 并弹出 MPE 预览。
-   **同步登记台账**：`draft-status.yaml` 追加条目（status: drafting，published_date/wechat_url 为 null，files 按实际，title 先留拟稿标题）——2026-11-14 GB300 篇漏了这步，发布时才补录，禁止再犯。
+   **同步登记台账**：`python3 scripts/schedule.py add <slug> --title <拟稿标题> [--series S] --status drafting`（published_date/wechat_url 自动为 null，files 用 `set --file weixin=true` 按实际补）——2026-11-14 GB300 篇漏了这步，发布时才补录，禁止再犯。
 2. **AI 静默**：作者在 VS Code 写完全文之前不做任何事。作者问「这里写什么」也只给提示不给成句。
 3. 作者说「好了」→ **先空稿校验**：读 draft.md 全文，正文（去 YAML 头和约定注释块）不足 500 字 → 只含模板占位句，判定未开写，告知作者「稿子还是空的，写完再跟我说」并回到静默等待；禁启动后续任何阶段、禁代写救场。
 4. 稿件非空 → 记录 draft.md 的 md5（冻结基线，存草稿前复校验）→ 通读全文，列「待补充」清单（五种类型各几处），进入阶段 1。
@@ -95,10 +95,10 @@ draft.md 冻结不动；成稿写 `weixin.md`（唯一发布基准）。
 
 1. `bash scripts/precheck_and_open.sh <目录>`——机器质检 + 打开 VS Code 定位 weixin.md，MPE 预览随文件弹出。**AI 停在这里等作者改**，不催、不代改。
 2. 作者改完 → `bash scripts/precheck_and_open.sh <目录> --no-open`——终检（FAIL 项由作者改稿产生的由作者拍板）。
-3. 终检通过（或作者明确豁免）→ 复校验 draft.md md5 与阶段 0 记录一致（作者原稿未被管线改动）→ `baoyu-post-to-wechat` 存草稿箱（grace + blue）→ **draft-status.yaml 条目翻 `draft_saved` + 记 media_id**。**只存草稿，不发布。**
+3. 终检通过（或作者明确豁免）→ 复校验 draft.md md5 与阶段 0 记录一致（作者原稿未被管线改动）→ `baoyu-post-to-wechat` 存草稿箱（grace + blue）→ **台账条目翻 `draft_saved` + 记 media_id**：`python3 scripts/schedule.py set <slug> --status draft_saved --draft-media-id <media_id>`。**只存草稿，不发布。**
 4. 作者确认已发布（供链接）→ 三处回填 + 一次核验：
    - `weixin.md` frontmatter `wechatUrl` = 真实 URL；**title 同步为后台 msg_title**（发布时作者可能改过标题，如 GB300 篇多了个「吗」）
-   - `draft-status.yaml`：status 翻 `published`、`published_date`、`wechat_url`，summary 重算（total/published/draft_saved）
+   - 台账：`python3 scripts/schedule.py set <slug> --status published --published-date <日期> --wechat-url <url>`（条目自动迁入 published.json，meta 计数自动重算）
    - `branding/style-corpus/wechat-published-index.json` 首行追加 `{title: 后台 msg_title, url}`（内链检索源）
    - 跑 `python3 scripts/verify_published_urls.py --slug <slug>` 核验 URL 有效且页面 msg_title 与台账一致
 
@@ -109,7 +109,7 @@ draft.md 冻结不动；成稿写 `weixin.md`（唯一发布基准）。
 - `content/<日期>-<slug>/quality_check.json`：本篇质检配置（slots = 作者原声段落；exempt = 作者给过的豁免，如「篇幅」）
 - `content/<日期>-<slug>/cover_spec.json` + `00-cover.png` + `NN-*.png`：封面与配图，与 weixin.md 同级
 - `content/<日期>-<slug>/gen_charts.py`：脚本图/表格绘制脚本（留档复算用）
-- `draft-status.yaml`：建稿登记（drafting）→ 存草稿箱（draft_saved + media_id）→ 发布回填（published + wechat_url）
+- 台账 `schedule/*.json`（`scripts/schedule.py`）：建稿 `add`（drafting）→ 存箱 `set --status draft_saved --draft-media-id` → 发布回填 `set --status published --published-date --wechat-url`
 - `branding/style-corpus/wechat-published-index.json`：发布后首行追加 `{title, url}`（后台 msg_title）
 - `.grill/<slug>-review.md`：article-reviewer findings
 - 文末「参考资料与数字溯源」：核实通过的数字来源（纯文本 URL）

@@ -1,7 +1,7 @@
 # 📅 错位发布调度配置
 
 # ── 平台发布窗口 ──
-# 公众号固定每天于 20:00 发布；具体日期以 draft-status.yaml 的 slug 为准。
+# 公众号固定每天于 20:00 发布；具体日期以 schedule/pending.json 的 slug + schedule/meta.json 的 next_publish_date 为准。
 
 windows:
   weixin:
@@ -36,7 +36,7 @@ eval_hot:
 
 # ── 内容状态流转 ──
 # planned → drafting → ready → scheduled → published
-# 详细状态定义和当前文章列表见 draft-status.yaml（唯一真实来源）
+# 详细状态定义和当前文章列表见 schedule/pending.json（主源，用 scripts/schedule.py 操作）
 # 运行 python3 scripts/scan-status.py 快速检视
 
 states:

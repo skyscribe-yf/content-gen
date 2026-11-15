@@ -1,7 +1,11 @@
 """
 发布调度器 — 读取 publish-schedule.yaml，管理内容状态和发布队列
 
-用法:
+⚠️ 已弃用（2026-11-14）：本脚本的队列/状态职能已由 scripts/schedule.py + schedule/*.json
+取代（原 publish-queue.json 从未落地，队列常年为空）。多平台错位窗口仍可作为试运行参考，
+正式排期/回填一律走 scripts/schedule.py。
+
+历史用法:
   python3 publish-scheduler.py queue              # 查看当前发布队列
   python3 publish-scheduler.py next               # 下一个该发什么
   python3 publish-scheduler.py schedule <topic>   # 将内容排入发布队列

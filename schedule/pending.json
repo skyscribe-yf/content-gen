@@ -1,0 +1,21 @@
+{
+  "schema": "schedule/schema.json#/$defs/ledger",
+  "schema_version": 1,
+  "updated": "2026-11-15T08:14:49",
+  "articles": [
+    {
+      "slug": "2026-11-14-opd-multi-teacher-distillation",
+      "title": "换个更强的老师，模型训练为什么反而崩溃了",
+      "series": "开源大模型技术揭秘",
+      "status": "draft_saved",
+      "published_date": null,
+      "wechat_url": null,
+      "files": {
+        "weixin": true,
+        "outline": true,
+        "cover": true,
+        "quality_check": true
+      }
+    }
+  ]
+}

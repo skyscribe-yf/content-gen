@@ -2,12 +2,13 @@
 """校验 weixin.md 里所有 mp.weixin.qq.com/s/ 链接是否存在于台账。
 
 用法: python3 scripts/check_wechat_links.py content/<dir>/weixin.md
+台账主源: schedule/published.json + schedule/pending.json（2026-11-14 起，
+原 draft-status.yaml 降级为生成视图）。
 """
+import json
 import re
 import sys
 import pathlib
-
-import yaml
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
@@ -17,19 +18,19 @@ def main() -> int:
     text = md.read_text(encoding="utf-8")
 
     known = set()
-    data = yaml.safe_load((ROOT / "draft-status.yaml").read_text(encoding="utf-8"))
-    for a in data.get("articles", []):
-        u = a.get("wechat_url")
-        if u:
-            known.add(u.rstrip("/"))
-        z = a.get("zhihu_url")
-        if z:
-            known.add(z.rstrip("/"))
+    for name in ("published", "pending"):
+        p = ROOT / "schedule" / f"{name}.json"
+        if not p.exists():
+            continue
+        for a in json.loads(p.read_text(encoding="utf-8")).get("articles", []):
+            for key in ("wechat_url", "zhihu_url"):
+                u = a.get(key)
+                if u:
+                    known.add(u.rstrip("/"))
 
     # 后台发表记录索引也是事实源：贴图轨不进文章台账，台账漏登的旧文也只有这里有
     idx = ROOT / "branding/style-corpus/wechat-published-index.json"
     if idx.exists():
-        import json
         for it in json.loads(idx.read_text(encoding="utf-8")):
             if it.get("url"):
                 known.add(it["url"].rstrip("/"))

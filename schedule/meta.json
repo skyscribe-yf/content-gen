@@ -1,0 +1,17 @@
+{
+  "schema": "schedule/schema.json#/$defs/meta",
+  "schema_version": 1,
+  "updated": "2026-11-15T08:14:49",
+  "next_publish_date": "2026-11-16",
+  "total": 123,
+  "by_status": {
+    "published": 122,
+    "draft_saved": 1
+  },
+  "source": {
+    "published": "schedule/published.json",
+    "pending": "schedule/pending.json",
+    "notes": "schedule/notes.json",
+    "schema": "schedule/schema.json"
+  }
+}

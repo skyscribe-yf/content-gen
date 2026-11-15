@@ -114,7 +114,7 @@
 2. 引用前文原文时，只保留原文内容，去掉「💡 钩子：」这类标注前缀
 3. 「伏笔/预告弧线」等说法只允许出现在 `outline.md` 的定位/自检部分，不得进入正文
 
-**豁免**：`outline.md`、`.grill/` 日志、`draft-status.yaml`（工作文件）。
+**豁免**：`outline.md`、`.grill/` 日志、`draft-status.yaml`（工作文件）、`schedule/*.json`（台账工作文件）。
 
 ## 12. 用词规范核查
 

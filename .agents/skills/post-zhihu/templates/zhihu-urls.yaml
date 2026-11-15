@@ -27,4 +27,4 @@ mappings:
 # 1. 文章发布到知乎后，将知乎 URL 填入对应微信 URL 右侧
 # 2. 运行 zhihu-links.py 时，所有 match 的链接将被自动替换
 # 3. 未匹配的微信链接会被替换为纯文字（原文发于公众号數解AI）
-# 4. 新增文章时，先在 draft-status.yaml 中记录微信 URL
+# 4. 新增文章时，先在台账记录微信 URL（python3 scripts/schedule.py add <slug> --title <标题>）

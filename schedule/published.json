@@ -1,0 +1,1825 @@
+{
+  "schema": "schedule/schema.json#/$defs/ledger",
+  "schema_version": 1,
+  "updated": "2026-11-15T08:14:49",
+  "articles": [
+    {
+      "slug": "2026-07-03-损失函数",
+      "title": "损失函数：打分标准决定学习方向",
+      "series": "深度学习基础",
+      "status": "published",
+      "published_date": "2026-07-03",
+      "wechat_url": "https://mp.weixin.qq.com/s/zIWqYqYVzEaF1e8P6fcTfw",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": false,
+        "cover": false
+      }
+    },
+    {
+      "slug": "2026-07-03-梯度下降",
+      "title": "梯度下降：蒙着眼下山",
+      "series": "深度学习基础",
+      "status": "published",
+      "published_date": "2026-07-03",
+      "wechat_url": "https://mp.weixin.qq.com/s/V6mGvCVFpTvmC51pNtxiTw",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": false,
+        "cover": false
+      }
+    },
+    {
+      "slug": "2026-07-04-ai-memory-crash",
+      "title": "为什么AI上下文越长越慢？两道数学硬墙一次讲透",
+      "series": "DeepSeek 技术解密",
+      "status": "published",
+      "published_date": "2026-07-04",
+      "wechat_url": "https://mp.weixin.qq.com/s/PLVRS0TTHXHDve1Z3r6M7Q",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": false,
+        "cover": false
+      }
+    },
+    {
+      "slug": "2026-07-06-反向传播",
+      "title": "反向传播是什么？AI怎么知道自己错在哪",
+      "series": "深度学习基础",
+      "status": "published",
+      "published_date": "2026-07-06",
+      "wechat_url": "https://mp.weixin.qq.com/s/oYj_qpwF4tZG84ImOn977g",
+      "zhihu_url": "https://zhuanlan.zhihu.com/p/2063165927319984060",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": false,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-07-07-softmax",
+      "title": "Softmax为什么不直接取最大值？",
+      "series": "深度学习基础",
+      "status": "published",
+      "published_date": "2026-07-07",
+      "wechat_url": "https://mp.weixin.qq.com/s/5wMquh_v3oon2-NEDeQLEw",
+      "zhihu_url": "https://zhuanlan.zhihu.com/p/2063278567371322536",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-07-09-残差连接",
+      "title": "残差连接：为什么56层比20层还差",
+      "series": "深度学习基础",
+      "status": "published",
+      "published_date": "2026-07-09",
+      "wechat_url": "https://mp.weixin.qq.com/s/xefNN9Gjaw3TKl60KeHzAg",
+      "zhihu_url": "https://zhuanlan.zhihu.com/p/2063280395374834864",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": false,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-07-10-优化器",
+      "title": "学习率怎么自动调？Adam 优化器拆给你看",
+      "series": "深度学习基础",
+      "status": "published",
+      "published_date": "2026-07-10",
+      "wechat_url": "https://mp.weixin.qq.com/s/aSLVO-otvr2rxIU1kr2eAA",
+      "zhihu_url": "https://zhuanlan.zhihu.com/p/2063286132717180758",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": false,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-07-11-deepseek-moe",
+      "title": "DeepSeek便宜30倍的秘密：MoE混合专家入门",
+      "series": "DeepSeek 技术解密",
+      "status": "published",
+      "published_date": "2026-07-11",
+      "wechat_url": "https://mp.weixin.qq.com/s/QdkD0CR2fD-HfY77-gX3Ug",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-07-13-BPE",
+      "title": "BPE分词：AI为什么把文字切成碎片？",
+      "series": "大模型原理",
+      "status": "published",
+      "published_date": "2026-07-13",
+      "wechat_url": "https://mp.weixin.qq.com/s/5nR_KI47v_U8KwpQA4Uv5Q",
+      "zhihu_url": "https://zhuanlan.zhihu.com/p/2063912096258056251",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-07-15-词嵌入",
+      "title": "词嵌入为什么让AI懂\"苹果\"？5万个0变坐标",
+      "series": "大模型原理",
+      "status": "published",
+      "published_date": "2026-07-15",
+      "wechat_url": "https://mp.weixin.qq.com/s/rDryn1z_hLt7mwi3X8fsxQ",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-07-17-位置编码",
+      "title": "位置编码怎么工作？词序一错意思全变",
+      "series": "大模型原理",
+      "status": "published",
+      "published_date": "2026-07-17",
+      "wechat_url": "https://mp.weixin.qq.com/s/4nO2VqQLaYxGdDmtQeypCQ",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-07-18-注意力机制",
+      "title": "注意力机制是什么？别再当数据库查询",
+      "series": "大模型原理",
+      "status": "published",
+      "published_date": "2026-07-18",
+      "wechat_url": "https://mp.weixin.qq.com/s/KrilwX6VRjI9KfjvD7C6kw",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-07-20-kimi-k3-attention",
+      "title": "Kimi K3：KDA怎么撑住1M上下文？",
+      "series": "大模型原理",
+      "status": "published",
+      "published_date": "2026-07-20",
+      "wechat_url": "https://mp.weixin.qq.com/s/_RR5LLWgjGNm-qXdSdnAGA",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-07-21-MLA",
+      "title": "显存被谁吃掉了？DeepSeek如何省下90%",
+      "series": "DeepSeek 技术解密",
+      "status": "published",
+      "published_date": "2026-07-21",
+      "wechat_url": "https://mp.weixin.qq.com/s/HHMNEdCYThOjCLRozQorhg",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-07-23-FFN",
+      "title": "Attention都够了，为什么还要前馈网络？",
+      "series": "大模型原理",
+      "status": "published",
+      "published_date": "2026-07-23",
+      "wechat_url": "https://mp.weixin.qq.com/s/vBCzukDlQyB9O6ASgAmlvQ",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-07-24-归一化残差",
+      "title": "归一化为什么总在前面？61层模型靠它不崩",
+      "series": "大模型原理",
+      "status": "published",
+      "published_date": "2026-07-24",
+      "wechat_url": "https://mp.weixin.qq.com/s/v-SBuMTbMANSTxHj7gYDkg",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-07-25-fields-medal",
+      "title": "数学太难？菲尔兹奖得主也差点放弃",
+      "series": "调剂品",
+      "status": "published",
+      "published_date": "2026-07-25",
+      "wechat_url": "https://mp.weixin.qq.com/s/JcqY0-ClRN6Coh0PJjQ2RA",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-07-26-Transformer全景",
+      "title": "注意力找人，FFN存知识：跟一句话走完Transformer",
+      "series": "大模型原理",
+      "status": "published",
+      "published_date": "2026-07-26",
+      "wechat_url": "https://mp.weixin.qq.com/s/22J8JPkdpVeUx23KahbBmA",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-07-27-预训练",
+      "title": "预训练：只会猜下一个词，模型怎么学会了写文章？",
+      "series": "大模型原理",
+      "status": "published",
+      "published_date": "2026-07-27",
+      "wechat_url": "https://mp.weixin.qq.com/s/XoGHVycQHR5Tp-BWPac9Hg",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-07-28-kimi-k3-architecture",
+      "title": "Kimi K3 架构怎么撑住 2.8T 参数？三轴拆给你看",
+      "series": "大模型原理",
+      "status": "published",
+      "published_date": "2026-07-28",
+      "wechat_url": "https://mp.weixin.qq.com/s/6GJ2781jJh-dqYswJ07dfA",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-07-29-SFT",
+      "title": "SFT微调：1万条数据就能让模型听话？",
+      "series": "大模型原理",
+      "status": "published",
+      "published_date": "2026-07-29",
+      "wechat_url": "https://mp.weixin.qq.com/s/vwXGbjm9Ai1GPvQi5O3UyQ",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": false,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-07-30-RLHF",
+      "title": "RLHF怎么让模型选出好回答？",
+      "series": "训练回路",
+      "status": "published",
+      "published_date": "2026-07-30",
+      "wechat_url": "https://mp.weixin.qq.com/s/NJDuCLAEfDpILf2J9D6qLQ"
+    },
+    {
+      "slug": "2026-07-30-rlhf",
+      "title": "RLHF怎么让模型选出好回答？",
+      "series": "大模型原理",
+      "status": "published",
+      "published_date": "2026-07-30",
+      "wechat_url": "https://mp.weixin.qq.com/s/NJDuCLAEfDpILf2J9D6qLQ",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-07-31-ppo",
+      "title": "PPO：被顶会拒稿，怎么成了RLHF发动机？",
+      "series": "大模型原理",
+      "status": "published",
+      "published_date": "2026-07-31",
+      "wechat_url": "https://mp.weixin.qq.com/s/OEZtUhm8MT_En7enJo_8dw?token=2031108942&lang=zh_CN",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-08-01-grpo",
+      "title": "GRPO为什么省显存，却撑不住长程任务？",
+      "series": "大模型原理",
+      "status": "published",
+      "published_date": "2026-08-01",
+      "wechat_url": "https://mp.weixin.qq.com/s/t4sO-zC5v1_jq8hJT_YTGA",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-08-02-rlvr",
+      "title": "RLVR：可验证奖励怎么重塑后训练？",
+      "series": "大模型原理",
+      "status": "published",
+      "published_date": "2026-08-02",
+      "wechat_url": "https://mp.weixin.qq.com/s/NvemnDdtkinRKEbmtcckzA",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-08-03-推理加速",
+      "title": "大模型 API 为什么这么慢？首字延迟揭秘",
+      "series": "大模型原理",
+      "status": "published",
+      "published_date": "2026-08-03",
+      "wechat_url": "https://mp.weixin.qq.com/s/LvxasW-4t0YuXy8nWpyzVw",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-08-04-deepseek-csa",
+      "title": "DeepSeek-V4为何不用MLA？",
+      "series": "DeepSeek 技术解密",
+      "status": "published",
+      "published_date": "2026-08-04",
+      "wechat_url": "https://mp.weixin.qq.com/s/MQEgbY16mLs-N7g2xKW1HQ",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-08-05-deepseek-kv",
+      "title": "K=V：一份KV缓存怎么干两份活？",
+      "series": "DeepSeek 技术解密",
+      "status": "published",
+      "published_date": "2026-08-05",
+      "wechat_url": "https://mp.weixin.qq.com/s/88kscO8p0kMxHmeGm2llLA",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-08-06-muon",
+      "title": "Muon 怎么省一半显存？优化器只记一份账",
+      "series": "DeepSeek 技术解密",
+      "status": "published",
+      "published_date": "2026-08-06",
+      "wechat_url": "https://mp.weixin.qq.com/s/7bpfjLYn9E-CiBS4TY8A6w",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-08-07-mhc",
+      "title": "mHC 怎么让 DeepSeek-V4 稳定训练 61 层？",
+      "series": "DeepSeek 技术解密",
+      "status": "published",
+      "published_date": "2026-08-07",
+      "wechat_url": "https://mp.weixin.qq.com/s/VKD1Epopeuj_od-ITbg_dQ",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-08-09-deepseek-fp4-qat",
+      "title": "FP4量化：4位数字怎么做到无损",
+      "series": "DeepSeek 技术解密",
+      "status": "published",
+      "published_date": "2026-08-09",
+      "wechat_url": "https://mp.weixin.qq.com/s/Bra0y-wCSeYEW5ABxa3slw",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-08-09-deepseek-fp8",
+      "title": "FP8训练：残缺数字怎么练出顶级模型",
+      "series": "DeepSeek 技术解密",
+      "status": "published",
+      "published_date": "2026-08-09",
+      "wechat_url": "https://mp.weixin.qq.com/s/yxrkmxPSZ8CnsFhWZ1bCPA",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-08-10-deepseek-kv-disk",
+      "title": "KV缓存存进SSD：慢50倍的硬盘，为什么反而更快？",
+      "series": "DeepSeek 技术解密",
+      "status": "published",
+      "published_date": "2026-08-10",
+      "wechat_url": "https://mp.weixin.qq.com/s/40BQ06eDTv4-2r8FmQ_rMA",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-08-11-deepseek-indexer",
+      "title": "稀疏注意力怎么挑重点？DeepSeek-V4 只算 1/64",
+      "series": "DeepSeek 技术解密",
+      "status": "published",
+      "published_date": "2026-08-11",
+      "wechat_url": "https://mp.weixin.qq.com/s/QcZUcxYZUw27_J2ykESUHA",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": false,
+        "cover": false
+      }
+    },
+    {
+      "slug": "2026-08-12-deepseek-mtp",
+      "title": "多Token预测：一次猜两个词，快1.8倍",
+      "series": "DeepSeek 技术解密",
+      "status": "published",
+      "published_date": "2026-08-12",
+      "wechat_url": "https://mp.weixin.qq.com/s/EmjgFu5C6bkpltYidQhLRQ",
+      "media_id": "kOcXH4SytIYVIpYksTGfHoCMVjp5B7OnAn4ipjHqyitEI_Vbg3ZSxBLL9TIgEETM",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHr_q_sSLIa-e_IE2HN9jsbjTFL1uE6RPCVxbsXwg4suY",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-08-12-维度诅咒",
+      "title": "高维空间为什么全是壳？内积才是那把尺子",
+      "series": "AI中的数学",
+      "status": "published",
+      "published_date": "2026-08-12",
+      "wechat_url": "https://mp.weixin.qq.com/s/Nrfr-90Fpu3mFDML9s0d1Q"
+    },
+    {
+      "slug": "2026-08-13-deepseek-parallel",
+      "title": "1.6T参数怎么塞进GPU？V4五维并行策略",
+      "series": "DeepSeek 技术解密",
+      "status": "published",
+      "published_date": "2026-08-13",
+      "wechat_url": "https://mp.weixin.qq.com/s/ae1iwvau14gFCnyfg4hVIw",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-08-14-deepseek-cp",
+      "title": "上下文并行：1M序列为什么切了会坏？",
+      "series": "DeepSeek 技术解密",
+      "status": "published",
+      "published_date": "2026-08-14",
+      "wechat_url": "https://mp.weixin.qq.com/s/UB_ILj-62K3VBUY4_AopSw",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-08-15-deepseek-dualpipe-deepep",
+      "title": "DeepEP：训练时GPU的空等怎么藏起来",
+      "series": "DeepSeek 技术解密",
+      "status": "published",
+      "published_date": "2026-08-15",
+      "wechat_url": "https://mp.weixin.qq.com/s/8WS2AjSkac7CstjToJclxA",
+      "media_id": "kOcXH4SytIYVIpYksTGfHgr8RCMccirTzoR45TM7Jt8c6mAtt49hTERLGQdSvtjY",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHv0Erz0aQpnBrRkD8yHlKYk8Y0KZ4ms2e87IPzPTDRoF",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-08-16-mdp",
+      "title": "马尔可夫决策过程：AI 怎么在不确定里做选择",
+      "series": "强化学习原理",
+      "status": "published",
+      "published_date": "2026-08-16",
+      "wechat_url": "https://mp.weixin.qq.com/s/SJ8_CpSyp8onm8HLiF3TXA",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      },
+      "media_id": "kOcXH4SytIYVIpYksTGfHrIOnYWBVTLb9t8itZ5vLK2bbMNhIb6k7SP4YRXsqOsV",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHhN3qXj9pYxPaX0OfccobquAUM3SlrJ41SNp3MaEkzmn"
+    },
+    {
+      "slug": "2026-08-17-bellman",
+      "title": "贝尔曼方程：为什么只看下一步就够了？",
+      "series": "强化学习原理",
+      "status": "published",
+      "published_date": "2026-08-18",
+      "wechat_url": "https://mp.weixin.qq.com/s/kHvjDKrQElvWXrA92yqAfA",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      },
+      "media_id": "kOcXH4SytIYVIpYksTGfHha6FwZyEfHwuQGNYoONUEyXntUUHrk73LF8lFh6NuDF",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHqDa-VMGRObVnsfmtIFrS9jBahMrdwJ7b0KD9_BxhPks"
+    },
+    {
+      "slug": "2026-08-18-q-learning",
+      "title": "Q-learning是什么？没有转移表怎么解",
+      "series": "强化学习原理",
+      "status": "published",
+      "published_date": "2026-08-18",
+      "wechat_url": "https://mp.weixin.qq.com/s/W9Bd--EtnidWy65Yx4Kyfw",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      },
+      "media_id": "kOcXH4SytIYVIpYksTGfHm6NvKmf1bd-EoWteS5Y6EDkip-rnFKuEsVeUXSs0vqB",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHi6_WYVco51nueuF1mmszB9SHIOKdNGZlpmanfDDXMIR"
+    },
+    {
+      "slug": "2026-08-18-矩阵秩",
+      "title": "矩阵的秩：为什么低秩在 AI 里无处不在？",
+      "series": "数学直觉",
+      "status": "published",
+      "published_date": "2026-08-18",
+      "wechat_url": "https://mp.weixin.qq.com/s/HIwjTG0lpcLcEjTuUw3Nzg",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": false,
+        "cover": true
+      },
+      "media_id": null,
+      "cover_media_id": null
+    },
+    {
+      "slug": "2026-08-19-policy-gradient",
+      "title": "策略梯度是什么？直接改概率行不行",
+      "series": "强化学习原理",
+      "status": "published",
+      "published_date": "2026-08-19",
+      "wechat_url": "https://mp.weixin.qq.com/s/IcoJTY4b1c-p0Njrxb7isA",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      },
+      "media_id": "kOcXH4SytIYVIpYksTGfHnq6LTSaZv-4-JfbaKm_LBBK2IHIzg9rOdJIJtznLKCB",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHipllF_uZFBj5kQwGECaenoWx1F4WPzV8JCFhYplvgw3"
+    },
+    {
+      "slug": "2026-08-19-期望与导数换序",
+      "title": "随机变量为什么不是变量？它其实是个函数",
+      "series": "数学直觉",
+      "status": "published",
+      "published_date": "2026-08-19",
+      "wechat_url": "https://mp.weixin.qq.com/s/5BxjOUblW64DXNffHc2sxQ",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": false,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-08-20-gaussian-trust-region",
+      "title": "多维高斯：为什么同一步长差1万倍？",
+      "series": "强化学习原理",
+      "status": "published",
+      "published_date": "2026-08-20",
+      "wechat_url": "https://mp.weixin.qq.com/s/GjNkcQ70B3WBzaVPwqVTgg",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      },
+      "media_id": "kOcXH4SytIYVIpYksTGfHjEpYg-9nifxfPRPjbYKdvDxpx3IHr70vf6uKglH7xoZ",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHmpJRr6C7LXHbx1GgZcEtPMsN3HmuLTdFBunJ-rH32hH"
+    },
+    {
+      "slug": "2026-08-21-gaussian-sequel",
+      "title": "高斯为什么二阶就够？非线性去哪了",
+      "series": "数学直觉",
+      "status": "published",
+      "published_date": "2026-08-21",
+      "wechat_url": "https://mp.weixin.qq.com/s/gs_3y7JXuBLlzR5w6jW6fQ",
+      "files": {
+        "weixin": true,
+        "draft": false,
+        "outline": false,
+        "cover": true
+      },
+      "media_id": null,
+      "cover_media_id": null
+    },
+    {
+      "slug": "2026-08-21-多维高斯注解",
+      "title": "协方差矩阵：1个方差怎么变9个数？拆给你看",
+      "series": "数学直觉",
+      "status": "published",
+      "published_date": "2026-08-21",
+      "wechat_url": "https://mp.weixin.qq.com/s/5TdhwQ166NRvReN2_atCVQ",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      },
+      "media_id": "kOcXH4SytIYVIpYksTGfHgF06-QcXm92rKFrgOF9LNcBH7ArLnILCAd1St8TJpPs",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHvaffJlCCEfBUKYpLADFPRGW3lZ5jBvfPHXxDmjx4Hzr"
+    },
+    {
+      "slug": "2026-08-22-trpo",
+      "title": "梯度一步踩爆50倍预算，TRPO为什么敢走？",
+      "series": "强化学习原理",
+      "status": "published",
+      "published_date": "2026-08-22",
+      "wechat_url": "https://mp.weixin.qq.com/s/Y3dk7CHMNgWBitxnoDNljA",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      },
+      "media_id": "kOcXH4SytIYVIpYksTGfHn9uajJzAAQnZNa5yywEM7p5S6Zb0I3W4lijPNMfLDOg",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHu879YAahB43iTbBbUrY1-T_qdq5k6TcT4mPtdfCQ9go"
+    },
+    {
+      "slug": "2026-08-23-kl-divergence",
+      "title": "KL散度：为什么整个AI共用一把尺子？",
+      "series": "数学直觉",
+      "status": "published",
+      "published_date": "2026-08-23",
+      "wechat_url": "https://mp.weixin.qq.com/s/G1PUOuwxURoo1Dp1pDfQMg",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      },
+      "media_id": "kOcXH4SytIYVIpYksTGfHtvsKCFs3go8FzOj3pi00K_xopK7m1VE7wzXtMonGdQV",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHjK3ztL7oCakVr-lss3sKMRhIiRg5XAiqvhZY3gGz3d5"
+    },
+    {
+      "slug": "2026-08-23-price-war-sequel",
+      "title": "免费模型轮番上阵，DeepSeek凭啥继续爽用？",
+      "type": "tietu",
+      "series": "Agent前线",
+      "status": "published",
+      "published_date": "2026-08-23",
+      "wechat_url": "https://mp.weixin.qq.com/s/xxnwNv7QOn92YitIoAwZ0w",
+      "files": {
+        "weixin": true,
+        "draft": false,
+        "outline": false,
+        "cover": false
+      }
+    },
+    {
+      "slug": "2026-08-24-dsh-harness",
+      "title": "DeepSeek Harness社区自己人开撕：创新何在",
+      "type": "tietu",
+      "series": "Agent前线",
+      "status": "published",
+      "published_date": "2026-08-24",
+      "wechat_url": "https://mp.weixin.qq.com/s/NRFSTBlxNwOa7p69D92g_A",
+      "files": {
+        "weixin": true,
+        "draft": false,
+        "outline": false,
+        "cover": false
+      }
+    },
+    {
+      "slug": "2026-08-24-pi-dsh-pruner",
+      "title": "Pi这波把DSH剪枝骂惨了",
+      "type": "tietu",
+      "series": "Agent前线",
+      "status": "published",
+      "published_date": "2026-08-24",
+      "wechat_url": "https://mp.weixin.qq.com/s/vx-rHnzgJzH-oqriNM555A",
+      "files": {
+        "weixin": true,
+        "draft": false,
+        "outline": false,
+        "cover": false
+      }
+    },
+    {
+      "slug": "2026-08-24-ppo-math",
+      "title": "PPO只用0.2的clip，凭什么顶替0.01的KL预算？",
+      "series": "强化学习原理",
+      "status": "published",
+      "published_date": "2026-08-24",
+      "wechat_url": "https://mp.weixin.qq.com/s/AjxvcBFTJkWeRRPDr5YAjA",
+      "files": {
+        "weixin": true,
+        "draft": false,
+        "outline": true,
+        "cover": false
+      },
+      "media_id": "kOcXH4SytIYVIpYksTGfHm_I24lKipql05OQetSem3kBAIRQbgOWsIsv2aiK2WbA",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHt5F3SyBtjzs61oRCDNhMtg0WBgG6JxloMXgY1RQ-fdM"
+    },
+    {
+      "slug": "2026-08-25-gae",
+      "title": "GAE：100步的功劳，为什么只认最近17步？",
+      "series": "强化学习原理",
+      "status": "published",
+      "published_date": "2026-08-25",
+      "wechat_url": "https://mp.weixin.qq.com/s/gIYikPG8kAAuOz6y_QVMhA",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      },
+      "media_id": "kOcXH4SytIYVIpYksTGfHrAQIFf1UA1IFk8ytwFYPA8-ERzGU710lfICxkrm_hWv",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHrwu_c4xeRsjVdfURv1Lbes0-wBSZFpx19IcoW8d91rf"
+    },
+    {
+      "slug": "2026-08-25-pi-maka-harness",
+      "title": "Pi 的新架构，答案早就在数据库论文里了",
+      "type": "tietu",
+      "series": "Agent前线",
+      "status": "published",
+      "published_date": "2026-08-25",
+      "wechat_url": "https://mp.weixin.qq.com/s/QB_nJbrDU0G2vipZk8m1YQ",
+      "files": {
+        "weixin": true,
+        "draft": false,
+        "outline": false,
+        "cover": false
+      }
+    },
+    {
+      "slug": "2026-08-26-knowledge-distillation",
+      "title": "蒸馏是抄袭？为什么越抄越学不会？",
+      "series": "数学直觉",
+      "status": "published",
+      "published_date": "2026-08-26",
+      "wechat_url": "https://mp.weixin.qq.com/s/Xly_jfKKcf5xHcuK_e22KA",
+      "files": {
+        "weixin": true,
+        "draft": false,
+        "outline": true,
+        "cover": true
+      },
+      "media_id": "kOcXH4SytIYVIpYksTGfHgP-ZbeSteFkCagnwwxlTZHY0R5_ETSJQvdP9DWuwfHB",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHl4u-bPxO7d5iv6DNWHT69XlAWAudEdg2QeVsa7ePnnA"
+    },
+    {
+      "slug": "2026-08-27-glm-53-flash-price-war",
+      "title": "GLM-5.3-Flash 半价是假象？实测竟贵 3 倍",
+      "type": "tietu",
+      "series": "Agent前线",
+      "status": "published",
+      "published_date": "2026-08-27",
+      "wechat_url": "https://mp.weixin.qq.com/s/LXYvwQ4kTNLlkMIS-Ex-EQ",
+      "files": {
+        "weixin": true,
+        "draft": false,
+        "outline": false,
+        "cover": false
+      }
+    },
+    {
+      "slug": "2026-08-27-glm-qwen-architecture",
+      "title": "智谱阿里为什么要改注意力？KV缓存竟砍4.4倍",
+      "series": "开源大模型技术揭秘",
+      "status": "published",
+      "published_date": "2026-08-27",
+      "wechat_url": "https://mp.weixin.qq.com/s/5w1mEVLW5igvJ28Dn6pe9A",
+      "files": {
+        "weixin": false,
+        "draft": false,
+        "outline": false,
+        "cover": false
+      }
+    },
+    {
+      "slug": "2026-08-28-information-entropy",
+      "title": "信息熵：压缩1000倍，为什么信息反而少？",
+      "series": "数学直觉",
+      "status": "published",
+      "published_date": "2026-08-28",
+      "wechat_url": "https://mp.weixin.qq.com/s/BkGWzKxiJE2mlPMlZgb7ag",
+      "files": {
+        "weixin": true,
+        "draft": false,
+        "outline": true,
+        "cover": false
+      }
+    },
+    {
+      "slug": "2026-08-29-大数定律",
+      "title": "每步都靠猜，上百万Token的长任务怎么不跑偏",
+      "series": "AI中的数学",
+      "status": "published",
+      "published_date": "2026-08-29",
+      "wechat_url": "https://mp.weixin.qq.com/s/pbIQrUsChnNuFotkayFtiw",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": false,
+        "cover": true
+      },
+      "draft_media_id": "kOcXH4SytIYVIpYksTGfHgE7Q4JlXar6NIcyhEf5uruUYgLXL4nItA9EyMjo8lJt"
+    },
+    {
+      "slug": "2026-08-30-multimodal-split",
+      "title": "GLM-5.3 说视觉没用，转头带上原生视觉",
+      "series": "开源大模型技术揭秘",
+      "status": "published",
+      "published_date": "2026-08-30",
+      "wechat_url": "https://mp.weixin.qq.com/s/HqabnvOdMbq2gX0-V87N6w",
+      "files": {
+        "weixin": true,
+        "draft": false,
+        "outline": true,
+        "cover": true
+      },
+      "media_id": "kOcXH4SytIYVIpYksTGfHigJXhVYv_vjhBYV5qFFzEfywHoy8dUzKHRaSVao3KgC",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHnHP0z8qN7oab3TuxO2jyMUlSyoZAcZW9geVilVqQSzH"
+    },
+    {
+      "slug": "2026-08-31-SVD",
+      "title": "微调70B模型为什么只需要改0.026%的参数",
+      "series": "AI中的数学",
+      "status": "published",
+      "published_date": "2026-08-31",
+      "wechat_url": "https://mp.weixin.qq.com/s/sl0jZTNLPps5l6qvoeyTHw",
+      "files": {
+        "weixin": true,
+        "draft": false,
+        "outline": true,
+        "cover": true
+      },
+      "media_id": "kOcXH4SytIYVIpYksTGfHgO-hlkU1WLGutxMhNK3k1cYVDzSN5x91Xl6XmmXIJ77",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHkTgdgmVtKZ_Ge7Dk9TKI51iczv_SpNJvD00CMcinMbt"
+    },
+    {
+      "slug": "2026-09-01-kv-1p5bit",
+      "title": "KV缓存压到1bit：省92%显存，凭什么不掉点？",
+      "series": "开源大模型技术揭秘",
+      "status": "published",
+      "published_date": "2026-09-01",
+      "wechat_url": "https://mp.weixin.qq.com/s/Oy-GyqEB8IP4_0nmvZ7EDQ",
+      "files": {
+        "weixin": true,
+        "draft": false,
+        "outline": true,
+        "cover": true
+      },
+      "media_id": "kOcXH4SytIYVIpYksTGfHi4msAqwj6D-QvLcXYwy-T0RfxEIariJkJA18S20iQLu",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHjr_oZCbCCZTMPhXal3ftnsSvF2hS65Q1cgOTw5vbTaw"
+    },
+    {
+      "slug": "2026-09-02-nsa-sparse-attention",
+      "title": "DeepSeek 注意力只算 8.6%，为什么 V4 反而不用？",
+      "series": "开源大模型技术揭秘",
+      "status": "published",
+      "published_date": "2026-09-02",
+      "wechat_url": "https://mp.weixin.qq.com/s/HIBJliEXWtVyJqvH_Ocbog",
+      "files": {
+        "weixin": true,
+        "draft": false,
+        "outline": true,
+        "cover": true
+      },
+      "media_id": "kOcXH4SytIYVIpYksTGfHv04MR68mic135Kfw5ThGcYRHjq6ac9yW3CdbthgyUEf",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHjfrNBcWwIEYHNaaZURdY_qzayqWUTNh2XejhggCsWT6"
+    },
+    {
+      "slug": "2026-09-03-alphago",
+      "title": "AlphaGo 十年：那只狗到底是靠什么赢的？",
+      "series": "强化学习原理（番外）",
+      "status": "published",
+      "published_date": "2026-09-03",
+      "wechat_url": "https://mp.weixin.qq.com/s/420EHNlLpfKksNy30sgEsg",
+      "files": {
+        "weixin": true,
+        "draft": false,
+        "outline": true,
+        "cover": true
+      },
+      "media_id": "kOcXH4SytIYVIpYksTGfHgnafCJ-imSBYryr1qHgcYlRr66NNL_giFAZ14qMolcF",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHnqfK31noHUZ-nEc9ajr8Yt1_eJiaMiXwtUMcnSAJGit"
+    },
+    {
+      "slug": "2026-09-03-mle-objective",
+      "title": "MLE为何让大模型一会儿像博士一会儿像小学生？",
+      "series": "数学直觉",
+      "status": "published",
+      "published_date": "2026-09-03",
+      "wechat_url": "https://mp.weixin.qq.com/s/lyB9eA4qKIMWW_3i1PypDw",
+      "files": {
+        "weixin": true,
+        "draft": false,
+        "outline": false,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-09-04-r1-zero-training",
+      "title": "没人教它做一道题，DeepSeek 正确率凭什么从 15.6% 涨到 71%",
+      "series": "开源大模型技术揭秘",
+      "status": "published",
+      "published_date": "2026-09-04",
+      "wechat_url": "https://mp.weixin.qq.com/s/PQj1EFBotvBTzwU7lVG9Ug",
+      "files": {
+        "weixin": true,
+        "draft": false,
+        "outline": true,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-09-05-test-time-compute",
+      "title": "AI 多想 3 秒，为什么正确率能从 71% 涨到 86.7%？",
+      "series": "开源大模型技术揭秘",
+      "status": "published",
+      "published_date": "2026-09-05",
+      "wechat_url": "https://mp.weixin.qq.com/s/Boh1Hb3J5_wyilid-jAUww",
+      "files": {
+        "weixin": true,
+        "draft": false,
+        "outline": true,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-09-06-方差",
+      "title": "AI 为什么时灵时不灵？跑分只有 12.8 的模型，难题却解得了",
+      "series": "数学直觉",
+      "status": "published",
+      "published_date": "2026-09-06",
+      "wechat_url": "https://mp.weixin.qq.com/s/99AlwmvHlBe8goeMzZIEDQ",
+      "files": {
+        "weixin": true,
+        "draft": false,
+        "outline": true,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-09-07-ai-video-cost",
+      "title": "生成 30 秒视频要画 900 张图，AI 视频为什么这么贵？",
+      "series": "视觉生成",
+      "status": "published",
+      "published_date": "2026-09-07",
+      "wechat_url": "https://mp.weixin.qq.com/s/aiLaUY-T-vvWbooDGxferQ",
+      "files": {
+        "weixin": true,
+        "draft": false,
+        "outline": true,
+        "cover": true
+      },
+      "media_id": "kOcXH4SytIYVIpYksTGfHkVimQirRaNLwSwTLQUSzcTRR0g-IO83DSDpAKsK-GAx",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHrDW53MPDMWb-vYSvtBM-TVbFRntS2NNV-SyXFHr-qrb"
+    },
+    {
+      "slug": "2026-09-08-moe-load-balancing",
+      "title": "DeepSeek 有 384 个专家，为什么不敢强迫它们平均干活？",
+      "series": "数学直觉",
+      "status": "published",
+      "published_date": "2026-09-08",
+      "wechat_url": "https://mp.weixin.qq.com/s/z6dUKGtDjcPQOK9GnxBnFA",
+      "files": {
+        "weixin": true,
+        "draft": false,
+        "outline": true,
+        "cover": true
+      },
+      "media_id": "kOcXH4SytIYVIpYksTGfHkjznIiAgn2MtOJUhLKcv-F7rRdFZMrZaycIoBFx32bH",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHkaRkgtHfG1KwmvR1iEEhJxjPQBZUCei0BRyq31lUxwK"
+    },
+    {
+      "slug": "2026-09-09-CLT-FP8",
+      "title": "误差不是会互相抵消吗？量化模型为什么还是掉点？",
+      "series": "数学直觉",
+      "status": "published",
+      "published_date": "2026-09-09",
+      "wechat_url": "https://mp.weixin.qq.com/s/hYKy3dyHXEQkwoN7YmdREA",
+      "files": {
+        "weixin": true,
+        "draft": false,
+        "outline": true,
+        "cover": true
+      },
+      "media_id": "kOcXH4SytIYVIpYksTGfHpUtOerMnvXYxPjHOjqvWIQ0JbaGdR22Npa_BFY2tzOM",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHtOhHCDTTH8jzCXnoCGuHs03eq9Eak7_Qs1hofl9dNxB"
+    },
+    {
+      "slug": "2026-09-10-bayes-hallucination",
+      "title": "AI 的 90% 把握为什么不能全信？贝叶斯定理说概率不是这么用的",
+      "series": "数学直觉",
+      "status": "published",
+      "published_date": "2026-09-10",
+      "wechat_url": "https://mp.weixin.qq.com/s/LEkQhNVVr9METDKkL6q5fw",
+      "files": {
+        "weixin": true,
+        "draft": false,
+        "outline": true,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-09-11-v41-kv-csa2",
+      "title": "DeepSeek V4.1 四十层网络，为什么不给每层都记账？",
+      "series": "开源大模型技术揭秘",
+      "status": "published",
+      "published_date": "2026-09-11",
+      "wechat_url": "https://mp.weixin.qq.com/s/DBI990JLYtbxQGF3LIWbhQ",
+      "files": {
+        "weixin": true,
+        "draft": false,
+        "outline": true,
+        "cover": true
+      },
+      "media_id": "kOcXH4SytIYVIpYksTGfHqd1xESP2g2X72mULpJD78NP2_ek0wqzmqs3HB6W8Ufh",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHoYr_QRzyWxfmwzdn7-MzHsiiWDMm46mhe78pd4rMIvQ"
+    },
+    {
+      "slug": "2026-09-12-fields-ai-misalignment",
+      "title": "25个菲尔兹奖得主集体对AI开炮，这回真急了",
+      "series": "调剂品",
+      "status": "published",
+      "published_date": "2026-09-12",
+      "wechat_url": "https://mp.weixin.qq.com/s/cvsIrlB9XE4-lZaYYwFekA",
+      "files": {
+        "weixin": true,
+        "draft": false,
+        "outline": false,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-09-13-grpo-math",
+      "title": "GRPO 省了一个 critic，长任务为什么反而崩了？",
+      "series": "强化学习原理",
+      "status": "published",
+      "published_date": "2026-09-13",
+      "wechat_url": "https://mp.weixin.qq.com/s/8YtlqDv7vkEopHMp5pyMgA",
+      "files": {
+        "weixin": true,
+        "draft": false,
+        "outline": true,
+        "cover": true
+      },
+      "media_id": "kOcXH4SytIYVIpYksTGfHh0kODHXdIIs2JmLqsfWyIj2VHVcEVgU-V04CTRiKTU-"
+    },
+    {
+      "slug": "2026-09-14-reward-hacking",
+      "title": "机械臂蹭一下桶盖，成功率高10%：奖励函数才是AI钻空子的源头",
+      "series": "强化学习原理",
+      "status": "published",
+      "published_date": "2026-09-14",
+      "wechat_url": "https://mp.weixin.qq.com/s/boIPBlmyX2ahoFYnEVLjxw",
+      "files": {
+        "weixin": true,
+        "draft": false,
+        "outline": true,
+        "cover": true
+      },
+      "media_id": "kOcXH4SytIYVIpYksTGfHpnP1gwNsbJ-kXY478huMkM1Z7RDYM84WwzHmljmQ7fY"
+    },
+    {
+      "slug": "2026-09-15-text-rendering",
+      "title": "AI 生图好看能到 91.87 分，为什么招牌上的字还是错的？",
+      "series": "视觉生成",
+      "status": "published",
+      "published_date": "2026-09-15",
+      "wechat_url": "https://mp.weixin.qq.com/s/zQH7CHzRJGofbsJTzK9ukQ",
+      "files": {
+        "weixin": true,
+        "draft": false,
+        "outline": true,
+        "cover": true
+      },
+      "media_id": "kOcXH4SytIYVIpYksTGfHkdi_J-KNcbaWKVMGpSa3TzJ7Cif--WDu_AAKixeKeRC"
+    },
+    {
+      "slug": "2026-09-16-video-text-consistency",
+      "title": "AI 视频里的字，为什么一帧一个样？10 个模型考下来最高 37%",
+      "series": "视觉生成",
+      "status": "published",
+      "published_date": "2026-09-16",
+      "wechat_url": "https://mp.weixin.qq.com/s/RTQhX1ZOmV9Of-n_gRtIAA",
+      "files": {
+        "weixin": true,
+        "draft": false,
+        "outline": true,
+        "cover": true
+      },
+      "media_id": "kOcXH4SytIYVIpYksTGfHhN0CzqiYSHO0dz6y4jPIpGosvXemeV6xyh6kLIKu5NU"
+    },
+    {
+      "slug": "2026-09-17-adversarial-thought",
+      "title": "AI中有趣的对抗思想居然无处不在",
+      "series": "调剂品",
+      "status": "published",
+      "published_date": "2026-09-17",
+      "wechat_url": "https://mp.weixin.qq.com/s/mFbYxsQ290qgL-cVt1t34Q",
+      "files": {
+        "weixin": false,
+        "draft": false,
+        "outline": false,
+        "cover": false
+      }
+    },
+    {
+      "slug": "2026-09-18-gan-return",
+      "title": "GAN 一步就能出图，为什么输给了要跑 50 步的扩散？",
+      "series": "视觉生成",
+      "status": "published",
+      "published_date": "2026-09-18",
+      "wechat_url": "https://mp.weixin.qq.com/s/w-0CKrnRRjP1OL8n01U83Q",
+      "files": {
+        "weixin": true,
+        "draft": false,
+        "outline": true,
+        "cover": true
+      },
+      "media_id": "kOcXH4SytIYVIpYksTGfHuxs_eoarRvproCyT9Xpvmt8odPzBf43ztiqw0jQYs9X",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHizKeCA85ZMj4N8vZP5uxGS_zpODFYRtsibR5T6A5wh5"
+    },
+    {
+      "slug": "2026-09-19-diffusion-steps",
+      "title": "AI 出图要跑 50 步，为什么砍到 10 步还清晰，砍到 1 步就糊了？",
+      "series": "视觉生成",
+      "status": "published",
+      "published_date": "2026-09-19",
+      "wechat_url": "https://mp.weixin.qq.com/s/WOrO8gJ0wH6XnhtJ28FRtQ",
+      "files": {
+        "weixin": true,
+        "draft": false,
+        "outline": true,
+        "cover": true
+      },
+      "media_id": "kOcXH4SytIYVIpYksTGfHg6MpQYiShfwKJFdToOsops1B_ZzKFvxI-zxuIRgZFSG",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHpkfirdOR3U5hCZK8nFEhL1XlElg5ZQlxEwBgbGOrsBp"
+    },
+    {
+      "slug": "2026-09-20-diffusion-elbo",
+      "title": "猜噪声怎么就学会了画猫？扩散模型的训练目标不是拍脑袋定的",
+      "series": "数学直觉",
+      "status": "published",
+      "published_date": "2026-09-20",
+      "wechat_url": "https://mp.weixin.qq.com/s/IuoNCCYdsabOnkeGerOKEA",
+      "files": {
+        "weixin": true,
+        "draft": false,
+        "outline": true,
+        "cover": true
+      },
+      "media_id": "kOcXH4SytIYVIpYksTGfHjaAZAxFupY85W8W5vZL_sPe2b3dTSBe0JoynU6yihld",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHpS4pGp27ByfMVXdG1pHEyKz0XrZK_SuSjTfpVNRRyhF"
+    },
+    {
+      "slug": "2026-09-21-diffusion-score",
+      "title": "扩散模型为什么要几百个噪声级别？一个够吗",
+      "series": "数学直觉",
+      "status": "published",
+      "published_date": "2026-09-21",
+      "wechat_url": "https://mp.weixin.qq.com/s/ieHJjnSvSEseQkR4sFQh_w",
+      "files": {
+        "weixin": true,
+        "draft": false,
+        "outline": true,
+        "cover": true
+      },
+      "media_id": "kOcXH4SytIYVIpYksTGfHsPzNRArYzeqjNLPBZZm296lGbwS1awdfoDPhkhlBck8",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHlhQcg129mOvlpC44Oga9_sFmHIoHvBCqoaRH_qDyP6n"
+    },
+    {
+      "slug": "2026-09-22-diffusion-guidance",
+      "title": "AI 生图写「不要桌子」，为什么反而画了猫？引导到底在拧什么",
+      "series": "数学直觉",
+      "status": "published",
+      "published_date": "2026-09-22",
+      "wechat_url": "https://mp.weixin.qq.com/s/mLoiEHvPQTDSlg6RUb6DmQ",
+      "files": {
+        "weixin": true,
+        "draft": false,
+        "outline": true,
+        "cover": true
+      },
+      "media_id": "kOcXH4SytIYVIpYksTGfHlKsYVCJ3RgNlcASD7w3Phgi-43nhreL0mlGDQxi8lna",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHmNybW46NlbO2QXxKErxhE5faLPGOTEJaqr1kyqu3Tq7"
+    },
+    {
+      "slug": "2026-09-23-hand-fingers",
+      "title": "AI 画的手指为什么总多一根？56 维评测，这项它只得 20.9 分",
+      "series": "视觉生成",
+      "status": "published",
+      "published_date": "2026-09-23",
+      "wechat_url": "https://mp.weixin.qq.com/s/0fCMmqU9MdZ1feL1QBKZDA",
+      "files": {
+        "weixin": true,
+        "draft": false,
+        "outline": true,
+        "cover": true
+      },
+      "media_id": "kOcXH4SytIYVIpYksTGfHmLW-LkVMEXX2JPHeC8Dg6qnzwWwLqd7BXf7WtOQ0b_m",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHlGpIzLIh-bG2OLZBcWzv6wkheDV-EhqcBDLWYorssWM"
+    },
+    {
+      "slug": "2026-09-24-four-arch-kv",
+      "title": "同样 1M 上下文，KV 缓存差 15 倍：四家架构差在哪一层",
+      "series": "开源大模型技术揭秘",
+      "status": "published",
+      "published_date": "2026-09-24",
+      "wechat_url": "https://mp.weixin.qq.com/s/7BdQlueJrRJ5f-x3v_2VqA",
+      "files": {
+        "weixin": true,
+        "draft": false,
+        "outline": true,
+        "cover": true
+      },
+      "media_id": "kOcXH4SytIYVIpYksTGfHuTn4ANENCqb1_BCcr0aEKLF0WAfcff5OYLMntnLOUtR",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHseh2RkRP8YZVxsf5_rXSCqzXSl8E98Jc1uvBX6LkOhU"
+    },
+    {
+      "slug": "2026-09-24-nonconvex-saddle",
+      "title": "损失面上全是坑，为什么梯度下降还能走到谷底？",
+      "series": "数学直觉",
+      "status": "published",
+      "published_date": "2026-09-24",
+      "wechat_url": "https://mp.weixin.qq.com/s/AYlFPXsMJJ0esCa_7_amrw",
+      "files": {
+        "weixin": true,
+        "draft": false,
+        "outline": true,
+        "cover": true
+      },
+      "media_id": "kOcXH4SytIYVIpYksTGfHsXjXzTfAkFjTOIIxeD8OQ7wIZWwIfW4FfBLg1thQyHu",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHszwcX9-ZzwgxLrCU5mvz__YqEnQXqFGHhwEldGYfz7Y"
+    },
+    {
+      "slug": "2026-09-26-engram-conditional-memory",
+      "title": "DeepSeek 把 196B 参数做成字典，为什么反而更聪明？",
+      "series": "开源大模型技术揭秘",
+      "status": "published",
+      "published_date": "2026-09-26",
+      "wechat_url": "https://mp.weixin.qq.com/s/ZgHoN4v2SxiIC0_I7k40Lg",
+      "files": {
+        "weixin": true,
+        "draft": false,
+        "outline": true,
+        "cover": true
+      },
+      "media_id": "kOcXH4SytIYVIpYksTGfHnVIwMnqIQurIrQe7QsxKgVqjIbpXqLk3u0CHJBmt55D",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHqpERkW_ewGNhyuuw0o9xUxV9HNRO77o5Wogzlc-5n4Y"
+    },
+    {
+      "slug": "2026-09-28-mimo-rl-ledger",
+      "title": "小米花 2345 万训强化学习，评分器只分到 12.7%？",
+      "series": "开源大模型技术揭秘",
+      "status": "published",
+      "published_date": "2026-09-28",
+      "wechat_url": "https://mp.weixin.qq.com/s/f8FJY_GFAXh2Lw5qVblfxg",
+      "files": {
+        "weixin": true,
+        "draft": false,
+        "outline": true,
+        "cover": true
+      },
+      "media_id": "kOcXH4SytIYVIpYksTGfHiQRxyb8f_LzqDqZWbU3NsCx7L95UKo_SxvcG9RUOPsv",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHtH2vnwe2_U11y1yzsiPPX6KR3mnF6QR0xS7AVOsOpIg"
+    },
+    {
+      "slug": "2026-09-30-manifold-hypothesis",
+      "title": "流形假设：15 万像素的图片，AI 凭什么只用 43 个数就认得？",
+      "series": "数学直觉",
+      "status": "published",
+      "published_date": "2026-09-30",
+      "wechat_url": "https://mp.weixin.qq.com/s/z5OT4caCjpMsMKxLd7Zp7A",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      },
+      "media_id": "kOcXH4SytIYVIpYksTGfHpBKuyfJeSEOb0T1I3LNfD04mvhCoU9fcgayyimbRPqo",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHjY20cUenup369c1whi2kD7fad1RqGZZFGBXTV7xLK7f"
+    },
+    {
+      "slug": "2026-10-02-power-law-rl",
+      "title": "RL 越训越准，为什么反而越训越笨？",
+      "series": "数学直觉",
+      "status": "published",
+      "published_date": "2026-10-02",
+      "wechat_url": "https://mp.weixin.qq.com/s/o7C50Fqhs9IZiQryKhmc9g",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-10-04-semantic-entropy",
+      "title": "问 AI 100 遍：100 种说法，为什么只算 1 种答案？",
+      "series": "数学直觉",
+      "status": "published",
+      "published_date": "2026-10-04",
+      "wechat_url": "https://mp.weixin.qq.com/s/c_Bi9arqz2K29BjCzmaIYQ",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-10-05-agent-memory-vs-docs",
+      "title": "给 Agent 装了记忆，为什么它还是不懂我的项目？",
+      "series": "AI Agent 工程",
+      "status": "published",
+      "published_date": "2026-10-05",
+      "wechat_url": "https://mp.weixin.qq.com/s/4z-PvTBKv8yBohgdE8-itQ",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-10-06-deepseek-synthetic-data",
+      "title": "DeepSeek 用 AI 自己出了 60 万道题，为什么反而更强？",
+      "series": "开源大模型技术揭秘",
+      "status": "published",
+      "published_date": "2026-10-07",
+      "wechat_url": "https://mp.weixin.qq.com/s/oSeuLU2QnR_OWyQWcXzHvw",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": true,
+        "cover": true
+      }
+    },
+    {
+      "slug": "2026-10-08-multiagent-debate",
+      "title": "Anthropic 实测多智能体强 90%，为什么另一家说千万别建？",
+      "series": "AI Agent 工程",
+      "status": "published",
+      "published_date": "2026-10-08",
+      "wechat_url": "https://mp.weixin.qq.com/s/Y6aPD8t8h2-KCUseKXc0mQ",
+      "files": {
+        "weixin": true,
+        "outline": true,
+        "cover": true,
+        "quality_check": true
+      }
+    },
+    {
+      "slug": "2026-10-08-rysana-ts-cpp",
+      "title": "微软用 Go 重写 TypeScript，他一个人用 C++ 又写了一遍",
+      "status": "published",
+      "published_date": "2026-10-07",
+      "wechat_url": "https://mp.weixin.qq.com/s/GmPJAh8ERPkm64KzYirV2g",
+      "files": {
+        "weixin": true,
+        "outline": true,
+        "cover": true,
+        "quality_check": true
+      }
+    },
+    {
+      "slug": "2026-10-09-dhh-campfire-rust",
+      "title": "Agent 写的 Rust 快了 150 倍，为什么第一版只快 4 倍？",
+      "status": "published",
+      "published_date": "2026-10-09",
+      "wechat_url": "https://mp.weixin.qq.com/s/KjW6JgeQ0uJ6aDEFN8ohxQ",
+      "files": {
+        "weixin": true,
+        "outline": true,
+        "cover": true,
+        "quality_check": true
+      }
+    },
+    {
+      "slug": "2026-10-09-pi-durable",
+      "title": "Pi Durable：工具调用中途崩溃，重发还是放弃？",
+      "series": "AI Agent 工程",
+      "status": "published",
+      "published_date": "2026-10-09",
+      "wechat_url": "https://mp.weixin.qq.com/s/_gnfMHGfYW5yxtm6UJkfxg",
+      "files": {
+        "weixin": true,
+        "outline": true,
+        "cover": true,
+        "quality_check": true
+      },
+      "media_id": "kOcXH4SytIYVIpYksTGfHq5xsqSfxgP5PpQYvgnlfS2zuq-EQamZxvRkxVnPGC9v",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHjukOM1eWZUtPW6Yy2gu4Ot_acqpiCXFQ3JVHtFt5_lT"
+    },
+    {
+      "slug": "2026-10-10-context-rot-isolation",
+      "title": "Context Rot 是真的吗？上下文还没满，模型为什么就先认输了",
+      "series": "AI Agent 工程",
+      "status": "published",
+      "published_date": "2026-10-10",
+      "wechat_url": "https://mp.weixin.qq.com/s/6bdNSe1hiGFUvL1qV_ICUw",
+      "files": {
+        "weixin": true,
+        "outline": true,
+        "cover": true,
+        "quality_check": true
+      },
+      "media_id": "kOcXH4SytIYVIpYksTGfHpqnPiP6buM7ae5T1XCtSmPz2CTuwshzaMkxhXXlMCfD",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHoutLezoiwdeBh5TpQ4owhd6zYFi-UjsjrtWFdD_XIL7"
+    },
+    {
+      "slug": "2026-10-11-agentgarten",
+      "title": "OpenAI 1 亿局的弯路，和一个还没人做的实验",
+      "series": "AI Agent 工程",
+      "status": "published",
+      "published_date": "2026-10-11",
+      "wechat_url": "https://mp.weixin.qq.com/s/Psa6FOPl57phHn-pfNUfKg",
+      "files": {
+        "weixin": true,
+        "outline": true,
+        "cover": true,
+        "quality_check": true
+      },
+      "media_id": "kOcXH4SytIYVIpYksTGfHq6vwfL5NSG_vKEtdBd6tu9FCUlRogRDn9I4SQBfV6_3",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHrBH4UZoc8MHZvTfDbVPcfdLZQQfzi529QjEYh2WO95X"
+    },
+    {
+      "slug": "2026-10-12-autodiff",
+      "title": "训练一步要算几千亿个导数，自动微分如何加速几千倍",
+      "series": "AI中的数学",
+      "status": "published",
+      "published_date": "2026-10-12",
+      "wechat_url": "https://mp.weixin.qq.com/s/RxJ5LcgX46pwDwS38NR_UQ",
+      "scheduled_publish": "2026-10-12 20:00",
+      "media_id": "kOcXH4SytIYVIpYksTGfHuHaoHEQo9TLUUl_Bib8ur0PNEwFjUTvHUBdpNsrOi0G",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHlr-e0X8niPhRQl9_sF_8DpGRncdiB4HPYEIDL9r1CuQ",
+      "old_media_id": "kOcXH4SytIYVIpYksTGfHnLi8BH4yMeFv949qv3XHZZTp1YMkUDl9jQ5HpBIP1pT",
+      "files": {
+        "weixin": true,
+        "outline": true,
+        "cover": true,
+        "quality_check": true
+      }
+    },
+    {
+      "slug": "2026-10-13-autodiff-impl",
+      "title": "导数公式不是人写的，除了算特征值这种",
+      "series": "AI中的数学",
+      "status": "published",
+      "published_date": "2026-10-13",
+      "wechat_url": "https://mp.weixin.qq.com/s/_cNwyI7GiYJXB5zin5rjuw",
+      "media_id": "kOcXH4SytIYVIpYksTGfHtOg4swbk1xq8wb7MxWR8tXYmC_ouwiBsss68ogSGn_z",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHhKoRBdBxi7EbNL-INcSDzM27gUu8pj5kQN9JvDYswYz"
+    },
+    {
+      "slug": "2026-10-14-phase-sensitivity",
+      "title": "2 万 token上下文，DeepSeek为什么还是把代码记错了？",
+      "series": "开源大模型技术揭秘",
+      "status": "published",
+      "published_date": "2026-10-14",
+      "wechat_url": "https://mp.weixin.qq.com/s/1GATyW40jkh1YxuvwVbpUA",
+      "files": {
+        "weixin": true,
+        "outline": true,
+        "cover": true,
+        "quality_check": true
+      },
+      "media_id": "kOcXH4SytIYVIpYksTGfHlbAaqbHiRxZ9zxl_iCuOSZBV8VjTLfEB5FVqodgjlyX",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHt2v_B7md-sfSiNx2XfNGLkFQk0mQV6of3JzMeqUoFk"
+    },
+    {
+      "slug": "2026-10-16-masa-matrix-approximation",
+      "title": "注意力分数高 66 倍的那列，为什么反而带来 98% 的误差？",
+      "series": "开源大模型技术揭秘",
+      "status": "published",
+      "published_date": "2026-10-16",
+      "wechat_url": "https://mp.weixin.qq.com/s/imKzKYitjtrvAcIB3fIr6A",
+      "media_id": "kOcXH4SytIYVIpYksTGfHljknH9FeXVo1VcJguFMnzSJ1ytvfGGP0U5OhxdfXLRt",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHgauX38FmJn177XrjFl5p1SLjeKmDFUYsjrU-1dg1CDx",
+      "files": {
+        "weixin": true,
+        "outline": true,
+        "cover": true,
+        "quality_check": true
+      }
+    },
+    {
+      "slug": "2026-10-18-ai-native-sdlc-diagnosis",
+      "title": "写代码已经不再是瓶颈，交付依然困难重重，AI Native SDLC能解决吗",
+      "series": "软件工程",
+      "status": "published",
+      "published_date": "2026-10-18",
+      "wechat_url": "https://mp.weixin.qq.com/s/ljp5ovIFPI3l9rmlGDDZUw",
+      "media_id": "kOcXH4SytIYVIpYksTGfHjpHp9HMi8YiXoCx911URMB36OnqqpoVTLKAPkaTnpdB",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHkqAvWaEI1TIs8Ard1iAUbAIsGiaXulzqzdRo0-AwN_1",
+      "files": {
+        "weixin": true,
+        "outline": true,
+        "cover": true,
+        "quality_check": true
+      }
+    },
+    {
+      "slug": "2026-10-20-ai-native-sdlc-landing",
+      "title": "AI Native SDLC 能落地吗：成本、独立性与验收",
+      "series": "软件工程",
+      "status": "published",
+      "published_date": "2026-10-20",
+      "wechat_url": "https://mp.weixin.qq.com/s/03eMdY9pGwMNAheLJ7uDBg",
+      "media_id": "kOcXH4SytIYVIpYksTGfHje-jn9LjeTwiOwkq2UqyqpeYYmafGJi30eZihtuys1k",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHqH9dSt3yC9TsEw1VTTkmyA6OjTqs5U-kIXJBY_B3_uI",
+      "files": {
+        "weixin": true,
+        "outline": true,
+        "cover": true,
+        "quality_check": true
+      }
+    },
+    {
+      "slug": "2026-10-21-pi-codemode-mcp",
+      "title": "骂 MCP 最响的人，最终把 MCP 请进了核心",
+      "series": "AI Agent 工程",
+      "status": "published",
+      "published_date": "2026-10-21",
+      "wechat_url": "https://mp.weixin.qq.com/s/qp7XGIEJdMgSto5YN2T-rg",
+      "media_id": "kOcXH4SytIYVIpYksTGfHp_3uT1Xdup2yzMrnHSDBPNrTtluKaTh6Zy2ytCreH5K",
+      "cover_media_id": null,
+      "files": {
+        "weixin": true,
+        "outline": true,
+        "cover": true,
+        "quality_check": true
+      }
+    },
+    {
+      "slug": "2026-10-22-rust-agent-language",
+      "title": "Rust真的是AI agent时代的最佳语言吗？192个任务辨证看看",
+      "series": "行业观察",
+      "status": "published",
+      "published_date": "2026-10-22",
+      "wechat_url": "https://mp.weixin.qq.com/s/_QjsrRZ0hfxaepldCt5Lhw",
+      "media_id": "kOcXH4SytIYVIpYksTGfHiRE1KV7ZPqF_4mIwvW2obFtBXAwzLchRmosbR4_z8pG",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHtQSdn1mIWhB9YSWzl30-m6FOxPRlGZglsrBvTEB1K3P",
+      "files": {
+        "weixin": true,
+        "outline": true,
+        "cover": true,
+        "quality_check": true
+      }
+    },
+    {
+      "slug": "2026-10-23-mcp-tool-exposure-convergence",
+      "title": "pi 和 OpenAI 不约而同：MCP 工具，答案本来就应该长这样",
+      "series": "AI Agent 工程",
+      "status": "published",
+      "published_date": "2026-10-23",
+      "wechat_url": "https://mp.weixin.qq.com/s/jJHG1bn2_F10kmZ0pBCm5Q",
+      "media_id": "kOcXH4SytIYVIpYksTGfHichj2fD3n3isuLaZkuwq6nZ-Y7v20mGj8B_9RPIgn8U",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHiy9jAPnzpW_HBxf-OjtlcJo6kEi4ydghI6bET7-NVM4",
+      "files": {
+        "weixin": true,
+        "outline": true,
+        "cover": true,
+        "quality_check": true
+      }
+    },
+    {
+      "slug": "2026-10-25-context-compression-info-bound",
+      "title": "上下文压缩的极限：删掉一个 token，任务为什么可能注定失败？",
+      "series": "上下文压缩与记忆",
+      "status": "published",
+      "published_date": "2026-10-25",
+      "wechat_url": "https://mp.weixin.qq.com/s/XdAACdIWD2F6d8rq-ZszKg",
+      "media_id": null,
+      "cover_media_id": null,
+      "files": {
+        "weixin": true,
+        "outline": true,
+        "cover": true,
+        "quality_check": true
+      }
+    },
+    {
+      "slug": "2026-10-27-compaction-break-even",
+      "title": "上下文压缩省了 77% token，为什么账单反而更贵？",
+      "series": "上下文压缩与记忆",
+      "status": "published",
+      "published_date": "2026-10-27",
+      "wechat_url": "https://mp.weixin.qq.com/s/p-2YkAFT6sBwdU5_dw5O2g",
+      "media_id": "kOcXH4SytIYVIpYksTGfHnpwHzi7yw_GIrpW5sg2CwlkkcVPWo4qSqQ83_DsU1HJ",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHks7Q8gUhTINdmsC_ioAeiMnY9TLpW0Ldmepp-JikXNr",
+      "files": {
+        "weixin": true,
+        "outline": true,
+        "cover": true,
+        "quality_check": true
+      }
+    },
+    {
+      "slug": "2026-10-28-compaction-constraint-survival",
+      "title": "上下文压缩：你定的规矩，压缩后还剩几条？",
+      "series": "上下文压缩与记忆",
+      "status": "published",
+      "published_date": "2026-10-28",
+      "wechat_url": "https://mp.weixin.qq.com/s/fD2q9iJhIohPZ2h7k8chUw",
+      "media_id": "kOcXH4SytIYVIpYksTGfHhcFF-5uzSJNLlI6I66Np1VBYtsGKKnPWd8LSR5I8RnF",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHuRdmn01SKmEY0VGJa27dxNrnS9OmGFUvz-v4d78_s2X",
+      "files": {
+        "weixin": true,
+        "outline": true,
+        "cover": true,
+        "quality_check": true
+      }
+    },
+    {
+      "slug": "2026-10-29-minimax-attention-msa",
+      "title": "1M 上下文只算 2048 个 token，MiniMax 的稀疏为什么这次成了？",
+      "series": "开源大模型技术揭秘",
+      "status": "published",
+      "published_date": "2026-10-29",
+      "wechat_url": "https://mp.weixin.qq.com/s/9m_vkJpWr__Ce7JJQYOyIQ",
+      "media_id": "kOcXH4SytIYVIpYksTGfHnnHQExcA1NsEnS8fD3gmzNYtI2BcSG458GXM4xc8v_N",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHrH7TgL0D7PV4T1xg7At0eD0XkoWUegER87ERrmkcS12",
+      "files": {
+        "weixin": true,
+        "outline": true,
+        "cover": true,
+        "quality_check": true
+      }
+    },
+    {
+      "slug": "2026-10-31-post-training-scaling",
+      "title": "DeepSeek 只换了权重：分数涨 11 分，思考少了三成",
+      "series": "开源大模型技术揭秘",
+      "status": "published",
+      "published_date": "2026-10-31",
+      "wechat_url": "https://mp.weixin.qq.com/s/HG2yIC1XVNRGLz909UzifA",
+      "media_id": "kOcXH4SytIYVIpYksTGfHqHDOpaiLjSpC3sjpPlij2WZEk425Ju87Sg1wMSXSpVk",
+      "cover_media_id": null,
+      "files": {
+        "weixin": true,
+        "outline": true,
+        "cover": true,
+        "quality_check": false
+      }
+    },
+    {
+      "slug": "2026-11-02-cpp26-contracts-vote",
+      "title": "60% 的赞成票，为什么救不了 C++26？",
+      "series": "行业观察",
+      "status": "published",
+      "published_date": "2026-11-02",
+      "wechat_url": "https://mp.weixin.qq.com/s/FE4WEuT1-Ozz4uYtvfCG7w",
+      "media_id": null,
+      "cover_media_id": null,
+      "files": {
+        "weixin": true,
+        "outline": true,
+        "cover": true,
+        "quality_check": true
+      }
+    },
+    {
+      "slug": "2026-11-04-intent-formalization",
+      "title": "让 AI 补测试，它为什么把 bug 当成标准答案？",
+      "series": "软件工程",
+      "status": "published",
+      "published_date": "2026-11-04",
+      "wechat_url": "https://mp.weixin.qq.com/s/_7aP6jaNXZU0NSQ1UcfMWA",
+      "media_id": "kOcXH4SytIYVIpYksTGfHhYk9kGk-K7NLqxScdpK9Nbjh2vjClMGHnCInF3lAZBB",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHnbOrlfXgnEdWnM8VnPb_RLa2JccGad_GWiipYSM2HNm",
+      "files": {
+        "weixin": true,
+        "outline": true,
+        "cover": true,
+        "quality_check": true
+      }
+    },
+    {
+      "slug": "2026-11-05-self-play-curriculum",
+      "title": "AI 自己出题自己考：零人类数据，为什么反而更强？",
+      "series": "AI Agent 工程",
+      "status": "published",
+      "published_date": "2026-11-05",
+      "wechat_url": "https://mp.weixin.qq.com/s/ZiQlEtB-vL5nzJo7ye4RvA",
+      "media_id": "kOcXH4SytIYVIpYksTGfryOn-5-zaIGvsUGjej53Df2EuOaHRl_jaIMJl2yPKLi",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHkGJ-KvNb9pHAgF2AxPfBUcCAq-WjznVXq179SYmgLfl",
+      "files": {
+        "weixin": true,
+        "outline": true,
+        "cover": true,
+        "quality_check": false
+      }
+    },
+    {
+      "slug": "2026-11-10-self-play-collapse",
+      "title": "给 AI 看标准答案，它为什么反而越练越差？",
+      "series": "AI Agent 工程",
+      "status": "published",
+      "published_date": "2026-11-10",
+      "wechat_url": "https://mp.weixin.qq.com/s/YH_pzpuzMSFveILqQ4aWyw",
+      "media_id": "kOcXH4SytIYVIpYksTGfHsOkmf9BjFARGbr2NQ3Uy7uR1xu8SmYEGNOxvfyvfOUh",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHkPYIT2RaP3E-gkDXk4Z2oPgUdqpae_8M18EohQZd6bi",
+      "files": {
+        "weixin": true,
+        "outline": true,
+        "cover": true,
+        "quality_check": true
+      }
+    },
+    {
+      "slug": "2026-11-14-国产大模型GB300之谜",
+      "title": "国产大模型真是用禁运的GB300训练的吗？",
+      "series": "数学直觉",
+      "status": "published",
+      "published_date": "2026-11-14",
+      "wechat_url": "https://mp.weixin.qq.com/s/7Js9MYlXXwqVOnptSW4hgw",
+      "files": {
+        "weixin": true,
+        "draft": true,
+        "outline": false,
+        "cover": true,
+        "quality_check": true
+      }
+    }
+  ]
+}

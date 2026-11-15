@@ -28,7 +28,13 @@ content-gen/
 │   └── neural_network.py     # 神经网络可视化示例
 ├── topics/                   # 选题库
 │   └── topic-tracker.md      # 选题追踪表（原理+融合+评测三类）
-├── draft-status.yaml         # 草稿状态单源真相（planned→drafting→ready→scheduled→published）
+├── schedule/                 # 排期台账主源（JSON + schema，程序化查找）
+│   ├── schema.json           # JSON Schema（schedule.py validate 校验）
+│   ├── published.json        # 已发布台账（status=published + wechat_url）
+│   ├── pending.json          # 待发布台账（planned→drafting→ready→scheduled→draft_saved）
+│   ├── notes.json            # 历史笔记 + plan_notes（按 slug 单点读，勿整读）
+│   └── meta.json             # 计数总览 + next_publish_date（一眼看完只需读它）
+├── draft-status.yaml         # ↑ 的生成兼容视图（勿手改；schedule.py rebuild 重新生成）
 ├── publish-schedule.yaml     # 错位发布调度 + 状态机
 ├── content/                  # 已创作内容
 │   └── YYYY-MM-DD-主题名/
@@ -38,7 +44,8 @@ content-gen/
 │       ├── bilibili/         # B站脚本+分镜
 │       └── assets/           # 图片/视频素材
 └── scripts/
-    ├── scan-status.py        # 草稿状态扫描 → draft-status.yaml
+    ├── scan-status.py        # content/ 目录产物扫描（辅助）
+    ├── schedule.py           # 排期台账 CLI（schedule/*.json 唯一读写入口）
     ├── new-topic.sh          # 新建选题脚手架
     ├── xhs_card.py           # 小红书信息图生成器（本地Pillow）
     ├── yairouter_img.py      # 高质量AI出图（gpt-image-2，默认后端）
@@ -114,7 +121,7 @@ content-gen/
 - 从 `topics/topic-tracker.md` 选一个选题
 - 或热点驱动：新模型发布→评测快报→挂钩原理篇
 - 确定类型：原理篇/融合篇/评测篇
-- **状态更新**：选题定下后，在 `draft-status.yaml` 新增一条记录（status: planned）
+- **状态更新**：选题定下后，`python3 scripts/schedule.py add <slug> --title <标题> --status planned`
 
 ### Step 2: 写深度稿（60-90分钟）
 - 用 `templates/weixin-article.md` 模板

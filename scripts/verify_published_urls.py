@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""台账 ↔ 后台核验：逐条抓 draft-status.yaml 里 published 条目的 wechat_url，比对标题。
+"""台账 ↔ 后台核验：逐条抓 published 台账里的 wechat_url，比对标题。
 
 为什么需要它（2026-10-15 立）：
   1. 「发表记录」（appmsgpublish）**只收录群发记录**，未群发但已发布的文章不在其中
@@ -7,6 +7,8 @@
      带 wechat_url 的条目一律视为已发布，核验走本脚本直取 mp 页面。
   2. 拟稿标题 ≠ 后台发布标题是常态（作者会在后台改标题）。台账 / frontmatter / 内链文字
      一律以后台 `msg_title` 为准，本脚本把差异逐条列出来。
+
+台账主源（2026-11-14 起）：schedule/published.json；--log 传 .yaml 亦可读（兼容视图）。
 
 用法：
   python3 scripts/verify_published_urls.py                 # 全量核验（103 条约 1~2 分钟）
@@ -23,9 +25,11 @@ import re
 import sys
 import time
 import urllib.request
+from pathlib import Path
 
 import yaml
 
+ROOT = Path(__file__).resolve().parent.parent
 UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/120 Safari/537.36")
 
@@ -45,15 +49,25 @@ def fetch_title(url: str) -> dict:
     }
 
 
+def _load_ledger(path: str) -> dict:
+    """读台账：默认 schedule/published.json（JSON 主源）；兼容旧 .yaml 视图。"""
+    p = Path(path)
+    if not p.is_absolute():
+        p = ROOT / p
+    text = p.read_text(encoding="utf-8")
+    return json.loads(text) if p.suffix == ".json" else yaml.safe_load(text)
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--log", default="draft-status.yaml")
+    ap.add_argument("--log", default="schedule/published.json",
+                    help="台账路径（默认 schedule/published.json；传 .yaml 读兼容视图）")
     ap.add_argument("--slug", help="只核验某一条")
     ap.add_argument("--json", help="把逐条结果写到该路径")
     ap.add_argument("--sleep", type=float, default=0.7, help="请求间隔秒（默认 0.7）")
     args = ap.parse_args()
 
-    d = yaml.safe_load(open(args.log, encoding="utf-8"))
+    d = _load_ledger(args.log)
     rows, diff, bad = [], [], []
     targets = [a for a in d["articles"] if a.get("wechat_url")
                and (not args.slug or a["slug"] == args.slug)]

@@ -5,6 +5,9 @@ Usage:
   python3 scripts/scan-status.py               # print status table
   python3 scripts/scan-status.py --summary      # print summary only
   python3 scripts/scan-status.py --check slug   # check one article
+
+Note: 本脚本只做目录产物扫描（启发式推断状态）；排期台账主源是 schedule/*.json，
+权威状态以 `python3 scripts/schedule.py list` 为准。
 """
 
 import os
