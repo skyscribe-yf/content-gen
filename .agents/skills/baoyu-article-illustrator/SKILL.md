@@ -89,6 +89,19 @@ Combine freely: `--type infographic --style vector-illustration --palette macaro
 
 Or use presets: `--preset edu-visual` → type + style + palette in one flag. See [Style Presets](references/style-presets.md).
 
+## 项目风格硬约束（content-gen，2026-11-15 作者定稿，优先于本文所有 Style/Palette 默认值）
+
+**严肃主题风格，略微偏明亮，对比清晰，可有一点俏皮，但不花里胡哨。**
+
+- **亮度**：略微偏明亮——浅色中性底（暖灰/米白）；禁暗沉低光（moody / cinematic dark / 深色底）
+- **对比度**：主体与背景层次必须清晰分明；发虚、灰蒙、低对比的图一律重绘
+- **饱和度**：低饱和主色——暖灰、去饱和青（desaturated teal）、哑光金（muted amber）；禁霓虹、彩虹、高糖糖果色（macaron/vivid/pastel 的高饱和用法）
+- **俏皮度**：可有一点点俏皮（一个小表情、一个拟物小细节）；禁花卉/节日/人群/热气球等装饰元素堆砌
+- **落地组合**：`--style editorial`（或 minimal）+ 浅色中性底 + 低饱和三色；内联插图与封面同规
+- **封面**：本项目文章封面不走本 skill 的生图直出，走 `make_cover.py` 脚本叠字管线（AI 只出无字底图，spec 配 `band_dim: 0.58 / out_dim: 0.78`），详规 `docs/image-generation.md`
+
+Prompt 必带排除项：`no rainbow, no neon, no candy colors, no flowers, no festive decorations, no fantasy landscape, no crowds`；封面底图另带 `no text, no letters, no numbers, no blown-out white highlights, no pure white light`。
+
 ## Types
 
 | Type | Best For |

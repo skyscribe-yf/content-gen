@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""DGM 篇脚本图：01 判分经济学成本账 + 02 分数台阶（含冷水）+ 03 Greedy 消融。深色底 + 金/青强调。"""
+"""DGM 篇脚本图：01 判分经济学成本账 + 02 分数台阶（含冷水）+ 03 Greedy 消融。浅色底 + 金/青强调（2026-11-15 作者「明快」要求改版）。"""
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -10,7 +10,7 @@ font_manager.fontManager.addfont("/usr/share/fonts/opentype/noto/NotoSansCJK-Bol
 plt.rcParams["font.family"] = "Noto Sans CJK JP"
 plt.rcParams["axes.unicode_minus"] = False
 
-BG, FG, GOLD, TEAL, RED, GRID = "#101418", "#E8E6E1", "#E8B45A", "#4FB3A9", "#D9603B", "#2A2F36"
+BG, FG, GOLD, TEAL, RED, GRID = "#F8F6F1", "#26292F", "#B87C0E", "#0E7A6E", "#C24A28", "#DCD8CE"
 DIR = "content/2026-11-18-dgm-self-modifying-code"
 
 # ── 01：判分经济学（左右两栏）──

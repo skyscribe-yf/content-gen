@@ -85,6 +85,16 @@ Default behavior: **confirm before generation**.
 
 Auto-selection rules: [references/auto-selection.md](references/auto-selection.md)
 
+## 项目风格硬约束（content-gen，2026-11-15 作者定稿，优先于本文所有默认值）
+
+**严肃主题风格，略微偏明亮，对比清晰，可有一点俏皮，但不花里胡哨。**
+
+- **亮度**：略微偏明亮（浅色中性底），禁 `dark` 调色板与低光氛围
+- **对比度**：主体/背景层次清晰；封面文字必须强对比可读
+- **饱和度**：低饱和（暖灰 / 去饱和青 / 哑光金），禁 `vivid` / `neon` / `macaron` 高糖配色
+- **俏皮度**：可有一点，禁装饰元素堆砌（花卉、节日、人群、热气球）
+- ⚠️ **本项目文章封面最终必须走 `make_cover.py` 脚本叠字管线**：AI 只出无字底图，文字由 PIL 叠加（Noto Sans CJK Bold，白→暖金渐变+辉光），封面文字总字数 ≤12 且须是一句完整的话；本 skill 的 AI 直出文字仅作底图构图参考，禁用于成品。底图 spec：`band_dim: 0.58, out_dim: 0.78`。详规 `docs/image-generation.md`
+
 ## Galleries
 
 **Types**: hero, conceptual, typography, metaphor, scene, minimal

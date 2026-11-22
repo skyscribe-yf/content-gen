@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""OPD 篇脚本图：01 三范式归一化分对比 + 03 换师前后三项诊断。深色底 + 金/青强调。"""
+"""OPD 篇脚本图：01 三范式归一化分对比 + 03 换师前后三项诊断。浅色底 + 金/青强调（2026-11-15 作者「明快」要求改版）。"""
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -10,7 +10,7 @@ font_manager.fontManager.addfont("/usr/share/fonts/opentype/noto/NotoSansCJK-Bol
 plt.rcParams["font.family"] = "Noto Sans CJK JP"
 plt.rcParams["axes.unicode_minus"] = False
 
-BG, FG, GOLD, TEAL, RED, GRID = "#101418", "#E8E6E1", "#E8B45A", "#4FB3A9", "#D9603B", "#2A2F36"
+BG, FG, GOLD, TEAL, RED, GRID = "#F8F6F1", "#26292F", "#B87C0E", "#0E7A6E", "#C24A28", "#DCD8CE"
 DIR = "content/2026-11-14-opd-multi-teacher-distillation"
 
 # ── 01：六种整合方案归一化分（同源老师，Qwen3-30B-A3B 三域）──

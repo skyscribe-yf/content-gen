@@ -37,7 +37,7 @@
 
 ## 2. 封面与配图红线
 
-- 封面文字**必须脚本叠加**：AI 只出无字深色底图（prompt 写明 no text）→ `make_cover.py` 裁 21:9 + PIL 叠金色发光字（Noto Sans CJK Bold）；**禁止 AI 生图直写中文**；封面文字总字数 **≤12**
+- 封面文字**必须脚本叠加**：AI 只出无字底图（prompt 写明 no text；**明快严肃风格**：浅色中性底+低饱和+强对比，可一点俏皮不花哨，禁暗沉/霓虹/糖果色——2026-11-15 作者定稿，详规 `docs/image-generation.md`）→ `make_cover.py` 裁 21:9 + PIL 叠金色发光字（Noto Sans CJK Bold）；**禁止 AI 生图直写中文**；封面文字总字数 **≤12** 且**主谓完整**（禁缺主语的顺口溜碎片，两行连起来要读得成一句通顺的话）
 - 每篇必跑 `scripts/check_cover.py`（21:9 + 文字块高 ≤25% + 每行字高 ≥8% 防裁切；`precheck_and_open.sh` 自动调用）；验收必须放大文字区逐字看底部笔画——PIL 画布高度 ≥ 字体 ascent+descent，否则每字底部被静裁
 - 默认后端 yairouter / `gpt-image-2.5-sunburst`（快速用 flare）；上游忽略 size 参数以实际返回为准；prompt 内文字/数字/年份须与正文一致；AI 概念图禁承载数字
 - 缺 API Key 先 `source ~/.bash_env` 再重试，禁止未找 key 就换后端

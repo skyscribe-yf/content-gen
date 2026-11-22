@@ -76,6 +76,8 @@ im.save("00-cover.png")
 >
 > **文案风格口径（2026-11-15 作者反馈后修订，项目级）**：「突出一两个要点」≠ 口号碎片。封面文字必须是**一句完整的话**——主体 + 动作 + 数字/反差，陌生人单独看懂（例：「换个更强的老师，模型崩了」「AI 改自己代码，钱花在判分」）。**禁**：「越X越Y」式对口诀（「老师越强/学生越崩？」「标准答案/越看越崩」）、问号收尾、四字对仗碎片——2026-11 前多篇封面因此返工（作者原话：「文字太傻了，看起来非常奇怪」）。总字数仍守 ≤12；按整句换行，一行内不拆词组。
 >
+> **2026-11-15 作者追加（硬性）**：「封面图上面的文字，需要是**完整的句子**，不要**顺口溜的短句子**」——主谓结构必须完整（主语+谓语+宾语/补语），缺主语的电报式标语一律返工。反例：「烧光22000$，花在判分」（两个分句都缺主语，读成顺口溜）→ 正：「22000$，全花在判分上」（主语+完整谓语）。验收时把两行连起来读，读不成一句通顺的话就打回。
+>
 > 由此下述规格分两种情形执行：**有文字**走第 1–6 条；**无文字**只保留「背景压暗、视觉主体是唯一主角、画面禁止任何文字数字」。
 
 **版式：无左右分栏。标题作为前景元素横贯整个横幅，完全占满宽度，是画面唯一主角**；背景图形（轨迹网络/主干道等）压暗、低对比、退居标题之后。
@@ -95,7 +97,9 @@ im.save("00-cover.png")
 
 **AI 生图不得直接渲染封面中文字**：实测字形发虚、行距拥挤、偶发错字，缩到信息流卡片大小即糊成一团（2026-10-25/27/28 三期封面均踩）。正确流程两步：
 
-1. **AI 只出无字底图**：prompt 明确 `no text, no letters, no numbers`，深色冷调（蓝黑），中心留干净负空间；输出 `00-cover-bg.png`
+1. **AI 只出无字底图**：prompt 明确 `no text, no letters, no numbers`，中心留干净负空间；输出 `00-cover-bg.png`。
+   - **暗底（默认）**：深色冷调（蓝黑），中心留负空间
+   - **明快底（2026-11-15 作者定稿，近两篇起默认）**：见下文「插图与封面风格规范」——底图改**高调明亮**（浅色中性底、暖灰/米白、柔和日光），封面 spec 配 `"out_dim": 0.78, "band_dim": 0.58`：带外只压到 78%（255→199，仍低于检测阈值 205）、文字带压暗到 58% 保白字对比，整幅亮度由 spec 决定。⚠️ 亮底仍要防 checker 误检：prompt 必须带 `no blown-out white highlights, no pure white light, no small isolated bright spots`——近白像素（r>205,g>200,b>170）的字形大连通域会被当成文字。DGM 篇「烧钱封面」是正例：熔炉烧美钞+传送带喂钱+机械手推钱，作者要求的「美元大量消耗、醒目」与明快可以兼得
 2. **脚本叠字**：`make_cover.py`（模板 `content/2026-10-22-rust-agent-language/make_cover.py`）裁 21:9 → PIL 用 Noto Sans CJK Bold 画金色渐变 + 辉光两行标题，自动执行「每行 1/9–1/8、整块 ≤1/4」规格，并写出 `cover_meta.json`（行数/总字数/字号/块高比）
 
 **硬性上限**：封面文字**总字数 ≤12**（两行合计，信息流缩略可读下限）。
@@ -124,7 +128,56 @@ im.save("00-cover.png")
 
 **验收**：`make_cover.py` → `check_cover.py` 两步过后，**必须肉眼看一次成图**（read 工具直接读 png），确认「有意义的图像」而非空黑；门禁 PASS ≠ 封面有内容。
 
-## 语言规则
+## ⭐ 插图与封面风格规范（2026-11-15 作者定稿，项目级；封面与内联配图同规）
+
+**一句话：严肃主题风格，略微偏明亮，对比清晰，可有一点点俏皮，但不花里胡哨。**
+（作者原话：「颜色虽然要求不能太暗了，但是也不适合太艳丽了，还是需要保持一种偏严肃的风格」「对比度要好」；2026-11-15 前多篇暗黑/艳丽封面因此返工）
+
+### 四条硬指标
+
+| 维度 | 要求 | 落地 |
+|---|---|---|
+| **亮度** | 略微偏明亮，不暗沉也不惨白 | 浅色中性底：暖灰 `#F8F6F1` / 米白 / 浅灰；禁 moody、cinematic dark、深色底 |
+| **对比度** | 主体与背景层次清晰分明 | 主体用深色描边/明确投影；文字带靠 `band_dim` 压暗保白字对比；发虚灰蒙的图重绘 |
+| **饱和度** | 低饱和、严肃 | 三色封顶：暖灰 / 去饱和青（desaturated teal）/ 哑光金（muted amber）；禁霓虹、彩虹、高糖糖果色 |
+| **俏皮度** | 可有一点点，不堆砌 | 允许一个小表情/一个拟物小细节；禁花卉、节日、人群、热气球等装饰元素扎堆 |
+
+### prompt 模板
+
+**封面底图**（AI 只出无字底图，文字走 `make_cover.py`）：
+
+```
+<主体动势描述>，sober professional editorial illustration，bright but serious，
+restrained muted palette of warm gray / desaturated teal / muted amber，low saturation，
+light neutral background，clean composition，clear contrast，soft even daylight，
+filling the entire frame with visual content，layered depth，
+main subjects centered avoiding the very top and bottom edges，
+no rainbow, no neon, no candy colors, no flowers, no festive decorations,
+no fantasy landscape, no crowds,
+no text, no letters, no numbers,
+no blown-out white highlights, no pure white light, no small isolated bright spots
+```
+
+**内联配图**：同上，去掉 21:9 裁切相关两句；size 按原图比例（脚本图另走 matplotlib 浅色主题：`BG=#F8F6F1, FG=#26292F, GOLD=#B87C0E, TEAL=#0E7A6E, RED=#C24A28, GRID=#DCD8CE`）。
+
+### make_cover.py spec 键（明快底专用）
+
+```json
+{"lines": ["两行短标题"], "band_dim": 0.58, "out_dim": 0.78}
+```
+
+- `out_dim: 0.78`——带外压到 78%（255→199，低于 checker 阈值 205，保住明亮）；暗底老篇不传该键，维持 0.40
+- `band_dim: 0.58`——文字带压暗保白字对比；暗底老篇维持 0.75
+- 已参数化于 `scripts/make_cover.py`（2026-11-15），默认值不变，老篇复检不受影响
+
+### 反例（2026-11-15 实踩，全部因艳丽/暗沉被退回）
+
+- 彩虹光雕塑 + 樱花 + 荷花（OPD 04）→ 花里胡哨
+- 音乐节人群 + 向日葵 + 热气球 + 摩天轮（OPD 02）→ 庆典风，不严肃
+- 奇幻花园 + 浮空岛瀑布 + 黄花满地（DGM 04）→  fantasy 装饰堆砌
+- 暗青近黑 + 电影感布光（DGM/OPD 旧图）→ 暗沉
+
+### 语言规则
 
 **所有图片中的文字必须使用中文**，包括标题、标签、坐标轴、图例、注释等。Prompt 中需明确写明中文文字内容，避免生成英文图片后返工。
 

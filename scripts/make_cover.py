@@ -51,6 +51,11 @@ CANVAS = tuple(_spec.get("canvas", (1916, 821)))  # 21:9（2026-10-09 篇同规�
 TEXT_Y = _spec.get("text_y", 0.34)
 WIDTH_RATIO = _spec.get("width_ratio", 0.94)
 GLOW_RADIUS = _spec.get("glow_radius", 0.022)
+# 文字带 / 带外压暗系数（2026-11-15 作者「明快」要求后参数化）：暗底封面用默认
+# 0.75/0.40 把底图压到检测阈值 205 以下；明快亮底封面把 out_dim 提到 0.8+、
+# band_dim 降到 0.55-0.7（文字带留深色底衬保证白字对比），整幅亮度由 spec 决定。
+BAND_DIM = _spec.get("band_dim", 0.75)
+OUT_DIM = _spec.get("out_dim", 0.40)
 
 
 def crop_21_9(src: Path, dst: Path, size=CANVAS) -> Path:
@@ -151,8 +156,8 @@ def make_cover(bg_path, out_path, lines=LINES, width_ratio=WIDTH_RATIO, glow_rad
     feather = Image.new("L", (W, H), 0)
     ImageDraw.Draw(feather).rectangle([0, band_top, W, band_bot], fill=255)
     feather = feather.filter(ImageFilter.GaussianBlur(gr * 2))
-    out = Image.composite(bg.point(lambda v: int(v * 0.75)),
-                          bg.point(lambda v: int(v * 0.40)), feather)
+    out = Image.composite(bg.point(lambda v: int(v * BAND_DIM)),
+                          bg.point(lambda v: int(v * OUT_DIM)), feather)
     halo = Image.new("RGB", (W, H), (255, 200, 60))
     out = Image.composite(Image.blend(out, halo, 0.85), out, glow)
     text_rgb = gold_gradient(W, H)
