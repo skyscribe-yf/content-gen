@@ -30,9 +30,10 @@ description: Use when 作者要新建话题并把想表达的内容以原始文�
    - 素材缺口（哪些点缺论据/数据，建议作者补充）
 4. **STOP —— 请作者确认 `structure.md`**。作者改完或批准后才继续；不得以「先出图看看」绕开。
 5. **写 `weixin.md`（派 `weixin-writer`）**：派命名 agent **`weixin-writer`**（`.agents/agents/weixin-writer.md`；`gemini-web/gemini-auto` + thinking `medium`，零工具 lane），task 给：目录、`slug`、分支 `raw`、标题要求、`raw.md` 全文、`structure.md` 全文、话题标签要求、内链候选清单。**材料不内联 = 白派**（该 lane 无工具，读不了文件）。main agent 禁自己从零写正文；回传后从 output 的 markdown 代码块取全文落盘 `weixin.md`，跑 `scripts/hot_articles.py --md --cited <本文weixin.md>` 现查现填，**整块替换**稿里的 `<!-- HOT_ARTICLES -->` 占位行（读最近审计 `docs/wechat-data-audit-log.json`，自动过滤贴图、追加本文引用的相关文章），禁止凭记忆挑最近文章；每个链接一行、行间不留空行（空行会被渲染成「段间距空行」）。子 agent 执行口径：原声句原文进稿；AI 只补结构过渡、标题（≤22 字、关键词前置、痛点驱动）、开头钩子、结尾引导与话题标签（3-5 个，含 `#数解AI`）。`weixin.md` 是唯一发布基准。
-6. **出图**：按批准的配图清单生成；AI 概念图逐张检查文字/数字/年份与正文一致。
-7. **作者编辑门禁（硬性，存草稿箱前）**：先 `bash scripts/precheck_and_open.sh <篇目录>` 跑机器质检（quality_check.py + check_cover.py + 链接溯源），脚本会用 VS Code 打开 `weixin.md`——**停在这里等作者改**；作者改完后复跑 `bash scripts/precheck_and_open.sh <篇目录> --no-open`，通过才存草稿（FAIL 项由作者改稿产生的由作者拍板）。规则见 `AGENTS.md`「作者编辑门禁」节。
-8. **存草稿**：调用 `baoyu-post-to-wechat` 以 `--submit` 保存草稿；回填草稿 URL 到 frontmatter，不发布。台账同步翻状态：`python3 scripts/schedule.py set <目录名> --status draft_saved --draft-media-id <media_id>`。
+6. **AI 味并行审查 + 自动改写循环（2026-11-15 起，质量审查前必跑）**：按 [`docs/ai-flavor-review.md`](../docs/ai-flavor-review.md) 跑「并行审查 → 自动改写 → 机械门禁」循环至收敛或 3 轮上限。本分支只审 AI 写的结构过渡/钩子/结尾引导，`raw.md` 原声句逐字禁改。要点：`style_profile.py --include-published --exclude content/<目录>` 生成 profile → 一条 parallel 调用并发派 4 个只读 lane（`ai-flavor-structure`/`ai-flavor-lexicon`/`ai-flavor-rhythm`/`ai-flavor-language`）→ findings 汇总落盘 `.grill/<slug>-aiflavor-roundN.md` → 有 FAIL 派 `ai-flavor-rewriter` 改写（备份 pre 版）→ 跑 `scripts/ai_flavor_gate.py` 门禁，FAIL 并入下一轮 → 收敛写 `.grill/<slug>-aiflavor.md`。**orchestrator 禁自己改正文**，所有文字修改只经 `ai-flavor-rewriter`。
+7. **出图**：按批准的配图清单生成；AI 概念图逐张检查文字/数字/年份与正文一致。
+8. **作者编辑门禁（硬性，存草稿箱前）**：先 `bash scripts/precheck_and_open.sh <篇目录>` 跑机器质检（quality_check.py + check_cover.py + 链接溯源），脚本会用 VS Code 打开 `weixin.md`——**停在这里等作者改**；作者改完后复跑 `bash scripts/precheck_and_open.sh <篇目录> --no-open`，通过才存草稿（FAIL 项由作者改稿产生的由作者拍板）。规则见 `AGENTS.md`「作者编辑门禁」节。
+9. **存草稿**：调用 `baoyu-post-to-wechat` 以 `--submit` 保存草稿；回填草稿 URL 到 frontmatter，不发布。台账同步翻状态：`python3 scripts/schedule.py set <目录名> --status draft_saved --draft-media-id <media_id>`。
 
 ## 输出约定
 
@@ -46,12 +47,13 @@ description: Use when 作者要新建话题并把想表达的内容以原始文�
 - 标题：关键词前置 + 痛点驱动 + ≤22 字（`docs/article-title-seo.md`）
 - 文末话题标签 3-5 个（`docs/wechat-topic-tags.md`）
 - 数据时效实时搜索（`docs/data-freshness.md`）
-- 定稿前过 `docs/article-quality-check.md` 全项（含第 15 项说人话/去 AI 味）；发布前过 `docs/pre-publish-final-check.md`
+- 定稿前过 `docs/article-quality-check.md` 全项（含第 15 项说人话/去 AI 味——第一线在 AI 味并行审查循环执行，`article-reviewer` 复核残留）；发布前过 `docs/pre-publish-final-check.md`
 - `weixin.md` 未定稿时，禁止生成任何衍生内容（小红书/知乎/视频等）
 
 ## 常见错误（禁止）
 
 - 跳过检查点直接写正文或出图
+- 跳过 AI 味并行审查循环直接进质量审查；orchestrator 自己动手改 AI 味 findings（应派 `ai-flavor-rewriter`）
 - 把原声句翻译成书面语、补总结、加「总的来说」
 - AI 概念图里出现具体数字、年份与正文不一致
 - 用 `draft.md`、模板或 AI 通用文风当基准

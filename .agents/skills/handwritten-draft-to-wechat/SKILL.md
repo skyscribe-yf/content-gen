@@ -1,13 +1,13 @@
 ---
 name: handwritten-draft-to-wechat
-description: Use when 作者要手写全文直出公众号——建 draft.md、VS Code 静默手写、作者说「好了」后 AI 依次跑润色/查事实/补公式/配图/事实查验（作者裁决）/质量审查/封面/存草稿箱；或用户提到「手写稿」「draft.md 直出」「我写好了」这类写文章方式。本 skill 是 AGENTS.md 写作流程的「手写稿直出」分支，与 grill-me（大纲成稿）和 raw-material-to-wechat-draft（素材直出）并列：素材即全文原稿，作者手写完成才触发 AI。
+description: Use when 作者要手写全文直出公众号——建 draft.md、VS Code 静默手写、作者说「好了」后 AI 依次跑润色/AI 味审查改写循环/查事实/补公式/配图/事实查验（作者裁决）/质量审查/封面/存草稿箱；或用户提到「手写稿」「draft.md 直出」「我写好了」这类写文章方式。本 skill 是 AGENTS.md 写作流程的「手写稿直出」分支，与 grill-me（大纲成稿）和 raw-material-to-wechat-draft（素材直出）并列：素材即全文原稿，作者手写完成才触发 AI。
 ---
 
 # 手写稿直出公众号草稿
 
 ## Overview
 
-作者在手写稿 `draft.md` 里写完全文；AI 只负责建稿、开 VS Code、静默等待。作者说「好了」后按固定管线执行：空稿校验 → 润色（含内链）→ 素材扫描（Obsidian vault）+ 查事实 → 补公式 → 配图 → 事实查验（作者裁决）→ 质量审查 → 封面 → 作者编辑门禁 → 存草稿箱。**全文是作者原声**：润色只做最小干预，原话逐字保留。作者随时可用「不要管文章长度」豁免篇幅门禁、用「继续」授权剩余阶段连跑。
+作者在手写稿 `draft.md` 里写完全文；AI 只负责建稿、开 VS Code、静默等待。作者说「好了」后按固定管线执行：空稿校验 → 润色（含内链）→ **AI 味并行审查+自动改写循环** → 素材扫描（Obsidian vault）+ 查事实 → 补公式 → 配图 → 事实查验（作者裁决）→ 质量审查 → 封面 → 作者编辑门禁 → 存草稿箱。**全文是作者原声**：润色只做最小干预，原话逐字保留；AI 味循环只审 AI 新增句。作者随时可用「不要管文章长度」豁免篇幅门禁、用「继续」授权剩余阶段连跑。
 
 ## 硬性门禁（无例外）
 
@@ -20,10 +20,11 @@ description: Use when 作者要手写全文直出公众号——建 draft.md、V
 7. **素材双源**：作者提示 vault 有素材（或主题明显相关）时，先扫 `~/vaults/papers/AI-Chats/_INDEX.md` 一屏扫题定位笔记，只读摘线索（纪律见 AGENTS.md §5：vault 原文禁搬进 content/、禁提交；vault 里的「AI 归纳」只当线索，一手事实仍要开原文复核）；vault 未挂载或无命中 → 明说并走纯联网。
 8. **内链必须微信 URL**：前文索引/文内导航只取已发布文章的 frontmatter `wechatUrl`（查 `branding/style-corpus/wechat-published-index.json` / `docs/wechat-data-audit-log.json`），禁相对路径；未发布标「（待发布）」，发布后补 URL。
 9. **配图三轨**：概念图 AI 生（默认 `scripts/yairouter_img.py`，prompt 写明无文字无数字），数字/对比/结构/公式图脚本画，**原报告表格类「待补充」脚本重画**（禁截图外文表格）。**AI 概念图禁承载具体数字**；每张图的文字/数字/年份必须与正文一致。
-10. **质量审查必派**：weixin.md 第一版完成后派命名 agent **`article-reviewer`**（`async: true` + 完成通知），findings 落盘 `.grill/<slug>-review.md`，主 agent 按 findings 修完才进封面。
-11. **作者编辑门禁（存草稿箱前）**：`scripts/precheck_and_open.sh` 两轮（打开 VS Code 等作者 → `--no-open` 复检），通过或作者明确豁免才存草稿。详见 AGENTS.md「发布硬门禁」。
-12. **只存草稿，禁止直接发布**：走 `baoyu-post-to-wechat` 的 `--submit`（浏览器保存草稿）或 API `draft/add`，不触发群发；存草稿前复校验 draft.md 与阶段 0 记录的 md5 一致（作者原稿未被管线改动）；发布后第一时间回填 frontmatter `wechatUrl`。
-13. **成稿必派 subagent**：`weixin.md` **初版**由命名 agent **`weixin-writer`**（`.agents/agents/weixin-writer.md`；`gemini-web/gemini-auto` + thinking `medium`，**零工具纯文本 lane**）生成——**材料全内联**：main 派发前把 `draft.md` 全文、md5 基线、待补充清单、作者豁免全部贴进 task；main agent 只收稿落盘、替换热门文章占位行、复核、补 `quality_check.json` 与跑后续门禁，禁自己从零写正文。
+10. **AI 味循环必跑（2026-11-15 新增，置于质量审查前）**：`weixin.md` 第一版完成后、派 `article-reviewer` 前，按 [`docs/ai-flavor-review.md`](../docs/ai-flavor-review.md) 跑「并行审查 → 自动改写 → 机械门禁」循环，至收敛或 3 轮上限。本分支只审 AI 新增句（三种例外），draft.md 全文逐字禁改。**orchestrator 纪律**：main agent 禁自己写改正文、禁自己评审——所有文字修改只经 `ai-flavor-rewriter`，main 只做派发/汇总/备份/跑脚本/落盘。
+11. **质量审查必派**：weixin.md 第一版完成后派命名 agent **`article-reviewer`**（`async: true` + 完成通知），findings 落盘 `.grill/<slug>-review.md`，主 agent 按 findings 修完才进封面。
+12. **作者编辑门禁（存草稿箱前）**：`scripts/precheck_and_open.sh` 两轮（打开 VS Code 等作者 → `--no-open` 复检），通过或作者明确豁免才存草稿。详见 AGENTS.md「发布硬门禁」。
+13. **只存草稿，禁止直接发布**：走 `baoyu-post-to-wechat` 的 `--submit`（浏览器保存草稿）或 API `draft/add`，不触发群发；存草稿前复校验 draft.md 与阶段 0 记录的 md5 一致（作者原稿未被管线改动）；发布后第一时间回填 frontmatter `wechatUrl`。
+14. **成稿必派 subagent**：`weixin.md` **初版**由命名 agent **`weixin-writer`**（`.agents/agents/weixin-writer.md`；`gemini-web/gemini-auto` + thinking `medium`，**零工具纯文本 lane**）生成——**材料全内联**：main 派发前把 `draft.md` 全文、md5 基线、待补充清单、作者豁免全部贴进 task；main agent 只收稿落盘、替换热门文章占位行、复核、补 `quality_check.json` 与跑后续门禁，禁自己从零写正文。
 
 ## 工作流
 
@@ -53,6 +54,17 @@ draft.md 冻结不动；成稿写 `weixin.md`（唯一发布基准）。
 9. **写 quality_check.json（main agent 在 `weixin-writer` 回传后做）**：`slots` = 作者原稿段落逐字（挑 8–12 段有代表性的：亲历/判断/类比/实测/提问），让机器核验润色没动原声；其余定制项按 `scripts/quality_check.py` 要求，`numbers` 与正文格式严格一致（LaTeX 千分位写 `745{,}472` 这种转义形态）。
 10. **篇幅豁免**：作者说过「不要管文章长度」等口径 → `exempt` 加「篇幅」并同步调大 `body_max`/`all_max`（参考 2026-11-14 篇的 99999）；**禁再按默认 ~2000 字口径砍作者稿**。作者没提 → 按默认口径。
 11. **尾部热门文章**：`python3 scripts/hot_articles.py --md --cited <weixin.md>` 生成「🔥 热门文章」区（禁手写），发布前跑 `--self-check`；正例模板见 `docs/pre-publish-final-check.md` 6c 节。
+
+### 阶段 1.5 · AI 味并行审查 + 自动改写循环（2026-11-15 起，质量审查前必跑）
+
+按 [`docs/ai-flavor-review.md`](../docs/ai-flavor-review.md) 执行。本分支特点：**只审 AI 新增句**（开头钩子一句 / 公式图片前后人话 / 硬断点补句三种例外），`draft.md` 全文是原声、逐字禁改。
+
+1. main agent 跑 `python3 scripts/style_profile.py --include-published --exclude content/<目录>`，落盘 `.grill/<slug>-style-profile.txt`（一次生成，四 lane 共用同一把尺）
+2. 一条 parallel 调用并发派 4 个只读 lane（task 给：目录、第几轮、分支 `handwritten`、原声边界 = `draft.md` 全文 + `quality_check.json` slots、profile 全文；round≥2 附上一轮 findings 要求逐条复核）
+3. findings 汇总落盘 `.grill/<slug>-aiflavor-roundN.md`；有 FAIL → 备份 pre 版（`.grill/<slug>-weixin-pre-aiflavor-rN.md`）→ 派 `ai-flavor-rewriter`（task 内联：weixin.md 全文 + findings + 上轮改写报告 + profile + draft.md 全文）→ 回传代码块落盘
+4. 跑 `python3 scripts/ai_flavor_gate.py <pre> <post> --dir content/<目录>`；FAIL 项原样并入下一轮 findings
+5. 收敛（一轮无新 FAIL 且上轮 FAIL 全部「已解决」）或 3 轮上限；写 `.grill/<slug>-aiflavor.md` 总结，未收敛的剩余清单带进阶段 5 交作者
+6. **orchestrator 禁自己改正文**：所有文字修改只经 `ai-flavor-rewriter`；main 只派发/汇总/备份/跑脚本/落盘
 
 ### 阶段 2 · 素材扫描 + 事实核查（先记不改）
 
@@ -115,6 +127,7 @@ draft.md 冻结不动；成稿写 `weixin.md`（唯一发布基准）。
 - 台账 `schedule/*.json`（`scripts/schedule.py`）：建稿 `add`（drafting）→ 存箱 `set --status draft_saved --draft-media-id` → 发布回填 `set --status published --published-date --wechat-url`
 - `branding/style-corpus/wechat-published-index.json`：发布后首行追加 `{title, url}`（后台 msg_title）
 - `.grill/<slug>-review.md`：article-reviewer findings
+- `.grill/<slug>-style-profile.txt` + `.grill/<slug>-aiflavor-roundN.md` + `.grill/<slug>-weixin-pre-aiflavor-rN.md` + `.grill/<slug>-aiflavor.md`：AI 味循环产物（风格基准 / 各轮 findings / 改写前备份 / 收敛总结）
 - 文末「参考资料与数字溯源」：核实通过的数字来源（纯文本 URL）
 
 ## 常见错误（禁止）
@@ -126,6 +139,7 @@ draft.md 冻结不动；成稿写 `weixin.md`（唯一发布基准）。
 - 疑点数字未经作者裁决就出数据图/进终稿
 - 只核查作者原话，不核查 AI 润色期补写的新数字/论断
 - 跳过 article-reviewer 或作者编辑门禁直接存草稿箱
+- 跳过 AI 味并行审查循环直接进质量审查（2026-11-15 起为硬门禁）；orchestrator 自己动手改 AI 味 findings（应派 `ai-flavor-rewriter`）；四 lane 串行派发或轮询等结果；门禁 FAIL 后自己补修而不并入下一轮 findings
 - main agent 自己从零写 weixin.md 初版（应派 `weixin-writer`）；或让 `weixin-writer` 替 `article-reviewer` 自审；或派发时不内联材料只给路径（零工具 lane 读不到）
 - AI 概念图承载具体数字；图片带 `images/` 前缀；外文表格用截图
 - 用 draft.md 当发布基准（唯一基准是 weixin.md）

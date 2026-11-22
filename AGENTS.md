@@ -10,6 +10,7 @@
 | 作者扔素材直出 | `.agents/skills/raw-material-to-wechat-draft/SKILL.md` |
 | 作者手写 draft.md 直出（建稿+静默等「好了」+润色/查事实/补公式/配图/事实裁决/质检/封面/存草稿） | `.agents/skills/handwritten-draft-to-wechat/SKILL.md`（建稿：`scripts/new-handwritten-topic.sh`） |
 | 写正式 `weixin.md` 初版（三支路通用） | 派命名 agent `weixin-writer`（`.agents/agents/weixin-writer.md`，Gemini Web auto / thinking medium，**零工具纯文本 lane：材料全内联进 task，回传代码块，main 落盘**）；main 复核 + 替换热门文章占位行 + 补 `quality_check.json`，分支细则见对应 skill |
+| weixin.md 初版 AI 味审查/改写（循环至收敛） | `docs/ai-flavor-review.md`：4 个并行只读 lane（`ai-flavor-structure`/`ai-flavor-lexicon`/`ai-flavor-rhythm`/`ai-flavor-language`）+ `ai-flavor-rewriter` 自动改写 + `scripts/style_profile.py` 作者风格基准 + `scripts/ai_flavor_gate.py` 机械门禁；**orchestrator 只协调，禁自己改正文** |
 | 起标题/封面字 | `docs/article-title-seo.md` |
 | 配图/封面 | `docs/image-generation.md` |
 | 贴图（图文消息） | `docs/tietu-viral-playbook.md` + `docs/tietu-infographic-flow.md` |
@@ -28,7 +29,7 @@
 
 - 起草大纲前**必须先调 grill-me skill** 与作者讨论；禁止 AI 单方面生成 `.grill/<slug>.md`
 - 自动成稿：大纲末尾列作者原声槽（**进稿 ≥5 处**），全部占位符，**作者在 VS Code 自行填入**（AI 不等填直接动笔，weixin.md 槽位留 `【作者填入】`）；AI 禁代拟、禁代填、禁追问催稿；原声门禁在**发布前终检**把关（第一轮质检 `--skip-voice` 不管原声；终检 ≥5 逐字在场 + 占位符清零才准存草稿箱）
-- 成稿必派 subagent：正式 `weixin.md` **初版**一律由命名 agent **`weixin-writer`** 生成（Gemini Web auto / thinking medium，**零工具：材料全部内联进 task，agent 只回文本、不碰文件**），main agent 禁自己从零写正文；回传后 main 把代码块全文落盘成 `weixin.md`、跑 `scripts/hot_articles.py --md --cited` 替换 `<!-- HOT_ARTICLES -->` 占位行，再复核 frontmatter/篇幅/占位符/图片名，补 `quality_check.json` 并派 `article-reviewer`
+- 成稿必派 subagent：正式 `weixin.md` **初版**一律由命名 agent **`weixin-writer`** 生成（Gemini Web auto / thinking medium，**零工具：材料全部内联进 task，agent 只回文本、不碰文件**），main agent 禁自己从零写正文；回传后 main 把代码块全文落盘成 `weixin.md`、跑 `scripts/hot_articles.py --md --cited` 替换 `<!-- HOT_ARTICLES -->` 占位行，再复核 frontmatter/篇幅/占位符/图片名，补 `quality_check.json`；**随后必须跑 AI 味并行审查+自动改写循环**（`docs/ai-flavor-review.md`：4 lane 并行审结构/词汇/节奏/表达 → `ai-flavor-rewriter` 改写 → 机械门禁，循环至收敛或 3 轮上限；orchestrator 只协调派发汇总，禁自己写改正文），收敛后才派 `article-reviewer`
 - 排版硬规则：① 原声句禁加 ★ 前缀、禁套 blockquote，按正文段落直排；② 正文第一段禁标题开场（禁 `##` 起首、禁把标题抄成第一行）
 - 正文 **~2000 字**（含尾部 ≤2500），紧凑优先不拉长
 - 动笔前必读爆款经验 `docs/viral-article-playbook.md`，标题/开头/结构逐项对照
