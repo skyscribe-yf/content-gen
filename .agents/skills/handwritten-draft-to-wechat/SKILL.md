@@ -23,7 +23,7 @@ description: Use when 作者要手写全文直出公众号——建 draft.md、V
 10. **质量审查必派**：weixin.md 第一版完成后派命名 agent **`article-reviewer`**（`async: true` + 完成通知），findings 落盘 `.grill/<slug>-review.md`，主 agent 按 findings 修完才进封面。
 11. **作者编辑门禁（存草稿箱前）**：`scripts/precheck_and_open.sh` 两轮（打开 VS Code 等作者 → `--no-open` 复检），通过或作者明确豁免才存草稿。详见 AGENTS.md「发布硬门禁」。
 12. **只存草稿，禁止直接发布**：走 `baoyu-post-to-wechat` 的 `--submit`（浏览器保存草稿）或 API `draft/add`，不触发群发；存草稿前复校验 draft.md 与阶段 0 记录的 md5 一致（作者原稿未被管线改动）；发布后第一时间回填 frontmatter `wechatUrl`。
-13. **成稿必派 subagent**：`weixin.md` **初版**由命名 agent **`weixin-writer`**（`.agents/agents/weixin-writer.md`；`gemini-web/gemini-auto` + thinking `medium`）生成；main agent 只复核、补 `quality_check.json` 与跑后续门禁，禁自己从零写正文。
+13. **成稿必派 subagent**：`weixin.md` **初版**由命名 agent **`weixin-writer`**（`.agents/agents/weixin-writer.md`；`gemini-web/gemini-auto` + thinking `medium`，**零工具纯文本 lane**）生成——**材料全内联**：main 派发前把 `draft.md` 全文、md5 基线、待补充清单、作者豁免全部贴进 task；main agent 只收稿落盘、替换热门文章占位行、复核、补 `quality_check.json` 与跑后续门禁，禁自己从零写正文。
 
 ## 工作流
 
@@ -40,7 +40,7 @@ description: Use when 作者要手写全文直出公众号——建 draft.md、V
 
 draft.md 冻结不动；成稿写 `weixin.md`（唯一发布基准）。
 
-**派发（2026-11-15 起）**：本阶段整体交命名 agent **`weixin-writer`**（`.agents/agents/weixin-writer.md`；`gemini-web/gemini-auto` + thinking `medium`），task 给：目录、`slug`、`draft.md` 的 md5 基线、待补充清单（五类各几处）、作者豁免（如「篇幅」）。main agent 禁自己从零写正文；回传后按下列清单逐项复核，并补第 9 项 `quality_check.json`。
+**派发（2026-11-15 起）**：本阶段整体交命名 agent **`weixin-writer`**（`.agents/agents/weixin-writer.md`；`gemini-web/gemini-auto` + thinking `medium`，零工具 lane），task 给：目录、`slug`、分支 `handwritten`、标题、`draft.md` 全文、`draft.md` 的 md5 基线、待补充清单（五类各几处）、作者豁免（如「篇幅」）、内链候选清单。**材料不内联 = 白派**（该 lane 无工具，读不了文件）。main agent 禁自己从零写正文；回传后从 output 的 markdown 代码块取全文落盘 `weixin.md`、跑 `scripts/hot_articles.py --md --cited` 替换 `<!-- HOT_ARTICLES -->` 占位行，再按下列清单逐项复核，并补第 9 项 `quality_check.json`。
 
 1. **读语料**：`branding/style-corpus/style-features.md` 认原声句类型（本篇全文手写，全部算原声）。
 2. **标题**：作者 frontmatter 有 `title` 就用；空着按 `docs/article-title-seo.md` 起（≤22 字、关键词前置、痛点驱动），写进 weixin.md frontmatter。
@@ -126,7 +126,7 @@ draft.md 冻结不动；成稿写 `weixin.md`（唯一发布基准）。
 - 疑点数字未经作者裁决就出数据图/进终稿
 - 只核查作者原话，不核查 AI 润色期补写的新数字/论断
 - 跳过 article-reviewer 或作者编辑门禁直接存草稿箱
-- main agent 自己从零写 weixin.md 初版（应派 `weixin-writer`）；或让 `weixin-writer` 替 `article-reviewer` 自审
+- main agent 自己从零写 weixin.md 初版（应派 `weixin-writer`）；或让 `weixin-writer` 替 `article-reviewer` 自审；或派发时不内联材料只给路径（零工具 lane 读不到）
 - AI 概念图承载具体数字；图片带 `images/` 前缀；外文表格用截图
 - 用 draft.md 当发布基准（唯一基准是 weixin.md）
 - 内链用相对路径、或把未发布文章当已发布引用

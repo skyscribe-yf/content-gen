@@ -17,7 +17,7 @@ description: Use when 作者要新建话题并把想表达的内容以原始文�
 4. **双轨配图**：概念图用 AI 生成（默认 `scripts/yairouter_img.py`），数字/对比/结构/公式用脚本画图。**AI 生图禁止承载具体数字**（AI 会编数字）。封面 AI 画，21:9，正文概念图 4-6 张，每节至少一张、重点段最多两张，概念密度低时 3 张可接受但须在配图清单标注原因。
 5. **事实必须联网核实**：价格、版本号、模型发布时间等素材中的数字，一律实时搜索验证后再进稿，禁止沿用作者口头「大概」。
 6. **只存草稿，禁止直接发布**：走 `baoyu-post-to-wechat` 的 `--submit`（浏览器保存草稿）或 API `draft/add`，不触发群发。
-7. **成稿必派 subagent**：`weixin.md` **初版**由命名 agent **`weixin-writer`**（`.agents/agents/weixin-writer.md`；`gemini-web/gemini-auto` + thinking `medium`）生成；main agent 只复核与跑后续门禁，禁自己从零写正文。
+7. **成稿必派 subagent**：`weixin.md` **初版**由命名 agent **`weixin-writer`**（`.agents/agents/weixin-writer.md`；`gemini-web/gemini-auto` + thinking `medium`，**零工具纯文本 lane，材料全内联**）生成；main agent 只收稿落盘、替换热门文章占位行、复核与跑后续门禁，禁自己从零写正文。
 
 ## 工作流
 
@@ -29,7 +29,7 @@ description: Use when 作者要新建话题并把想表达的内容以原始文�
    - 配图清单（每张图一句话说明用途，标注 AI 概念图 / 脚本数据图）
    - 素材缺口（哪些点缺论据/数据，建议作者补充）
 4. **STOP —— 请作者确认 `structure.md`**。作者改完或批准后才继续；不得以「先出图看看」绕开。
-5. **写 `weixin.md`（派 `weixin-writer`）**：派命名 agent **`weixin-writer`**（`.agents/agents/weixin-writer.md`；`gemini-web/gemini-auto` + thinking `medium`），task 给：目录、`slug`、分支 `raw`、`structure.md` 路径。main agent 禁自己从零写正文，回传后复核。子 agent 执行口径：原声句原文进稿；AI 只补结构过渡、标题（≤22 字、关键词前置、痛点驱动）、开头钩子、结尾引导与话题标签（3-5 个，含 `#数解AI`）。`weixin.md` 是唯一发布基准。结尾若有「🔥 热门文章」，必须运行 `scripts/hot_articles.py --md --cited <本文weixin.md>` 现查现填（读最近审计 `docs/wechat-data-audit-log.json`，自动过滤贴图、追加本文引用的相关文章），禁止凭记忆挑最近文章；每个链接一行、行间不留空行（空行会被渲染成「段间距空行」）。
+5. **写 `weixin.md`（派 `weixin-writer`）**：派命名 agent **`weixin-writer`**（`.agents/agents/weixin-writer.md`；`gemini-web/gemini-auto` + thinking `medium`，零工具 lane），task 给：目录、`slug`、分支 `raw`、标题要求、`raw.md` 全文、`structure.md` 全文、话题标签要求、内链候选清单。**材料不内联 = 白派**（该 lane 无工具，读不了文件）。main agent 禁自己从零写正文；回传后从 output 的 markdown 代码块取全文落盘 `weixin.md`，跑 `scripts/hot_articles.py --md --cited <本文weixin.md>` 现查现填，**整块替换**稿里的 `<!-- HOT_ARTICLES -->` 占位行（读最近审计 `docs/wechat-data-audit-log.json`，自动过滤贴图、追加本文引用的相关文章），禁止凭记忆挑最近文章；每个链接一行、行间不留空行（空行会被渲染成「段间距空行」）。子 agent 执行口径：原声句原文进稿；AI 只补结构过渡、标题（≤22 字、关键词前置、痛点驱动）、开头钩子、结尾引导与话题标签（3-5 个，含 `#数解AI`）。`weixin.md` 是唯一发布基准。
 6. **出图**：按批准的配图清单生成；AI 概念图逐张检查文字/数字/年份与正文一致。
 7. **作者编辑门禁（硬性，存草稿箱前）**：先 `bash scripts/precheck_and_open.sh <篇目录>` 跑机器质检（quality_check.py + check_cover.py + 链接溯源），脚本会用 VS Code 打开 `weixin.md`——**停在这里等作者改**；作者改完后复跑 `bash scripts/precheck_and_open.sh <篇目录> --no-open`，通过才存草稿（FAIL 项由作者改稿产生的由作者拍板）。规则见 `AGENTS.md`「作者编辑门禁」节。
 8. **存草稿**：调用 `baoyu-post-to-wechat` 以 `--submit` 保存草稿；回填草稿 URL 到 frontmatter，不发布。台账同步翻状态：`python3 scripts/schedule.py set <目录名> --status draft_saved --draft-media-id <media_id>`。
@@ -56,7 +56,7 @@ description: Use when 作者要新建话题并把想表达的内容以原始文�
 - AI 概念图里出现具体数字、年份与正文不一致
 - 用 `draft.md`、模板或 AI 通用文风当基准
 - 存草稿前跳过作者编辑门禁（质检 → VS Code 打开 → 等作者 → 复检 → 才存箱）
-- main agent 自己从零写 weixin.md 初版（应派 `weixin-writer`）
+- main agent 自己从零写 weixin.md 初版（应派 `weixin-writer`）；或派发时不内联材料只给路径（零工具 lane 读不到）
 
 ## 相关资源
 

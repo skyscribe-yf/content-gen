@@ -9,7 +9,7 @@
 | 新文章选题/大纲 | `docs/writing-flow.md` + `.agents/skills/grill-me/SKILL.md` + `docs/viral-article-playbook.md`（调研 lane：派命名 agent `article-researcher`，定义 `.agents/agents/article-researcher.md`；`content-matrix.md`/`note-material-source.md` 归它读，main 按 brief 指向按需取） |
 | 作者扔素材直出 | `.agents/skills/raw-material-to-wechat-draft/SKILL.md` |
 | 作者手写 draft.md 直出（建稿+静默等「好了」+润色/查事实/补公式/配图/事实裁决/质检/封面/存草稿） | `.agents/skills/handwritten-draft-to-wechat/SKILL.md`（建稿：`scripts/new-handwritten-topic.sh`） |
-| 写正式 `weixin.md` 初版（三支路通用） | 派命名 agent `weixin-writer`（`.agents/agents/weixin-writer.md`，Gemini Web auto / thinking medium）；main 只复核 + 补 `quality_check.json`，分支细则见对应 skill |
+| 写正式 `weixin.md` 初版（三支路通用） | 派命名 agent `weixin-writer`（`.agents/agents/weixin-writer.md`，Gemini Web auto / thinking medium，**零工具纯文本 lane：材料全内联进 task，回传代码块，main 落盘**）；main 复核 + 替换热门文章占位行 + 补 `quality_check.json`，分支细则见对应 skill |
 | 起标题/封面字 | `docs/article-title-seo.md` |
 | 配图/封面 | `docs/image-generation.md` |
 | 贴图（图文消息） | `docs/tietu-viral-playbook.md` + `docs/tietu-infographic-flow.md` |
@@ -28,7 +28,7 @@
 
 - 起草大纲前**必须先调 grill-me skill** 与作者讨论；禁止 AI 单方面生成 `.grill/<slug>.md`
 - 自动成稿：大纲末尾列作者原声槽（**进稿 ≥5 处**），全部占位符，**作者在 VS Code 自行填入**（AI 不等填直接动笔，weixin.md 槽位留 `【作者填入】`）；AI 禁代拟、禁代填、禁追问催稿；原声门禁在**发布前终检**把关（第一轮质检 `--skip-voice` 不管原声；终检 ≥5 逐字在场 + 占位符清零才准存草稿箱）
-- 成稿必派 subagent：正式 `weixin.md` **初版**一律由命名 agent **`weixin-writer`** 生成（Gemini Web auto / thinking medium），main agent 禁自己从零写正文；回传后 main 复核 frontmatter/篇幅/占位符/图片名，再补 `quality_check.json` 并派 `article-reviewer`
+- 成稿必派 subagent：正式 `weixin.md` **初版**一律由命名 agent **`weixin-writer`** 生成（Gemini Web auto / thinking medium，**零工具：材料全部内联进 task，agent 只回文本、不碰文件**），main agent 禁自己从零写正文；回传后 main 把代码块全文落盘成 `weixin.md`、跑 `scripts/hot_articles.py --md --cited` 替换 `<!-- HOT_ARTICLES -->` 占位行，再复核 frontmatter/篇幅/占位符/图片名，补 `quality_check.json` 并派 `article-reviewer`
 - 排版硬规则：① 原声句禁加 ★ 前缀、禁套 blockquote，按正文段落直排；② 正文第一段禁标题开场（禁 `##` 起首、禁把标题抄成第一行）
 - 正文 **~2000 字**（含尾部 ≤2500），紧凑优先不拉长
 - 动笔前必读爆款经验 `docs/viral-article-playbook.md`，标题/开头/结构逐项对照
@@ -66,7 +66,7 @@
 - 人物禁独立成篇：只能作嵌入技术文的钩子（≤10% 篇幅），标题禁人名开头
 - 理论须挂最新国产模型（优先级 DeepSeek-V4 > GLM-5.2 > Kimi K2.6 > Qwen3，引 HF config.json），标注来源
 - 文章间导航链接**必须微信 URL**（`https://mp.weixin.qq.com/s/...`），禁相对路径；未发布用 `（待发布）` 标注，发布后补 URL
-- 尾部：**不放合集导航、不放下一篇预告**（2026-11-07 废止，合集聚合改由后台勾选）；「🔥 热门文章」必须 `scripts/hot_articles.py --md --cited <本文weixin.md>` 生成（禁手写），行间不留空行、行尾两空格，发布前跑 `--self-check`；正例模板见 `docs/pre-publish-final-check.md` 6c 节
+- 尾部：**不放合集导航、不放下一篇预告**（2026-11-07 废止，合集聚合改由后台勾选）；「🔥 热门文章」必须 `scripts/hot_articles.py --md --cited <本文weixin.md>` 生成（禁手写）——`weixin-writer` 零工具跑不了脚本，只在稿里留占位行 `<!-- HOT_ARTICLES -->`，**main agent 收稿落盘后必须立即用脚本输出整块替换**；行间不留空行、行尾两空格，发布前跑 `--self-check`；正例模板见 `docs/pre-publish-final-check.md` 6c 节
 - 文末 3-5 个话题标签（系列 + 主题 + `#数解AI`）
 - 数学公式用 LaTeX：独立 `$$...$$`，内联 `$...$`
 - 贴图标题/封面定稿前必读 `docs/tietu-viral-playbook.md`：品牌词/事件词前置 + 情绪立场 + 利益钩子至少中两个，封面大字 = 标题核心句，禁谜语，热点当天/次日发 + 开群发

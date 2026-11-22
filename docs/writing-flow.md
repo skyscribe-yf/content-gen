@@ -34,7 +34,7 @@ Skill 位置：[`.agents/skills/grill-me/SKILL.md`](.agents/skills/grill-me/SKIL
 4. 确认 grill 日志无误**且 `.grill/<slug>-research.md` 调研 brief 已在手**（brief 未回则等完成通知，禁开写）→ 方可进入大纲起草
 5. 读 [`docs/viral-article-playbook.md`](viral-article-playbook.md)，写 `outline.md`（定位、结论、结构、配图、既有检查清单）；**一手证据 / vault 素材 / 内链以 brief 为单一事实源**，brief 缺项才定点补查并回写 brief 对应节
 6. **大纲末尾列作者原声槽，全部占位符**：默认 7–10 个候选槽（节少时可少列，不得少于 5 个），每槽给「位置 + 为什么这里 + 问你一句 + 方向」四行提示，原句一律占位符 `【作者填入】`。
-7. **成稿派发（2026-11-15 起）**：大纲与调研 brief 定稿后派命名 agent **`weixin-writer`**（`subagent({ agent: "weixin-writer", task: "目录：content/<日期>-<slug>；分支：auto；slug：…；原声槽：n 个" })`），**不等作者填、直接动笔**写出 `weixin.md` 初版，每个槽位「位置」留 `【作者填入】` 占位符；**main agent 禁自己从零写正文**。回传后 main 复核 frontmatter / 篇幅 / 占位符 / 图片名，再补 `quality_check.json` 并派 `article-reviewer`。细则见下文「成稿 subagent」。
+7. **成稿派发（2026-11-15 起）**：大纲与调研 brief 定稿后派命名 agent **`weixin-writer`**（**零工具纯文本 lane，材料全部内联进 task**，细则见下文「成稿 subagent」），**不等作者填、直接动笔**，每个槽位「位置」留 `【作者填入】` 占位符；**main agent 禁自己从零写正文**。回传后 main 把 output 代码块里的全文落盘成 `weixin.md`、替换热门文章占位行，再复核 frontmatter / 篇幅 / 占位符 / 图片名，补 `quality_check.json` 并派 `article-reviewer`。
 8. 作者在 VS Code 自行填入（`outline.md` 或 `weixin.md` 填哪处均可，以 `weixin.md` 为准；可粘 grill 逐字原话，算 1 处；也可整槽标「跳过」）。**AI 禁代拟、禁代填、禁追问催稿**——作者问「这槽写什么好」也只给更具体的提示或方向，不给成句。
 9. 原声门禁后移到**发布前终检**：已填 <5 或 `weixin.md` 残留 `【作者填入】` → 禁止存草稿箱（见下文「成稿后：作者编辑门禁」两轮质检）。作者说「先写着」「帮我凑两句」也不代填。
 
@@ -52,14 +52,14 @@ Skill 位置：[`.agents/skills/grill-me/SKILL.md`](.agents/skills/grill-me/SKIL
 
 ## 成稿 subagent（成稿阶段，2026-11-15 起）
 
-正式 `weixin.md` 的**初版**由命名 agent **`weixin-writer`** 生成（定义 `.agents/agents/weixin-writer.md`：模型 `gemini-web/gemini-auto`，thinking `medium`，工具集含 write/edit——全流程唯一产出正文的 lane）。三支路（自动成稿 / 手写稿直出 / 素材直出）共用：
+正式 `weixin.md` 的**初版**由命名 agent **`weixin-writer`** 生成（定义 `.agents/agents/weixin-writer.md`：模型 `gemini-web/gemini-auto`，thinking `medium`，**`tools: []` 零工具**——该 provider 无原生 function calling，lane 退化为纯文本生成器：不读文件、不写文件、不跑命令）。三支路（自动成稿 / 手写稿直出 / 素材直出）共用：
 
 - **派发时机**：自动成稿 = `outline.md` 与 `.grill/<slug>-research.md` 定稿后；手写稿 = 作者说「好了」且空稿校验通过后；素材直出 = `structure.md` 获作者批准后
-- **task 必给**：目录 `content/<日期>-<slug>`、分支（`auto` / `handwritten` / `raw`）、`slug`；自动成稿另给原声槽数量，手写稿另给「待补充」清单与作者豁免（如「篇幅」）
-- **产出**：`weixin.md` 初版（frontmatter + 正文 + 原声占位符 + 公式 + 配图占位 + 内链 + 尾部热门区/话题标签）+ 一份成稿报告（字数 / 结构 / 原声计数 / 待补充处理 / 配图计划 / 内链 / 存疑点）；子 agent 不派 subagent、不出图、不裁决事实、不碰封面与草稿箱
-- **回传后 main agent 负责**：① 复核 frontmatter / 篇幅 / 段落与标题层级 / 原声占位符残留 / 图片文件名；② 写本篇 `quality_check.json`（slots 逐字取自 `draft.md` 或作者填入内容，numbers/links 按成稿）；③ 派 `article-reviewer`，按 findings 修补——**修补不经过 `weixin-writer`**
+- **材料全内联**（main agent 派发前读好文件、全文贴进 task，不给路径）：目录、`slug`、分支、标题；分支入口文件全文（auto = `outline.md` + `.grill/<slug>.md` + `.grill/<slug>-research.md`；handwritten = `draft.md` + 待补充清单 + 作者豁免；raw = `raw.md` + `structure.md`）；内链候选清单（从 `branding/style-corpus/wechat-published-index.json` 或往篇 `weixin.md` frontmatter 取好）；auto 另给原声槽数量
+- **lane 产出**：output = 一个 markdown 代码块（`weixin.md` 全文：frontmatter + 正文 + 原声占位符 + 公式 + 配图占位 + 内链 + 尾部；「🔥 热门文章」区为占位行 `<!-- HOT_ARTICLES -->`）+ 一份简短报告（字数 / 结构 / 原声计数 / 待补充处理 / 配图计划 / 内链 / 存疑点）。子 agent 不派 subagent、不出图、不裁决事实、不碰封面与草稿箱
+- **回传后 main agent 负责**：① 从代码块取全文写入 `content/<目录>/weixin.md`；② 跑 `python3 scripts/hot_articles.py --md --cited <目录>/weixin.md`，用输出**整块替换** `<!-- HOT_ARTICLES -->` 占位行（禁手写榜单）；③ 复核 frontmatter / 篇幅 / 段落与标题层级 / 原声占位符残留 / 图片文件名；④ 写本篇 `quality_check.json`（slots 逐字取自 `draft.md` 或作者填入内容，numbers/links 按成稿）；⑤ 派 `article-reviewer`，按 findings 修补——**修补不经过 `weixin-writer`**
 - **缺项补稿**：回传缺失或成稿明显不达标 → `subagent({ action: "resume", id, message })` 回同一 run 补，不新建 run；连续 2 次不达标才由 main agent 按 outline 补写，并在 `.grill/<slug>-review.md` 留痕
-- **禁**：main agent 自己从零写正文；让 `weixin-writer` 自审替代 `article-reviewer`
+- **禁**：main agent 自己从零写正文；让 `weixin-writer` 自审替代 `article-reviewer`；派发时只给文件路径不内联材料（该 lane 无工具，给了也读不到）
 
 ## 成稿后：作者编辑门禁（存草稿箱前必走，2026-11-08 起）
 
