@@ -1,12 +1,12 @@
 {
   "schema": "schedule/schema.json#/$defs/meta",
   "schema_version": 1,
-  "updated": "2026-11-22T14:30:16",
-  "next_publish_date": "2026-11-18",
+  "updated": "2026-11-22T15:24:01",
+  "next_publish_date": "2026-11-22",
   "total": 133,
   "by_status": {
-    "published": 125,
-    "draft_saved": 5,
+    "published": 127,
+    "draft_saved": 3,
     "planned": 3
   },
   "source": {

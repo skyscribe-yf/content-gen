@@ -1,30 +1,8 @@
 {
   "schema": "schedule/schema.json#/$defs/ledger",
   "schema_version": 1,
-  "updated": "2026-11-22T14:30:16",
+  "updated": "2026-11-22T15:24:01",
   "articles": [
-    {
-      "slug": "2026-11-18-dgm-self-modifying-code",
-      "title": "AI 改自己的代码，两周烧掉两万二：钱到底花在想，还是花在判",
-      "series": "AI Agent 工程",
-      "status": "draft_saved",
-      "published_date": null,
-      "wechat_url": null,
-      "scheduled_publish": "2026-11-18 20:00",
-      "cover_media_id": "kOcXH4SytIYVIpYksTGfHpS0t4iE6-bmKYu7TB1SpGn6d7aMbDEZuABcDLk3F734",
-      "draft_media_id": "kOcXH4SytIYVIpYksTGfHmhrXHnO2a2hShMwsj9NBr4yg3oQ8q81SyZRNW8Uuwoq"
-    },
-    {
-      "slug": "2026-11-20-memory-curse",
-      "title": "给 Agent 加记忆，合作反而崩了？",
-      "series": "AI Agent 工程",
-      "status": "draft_saved",
-      "published_date": null,
-      "wechat_url": null,
-      "scheduled_publish": "2026-11-20 20:00",
-      "cover_media_id": "kOcXH4SytIYVIpYksTGfHsmmUYxkck9-kh1r0BDYAXA7HkKWpbaQroS-EPSeg-fg",
-      "draft_media_id": "kOcXH4SytIYVIpYksTGfHqQKPPftG3VriJNIvAHOLXr2B4GnR5B1Bs3e1NyTJw70"
-    },
     {
       "slug": "2026-11-22-latent-reasoning-four-routes",
       "title": "加入100个dummy token，算术能力飞涨10.7分：AI思维链正在悄然发生着变化",
@@ -38,13 +16,25 @@
       "old_media_id": "kOcXH4SytIYVIpYksTGfHr89qM6A-kZlEICe7h016jZh_Y54bPhz98xfJWhHROBd"
     },
     {
+      "slug": "2026-11-24-cpp-ai-coexistence",
+      "title": "一年没写过一行代码的 C++ 老手，怎么保证代码不出事",
+      "series": "软件工程",
+      "status": "draft_saved",
+      "published_date": null,
+      "wechat_url": null,
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHiOswGmJcKhZ71z_eZpW7zKkecLy3IKT_yZLZK8qZ72i",
+      "draft_media_id": "kOcXH4SytIYVIpYksTGfHsjda4tdj_JrkrelDMYdNEubry618UcIRLi4zryW76nN",
+      "scheduled_publish": "2026-11-24 20:00",
+      "files": {}
+    },
+    {
       "slug": "2026-11-24-hidden-cot-price-tag",
       "title": "唯一敢给你看思维链全文的旗舰模型，凭什么",
       "series": "Latent 思维链",
       "status": "planned",
       "published_date": null,
       "wechat_url": null,
-      "scheduled_publish": "2026-11-24 20:00"
+      "scheduled_publish": "2026-11-28 20:00"
     },
     {
       "slug": "2026-11-26-cot-monitor-window",
@@ -74,17 +64,6 @@
       "published_date": null,
       "wechat_url": null,
       "scheduled_publish": "2026-12-02 20:00"
-    },
-    {
-      "slug": "2026-11-30-cpp-ai-coexistence",
-      "title": "一年没写过一行代码的 C++ 老手，怎么保证代码不出事",
-      "series": "软件工程",
-      "status": "draft_saved",
-      "published_date": null,
-      "wechat_url": null,
-      "cover_media_id": "kOcXH4SytIYVIpYksTGfHiOswGmJcKhZ71z_eZpW7zKkecLy3IKT_yZLZK8qZ72i",
-      "draft_media_id": "kOcXH4SytIYVIpYksTGfHsjda4tdj_JrkrelDMYdNEubry618UcIRLi4zryW76nN",
-      "scheduled_publish": "2026-12-04 20:00"
     }
   ]
 }
