@@ -1,7 +1,7 @@
 {
   "schema": "schedule/schema.json#/$defs/ledger",
   "schema_version": 1,
-  "updated": "2026-11-15T12:05:35",
+  "updated": "2026-11-22T14:30:16",
   "articles": [
     {
       "slug": "2026-07-03-损失函数",
@@ -1834,6 +1834,22 @@
         "cover": true,
         "quality_check": true
       }
+    },
+    {
+      "slug": "2026-11-14-opd-multi-teacher-distillation",
+      "title": "换个更强的老师，模型训练为什么反而崩溃了",
+      "series": "开源大模型技术揭秘",
+      "status": "published",
+      "published_date": "2026-11-16",
+      "wechat_url": "https://mp.weixin.qq.com/s/kz8N8jQKnwOD6GUCfdtc6w",
+      "files": {
+        "weixin": true,
+        "outline": true,
+        "cover": true,
+        "quality_check": true
+      },
+      "draft_media_id": "kOcXH4SytIYVIpYksTGfHk9N-FMC4fCkVbzm4S9XYhWuXncW4PHFLW86EVhZQl9y",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHh7HeaVkC_1RUTxn7mb8l7obnnCUTGQGnEtN0_z1re3I"
     },
     {
       "slug": "2026-11-14-国产大模型GB300之谜",

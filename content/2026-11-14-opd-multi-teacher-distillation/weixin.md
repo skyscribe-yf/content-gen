@@ -7,7 +7,7 @@ series: "开源大模型技术揭秘"
 digest: "数学域 RL 老师训好了，多教师合并归一化分 0.9373。换个单体分更高的老师，合并分崩到 0.6003；另一版实现更狠，AIME25 直接 0.94%。选老师不是选最强的，是选和学生同源的——DeepSeek-V4、Kimi K3、MiMo 今年都做了同一个选择。"
 cover: "00-cover.png"
 keywords: "多教师蒸馏, OPD, on-policy 蒸馏, 后训练, DeepSeek-V4"
-wechatUrl: ""
+wechatUrl: "https://mp.weixin.qq.com/s/kz8N8jQKnwOD6GUCfdtc6w"
 ---
 
 2026 年 4 月 24 日，DeepSeek-V4 的技术报告里有个动作，做后训练的人看完都坐不住了。

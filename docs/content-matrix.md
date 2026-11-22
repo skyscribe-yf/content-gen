@@ -176,6 +176,24 @@
 
 > 建议：**先写 G1 或 G2 其中一篇**（单篇独立、不标系列号），过线（30 天 >200 读）再补第二篇。三篇一起上是踩恢复期「禁同日同题材 + 系列续集感」两条红线。
 
+### 2.8 Latent 思维链·四篇系列（**2026-11-17 建立，pre-grill**）
+
+> **计划全文**：[`series-plan-2026-11-latent-reasoning.md`](series-plan-2026-11-latent-reasoning.md)
+> 素材源：vault `concepts/大模型原理/LatentReasoning-潜在推理研究全景.md`（41KB，2026-11-16 四度追加：四种机制家族深挖 + 生产验证 + 隐藏思维链对照）+ 后训练/MCTS 三篇 + MiniMax 架构演进 + 潜变量记忆 + DeepSeek V4 系列课。
+> 定位：**不是论文综述，是「思维链正在消失」这条主线下的四篇**——机制（四条路线）→ 生产（谁真上线）→ 监控（窗口关闭）→ 深挖（循环扩展的是什么能力）。先分层防张冠李戴：隐藏思维链（③，显示策略）/ latent reasoning（④–⑦，计算机制）/ neuralese（⑧，概念下限）。
+> ⚠️ 与 5.3 系列同款纪律：**不编号、不写「上篇」**，每篇独立钩子，系列连续性靠文末互链。
+
+| # | 篇 | 主落点（已有素材） | 钩子（草） | 状态 |
+|---|---|---|---|---|
+| L1 | 机制：AI 不写字也能做题 | 四条路线对比表（A pause / B Coconut-CODI / C WeLM HD4 / D Ouro looped）各自 arXiv + 训练成本 | 1.4B 循环 4 次 ≈ Qwen3-4B；3.5B 等效 50B 计算量 | ❌ 未写 · **推荐首篇** |
+| L2 | 生产：唯一敢给你看思维链全文的 | 厂商栈对比 + DeepSeek V4「四家唯一全量可见」+ §9.7 五障碍 + 加价账 | 隐藏思维链是加价项：输出单价 3–5 倍，难 query 烧 1 万+ token | ❌ 未写 |
+| L3 | 监控：思维链消失之后 | 光谱 ①–⑧ 逐档、faithfulness 概念消失、invisible reasoning（2607.22925） | 「隐藏」里本来就有 latent 成分；互链 11-04 intent-formalization | ❌ 未写 |
+| L4 | 深挖：循环扩展的不是存储 | Ouro Capo 结论（bits/parameter 无差异、多跳增强）+ LoopMTP × 线性注意力合流 | 循环加的是「知识操纵」能力，不是「知识存储」 | ❌ 未写 |
+
+⚠️ **两个硬缺口**（开写前必须补，详见计划文档 §5）：① **国产挂载薄**——核心笔记里 DeepSeek V4 只出现在厂商对比表一行，无国产 latent reasoning 一手素材，L2/L4 国产落点待 `article-researcher` 核，核不到就降级禁硬写；② **作者原声为零**——笔记无第一人称判断，每篇 ≥5 处原声槽靠 grill 逼出。
+
+**下一步**：grill 只锁 L1 → 派 `article-researcher` 补核 → outline → `weixin-writer`。排期已占 11-22 / 24 / 26 / 28 20:00（`schedule/pending.json`）。
+
 ## 三、AI中的数学选题库
 
 > 写法要求：高维/高斯二阶模式——普通人一眼好奇的反常识 + 数字 + 为什么；每篇必须有 AI 落点（`docs/theory-practice.md`：理论关联国产模型）。
@@ -382,3 +400,8 @@
   - ② **诚实话术固化**：标题「1536→128 不掉点」的合法性来自 Matryoshka 学习结构，不是 JL 白给——JL 对任意点集 ε=0.1 需 k≈5000（N=10⁵），文中第六节明写这条边界（Azure 官方 <1000 维警告同段）。
   - ③ **修了 hot_articles.py 一个真 bug**：分片 publish-data*.json 的 `publish_info` 已是 dict，脚本只处理 str 直接 TypeError；已兼容 str/dict/None 三态。
   - ④ **待办**：11-08 22:00 作者从草稿箱发布后，回填 frontmatter `wechatUrl`。
+- **2026-11-17：新增「Latent 思维链」四篇系列（pre-grill 计划）**：
+  - ① 新建 [`docs/series-plan-2026-11-latent-reasoning.md`](series-plan-2026-11-latent-reasoning.md)，在第 2.8 节挂表；四篇 = 机制（四条路线：pause / Coconut-CODI / WeLM HD4 / Ouro looped）→ 生产（谁真上线 + DeepSeek V4「四家唯一全量可见」）→ 监控（光谱 ①–⑧、faithfulness 概念消失）→ 深挖（Ouro Capo：循环扩展知识操纵而非存储）。
+  - ② 素材源：vault `concepts/大模型原理/LatentReasoning-潜在推理研究全景.md`（41KB，2026-11-16 四度追加）+ 后训练/MCTS 三篇 + MiniMax 架构演进 + 潜变量记忆 + DeepSeek V4 系列课；「隐藏思维链（③）/ latent reasoning（④–⑦）/ neuralese（⑧）」三分层先行，防张冠李戴。
+  - ③ 排期占 11-22 / 24 / 26 / 28 20:00（`schedule/pending.json`，status=planned，scheduled_publish 已显式登记）；OPD 篇已于 11-16 发布（URL `https://mp.weixin.qq.com/s/kz8N8jQKnwOD6GUCfdtc6w`，标题核验通过；台账 published_date=2026-11-16，slug 保留 11-14 成稿日，与另 3 篇同例），next_publish_date 已修正为 11-18。**作者要求：此后严格两天一篇 20:00，前篇跳票则顺延不加发。**
+  - ④ **两个硬缺口记录在案**：国产挂载薄（DeepSeek V4 仅出现在厂商对比表，L2/L4 国产落点待 researcher 核）、作者原声为零（笔记无第一人称判断，每篇 ≥5 原声槽靠 grill 逼出）。

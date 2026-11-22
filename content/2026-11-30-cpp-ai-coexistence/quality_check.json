@@ -1,0 +1,130 @@
+{
+ "title_checks": [
+  {
+   "text": "一年没写过一行代码",
+   "label": "标题核心反差（Hagins 原话撑标题）"
+  },
+  {
+   "text": "C++",
+   "label": "标题关键词（前 12 字内自然出现）"
+  },
+  {
+   "text": "怎么保证代码不出事",
+   "label": "标题疑问钩子"
+  }
+ ],
+ "body_checks": [
+  {
+   "text": "four separate agents",
+   "label": "四审查员制原话（核心方法）"
+  },
+  {
+   "text": "the room we work inside",
+   "label": "标题即论点（访客变房间）"
+  },
+  {
+   "text": "the input layer to the model",
+   "label": "Daisy 主论点（context window 是输入层）"
+  },
+  {
+   "text": "confuse agents",
+   "label": "老忠告新解释（会困惑人就困惑 agent）"
+  },
+  {
+   "text": "Directly expressing intent helps AI",
+   "label": "Sutter 暗线论点"
+  },
+  {
+   "text": "分歧尚未解决",
+   "label": "Búzios 口径（禁提裁决；作者改稿后措辞同步）"
+  },
+  {
+   "text": "据报道",
+   "label": "DIS 口径（据报道）"
+  },
+  {
+   "text": "OPRA feed handler",
+   "label": "实践证据（没手写一行代码）"
+  }
+ ],
+ "numbers": [
+  "114:12:3",
+  "四十年",
+  "1970 年代",
+  "八年多",
+  "2026 年 3 月 28 日",
+  "2026 年 9 月"
+ ],
+ "terms": [
+  "persona",
+  "agentic loop"
+ ],
+ "extra_terms": [
+  "LSEG/MayStreet",
+  "Claude Code",
+  "WG21",
+  "CppCon 2026",
+  "AI++ 201",
+  "AI++ 101"
+ ],
+ "links": [
+  {
+   "id": "FE4WEuT1-Ozz4uYtvfCG7w",
+   "label": "内链 contracts 暗线唯一出口《60% 的赞成票，为什么救不了 C++26？》（S6 必选）"
+  },
+  {
+   "id": "_QjsrRZ0hfxaepldCt5Lhw",
+   "label": "内链《Rust真的是AI agent时代的最佳语言吗？192个任务辨证看看》（S2）"
+  },
+  {
+   "id": "Y6aPD8t8h2-KCUseKXc0mQ",
+   "label": "内链《Anthropic 实测多智能体强 90%，为什么另一家说千万别建？》（S3）"
+  },
+  {
+   "id": "ljp5ovIFPI3l9rmlGDDZUw",
+   "label": "内链《写代码已经不再是瓶颈，交付依然困难重重，AI Native SDLC能解决吗》（收口）"
+  }
+ ],
+ "banned": [
+  "已裁决",
+  "Búzios 决定",
+  "Búzios 落幕",
+  "Búzios 会议决定",
+  "软件工程系列",
+  "系列第 3 篇",
+  "诊断篇",
+  "落地篇",
+  "上一篇",
+  "PACT",
+  "Fun2spec",
+  "Lahiri",
+  "意图形式化",
+  "12/20",
+  "9/22",
+  "我自己的判断",
+  "苏格拉底",
+  "vault",
+  "笔记"
+ ],
+ "exempt": [
+  "篇幅",
+  "长句"
+ ],
+ "body_min": 1700,
+ "body_max": 3000,
+ "all_max": 3400,
+ "min_images": 4,
+ "slots": [
+  "其实这个演讲并不是一个孤例，翻看cppcon的其他一些主题演讲，整体上对AI的态度已经变成了几乎全盘接受和略显无奈的冷寂。",
+  "联想到最近X上还有一些鼓吹Rust的程序员慢慢回到了 C++，有时候客观冷静的观察和判断，应该比跟风和热潮显得更重要。",
+  "你还在质疑这种额外加一个身份提示的prompts是否真的能产生作用的时候，别人已经将那些你看不上的奇技淫巧，系统化地打磨来提高代码review的效率。",
+  "大家逐渐取得的共识是，小而专精的agent往往能收到奇效。",
+  "这里没说的其实是，用agent来审查代码真的很慢，比写代码要慢得多，生成是非常简单了，验证可能比生成要重要的多。",
+  "其实在上一场 talk 里，他直接完整搭出来了一个 OPRA feed handler，没手写一行代码。",
+  "听起来感觉惊讶吗？其实毫不意外，现在的大模型是基于概率的，困惑读越高的场景，模型表现的越差。反而是当你把可能的输出分布限制的越紧的时候，输出的确定性越大，甚至到不确定性可以忽略的地步，你就赢了。",
+  "其实矛盾的地方还是在于，如何让意图的表达更少有歧义，这样人类程序员和Agent程序员都能更确定地完成高层意图。",
+  "前面文章的评论区里，还是有不少古法的程序员对AI coding嗤之以鼻，看完顶级社区大佬们的分享，你觉得自己的想法会被改变吗，还是会更加坚持自己的观点？"
+ ],
+ "slots_note": "2026-11-22 作者 VS Code 改稿后逐字登记：9 处原声全部在场（S1/S2/S3×3/S4/S5/S6/文末互动问），占位符已清零；含作者对开头与过渡的整体改写。终检逐字比对用（容忍润色，相似度 ≥0.9 判在场）。",
+ "exempt_note": "2026-11-21 grill 作者原话「字数不用管！」——篇幅口头豁免；作者 11-22 改稿后实测正文 2703 CJK / 全文 2850 CJK，body_max/all_max 已按改稿后体量校准。「长句」豁免：verbatim 英文引文与作者原声句按 。！？ 拆句会被整句计长，禁拆。"
+}

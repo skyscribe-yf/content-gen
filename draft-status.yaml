@@ -2127,9 +2127,11 @@ articles:
 - slug: 2026-11-14-opd-multi-teacher-distillation
   title: 换个更强的老师，模型训练为什么反而崩溃了
   series: 开源大模型技术揭秘
-  status: draft_saved
-  published_date: null
-  wechat_url: null
+  status: published
+  published_date: '2026-11-16'
+  wechat_url: https://mp.weixin.qq.com/s/kz8N8jQKnwOD6GUCfdtc6w
+  cover_media_id: kOcXH4SytIYVIpYksTGfHh7HeaVkC_1RUTxn7mb8l7obnnCUTGQGnEtN0_z1re3I
+  draft_media_id: kOcXH4SytIYVIpYksTGfHk9N-FMC4fCkVbzm4S9XYhWuXncW4PHFLW86EVhZQl9y
   files:
     weixin: true
     outline: true
@@ -2143,7 +2145,9 @@ articles:
 
     📦 存草稿箱（2026-11-08）：baoyu-post-to-wechat grace+blue remote-api（vps-us 隧道）成功，media_id kOcXH4SytIYVIpYksTGfHk9N-FMC4fCkVbzm4S9XYhWuXncW4PHFLW86EVhZQl9y。终检 PASS（原声 9/9、封面 23.4%、内链 16、链接全溯源、篇幅作者豁免）。待作者 22:00 后台勾选合集并群发；发布后回拉 URL 写 frontmatter wechatUrl + 跑 --published。
 
-    📅 改排（2026-11-14 作者拍板）：由 11-14 22:00 档**改排 2026-11-16**（作者原话「OPD 这个，排到 11/16 了」）；draft-status summary 的 next_publish_date 已同步 11-16，草稿箱稿不动、发布时直接用。'
+    📅 改排（2026-11-14 作者拍板）：由 11-14 22:00 档**改排 2026-11-16**（作者原话「OPD 这个，排到 11/16 了」）；draft-status summary 的 next_publish_date 已同步 11-16，草稿箱稿不动、发布时直接用。
+
+    2026-11-17 回填：作者确认实际发布于 2026-11-16（非 11-17），URL https://mp.weixin.qq.com/s/kz8N8jQKnwOD6GUCfdtc6w，verify_published_urls 标题核验通过；slug 保留 11-14 成稿日（台账另有 3 篇同例）。'
 - slug: 2026-11-14-国产大模型GB300之谜
   title: 国产大模型真是用禁运的GB300训练的吗？
   series: 数学直觉
@@ -2166,18 +2170,83 @@ articles:
   published_date: null
   scheduled_publish: 2026-11-18 20:00
   wechat_url: null
-  cover_media_id: kOcXH4SytIYVIpYksTGfHoR3gQ82nl-9LMNKgaRVh9p0W3D5SQqp4GjsEQh3hJLw
+  cover_media_id: kOcXH4SytIYVIpYksTGfHpS0t4iE6-bmKYu7TB1SpGn6d7aMbDEZuABcDLk3F734
   draft_media_id: kOcXH4SytIYVIpYksTGfHmhrXHnO2a2hShMwsj9NBr4yg3oQ8q81SyZRNW8Uuwoq
+- slug: 2026-11-20-memory-curse
+  title: 给 Agent 加记忆，合作反而崩了？
+  series: AI Agent 工程
+  status: draft_saved
+  published_date: null
+  scheduled_publish: 2026-11-20 20:00
+  wechat_url: null
+  cover_media_id: kOcXH4SytIYVIpYksTGfHsmmUYxkck9-kh1r0BDYAXA7HkKWpbaQroS-EPSeg-fg
+  draft_media_id: kOcXH4SytIYVIpYksTGfHqQKPPftG3VriJNIvAHOLXr2B4GnR5B1Bs3e1NyTJw70
+- slug: 2026-11-22-latent-reasoning-four-routes
+  title: 加入100个dummy token，算术能力飞涨10.7分：AI思维链正在悄然发生着变化
+  series: Latent 思维链
+  status: draft_saved
+  published_date: null
+  scheduled_publish: 2026-11-22 20:00
+  wechat_url: null
+  cover_media_id: kOcXH4SytIYVIpYksTGfHgFaUUcSdEGK38Ygg1-FuH4QVBdMUv_ZKtnHFF2L19Bc
+  draft_media_id: kOcXH4SytIYVIpYksTGfHjt8e9HZqT4wL4gk-rGQiW5YUdPgvMROo41dtt6yXRmo
+  old_media_id: kOcXH4SytIYVIpYksTGfHr89qM6A-kZlEICe7h016jZh_Y54bPhz98xfJWhHROBd
+  notes: '2026-11-18 存草稿箱（remote-api vps-us，grace+blue）：media_id kOcXH4SytIYVIpYksTGfHr89qM6A-kZlEICe7h016jZh_Y54bPhz98xfJWhHROBd；终检 PASS（原声 7/7 逐字在场、正文 2076 字、封面 23.1%、8 链全溯源）；作者已终审（槽4 改自己的措辞，其余 6 槽确认保留）；修复作者改稿误删的 1 处链接首字母 h（ttps→https，同 URL 在参考资料节有正确副本，非内容改动）。标题用无「思维链」关键词版（作者审阅后保留）。
+
+    2026-11-21 作者大幅改写后复审并重存草稿（remote-api vps-us，grace+blue）：media_id kOcXH4SytIYVIpYksTGfHjt8e9HZqT4wL4gk-rGQiW5YUdPgvMROo41dtt6yXRmo（旧稿 11-18 版 kOcXH4SytIYVIpYksTGfHr89qM6A-kZlEICe7h016jZh_Y54bPhz98xfJWhHROBd 仍在箱内，需作者后台手动删）。事实核对：主论文 Table 1/负面结果原话/Opus 4.5 隐藏约束/WeLM(48作者,n=4,九基准,余弦0.987→0.637)/Coconut/CODI(3.1×)/Ouro 7.7T/四家定价(OpenAI+Anthropic 5×、DeepSeek峰时3–4×、Gemini 3.5 Flash 实价$1.50/$9.00=6×)/o1引文/The Information+Pachocki原话 全部联网核实。修正：Gemini价格($0.30/$5→$1.50/$9.00)、论文标题补全、Pachocki引文误标(larger core×few iterations→limited the extent...)、WeLM探针(线性分类器→直接读隐状态)、WeLM作者47→48、今年年初→2024–2025年；错字/病句/中英文边界约60处；参考资料补8组URL。两处授权改写：投毒段改按已核实机制(thinking signature+ANTI_DISTILLATION_CC假工具注入)、Astra信源归准(更短CoT归9月系统卡、recurrent depth归The Information)。终检10项未过(原声2/7、3个长节缺H3、19处超60字长句、缺自报口径限定句、篇幅3058/3438超口径)均由作者改写产生，作者2026-11-21拍板『不修改，就这样』，按规则未过项由作者担责后存草稿。'
+- slug: 2026-11-24-hidden-cot-price-tag
+  title: 唯一敢给你看思维链全文的旗舰模型，凭什么
+  series: Latent 思维链
+  status: planned
+  published_date: null
+  scheduled_publish: 2026-11-24 20:00
+  wechat_url: null
+- slug: 2026-11-26-cot-monitor-window
+  title: AI 不写字思考之后，我们还怎么知道它在想什么
+  series: Latent 思维链
+  status: planned
+  published_date: null
+  scheduled_publish: 2026-11-30 20:00
+  wechat_url: null
+- slug: 2026-11-26-diffusion-language-model
+  title: AI 写字还要逐字来？扩散模型已经整段抠了
+  series: null
+  status: draft_saved
+  published_date: null
+  scheduled_publish: 2026-11-26 20:00
+  wechat_url: null
+  cover_media_id: kOcXH4SytIYVIpYksTGfHjSc3GMUu3IC84bPTdRK9Gsho9-VfoPS-ovEOZcE3NJh
+  draft_media_id: kOcXH4SytIYVIpYksTGfHt95ZQqJ6-7mwvz4g7wIQHbi5sOZmgsNsSr28LRmd7Xu
+- slug: 2026-11-28-loop-not-memory
+  title: 不加参数，循环四次：多出来的推理能力从哪来
+  series: Latent 思维链
+  status: planned
+  published_date: null
+  scheduled_publish: 2026-12-02 20:00
+  wechat_url: null
+- slug: 2026-11-30-cpp-ai-coexistence
+  title: 一年没写过一行代码的 C++ 老手，怎么保证代码不出事
+  series: 软件工程
+  status: draft_saved
+  published_date: null
+  scheduled_publish: 2026-12-04 20:00
+  wechat_url: null
+  cover_media_id: kOcXH4SytIYVIpYksTGfHiOswGmJcKhZ71z_eZpW7zKkecLy3IKT_yZLZK8qZ72i
+  draft_media_id: kOcXH4SytIYVIpYksTGfHsjda4tdj_JrkrelDMYdNEubry618UcIRLi4zryW76nN
 summary:
-  total: 126
+  total: 133
   by_status:
-    published: 124
-    draft_saved: 2
+    published: 125
+    draft_saved: 5
+    planned: 3
   drafting_queue: []
   ready_queue: []
   scheduled_queue: []
-  planned_queue: []
-  next_publish_date: '2026-11-16'
+  planned_queue:
+  - 2026-11-24-hidden-cot-price-tag
+  - 2026-11-26-cot-monitor-window
+  - 2026-11-28-loop-not-memory
+  next_publish_date: '2026-11-18'
 plan_notes:
 - 2026-11-07 写作规则变更（作者口径）：**尾部不再放「下一篇」硬性预告**（改为有空再写，无排期就不写，禁空头预告），**也不再放「📖 合集链接 + 箭头链」合集导航**——合集聚合改由后台发布时勾选合集完成，正文不列篇目。已同步 6 处：`AGENTS.md`（尾部惯例 + 尾部结构示例 + 发布前最终检查 9 项）、`docs/pre-publish-final-check.md`（第 6/7/9 节重写 + 清单速览 row 6/7/9）、`docs/wechat-ops.md`（文末引导模板改三段式，旧模板标废止）、`docs/wechat-topic-tags.md`（示例去掉 📖 行）、`docs/wechat-menu.md`（合集 URL 清单改为菜单配置用，不再往正文贴）、`docs/article-quality-check.md`（尾部边界不再依赖 📖，提醒新文脚本删掉「下一篇预告在位」断言）。历史已发文章不回头改。
 - 2026-11-07 对账（作者一次供链 3 篇）：① **2026-11-04-intent-formalization**（《让 AI 补测试，它为什么把 bug 当成标准答案？》，后台发布版标题）https://mp.weixin.qq.com/s/_7aP6jaNXZU0NSQ1UcfMWA —— status draft_saved→published、published_date 2026-11-04、wechat_url + frontmatter wechatUrl 三处同步；标题按后台 msg_title 把「写成」改「当成」（台账 + frontmatter 两处，outline/.grill 等历史规划物不动）。② **2026-11-05-self-play-curriculum**（《AI 自己出题自己考：零人类数据，为什么反而更强？》）https://mp.weixin.qq.com/s/ZiQlEtB-vL5nzJo7ye4RvA —— 本篇此前**从未入台账**（成稿会话未建条），本次补建条目并回填 frontmatter wechatUrl（原缺该字段）；media_id / cover_media_id 取 outline.md 存箱记录，目录无 quality_check.py 故 files.quality_check=false。③ 2026-11-02-cpp26-contracts-vote 供链与台账既有 wechat_url 逐字一致，无需改动。程序化核验：verify_published_urls.py 单篇三条全部抓到 msg_title——self-play / contracts 与台账逐字一致，intent-formalization 为唯一漂移（已修正）；og:description / ct 核验欠账（脚本只比标题）。summary 重算 total 119→120 / published 118→120 / draft_saved 1→0，ready_queue 与 scheduled_queue 仍为空、next_publish_date 保持 null。④ **三篇逐个发布后回拉**（作者要求「草稿箱里的微调也要覆盖回来」）：mp 页面 `js_content` → 块级 diff（文本块 + 段落边界），把作者线上改稿全部回写到各篇 weixin.md，带内链的改写用台账短链回插（AlphaGo 420EHN、机械臂 boIPBl、信息熵 BkGWzK、10-31 post-training HG2yIC）——三篇 mp 链接全溯源（cpp26 7 条 / intent 10 条 / self-play 9 条）；回拉后块级 diff 仅剩「图片占位 + 热门榜硬换行 + 参考资料逐条拆分」三类渲染格式差异，正文 0 差异。原声槽按线上重录（cpp26 槽 6、intent 槽 1/4/7，intent norm 增加「内链降为纯文字」以兼容作者后加锚点）；两篇 quality_check 残留项均为作者改稿造成（cpp26：长句 1 + 作者删掉「下一篇」预告；intent：合并段 1），均属成稿期门禁，发布后不追。⚠️ self-play 线上「解题方法会」（原「解题方秒会」）疑为作者笔误，已按原样回写待作者定夺。
