@@ -1,5 +1,5 @@
 ---
-title: "给 Agent 加记忆，合作反而崩了？"
+title: "给 Agent 多加点记忆，它们为何不再有合作精神？"
 author: "数解AI"
 date: "2026-11-20"
 type: "原理篇"
@@ -7,12 +7,12 @@ series: "AI Agent 工程"
 digest: "给 Agent 塞进 80 轮历史记忆，信任博弈合作率从 92.7% 暴跌至 7.3%。真正作祟的不是偏执上升，而是前瞻意图被旧账一点点磨掉。"
 cover: "00-cover.png"
 keywords: "记忆诅咒, Agent 记忆, 前瞻意图, 多智能体, 合作"
-wechatUrl: ""
+wechatUrl: "https://mp.weixin.qq.com/s/Q7ysx_uF3lykJSs3kVaYSg"
 ---
 
-2026 年 10 月下旬，学界不约而同掀起了一轮针对 Agent 记忆的「审计潮」。上海交大的 Zedong Peng 在 MemoryTax 里算了一笔经济账，直言记忆系统往往只是给弱模型打的昂贵补丁——主流框架 Mem0 只有在 GPT-4o-mini 上能赢过直接塞完整上下文，且建库一次的开销比跑完整个任务还高。几乎同一周，另一篇论文 The Value of Memory 干脆把记忆折算成了「避免的任务损失」，在 3,075 道测试题里重新衡量它到底值不值钱。
+2026 年 10 月下旬，学界不约而同掀起了一轮针对 Agent 记忆的「审计潮」。上海交大的 Zedong Peng 在 MemoryTax 里算了一笔经济账，直言记忆系统往往只是给弱模型打的昂贵补丁。主流框架 Mem0 只有在 GPT-4o-mini 上能赢过直接塞完整上下文，且建库一次的开销比跑完整个任务还高。几乎同一周，另一篇论文 The Value of Memory 干脆把记忆折算成了「避免的任务损失」，在 3,075 道测试题里重新衡量它到底值不值钱。
 
-但早在今年 5 月，另一群研究者捅出了一件更反直觉的事：记忆不仅可能不划算，甚至会主动破坏协作。在他们的多智能体博弈实验里，当模型在 80 轮长记忆里开启推理后，合作率最多能差出 93.1 个百分点。
+但早在今年 5 月，另一群研究者就捅出了一件更反直觉的事：记忆不仅可能不划算，甚至会主动破坏协作。在他们的多智能体博弈实验里，当模型在 80 轮长记忆里开启推理后，合作率最多能差出 93.1 个百分点。
 
 这两年做 Agent 工程，大家几乎默认了一条政治正确：上下文越长越好，记忆库越厚越强，恨不得把用户三年前的废话都塞进向量库里供着。结果现在两波论文前后脚打脸——一边算账说你花冤枉钱买了劣质补丁，另一边直接告诉你，记性太好反而会把好好干活的团队聊崩。
 
@@ -82,7 +82,7 @@ wechatUrl: ""
 
 ## 论文的滑窗，不是你的记忆
 
-读到这里，如果你正准备冲进生产环境，把自家 Agent 的记忆窗口一刀砍到 5 轮以内，先慢一步。这篇论文在工程落地层面，其实藏着一个巨大的认知断裂。
+读到这里，如果你正准备冲进生产环境，把自家 Agent 的记忆窗口一刀砍到 5 轮以内，还是劝你先放慢脚步。这篇论文在工程落地层面，其实藏着一个巨大的认知断裂。
 
 我们在[《给 Agent 装了记忆，为什么它还是不懂我的项目？》](https://mp.weixin.qq.com/s/4z-PvTBKv8yBohgdE8-itQ)里聊过，生产级系统的记忆根本不是把几百轮对话一股脑塞进提示词。论文里的 HL 本质上是一条扁平的「工作记忆滑动窗口」，80 轮加起来才 2,660 token，它把短期上下文的窗口长度，和长期记忆库的存储容量混为一谈了。就像我们在[《Context Rot 是真的吗？上下文还没满，模型为什么就先认输了》](https://mp.weixin.qq.com/s/6bdNSe1hiGFUvL1qV_ICUw)中看到的，模型在长上下文里的注意力衰减与行为偏移，和外部向量库的召回机制完全是两套逻辑。
 
@@ -96,7 +96,7 @@ wechatUrl: ""
 
 ## 尾声：被对齐放大的诅咒
 
-故事还没完。就在 2026 年 10 月 16 日，同一批作者又放出了一篇后续论文 CoopShift。这一次，他们把 7 个模型家族拉进 7 种社会困境里对比，结果发现了一个更让人脊背发凉的现象：在 7 个模型家族里，有 6 个经过后训练（Post-training）的版本，记忆诅咒的跌幅比原始 Base 模型还要狠——而放大这种负面效应的头号推手，正是我们每天都在做的监督微调（SFT）。
+到这里，故事还没完。就在 2026 年 10 月 16 日，同一批作者又放出了一篇后续论文 CoopShift。这一次，他们把 7 个模型家族拉进 7 种社会困境里对比，结果发现了一个更让人脊背发凉的现象：在 7 个模型家族里，有 6 个经过后训练（Post-training）的版本，记忆诅咒的跌幅比原始 Base 模型还要狠——而放大这种负面效应的头号推手，正是我们每天都在做的监督微调（SFT）。
 
 当然，这里得留一句严谨的保险：目前这一系列实验全部建立在「竞争性社会困境」和「同构自博弈」的假设之上。在像[《Anthropic 实测多智能体强 90%，为什么另一家说千万别建？》](https://mp.weixin.qq.com/s/Y6aPD8t8h2-KCUseKXc0mQ)讨论的那类明确分工、目标一致的纯协作任务里，这种记忆退化是否同样成立，作者在论文里也坦承是尚未覆盖的盲点。
 
@@ -128,12 +128,12 @@ wechatUrl: ""
 
 **参考资料与数字溯源**
 
-The Memory Curse: Extended Interaction History Erodes Cooperation in LLM Agents（arXiv:2605.08060v1，2026-05-08，CMU / 密歇根大学 / 哈佛大学 Conitzer 团队，双盲审稿中）。数据来源：正文 §4.3、§4.5、§4.6 及附录 Table 7、Table 12、Appendix G/H/I（检索日期：2026-11-15）。
+1. The Memory Curse: Extended Interaction History Erodes Cooperation in LLM Agents（arXiv:2605.08060v1，2026-05-08，CMU / 密歇根大学 / 哈佛大学 Conitzer 团队，双盲审稿中）。数据来源：正文 §4.3、§4.5、§4.6 及附录 Table 7、Table 12、Appendix G/H/I（检索日期：2026-11-15）。
 
-CoopShift: Post-Training Amplifies the Memory Curse in LLM Cooperation（arXiv:2610.24086v1，2026-10-16，同研究组后续工作）。数据来源：论文摘要与实验设定汇总（检索日期：2026-11-15）。
+2. CoopShift: Post-Training Amplifies the Memory Curse in LLM Cooperation（arXiv:2610.24086v1，2026-10-16，同研究组后续工作）。数据来源：论文摘要与实验设定汇总（检索日期：2026-11-15）。
 
-MemoryTax: The Bitter Lesson of Agent Memory（arXiv:2610.29823，2026-10-21，上海交通大学 Zedong Peng 独作；摘要原话口径「Agent memory is a costly patch for a weak model」）。数据来源：arXiv 摘要页及 LoCoMo 基准实测结论（检索日期：2026-11-15）。
+3. MemoryTax: The Bitter Lesson of Agent Memory（arXiv:2610.29823，2026-10-21，上海交通大学 Zedong Peng 独作；摘要原话口径「Agent memory is a costly patch for a weak model」）。数据来源：arXiv 摘要页及 LoCoMo 基准实测结论（检索日期：2026-11-15）。
 
-The Value of Memory in Language Agents（arXiv:2610.31303，v1 2026-10-22 / v4 2026-11-10；机构据论文通信 email 域推断，未逐一核）。数据来源：论文核心框架与 LoCoMo / LongMemEval-S / PersonaMem 评测统计（检索日期：2026-11-15）。
+4. The Value of Memory in Language Agents（arXiv:2610.31303，v1 2026-10-22 / v4 2026-11-10；机构据论文通信 email 域推断，未逐一核）。数据来源：论文核心框架与 LoCoMo / LongMemEval-S / PersonaMem 评测统计（检索日期：2026-11-15）。
 
-#记忆诅咒 #Agent 记忆 #多智能体 #AI Agent 工程 #数解AI
+#记忆诅咒 #Agent 记忆 #多智能体 #AI Agent #数解AI

@@ -2,7 +2,7 @@
 
 Date: 2026-11-21
 Slug: cpp-ai-coexistence
-发布目标: 2026-11-30 20:00（每 2 天 1 篇纪律；11-28 后第一个双日档，队列无占用无冲突；已登记 schedule：drafting）
+发布目标: 2026-11-24 20:00（每 2 天 1 篇纪律；11-22 后第一个双日档，队列无占用无冲突；作者 2026-11-22 已用草稿链接指定本篇上 11-24 档，hidden-cot-price-tag（L2）顺延至 11-28；已登记 schedule：draft_saved）
 
 ## 定位
 
@@ -77,7 +77,7 @@ Slug: cpp-ai-coexistence
 - 【原声槽 7】
 - 【原声槽 8：结尾互动问】
 
-**尾部**：🔥 热门文章区（`scripts/hot_articles.py --md --cited content/2026-11-30-cpp-ai-coexistence/weixin.md` 生成，禁手写，行间不留空行、行尾两空格）+ 内链 4-5 篇（取 brief 第五节：11-02 contracts 篇必选 / 微软 Go 重写 TS 他用 C++ 写一遍 / Anthropic 多智能体之争 / Rust 192 任务 / AI Native SDLC 交付篇，全部微信 URL）+ 话题标签 3-5 个（#软件工程 #CppCon #AI编程 #数解AI 方向）
+**尾部**：🔥 热门文章区（`scripts/hot_articles.py --md --cited content/2026-11-24-cpp-ai-coexistence/weixin.md` 生成，禁手写，行间不留空行、行尾两空格）+ 内链 4-5 篇（取 brief 第五节：11-02 contracts 篇必选 / 微软 Go 重写 TS 他用 C++ 写一遍 / Anthropic 多智能体之争 / Rust 192 任务 / AI Native SDLC 交付篇，全部微信 URL）+ 话题标签 3-5 个（#软件工程 #CppCon #AI编程 #数解AI 方向）
 
 ## 配图
 
@@ -99,8 +99,8 @@ Slug: cpp-ai-coexistence
 - [ ] 原声 ≥5 进稿（终检门禁：≥5 逐字在场 + `【作者填入】`清零；第一轮质检 `--skip-voice` 不管）；原声句禁 ★ 前缀、禁 blockquote、按正文段落直排
 - [ ] 结尾互动问 30 秒可答（质检 §16）；文末问题不禁系列导航
 - [ ] 尾部热门文章 `hot_articles.py --md --cited` 生成 + `--self-check`；内链全部用微信 URL；话题标签 3-5 个
-- [ ] 发布四步：`bash scripts/precheck_and_open.sh content/2026-11-30-cpp-ai-coexistence --skip-voice` → 作者 VS Code 改稿填原声 → `--no-open` 终检 → `baoyu-post-to-wechat`（grace+blue，remote-api）存草稿箱
-- [ ] 档期 2026-11-30 20:00（每 2 天 1 篇纪律）；目录名 = 发布日期；发布后回填 frontmatter `wechatUrl`
+- [ ] 发布四步：`bash scripts/precheck_and_open.sh content/2026-11-24-cpp-ai-coexistence --skip-voice` → 作者 VS Code 改稿填原声 → `--no-open` 终检 → `baoyu-post-to-wechat`（grace+blue，remote-api）存草稿箱
+- [ ] 档期 2026-11-24 20:00（每 2 天 1 篇纪律）；目录名 = 发布日期；发布后回填 frontmatter `wechatUrl`
 
 ## 作者原声槽
 
