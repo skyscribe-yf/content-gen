@@ -20,6 +20,10 @@ def convert(markdown_path: str, theme: str = "scienceBlue", code_theme: str = "a
     proxy = os.environ.get("MDNICE_PROXY")
     if proxy:
         options["proxy"] = {"server": proxy}
+    # 2026-11-15：mdnice 包默认首选镜像 xiaoqiangclub.github.io/md/ 已 404（Playwright 等
+    # .CodeMirror 白等 60 秒超时才走备用），把 wechat-api.ts 的 120s 子进程上限耗光导致存稿失败。
+    # MDNICE_URL 环境变量可指定首选镜像；不设则用已验证可用的 whaoa 备用址。
+    options["editor_url"] = os.environ.get("MDNICE_URL", "https://whaoa.github.io/markdown-nice/")
     html = to_wechat(markdown_path, **options)
     return html
 
