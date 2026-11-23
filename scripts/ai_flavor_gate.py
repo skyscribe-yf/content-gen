@@ -90,7 +90,13 @@ def clean_body(text: str) -> str:
 
 
 def urls(text: str):
-    return sorted(set(re.findall(r"https?://[^\s)\]\"']+", body(text))))
+    # 两条口径都要算，否则「格式变、URL 没变」会被误判成内容变动：
+    # ① 裸 URL 须排除全角括号与反引号（只排半角 ) 会把后接中文/闭引号一起吃进去，2026-11-22 两度实踩）
+    # ② markdown 链接里的 URL（body() 已把链接还原成标题，需单独抽）
+    b = body(text)
+    raw = re.findall(r"https?://[^\s\)\]\"'`\u3001\u3002\uff09\uff5d\u300b\uff60]+", b)
+    linked = re.findall(r"\]\(\s*(https?://[^)\s]+)\s*\)", text)
+    return sorted(set(raw) | set(linked))
 
 
 def formula_counts(text: str):
