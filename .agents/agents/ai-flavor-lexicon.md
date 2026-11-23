@@ -8,7 +8,7 @@ systemPromptMode: replace
 inheritProjectContext: true
 inheritSkills: false
 defaultContext: fresh
-acceptanceRole: reviewer
+acceptanceRole: read-only
 async: true
 timeoutMs: 900000
 ---
