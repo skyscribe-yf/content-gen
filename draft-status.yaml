@@ -2204,20 +2204,6 @@ articles:
   cover_media_id: kOcXH4SytIYVIpYksTGfHiOswGmJcKhZ71z_eZpW7zKkecLy3IKT_yZLZK8qZ72i
   draft_media_id: kOcXH4SytIYVIpYksTGfHsjda4tdj_JrkrelDMYdNEubry618UcIRLi4zryW76nN
   files: {}
-- slug: 2026-11-24-hidden-cot-price-tag
-  title: 唯一敢给你看思维链全文的旗舰模型，凭什么
-  series: Latent 思维链
-  status: planned
-  published_date: null
-  scheduled_publish: 2026-11-28 20:00
-  wechat_url: null
-- slug: 2026-11-26-cot-monitor-window
-  title: AI 不写字思考之后，我们还怎么知道它在想什么
-  series: Latent 思维链
-  status: planned
-  published_date: null
-  scheduled_publish: 2026-11-30 20:00
-  wechat_url: null
 - slug: 2026-11-26-diffusion-language-model
   title: AI 写字还要逐字来？扩散模型已经整段抠了
   series: null
@@ -2227,7 +2213,21 @@ articles:
   wechat_url: null
   cover_media_id: kOcXH4SytIYVIpYksTGfHjSc3GMUu3IC84bPTdRK9Gsho9-VfoPS-ovEOZcE3NJh
   draft_media_id: kOcXH4SytIYVIpYksTGfHt95ZQqJ6-7mwvz4g7wIQHbi5sOZmgsNsSr28LRmd7Xu
-- slug: 2026-11-28-loop-not-memory
+- slug: 2026-11-28-hidden-cot-price-tag
+  title: AI 把思维链藏起来，为什么反而收你 5 倍的钱？
+  series: Latent 思维链
+  status: drafting
+  published_date: null
+  scheduled_publish: 2026-11-28 20:00
+  wechat_url: null
+- slug: 2026-11-30-cot-monitor-window
+  title: AI 不写字思考之后，我们还怎么知道它在想什么
+  series: Latent 思维链
+  status: planned
+  published_date: null
+  scheduled_publish: 2026-11-30 20:00
+  wechat_url: null
+- slug: 2026-12-02-loop-not-memory
   title: 不加参数，循环四次：多出来的推理能力从哪来
   series: Latent 思维链
   status: planned
@@ -2239,14 +2239,15 @@ summary:
   by_status:
     published: 127
     draft_saved: 3
-    planned: 3
-  drafting_queue: []
+    drafting: 1
+    planned: 2
+  drafting_queue:
+  - 2026-11-28-hidden-cot-price-tag
   ready_queue: []
   scheduled_queue: []
   planned_queue:
-  - 2026-11-24-hidden-cot-price-tag
-  - 2026-11-26-cot-monitor-window
-  - 2026-11-28-loop-not-memory
+  - 2026-11-30-cot-monitor-window
+  - 2026-12-02-loop-not-memory
   next_publish_date: '2026-11-22'
 plan_notes:
 - 2026-11-07 写作规则变更（作者口径）：**尾部不再放「下一篇」硬性预告**（改为有空再写，无排期就不写，禁空头预告），**也不再放「📖 合集链接 + 箭头链」合集导航**——合集聚合改由后台发布时勾选合集完成，正文不列篇目。已同步 6 处：`AGENTS.md`（尾部惯例 + 尾部结构示例 + 发布前最终检查 9 项）、`docs/pre-publish-final-check.md`（第 6/7/9 节重写 + 清单速览 row 6/7/9）、`docs/wechat-ops.md`（文末引导模板改三段式，旧模板标废止）、`docs/wechat-topic-tags.md`（示例去掉 📖 行）、`docs/wechat-menu.md`（合集 URL 清单改为菜单配置用，不再往正文贴）、`docs/article-quality-check.md`（尾部边界不再依赖 📖，提醒新文脚本删掉「下一篇预告在位」断言）。历史已发文章不回头改。

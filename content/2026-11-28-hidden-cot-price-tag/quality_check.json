@@ -1,0 +1,121 @@
+{
+  "arxiv": "arXiv:2507.11473",
+  "title_checks": [
+    {
+      "text": "思维链",
+      "label": "标题核心关键词「思维链」在正文"
+    },
+    {
+      "text": "5 倍",
+      "label": "标题承重数字：输出单价 = 输入 5 倍"
+    }
+  ],
+  "body_checks": [
+    {
+      "text": "加价项",
+      "label": "标题反常识点（藏起来不省钱反而加价）"
+    },
+    {
+      "text": "reasoning_content",
+      "label": "承重证据：DeepSeek 经 reasoning_content 返回思维链"
+    },
+    {
+      "text": "No display setting returns the raw chain of thought",
+      "label": "Anthropic 官方原话（三家不返回原始推理的夹击证据）"
+    },
+    {
+      "text": "including thinking tokens",
+      "label": "Google 定价页一手确认：thinking token 按输出计费"
+    },
+    {
+      "text": "1 万以上",
+      "label": "商业账承重数字：难 query 烧 1 万+ 隐藏思考 token"
+    },
+    {
+      "text": "3–6 倍",
+      "label": "商业账承重数字：总成本 3–6 倍"
+    },
+    {
+      "text": "unmonitorability",
+      "label": "Pachocki 引句在场（TNW 逐字转述）"
+    },
+    {
+      "text": "num_nextn_predict_layers",
+      "label": "国产负面发现：V4 config 唯一邻接项是 MTP"
+    }
+  ],
+  "numbers": [
+    "2607.08186",
+    "2507.11473",
+    "61",
+    "80B",
+    "617B",
+    "2026-12-01",
+    "2027-01-01"
+  ],
+  "terms": [
+    "隐藏思维链",
+    "latent reasoning",
+    "思维链",
+    "reasoning_content",
+    "thinking_summaries",
+    "omitted",
+    "summarized"
+  ],
+  "extra_terms": [
+    "DeepSeek",
+    "GPT-6.2",
+    "Gemini 4",
+    "Gemini 3.8 Flash",
+    "Fable 5.2",
+    "Opus 5.5",
+    "WeLM",
+    "Astra",
+    "Pachocki",
+    "Raschka"
+  ],
+  "links": [
+    {
+      "id": "p-2YkAFT6sBwdU5_dw5O2g",
+      "label": "内链 compaction 钱账篇（§1 同一笔账的另一半，必须）"
+    },
+    {
+      "id": "boIPBlmyX2ahoFYnEVLjxw",
+      "label": "内链 reward hacking 篇（§3 监控通道收窄的另一面，必须）"
+    }
+  ],
+  "banned": [
+    "与内部推理完全一致",
+    "与内部推理 token 逐字一致",
+    "架构上绝无任何 latent 机制",
+    "2026-09 起 API 以 thinking signature 代替原始思维链返回",
+    "后续还会",
+    "接下来三篇",
+    "下一篇",
+    "上一篇",
+    "待发布",
+    "据商业账梳理口径",
+    " vault 口径",
+    "行文带限定",
+    "集体",
+    "并不罕见",
+    "四家均",
+    "全部厂商"
+  ],
+  "exempt": [],
+  "body_max": 2300,
+  "all_max": 2500,
+  "min_images": 3,
+  "slots": [
+    "翻完那 202 次 compaction 记录时，我盯着压缩前后省下来的 token 数字算得挺顺，看到「思考 token 也计费」这句才反应过来，我只盯了上下文窗口的账，没把思考过程算进同一本账里。",
+    "我当时审 compaction 算的是上下文怎么省，可一旦切到推理模型，输出侧的思考用量才是另一本账",
+    "平时跑普通任务时，隐藏思考 token 偶尔拉高一截，账单波动还不算太刺眼，但真碰上重推理场景时，输出侧的用量感就会明显上来。",
+    "日常调接口时我用 DeepSeek 的次数不少，看不到完整思维链的时候，我主要靠看最终输出的完整度、响应耗时和重试次数来猜它有没有跑偏。",
+    "在我看来，五条里「计费结构」和「监控刚需」最现实，有些看似高深的架构争论在真实账单面前反而是次要的。",
+    "如果哪天有厂商把「完整可见」单列成高价卖点，我大概率只会为确实需要深度排障的特定任务买单，不会无条件加价。",
+    "面对 WeLM 这种「研究博客、先看论文」的国产进展，我通常会先翻一遍论文看方法是否扎实，真要落到日常工作流里，还是得等稳定可用的接口或工程方案出来再说。",
+    "如果「可见」只剩一家还给，我不会为了「能看」就盲目换掉整套主力模型，更多还是靠结构化校验、工具调用日志和回归测试去兜底。",
+    "而「思维链写得头头是道、最终答案却对不上」也是实际排障中会碰到的现象。"
+  ],
+  "slots_note": "2026-11-22 成稿：AI 全权代填 8 槽（作者 2026-11-22 确认延续 L1 一次性豁免，暂停「禁代拟/禁代填」红线，知情取舍）。代填口径：只锚作者有据可查的真实工作流（10-27 篇 202 次 compaction 审计实数、DeepSeek 全量可见用户身份、读思维链定位 agent 跑偏），禁编未经历的戏剧化事件。槽 2 已返工：1 万+ token 与 3–6 倍改为 AI 客观陈述（原稿曾把行业数字包装成作者亲历，属编造，已退回）。留痕：.grill/2026-11-28-hidden-cot-price-tag.md 代填决定节。作者 VS Code 终审时须逐槽确认或改成自己原话。"
+}
