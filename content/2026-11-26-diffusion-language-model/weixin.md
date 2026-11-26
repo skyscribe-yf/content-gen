@@ -7,7 +7,7 @@ series: "扩散语言模型"
 digest: "自回归逐字写，扩散语言模型逐块抠；2026 年已跑出千级 tok/s 与百亿级开源，但 SDAR 摘要明言 AR 仍更省——它是工程解，不是智能解。"
 cover: "00-cover.png"
 keywords: "扩散语言模型,diffusion language model,扩散模型,LLaDA,Mercury,非自回归"
-wechatUrl: ""
+wechatUrl: "https://mp.weixin.qq.com/s/UqhAfxgZD126KkfeKYC_2A"
 ---
 
 让模型补一段两三百字的代码或实现，它一个字一个字往外吐，没有完事儿之前，你只有干等着的份儿。

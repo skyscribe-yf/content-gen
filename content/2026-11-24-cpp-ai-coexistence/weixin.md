@@ -7,7 +7,7 @@ series: "软件工程"
 digest: "一年没写过一行代码的 C++ 老手，靠四个 AI 审查 agent 把住代码质量——CppCon 2026 上 C++ 与 AI 共存的工程答卷。"
 cover: "00-cover.png"
 keywords: "C++, AI, CppCon, 多智能体, 代码审查"
-wechatUrl: ""
+wechatUrl: "https://mp.weixin.qq.com/s/qOJIHHWT3MaBs5fNLLT1lg"
 ---
 
 2026 年 9 月，美国科罗拉多，CppCon 2026。一个有四十年经验的C++老手上台演讲，先坦白交代了一件事：自从去年 11 月之后，他一行代码没亲手写过了——不是不写，而是每一行都出自 AI 之手。台下坐着的 C++ 程序员，第一反应大概都是「你在扯吧」。

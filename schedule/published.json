@@ -1,7 +1,7 @@
 {
   "schema": "schedule/schema.json#/$defs/ledger",
   "schema_version": 1,
-  "updated": "2026-11-23T08:01:44",
+  "updated": "2026-11-26T21:09:15",
   "articles": [
     {
       "slug": "2026-07-03-损失函数",
@@ -1887,6 +1887,41 @@
       "scheduled_publish": "2026-11-20 20:00",
       "cover_media_id": "kOcXH4SytIYVIpYksTGfHsmmUYxkck9-kh1r0BDYAXA7HkKWpbaQroS-EPSeg-fg",
       "draft_media_id": "kOcXH4SytIYVIpYksTGfHqQKPPftG3VriJNIvAHOLXr2B4GnR5B1Bs3e1NyTJw70"
+    },
+    {
+      "slug": "2026-11-22-latent-reasoning-four-routes",
+      "title": "加入100个dummy token，算术能力飞涨10.7分：AI思维链正在悄然发生着变化",
+      "series": "Latent 思维链",
+      "status": "published",
+      "published_date": "2026-11-22",
+      "wechat_url": "https://mp.weixin.qq.com/s/kwnvH_nhchJjZdESQPlP9g",
+      "scheduled_publish": "2026-11-22 20:00",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHgFaUUcSdEGK38Ygg1-FuH4QVBdMUv_ZKtnHFF2L19Bc",
+      "draft_media_id": "kOcXH4SytIYVIpYksTGfHjt8e9HZqT4wL4gk-rGQiW5YUdPgvMROo41dtt6yXRmo",
+      "old_media_id": "kOcXH4SytIYVIpYksTGfHr89qM6A-kZlEICe7h016jZh_Y54bPhz98xfJWhHROBd"
+    },
+    {
+      "slug": "2026-11-24-cpp-ai-coexistence",
+      "title": "一年没写过一行代码的 C++ 老手，怎么保证代码不出事",
+      "series": "软件工程",
+      "status": "published",
+      "published_date": "2026-11-24",
+      "wechat_url": "https://mp.weixin.qq.com/s/qOJIHHWT3MaBs5fNLLT1lg",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHiOswGmJcKhZ71z_eZpW7zKkecLy3IKT_yZLZK8qZ72i",
+      "draft_media_id": "kOcXH4SytIYVIpYksTGfHsjda4tdj_JrkrelDMYdNEubry618UcIRLi4zryW76nN",
+      "scheduled_publish": "2026-11-24 20:00",
+      "files": {}
+    },
+    {
+      "slug": "2026-11-26-diffusion-language-model",
+      "title": "AI 写字还要逐字来？扩散模型已经整段抠了",
+      "series": null,
+      "status": "published",
+      "published_date": "2026-11-26",
+      "wechat_url": "https://mp.weixin.qq.com/s/UqhAfxgZD126KkfeKYC_2A",
+      "scheduled_publish": "2026-11-26 20:00",
+      "cover_media_id": "kOcXH4SytIYVIpYksTGfHjSc3GMUu3IC84bPTdRK9Gsho9-VfoPS-ovEOZcE3NJh",
+      "draft_media_id": "kOcXH4SytIYVIpYksTGfHt95ZQqJ6-7mwvz4g7wIQHbi5sOZmgsNsSr28LRmd7Xu"
     }
   ]
 }

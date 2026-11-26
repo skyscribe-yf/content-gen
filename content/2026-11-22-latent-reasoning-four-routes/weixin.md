@@ -7,7 +7,7 @@ series: "Latent 思维链"
 digest: "给13个前沿模型的提示词里面塞一些 dummy token，模型的智力就可以提升甚至多达10%？聊聊这个现象背后关于思维链消失术背后的整整八档光谱。"
 cover: "00-cover.png"
 keywords: "latent reasoning, 隐藏思维链, 思维链, filler token, 推理"
-wechatUrl: ""
+wechatUrl: "https://mp.weixin.qq.com/s/kwnvH_nhchJjZdESQPlP9g"
 ---
 
 最近看到这篇2026年7月的一篇论文（arXiv:2607.22925）做了一个奇怪的实验：给当时的13个前沿模型的 prompt 里塞了一串「1、2、3……」这样的计数 token。面对同一道多步算术测试题，Gemini 3 Flash 的准确率竟然能从51.0涨到了61.7。
